@@ -5,6 +5,8 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
+                var fullpageCommon = new S36FullpageCommon;
+                fullpageCommon.init_quick_inbox();
             });
         }
     }    
@@ -54,7 +56,6 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    //console.log(data); 
                     scope.template = '<div class="custom-meta-list grids">';     
                     for(var prop in data) {
                         var meta = data[prop];
@@ -62,11 +63,9 @@ angular.module('S36QuickInboxDirectives', [])
                         for(var pr in meta)  {
                             scope.template += '<div class="custom-meta-name">';
                             var submeta = meta[pr]; 
-                            //console.log(ucwords(pr.replace(/_/g, " ")));
                             scope.template += ucwords(pr.replace(/_/g, " ")) + ": ";
                             var prefix = "";
                             for(var i=0; i<submeta.length; i++) {
-                                //console.log(" -" + submeta[i].value);   
                                 scope.template += '<span class="value">' + prefix + submeta[i].value + '</span>';
                                 prefix = ", ";
                             } 

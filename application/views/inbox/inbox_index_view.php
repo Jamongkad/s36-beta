@@ -76,6 +76,31 @@
             var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
         });
+         /*
+        / FancyBox
+        */
+        $(".inbox-fancybox-image").fancybox({
+          openEffect : 'none',
+          closeEffect : 'none'
+         });
+        $(".inbox-fancybox-video").click(function() {
+            $.fancybox({
+                'padding'       : 0,
+                'autoScale'     : false,
+                'transitionIn'  : 'none',
+                'transitionOut' : 'none',
+                'title'         : this.title,
+                'width'         : 640,
+                'height'        : 385,
+                'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+                'type'          : 'swf',
+                'swf'           : {
+                    'wmode'             : 'transparent',
+                    'allowfullscreen'   : 'true'
+                }
+            });
+            return false;
+        });
     });
 </script>
 <?if($feedback != null):?>
@@ -365,60 +390,83 @@
                                                     <?endforeach?>
                                                 <?endif?>
                                             </div>
-                                        <?php
-                                        //start attachments
-                                        if($attachments):
-                                        //echo "<pre>";print_r($attachments);echo "</pre>";
-                                        ?>
-                                            <div class="uploaded-images-and-links grids">
-                                            <input type="hidden" class="attachment_feedback_id" value="<?=$feed->id?>"/>
-                                            <?php if(isset($attachments->uploaded_images)){ //start uploaded images ?>
+                                    <?php if($attachments): ?>
+                                        <div class="uploaded-images-and-links grids">
+                                        <input type="hidden" class="attachment_feedback_id" value="<?=$feed->id?>"/>
+                                            <?php 
+                                            /*
+                                            | Start Video and Web Link Attachment
+                                            */
+                                            if(isset($attachments->attached_link)):
+                                            ?>
+                                            <div class="image-block video" style="width:100%;margin-bottom:15px">
+                                                <div class="delete-block">x</div>
+                                                    <?php 
+                                                    //video attachments
+                                                    if($attachments->attached_link->video=='yes'){?>
+                                                        <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
+                                                        <div class="video-circle"></div>
+                                                        <div class="the-thumb">
+                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                        </div>
+                                                        </a>
+                                                    <?php
+                                                    } 
+                                                    else{
+                                                    //web link
+                                                    ?>
+                                                        <div class="attached-link-thumb">
+                                                            <a href="<?=$attachments->attached_link->url?>" target="_blank">
+                                                                <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="attached-link-details">
+                                                        <h3><?=$attachments->attached_link->title?></h3>
+                                                        <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
+                                                        </div>   
+                                                    <?php } ?>
+                                            </div>
+                                            <br/>
+                                            <?php 
+                                            /*
+                                            | End Video and Web Link Attachment
+                                            */
+                                            endif;
+                                            /*
+                                            | Start Image Attachments
+                                            */
+                                            if(isset($attachments->uploaded_images)):
+                                            ?>
+                                            <?php
+                                            if(count($attachments->uploaded_images) == 1) $width='100%';
+                                            if(count($attachments->uploaded_images) == 2) $width='50%';
+                                            if(count($attachments->uploaded_images) == 3) $width='33%';
+                                            ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                    <div class="image-block">
+                                                    <div class="image-block" style="width:<?=$width;?>">
                                                         <div class="delete-block">x</div>
                                                         <div class="the-thumb">
-                                                            <input type="hidden" class="small-image-url" value="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>"/>
-                                                            <input type="hidden" class="medium-image-url" value="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"/>
-                                                            <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
+                                                            <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
+
+                                                            <?if(count($attachments->uploaded_images) == 1):?>
+                                                                <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
+                                                            <?else:?>
+                                                                <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                            <?endif?>
+
+                                                            </a>
                                                             <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
-                                                            <?php $thumb_url = ($feed->isfeatured == 1) ? Config::get('application.attachments_medium').'/'.$uploaded_image->name : Config::get('application.attachments_small').'/'.$uploaded_image->name ?>
-                                                            <img src="<?=$thumb_url?>" width="100%" />
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>
-                                            <?php } //end uploaded images?>
-                                            <?php if(isset($attachments->attached_link)){ //start uploaded link / video?>
-                                                    <div class="image-block video">
-                                                        <input type="hidden" class="link-title" value="<?=$attachments->attached_link->title?>"/>
-                                                        <input type="hidden" class="link-description" value="<?=$attachments->attached_link->description?>"/>
-                                                        <input type="hidden" class="link-image" value="<?=$attachments->attached_link->image?>"/>
-                                                        <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
-                                                        <input type="hidden" class="link-video" value="<?=$attachments->attached_link->video?>"/>
-                                                        <div class="delete-block">x</div>
-                                                            <?php 
-                                                            //video attachments
-                                                            if($attachments->attached_link->video=='yes'){?>
-                                                                <div class="video-circle"></div>
-                                                                <div class="the-thumb">
-                                                                    <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                                </div>
-                                                            <?php
-                                                            } 
-                                                            //just an external web link
-                                                            else{
-                                                            ?>
-                                                                <div style="cursor:pointer;">
-                                                                    <a href="<?=$attachments->attached_link->url?>" target="_blank">
-                                                                        <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                                    </a>
-                                                                </div>
-                                                            <?php } ?>
-                                                    </div>
-                                            <?php } //end uploaded link / video?>
-                                            </div>
-                                        <?php endif;
-                                        //end attachments 
-                                        ?>
+                                            <?php
+                                            /*
+                                            | End Image Attachments
+                                            */
+                                            endif;
+                                            ?>
+                                        </div>
+                                    <?php endif;?>
                                     </div>
                                     <!-- end of additional info block -->
                                 <? endif; ?>
@@ -483,16 +531,3 @@
       </div>
 <?endif?>
 <!-- end of feedback list -->
-<!-- start lightbox -->
-<div class="lightbox">
-    <div class="uploaded-images-close"></div>
-    <div class="uploaded-images-popup">
-        <div class="uploaded-images-container">
-            <div class="uploaded-images-view">
-                <div class="uploaded-images-content">
-                </div> 
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end lightbox -->

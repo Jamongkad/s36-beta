@@ -1126,7 +1126,6 @@ margin-bottom: 3px;
 }
 #admin-panel .main-panel .the-feedbacks div.uploaded-images-and-links div.image-block{
     width:60px;
-    margin-right:10px;
     float:left;
 }
 #admin-panel .main-panel .the-feedbacks div.video-circle{
@@ -1184,4 +1183,13 @@ margin-bottom: 3px;
     z-index:100001;
     right:-15px;top:-15px;
     cursor:pointer;
+}
+
+.attached-link-thumb{
+    cursor: pointer;
+    float: left;
+    width: 100px;
+}
+.attached-link-details{
+    margin-left: 110px !important;
 }
