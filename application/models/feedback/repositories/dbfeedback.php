@@ -505,10 +505,10 @@ class DBFeedback extends S36DataObject {
 
         //In case we're logged in...
         if($this->company_id) {
-            echo "Logged in! ".$this->company_id;
+            //echo "Logged in! ".$this->company_id;
             $company_id = $this->company_id;
         } else {
-            echo "Not Logged in! ".$filter['company_id'];
+            //echo "Not Logged in! ".$filter['company_id'];
             $company_id = $filter['company_id'];
         }
 

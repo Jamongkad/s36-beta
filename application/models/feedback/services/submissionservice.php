@@ -46,7 +46,11 @@ class SubmissionService {
             $this->_calculate_dashboard_analytics($company_id);
             
             //this solution is a bit heavy handed try to find a much faster way to get it.
-            $feedbackcount = $this->dbfeedback->newfeedback_by_company($company_id);
+
+            $feedbackcount = $this->dbfeedback->newfeedback_by_company(Array(
+                'company_id' => $company_id
+            ));
+
             $mq = new MessageList;
             $mq->add_message(new Notification("{$feedbackcount->row_count} New Feedback", "inbox:notification:newfeedback"));
             $director = new MessageDirector;

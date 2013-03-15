@@ -32,7 +32,7 @@ return array(
             'rating' => 'positive'
           , 'privacy_policy' => 'public'
         );
-        $feeds = $feedback->newfeedback_by_company(false, $filter);  
+        $feeds = $feedback->newfeedback_by_company($filter);  
         echo json_encode($feeds->nodes);
     },
 
