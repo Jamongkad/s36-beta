@@ -512,7 +512,7 @@ class DBFeedback extends S36DataObject {
             if(array_key_exists('company_id', $filter)) {
                 $company_id = $filter['company_id'];   
             } else  {
-                throw new Exception("Company ID is not set and no Auth session is present.");
+                throw new Exception("Company ID is not set and Auth session is not present.");
             } 
         }
 
