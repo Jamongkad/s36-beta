@@ -417,7 +417,7 @@ return array(
                 'rating' => 'positive'
               , 'privacy' => 'public'
             );
-            $feedback = $tf->data->dbfeedback->newfeedback_by_company(6, $filter); 
+            $feedback = $tf->data->dbfeedback->newfeedback_by_company(6); 
             $tf->dump($feedback);
         });
 
