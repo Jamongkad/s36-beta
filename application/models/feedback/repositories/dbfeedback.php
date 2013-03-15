@@ -456,9 +456,9 @@ class DBFeedback extends S36DataObject {
                     $filter_statement .= 'AND Feedback.permission = 1';
                 } 
             }
-
-            Helpers::dump($filter_statement);
         }
+
+        Helpers::dump($filter_statement);
        
         $sql = "   
             SELECT 
