@@ -413,7 +413,7 @@ return array(
         
 
         $tf->test("Quick Inbox: DBFeedback", function($tf) {  
-            $feedback = $tf->data->dbfeedback->newfeedback_by_company(false, $filter='positive'); 
+            $feedback = $tf->data->dbfeedback->newfeedback_by_company(6, $filter='positive'); 
             $tf->dump($feedback);
         });
 
