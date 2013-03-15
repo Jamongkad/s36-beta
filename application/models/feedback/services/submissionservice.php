@@ -49,6 +49,7 @@ class SubmissionService {
 
             $feedbackcount = $this->dbfeedback->newfeedback_by_company(Array(
                 'company_id' => $company_id
+              , 'privacy_policy' => 'all'
             ));
 
             $mq = new MessageList;

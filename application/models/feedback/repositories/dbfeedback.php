@@ -455,6 +455,14 @@ class DBFeedback extends S36DataObject {
                     if($filter['privacy_policy'] == 'public') { 
                         $statement .= 'AND Feedback.permission = 1';
                     } 
+
+                    if($filter['privacy_policy'] == 'private') { 
+                        $statement .= 'AND Feedback.permission = 0';
+                    } 
+
+                    if($filter['privacy_policy'] == 'all') { 
+                        $statement .= 'AND (Feedback.permission = 1 OR Feedback.permission = 0)';
+                    } 
                 }
             } 
             return $statement;
