@@ -441,7 +441,13 @@
                                                         <div class="delete-block">x</div>
                                                         <div class="the-thumb">
                                                             <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
-                                                            <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+
+                                                            <?if(count($attachments->uploaded_images) == 1):?>
+                                                                <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
+                                                            <?else:?>
+                                                                <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                            <?endif?>
+
                                                             </a>
                                                             <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
                                                         </div>
