@@ -509,7 +509,11 @@ class DBFeedback extends S36DataObject {
             $company_id = $this->company_id;
         } else {
             //echo "Not Logged in! ".$filter['company_id'];
-            $company_id = $filter['company_id'];
+            if(array_key_exists('company_id', $filter)) {
+                $company_id = $filter['company_id'];   
+            } else  {
+                throw new Exception("Company ID is not set and no Auth session is present.");
+            } 
         }
 
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
