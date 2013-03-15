@@ -504,7 +504,7 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql); 
 
         //In case we're logged in...
-        if($this->company_id && !$filter['company_id']) {
+        if($this->company_id) {
             echo "Logged in! ".$this->company_id;
             $company_id = $this->company_id;
         } else {
