@@ -397,6 +397,7 @@ with others!</p>
                     <span>Processing.. <img src="/img/loading.gif" /></span>
                 </div>
                 <div class="form-button-right">
+                    <div class="button-disabler"></div>
                     <a href="javascript:;" class="form-button" id="next">Next Step</a>
                 </div>
             </div>
