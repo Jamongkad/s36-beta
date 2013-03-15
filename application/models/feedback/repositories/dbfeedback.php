@@ -449,6 +449,12 @@ class DBFeedback extends S36DataObject {
                     if($filter['rating'] == 'positive') { 
                         $statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
                     }
+                    
+                    /*
+                    if($filter['rating'] == 'all') { 
+                        $statement .= 'AND (Feedback.rating = 5 OR Feedback.rating = 4 OR Feedback.rating = 3 OR Feedback.rating = 2 OR Feedback.rating = 1)';
+                    }
+                    */
                 }
 
                 if(array_key_exists('privacy_policy', $filter)) {
