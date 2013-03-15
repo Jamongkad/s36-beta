@@ -416,7 +416,7 @@ return array(
             $filter = Array(
                 'company_id' => 6
               , 'rating' => 'positive'
-              , 'privacy_policy' => 'public'
+              , 'privacy_policy' => 'private'
             );
             $feedback = $tf->data->dbfeedback->newfeedback_by_company($filter); 
             $tf->dump($feedback);
