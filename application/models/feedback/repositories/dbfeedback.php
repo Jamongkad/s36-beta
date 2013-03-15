@@ -441,7 +441,7 @@ class DBFeedback extends S36DataObject {
     //duplication??
     public function newfeedback_by_company($company_id=False, $filter=Array()) {
         
-        $filter_statement = function($filter) {
+        $filter_statement = function() use($filter) {
             $statement = null;
             if($filter) { 
                 $statement = '';
@@ -460,7 +460,7 @@ class DBFeedback extends S36DataObject {
             return $statement;
         };
 
-        Helpers::dump($filter_statement($filter));
+        Helpers::dump($filter_statement());
        
         $sql = "   
             SELECT 
@@ -498,7 +498,7 @@ class DBFeedback extends S36DataObject {
                  AND Feedback.isSticked = 0
                  AND Feedback.isArchived = 0
                  AND Feedback.dtAdded BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
-                 ".$filter_statement($filter)."
+                 ".$filter_statement()."
              ORDER BY 
                  Feedback.dtAdded DESC 
         ";
