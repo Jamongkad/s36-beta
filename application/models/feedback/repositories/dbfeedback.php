@@ -439,7 +439,7 @@ class DBFeedback extends S36DataObject {
     }
     
     //duplication??
-    public function newfeedback_by_company($company_id=False, $filter=Array()) {
+    public function newfeedback_by_company($filter=Array()) {
         
         $filter_statement = function() use($filter) {
             $statement = null;
@@ -502,9 +502,12 @@ class DBFeedback extends S36DataObject {
         ";
 
         $sth = $this->dbh->prepare($sql); 
+
         //In case we're logged in...
-        if($this->company_id) {
+        if($this->company_id && !$filter['company_id']) {
             $company_id = $this->company_id;
+        } else {
+            $company_id = $filter['company_id'];
         }
 
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
