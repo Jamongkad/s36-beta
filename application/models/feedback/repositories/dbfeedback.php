@@ -441,24 +441,26 @@ class DBFeedback extends S36DataObject {
     //duplication??
     public function newfeedback_by_company($company_id=False, $filter=Array()) {
         
-
-        $statement = null;
-        if($filter) { 
-            $statement = '';
-            if(array_key_exists('rating', $filter)) {
-                if($filter['rating'] == 'positive') { 
-                    $statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
+        $filter_statement = function() use ($filter) {
+            $statement = null;
+            if($filter) { 
+                $statement = '';
+                if(array_key_exists('rating', $filter)) {
+                    if($filter['rating'] == 'positive') { 
+                        $statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
+                    }
                 }
-            }
 
-            if(array_key_exists('privacy', $filter)) {
-                if($filter['privacy'] == 'public') { 
-                    $statement .= 'AND Feedback.permission = 1';
-                } 
-            }
-        } 
+                if(array_key_exists('privacy', $filter)) {
+                    if($filter['privacy'] == 'public') { 
+                        $statement .= 'AND Feedback.permission = 1';
+                    } 
+                }
+            } 
+            return $statement;
+        };
 
-        Helpers::dump($statement);
+        Helpers::dump($filter_statement());
        
         $sql = "   
             SELECT 
