@@ -18,7 +18,7 @@
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
             $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
             $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
-            $avatar                     = Config::get('application.avatar48_dir').'/'.$feed->feed_data->avatar;
+            $avatar                     = (!empty($feed->feed_data->avatar)) ? Config::get('application.avatar48_dir').'/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
             $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
