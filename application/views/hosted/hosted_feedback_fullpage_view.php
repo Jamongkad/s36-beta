@@ -83,7 +83,7 @@
             <div class="hosted-block">
                     <div class="company-reviews clear">
                         <div class="company-recommendation">
-                            <?php if( !$company->total_feedback != 0 ): ?>
+                            <?php if( $company->total_feedback != 0 ): ?>
                                 <div class="green-thumb">
                                     <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
                                     of our customers recommend us to their friends.
@@ -91,7 +91,7 @@
                             <?php endif; ?>
                         </div>
                         <div class="company-rating">
-                            <?php if( !$company->total_feedback != 0 ): ?>
+                            <?php if( $company->total_feedback != 0 ): ?>
                                 <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
                                 <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
                                 <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
