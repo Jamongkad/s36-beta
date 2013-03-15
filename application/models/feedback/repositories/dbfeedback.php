@@ -447,6 +447,8 @@ class DBFeedback extends S36DataObject {
             $filter_statement = 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
         }
         */
+
+        Helpers::dump($filter == true);
        
         $sql = "   
             SELECT 
