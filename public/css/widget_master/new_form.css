@@ -250,14 +250,13 @@ a:hover{
 .form-video-thumbs,.form-image-thumbs{
 	overflow:hidden;
 	max-height:78px;
-	max-width:270px;
 }
 .form-image-thumbs{
 	margin-bottom:5px;
 }
 .form-image-thumbs .image-thumb{
 	float:left;
-	width:70px;
+	width:100px;
 	margin-right:20px;
 }
 .form-video-meta{
@@ -707,7 +706,9 @@ h2.h2-fix{
 	text-shadow:#FFF 0px 1px;
 	color:#545454;
 	padding:10px;
-	overflow: hidden;
+}
+#all-done-textbox{
+	overflow-y: auto;
 }
 #review-location{
  float:left;
@@ -783,3 +784,14 @@ select.regular-custom-field{
 
 #fb-last-page-like-button iframe ._5v4._5v8{width:390px !important}
 #fb-last-page-like-button iframe ._5v4._5v8 .ptm{display:none !important}
+
+.button-disabler{
+display: none;
+width: 83px;
+height: 30px;
+position: absolute;
+background: #fff;
+opacity: 0.5;
+-moz-opacity:0.5;
+-webkit-opacity:0.5;
+}

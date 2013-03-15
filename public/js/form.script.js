@@ -6,7 +6,7 @@ $(document).keypress(function(event){
 });
 
 	$(document).ready(function(){
-
+		
 		$('#fb-login').click(function(){
 			FB.login(function(response) {
 			   if (response.authResponse) {
@@ -282,10 +282,12 @@ $(document).keypress(function(event){
 				}
 				data.submit();
 			}, progress: function(e, data){
+				$('.button-disabler').show();
 				$('.upload-preview').show('fast');
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
 			}, done: function(e, data){
+				$('.button-disabler').hide();
                 $('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
@@ -337,6 +339,7 @@ $(document).keypress(function(event){
 				}
 				data.submit();
 			},progress: function(e, data){
+				$('.button-disabler').show();
 				$('.loading-box').fadeIn('fast');
 				// delete old photo if the user decides to upload a new one.
 				var delete_url = $('#preview_photo').attr('data-url');
@@ -344,8 +347,7 @@ $(document).keypress(function(event){
 					$.post(delete_url);
 				}
 			},done: function(e, data){
-				console.log(e);
-				console.log(data);
+				$('.button-disabler').hide();
 				$('<img />')
 					.attr('src', data.result[0].url)
 					.load(function(e){
@@ -648,9 +650,7 @@ $(document).keypress(function(event){
 	}
 
 	function push_to_last_window(){
-		var feedback_text = $('#feedbackText').val();
-		if( feedback_text.length > 1000 ) feedback_text = feedback_text.substr(0, 999) + '...';
-		$('#all-done-textbox').html(feedback_text);
+		$('#all-done-textbox p').html($('#feedbackText').val());
 		$('#back').fadeOut('fast');
 		$('#next').fadeOut('fast');
 		return true;

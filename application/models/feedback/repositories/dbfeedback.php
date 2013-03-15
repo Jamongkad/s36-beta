@@ -439,13 +439,41 @@ class DBFeedback extends S36DataObject {
     }
     
     //duplication??
-    public function newfeedback_by_company($company_id=False, $filter=False) {
+    public function newfeedback_by_company($filter=Array()) {
         
-        $filter_statement = Null;
-        if($filter && $filter == 'positive') { 
-            $filter_statement = 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
-        }
+        $filter_statement = function() use($filter) {
+            $statement = null;
+            if($filter) { 
+                $statement = '';
+                if(array_key_exists('rating', $filter)) {
+                    if($filter['rating'] == 'positive') { 
+                        $statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
+                    }
+                    
+                    /* this seems like a bad idea
+                    if($filter['rating'] == 'all') { 
+                        $statement .= 'AND (Feedback.rating = 5 OR Feedback.rating = 4 OR Feedback.rating = 3 OR Feedback.rating = 2 OR Feedback.rating = 1)';
+                    }
+                    */
+                }
 
+                if(array_key_exists('privacy_policy', $filter)) {
+                    if($filter['privacy_policy'] == 'public') { 
+                        $statement .= 'AND Feedback.permission = 1';
+                    } 
+
+                    if($filter['privacy_policy'] == 'private') { 
+                        $statement .= 'AND Feedback.permission = 0';
+                    } 
+
+                    if($filter['privacy_policy'] == 'all') { 
+                        $statement .= 'AND (Feedback.permission = 1 OR Feedback.permission = 0)';
+                    } 
+                }
+            } 
+            return $statement;
+        };
+       
         $sql = "   
             SELECT 
                ".$this->select_vars."
@@ -481,17 +509,25 @@ class DBFeedback extends S36DataObject {
                  AND Feedback.isFlagged = 0
                  AND Feedback.isSticked = 0
                  AND Feedback.isArchived = 0
-                 AND Feedback.permission = 1
                  AND Feedback.dtAdded BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
-                 ".$filter_statement."
+                 ".$filter_statement()."
              ORDER BY 
                  Feedback.dtAdded DESC 
         ";
 
         $sth = $this->dbh->prepare($sql); 
+
         //In case we're logged in...
         if($this->company_id) {
+            //echo "Logged in! ".$this->company_id;
             $company_id = $this->company_id;
+        } else {
+            //echo "Not Logged in! ".$filter['company_id'];
+            if(array_key_exists('company_id', $filter)) {
+                $company_id = $filter['company_id'];   
+            } else  {
+                throw new Exception("Company ID is not set and Auth session is not present.");
+            } 
         }
 
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
