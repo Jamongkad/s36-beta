@@ -413,12 +413,17 @@
                                                     <?php
                                                     } 
                                                     else{
+                                                    //web link
                                                     ?>
-                                                        <div style="cursor:pointer;">
+                                                        <div class="attached-link-thumb">
                                                             <a href="<?=$attachments->attached_link->url?>" target="_blank">
                                                                 <img src="<?=$attachments->attached_link->image?>" width="100%" />
                                                             </a>
                                                         </div>
+                                                        <div class="attached-link-details">
+                                                        <h3><?=$attachments->attached_link->title?></h3>
+                                                        <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
+                                                        </div>   
                                                     <?php } ?>
                                             </div>
                                             <?php 

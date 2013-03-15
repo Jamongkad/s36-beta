@@ -1184,3 +1184,12 @@ margin-bottom: 3px;
     right:-15px;top:-15px;
     cursor:pointer;
 }
+
+.attached-link-thumb{
+    cursor: pointer;
+    float: left;
+    width: 100px;
+}
+.attached-link-details{
+    margin-left: 110px !important;
+}
