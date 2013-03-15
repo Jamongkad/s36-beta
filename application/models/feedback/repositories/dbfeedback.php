@@ -450,7 +450,7 @@ class DBFeedback extends S36DataObject {
                         $statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
                     }
                     
-                    /*
+                    /* this seems like a bad idea
                     if($filter['rating'] == 'all') { 
                         $statement .= 'AND (Feedback.rating = 5 OR Feedback.rating = 4 OR Feedback.rating = 3 OR Feedback.rating = 2 OR Feedback.rating = 1)';
                     }
