@@ -66,9 +66,9 @@
                         <div class="quick-inbox-spacer"></div>
                         <div id="quickInboxActions">
                             <span>Selected : </span>
-                            <input type="button" class="small-button publish" value="Publish" feedbackout/>
-                            <input type="button" class="small-button feature" value="Feature" feedbackout/>
-                            <input type="button" class="small-button delete" value="Delete" feedbackout/>
+                            <input type="button" class="small-button publish" value="Publish" ng-click="admin_action('publish')" feedbackout/>
+                            <input type="button" class="small-button feature" value="Feature" ng-click="admin_action('feature')" feedbackout/>
+                            <input type="button" class="small-button delete" value="Delete" ng-click="admin_action('delete')" feedbackout/>
                         </div>
                     </div>
                 </div>
