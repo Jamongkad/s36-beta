@@ -442,13 +442,23 @@ class DBFeedback extends S36DataObject {
     public function newfeedback_by_company($company_id=False, $filter=Array()) {
         
         $filter_statement = Null;
-        /*
-        if($filter && $filter == 'positive') { 
-            $filter_statement = 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
-        }
-        */
 
-        Helpers::dump($filter == true);
+        if($filter) { 
+            $filter_statement = '';
+            if(array_key_exists('rating', $filter)) {
+                if($filter['rating'] == 'positive') { 
+                    $filter_statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
+                }
+            }
+
+            if(array_key_exists('privacy', $filter)) {
+                if($filter['privacy'] == 'public') { 
+                    $filter_statement .= 'AND Feedback.permission = 1';
+                } 
+            }
+
+            Helpers::dump($filter_statement);
+        }
        
         $sql = "   
             SELECT 
