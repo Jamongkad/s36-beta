@@ -399,7 +399,7 @@
                                             */
                                             if(isset($attachments->attached_link)):
                                             ?>
-                                            <div class="image-block video" style="width:100%">
+                                            <div class="image-block video" style="width:100%;margin-bottom:20px">
                                                 <div class="delete-block">x</div>
                                                     <?php 
                                                     //video attachments
