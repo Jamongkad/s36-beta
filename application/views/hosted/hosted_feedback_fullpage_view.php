@@ -139,7 +139,7 @@
 <?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
 
 <script type="text/javascript">
-<?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>
+<?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/fullpage/common/img/patterns/'.$panel->background_image.')");' : '' ?>
     $(document).ready(function(){
         var fullpageCommon = new S36FullpageCommon;
         var fullpageLayout = fullpageCommon.create_layout('<?php echo $panel->theme_name; ?>'); 
