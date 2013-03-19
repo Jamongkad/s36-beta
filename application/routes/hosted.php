@@ -42,6 +42,12 @@ return array(
         $feedids = $data['feeds'];
         $auth  = S36Auth::user();
         
+        $feeds = Array();
+        foreach($data['feeds'] as $feedids) {
+            $feed_obj = new StdClass; 
+            $feed_obj->feedid = $feedids;
+            $feeds[] = $feed_obj;
+        }
         /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feedids, $auth->companyid);
         $feedbackstate->change_state();
