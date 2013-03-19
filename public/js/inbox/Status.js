@@ -15,7 +15,7 @@ Status.prototype.notify = function(msg, delay, callback) {
 		if(delay){
 			setTimeout(function() {
                 $(me.notification).animate({ height: 0, opacity: 0 }, 'fast');  
-                console.log(this_callback);
+                this_callback;
             }, delay);		
 		}
     });
