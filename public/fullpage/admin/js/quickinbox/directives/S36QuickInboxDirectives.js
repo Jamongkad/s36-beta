@@ -172,7 +172,7 @@ angular.module('S36QuickInboxDirectives', [])
                         checkbox.removeAttr("checked"); 
                     } else { 
                         scope.update_selected('add', feed_obj);
-                        $(this).parents('.widget-item').css({'background-color': '#C7C7C7', 'padding': '10px'});
+                        $(this).parents('.widget-item').css({'background-color': '#FAFAFA', 'padding': '10px'});
                         checkbox.attr("checked", "checked"); 
                     }
                 } 
