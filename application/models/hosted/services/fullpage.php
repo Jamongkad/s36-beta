@@ -71,10 +71,8 @@ class Fullpage {
     }
 
     public function get_fullpage_css($company_id){
-        //$hs = $this->hosted_settings = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first();
         $hs = $this->hosted_settings->get_panel_settings($company_id);
-
-        
+ 
         $css = '<style type"text/css">';
         $css .= ( $hs->background_image ? 'body{background-image:url("'.$this->uploaded_background_dir.'/'.$hs->background_image.'")}' : '' );
         $css .= ( $hs->page_bg_color ? '#bodyColorOverlay{background:'.$hs->page_bg_color.' ;opacity: '.$hs->page_bg_color.'}' : '' );

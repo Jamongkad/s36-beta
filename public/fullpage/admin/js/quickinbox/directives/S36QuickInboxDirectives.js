@@ -8,6 +8,15 @@ angular.module('S36QuickInboxDirectives', [])
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
                 $("#quickInboxActions").hide();
+
+                var delay = 0;
+                $('#notification-message').empty().html("Processing feedback...");
+                $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
+                    if(delay){
+                        setTimeout($("#notification").animate({ height: 0, opacity: 0 }, 'fast'), delay);       
+                    }
+                });
+
             });
         }
     }    
