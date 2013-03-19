@@ -30,6 +30,7 @@ return array(
 	|
 	*/
 	'assets_dir'			=> $determine->d->assets_dir,
+	'hosted_background'		=> '/uploaded_images/hosted_background',
 	'attachments_small'		=> '/uploaded_images/form_upload/small',
 	'attachments_medium'	=> '/uploaded_images/form_upload/medium',
 	'attachments_large'		=> '/uploaded_images/form_upload/large',
