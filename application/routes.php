@@ -47,7 +47,6 @@ return array(
 
         //hosted settings 
         $panel = $hosted_settings->get_panel_settings($company_info->companyid);
-        Helpers::dump($panel);
 
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
