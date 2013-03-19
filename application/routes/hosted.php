@@ -44,7 +44,7 @@ return array(
         
         $feeds = Array();
         foreach($data['feeds'] as $feedids) {
-            $feed_obj = new StdClass; 
+            $feed_obj = Array();
             $feed_obj['feedid'] = $feedids;
             $feeds[] = $feed_obj;
         }
