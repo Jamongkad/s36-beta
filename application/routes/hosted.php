@@ -41,9 +41,17 @@ return array(
         $mode  = $data['feedstatus'];
         $feedids = $data['feeds'];
         $auth  = S36Auth::user();
+        
+        $feeds = Array();
+        foreach($data['feeds'] as $feedids) {
+            $feed_obj = Array();
+            $feed_obj['feedid'] = $feedids;
+            $feeds[] = $feed_obj;
+        }
 
-        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feedids, $auth->companyid);
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feeds, $auth->companyid);
         $feedbackstate->change_state();
+
     },
 
     'POST /hosted/render_feeds' => function() use ($feedback) {

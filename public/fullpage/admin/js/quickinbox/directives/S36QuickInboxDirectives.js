@@ -7,6 +7,7 @@ angular.module('S36QuickInboxDirectives', [])
                 $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
+                $("#quickInboxActions").hide();
             });
         }
     }    
@@ -160,10 +161,26 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('checkfeed', function() { 
     return {  
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function() {
-                $("#quickInboxActions").show();
-            })
+      , link: function(scope, element, attrs) { 
+            $(element).bind('click', function(e) {
+
+                var checkbox = $(this).parents('.widget-item').children('.left').find('input[type=checkbox]');
+                var feed_obj = checkbox.val();
+                if(e.target == this) {
+                    if(checkbox.is(":checked")) {
+                        scope.update_selected('remove', feed_obj);
+                        $(this).parents('.widget-item').css({'background-color': '#FFF'});
+                        checkbox.removeAttr("checked"); 
+                    } else { 
+                        scope.update_selected('add', feed_obj);
+                        $(this).parents('.widget-item').css({'background-color': '#FAFAFA'});
+                        checkbox.attr("checked", "checked"); 
+                    }
+                } 
+
+                scope.check_select_length();
+
+            }) 
         }
     }    
 })
