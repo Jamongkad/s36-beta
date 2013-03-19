@@ -49,6 +49,12 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
         $scope.update_selected(action, feed);
+
+        if($scope.selected.length > 0) {
+            $("#quickInboxActions").show();
+        } else { 
+            $("#quickInboxActions").hide();
+        }
     }
 
     $scope.is_selected = function(id) {
