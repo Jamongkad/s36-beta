@@ -30,6 +30,7 @@
                                 <div ui-if="!!feedbacks.length">
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks" checkfeed>                                     
+
                                         <div class="left">
                                             <input type="checkbox" 
                                                    name="feedid" 
@@ -58,6 +59,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <!--quick inbox loop-->
                                 </div>

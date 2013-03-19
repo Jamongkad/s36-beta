@@ -163,15 +163,11 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
         
             $(element).bind('click', function(e) {
-                if($(e.target).attr('class') !== 'additional-info') {  
-                    var is_checked = $(this).find('input[type=checkbox]').attr("checked", "checked");
-                    console.log(is_checked);
-                }
-                /*
-
-                */
-                //$("#quickInboxActions").show();
-            })
+                var is_checked = $(this).find('input[type=checkbox]').attr("checked", "checked");
+                console.log(is_checked);
+            }).children().bind('click', function(e) {
+                return false;     
+            }); 
 
         }
     }    
