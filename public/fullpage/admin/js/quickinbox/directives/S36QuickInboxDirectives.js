@@ -7,6 +7,7 @@ angular.module('S36QuickInboxDirectives', [])
                 $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
+                $("#quickInboxActions").hide();
             });
         }
     }    
