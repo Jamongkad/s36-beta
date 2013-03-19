@@ -49,12 +49,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
         $scope.update_selected(action, feed);
-
-        if($scope.selected.length > 0) {
-            $("#quickInboxActions").show();
-        } else { 
-            $("#quickInboxActions").hide();
-        }
+        $scope.check_select_length();
     }
 
     $scope.is_selected = function(id) {
@@ -66,6 +61,14 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         //implementation is too buggy
         //QuickInboxService.render_feeds(mystatus, $scope.selected);
         $scope.selected = []; 
+    }
+
+    $scope.check_select_length = function() { 
+        if($scope.selected.length > 0) {
+            $("#quickInboxActions").show();
+        } else { 
+            $("#quickInboxActions").hide();
+        }
     }
 
     $scope.test_punch = function(data) {
