@@ -52,7 +52,7 @@
                         </a>
                     </div>
                     <div class="social-icon tw" style="display: <?= (trim($panel->twitter_url) == '' ? 'none' : ''); ?>;">
-                        <a href="<?= $panel->twitter_url; ?>">
+                        <a id="tw_url" href="<?= $panel->twitter_url; ?>">
                             <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
                         </a>
                     </div>
