@@ -33,6 +33,7 @@
 
                                         <div class="left">
                                             <input type="checkbox" 
+                                                   value="{{feeds.id}}"
                                                    name="feedid" 
                                                    ng-checked="is_selected(feeds.id)" 
                                                    ng-click="update_selection($event, {feedid : feeds.id})"/>
