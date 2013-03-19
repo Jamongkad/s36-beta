@@ -245,9 +245,8 @@ function ucwords(str) {
     });
 }
 
-function feedback_process_message() {
-    
-    var delay = 0;
+function feedback_process_message() { 
+    var delay = 200;
     $('#notification-message').empty().html("Processing feedback...");
     $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
         if(delay){
@@ -258,5 +257,5 @@ function feedback_process_message() {
 
 function redirect_and_hide() {
     $("#notification").animate({ height: 0, opacity: 0 }, 'fast');
-    window.location.href    = window.location.pathname+'?nocache';
+    window.location.href = window.location.pathname+'?nocache';
 }
