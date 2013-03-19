@@ -9,7 +9,6 @@ Status.prototype.notify = function(msg, delay, callback) {
     var this_callback = (typeof callback === "undefined") ? null : callback();
 
 
-
 	$(me.message).empty().html(msg).show();    
     $(me.notification).animate({height: '50', opacity: '100'}, 'fast', '', function() { 
 		if(delay){
