@@ -44,11 +44,11 @@
                                             </div>
                                             <div class="widget-content">
                                                 <div class="widget-submitter" checkfeed>
-                                                    <span class="name" checkfeed>{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                    <span class="social-src" checkfeed social login="{{feeds.logintype}}"></span>
+                                                    <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
+                                                    <span class="social-src" social login="{{feeds.logintype}}"></span>
                                                 </div>
                                                 <div class="widget-date" checkfeed>
-                                                    <span checkfeed feedbackdate date="{{feeds.date}}"></span>
+                                                    <span feedbackdate date="{{feeds.date}}"></span>
                                                 </div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
