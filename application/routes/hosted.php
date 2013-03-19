@@ -49,12 +49,9 @@ return array(
             $feeds[] = $feed_obj;
         }
 
-        Helpers::dump($feeds);
-
-        /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feeds, $auth->companyid);
         $feedbackstate->change_state();
-        */
+
     },
 
     'POST /hosted/render_feeds' => function() use ($feedback) {
