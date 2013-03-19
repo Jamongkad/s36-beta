@@ -48,8 +48,9 @@ return array(
             $feed_obj->feedid = $feedids;
             $feeds[] = $feed_obj;
         }
+
         /*
-        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feedids, $auth->companyid);
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feeds, $auth->companyid);
         $feedbackstate->change_state();
         */
     },
