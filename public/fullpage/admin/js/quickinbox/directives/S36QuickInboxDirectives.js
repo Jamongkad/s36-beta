@@ -163,7 +163,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
                 if(e.target == this) {
-                    console.log($(this).find('input[type=checkbox]').attr("checked", "checked"));
+                    console.log($(this).prev('.left').find('input[type=checkbox]').attr("checked", "checked"));
                     if($(this).find('input[type=checkbox]').is(":checked")) {
                         $(this).find('input[type=checkbox]').removeAttr("checked");
                     } else { 
