@@ -138,8 +138,7 @@ class DBHostedSettings extends S36DataObject {
     
     
     // get admin panel settings.
-    public function get_panel_settings($company_id, $type = null){
-        
+    public function get_panel_settings($company_id, $type = null){ 
         $result = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first( $this->admin_panel_fields );
         return ( $type == 'json' ? json_encode($result) : $result ) ;
     }
