@@ -1,7 +1,7 @@
 <?php namespace Hosted\Services;
 
 use Input, Exception, StdClass, View, Helpers, Config, DB;
-use HostedSettings\Repositories\DBHostedSettings;
+use Hosted\Repositories\DBHostedSettings;
 
 class Fullpage {
 
