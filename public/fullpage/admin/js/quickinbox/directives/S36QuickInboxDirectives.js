@@ -256,6 +256,6 @@ function feedback_process_message() {
 }
 
 function redirect_and_hide() {
-    $("#notification").animate({ height: 0, opacity: 0 }, 'fast');
+    //$("#notification").animate({ height: 0, opacity: 0 }, 'fast');
     window.location.href = window.location.pathname+'?nocache';
 }
