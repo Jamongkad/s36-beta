@@ -162,7 +162,9 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function() {
-                $("#quickInboxActions").show();
+                var is_checked = $(this).is(':checked');
+                console.log(is_checked);
+                //$("#quickInboxActions").show();
             })
         }
     }    
