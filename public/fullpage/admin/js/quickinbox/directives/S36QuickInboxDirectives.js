@@ -168,11 +168,11 @@ angular.module('S36QuickInboxDirectives', [])
                 if(e.target == this) {
                     if(checkbox.is(":checked")) {
                         scope.update_selected('remove', feed_obj);
-                        $(this).parents('.widget-item').css('background-color', '#FFF');
+                        $(this).parents('.widget-item').css({'background-color': '#FFF', 'padding': '0px'});
                         checkbox.removeAttr("checked"); 
                     } else { 
                         scope.update_selected('add', feed_obj);
-                        $(this).parents('.widget-item').css('background-color', '#C7C7C7');
+                        $(this).parents('.widget-item').css({'background-color': '#C7C7C7', 'padding': '10px'});
                         checkbox.attr("checked", "checked"); 
                     }
                 } 
