@@ -248,10 +248,8 @@ function ucwords(str) {
 function feedback_process_message() { 
     var delay = 2000;
     $('#notification-message').empty().html("Processing feedback...");
-    $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
-        if(delay){
-            setTimeout(redirect_and_hide(), delay);       
-        }
+    $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function() { 
+        setTimeout(redirect_and_hide(), delay);       
     });
 }
 
