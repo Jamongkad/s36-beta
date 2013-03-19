@@ -28,7 +28,7 @@ class Fullpage {
     public $display_avatar;
 
     public function __construct() {
-        $this->hosted_settings = DBHostedSettings;  
+        $this->hosted_settings = new DBHostedSettings;  
         $this->pattern_dir = \Config::get('application.fullpage_pattern_dir');
         $this->uploaded_background_dir = \Config::get('application.hosted_background');
 
