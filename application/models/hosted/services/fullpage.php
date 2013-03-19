@@ -72,7 +72,7 @@ class Fullpage {
 
     public function get_fullpage_css($company_id){
         //$hs = $this->hosted_settings = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first();
-        $hs = $hosted_settings->get_panel_settings($company_id);
+        $hs = $this->hosted_settings->get_panel_settings($company_id);
 
         
         $css = '<style type"text/css">';
