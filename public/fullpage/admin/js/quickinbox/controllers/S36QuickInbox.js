@@ -65,8 +65,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         QuickInboxService.change_feedback_status(mystatus, $scope.selected);
         //implementation is too buggy
         //QuickInboxService.render_feeds(mystatus, $scope.selected);
-        //$scope.selected = [];
-        console.log($scope.selected);
+        $scope.selected = []; 
     }
 
     $scope.test_punch = function(data) {
