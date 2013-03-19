@@ -258,6 +258,5 @@ function feedback_process_message() {
 
 function redirect_and_hide() {
     $("#notification").animate({ height: 0, opacity: 0 }, 'fast');
-    window.location.hash    = "#3";
-    window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
+    window.location.href    = window.location.pathname+'?nocache';
 }
