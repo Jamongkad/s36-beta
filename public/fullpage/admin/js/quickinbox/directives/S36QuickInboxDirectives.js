@@ -247,7 +247,8 @@ function ucwords(str) {
 
 function feedback_process_message() { 
     var myStatus = new Status();
-    myStatus.notify("Processing feedback...", 4000, function() {
-        window.location.href = window.location.pathname+'?nocache';  
+    myStatus.notify("Processing feedback...", 2000, function() {
+        var myStatus = new Status();
+        myStatus.notify("Processing done!", 2000);
     });
 }
