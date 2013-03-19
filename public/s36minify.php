@@ -18,6 +18,7 @@ $groups = array(
             ,'/js/jquery.raty.min.js'
             ,'/js/angular.compilehtml.js'
             ,'/js/date.js'
+            ,'/js/inbox/Status.js'
         )
      ),
      'FullpageCommon.js' => array(
