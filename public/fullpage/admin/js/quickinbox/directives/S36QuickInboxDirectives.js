@@ -249,6 +249,6 @@ function feedback_process_message() {
     var myStatus = new Status();
     myStatus.notify("Processing feedback...", 2000, function() {
         console.log("Pwet");
-        console.log(myStatus);
+        console.log(myStatus.notify("Done!", 2000));
     });
 }
