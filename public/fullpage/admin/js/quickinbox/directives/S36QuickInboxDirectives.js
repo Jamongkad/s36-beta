@@ -162,13 +162,6 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
-                /*
-                if(scope.selected.length > 0) {
-                    $("#quickInboxActions").show();     
-                } else {
-                    $("#quickInboxActions").hide();     
-                }
-                */
 
                 var checkbox = $(this).parents('.widget-item').children('.left').find('input[type=checkbox]');
                 var feed_obj = checkbox.val();
@@ -182,11 +175,7 @@ angular.module('S36QuickInboxDirectives', [])
                     }
                 } 
 
-                if(scope.selected.length > 0) {
-                    $("#quickInboxActions").show();
-                } else { 
-                    $("#quickInboxActions").hide();
-                }
+                scope.check_select_length();
 
             }) 
         }
