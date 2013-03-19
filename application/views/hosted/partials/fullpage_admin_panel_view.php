@@ -29,7 +29,7 @@
                                 <h2 ng-show="!feedbacks.length">No Feedback for today.</h2>
                                 <div ui-if="!!feedbacks.length">
                                     <!--quick inbox loop-->
-                                    <div class="widget-item clear" ng-repeat="feeds in feedbacks" checkfeed>                                     
+                                    <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
 
                                         <div class="left">
                                             <input type="checkbox" 
@@ -38,7 +38,7 @@
                                                    ng-click="update_selection($event, {feedid : feeds.id})"/>
                                         </div>
 
-                                        <div class="right">
+                                        <div class="right" checkfeed>
                                             <div class="widget-avatar"> 
                                                 <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
                                             </div>
