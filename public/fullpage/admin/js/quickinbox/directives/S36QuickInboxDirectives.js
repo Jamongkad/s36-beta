@@ -4,7 +4,7 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
+                $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').hide();
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
                 $("#quickInboxActions").hide();
