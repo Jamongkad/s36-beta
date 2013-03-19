@@ -165,12 +165,13 @@ angular.module('S36QuickInboxDirectives', [])
                 if(e.target == this) {
                     if($(this).parents('.widget-item').children('.left').find('input[type=checkbox]').is(":checked")) {
                         $(this).parents('.widget-item').children('.left').find('input[type=checkbox]').removeAttr("checked");
+                        $("#quickInboxActions").hide();
                     } else { 
                         $(this).parents('.widget-item').children('.left').find('input[type=checkbox]').attr("checked", "checked");
+                        $("#quickInboxActions").show();
                     }
                 } 
             }) 
-
         }
     }    
 })
