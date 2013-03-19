@@ -168,7 +168,7 @@ angular.module('S36QuickInboxDirectives', [])
                 if(e.target == this) {
                     if(checkbox.is(":checked")) {
                         scope.update_selected('remove', feed_obj);
-                        $(this).parents('.widget-item').css({'background-color': '#FFF');
+                        $(this).parents('.widget-item').css({'background-color': '#FFF'});
                         checkbox.removeAttr("checked"); 
                     } else { 
                         scope.update_selected('add', feed_obj);
