@@ -161,15 +161,16 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , link: function(scope, element, attrs) {
+          /*
             $(element).bind('click', function() {
                 var is_checked = $(this).find('input[type=checkbox]').attr("checked", "checked");
                 console.log(is_checked);
-                /*
-                var is_checked = $(this).is(':checked');
-                console.log(is_checked);
-                */
                 //$("#quickInboxActions").show();
             })
+        */
+            $(element).not('.right').bind('click', function() {
+                console.log("Mathew rules the nations.");
+            });
         }
     }    
 })
