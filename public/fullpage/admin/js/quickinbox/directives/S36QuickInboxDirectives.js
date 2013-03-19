@@ -161,13 +161,9 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
-            console.log(element);
-            $('.widget-item').bind('click', function(e) {
-                var is_checked = $(this).find('input[type=checkbox]').attr("checked", "checked");
-                console.log(is_checked);
-            }).children().bind('click', function(e) {
-                return false;     
-            }); 
+            $(element).bind('click', function(e) {
+                console.log(e.target == this);
+            }) 
 
         }
     }    
