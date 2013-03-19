@@ -38,7 +38,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         });
     })();
 
-    var update_selected = function(action, id) {
+    $scope.update_selected = function(action, id) {
         if (action == 'add' & $scope.selected.indexOf(id) == -1)
             $scope.selected.push(id);
         if (action == 'remove' && $scope.selected.indexOf(id) != -1)
@@ -48,7 +48,15 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.update_selection = function($event, feed) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-        update_selected(action, feed);
+        $scope.update_selected(action, feed);
+        $scope.check_select_length();
+        
+        if(checkbox.checked) { 
+            $(checkbox).parents('.widget-item').css({'background-color': '#FAFAFA'});     
+        } else {
+            $(checkbox).parents('.widget-item').css({'background-color': '#FFF'});     
+        }
+       
     }
 
     $scope.is_selected = function(id) {
@@ -59,7 +67,15 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         QuickInboxService.change_feedback_status(mystatus, $scope.selected);
         //implementation is too buggy
         //QuickInboxService.render_feeds(mystatus, $scope.selected);
-        $scope.selected = [];
+        $scope.selected = []; 
+    }
+
+    $scope.check_select_length = function() { 
+        if($scope.selected.length > 0) {
+            $("#quickInboxActions").show();
+        } else { 
+            $("#quickInboxActions").hide();
+        }
     }
 
     $scope.test_punch = function(data) {
