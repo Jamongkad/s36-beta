@@ -170,10 +170,8 @@ angular.module('S36QuickInboxDirectives', [])
                 }
                 */
 
-                var checkbox = $(this).parents('.widget-item').children('.left').find('input[type=checkbox]');
-                scope.update_selection(checkbox, checkbox.val());
-                console.log(scope.selected);
-
+                var checkbox = $(this).parents('.widget-item').children('.left').find('input[type=checkbox]'); 
+                console.log(checkbox.val());
                 if(e.target == this) {
                     if(checkbox.is(":checked")) {
                         checkbox.removeAttr("checked"); 
