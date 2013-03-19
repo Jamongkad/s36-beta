@@ -182,7 +182,12 @@ angular.module('S36QuickInboxDirectives', [])
                     }
                 } 
 
-                console.log(scope.selected);
+                if(scope.selected.length > 0) {
+                    $("#quickInboxActions").show();
+                } else { 
+                    $("#quickInboxActions").hide();
+                }
+
             }) 
         }
     }    
