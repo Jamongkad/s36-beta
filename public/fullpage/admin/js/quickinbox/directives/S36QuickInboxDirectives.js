@@ -8,15 +8,7 @@ angular.module('S36QuickInboxDirectives', [])
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
                 $("#quickInboxActions").hide();
-
-                var delay = 0;
-                $('#notification-message').empty().html("Processing feedback...");
-                $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
-                    if(delay){
-                        setTimeout($("#notification").animate({ height: 0, opacity: 0 }, 'fast'), delay);       
-                    }
-                });
-
+                feedback_process_message();
             });
         }
     }    
@@ -251,4 +243,21 @@ function ucwords(str) {
     return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
         return $1.toUpperCase();
     });
+}
+
+function feedback_process_message() {
+    
+    var delay = 0;
+    $('#notification-message').empty().html("Processing feedback...");
+    $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
+        if(delay){
+            setTimeout(redirect_and_hide(), delay);       
+        }
+    });
+}
+
+function redirect_and_hide() {
+    $("#notification").animate({ height: 0, opacity: 0 }, 'fast');
+    window.location.hash    = "#3";
+    window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
 }
