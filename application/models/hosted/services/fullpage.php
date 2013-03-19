@@ -1,10 +1,12 @@
 <?php namespace Hosted\Services;
 
 use Input, Exception, StdClass, View, Helpers, Config, DB;
+use Hosted\Repositories\DBHostedSettings;
 
 class Fullpage {
 
     public $pattern_dir;
+    public $uploaded_background_dir;
     private $hosted_settings;
     
     public $rating_stars;
@@ -26,8 +28,9 @@ class Fullpage {
     public $display_avatar;
 
     public function __construct() {
+        $this->hosted_settings = new DBHostedSettings;  
         $this->pattern_dir = \Config::get('application.fullpage_pattern_dir');
-        //$this->
+        $this->uploaded_background_dir = \Config::get('application.hosted_background');
 
         /*
         / temporary display data
@@ -68,9 +71,11 @@ class Fullpage {
     }
 
     public function get_fullpage_css($company_id){
-        $hs = $this->hosted_settings = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first();
-        
+        $hs = $this->hosted_settings->get_panel_settings($company_id);
+ 
         $css = '<style type"text/css">';
+        $css .= ( $hs->background_image ? 'body{background-image:url("'.$this->uploaded_background_dir.'/'.$hs->background_image.'")}' : '' );
+        $css .= ( $hs->page_bg_color ? '#bodyColorOverlay{background:'.$hs->page_bg_color.' ;opacity: '.$hs->page_bg_color.'}' : '' );
         $css .= ( ! $hs->show_rating ? '.stars, .star_rating{display:none}' : '' );
         $css .= ( ! $hs->show_votes ? '.rating-stat{display:none}.feedback-actions{display:none}' : '' );
         $css .= ( ! $hs->show_recommendation ? '.feedback-recommendation{display:none}' : '' );
@@ -90,6 +95,7 @@ class Fullpage {
         $css .= ( ! is_null($hs->button_bg_color) ? '.send-button a{ background-color: ' . $hs->button_bg_color . '; }' : '' );
         $css .= ( ! is_null($hs->button_hover_bg_color) ? '.send-button a:hover{ background-color: ' . $hs->button_hover_bg_color . '; }' : '' );
         $css .= ( ! is_null($hs->button_font_color) ? '.send-button a{ color: ' . $hs->button_font_color . '; }' : '' );
+
         $css .= '</style>';
         return $css;
     }

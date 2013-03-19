@@ -47,12 +47,12 @@
                 <!-- social link icons 1/28/2013 -->
                 <div id="socialLinkIcons" class="clear">
                     <div class="social-icon fb" style="display: <?= (trim($panel->facebook_url) == '' ? 'none' : ''); ?>;">
-                        <a id="fb_url" href="<?= $panel->facebook_url; ?>">
+                        <a id="fb_url" href="<?= $panel->facebook_url; ?>" target="newtab">
                             <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
                         </a>
                     </div>
                     <div class="social-icon tw" style="display: <?= (trim($panel->twitter_url) == '' ? 'none' : ''); ?>;">
-                        <a id="tw_url" href="<?= $panel->twitter_url; ?>">
+                        <a id="tw_url" href="<?= $panel->twitter_url; ?>" target="newtab">
                             <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
                         </a>
                     </div>
@@ -137,7 +137,6 @@
 <?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
 
 <script type="text/javascript">
-<?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>
     $(document).ready(function(){
         var fullpageCommon = new S36FullpageCommon;
         var fullpageLayout = fullpageCommon.create_layout('<?php echo $panel->theme_name; ?>'); 

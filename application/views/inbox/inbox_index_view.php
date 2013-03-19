@@ -421,8 +421,8 @@
                                                             </a>
                                                         </div>
                                                         <div class="attached-link-details">
-                                                        <h3><?=$attachments->attached_link->title?></h3>
-                                                        <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
+                                                            <h3><?=$attachments->attached_link->title?></h3>
+                                                            <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
                                                         </div>   
                                                     <?php } ?>
                                             </div>

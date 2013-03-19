@@ -30,23 +30,25 @@
                                 <div ui-if="!!feedbacks.length">
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
+
                                         <div class="left">
                                             <input type="checkbox" 
+                                                   value="{{feeds.id}}"
                                                    name="feedid" 
                                                    ng-checked="is_selected(feeds.id)" 
-                                                   ng-click="update_selection($event, {feedid : feeds.id})" checkfeed/>
+                                                   ng-click="update_selection($event, feeds.id)"/>
                                         </div>
 
-                                        <div class="right">
+                                        <div class="right" checkfeed>
                                             <div class="widget-avatar"> 
                                                 <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
                                             </div>
                                             <div class="widget-content">
-                                                <div class="widget-submitter">
+                                                <div class="widget-submitter" checkfeed>
                                                     <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
                                                     <span class="social-src" social login="{{feeds.logintype}}"></span>
                                                 </div>
-                                                <div class="widget-date">
+                                                <div class="widget-date" checkfeed>
                                                     <span feedbackdate date="{{feeds.date}}"></span>
                                                 </div>
                                                 <div class="widget-text">
@@ -58,6 +60,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <!--quick inbox loop-->
                                 </div>
@@ -66,9 +69,9 @@
                         <div class="quick-inbox-spacer"></div>
                         <div id="quickInboxActions">
                             <span>Selected : </span>
-                            <input type="button" class="small-button publish" value="Publish" feedbackout/>
-                            <input type="button" class="small-button feature" value="Feature" feedbackout/>
-                            <input type="button" class="small-button delete" value="Delete" feedbackout/>
+                            <input type="button" class="small-button publish" value="Publish" ng-click="admin_action('publish')" feedbackout/>
+                            <input type="button" class="small-button feature" value="Feature" ng-click="admin_action('feature')" feedbackout/>
+                            <input type="button" class="small-button delete" value="Delete" ng-click="admin_action('delete')" feedbackout/>
                         </div>
                     </div>
                 </div>

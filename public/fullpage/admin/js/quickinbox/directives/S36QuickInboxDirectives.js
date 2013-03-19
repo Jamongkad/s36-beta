@@ -4,9 +4,11 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
+                $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').hide();
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
+                $("#quickInboxActions").hide();
+                feedback_process_message();
             });
         }
     }    
@@ -160,10 +162,26 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('checkfeed', function() { 
     return {  
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function() {
-                $("#quickInboxActions").show();
-            })
+      , link: function(scope, element, attrs) { 
+            $(element).bind('click', function(e) {
+
+                var checkbox = $(this).parents('.widget-item').children('.left').find('input[type=checkbox]');
+                var feed_obj = checkbox.val();
+                if(e.target == this) {
+                    if(checkbox.is(":checked")) {
+                        scope.update_selected('remove', feed_obj);
+                        $(this).parents('.widget-item').css({'background-color': '#FFF'});
+                        checkbox.removeAttr("checked"); 
+                    } else { 
+                        scope.update_selected('add', feed_obj);
+                        $(this).parents('.widget-item').css({'background-color': '#FAFAFA'});
+                        checkbox.attr("checked", "checked"); 
+                    }
+                } 
+
+                scope.check_select_length();
+
+            }) 
         }
     }    
 })
@@ -225,4 +243,9 @@ function ucwords(str) {
     return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
         return $1.toUpperCase();
     });
+}
+
+function feedback_process_message() { 
+    var myStatus = new Status();
+    myStatus.notify("Processing feedback...", 2000);
 }
