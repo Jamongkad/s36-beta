@@ -50,6 +50,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         var action = (checkbox.checked ? 'add' : 'remove');
         $scope.update_selected(action, feed);
         $scope.check_select_length();
+
+        $(checkbox).parents('.widget-item').css({'background-color': '#FFF');
     }
 
     $scope.is_selected = function(id) {
