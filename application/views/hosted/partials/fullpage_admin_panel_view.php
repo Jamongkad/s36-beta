@@ -103,20 +103,20 @@
                             <div class="optionList clear">
                                 <span class="label">Position: </span>
                                 <span>
-                                    <a href="javascript:;" id="bg_pos_l" val="left" class="selectionBtn bgPos active">Left</a>
-                                    <a href="javascript:;" id="bg_pos_r" val="right" class="selectionBtn bgPos">Right</a>
-                                    <a href="javascript:;" id="bg_pos_c" val="center" class="selectionBtn bgPos">Center</a>
-                                    <a href="javascript:;" id="bg_pos_t" val="top" class="selectionBtn bgPos">Top</a>
-                                    <a href="javascript:;" id="bg_pos_b" val="bottom" class="selectionBtn bgPos">Bottom</a>
+                                    <a href="javascript:;" id="bg_pos_l" val="left" class="selectionBtn bgPos <?=(strtolower($panel->page_bg_position)=='left') ? 'active' : ''?>">Left</a>
+                                    <a href="javascript:;" id="bg_pos_r" val="right" class="selectionBtn bgPos <?=(strtolower($panel->page_bg_position)=='right') ? 'active' : ''?>">Right</a>
+                                    <a href="javascript:;" id="bg_pos_c" val="center" class="selectionBtn bgPos <?=(strtolower($panel->page_bg_position)=='center') ? 'active' : ''?>">Center</a>
+                                    <a href="javascript:;" id="bg_pos_t" val="top" class="selectionBtn bgPos <?=(strtolower($panel->page_bg_position)=='top') ? 'active' : ''?>">Top</a>
+                                    <a href="javascript:;" id="bg_pos_b" val="bottom" class="selectionBtn bgPos <?=(strtolower($panel->page_bg_position)=='bottom') ? 'active' : ''?>">Bottom</a>
                                 </span>
                             </div> 
                             <div class="optionList clear">
                                 <span class="label">Repeat: </span>
                                 <span>
-                                    <a href="javascript:;" id="bg_repeat_r" val="repeat" class="selectionBtn bgRepeat">Repeat</a>
-                                    <a href="javascript:;" id="bg_repeat_rh" val="repeat-x" class="selectionBtn bgRepeat active">Repeat Horizontally</a>
-                                    <a href="javascript:;" id="bg_repeat_rv" val="repeat-y" class="selectionBtn bgRepeat">Repeat Vertically</a>
-                                    <a href="javascript:;" id="bg_repeat_nr" val="no-repeat" class="selectionBtn bgRepeat">No Repeat</a>
+                                    <a href="javascript:;" id="bg_repeat_r" val="repeat" class="selectionBtn bgRepeat <?=(strtolower($panel->page_bg_repeat)=='repeat') ? 'active' : ''?>">Repeat</a>
+                                    <a href="javascript:;" id="bg_repeat_rh" val="repeat-x" class="selectionBtn bgRepeat <?=(strtolower($panel->page_bg_repeat)=='repeat-x') ? 'active' : ''?>">Repeat Horizontally</a>
+                                    <a href="javascript:;" id="bg_repeat_rv" val="repeat-y" class="selectionBtn bgRepeat <?=(strtolower($panel->page_bg_repeat)=='repeat-y') ? 'active' : ''?>">Repeat Vertically</a>
+                                    <a href="javascript:;" id="bg_repeat_nr" val="no-repeat" class="selectionBtn bgRepeat <?=(strtolower($panel->page_bg_repeat)=='no-repeat') ? 'active' : ''?>">No Repeat</a>
                                 </span>
                             </div> 
                         </div>
@@ -126,7 +126,7 @@
                         <div class="patternList jcarousel-skin-tango">
                             <ul id="patterns" class="patternList clear">
                                 <?php foreach($patterns as $pattern): ?>
-                                <li><div id="<?=$pattern['basename']?>" class="patternItem" style="background:url(<?=$pattern['path']?>)"></div></li>   
+                                <li><div id="<?=$pattern['basename']?>" class="patternItem <?=($panel->background_image==$pattern['basename']) ? 'active' : ''?>" style="background:url(<?=$pattern['path']?>)"></div></li>   
                                 <?php endforeach; ?>
                             </ul>
                             <div class="patternPagination">
@@ -137,7 +137,7 @@
                         <h2>Background Color</h2>
                         <br />
                         <div class="backgroundChooser">
-                            <input type="minicolors" data-textfield="false" data-opacity=".75" value="#FFFFFF" class="backgroundColorPicker" style="visibility:hidden" />
+                            <input type="minicolors" data-textfield="false" data-opacity=".75" value="<?=(isset($panel->page_bg_color) ? $panel->page_bg_color :'#FFFFFF' )?>" class="backgroundColorPicker" style="visibility:hidden" />
                         </div>                    
                     </div>
                 </div>
