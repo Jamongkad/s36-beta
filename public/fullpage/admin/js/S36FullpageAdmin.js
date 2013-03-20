@@ -53,7 +53,7 @@ var S36FullpageAdmin = function(layoutObj){
         /* ========================================
         || Make the admin window box draggable
         ==========================================*/
-        $('#adminWindowBox').draggable({ handle: '#adminWindowTitleBar',opacity:0.5, containment: '#bodyColorOverlay'});
+        $('#adminWindowBox').draggable({ handle: '#adminWindowTitleBar',opacity:0.5 });
         /* ========================================
         || Close the admin window box when close button is clicked
         ==========================================*/
