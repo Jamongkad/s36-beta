@@ -34,8 +34,8 @@ class Fullpage {
         $hs = $this->hosted_settings->get_panel_settings($company_id);
  
         $css = '<style type"text/css">';
-        $css .= ( $hs->background_image ? 'body{background-image:url("'.$this->uploaded_background_dir.'/'.$hs->background_image.'")}' : '' );
-        $css .= ( $hs->page_bg_color ? '#bodyColorOverlay{background:'.$hs->page_bg_color.' ;opacity: '.$hs->page_bg_color.'}' : '' );
+        $css .= ( $hs->background_image ? 'body{background-image:url("' . $this->uploaded_background_dir . '/' . $hs->background_image . '"); }' : '' );
+        $css .= ( $hs->page_bg_color ? ' #bodyColorOverlay{ background: ' . $hs->page_bg_color . '; opacity: ' . $hs->page_bg_color_opacity . '}' : '' );
         $css .= ( ! $hs->show_rating ? '.stars, .star_rating{display:none}' : '' );
         $css .= ( ! $hs->show_votes ? '.rating-stat{display:none}.vote-action{display:none}' : '' );
         $css .= ( ! $hs->show_recommendation ? '.green-thumb{display:none}' : '' );

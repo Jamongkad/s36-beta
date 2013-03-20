@@ -137,7 +137,7 @@
                         <h2>Background Color</h2>
                         <br />
                         <div class="backgroundChooser">
-                            <input type="minicolors" data-textfield="false" data-opacity=".75" value="<?=(isset($panel->page_bg_color) ? $panel->page_bg_color :'#FFFFFF' )?>" class="backgroundColorPicker" style="visibility:hidden" />
+                            <input type="minicolors" data-textfield="false" data-opacity="<?=(isset($panel->page_bg_color_opacity) ? $panel->page_bg_color_opacity :'.75' )?>" value="<?=(isset($panel->page_bg_color) ? $panel->page_bg_color :'#FFFFFF' )?>" class="backgroundColorPicker" style="visibility:hidden" />
                         </div>                    
                     </div>
                 </div>
