@@ -346,11 +346,11 @@
 .regular .feedback-recommendation .green-thumb{
 	color:#419322;
 	font-size:11px;
-	margin-bottom:3px;
+	/*margin-bottom:3px;*/
 }
 .regular .feedback-actions{
 	width:130px;
-	float:left;
+	float: right;
 }
 .regular .feedback-actions{
 	text-align:right;
@@ -373,7 +373,7 @@
 	padding-top:2px;
 }
 .regular .share-button{
-	display:inline-block;
+	/*display:inline-block;*/  /* conflicts with fullpage css created by admin panel. */
 	color:#455b61;
 	background:url(/fullpage/layout/timeline/img/ico-share.png) no-repeat;
 	background-position:center left;
