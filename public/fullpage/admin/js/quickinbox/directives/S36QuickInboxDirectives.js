@@ -4,10 +4,11 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
+                $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').hide();
                 var fullpageCommon = new S36FullpageCommon;
                 fullpageCommon.init_quick_inbox();
                 $("#quickInboxActions").hide();
+                feedback_process_message();
             });
         }
     }    
@@ -242,4 +243,9 @@ function ucwords(str) {
     return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
         return $1.toUpperCase();
     });
+}
+
+function feedback_process_message() { 
+    var myStatus = new Status();
+    myStatus.notify("Processing feedback...", 2000);
 }
