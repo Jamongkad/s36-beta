@@ -36,7 +36,9 @@ class ContactDetails extends FeedbackDataTypes {
         
         $this->position     = $this->_sentence_case($this->post_data->get('position'));
         $this->city         = $this->_sentence_case($this->post_data->get('city'));
-        $this->company      = $this->_sentence_case($this->post_data->get('company'));
+        //$this->company      = $this->_sentence_case($this->post_data->get('company'));
+        $this->company      = $this->post_data->get('company');
+        $this->company      = ( $this->company == strtoupper($this->company) ? $this->company : $this->_sentence_case($this->post_data->get('company')) );
         $this->website      = $this->post_data->get('website');
         $this->profilelink  = $this->post_data->get('profile_link');
         $logintype          = ($post_login_type) ? $post_login_type : '36';

@@ -74,6 +74,11 @@ return array(
         $company->incr_page_view($company_info->companyid);
     },
     
+    'GET /get_fullpage_css' => function() use($company_name, $company, $fullpage){
+        $company_info = $company->get_company_info($company_name);
+        echo $fullpage->get_fullpage_css($company_info->companyid);
+    },
+    
     'GET /get_panel_settings' => function() use($hosted_settings, $user){
         return $hosted_settings->get_panel_settings($user->companyid, 'json');
     },

@@ -9,51 +9,11 @@ class Fullpage {
     public $uploaded_background_dir;
     private $hosted_settings;
     
-    public $rating_stars;
-    public $useful_count;
-    public $recommend;
-    public $custom_field;
-    public $commenting;
-    public $fb_sharing;
-    public $report_fb;
-    public $display_first_name;
-    public $display_last_name;
-    public $display_job;
-    public $display_company_name;
-    public $display_city;
-    public $display_country;
-    public $display_flag;
-    public $display_img_attachments;
-    public $display_link_attachments;
-    public $display_avatar;
 
     public function __construct() {
         $this->hosted_settings = new DBHostedSettings;  
         $this->pattern_dir = \Config::get('application.fullpage_pattern_dir');
         $this->uploaded_background_dir = \Config::get('application.hosted_background');
-
-        /*
-        / temporary display data
-        / this will be replaced from actual data in HostedSettings table in S36 Database
-        */
-        $this->rating_stars             = 1;
-        $this->useful_count             = 1;
-        $this->recommend                = 1;
-        $this->custom_field             = 1;
-        $this->commenting               = 1;
-        $this->fb_sharing               = 1;
-        $this->report_fb                = 1;
-        $this->display_first_name       = 1;
-        $this->display_last_name        = 1;
-        $this->display_job              = 1;
-        $this->display_company_name     = 1;
-        $this->display_city             = 1;
-        $this->display_country          = 1;
-        $this->display_flag             = 1;
-        $this->display_img_attachments  = 1;
-        $this->display_link_attachments = 1;
-        $this->display_avatar           = 1;
-        $this->button_bg_color          = '#000';
     }
 
     public function get_fullpage_pattern(){
@@ -74,19 +34,19 @@ class Fullpage {
         $hs = $this->hosted_settings->get_panel_settings($company_id);
  
         $css = '<style type"text/css">';
-        $css .= ( $hs->background_image ? 'body{background-image:url("'.$this->uploaded_background_dir.'/'.$hs->background_image.'")}' : '' );
-        $css .= ( $hs->page_bg_color ? '#bodyColorOverlay{background:'.$hs->page_bg_color.' ;opacity: '.$hs->page_bg_color.'}' : '' );
+        $css .= ( $hs->background_image ? 'body{background-image:url("' . $this->uploaded_background_dir . '/' . $hs->background_image . '"); }' : '' );
+        $css .= ( $hs->page_bg_color ? ' #bodyColorOverlay{ background: ' . $hs->page_bg_color . '; opacity: ' . $hs->page_bg_color_opacity . '}' : '' );
         $css .= ( ! $hs->show_rating ? '.stars, .star_rating{display:none}' : '' );
-        $css .= ( ! $hs->show_votes ? '.rating-stat{display:none}.feedback-actions{display:none}' : '' );
-        $css .= ( ! $hs->show_recommendation ? '.feedback-recommendation{display:none}' : '' );
+        $css .= ( ! $hs->show_votes ? '.rating-stat{display:none}.vote-action{display:none}' : '' );
+        $css .= ( ! $hs->show_recommendation ? '.green-thumb{display:none}' : '' );
         $css .= ( ! $hs->show_metadata ? '.custom-meta-data{display:none}' : '' );
         $css .= ( ! $hs->show_admin_comment ? '.admin-comment-block{display:none}' : '' );
         $css .= ( ! $hs->show_sharing_option ? '.share-button{display:none}' : '' );
-        $css .= ( ! $hs->show_flag_inapp ? '.flag-as{display:none}' : '' );
+        $css .= ( ! $hs->show_flag_inapp ? ' .flag_control{ display: none; }' : '' );
         $css .= ( ! $hs->show_avatar ? '.author-avatar{display:none}.author-information{margin-left:0px;}' : '' );
-        $css .= ( ! $hs->show_last_name_as_ini ? '.last_name{display:none}' : '' );
-        $css .= ( ! $hs->show_position ? '.job{display:none}' : '' );
-        $css .= ( ! $hs->show_company ? '.company{display:none}.company_comma{display:none}' : '' );
+        $css .= ( ! $hs->show_last_name_as_ini ? ' .last_name_ini{ display : none; } .last_name{ display: inline-block; }' : ' .last_name_ini{ display : inline-block; } .last_name{ display: none; } ' );
+        $css .= ( ! $hs->show_position ? ' .job{ display : none } ' : '' );
+        $css .= ( ! $hs->show_company ? ' .company{ display : none } .company_comma{ display : none }' : '' );
         $css .= ( ! $hs->show_city ? '.city{display:none}' : '' );
         $css .= ( ! $hs->show_country ? '.country{display:none}.location_comma{display:none}' : '' );
         $css .= ( ! $hs->show_flag ? '.flag{display:none}' : '' );
