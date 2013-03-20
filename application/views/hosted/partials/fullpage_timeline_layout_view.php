@@ -44,21 +44,29 @@
                         <span class="last_name_ini"><?= HTML::entities(substr($feed->feed_data->lastname, 0, 1)); ?>.</span>
                     </div>
                     <div class="author-company">
-                        <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
-                            <?= HTML::entities($position); ?><span class="company_comma">, </span>
-                        </span>
-                        <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
-                            <?= HTML::entities($company_name); ?>
-                        </span>
+                        <?php if( trim($position) != '' ): ?>
+                            <span class="job">
+                                <?= HTML::entities($position); ?><span class="company_comma">, </span>
+                            </span>
+                        <?php endif; ?>
+                        <?php if( trim($company_name) != '' ): ?>
+                            <span class="company">
+                                <?= HTML::entities($company_name); ?>
+                            </span>
+                        <?php endif; ?>
                     </div>
                     <div class="author-location-info clear">
                         <div class="author-location">
-                            <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($city); ?><span class="location_comma">, </span>
-                            </span>
-                            <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($country_name); ?>
-                            </span>
+                            <?php if( trim($city) != '' ): ?>
+                                <span class="city">
+                                    <?= HTML::entities($city); ?><span class="location_comma">, </span>
+                                </span>
+                            <?php endif; ?>
+                            <?php if( trim($country_name) != '' ): ?>
+                                <span class="country">
+                                    <?= HTML::entities($country_name); ?>
+                                </span>
+                            <?php endif; ?>
                         </div>
                         <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
                     </div>
@@ -226,8 +234,10 @@
                 </div>
             </div>
             <div class="feedback-actions clear">
-                <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
-                <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
+                <span class="flag_control">
+                    <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
+                    <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
+                </span>
                 <span class="share-button">
                     Share
                     <div class="share-box">

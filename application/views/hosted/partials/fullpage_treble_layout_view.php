@@ -199,8 +199,10 @@
                 <?php endif; ?>
             </div>
             <div class="feedback-actions clear" <?=($feedback_main_class == 'regular-featured') ? 'style="padding-top:5px"' : null?>>
-                <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
-                <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
+                <span class="flag_control">
+                    <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
+                    <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
+                </span>
                 <span class="share-button">
                     Share
                     <div class="share-box">

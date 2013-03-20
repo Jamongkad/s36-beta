@@ -330,7 +330,7 @@ uploaded-image{
 }
 .send-button a{
 	background:#1cb0ff;
-	border:1px solid #118bcc;
+	/*border:1px solid #118bcc;*/
 }
 .send-button a:hover{
 	background:#31b7ff;

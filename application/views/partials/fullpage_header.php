@@ -21,7 +21,9 @@
 <?= HTML::script('https://platform.twitter.com/widgets.js'); ?>
 <?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
 <?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
-
+<!--[if lt IE 9]>
+<script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
 <script src="https://connect.facebook.net/en_US/all.js"></script>
 <div id="fb-root"></div>
 <script type="text/javascript">
@@ -101,7 +103,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
             <div class="barLinks">
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
-                        <li><a href="#">Signed in as <span><?=\S36Auth::user()->username?></a></li>
+                        <li><a href="javascript:;">Signed in as <span><?=\S36Auth::user()->username?></a></li>
                         <li><a href="#" id="admin_panel" initquick>Admin Panel</a></li>
                         <li><a href="/dashboard">My Dashboard</a></li>
                         <li><a href="/admin">My Account</a>
