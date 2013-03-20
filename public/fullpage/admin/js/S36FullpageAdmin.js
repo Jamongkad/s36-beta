@@ -506,6 +506,8 @@ var PanelAutoSaver = new function(layoutObj){
         
         $('.patternItem').click(function(){
             PanelAutoSaver.set_data('background_image', $(this).attr('id'));
+            PanelAutoSaver.set_data('page_bg_position', 'left');
+            PanelAutoSaver.set_data('page_bg_repeat', 'repeat');
         });
         
         $('.backgroundColorPicker').on('change', function(){
