@@ -222,7 +222,6 @@
 <?= HTML::script('/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js'); ?>
 <?= HTML::script('/fullpage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js'); ?>
 <?= HTML::script('/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js'); ?>
-<?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
 <? endif ?>
 <?php 
 /*
