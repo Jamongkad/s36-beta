@@ -108,7 +108,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                         </ul>
                     </div>
                     <div class="lightbox-buttons">
-                        <a href="#" class="lightbox-button" onclick="javascript:close_lightbox();">OK</a>
+                        <a href="javascript:;" class="lightbox-button" onclick="javascript:close_lightbox();">OK</a>
                     </div>
                 </div>
             </div>

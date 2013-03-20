@@ -3,7 +3,7 @@
 	height: 11px;
 	background:url(../img/flags.jpg) no-repeat;
 	float:left;
-	margin-left:5px;
+	/*margin-left:5px;*/
 }
 
 .flag-ad {background-position: -16px 0}

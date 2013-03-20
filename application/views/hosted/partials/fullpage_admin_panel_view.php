@@ -137,7 +137,7 @@
                         <h2>Background Color</h2>
                         <br />
                         <div class="backgroundChooser">
-                            <input type="minicolors" data-textfield="false" data-opacity=".75" value="<?=(isset($panel->page_bg_color) ? $panel->page_bg_color :'#FFFFFF' )?>" class="backgroundColorPicker" style="visibility:hidden" />
+                            <input type="minicolors" data-textfield="false" data-opacity="<?=(isset($panel->page_bg_color_opacity) ? $panel->page_bg_color_opacity :'.75' )?>" value="<?=(isset($panel->page_bg_color) ? $panel->page_bg_color :'#FFFFFF' )?>" class="backgroundColorPicker" style="visibility:hidden" />
                         </div>                    
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="display-useful-count clear">
                                 <div class="rating-stat">
-                                    87 of 98 people found this useful
+                                    98 people found this useful
                                 </div>
                             </div>
                             <div class="display-recommendation clear">
@@ -198,8 +198,8 @@
                         <div class="display-option-box">
                             <h2>General Items</h2>
                             <p><span class="tickerbox <?= ($panel->show_rating == 0 ? 'off' : ''); ?>" field="show_rating" display-array="stars,star_rating"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
-                            <p><span class="tickerbox <?= ($panel->show_votes == 0 ? 'off' : ''); ?>" field="show_votes" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
-                            <p><span class="tickerbox <?= ($panel->show_recommendation == 0 ? 'off' : ''); ?>" field="show_recommendation" display-array="feedback-recommendation,company-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_votes == 0 ? 'off' : ''); ?>" field="show_votes" display-array="rating-stat,vote-action"></span> <span class="label">Display 'X found this useful'</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_recommendation == 0 ? 'off' : ''); ?>" field="show_recommendation" display-array="green-thumb,company-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
                             
                             <h2>Display Meta Information</h2>
                             <p><span class="tickerbox <?= ($panel->show_metadata == 0 ? 'off' : ''); ?>" field="show_metadata" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
@@ -211,11 +211,11 @@
                             <p><span class="tickerbox <?= ($panel->show_sharing_option == 0 ? 'off' : ''); ?>" field="show_sharing_option" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
                             
                             <h2>Display 'Flag as inappropriate' Option</h2>
-                            <p><span class="tickerbox <?= ($panel->show_flag_inapp == 0 ? 'off' : ''); ?>" field="show_flag_inapp" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_flag_inapp == 0 ? 'off' : ''); ?>" field="show_flag_inapp" display-array="flag_control"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
                             
                             <h2>User Display Information</h2>
                             <p><span class="tickerbox <?= ($panel->show_avatar == 0 ? 'off' : ''); ?>" field="show_avatar" display-array="author-avatar"></span> <span class="label">Display Avatar</span> </p>
-                            <p><span class="tickerbox <?= ($panel->show_last_name_as_ini == 0 ? 'off' : ''); ?>" field="show_last_name_as_ini" display-array="last_name,last_name_ini"></span> <span class="label">Display Last Name as initial</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_last_name_as_ini == 0 ? 'off' : ''); ?>" field="show_last_name_as_ini" display-array="last_name_ini"></span> <span class="label">Display Last Name as initial</span> </p>
                             <p><span class="tickerbox <?= ($panel->show_position == 0 ? 'off' : ''); ?>" field="show_position" display-array="job"></span> <span class="label">Display Job Position</span> </p>
                             <p><span class="tickerbox <?= ($panel->show_company == 0 ? 'off' : ''); ?>" field="show_company" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
                             <p><span class="tickerbox <?= ($panel->show_city == 0 ? 'off' : ''); ?>" field="show_city" display-array="city"></span> <span class="label">Display City</span> </p>
@@ -308,13 +308,19 @@
                             Button
                         </div>
                         <div class="optionList clear">
+                            <?php
+                                $button_bg_color        = ( ! is_null($panel->button_bg_color) ? $panel->button_bg_color : '#e3540f' );
+                                $button_hover_bg_color  = ( ! is_null($panel->button_hover_bg_color) ? $panel->button_hover_bg_color : '#f26724' );
+                                $button_font_color      = ( ! is_null($panel->button_font_color) ? $panel->button_font_color : '#ffffff' );
+                            ?>
                             <div class="grids">
                                 <div class="g1of4">
                                     <div><strong>Background Color</strong> </div>
                                     <div>
                                         <br />
                                         <div class="backgroundChooser">
-                                            <input type="minicolors" class="btnBgColor" data-textfield="false" value="<?= $panel->button_bg_color; ?>" style="visibility:hidden" />
+                                            <!-- <input type="minicolors" class="btnBgColor" data-textfield="false" value="<?= $panel->button_bg_color; ?>" style="visibility:hidden" /> -->
+                                            <input type="minicolors" class="btnBgColor" data-textfield="false" value="<?php echo $button_bg_color; ?>" style="visibility:hidden" />
                                         </div>
                                     </div>
                                 </div>
@@ -323,7 +329,8 @@
                                     <div>
                                         <br />
                                         <div class="backgroundChooser">
-                                            <input type="minicolors" class="mbtnBgColor" data-textfield="false" value="<?= $panel->button_hover_bg_color; ?>" style="visibility:hidden" />
+                                            <!-- <input type="minicolors" class="mbtnBgColor" data-textfield="false" value="<?= $panel->button_hover_bg_color; ?>" style="visibility:hidden" /> -->
+                                            <input type="minicolors" class="mbtnBgColor" data-textfield="false" value="<?php echo $button_hover_bg_color; ?>" style="visibility:hidden" />
                                         </div>                      
                                     </div>
                                 </div>
@@ -335,7 +342,8 @@
                                     <div>
                                         <br />
                                         <div class="backgroundChooser">
-                                            <input type="minicolors" class="btnFontColor" data-textfield="false" value="<?= $panel->button_font_color; ?>" style="visibility:hidden" />
+                                            <!-- <input type="minicolors" class="btnFontColor" data-textfield="false" value="<?= $panel->button_font_color; ?>" style="visibility:hidden" /> -->
+                                            <input type="minicolors" class="btnFontColor" data-textfield="false" value="<?php echo $button_font_color; ?>" style="visibility:hidden" />
                                         </div>                      
                                     </div>
                                 </div>

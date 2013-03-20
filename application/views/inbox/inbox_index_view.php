@@ -443,6 +443,7 @@
                                             if(count($attachments->uploaded_images) == 3) $width='33%';
                                             ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                    <?php var_dump($uploaded_image); ?>
                                                     <div class="image-block" style="width:<?=$width;?>">
                                                         <div class="delete-block">x</div>
                                                         <div class="the-thumb">
