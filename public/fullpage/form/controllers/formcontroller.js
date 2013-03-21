@@ -1,4 +1,4 @@
-var app = angular.module("Form", ['CompileHtml']);
+var app = angular.module("Form", ['CompileHtml', 'FormServices']);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -15,11 +15,11 @@ app.config(function($routeProvider) {
         })
 })
 
-app.controller("FormCtrl", function($scope, $route) {
-    $scope.name = "Mathew Jamongkad Wong";
+app.controller("FormCtrl", function($scope, $route, Data) {
+    $scope.name = Data.message;
 });
 
-app.controller("ProfileCtrl", function($scope, $route) {
+app.controller("ProfileCtrl", function($scope, $route, Data) {
 
     $scope.data = {};
 
