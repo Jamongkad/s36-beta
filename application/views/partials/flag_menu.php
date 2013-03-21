@@ -70,7 +70,7 @@
                             if ((isset($create_display_widget) and $create_display_widget == true) || (isset($create_form_widget) and $create_form_widget == true)) {
                                 $dynamic_nav = Array(
                                       'feedsetup/widget_selection'  => 'SELECTION'
-                                    , $matches[0] => 'CREATE'
+                                    //, $matches[0] => 'CREATE'
                                 );
                             }
                             
@@ -85,7 +85,7 @@
                             if(!preg_match_all('~feedsetup/formcode_manager~', Request::uri(), $matches)) {
                                 $feedsetup_nav = Array(
                                      'feedsetup'  => 'DASHBOARD'
-                                   , 'feedsetup/widget_selection' => 'CREATE'
+                                   //, 'feedsetup/widget_selection' => 'CREATE'
                                 );           
                             } //Default Nav     
                         }
