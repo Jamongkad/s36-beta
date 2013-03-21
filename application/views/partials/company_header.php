@@ -11,5 +11,12 @@
         <?=HTML::style('css/widget_master/grids.css')?>
         <?=HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
         <?=HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
+        <?=HTML::script('js/head.min.js')?>
+
+        <?=HTML::script('/js/angular.compilehtml.js'); ?>
+        <?=HTML::script('/fullpage/form/controllers/formcontroller.js')?>
+        <?=HTML::script('/fullpage/form/directives/formdirectives.js')?>
+        <?=HTML::script('/fullpage/form/services/formservices.js')?>
+
     </head>
 <body>
