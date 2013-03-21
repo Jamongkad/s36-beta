@@ -3,7 +3,7 @@ var app = angular.module("Form", ['CompileHtml']);
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: "app.html"
+            templateUrl: "/form/first"
           , controller: "FormCtrl"
         })
 })
