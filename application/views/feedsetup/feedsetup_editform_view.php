@@ -1,9 +1,9 @@
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
-<?=Form::hidden('company_id', $widget->widgetattr->company_id)?>
-<?=Form::hidden('site_id', $widget->widgetattr->site_id)?>
-<?=Form::hidden('submit_widgetkey', $widget->widgetattr->widgetkey)?>
+<?=Form::hidden('company_id', $widget->companyid)?>
+<?=Form::hidden('site_id', $widget->siteid)?>
+<?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->widgetattr->theme_type, Array('id' => 'selected-form'))?>
 <?=Form::hidden('tab_type', $widget->widgetattr->tab_type, Array('id' => 'selected-tab'))?>
 <?=Form::hidden('embed_type', 'form')?>
