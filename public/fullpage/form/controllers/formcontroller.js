@@ -16,7 +16,7 @@ app.config(function($routeProvider) {
 })
 
 app.controller("FormCtrl", function($scope, $route, Data) {
-    $scope.name = Data.message;
+    $scope.name = Data;
 });
 
 app.controller("ProfileCtrl", function($scope, $route, Data) {
