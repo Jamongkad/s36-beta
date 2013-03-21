@@ -16,8 +16,8 @@ return array(
 
      'POST /api/data_pass' => function() {
          $data = Array(
-             'firstname' => 'Mathew'
-           , 'lastname' => 'Wong'
+             'firstname' => Input::get('firstname')
+           , 'lastname' => Input::get('lastname')
          );
          echo json_encode($data);
      },
