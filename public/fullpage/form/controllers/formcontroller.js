@@ -20,9 +20,10 @@ app.controller("FormCtrl", function($scope, $route, Data) {
 });
 
 app.controller("ProfileCtrl", function($scope, $route, Data) {
-
+    $scope.name = Data;
+    /*
     $scope.data = {};
-
+ 
     $.ajax({ 
         type: 'POST'    
       , dataType: 'json'
@@ -33,5 +34,6 @@ app.controller("ProfileCtrl", function($scope, $route, Data) {
             $scope.data = data;
         }
     });
+    */
 
 });
