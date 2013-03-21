@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
 
 app.controller("FormCtrl", function($scope, $route) {
     $scope.name = "Mathew Jamongkad Wong";
-    $scope.firstname = "Mathew Jamongkad Wong";
+    $scope.firstname = "";
 });
 
 app.controller("ProfileCtrl", function($scope, $route) {
