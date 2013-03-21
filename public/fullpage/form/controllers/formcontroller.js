@@ -16,6 +16,6 @@ app.config(function($routeProvider) {
 })
 
 app.controller("FormCtrl", function($scope, $route) {
-    console.log($route);
+    console.log($route.templateUrl);
     $scope.name = "Mathew Jamongkad Wong";
 });
