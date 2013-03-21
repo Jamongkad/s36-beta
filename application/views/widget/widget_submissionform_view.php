@@ -142,7 +142,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                     <!-- start of form title -->
                     <div class="form-feedback-title">
                         <div class="form-field-block">
-                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="Title of your feedback" name="title" />
+                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" />
                         </div>
                     </div>
                     <!-- end of form title -->
