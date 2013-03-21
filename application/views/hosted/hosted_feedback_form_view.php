@@ -4,6 +4,7 @@
 <div ng-app="Form">
     <div ng-controller="FormCtrl">
         {{name}}  
+        <ng-view></ng-view>
     </div>
 </div>
 <div class="block" style="height:20px;"></div>
