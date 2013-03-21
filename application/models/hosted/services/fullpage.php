@@ -8,6 +8,13 @@ class Fullpage {
     public $pattern_dir;
     public $uploaded_background_dir;
     private $hosted_settings;
+    private $patterns = array(
+        '45degreee_fabric.png',
+        '60degree_gray.png',
+        'always_grey.png',
+        'batthern.png',
+        'beige_paper.png'
+    );
     
 
     public function __construct() {
@@ -35,7 +42,11 @@ class Fullpage {
  
         $css = '<style type"text/css">';
         $css .= ( $hs->background_image ? 'body{background-image:url("' . $this->uploaded_background_dir . '/' . $hs->background_image . '"); }' : '' );
-        $css .= ( $hs->page_bg_color ? ' #bodyColorOverlay{ background: ' . $hs->page_bg_color . '; opacity: ' . $hs->page_bg_color_opacity . '}' : '' );
+        
+        if( in_array($hs->background_image, $this->patterns) ){
+            $css .= ( $hs->page_bg_color ? ' #bodyColorOverlay{ background: ' . $hs->page_bg_color . '; opacity: ' . $hs->page_bg_color_opacity . '}' : '' );
+        }
+        
         $css .= ( ! $hs->show_rating ? '.stars, .star_rating{display:none}' : '' );
         $css .= ( ! $hs->show_votes ? '.rating-stat{display:none}.vote-action{display:none}' : '' );
         $css .= ( ! $hs->show_recommendation ? '.green-thumb{display:none}' : '' );
