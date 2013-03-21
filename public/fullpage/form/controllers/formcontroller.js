@@ -30,7 +30,6 @@ app.controller("ProfileCtrl", function($scope, $route) {
       , url: '/api/data_pass'
       , success: function(data) {   
             $scope.data = data;
-            $scope.$apply($scope.data);
         }
     });
 
