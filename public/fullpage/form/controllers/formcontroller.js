@@ -16,11 +16,11 @@ app.config(function($routeProvider) {
 })
 
 app.controller("FormCtrl", function($scope, $route, Data) {
-    $scope.name = Data;
+    $scope.data = Data;
 });
 
 app.controller("ProfileCtrl", function($scope, $route, Data) {
-    $scope.name = Data;
+    $scope.data = Data;
     /*
     $scope.data = {};
  
