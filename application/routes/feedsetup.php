@@ -13,7 +13,7 @@ return array(
         $hosted->set_hosted_settings(Array('company_id'  =>  S36Auth::user()->companyid));
             
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_index_view', Array(
-            'widgets' => $widgets, 'hosted_full_page' => $hosted->hosted_settings()
+            'widgets' => $widgets, 'hosted_full_page' => null
         ));
     }),
 
