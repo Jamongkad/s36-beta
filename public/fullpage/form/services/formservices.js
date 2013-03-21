@@ -1,6 +1,7 @@
 angular.module('FormServices', [])
 .service('Data', function($rootScope) { 
     var shared_service = {};
-    shared_service.message = "Mathew Wong RULES!";
+    shared_service.firstname;
+    shared_service.lastname;
     return shared_service;
 });
