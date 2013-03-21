@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
         })
         .when('/profile', { 
             templateUrl: "/api/profile"
-          , controller: "FormCtrl"
+          , controller: "ProfileCtrl"
         })
         .otherwise({
             redirectTo: "/"     
@@ -17,4 +17,21 @@ app.config(function($routeProvider) {
 
 app.controller("FormCtrl", function($scope, $route) {
     $scope.name = "Mathew Jamongkad Wong";
+});
+
+app.controller("ProfileCtrl", function($scope, $route) {
+
+    $scope.data = {};
+
+    $.ajax({ 
+        type: 'POST'    
+      , dataType: 'json'
+      , async: false
+      , url: '/api/data_pass'
+      , success: function(data) {   
+            $scope.data = data;
+            $scope.$apply($scope.data);
+        }
+    });
+
 });
