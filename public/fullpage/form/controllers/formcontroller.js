@@ -3,7 +3,7 @@ var app = angular.module("Form", ['CompileHtml']);
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
-            template: "Yum!!";
+            template: "Yum!!"
         })
 })
 
