@@ -44,8 +44,12 @@
                                 <!--Lets use the Hosted Feedback Form instead but leave this just incase :)
                             	<a href="<?=$deploy_env."/widget/widget_loader/{$email_data->widgetkey}?response=1"?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
                                 </a>
-                                -->
+
                             	<a href="<?=$deploy_env."/".$subdomain."/submit"."?response=1"?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
+                                </a>
+                                -->
+
+                            	<a href="<?=$deploy_env?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Page
                                 </a>
                             	<br /><br /><br />
                             	We greatly appreciate your time.
