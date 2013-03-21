@@ -85,7 +85,7 @@
                             if(!preg_match_all('~feedsetup/formcode_manager~', Request::uri(), $matches)) {
                                 $feedsetup_nav = Array(
                                      'feedsetup'  => 'DASHBOARD'
-                                   , 'feedsetup/widget_selection' => 'CREATE'
+                                   //, 'feedsetup/widget_selection' => 'CREATE'
                                 );           
                             } //Default Nav     
                         }
