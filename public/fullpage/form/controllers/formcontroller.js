@@ -10,6 +10,9 @@ app.config(function($routeProvider) {
             templateUrl: "/api/profile"
           , controller: "FormCtrl"
         })
+        .otherwise({
+            redirectTo: "/"     
+        })
 })
 
 app.controller("FormCtrl", function($scope, $route) {
