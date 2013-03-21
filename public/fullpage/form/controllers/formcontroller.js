@@ -3,7 +3,7 @@ var app = angular.module("Form", ['CompileHtml']);
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: "/form/first"
+            templateUrl: "/api/fullpage_form"
           , controller: "FormCtrl"
         })
 })
