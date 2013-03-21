@@ -28,7 +28,7 @@ app.controller("ProfileCtrl", function($scope, $route) {
       , dataType: 'json'
       , async: false
       , url: '/api/data_pass'
-      , data: { 'firstname': $('input[name=firstname]').val(), 'lastname': 'Martie' }
+      , data: { 'firstname': $scope.firstname, 'lastname': 'Martie' }
       , success: function(data) {   
             $scope.data = data;
         }
