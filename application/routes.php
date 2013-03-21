@@ -133,6 +133,7 @@ return array(
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
+                                                    , 'company_name' => $company_name
                                                     , 'company_header' => $header_view)); 
     },
 
