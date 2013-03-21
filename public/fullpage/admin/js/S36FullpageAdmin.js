@@ -13,6 +13,7 @@ var S36FullpageAdmin = function(layoutObj){
     ==========================================*/
     var self = this;
     var common = new S36FullpageCommon;
+    this.patterns = ['45degreee_fabric.png', '60degree_gray.png', 'always_grey.png', 'batthern.png', 'beige_paper.png'];
     
     this.init_fullpage_admin = function(){
         
@@ -88,6 +89,7 @@ var S36FullpageAdmin = function(layoutObj){
         || Change the background color
         ==========================================*/
         $('.backgroundColorPicker').on('change',function(){
+            if( $('.patternItem.active').length == 0 ) return;  // if there's bg image, don't apply bg color.
             self.change_background_color($(this).val(),$(this).attr('data-opacity'));
         });
         /* ========================================
@@ -176,6 +178,7 @@ var S36FullpageAdmin = function(layoutObj){
                 self.change_background_image(data.result[0].url);
                 self.hide_notification();
                 PanelAutoSaver.set_data('background_image', data.result[0].name);
+                $('.patternItem').removeClass('active');  // so we can distinguish the type of our bg.
             }
         });
         /* ========================================
@@ -530,6 +533,7 @@ var PanelAutoSaver = new function(layoutObj){
         });
         
         $('.backgroundColorPicker').on('change', function(){
+            if( $('.patternItem.active').length == 0 ) return;  // if there's bg image, don't apply bg color.
             PanelAutoSaver.set_data('page_bg_color', $(this).val());
             PanelAutoSaver.set_data('page_bg_color_opacity', $(this).attr('data-opacity'));
         });
