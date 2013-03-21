@@ -6,7 +6,7 @@ $feedback = new DBFeedback;
 
 return array(
     'GET /api/fullpage_form' => function() {  
-         echo View::make('fullpageform/form_index');
+         return View::make('fullpageform/form_index');
      },
 
     'POST /api/login' => function() {
