@@ -14,6 +14,14 @@ return array(
          return View::make('fullpageform/form_profile');
      },
 
+     'POST /api/data_pass' => function() {
+         $data = Array(
+             'firstname' => 'Mathew'
+           , 'lastname' => 'Wong'
+         );
+         echo json_encode($data);
+     },
+
     'POST /api/login' => function() {
         $auth = new S36Auth;
         $input = Input::get();
