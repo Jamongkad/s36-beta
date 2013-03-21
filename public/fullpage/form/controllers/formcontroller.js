@@ -1,4 +1,12 @@
 var app = angular.module("Form", ['CompileHtml']);
-app.controller("FormCtrl", function($scope) {
-   $scope.name = "Mathew Jamongkad Wong";
+
+app.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            template: "Yum!!";
+        })
+})
+
+app.controller("FormCtrl", function($scope, $route) {
+    $scope.name = "Mathew Jamongkad Wong";
 });
