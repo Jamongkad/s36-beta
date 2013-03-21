@@ -6,6 +6,10 @@ app.config(function($routeProvider) {
             templateUrl: "/api/fullpage_form"
           , controller: "FormCtrl"
         })
+        .when('/profile', { 
+            templateUrl: "/api/profile"
+          , controller: "FormCtrl"
+        })
 })
 
 app.controller("FormCtrl", function($scope, $route) {

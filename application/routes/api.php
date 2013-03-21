@@ -9,6 +9,10 @@ return array(
          return View::make('fullpageform/form_index');
      },
 
+    'GET /api/profile' => function() {  
+         return View::make('fullpageform/form_profile');
+     },
+
     'POST /api/login' => function() {
         $auth = new S36Auth;
         $input = Input::get();
