@@ -59,7 +59,7 @@
                 </div>
             </div>
             
-            <?php if( $feed_count->published_feed_count === 0 ): ?>
+            <?php if( $feed_count->published_feed_count == 0 ): ?>
                 <div id="blankHostedPage">
                     <h1 class="first-head">Hey! Looks like you're the first one here. </h1>
                     <h1>Send in some feedback for <?php echo ucfirst(HTML::entities($company->company_name)); ?> by clicking below.</h1>
@@ -71,7 +71,7 @@
                 </div>
             <?php endif; ?>
             
-            <?php if( $feed_count->published_feed_count !== 0 ): ?>
+            <?php if( $feed_count->published_feed_count != 0 ): ?>
                 <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
                     <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
                     <div class="hosted-block">
