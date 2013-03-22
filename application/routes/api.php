@@ -22,6 +22,10 @@ return array(
          return View::make('fullpageform/submission_send');
      },
 
+    'POST /api/send_now' => function() {  
+         Helpers::dump(Input::get());
+     },
+
      'POST /api/data_pass' => function() {
          $data = Array(
              'firstname' => Input::get('firstname')
