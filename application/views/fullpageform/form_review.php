@@ -2,9 +2,8 @@
 <div ng-controller="ReviewCtrl">
     <h3>What you wrote so far...</h3>
     <p>{{data.firstname}}</p>
-    <p ng-model="data.lastname"></p>
-    <p ng-model="data.title"></p>
-    <p ng-model="data.feedbacktext"></p>
-
+    <p>{{data.lastname}}</p>
+    <p>{{data.title}}</p>
+    <p>{{data.feedbacktext}}</p>
 </div>
-<a href="#/profile">Prev</a> --- <a href="#/submission_send">Next</a>
+<a href="#/profile">Prev</a> --- <a href="#/submission_send">Send Now</a>
