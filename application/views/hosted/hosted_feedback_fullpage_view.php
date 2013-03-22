@@ -58,70 +58,84 @@
                     </div>
                 </div>
             </div>
-
-        <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
-        <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
-            <div class="hosted-block">
-                <div class="company-description clear">
-                    <div class="company-text">
-                        <? // keep the content of fullpage_desc_text in one line. ?>
-                        <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
-                        <?php if( ! is_null($user) ): ?>
-                            <textarea id="fullpage_desc_textbox" rows="3"></textarea>
-                        <?php endif; ?>
-                    </div>
-                    <div class="send-button" widgetkey="<?=$company->widgetkey?>">
+            
+            <?php if( $company->total_feedback == 0 ): ?>
+                <div id="blankHostedPage">
+                    <h1 class="first-head">Hey! Looks like you're the first one here. </h1>
+                    <h1>Send in some feedback for <?php echo ucfirst(HTML::entities($company->company_name)); ?> by by clicking below.</h1>
+                    <p class="send-button" widgetkey="<?=$company->widgetkey?>">
                         <a href="javascript:;">
                             Send in feedback
                         </a>
-                    </div>
+                    </p>
                 </div>
-            </div>
+            <?php endif; ?>
             
-            <div class="hosted-block">
-                    <div class="company-reviews clear">
-                        <div class="company-recommendation">
-                            <?php if( $company->total_feedback != 0 ): ?>
-                                <div class="green-thumb">
-                                    <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
-                                    of our customers recommend us to their friends.
+            <?php if( $company->total_feedback != 0 ): ?>
+                <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
+                    <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
+                    <div class="hosted-block">
+                        <div class="company-description clear">
+                            <div class="company-text">
+                                <? // keep the content of fullpage_desc_text in one line. ?>
+                                <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                                <?php if( ! is_null($user) ): ?>
+                                    <textarea id="fullpage_desc_textbox" rows="3"></textarea>
+                                <?php endif; ?>
+                            </div>
+                            <div class="send-button" widgetkey="<?=$company->widgetkey?>">
+                                <a href="javascript:;">
+                                    Send in feedback
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hosted-block">
+                            <div class="company-reviews clear">
+                                <div class="company-recommendation">
+                                    <?php if( $company->total_feedback != 0 ): ?>
+                                        <div class="green-thumb">
+                                            <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
+                                            of our customers recommend us to their friends.
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="company-rating">
-                            <?php if( $company->total_feedback != 0 ): ?>
-                                <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
-                                <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
-                                <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
-                            <?php endif; ?>
-                        </div>
+                                <div class="company-rating">
+                                    <?php if( $company->total_feedback != 0 ): ?>
+                                        <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
+                                        <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
+                                        <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                     </div>
-            </div>
-        </div>
+                </div>
 
-            <!-- lightbox notification -->
-            <div id="lightboxNotification">
-                <div class="lightbox-pandora">
-                    <div class="lightbox-header">Oops! Something went wrong..</div>
-                    <div class="lightbox-body">
-                        <div class="lightbox-message error">
-                            <ul>
-                                <li>Error Message</li><li>Error Message</li>
-                            </ul>
-                        </div>
-                        <div class="lightbox-buttons">
-                            <a href="#" class="lightbox-button">CLOSE</a>
+                <!-- lightbox notification -->
+                <div id="lightboxNotification">
+                    <div class="lightbox-pandora">
+                        <div class="lightbox-header">Oops! Something went wrong..</div>
+                        <div class="lightbox-body">
+                            <div class="lightbox-message error">
+                                <ul>
+                                    <li>Error Message</li><li>Error Message</li>
+                                </ul>
+                            </div>
+                            <div class="lightbox-buttons">
+                                <a href="#" class="lightbox-button">CLOSE</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end of lightbox notification -->
-            <div id="feedbackContainer">
-                <div id="threeColumnLayout" class="hosted-layout">
-                    <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
-                    <div id="feedback-infinitescroll-landing"></div>
+                <!-- end of lightbox notification -->
+                <div id="feedbackContainer">
+                    <div id="threeColumnLayout" class="hosted-layout">
+                        <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
+                        <div id="feedback-infinitescroll-landing"></div>
+                    </div>
                 </div>
-            </div>
+            <?php endif ?>
         </div>
     </div>
 </div>

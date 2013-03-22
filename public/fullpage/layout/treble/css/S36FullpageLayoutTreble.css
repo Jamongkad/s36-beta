@@ -481,14 +481,14 @@
 	padding-top:7px;
 }
 .regular-button{
-	background:#1cb0ff;
-	border:1px solid #118bcc;
+	/*background:#1cb0ff;
+	border:1px solid #118bcc;*/
 }
 .regular-button:hover{
-	background:#31b7ff;
+	/*background:#31b7ff;*/
 }
 .send-button a{
-	background:#1cb0ff;
+	/*background:#1cb0ff;*/
 	/*border:1px solid #118bcc;*/
 }
 .send-button a:hover{
