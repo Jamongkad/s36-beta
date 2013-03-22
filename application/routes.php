@@ -52,19 +52,18 @@ return array(
                                                        , $company_info->fullpagecompanyname
                                                        , $company_info->domain);
 
-        $meta = new Hosted\Services\HostedMetadata(Array(
+        $fullpagedata = new Hosted\Services\FullpageData(Array(
              'company_name' => $company_info->company_name
            , 'company_id'   => $company_info->companyid
         ));
 
-        $meta->calculate_metrics();
-        Helpers::dump($meta->perform());
+        Helpers::dump($fullpagedata->calculate_metrics());
+
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
                                                   , 'company_social'    => $company_social
                                                   , 'user'              => $user
                                                   , 'feeds'             => $feeds 
-                                                  , 'feed_count'        => $meta->perform()
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
