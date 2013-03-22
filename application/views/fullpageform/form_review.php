@@ -1,9 +1,10 @@
 <h1>Review Page</h1>
 <div ng-controller="ReviewCtrl">
-    <input type="hidden" value="" name="firstname" ng-model="data.firstname" />
-    <input type="hidden" value="" name="lastname" ng-model="data.lastname" />
+    <h3>What you wrote so far...</h3>
+    <p ng-model="data.firstname"></p>
+    <p ng-model="data.lastname"></p>
+    <p ng-model="data.title"></p>
+    <p ng-model="data.feedbacktext"></p>
 
-    <p><input type="text" value="" name="firstname" ng-model="data.firstname"/></p>
-    <p><input type="text" value="" name="lastname" ng-model="data.lastname"/></p>
 </div>
 <a href="#/profile">Prev</a> --- <a href="#/submission_send">Next</a>
