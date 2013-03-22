@@ -57,13 +57,12 @@ return array(
            , 'company_id'   => $company_info->companyid
         ));
 
-        Helpers::dump($fullpagedata->calculate_metrics());
-
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
                                                   , 'company_social'    => $company_social
                                                   , 'user'              => $user
                                                   , 'feeds'             => $feeds 
+                                                  , 'feed_count'        => $fullpagedata->calculate_metrics()
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
