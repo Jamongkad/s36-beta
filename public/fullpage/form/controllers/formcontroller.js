@@ -43,4 +43,5 @@ app.controller("SubmissionCtrl", function($scope, $route, Data) {
       , async: false
       , url: '/api/send_now'
     })
+    Data = null;
 });
