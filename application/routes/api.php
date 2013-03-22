@@ -13,6 +13,14 @@ return array(
     'GET /api/profile' => function() {  
          return View::make('fullpageform/form_profile');
      },
+     
+    'GET /api/review' => function() {  
+         return View::make('fullpageform/form_review');
+     },
+
+    'GET /api/submission_send' => function() {  
+         return View::make('fullpageform/submission_send');
+     },
 
      'POST /api/data_pass' => function() {
          $data = Array(

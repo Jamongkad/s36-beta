@@ -10,6 +10,14 @@ app.config(function($routeProvider) {
             templateUrl: "/api/profile"
           , controller: "ProfileCtrl"
         })
+        .when('/review', { 
+            templateUrl: "/api/review"
+          , controller: "ReviewCtrl"
+        })
+        .when('/submission_send', { 
+            templateUrl: "/api/submission_send"
+          , controller: "SubmissionCtrl"
+        })
         .otherwise({
             redirectTo: "/"     
         })
@@ -21,19 +29,12 @@ app.controller("FormCtrl", function($scope, $route, Data) {
 
 app.controller("ProfileCtrl", function($scope, $route, Data) {
     $scope.data = Data;
-    /*
-    $scope.data = {};
- 
-    $.ajax({ 
-        type: 'POST'    
-      , dataType: 'json'
-      , async: false
-      , url: '/api/data_pass'
-      , data: { 'firstname': 'Wong', 'lastname': 'Martie' }
-      , success: function(data) {   
-            $scope.data = data;
-        }
-    });
-    */
+});
 
+app.controller("ReviewCtrl", function($scope, $route, Data) {
+    $scope.data = Data;
+});
+
+app.controller("SubmissionCtrl", function($scope, $route, Data) {
+    $scope.data = Data;
 });
