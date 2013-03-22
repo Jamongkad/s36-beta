@@ -19,7 +19,7 @@ class FullpageData {
         //TODO: caching candidate
         $result = new StdClass;
         $result->todays_count = $this->feedback->count_todays_feedback($this->company_params['company_id']); 
-        $result->published_feed_count = $this->feedback->televised_feedback_alt($this->company_params['company_name']);
+        $result->published_feed_count = $this->feedback->televised_feedback_alt($this->company_params['company_name'])->total_rows;
         return $result; 
     }
 }
