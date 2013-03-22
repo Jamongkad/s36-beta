@@ -36,7 +36,6 @@ app.controller("ReviewCtrl", function($scope, $route, Data) {
 });
 
 app.controller("SubmissionCtrl", function($scope, $route, Data) {
-    $scope.data = Data;
     $.ajax({     
         type: 'POST'    
       , dataType: 'json'
