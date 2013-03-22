@@ -58,6 +58,8 @@
                     </div>
                 </div>
             </div>
+
+            <?print_r($feed_count);?>
             
             <?php if( $company->total_feedback == 0 ): ?>
                 <div id="blankHostedPage">
