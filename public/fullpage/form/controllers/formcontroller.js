@@ -43,7 +43,8 @@ app.controller("SubmissionCtrl", function($scope, $route, Data) {
       , async: false
       , url: '/api/send_now'
     })
-
+    
+    //Clear all fields
     Data.title = null;
     Data.feedbacktext = null;
     Data.firstname = null;
