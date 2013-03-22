@@ -127,15 +127,12 @@ return array(
         
     'GET /submit/(:any)' => function($widgetkey) use ($hosted_settings, $dbw, $company) {
         $widgetloader = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
-        $widget = $widgetloader->load();
-        Helpers::dump($widget);
-        
+        $widget = $widgetloader->load();        
+
+        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array()); 
         /*
         $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
-        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
-                                                      'widget' => $widget->render_hosted()
-                                                    , 'company_header' => $header_view)); 
         */
     },
 
