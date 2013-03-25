@@ -5,12 +5,33 @@ use Feedback\Repositories\DBFeedback;
 $feedback = new DBFeedback;
 
 return array(
-    'GET /api/full_page_display/(:any)' => function($company_name) { 
-        /* Deprecated...Feb. 20, 2013
-        $host = new Feedback\Services\HostedService($company_name);
-        $feeds = $host->fetch_hosted_feedback(); 
-        echo json_encode($feeds);
-        */
+
+    'GET /api/fullpage_form' => function() {  
+         return View::make('fullpageform/form_index');
+     },
+
+    'GET /api/profile' => function() {  
+         return View::make('fullpageform/form_profile');
+     },
+     
+    'GET /api/review' => function() {  
+         return View::make('fullpageform/form_review');
+     },
+
+    'GET /api/submission_send' => function() {  
+         return View::make('fullpageform/submission_send');
+     },
+
+    'POST /api/send_now' => function() {  
+         Helpers::dump(Input::get());
+     },
+
+     'POST /api/data_pass' => function() {
+         $data = Array(
+             'firstname' => Input::get('firstname')
+           , 'lastname' => Input::get('lastname')
+         );
+         echo json_encode($data);
      },
 
     'POST /api/login' => function() {
