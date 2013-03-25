@@ -163,7 +163,10 @@ return array(
        <iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($obj->feedback_url).'&amp;send=false&amp;layout=standard&amp;width=390&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35&amp;appId='.Config::get('application.fb_id').'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:390px; height:35px;" allowTransparency="true"></iframe>
         ';
         $obj->share_button = $fb_iframe;
-        echo json_encode($obj); 
+        echo json_encode($obj);
+
+        //remove some session variables used in submission form
+        Session::forget('uploaded_avatar');
     },
     
     'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
