@@ -14,8 +14,44 @@
 <!--[if lt IE 8]>
     <script src="js/ie7.js"></script>
 <![endif]-->
-<div id="formBox" ng-app="Form">
-    <ng-view></ng-view>
+<style type="text/css">
+#fb-false-connect{
+    background:url(/img/fb-connect-success.jpg) no-repeat;
+    width:165px;
+    height:22px;
+    cursor:pointer;
+    margin:0 auto;
+}
+#step_2,#step_3,#step_4,#step_5,#step_6,#step_7{
+    display:none;
+}
+
+#edited-textarea {     
+    background:#f7f7f7;
+    border:1px solid #e1e1e1;
+    padding:10px;
+    width:360px;
+    height:110px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#submission-loader {
+    text-align:center; margin:0 auto
+}
+
+#submission-success {
+    line-height:22px;
+}
+</style>
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+
+<div id="fb-root"></div>
+
+<div id="bodyWrapper">
+	<div id="bodyContent" ng-app="Form">
+        <ng-view></ng-view>
+    </div>
 </div>
+
 <div class="block" style="height:20px;"></div>
 <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>

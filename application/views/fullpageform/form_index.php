@@ -3,4 +3,9 @@
     <p><input type="text" ng-model="data.title"/></p>
     <p><textarea ng-model="data.feedbacktext"></textarea></p>
 </div>
-<a href="#/profile">Next</a>
+
+<div id="s36_footer"> 
+    <div class="s36_footerbtn right">
+        <a href="#/profile" id="next" class="s36_btn">Next</a>
+    </div>
+</div>
