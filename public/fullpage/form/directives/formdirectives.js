@@ -15,7 +15,7 @@ angular.module('FormDirectives', ['FormServices'])
           }, function() {
                 var current_rating = Data.rating;
 
-                var rating = convert_rating_to_text(current_rating - 1);
+                var rating = convert_rating_to_text(current_rating);
                 $('.star-text').html(rating);
 
                 $('.star-container .star').css('background-position','bottom');
