@@ -10,8 +10,8 @@ class ClientRender {
     public function __construct(WidgetTypes $widget_type_obj) {
         $this->widget_type_obj    = $widget_type_obj; 
         $this->widget_loader_url  = Config::get('application.deploy_env')."/widget/widget_loader/";
-        $this->form_loader_script = trim(HTML::script('js/s36_client_script.js'));
-        $this->form_loader_css    = trim(HTML::style('css/s36_client_style.css'));
+        $this->form_loader_script = trim(HTML::script('fullpage/common/js/s36_client_script.js'));
+        $this->form_loader_css    = trim(HTML::style('fullpage/common/css/s36_client_style.css'));
         $this->tab_position_css_output = Helpers::tab_position_css_output();
     }  
 

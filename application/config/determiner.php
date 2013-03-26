@@ -88,7 +88,7 @@ class Determiner {
               , 'db' => 's36'
            );
 
-           $obj->deploy_env = 'https://feedback.36storiesapp.com';
+           $obj->deploy_env = 'https://'.$subdomain.'.36storiesapp.com';
            $obj->env_name = 'production';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
@@ -103,7 +103,7 @@ class Determiner {
               , 'db' => 's36'
            );
 
-           $obj->deploy_env = 'https://feedback.fdback.com';
+           $obj->deploy_env = 'https://'.$subdomain.'.fdback.com';
            $obj->env_name = 'production';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';

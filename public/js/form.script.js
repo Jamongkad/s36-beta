@@ -287,7 +287,6 @@ $(document).keypress(function(event){
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
 			}, done: function(e, data){
-				$('.button-disabler').hide();
                 $('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
@@ -318,7 +317,7 @@ $(document).keypress(function(event){
 				
 				//close the file upload window
 				close_file_upload();
-                
+				$('.button-disabler').hide();
             }
 		});
 		// initialize the photo upload script
@@ -347,9 +346,8 @@ $(document).keypress(function(event){
 					$.post(delete_url);
 				}
 			},done: function(e, data){
-				$('.button-disabler').hide();
 				$('<img />')
-					.attr('src', data.result[0].url)
+					.attr('src', data.result[0].medium_url)
 					.load(function(e){
 						var max_ht = 105;
 						var img_ht = e.currentTarget.height;
@@ -358,9 +356,10 @@ $(document).keypress(function(event){
 							margin = 10;
 						}
 						$('.loading-box').fadeOut('fast');
-						$('#preview_photo').attr({'src':data.result[0].url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
+						$('#preview_photo').attr({'src':data.result[0].medium_url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
 						$('#avatar_filename').val(data.result[0].name);
 				});
+				$('.button-disabler').hide();
 			}
 		});
 		
@@ -420,7 +419,6 @@ $(document).keypress(function(event){
 		}).click(function(){
 			// send the rating value to the rating plugin
 			var index = $(this).index() + 1;
-			console.log('you sent a '+index+' star rating');
 			$('#rating').val(index);
 		});
 		
@@ -598,7 +596,6 @@ $(document).keypress(function(event){
 			var review_image_container = $('#review-images');
 			var upload_image_container = $('#uploaded_images_preview');
 			var delete_url = $(this).attr('data-url');
-			console.log(delete_url);
 			$.post(delete_url);
 			$(this).parent().fadeOut('fast',function(){
 				review_image_container.children().eq(index).remove();

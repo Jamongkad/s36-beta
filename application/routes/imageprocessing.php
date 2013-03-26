@@ -23,24 +23,34 @@ return array(
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
               'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_avatar'
-            , 'file_name'   => md5(uniqid()).'.jpg'
+            , 'file_name'  => md5(uniqid()).'.jpg'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/avatar/'
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/avatar/'
             , 'param_name' => 'files'
+            , 'overwrite' => true
             , 'image_versions' => array(
-                '48x48' => array(
+                'small' => array(
                     'max_width'     => 48,
                     'max_height'    => 48,
-                    'use_external_library' => True
                 ),
-                '150x150' => array(
+                'medium' => array(
                     'max_width'     => 150,
-                    'max_height'    => 150,
-                    'use_external_library' => True
+                    'max_height'    => 150
                 )
             )
         );
-        new JqueryFileUploader($options); 
+        $result = new JqueryFileUploader($options);
+        //we just need the versioned images. Remove the original uploaded image
+        unlink($options['upload_dir'].$options['file_name']);
+        //remove previous upload for the current session
+        if(Session::get('uploaded_avatar')){
+            foreach($options['image_versions'] as $versions=>$value){
+                unlink($options['upload_dir'].$versions.'/'.Session::get('uploaded_avatar'));
+            }
+            Session::put('uploaded_avatar',$options['file_name']);
+        }else{
+            Session::put('uploaded_avatar',$options['file_name']);
+        }
     }),
     
     // saving of cover photo in db and deletion of old cover photo.
@@ -90,16 +100,14 @@ return array(
                 'medium' => array(
                     'max_width'     => 200,
                     'max_height'    => 200,
-                    'use_external_library' => True
                 ),
                 'small' => array(
                     'max_width'     => 80,
-                    'max_height'    => 80,
-                    'use_external_library' => True
+                    'max_height'    => 80
                 )
             )
         );
-        new JqueryFileUploader($options); 
+        $result = new JqueryFileUploader($options);
     }),
 
     'GET /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {

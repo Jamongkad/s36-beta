@@ -11,8 +11,8 @@ class ProfileImage {
     public function __construct() { 
 
         $this->date   = date("mdyhis");
-        $this->dir48  = '/var/www/s36-upload-images/uploaded_images/avatar/48x48/'.$this->date.".jpg";
-        $this->dir150 = '/var/www/s36-upload-images/uploaded_images/avatar/150x150/'.$this->date.".jpg";
+        $this->dir48  = '/var/www/s36-upload-images/uploaded_images/avatar/small/'.$this->date.".jpg";
+        $this->dir150 = '/var/www/s36-upload-images/uploaded_images/avatar/medium/'.$this->date.".jpg";
  
         $this->targ_w_large = 150;
         $this->targ_h_large = 150;
@@ -226,8 +226,8 @@ class ProfileImage {
 
     public function remove_profile_photo($name) { 
 
-        $file150 = '/var/www/s36-upload-images/uploaded_images/avatar/150x150/'.$name;
-        $file48 = "/var/www/s36-upload-images/uploaded_images/48x48/".$name;
+        $file150 = '/var/www/s36-upload-images/uploaded_images/avatar/medium/'.$name;
+        $file48 = "/var/www/s36-upload-images/uploaded_images/small/".$name;
         
         $check150 = is_file($file150);
         $check48  = is_file($file48);
