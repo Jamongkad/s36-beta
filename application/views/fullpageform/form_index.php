@@ -1,4 +1,4 @@
-<h1>Hello Muthafuckas!</h1>
+<h1>Share Your Feedback</h1>
 <div ng-controller="FormCtrl">
     <div class="feedback">
         <p><input type="text" class="regular-text reg-text-active" ng-model="data.title"/></p>
