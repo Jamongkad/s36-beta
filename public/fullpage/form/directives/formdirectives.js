@@ -8,6 +8,7 @@ angular.module('FormDirectives', ['FormServices'])
                 $('.star-container .star').css('background-position','bottom');
                 $(this).css('background-position','top');
                 rating = convert_rating_to_text(index);
+                $('.star-text span').html(rating);
                 for(var i = 0;i<index;i++){
                     $(this).parent().find('.star:eq('+i+')').css('background-position','top');
                 }
