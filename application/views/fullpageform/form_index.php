@@ -3,8 +3,21 @@
 </div>
 <div ng-controller="FormCtrl">
     <div class="feedback">
-        <p><input type="text" class="regular-text reg-text-active" ng-model="data.title"/></p>
-        <p><textarea class="regular-textarea reg-text-active" ng-model="data.feedbacktext"></textarea></p>
+        <div class="step-contents">
+            <div id="hostform_info" style="width:50%;float:left;">
+                <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
+                    <tr><td colspan="2">
+                    <input type="text" class="regular-text reg-text-active" ng-model="data.title"/>
+                    </td></tr>
+                </table>
+                <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
+                    <tr><td>
+                    <textarea class="regular-textarea reg-text-active" ng-model="data.feedbacktext"></textarea>
+                    </td><td>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
 
