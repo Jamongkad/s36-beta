@@ -8,7 +8,7 @@ angular.module('FormDirectives', ['FormServices'])
                 $('.star-container .star').css('background-position','bottom');
                 $(this).css('background-position','top');
                 rating = convert_rating_to_text(index);
-                $('.star-text span').html(rating);
+                $('.star-text').html(rating);
                 for(var i = 0;i<index;i++){
                     $(this).parent().find('.star:eq('+i+')').css('background-position','top');
                 }
@@ -16,7 +16,7 @@ angular.module('FormDirectives', ['FormServices'])
                 var current_rating = Data.rating;
 
                 var rating = convert_rating_to_text(current_rating - 1);
-                $('.star-text span').html(rating);
+                $('.star-text').html(rating);
 
                 $('.star-container .star').css('background-position','bottom');
                 for(var i = 0;i<current_rating;i++){
