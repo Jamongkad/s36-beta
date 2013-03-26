@@ -12,6 +12,6 @@
     </div>
     
     <div class="s36_footerbtn right">
-        <a href="#/submission_send" id="next" class="s36_btn">Send Now/a>
+        <a href="#/submission_send" id="next" class="s36_btn">Send Now</a>
     </div>
 </div>
