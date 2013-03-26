@@ -5,6 +5,8 @@ angular.module('FormDirectives', ['FormServices'])
       , link: function(scope, element, attrs) {
           $(element).children('div').hover(function() { 
                 var index = $(this).index() + 1;
+                $('.star-container .star').css('background-position','bottom');
+                $(this).css('background-position','top');
                 for(var i = 0;i<index;i++){
                     $(this).parent().find('.star:eq('+i+')').css('background-position','top');
                 }
