@@ -49,6 +49,14 @@
 
 <div id="bodyWrapper">
 	<div id="bodyContent" ng-app="Form">
-        <ng-view></ng-view>
+        <div id="feedbackBox">
+        	<div class="block">
+            	<div id="s36_pages">
+                    <div id="steps">
+                        <ng-view></ng-view>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
