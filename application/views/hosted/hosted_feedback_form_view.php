@@ -53,7 +53,9 @@
         	<div class="block">
             	<div id="s36_pages">
                     <div id="steps">
-                        <ng-view></ng-view>
+                        <div class="s36_pages">
+                            <ng-view></ng-view>
+                        </div>
                     </div>
                 </div>
             </div>
