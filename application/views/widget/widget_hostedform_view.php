@@ -229,16 +229,16 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                             <input type="radio" id="permission1" name="your_permission" value="1" />
                                         </div>
                                         <label for="permission1">
-                                        <div class="s36_perm_details">
-                                        	<br />
-                                            <div class="s36_perm_icon">
-                                                <div class="s36_perm_icon1"></div>
+                                            <div class="s36_perm_details">
+                                                <br />
+                                                <div class="s36_perm_icon">
+                                                    <div class="s36_perm_icon1"></div>
+                                                </div>
+                                                <div class="s36_perm_text">
+                                                    <h3>Yes, with full permission</h3>
+                                                    <p>This allows us to use the positive feedback anywhere and everywhere we want. </p>
+                                                </div>
                                             </div>
-                                            <div class="s36_perm_text">
-                                                <h3>Yes, with full permission</h3>
-                                                <p>This allows us to use the positive feedback anywhere and everywhere we want. </p>
-                                            </div>
-                                        </div>
                                         </label>
                                     </div>
                                     <div class="s36_block limited">
@@ -246,16 +246,16 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                             <input type="radio" id="permission2" name="your_permission" value="2"  />
                                         </div>
                                         <label for="permission2">
-                                        <div class="s36_perm_details">
-                                        	<br />
-                                            <div class="s36_perm_icon">
-                                                <div class="s36_perm_icon2"></div>
+                                            <div class="s36_perm_details">
+                                                <br />
+                                                <div class="s36_perm_icon">
+                                                    <div class="s36_perm_icon2"></div>
+                                                </div>
+                                                <div class="s36_perm_text">
+                                                    <h3>Yes, but with limited permission</h3>
+                                                    <p>This allows us to use the feedback only on the website.</p>
+                                                </div>
                                             </div>
-                                            <div class="s36_perm_text">
-                                                <h3>Yes, but with limited permission</h3>
-                                                <p>This allows us to use the feedback only on the website.</p>
-                                            </div>
-                                        </div>
                                         </label>
                                     </div>
                                     <div class="s36_block private">
@@ -263,16 +263,16 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                             <input type="radio" id="permission3" name="your_permission" value="3" />
                                         </div>
                                         <label for="permission3">
-                                        <div class="s36_perm_details">
-                                        	<br />
-                                            <div class="s36_perm_icon">
-                                                <div class="s36_perm_icon3"></div>
+                                            <div class="s36_perm_details">
+                                                <br />
+                                                <div class="s36_perm_icon">
+                                                    <div class="s36_perm_icon3"></div>
+                                                </div>
+                                                <div class="s36_perm_text">
+                                                    <h3>Keep your feedback private</h3>
+                                                    <p>This feedback is NOT public.</p>
+                                                </div>
                                             </div>
-                                            <div class="s36_perm_text">
-                                                <h3>Keep your feedback private</h3>
-                                                <p>This feedback is NOT public.</p>
-                                            </div>
-                                        </div>
                                         </label>
                                     </div>
                                 </div>
