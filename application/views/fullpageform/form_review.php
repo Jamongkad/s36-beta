@@ -6,4 +6,12 @@
     <p>{{data.title}}</p>
     <p>{{data.feedbacktext}}</p>
 </div>
-<a href="#/profile">Prev</a> --- <a href="#/submission_send">Send Now</a>
+<div id="s36_footer">
+    <div class="s36_footerbtn left">
+        <a href="#/profile" id="prev" class="s36_btn">Back</a>
+    </div>
+    
+    <div class="s36_footerbtn right">
+        <a href="#/submission_send" id="next" class="s36_btn">Send Now/a>
+    </div>
+</div>
