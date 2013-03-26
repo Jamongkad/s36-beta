@@ -17,10 +17,11 @@
                                     <div id="4" class="star full"></div>
                                     <div id="5" class="star full"></div>
                                 </div>
-                                <div class="star-text"></div>
                             </div>
                         </div> 
-                    </td></tr>
+                    </td>
+                    <td><span class="star-text"></span></td> 
+                    </tr>
                     <tr><td colspan="2">
                     <input type="text" class="regular-text reg-text-active" ng-model="data.title"/>
                     </td></tr>
