@@ -1,4 +1,6 @@
-<h1>Review Page</h1>
+<div class="formTitle">
+    <h2>Review Page</h2>
+</div>
 <div ng-controller="ReviewCtrl">
     <h3>What you wrote so far...</h3>
     <p>{{data.firstname}}</p>
