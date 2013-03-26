@@ -4,7 +4,6 @@ angular.module('FormDirectives', ['FormServices'])
         restrict: 'A'
       , link: function(scope, element, attrs) {
           $(element).children('div').hover(function() { 
-                console.log(Data);
                 var index = $(this).index() + 1;
                 for(var i = 0;i<index;i++){
                     $(this).parent().find('.star:eq('+i+')').css('background-position','top');
@@ -16,6 +15,7 @@ angular.module('FormDirectives', ['FormServices'])
                 var index = $(this).index() + 1;
                 $('#rating').val(index); 
                 */
+                Data.rating = $(this).index() + 1;
                 console.log(Data);
           });
           /*
