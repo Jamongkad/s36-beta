@@ -9,14 +9,18 @@ angular.module('FormDirectives', ['FormServices'])
                     $(this).parent().find('.star:eq('+i+')').css('background-position','top');
                 }
           }, function() {
+                var current_rating = Data.rating;
+                /*
+                var rating = convert_rating_to_text(current_rating - 1);
+                $('.star-text span').html(rating);
+                */
+                $('.star-container .star').css('background-position','bottom');
+                for(var i = 0;i<current_rating;i++){
+                    $('.star-container').find('.star:eq('+i+')').css('background-position','top');
+                }
               
           }).bind('click', function() {
-                /*
-                var index = $(this).index() + 1;
-                $('#rating').val(index); 
-                */
                 Data.rating = $(this).index() + 1;
-                console.log(Data);
           });
           /*
             $('.dynamic-stars .star-container .star').hover(function(){
