@@ -1,4 +1,6 @@
-<h1>Share Your Feedback</h1>
+<div class="formTitle">
+    <h2>Share Your Feedback</h2>
+</div>
 <div ng-controller="FormCtrl">
     <div class="feedback">
         <p><input type="text" class="regular-text reg-text-active" ng-model="data.title"/></p>
