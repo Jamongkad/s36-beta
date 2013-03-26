@@ -1,7 +1,9 @@
 <h1>Hello Muthafuckas!</h1>
 <div ng-controller="FormCtrl">
-    <p><input type="text" ng-model="data.title"/></p>
-    <p><textarea ng-model="data.feedbacktext"></textarea></p>
+    <div class="feedback">
+        <p><input type="text" class="regular-text reg-text-active" ng-model="data.title"/></p>
+        <p><textarea class="regular-textarea reg-text-active" ng-model="data.feedbacktext"></textarea></p>
+    </div>
 </div>
 
 <div id="s36_footer"> 
