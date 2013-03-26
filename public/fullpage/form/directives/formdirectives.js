@@ -1,4 +1,4 @@
-angular.module('FormDirectives', [])
+angular.module('FormDirectives', ['FormServices'])
 .directive('stars', function(FormServices) { 
     return {
         restrict: 'A'
