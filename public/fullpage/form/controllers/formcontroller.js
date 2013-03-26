@@ -1,4 +1,4 @@
-var app = angular.module("Form", ['CompileHtml', 'FormServices']);
+var app = angular.module("Form", ['CompileHtml', 'FormServices', 'FormDirectives']);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -45,6 +45,7 @@ app.controller("SubmissionCtrl", function($scope, $route, Data) {
     })
     
     //Clear all fields
+    Data.rating = null;
     Data.title = null;
     Data.feedbacktext = null;
     Data.firstname = null;
