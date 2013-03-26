@@ -1,9 +1,10 @@
-angular.module('FormDirectives', [])
-.directive('stars', function() { 
+angular.module('FormDirectives', ['FormServices'])
+.directive('stars', function(Data) { 
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
           $(element).children('div').hover(function() { 
+                console.log(Data);
                 var index = $(this).index() + 1;
                 for(var i = 0;i<index;i++){
                     $(this).parent().find('.star:eq('+i+')').css('background-position','top');
@@ -15,6 +16,7 @@ angular.module('FormDirectives', [])
                 var index = $(this).index() + 1;
                 $('#rating').val(index); 
                 */
+                console.log(Data);
           });
           /*
             $('.dynamic-stars .star-container .star').hover(function(){
