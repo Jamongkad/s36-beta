@@ -1,5 +1,5 @@
-angular.module('FormDirectives', ['FormServices'])
-.directive('stars', function(FormServices) { 
+angular.module('FormDirectives', [])
+.directive('stars', function() { 
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
@@ -15,7 +15,6 @@ angular.module('FormDirectives', ['FormServices'])
                 var index = $(this).index() + 1;
                 $('#rating').val(index); 
                 */
-                console.log(FormServices);
           });
           /*
             $('.dynamic-stars .star-container .star').hover(function(){
