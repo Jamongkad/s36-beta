@@ -3,7 +3,7 @@ angular.module('FormDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-          $(element).hover(function() { 
+          $(element).children('div').hover(function() { 
                 var index = $(this).index();
                 console.log(index);
                 for(var i = 0;i<index;i++){

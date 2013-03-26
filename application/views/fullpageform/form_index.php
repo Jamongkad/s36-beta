@@ -10,12 +10,12 @@
                         <input type="hidden" ng-model="data.rating"/>
                         <div class="dynamic-stars">
                             <div class="star-ratings clear">
-                                <div class="star-container clear">
-                                    <div id="1" class="star full" stars></div>
-                                    <div id="2" class="star full" stars></div>
-                                    <div id="3" class="star full" stars></div>
-                                    <div id="4" class="star full" stars></div>
-                                    <div id="5" class="star full" stars></div>
+                                <div class="star-container clear" stars>
+                                    <div id="1" class="star full"></div>
+                                    <div id="2" class="star full"></div>
+                                    <div id="3" class="star full"></div>
+                                    <div id="4" class="star full"></div>
+                                    <div id="5" class="star full"></div>
                                 </div>
                                 <div class="star-text">
                                     <span class=""></span>
