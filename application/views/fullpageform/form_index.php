@@ -6,7 +6,7 @@
         <div class="step-contents">
             <div id="hostform_info" style="width:50%;float:left;">
                 <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
-                    <tr><td>
+                    <tr><td td colspan="2">
                         <input type="hidden" ng-model="data.rating"/>
                         <div class="dynamic-stars">
                             <div class="star-ratings clear">
