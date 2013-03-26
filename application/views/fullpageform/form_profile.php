@@ -23,7 +23,7 @@
         </div>
     </div>
 </div>
-
+<div style="height:50px"></div>
 <div id="s36_footer">
     <div class="s36_footerbtn left">
         <a href="#/" id="prev" class="s36_btn">Back</a>
