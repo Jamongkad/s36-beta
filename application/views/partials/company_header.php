@@ -15,8 +15,8 @@
 
         <?=HTML::script('/js/angular.compilehtml.js'); ?>
 
-        <?=HTML::script('/fullpage/form/directives/formdirectives.js')?>
         <?=HTML::script('/fullpage/form/services/formservices.js')?>
+        <?=HTML::script('/fullpage/form/directives/formdirectives.js')?>
         <?=HTML::script('/fullpage/form/controllers/formcontroller.js')?>
     </head>
 <body>
