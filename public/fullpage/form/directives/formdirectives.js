@@ -60,15 +60,15 @@ angular.module('FormDirectives', ['FormServices'])
 function convert_rating_to_text(val){
     var rating;
     switch(val){
-        case 4: rating = "Excellent!";
+        case 5: rating = "Excellent!";
         break;
-        case 3: rating = "Good";
+        case 4: rating = "Good";
         break;
-        case 2: rating = "Average";
+        case 3: rating = "Average";
         break;
-        case 1: rating = "Poor";
+        case 2: rating = "Poor";
         break;
-        case 0: rating = "Bad";
+        case 1: rating = "Bad";
         break;
         default: rating = "";
         break;
