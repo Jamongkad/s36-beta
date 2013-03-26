@@ -17,9 +17,7 @@
                                     <div id="4" class="star full"></div>
                                     <div id="5" class="star full"></div>
                                 </div>
-                                <div class="star-text">
-                                    <span class=""></span>
-                                </div>
+                                <span class="star-text"></span>
                             </div>
                         </div> 
                     </td></tr>
