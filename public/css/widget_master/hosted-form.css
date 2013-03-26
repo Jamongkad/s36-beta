@@ -380,3 +380,29 @@ a.green-cross {
     background: url("../../img/green-cross.png") no-repeat scroll left center transparent;
     padding-left: 15px;
 }
+
+/* star ratings styles! yeah baby! */
+.star-ratings{
+	display:block;
+	margin-top:5px;
+	margin-bottom:20px;
+}
+.star-ratings .star-container{
+	width:120px;
+	float:left;
+}
+.star-ratings .star-container .star{
+	float:left;
+	width:24px;
+	height:24px;
+	background:url(../../img/star-ratings.png);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	cursor:pointer;
+}
+.star-text{
+	padding-top:6px;
+	margin-left:130px;
+	font-size:14px;
+	font-weight:bold;
+}
