@@ -267,16 +267,11 @@ return array(
  
         $validator = Validator::make($data, $rules);
         if(!$validator->valid()) {
-            Helpers::dump("Invalid Email");
-            Helpers::dump($company_name);
             return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                        'errors' => $validator->errors
                                                      , 'warning' => null
                                                      , 'company' => $company_name));
         } else {
-            Helpers::dump("Valid Email");
-            Helpers::dump($company_name);
-
             $opts = new StdClass; 
             $opts->username = $data['email'];
             $opts->options = Array('company' => $company_name);
