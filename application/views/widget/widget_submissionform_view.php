@@ -34,6 +34,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
     FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
 </script>
 
+<!--
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
 
   <?if($env == 'development'):?>
@@ -49,6 +50,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
   authorize: true
   scope: r_fullprofile r_emailaddress
 </script>
+-->`
  
 <?=HTML::script('js/form.script.js');?>
 
