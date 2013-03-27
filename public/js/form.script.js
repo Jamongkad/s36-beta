@@ -200,7 +200,6 @@ $(document).keypress(function(event){
 	}	
 
 		 function fb_connect_success(obj){
-   
 			  if(obj.location != undefined) {
 			      if(obj.location.name != undefined) {
                       var loc = obj.location.name;
@@ -728,8 +727,8 @@ $(document).keypress(function(event){
 			}else{
 				var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 				var url = new RegExp(expression);
-				if(!value.match(url)) return false
-				else return true;
+				if(!value.match(url)) {return false;}
+				else {return true;}
 			}
 		}
 		else if(type == "email"){ //if type is email
@@ -792,16 +791,14 @@ $(document).keypress(function(event){
 				country.focus();
 				display_error_mes(['Please select your country']);
 				return false;
-			}else if(!website.hasClass('default-text')){
-				if(!validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
+			}else if(!website.hasClass('default-text') && !validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
 				website.focus();
 				display_error_mes(['Please enter a valid website address']);
 				return false;
 				}
-			}
 			else{
 				return true;
-			}
+			}			
 		}
 	}
 
