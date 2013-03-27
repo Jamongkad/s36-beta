@@ -69,18 +69,14 @@ return array(
         });
 
         $tf->test('Email Test', function($tf) {  
-            /*
-            $submission_data = new NewFeedbackSubmissionData; 
-            $submission_data->set_feedback($feedback_obj)
-                            ->set_sendtoaddresses($account_obj);
-
-            $emailservice = new EmailService($submission_data);
-            $emailservice->send_email();
-            */
             $feedback = $tf->data->feedback->pull_feedback_by_id(1173);
             $emails = $tf->data->dbuser->pull_user_emails_by_company_id(6);
-            Helpers::dump($feedback);
-            Helpers::dump($emails);
+            $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
+            $submission_data->set_feedback($feedback)
+                            ->set_sendtoaddresses($emails);
+
+            $emailservice = new Email\Services\EmailService($submission_data);
+            $emailservice->send_email();
         });
 
         $tf->run();  
