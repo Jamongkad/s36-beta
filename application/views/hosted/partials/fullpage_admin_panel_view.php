@@ -41,7 +41,7 @@
 
                                         <div class="right" checkfeed>
                                             <div class="widget-avatar"> 
-                                                <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
+                                                <img src="/uploaded_images/avatar/small/{{feeds.avatar}}" style="float:right"/>
                                             </div>
                                             <div class="widget-content">
                                                 <div class="widget-submitter" checkfeed>
