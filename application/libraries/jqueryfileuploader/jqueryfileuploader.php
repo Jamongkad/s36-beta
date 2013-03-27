@@ -481,7 +481,6 @@ class JqueryFileUploader
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error,
         $index = null, $content_range = null) {
         $file = new \stdClass();
-        $name = (isset($this->options['file_name'])) ? $this->options['file_name'] : $name;
         $file->name = $this->trim_file_name($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
@@ -498,7 +497,7 @@ class JqueryFileUploader
             }
             $file_path = $this->get_upload_path($file->name);
             $append_file = $content_range && is_file($file_path) &&
-                $file->size > $this->get_file_size($file_path);
+            $file->size > $this->get_file_size($file_path);
             if ($uploaded_file && is_uploaded_file($uploaded_file)) {
                 // multipart/formdata uploads (POST method uploads)
                 if ($append_file) {
@@ -509,6 +508,19 @@ class JqueryFileUploader
                     );
                 } else {
                     move_uploaded_file($uploaded_file, $file_path);
+                    /*
+                    | This is a custom step added by RobertMordido 
+                    | to rename and convert uploaded images into any image format using the option file_name
+                    */
+                    if(isset($this->options['file_name'])){
+                        $name = $this->options['file_name'];
+                        $file->name = $this->trim_file_name($name, $type, $index, $content_range);
+                        $final_path = $this->get_upload_path($file->name);
+                        exec('convert "' . $file_path . '" "' . $final_path . '"');
+                    }
+                    /*
+                    | end custom step
+                    */
                 }
             } else {
                 // Non-multipart uploads (PUT method support)
