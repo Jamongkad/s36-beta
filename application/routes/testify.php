@@ -77,8 +77,10 @@ return array(
             $emailservice = new EmailService($submission_data);
             $emailservice->send_email();
             */
-            //Helpers::dump($tf->data->feedback);
-            Helpers::dump($tf->data->dbuser);
+            $feedback = $tf->data->feedback->pull_feedback_by_id(1173);
+            $emails = $tf->data->dbuser->pull_user_emails_by_company_id(6);
+            Helpers::dump($feedback);
+            Helpers::dump($emails);
         });
 
         $tf->run();  
