@@ -6,7 +6,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> 
         <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+
         <?=HTML::script('js/head.min.js')?>
+        <?=HTML::script('js/form.script.js');?>
+        <?=HTML::script('js/jcycle.js');?>
+        <?=HTML::script('js/jquery.ui.widget.js');?>
+        <?=HTML::script('js/jquery.iframe-transport.js');?>
+        <?=HTML::script('js/jquery.fileupload.js');?>
+        <?=HTML::script('https://cloud.github.com/downloads/bytespider/jsOAuth/jsOAuth-1.3.6.min.js');?>
+        <?=HTML::script('js/jquery.oauth.js');?>
+
+        <?=HTML::style('css/widget_master/new_form.css');?>
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
     </head>
