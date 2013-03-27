@@ -254,6 +254,7 @@ return array(
     },
 
     'GET /resend_password' => function() use($company_name) {  
+        Helpers::dump($company_name);
         return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                    'errors'  => Array()
                                                  , 'warning' => null
