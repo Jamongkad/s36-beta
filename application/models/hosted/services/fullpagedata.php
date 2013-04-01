@@ -4,7 +4,7 @@ use Input, Exception, StdClass, View, Helpers;
 use \Feedback\Repositories\DBFeedback;
 use redisent;
 
-class HostedMetadata {
+class FullpageData {
 
     private $todays_count, $published_feed_count;
 
@@ -16,15 +16,10 @@ class HostedMetadata {
     }    
 
     public function calculate_metrics() {
-        $this->todays_count = $this->feedback->count_todays_feedback($this->company_params['company_id']); 
-        $this->published_feed_count = $this->feedback->televised_feedback_alt($this->company_params['company_name']);
-    }
-
-    public function perform() {
         //TODO: caching candidate
         $result = new StdClass;
-        $result->todays_count = $this->todays_count->feed_count;
-        $result->published_feed_count = $this->published_feed_count->total_rows; 
+        $result->todays_count = $this->feedback->count_todays_feedback($this->company_params['company_id'])->feed_count; 
+        $result->published_feed_count = $this->feedback->televised_feedback_alt($this->company_params['company_name'])->total_rows;
         return $result; 
     }
 }

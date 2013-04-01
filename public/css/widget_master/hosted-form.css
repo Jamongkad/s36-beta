@@ -7,7 +7,7 @@ body{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	/* background:url(../../img/background.jpg); */
-	background:#FFF;
+	background:#000;
 }
 a{color:#4894b3;text-decoration:none;}
 a:hover{color:#54a1c0;}
@@ -81,7 +81,6 @@ a:hover{color:#54a1c0;}
 	width:738px;
 	padding:10px 30px;
 	bottom:0px;
-	position:absolute;
 	z-index:100;
 }
 	#s36_footer .s36_footerbtn{
@@ -380,4 +379,30 @@ a.green-cross {
 a.green-cross {
     background: url("../../img/green-cross.png") no-repeat scroll left center transparent;
     padding-left: 15px;
+}
+
+/* star ratings styles! yeah baby! */
+.star-ratings{
+	display:block;
+	margin-top:5px;
+	margin-bottom:20px;
+}
+.star-ratings .star-container{
+	width:120px;
+	float:left;
+}
+.star-ratings .star-container .star{
+	float:left;
+	width:24px;
+	height:24px;
+	background:url(../../img/star-ratings.png);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	cursor:pointer;
+}
+.star-text{
+	padding-top:6px;
+	margin-left:10px;
+	font-size:14px;
+	font-weight:bold;
 }

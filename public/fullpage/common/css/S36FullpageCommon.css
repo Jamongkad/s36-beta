@@ -170,7 +170,7 @@ a:hover{
 }
 .barLinks .left-links{
 	float:left;
-	border-left:#172936 1px solid;
+	/*border-left:#172936 1px solid;*/
 }
 .barLinks ul li ul li{
 	display:block;

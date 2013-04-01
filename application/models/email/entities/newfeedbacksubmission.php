@@ -29,6 +29,7 @@ class NewFeedbackSubmission extends EmailFixture {
                            ->subject($this->get_subject())
                            ->html_message($email_html)
                            ->send();          
+
         }    
     }
 

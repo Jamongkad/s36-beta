@@ -1,10 +1,3 @@
-<?=HTML::style('css/widget_master/new_form.css');?>
-<?=HTML::script('js/jcycle.js');?>
-<?=HTML::script('js/jquery.ui.widget.js');?>
-<?=HTML::script('js/jquery.iframe-transport.js');?>
-<?=HTML::script('js/jquery.fileupload.js');?>
-<?=HTML::script('https://cloud.github.com/downloads/bytespider/jsOAuth/jsOAuth-1.3.6.min.js');?>
-<?=HTML::script('js/jquery.oauth.js');?>
 
 <!-- file upload js requirements -->
 
@@ -33,24 +26,6 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
 <script type="text/javascript">
     FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
 </script>
-
-<script type="text/javascript" src="https://platform.linkedin.com/in.js">
-
-  <?if($env == 'development'):?>
-  //DEV API KEY
-  api_key: 1m2dv6lkxpoa
-  <?endif?>
-
-  <?if($env == 'production'):?>
-  //PROD API KEY
-  api_key: 1b773lzkdw3f
-  <?endif?>
-
-  authorize: true
-  scope: r_fullprofile r_emailaddress
-</script>
- 
-<?=HTML::script('js/form.script.js');?>
 
 <div id="formBox">
     <form action="" method="POST" enctype="multipart/form-data">

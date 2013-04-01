@@ -200,7 +200,6 @@ $(document).keypress(function(event){
 	}	
 
 		 function fb_connect_success(obj){
-   
 			  if(obj.location != undefined) {
 			      if(obj.location.name != undefined) {
                       var loc = obj.location.name;
@@ -287,7 +286,6 @@ $(document).keypress(function(event){
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
 			}, done: function(e, data){
-				$('.button-disabler').hide();
                 $('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
@@ -318,7 +316,7 @@ $(document).keypress(function(event){
 				
 				//close the file upload window
 				close_file_upload();
-                
+				$('.button-disabler').hide();
             }
 		});
 		// initialize the photo upload script
@@ -347,9 +345,8 @@ $(document).keypress(function(event){
 					$.post(delete_url);
 				}
 			},done: function(e, data){
-				$('.button-disabler').hide();
 				$('<img />')
-					.attr('src', data.result[0].url)
+					.attr('src', data.result[0].medium_url)
 					.load(function(e){
 						var max_ht = 105;
 						var img_ht = e.currentTarget.height;
@@ -358,9 +355,10 @@ $(document).keypress(function(event){
 							margin = 10;
 						}
 						$('.loading-box').fadeOut('fast');
-						$('#preview_photo').attr({'src':data.result[0].url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
+						$('#preview_photo').attr({'src':data.result[0].medium_url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
 						$('#avatar_filename').val(data.result[0].name);
 				});
+				$('.button-disabler').hide();
 			}
 		});
 		
@@ -420,7 +418,6 @@ $(document).keypress(function(event){
 		}).click(function(){
 			// send the rating value to the rating plugin
 			var index = $(this).index() + 1;
-			console.log('you sent a '+index+' star rating');
 			$('#rating').val(index);
 		});
 		
@@ -598,7 +595,6 @@ $(document).keypress(function(event){
 			var review_image_container = $('#review-images');
 			var upload_image_container = $('#uploaded_images_preview');
 			var delete_url = $(this).attr('data-url');
-			console.log(delete_url);
 			$.post(delete_url);
 			$(this).parent().fadeOut('fast',function(){
 				review_image_container.children().eq(index).remove();
@@ -731,8 +727,8 @@ $(document).keypress(function(event){
 			}else{
 				var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 				var url = new RegExp(expression);
-				if(!value.match(url)) return false
-				else return true;
+				if(!value.match(url)) {return false;}
+				else {return true;}
 			}
 		}
 		else if(type == "email"){ //if type is email
@@ -795,16 +791,14 @@ $(document).keypress(function(event){
 				country.focus();
 				display_error_mes(['Please select your country']);
 				return false;
-			}else if(!website.hasClass('default-text')){
-				if(!validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
+			}else if(!website.hasClass('default-text') && !validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
 				website.focus();
 				display_error_mes(['Please enter a valid website address']);
 				return false;
 				}
-			}
 			else{
 				return true;
-			}
+			}			
 		}
 	}
 

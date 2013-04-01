@@ -229,16 +229,16 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                             <input type="radio" id="permission1" name="your_permission" value="1" />
                                         </div>
                                         <label for="permission1">
-                                        <div class="s36_perm_details">
-                                        	<br />
-                                            <div class="s36_perm_icon">
-                                                <div class="s36_perm_icon1"></div>
+                                            <div class="s36_perm_details">
+                                                <br />
+                                                <div class="s36_perm_icon">
+                                                    <div class="s36_perm_icon1"></div>
+                                                </div>
+                                                <div class="s36_perm_text">
+                                                    <h3>Yes, with full permission</h3>
+                                                    <p>This allows us to use the positive feedback anywhere and everywhere we want. </p>
+                                                </div>
                                             </div>
-                                            <div class="s36_perm_text">
-                                                <h3>Yes, with full permission</h3>
-                                                <p>This allows us to use the positive feedback anywhere and everywhere we want. </p>
-                                            </div>
-                                        </div>
                                         </label>
                                     </div>
                                     <div class="s36_block limited">
@@ -246,16 +246,16 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                             <input type="radio" id="permission2" name="your_permission" value="2"  />
                                         </div>
                                         <label for="permission2">
-                                        <div class="s36_perm_details">
-                                        	<br />
-                                            <div class="s36_perm_icon">
-                                                <div class="s36_perm_icon2"></div>
+                                            <div class="s36_perm_details">
+                                                <br />
+                                                <div class="s36_perm_icon">
+                                                    <div class="s36_perm_icon2"></div>
+                                                </div>
+                                                <div class="s36_perm_text">
+                                                    <h3>Yes, but with limited permission</h3>
+                                                    <p>This allows us to use the feedback only on the website.</p>
+                                                </div>
                                             </div>
-                                            <div class="s36_perm_text">
-                                                <h3>Yes, but with limited permission</h3>
-                                                <p>This allows us to use the feedback only on the website.</p>
-                                            </div>
-                                        </div>
                                         </label>
                                     </div>
                                     <div class="s36_block private">
@@ -263,16 +263,16 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                             <input type="radio" id="permission3" name="your_permission" value="3" />
                                         </div>
                                         <label for="permission3">
-                                        <div class="s36_perm_details">
-                                        	<br />
-                                            <div class="s36_perm_icon">
-                                                <div class="s36_perm_icon3"></div>
+                                            <div class="s36_perm_details">
+                                                <br />
+                                                <div class="s36_perm_icon">
+                                                    <div class="s36_perm_icon3"></div>
+                                                </div>
+                                                <div class="s36_perm_text">
+                                                    <h3>Keep your feedback private</h3>
+                                                    <p>This feedback is NOT public.</p>
+                                                </div>
                                             </div>
-                                            <div class="s36_perm_text">
-                                                <h3>Keep your feedback private</h3>
-                                                <p>This feedback is NOT public.</p>
-                                            </div>
-                                        </div>
                                         </label>
                                     </div>
                                 </div>
@@ -340,24 +340,24 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                             <div class="step-contents">
 
                                 <div id="hostform_info" style="width:50%;float:left;">
-                                <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
-                                    <tr><td colspan="2"><strong>Required Fields</strong></td></tr>
-                                    <tr><td><input type="text" id="your_fname" class="regular-text required" title="First Name" value="" /></td><td><input type="text" id="your_lname" class="regular-text required" title="Last Name" value="" /></td></tr>
-                                    <tr><td colspan="2"><input type="text" id="your_email" class="regular-text required long" title="Email Address" value="" /></td></tr>
-                                </table>
-                                <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
-                                    <tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td>
-                                    <select id="your_country" class="regular-select required" title="Country">
-                                        <option>Country</option>
-                                        <?foreach($country as $countries):?>
-                                            <option value="<?=$countries->code?>"><?=$countries->name?></option>
-                                        <?endforeach?>         
-                                    </select>
-                                        </td></tr>
-                                        <tr><td colspan="2"><strong>Optional info - but great to include!</strong></td></tr>
-                                        <tr><td><input type="text" id="your_company" value="" class="regular-text" title="Company Name" /></td><td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
-                                        <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
-                                </table>
+                                    <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
+                                        <tr><td colspan="2"><strong>Required Fields</strong></td></tr>
+                                        <tr><td><input type="text" id="your_fname" class="regular-text required" title="First Name" value="" /></td><td><input type="text" id="your_lname" class="regular-text required" title="Last Name" value="" /></td></tr>
+                                        <tr><td colspan="2"><input type="text" id="your_email" class="regular-text required long" title="Email Address" value="" /></td></tr>
+                                    </table>
+                                    <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
+                                        <tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td>
+                                        <select id="your_country" class="regular-select required" title="Country">
+                                            <option>Country</option>
+                                            <?foreach($country as $countries):?>
+                                                <option value="<?=$countries->code?>"><?=$countries->name?></option>
+                                            <?endforeach?>         
+                                        </select>
+                                            </td></tr>
+                                            <tr><td colspan="2"><strong>Optional info - but great to include!</strong></td></tr>
+                                            <tr><td><input type="text" id="your_company" value="" class="regular-text" title="Company Name" /></td><td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
+                                            <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
+                                    </table>
                                 </div>
 
                                 <div id="hostform_photo" style="width:50%;float:left;">

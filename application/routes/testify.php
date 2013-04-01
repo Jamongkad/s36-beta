@@ -65,29 +65,18 @@ return array(
         $tf->beforeEach(function($tf) {
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
             $tf->data->replydata = new Email\Entities\ReplyData;
+            $tf->data->dbuser    = new DBUser;
         });
 
         $tf->test('Email Test', function($tf) {  
+            $feedback = $tf->data->feedback->pull_feedback_by_id(1107);
+            $emails = $tf->data->dbuser->pull_user_emails_by_company_id(6);
+            $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
+            $submission_data->set_feedback($feedback)
+                            ->set_sendtoaddresses($emails);
 
-            $replyto = "wrm932@gmail.com";
-            $bcc = null;//"wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,";
-            $tf->data->replydata
-                      ->subject("Hey Mathew what's up?")
-                      ->bcc($bcc)
-                      ->sendto("wrm932@gmail.com")
-                      ->copyme(1, $replyto)
-                      ->from( 
-                          (object) Array(
-                            "replyto" => $replyto 
-                          , "username"  => "Mathew"
-                          ) 
-                        )
-                      ->message("Mathew is a kewl dude.")
-                      ->feedbackdata($tf->data->feedback->pull_feedback_by_id(528));            
-
-            $tf->dump($tf->data->replydata);  
-            $emailservice = new Email\Services\EmailService($tf->data->replydata); 
-            $tf->assert($emailservice->send_email());  
+            $emailservice = new Email\Services\EmailService($submission_data);
+            $emailservice->send_email();
         });
 
         $tf->run();  

@@ -52,18 +52,17 @@ return array(
                                                        , $company_info->fullpagecompanyname
                                                        , $company_info->domain);
 
-        $meta = new Hosted\Services\HostedMetadata(Array(
+        $fullpagedata = new Hosted\Services\FullpageData(Array(
              'company_name' => $company_info->company_name
            , 'company_id'   => $company_info->companyid
         ));
 
-        $meta->calculate_metrics();
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
                                                   , 'company_social'    => $company_social
                                                   , 'user'              => $user
                                                   , 'feeds'             => $feeds 
-                                                  , 'feed_count'        => $meta->perform()
+                                                  , 'feed_count'        => $fullpagedata->calculate_metrics()
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
@@ -125,15 +124,15 @@ return array(
         
     },
         
-    'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
-        $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
-        $widget = $widgetloader->load();
+    'GET /submit/(:any)' => function($widgetkey) use ($hosted_settings, $dbw, $company) {
+        $widgetloader = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
+        $widget = $widgetloader->load();        
 
+        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array()); 
+        /*
         $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
-        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
-                                                      'widget' => $widget->render_hosted()
-                                                    , 'company_header' => $header_view)); 
+        */
     },
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
@@ -163,7 +162,10 @@ return array(
        <iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($obj->feedback_url).'&amp;send=false&amp;layout=standard&amp;width=390&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35&amp;appId='.Config::get('application.fb_id').'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:390px; height:35px;" allowTransparency="true"></iframe>
         ';
         $obj->share_button = $fb_iframe;
-        echo json_encode($obj); 
+        echo json_encode($obj);
+
+        //remove some session variables used in submission form
+        Session::forget('uploaded_avatar');
     },
     
     'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
@@ -278,7 +280,8 @@ return array(
             if(!$user) { 
                 return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                          'errors' => Array()
-                                                       , 'warning' => 'Email does not exist.'));
+                                                       , 'warning' => 'Email does not exist.'
+                                                       , 'company' => $company_name));
             }
         
             $data = new Email\Entities\ResendPasswordData;

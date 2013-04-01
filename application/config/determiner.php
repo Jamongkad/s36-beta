@@ -50,7 +50,8 @@ class Determiner {
 
            $obj->env_name = 'development';
            $obj->fb_id = '238865422903471';
-           $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
+           //$obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
+           $obj->fb_secret = '8b61d0b1111b997a5e75e7387d470749';
        }
        
        if($this->http_host == 'kennwel-staging.gearfish.com') { 
@@ -88,7 +89,7 @@ class Determiner {
               , 'db' => 's36'
            );
 
-           $obj->deploy_env = 'https://feedback.36storiesapp.com';
+           $obj->deploy_env = 'https://'.$subdomain.'.36storiesapp.com';
            $obj->env_name = 'production';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
@@ -103,7 +104,7 @@ class Determiner {
               , 'db' => 's36'
            );
 
-           $obj->deploy_env = 'https://feedback.fdback.com';
+           $obj->deploy_env = 'https://'.$subdomain.'.fdback.com';
            $obj->env_name = 'production';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
