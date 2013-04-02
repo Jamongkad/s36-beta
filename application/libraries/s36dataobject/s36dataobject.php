@@ -10,6 +10,7 @@ abstract class S36DataObject {
 
     public function __construct() { 
         $this->dbh = DB::connection($this->db_name)->pdo;       
+        $this->dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $this->company_name = $this->_is_valid_company(Config::get('application.subdomain'));
         //TODO: Take note if no login cookie you cannot test inbox specific data retrieval
         if(S36Auth::check()) {
