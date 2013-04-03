@@ -80,7 +80,7 @@
                 <div class="pageContents">
                     <?php
                     $pattern_selected   = ($panel->active_background=='pattern') ? true : false;
-                    $background_image   = (!empty($panel->background_image)) ? $panel->background_image : '';
+                    $background_image   = (!empty($panel->background_image)) ? Config::get('application.hosted_background').'/'.$panel->background_image : '';
                     $background_pattern = (!empty($panel->background_pattern)) ? $panel->background_pattern : '';
                     ?>
                     <div class="pageTitle">
