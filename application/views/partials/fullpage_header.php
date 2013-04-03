@@ -105,8 +105,7 @@ $image = ( trim($company->image) != '' ? $url . '/uploaded_images/coverphoto/' .
 <meta property="og:type" content="website">
 <meta property="og:image" content="<?php echo $image; ?>">
 <meta property="og:url" content="<?php echo $url; ?>">
-<meta property="fb:app_id" content="259670914062599">
-<!-- <meta property="fb:app_id" content="171323469605899"> -->
+<meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>">
 </head>
 <body>
 
