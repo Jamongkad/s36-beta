@@ -181,7 +181,7 @@
 					}
 					field += '<div class="chk_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" value="' + title + '" /></div>';
+					field += '<input type="text" name="title" id="' + last_id + '" value="' + title + '" /></div>';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
 					if (typeof (values) === 'object') {
@@ -209,7 +209,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
-					field += '<input type="text" value="' + value + '" />';
+					field += '<input type="text" id="checkbox' + last_id + '"value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;

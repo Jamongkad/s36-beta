@@ -186,11 +186,12 @@ return array(
             foreach(Input::get('frmb') as $controls) {
                 Helpers::dump($controls);
             }
+
+            echo json_encode(Array(
+                'input_text' => 1 
+            ));   
         }
 
-        echo json_encode(Array(
-            'input_text' => 1 
-        ));   
         /*
         if(Input::has('frmb') and Input::has('form_id')) {
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
