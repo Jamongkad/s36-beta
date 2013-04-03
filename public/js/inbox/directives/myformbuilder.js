@@ -34,6 +34,7 @@ angular.module('formbuilder', [])
                             new Status().notify("Processing...", 1000); 
                         }
                       , success: function(responseText, statusText, xhr, $form) {     
+
                             var widget_key      = responseText.submit.widget.widgetkey;
                             var widget_store_id = responseText.submit.widget.widgetstoreid;
                             var company_id      = responseText.submit.widget.company_id;

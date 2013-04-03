@@ -59,7 +59,6 @@
      , '/js/inbox/DropDownChange.js'
      , '/js/inbox/InboxStatusChange.js'
      , '/js/inbox/InboxFilters.js'
-     , '/js/inbox/FeedSetup.js'
      , '/js/inbox/Status.js'
      , '/js/inbox/Settings.js'
      , '/js/inbox/s36application.js'
