@@ -64,8 +64,6 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id, $load_submission_form=True); 
         $widget = $wl->widget_obj;
 
-        Helpers::dump($widget);
-
         $widget_themes->build_menu_structure();
 
         if($widget->widgettype == 'display') {
@@ -159,8 +157,7 @@ return array(
         return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  
     }),
     
-    'POST /feedsetup/save_form_widget' => function() { 
-       
+    'POST /feedsetup/save_form_widget' => function() {  
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
         $form = new Widget\Entities\FormWidget;
@@ -168,8 +165,7 @@ return array(
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
-        ));  
-        
+        ));   
     },
 
     'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
