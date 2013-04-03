@@ -31,7 +31,7 @@ angular.module('formbuilder', [])
                     $(form).ajaxSubmit({
                         dataType: 'json'       
                       , beforeSubmit: function(formData, jqForm, options) {
-                            new Status().notify("Processing...", 1000); 
+                            new Status().notify("Processing...shit", 1000); 
                         }
                       , success: function(responseText, statusText, xhr, $form) {     
                             var widget_key      = responseText.submit.widget.widgetkey;
