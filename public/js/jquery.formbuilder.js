@@ -177,7 +177,6 @@
 			// adds a checkbox element
 			var appendCheckboxGroup = function (values, options, required) {
 					var title = '';
-                    console.log(myid++);
 					if (typeof (options) === 'object') {
 						title = options[0];
 					}
@@ -203,6 +202,7 @@
 			// Checkbox field html, since there may be multiple
 			var checkboxFieldHtml = function (values) {
 					var checked = false;
+                    console.log(myid++);
 					var value = '';
 					if (typeof (values) === 'object') {
 						value = values[0];
