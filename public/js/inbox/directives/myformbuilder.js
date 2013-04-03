@@ -31,7 +31,7 @@ angular.module('formbuilder', [])
                     $(form).ajaxSubmit({
                         dataType: 'json'       
                       , beforeSubmit: function(formData, jqForm, options) {
-                            new Status().notify("Processing...shit", 1000); 
+                            new Status().notify("Processing...", 1000); 
                         }
                       , success: function(responseText, statusText, xhr, $form) {     
                             var widget_key      = responseText.submit.widget.widgetkey;
@@ -39,7 +39,8 @@ angular.module('formbuilder', [])
                             var company_id      = responseText.submit.widget.company_id;
 
                             var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
-
+                            console.log(responseText.submit.widget);
+                            /*
                             $.ajax({
                                 type: "POST"
                               , url: "/feedsetup/buildmetadata_options"
@@ -48,6 +49,7 @@ angular.module('formbuilder', [])
                                     //window.location = formcode_url;                             
                                 }
                             });
+                            */
                         }
                     });
                 }
