@@ -79,10 +79,9 @@
             <div id="background" class="adminPage">
                 <div class="pageContents">
                     <?php
-                        $pattern_selected = false;
-                        foreach($patterns as $pattern):
-                            if($pattern['basename']==$panel->background_image) $pattern_selected=true;
-                        endforeach;
+                    $pattern_selected   = ($panel->active_background=='pattern') ? true : false;
+                    $background_image   = (!empty($panel->background_image)) ? $panel->background_image : '';
+                    $background_pattern = (!empty($panel->background_pattern)) ? $panel->background_pattern : '';
                     ?>
                     <div class="pageTitle">
                         Page Background
@@ -97,6 +96,7 @@
                     <div class="pageBody">
                     <div id="backgroundImageOptions" style="display:<?=($pattern_selected) ? 'none' : 'block' ?>">
                         <h2>Background Image</h2>
+                        <input id="background_image" type="hidden" value="<?=$background_image?>"/>
                         <div id="bgDragBox" class="">
                             <div id="dragBoxText">
                                 <span><strong>Drag your background image here</strong></span>
@@ -115,8 +115,8 @@
                         <!--current background image -->
                         <div class="optionList clear">
                             <span class="label">Current Background: </span>
-                            <span id="blankBgImage" <?=(!empty($panel->background_image) && !$pattern_selected) ? 'style="display:none"' : '' ?>></span>
-                            <span id="currentBg" <?=$pattern_selected || (empty($panel->background_image)) ? 'style="display:none"' : '' ?>>
+                            <span id="blankBgImage" <?=(!empty($panel->background_image)) ? 'style="display:none"' : '' ?>></span>
+                            <span id="currentBg" <?=(empty($panel->background_image)) ? 'style="display:none"' : '' ?>>
                                 <img id="currentBgImage" src="<?=Config::get('application.hosted_background').'/'.$panel->background_image?>"/>
                             </span>
                         </div>
@@ -147,6 +147,7 @@
                     <!-- end of backround image upload -->
                     <div id="backgroundPatternOptions" style="display:<?=($pattern_selected) ? 'block' : 'none' ?>">
                         <h2>Option Pattern</h2>
+                        <input id="background_pattern" type="hidden" value="<?=$background_pattern?>"/>
                         <br />
                         <div class="patternList jcarousel-skin-tango">
                             <ul id="patterns" class="patternList clear">

@@ -7,7 +7,9 @@ class DBHostedSettings extends S36DataObject {
     private $hosted_settings;
     private $admin_panel_fields = array(
         'theme_name',
+        'active_background',
         'background_image',
+        'background_pattern',
         'page_bg_position',
         'page_bg_repeat',
         'page_bg_color',
@@ -154,7 +156,6 @@ class DBHostedSettings extends S36DataObject {
         
         // get only the data with valid keys.
         $valid_data = array_intersect_key((array)$data, $panel_fields);
-        
         
         // extra validatios on some fields.
         

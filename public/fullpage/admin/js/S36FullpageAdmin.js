@@ -224,14 +224,20 @@ var S36FullpageAdmin = function(layoutObj){
         $('#selectedBackground').change(function(){
             var bg = $(this).val();
             if(bg == "pattern"){
+                image_path = 'fullpage/common/img/patterns/'+$('#background_pattern').val();
                 $('#backgroundImageOptions').hide();
                 $('#backgroundPatternOptions').fadeIn('fast');
                 $('#adminWindowPages').animate({height:'235'});
+                $('body').css('background-image','url('+image_path+')');
             }else{
+                image_path = 'uploaded_images/hosted_background/'+$('#background_image').val();
                 $('#backgroundImageOptions').fadeIn();
                 $('#backgroundPatternOptions').hide();
                 $('#adminWindowPages').animate({height:'496'});
+                $('body').css('background-image','url('+image_path+')');
+                $('#currentBgImage').attr('src',image_path)
             }
+            PanelAutoSaver.set_data('active_background', bg);
         });
         /* ========================================
         || Background position toggler
@@ -547,7 +553,8 @@ var PanelAutoSaver = new function(layoutObj){
         });
         
         $('.patternItem').click(function(){
-            PanelAutoSaver.set_data('background_image', $(this).attr('id'));
+            $('#background_pattern').val($(this).attr('id'));
+            PanelAutoSaver.set_data('background_pattern', $(this).attr('id'));
             PanelAutoSaver.set_data('page_bg_position', 'left');
             PanelAutoSaver.set_data('page_bg_repeat', 'repeat');
         });
