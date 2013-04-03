@@ -78,9 +78,7 @@ return array(
         }
         
         return View::of_layout()->partial('contents', $edit_view, Array( 
-            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
-          , 'effects_options' => DB::table('Effects', 'master')->get()
-          , 'company_id'      => S36Auth::user()->companyid
+            'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
