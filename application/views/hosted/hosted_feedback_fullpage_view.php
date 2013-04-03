@@ -60,6 +60,17 @@
             </div>
             
             <?php if( $feed_count->published_feed_count == 0 ): ?>
+                <div class="hosted-block">
+                        <div class="company-description clear">
+                            <div class="company-text" style="width:100%">
+                                <? // keep the content of fullpage_desc_text in one line. ?>
+                                <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                                <?php if( ! is_null($user) ): ?>
+                                    <textarea id="fullpage_desc_textbox" rows="3"></textarea>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                </div>
                 <div id="blankHostedPage">
                     <h1 class="first-head">Hey! Looks like you're the first one here. </h1>
                     <h1>Send in some feedback for <?php echo ucfirst(HTML::entities($company->company_name)); ?> by clicking below.</h1>
@@ -71,7 +82,7 @@
                 </div>
             <?php endif; ?>
             
-            <?php if( $feed_count->published_feed_count != 0 ): ?>
+            <?php if( $feed_count->published_feed_count > 0 ): ?>
                 <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
                     <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
                     <div class="hosted-block">

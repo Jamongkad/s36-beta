@@ -126,6 +126,8 @@ var S36FullpageAdmin = function(layoutObj){
             $('.patternItem.active').removeClass('active');
             $(this).addClass('active');
             self.apply_pattern_design($(this).attr('id'));
+            $('#currentBg').hide();
+            $('#blankBgImage').show();
         });
         /* ========================================
         || Create pages for the admin window for each links
@@ -179,6 +181,9 @@ var S36FullpageAdmin = function(layoutObj){
                 self.hide_notification();
                 PanelAutoSaver.set_data('background_image', data.result[0].name);
                 $('.patternItem').removeClass('active');  // so we can distinguish the type of our bg.
+                $('#currentBgImage').attr('src',data.result[0].url);
+                $('#blankBgImage').hide();
+                $('#currentBg').show();
             }
         });
         /* ========================================
@@ -212,6 +217,39 @@ var S36FullpageAdmin = function(layoutObj){
             var classes = $(this).attr('display-array');
             self.hide_element(classes, $(this).is('.off'));
             $(this).toggleClass('off');
+        });
+        /* ========================================
+        || Background image or pattern toggler
+        ==========================================*/
+        $('#selectedBackground').change(function(){
+            var bg = $(this).val();
+            if(bg == "pattern"){
+                image_path = 'fullpage/common/img/patterns/'+$('#background_pattern').val();
+                $('#backgroundImageOptions').hide();
+                $('#backgroundPatternOptions').fadeIn('fast');
+                $('#adminWindowPages').animate({height:'235'});
+                $('body').css('background-image','url('+image_path+')');
+                
+                self.change_background_position('left');
+                self.change_background_repeat('repeat');
+                PanelAutoSaver.set_data('page_bg_position', 'left');
+                PanelAutoSaver.set_data('page_bg_repeat', 'repeat');
+            }else{
+                image_path = 'uploaded_images/hosted_background/'+$('#background_image').val();
+                active_pos = $('.bgPos.active').attr('val');
+                active_rep = $('.bgRepeat.active').attr('val');
+                $('#backgroundImageOptions').fadeIn();
+                $('#backgroundPatternOptions').hide();
+                $('#adminWindowPages').animate({height:'496'});
+                $('body').css('background-image','url('+image_path+')');
+                $('#currentBgImage').attr('src',image_path)
+
+                self.change_background_position(active_pos);
+                self.change_background_repeat(active_rep);
+                PanelAutoSaver.set_data('page_bg_position',active_pos);
+                PanelAutoSaver.set_data('page_bg_repeat',active_rep);
+            }
+            PanelAutoSaver.set_data('active_background', bg);
         });
         /* ========================================
         || Background position toggler
@@ -527,7 +565,8 @@ var PanelAutoSaver = new function(layoutObj){
         });
         
         $('.patternItem').click(function(){
-            PanelAutoSaver.set_data('background_image', $(this).attr('id'));
+            $('#background_pattern').val($(this).attr('id'));
+            PanelAutoSaver.set_data('background_pattern', $(this).attr('id'));
             PanelAutoSaver.set_data('page_bg_position', 'left');
             PanelAutoSaver.set_data('page_bg_repeat', 'repeat');
         });

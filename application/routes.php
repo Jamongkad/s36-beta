@@ -87,7 +87,7 @@ return array(
         if( ! is_object($user) ) return 'You should be logged in to do this action';
         
         $input = Input::get();
-        $hosted_settings->update_panel_settings($user->companyid, (object)$input);
+        $update = $hosted_settings->update_panel_settings($user->companyid, (object)$input);
         return json_encode($input);
     },
 
