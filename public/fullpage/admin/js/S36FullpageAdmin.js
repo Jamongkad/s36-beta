@@ -182,6 +182,7 @@ var S36FullpageAdmin = function(layoutObj){
                 PanelAutoSaver.set_data('background_image', data.result[0].name);
                 $('.patternItem').removeClass('active');  // so we can distinguish the type of our bg.
                 $('#currentBgImage').attr('src',data.result[0].url);
+                $('#background_image').val(data.result[0].url);
                 $('#blankBgImage').hide();
                 $('#currentBg').show();
             }
@@ -229,20 +230,28 @@ var S36FullpageAdmin = function(layoutObj){
                 $('#backgroundPatternOptions').fadeIn('fast');
                 $('#adminWindowPages').animate({height:'235'});
                 $('body').css('background-image','url('+image_path+')');
-                
+
                 self.change_background_position('left');
                 self.change_background_repeat('repeat');
                 PanelAutoSaver.set_data('page_bg_position', 'left');
                 PanelAutoSaver.set_data('page_bg_repeat', 'repeat');
             }else{
-                image_path = 'uploaded_images/hosted_background/'+$('#background_image').val();
+                image_path = $('#background_image').val();
                 active_pos = $('.bgPos.active').attr('val');
                 active_rep = $('.bgRepeat.active').attr('val');
                 $('#backgroundImageOptions').fadeIn();
                 $('#backgroundPatternOptions').hide();
                 $('#adminWindowPages').animate({height:'496'});
                 $('body').css('background-image','url('+image_path+')');
-                $('#currentBgImage').attr('src',image_path)
+                $('#currentBgImage').attr('src',image_path);
+                if(image_path==''){
+                    $('#blankBgImage').show();
+                    $('#currentBg').hide();
+                }
+                else{
+                    $('#blankBgImage').hide();
+                    $('#currentBg').show();
+                }
 
                 self.change_background_position(active_pos);
                 self.change_background_repeat(active_rep);
