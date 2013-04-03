@@ -115,8 +115,8 @@
                         <!--current background image -->
                         <div class="optionList clear">
                             <span class="label">Current Background: </span>
-                            <span class="blankBgImage" <?=(!empty($panel->background_image)) ? 'style="display:none"' : '' ?>></span>
-                            <span id="currentBg" <?=(empty($panel->background_image)) ? 'style="display:none"' : '' ?>>
+                            <span id="blankBgImage" <?=(!empty($panel->background_image) && !$pattern_selected) ? 'style="display:none"' : '' ?>></span>
+                            <span id="currentBg" <?=$pattern_selected || (empty($panel->background_image)) ? 'style="display:none"' : '' ?>>
                                 <img id="currentBgImage" src="<?=Config::get('application.hosted_background').'/'.$panel->background_image?>"/>
                             </span>
                         </div>

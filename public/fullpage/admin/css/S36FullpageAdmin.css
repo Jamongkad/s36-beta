@@ -157,10 +157,10 @@
 	font-size: 11px;
 }
 #currentBgImage{
-	height: 12%;
+	height: 60px;
 	border: 4px solid #cecece;
 }
-.blankBgImage{
+#blankBgImage{
 	display: inline-block;
 	width: 70px;
 	height: 50px;

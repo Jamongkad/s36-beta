@@ -126,6 +126,8 @@ var S36FullpageAdmin = function(layoutObj){
             $('.patternItem.active').removeClass('active');
             $(this).addClass('active');
             self.apply_pattern_design($(this).attr('id'));
+            $('#currentBg').hide();
+            $('#blankBgImage').show();
         });
         /* ========================================
         || Create pages for the admin window for each links
@@ -180,7 +182,7 @@ var S36FullpageAdmin = function(layoutObj){
                 PanelAutoSaver.set_data('background_image', data.result[0].name);
                 $('.patternItem').removeClass('active');  // so we can distinguish the type of our bg.
                 $('#currentBgImage').attr('src',data.result[0].url);
-                $('.blankBgImage').hide();
+                $('#blankBgImage').hide();
                 $('#currentBg').show();
             }
         });
