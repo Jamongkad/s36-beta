@@ -40,8 +40,6 @@ angular.module('formbuilder', [])
                             var company_id      = responseText.submit.widget.company_id;
 
                             var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
-                            console.log(responseText.submit.widget);
-                            /*
                             $.ajax({
                                 type: "POST"
                               , url: "/feedsetup/buildmetadata_options"
@@ -50,7 +48,6 @@ angular.module('formbuilder', [])
                                     //window.location = formcode_url;                             
                                 }
                             });
-                            */
                         }
                     });
                 }

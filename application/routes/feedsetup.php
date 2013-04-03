@@ -181,6 +181,8 @@ return array(
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
+        Helpers::dump(Input::get());
+        /*
         if(Input::has('frmb') and Input::has('form_id')) {
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
@@ -195,6 +197,7 @@ return array(
         } else {
             return $dbw->delete();
         } 
+        */
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
