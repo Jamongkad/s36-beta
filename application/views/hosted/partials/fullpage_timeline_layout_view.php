@@ -184,7 +184,7 @@
             <div class="admin-comment-block">
                 <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                 <div class="admin-name">
-                    <?=$user->fullname?> from <?=$admin_companyname?> says.. 
+                    <?=$admin_companyname?> says.. 
                     <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                 </div>
                 <div class="admin-message clear">
@@ -209,7 +209,7 @@
             <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
             <div class="admin-comment-block">
                 <div class="admin-comment">
-                    <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
+                    <div class="admin-name"><?=$admin_companyname?> says..</div>
                     <div class="admin-message clear">
                         <div class="admin-avatar">
                         <img src="<?=$admin_avatar?>" width="32" height="32" /></div>

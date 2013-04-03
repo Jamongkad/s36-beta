@@ -70,10 +70,12 @@
                         <?=HTML::link('feedsetup'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Feedback Setup')?>
                        <?=($regex->feedsetup ? '<div class="arrow-right"></div>' : null)?>
                     </li>
+                    <!--
                     <li<?=($regex->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>
                         <?=HTML::link('contacts', 'Contacts')?>
                        <?=($regex->contacts ? '<div class="arrow-right"></div>' : null)?>
                     </li>
+                    -->
                 </ul>
             </div>
             <div class="left-buttons">
@@ -148,13 +150,6 @@
                         PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <!--
-                <?if($regex->featured):?>
-                    <div class="current-page featured"> 
-                        FEATURED 
-                    </div>
-                <?endif?>
-                -->
                 <?if($regex->filed):?>
                     <div class="current-page filed"> 
                         FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
