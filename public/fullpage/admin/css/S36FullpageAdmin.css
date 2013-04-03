@@ -152,6 +152,21 @@
 	font-weight:bold;
 	color:#de4c09;
 }
+.background-chooser {
+	float: right;
+	font-size: 11px;
+}
+#currentBgImage{
+	height: 12%;
+	border: 4px solid #cecece;
+}
+.blankBgImage{
+	display: inline-block;
+	width: 70px;
+	height: 50px;
+	background: #fff;
+	border: 4px solid #ccc;
+}
 #adminWindowBox h2{
 	font-weight:bold;
 }

@@ -179,6 +179,9 @@ var S36FullpageAdmin = function(layoutObj){
                 self.hide_notification();
                 PanelAutoSaver.set_data('background_image', data.result[0].name);
                 $('.patternItem').removeClass('active');  // so we can distinguish the type of our bg.
+                $('#currentBgImage').attr('src',data.result[0].url);
+                $('.blankBgImage').hide();
+                $('#currentBg').show();
             }
         });
         /* ========================================
@@ -212,6 +215,21 @@ var S36FullpageAdmin = function(layoutObj){
             var classes = $(this).attr('display-array');
             self.hide_element(classes, $(this).is('.off'));
             $(this).toggleClass('off');
+        });
+        /* ========================================
+        || Background image or pattern toggler
+        ==========================================*/
+        $('#selectedBackground').change(function(){
+            var bg = $(this).val();
+            if(bg == "pattern"){
+                $('#backgroundImageOptions').hide();
+                $('#backgroundPatternOptions').fadeIn('fast');
+                $('#adminWindowPages').animate({height:'235'});
+            }else{
+                $('#backgroundImageOptions').fadeIn();
+                $('#backgroundPatternOptions').hide();
+                $('#adminWindowPages').animate({height:'496'});
+            }
         });
         /* ========================================
         || Background position toggler
