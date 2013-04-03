@@ -39,7 +39,6 @@
 		};
 		var opts = $.extend(defaults, options);
 		var frmb_id = 'frmb-' + $('ul[id^=frmb-]').length++;
-        var myid = 0;
 		return this.each(function () {
 			var ul_obj = $(this).append('<ul id="' + frmb_id + '" class="frmb"></ul>').find('ul');
 			var field = '', field_type = '', last_id = 1, help, form_db_id;
@@ -200,6 +199,7 @@
 					appendFieldLi(opts.messages.checkbox_group, field, required, help);
 				};
 			// Checkbox field html, since there may be multiple
+            var myid = 0;
 			var checkboxFieldHtml = function (values) {
 					var checked = false;
                     console.log(myid++);
