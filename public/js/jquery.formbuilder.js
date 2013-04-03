@@ -39,6 +39,7 @@
 		};
 		var opts = $.extend(defaults, options);
 		var frmb_id = 'frmb-' + $('ul[id^=frmb-]').length++;
+        var myid = 0;
 		return this.each(function () {
 			var ul_obj = $(this).append('<ul id="' + frmb_id + '" class="frmb"></ul>').find('ul');
 			var field = '', field_type = '', last_id = 1, help, form_db_id;
@@ -176,6 +177,7 @@
 			// adds a checkbox element
 			var appendCheckboxGroup = function (values, options, required) {
 					var title = '';
+                    console.log(myid++);
 					if (typeof (options) === 'object') {
 						title = options[0];
 					}
@@ -209,7 +211,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
-					field += '<input type="text" id="checkbox' + frmb_id + '" value="' + value + '" />';
+					field += '<input type="text" id="checkbox' + last_id + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
