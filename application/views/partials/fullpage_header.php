@@ -95,7 +95,7 @@ $company = DB::table('Company')
 
 $title = ucfirst($company->name) . '\'s Customer Feedback & Reviews page';
 $description = (trim($company->description) != '' ? $company->description : 'Welcome to ' . ucfirst($company->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
-$url = 'https://' . $company->name . '.fdback.com';
+$url = Config::get('application.url');
 $image = ( trim($company->image) != '' ? $url . '/uploaded_images/coverphoto/' . $company->image : $url . '/fullpage/common/img/fdback-logo-vertical.jpg' );
 
 ?>
