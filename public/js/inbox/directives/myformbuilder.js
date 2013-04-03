@@ -42,6 +42,7 @@ angular.module('formbuilder', [])
                             var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
                             $.ajax({
                                 type: "POST"
+                              , dataType: 'json'       
                               , url: "/feedsetup/buildmetadata_options"
                               , data: $("ul[id^=frmb-]").serializeFormList({ prepend: "frmb" }) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                               , success: function(msg) {
