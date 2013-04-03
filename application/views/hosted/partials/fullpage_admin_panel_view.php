@@ -113,10 +113,6 @@
                             </div>
                         </div>
                         <!--current background image -->
-                        <?php /*
-                        style="<?=(empty($panel->background_image)) ? 'display:none' : ''?>"
-                        */ ?>
-
                         <div class="optionList clear">
                             <span class="label">Current Background: </span>
                             <span class="blankBgImage" <?=(!empty($panel->background_image)) ? 'style="display:none"' : '' ?>></span>
