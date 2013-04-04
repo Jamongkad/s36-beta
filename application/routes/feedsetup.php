@@ -200,9 +200,10 @@ return array(
                         }
                     }
                 } else {
-                    $validation[] = $controls['groupId'];
+                    if(!$controls['values']) {
+                        $validation[] = $controls['groupId'];     
+                    } 
                 }
-
             }
 
             echo json_encode(Array(
