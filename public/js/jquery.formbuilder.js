@@ -445,7 +445,7 @@
 			var c = 1;
 			$(this).children().each(function () {
 
-                console.log($(this));
+                console.log($(this).find('input'));
 
 				for (att = 0; att < opts.attributes.length; att++) {
  
