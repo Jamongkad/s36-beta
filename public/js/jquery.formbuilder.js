@@ -39,10 +39,12 @@
 		};
 		var opts = $.extend(defaults, options);
 		var frmb_id = 'frmb-' + $('ul[id^=frmb-]').length++;
+        var subject_id = get_random_int(1, 100);
+
 		return this.each(function () {
 			var ul_obj = $(this).append('<ul id="' + frmb_id + '" class="frmb"></ul>').find('ul');
 			var field = '', field_type = '', last_id = 1, help, form_db_id;
-            var myid = get_random_int(1, 100);
+
 			// Add a unique class to the current element
 			$(ul_obj).addClass(frmb_id);
 			// load existing form data
@@ -211,7 +213,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
-					field += '<input type="text" id="checkbox' + myid + '" value="' + value + '" />';
+					field += '<input type="text" id="checkbox' + subject_id + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
