@@ -327,7 +327,19 @@
 					last_id++;
 				};
 			// handle field delete links
-			$('.remove_elm').bind('click', function () {
+            $(document).delegate('click', '.remove_elm', function(e) {
+				$(this).parent('div').animate({
+					opacity: 'hide',
+					height: 'hide',
+					marginBottom: '0px'
+				}, 'fast', function () {
+					$(this).remove();
+				});
+                myid = 0;
+			    e.preventDefault(); 
+            });
+            /*
+			$('.remove_elm').live('click', function () {
 				$(this).parent('div').animate({
 					opacity: 'hide',
 					height: 'hide',
@@ -338,6 +350,7 @@
                 myid = 0;
 				return false;
 			});
+            */
 			// handle field display/hide
 			$('.toggle-form').live('click', function () {
 				var target = $(this).attr("id");
