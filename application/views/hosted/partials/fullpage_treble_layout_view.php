@@ -194,7 +194,17 @@
         <!-- feedback user actions -->
         <div class="feedback-options clear">
             <div class="feedback-icon-list clear">
-                <?php if( $is_recommended ): ?>
+                <div class="feedback-recommendation">
+                    <?php if( $is_recommended ): ?>
+                        <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                    <?php endif; ?>
+                    <div class="vote-block" <?=(!$is_recommended) ? 'style="padding-top:5px"' : null?>>
+                        <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
+                            Was this useful? <a href="#" class="small-btn-pin">Yes</a>
+                        </span>
+                    </div>
+                </div>
+                <!-- <?php if( $is_recommended ): ?>
                     <div class="feedback-icon">
                         <div class="feedback-icon-class recommend-icon active-icon"></div>
                         <div class="icon-tooltip">
@@ -215,41 +225,43 @@
                         </div>
                         <div class="icon-tooltip-tail"></div>
                     </div>
-                </div>
-                <div class="feedback-icon">
-                    <div class="feedback-icon-class flag-icon <?= ($flagged ? 'undo_flag_inapp active-icon' : 'flag-as-inapp'); ?>"></div>
-                    <div class="icon-tooltip">
-                        <div class="icon-tooltip-text">
-                            <?php if( $flagged ): ?>
-                                Undo flag
-                            <?php else: ?>
-                                Flag as Inappropriate
-                            <?php endif; ?>
+                </div> -->
+                <div style="float: right;">
+                    <div class="feedback-icon">
+                        <div class="feedback-icon-class flag-icon <?= ($flagged ? 'undo_flag_inapp active-icon' : 'flag-as-inapp'); ?>"></div>
+                        <div class="icon-tooltip">
+                            <div class="icon-tooltip-text">
+                                <?php if( $flagged ): ?>
+                                    Undo flag
+                                <?php else: ?>
+                                    Flag as Inappropriate
+                                <?php endif; ?>
+                            </div>
+                            <div class="icon-tooltip-tail"></div>
                         </div>
-                        <div class="icon-tooltip-tail"></div>
                     </div>
-                </div>
-                <div class="feedback-icon">
-                    <div class="feedback-icon-class share-icon"></div>
-                    <div class="icon-tooltip">
-                     <div class="icon-tooltip-text">Share</div>
-                        <div class="icon-tooltip-tail"></div>
-                    </div>
-                    <div class="share-box">
-                        <div class="share-box-arrow"></div>
-                        <div class="btn-block">
-                            <div class="fb_like_dummy" 
-                                data-href="<?=URL::to('single/'.$feed->feed_data->id)?>"
-                                data-layout="button_count"
-                                data-send="false" 
-                                data-width="80" 
-                                data-show-faces="false"></div>
+                    <div class="feedback-icon">
+                        <div class="feedback-icon-class share-icon"></div>
+                        <div class="icon-tooltip">
+                         <div class="icon-tooltip-text">Share</div>
+                            <div class="icon-tooltip-tail"></div>
                         </div>
-                        <div class="btn-block">
-                            <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
-                                data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
-                                data-text="<?=$feed->feed_data->text?>"
-                                class="tw_share_dummy">Tweet</a>
+                        <div class="share-box">
+                            <div class="share-box-arrow"></div>
+                            <div class="btn-block">
+                                <div class="fb_like_dummy" 
+                                    data-href="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                    data-layout="button_count"
+                                    data-send="false" 
+                                    data-width="80" 
+                                    data-show-faces="false"></div>
+                            </div>
+                            <div class="btn-block">
+                                <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                    data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                    data-text="<?=$feed->feed_data->text?>"
+                                    class="tw_share_dummy">Tweet</a>
+                            </div>
                         </div>
                     </div>
                 </div>

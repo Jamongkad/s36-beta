@@ -6,8 +6,8 @@ var S36FeedbackActions = new function() {
     //var undo_flag = '.undo_flag';
     var undo_flag = '.undo_flag_inapp';
     var vote_container = '.vote-action';
-    //var vote = '.vote-action a';
-    var vote = '.vote-action';
+    var vote = '.vote-action a';  // text type 
+    //var vote = '.vote-action';  // icon type
     var undo_vote = '.undo_vote';
     var vote_count = '.vote_count';
     var rating_stat = '.rating-stat';
@@ -120,13 +120,17 @@ var S36FeedbackActions = new function() {
                 type: 'post',
                 data: {'feedbackId' : this_vote.parents(feedback).attr('fid')},
                 success: function(result){
+                    // increment the vote count.
                     this_vote.parents(feedback).find(rating_stat).css('display', 'block');
                     vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
                     
-                    this_vote.addClass('active-icon');
-                    this_vote.parent().find('.icon-tooltip-text').text('You found this useful');
-                    //this_vote.parents(feedback).find(vote_container).hide();
-                    //this_vote.parents(feedback).find(undo_vote).show();
+                    // action for icon type.
+                    //this_vote.addClass('active-icon');
+                    //this_vote.parent().find('.icon-tooltip-text').text('You found this useful');
+                    
+                    // action for text type.
+                    this_vote.parents(feedback).find(vote_container).hide();
+                    //this_vote.parents(feedback).find(undo_vote).show();  // don't show the undo text.
                 }
             });
         });
