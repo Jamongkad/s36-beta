@@ -327,7 +327,7 @@
 					last_id++;
 				};
 			// handle field delete links
-			$('.remove_elm').live('click', function () {
+			$('.remove_elm').bind('click', function () {
 				$(this).parent('div').animate({
 					opacity: 'hide',
 					height: 'hide',
@@ -335,6 +335,7 @@
 				}, 'fast', function () {
 					$(this).remove();
 				});
+                myid = 0;
 				return false;
 			});
 			// handle field display/hide
