@@ -463,7 +463,7 @@
 								else {
 									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][value]=' + encodeURIComponent($(this).val());
 									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][baseline]=' + $(this).prev().attr('checked');
-									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][id]=' + $(this).prev().attr('id');
+									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][id]=' + $(this).attr('id');
 								}
 								c++;
 							});
