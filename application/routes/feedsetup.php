@@ -186,18 +186,23 @@ return array(
 
             $validation = Array();
             foreach(Input::get('frmb') as $controls) {
+                
+                if($controls['cssClass'] != 'input_text') { 
+                    if(!$controls['title']) {
+                        $validation[] = $controls['groupId'];
+                    }
 
-                if($controls['title']) {
+                    if($controls['values']) {  
+                        foreach($controls['values'] as $elements) {
+                            if(!$elements['value']) {
+                                $validation[] = $elements['id'];
+                            }
+                        }
+                    }
+                } else {
                     $validation[] = $controls['groupId'];
                 }
 
-                if($controls['values']) {  
-                    foreach($controls['values'] as $elements) {
-                        if(!$elements['value']) {
-                            $validation[] = $elements['id'];
-                        }
-                    }
-                }
             }
 
             echo json_encode(Array(
