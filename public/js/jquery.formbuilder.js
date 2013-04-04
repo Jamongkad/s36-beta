@@ -443,8 +443,10 @@
 			var ul_obj = this;
 			var li_count = 0;
 			var c = 1;
-            console.log($(this).children());
 			$(this).children().each(function () {
+
+                console.log($(this));
+
 				for (att = 0; att < opts.attributes.length; att++) {
  
 					var key = (opts.attributes[att] === 'class' ? 'cssClass' : opts.attributes[att]);
