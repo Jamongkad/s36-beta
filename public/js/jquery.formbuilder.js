@@ -39,7 +39,6 @@
 		};
 		var opts = $.extend(defaults, options);
 		var frmb_id = 'frmb-' + $('ul[id^=frmb-]').length++;
-        var subject_id = get_random_int(1, 100);
 
 		return this.each(function () {
 			var ul_obj = $(this).append('<ul id="' + frmb_id + '" class="frmb"></ul>').find('ul');
@@ -205,6 +204,7 @@
 			var checkboxFieldHtml = function (values) {
 
 					var checked = false; 
+                    var subject_id = get_random_int(1, 100);
 					var value = '';
 					if (typeof (values) === 'object') {
 						value = values[0];
