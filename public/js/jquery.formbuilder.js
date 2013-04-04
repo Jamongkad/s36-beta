@@ -454,6 +454,7 @@
 					// append the form field values
 					if (opts.attributes[att] === 'class') {
 						serialStr += opts.prepend + '[' + li_count + '][required]=' + encodeURIComponent($('#' + $(this).attr('id') + ' input.required').attr('checked'));
+						serialStr += opts.prepend + '[' + li_count + '][groupId]=' + $(this).find('input').attr('id');
 						switch ($(this).attr(opts.attributes[att])) {
 						case 'input_text':
 							serialStr += opts.prepend + '[' + li_count + '][values]=' + encodeURIComponent($('#' + $(this).attr('id') + ' input[type=text]').val());
