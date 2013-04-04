@@ -443,6 +443,7 @@
 			var ul_obj = this;
 			var li_count = 0;
 			var c = 1;
+            console.log($(this).children());
 			$(this).children().each(function () {
 				for (att = 0; att < opts.attributes.length; att++) {
  
@@ -451,7 +452,6 @@
 					// append the form field values
 					if (opts.attributes[att] === 'class') {
 						serialStr += opts.prepend + '[' + li_count + '][required]=' + encodeURIComponent($('#' + $(this).attr('id') + ' input.required').attr('checked'));
-                        console.log(serialStr);
 						switch ($(this).attr(opts.attributes[att])) {
 						case 'input_text':
 							serialStr += opts.prepend + '[' + li_count + '][values]=' + encodeURIComponent($('#' + $(this).attr('id') + ' input[type=text]').val());
