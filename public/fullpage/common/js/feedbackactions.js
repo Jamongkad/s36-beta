@@ -63,15 +63,16 @@ var S36FeedbackActions = new function() {
             
             var this_flag = $(this);
             
+            this_flag.addClass('undo_flag_inapp active-icon');
+            this_flag.removeClass('flag-as-inapp');
+            this_flag.parent().find('.icon-tooltip-text').text('Undo flag');
+            S36FeedbackActions.undo_flag();
+            
             $.ajax({
                 url: '/feedback_action/flag',
                 type: 'post',
                 data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
                 success: function(result){
-                    this_flag.addClass('undo_flag_inapp active-icon');
-                    this_flag.removeClass('flag-as-inapp');
-                    this_flag.parent().find('.icon-tooltip-text').text('Undo flag');
-                    S36FeedbackActions.undo_flag();
                     //this_flag.hide();
                     //this_flag.parents(feedback).find(undo_flag).show();
                 }
@@ -85,15 +86,17 @@ var S36FeedbackActions = new function() {
     this.undo_flag = function(){
         $(undo_flag).unbind('click.undo_flag').bind('click.undo_flag', function(e) {
             var this_undo = $(this);
+            
+            this_undo.addClass('flag-as-inapp');
+            this_undo.removeClass('undo_flag_inapp active-icon');
+            this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
+            S36FeedbackActions.flag_inapprt();
+            
             $.ajax({
                 url: '/feedback_action/unflag',
                 type: 'post',
                 data: {'feedbackId' : this_undo.parents(feedback).attr('fid')},
                 success: function(){
-                    this_undo.addClass('flag-as-inapp');
-                    this_undo.removeClass('undo_flag_inapp active-icon');
-                    this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
-                    S36FeedbackActions.flag_inapprt();
                     //this_undo.hide();
                     //this_undo.parents(feedback).find(flag).show();
                 }
