@@ -445,6 +445,9 @@
 			var c = 1;
 			$(this).children().each(function () {
 				for (att = 0; att < opts.attributes.length; att++) {
+
+                    console.log(opts.attributes[att]);
+
 					var key = (opts.attributes[att] === 'class' ? 'cssClass' : opts.attributes[att]);
 					serialStr += opts.prepend + '[' + li_count + '][' + key + ']=' + encodeURIComponent($(this).attr(opts.attributes[att]));
 					// append the form field values
