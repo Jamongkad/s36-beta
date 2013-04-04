@@ -160,8 +160,8 @@ class DBHostedSettings extends S36DataObject {
         // extra validatios on some fields.
         
         // thow away invalid social url.
-        $fb_regex = '/^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/';
-        $tw_regex = '/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/';
+        $fb_regex = '/^(https?:\/\/)?(www\.)?facebook\.com\/[\w\.-]+\/?$/';
+        $tw_regex = '/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?@?[\w\.-]+\/?$/';
         
         if( array_key_exists('facebook_url', $valid_data) ){
             if( $valid_data['facebook_url'] != '' && ! preg_match($fb_regex, $valid_data['facebook_url']) ) unset($valid_data['facebook_url']);

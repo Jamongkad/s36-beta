@@ -626,8 +626,8 @@ var PanelAutoSaver = new function(layoutObj){
         $('.social_url').blur(function(){
             
             var url = $(this).val();
-            var fb_regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/;
-            var tw_regex = /^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/;
+            var fb_regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w\.-]+\/?$/;
+            var tw_regex = /^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?@?[\w\.-]+\/?$/;
             
             $(this).parent().find('.social_url_msg').hide();
             
