@@ -327,7 +327,7 @@
 					last_id++;
 				};
 			// handle field delete links
-            $(document).delegate('click', '.remove_elm', function(e) {
+            $(document).delegate('.remove_elm', 'click', function(e) {
 				$(this).parent('div').animate({
 					opacity: 'hide',
 					height: 'hide',
