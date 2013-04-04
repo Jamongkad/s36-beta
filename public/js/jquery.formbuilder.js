@@ -199,12 +199,10 @@
 					appendFieldLi(opts.messages.checkbox_group, field, required, help);
 				};
 			// Checkbox field html, since there may be multiple
-            //var myid = 0;
-            var myid = 1;
+            var myid = 0;
 			var checkboxFieldHtml = function (values) {
-					var checked = false;
 
-                    //console.log(myid++);
+					var checked = false; 
 					var value = '';
 					if (typeof (values) === 'object') {
 						value = values[0];
@@ -213,7 +211,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
-					field += '<input type="text" id="checkbox' + myid + '" value="' + value + '" />';
+					field += '<input type="text" id="checkbox' + myid++ + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
