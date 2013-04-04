@@ -445,7 +445,7 @@
 			var c = 1;
 			$(this).children().each(function () {
 
-                console.log($(this));
+                console.log($(this).find('.frm-fld').children('input'));
 
 				for (att = 0; att < opts.attributes.length; att++) {
  
@@ -484,6 +484,7 @@
 								else {
 									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][value]=' + encodeURIComponent($(this).val());
 									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][baseline]=' + $(this).prev().attr('checked');
+									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][id]=' + $(this).attr('id');
 								}
 								c++;
 							});
