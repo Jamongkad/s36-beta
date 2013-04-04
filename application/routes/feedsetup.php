@@ -183,12 +183,25 @@ return array(
     'POST /feedsetup/buildmetadata_options' => function() { 
         //lets run some validations...
         if(Input::has('frmb')) {
+
+            $validation = Array();
             foreach(Input::get('frmb') as $controls) {
-                Helpers::dump($controls);
+
+                if($controls['title']) {
+                    $validation[] = $controls['groupId'];
+                }
+
+                if($controls['values']) {  
+                    foreach($controls['values'] as $elements) {
+                        if(!$elements['value']) {
+                            $validation[] = $elements['id'];
+                        }
+                    }
+                }
             }
 
             echo json_encode(Array(
-                'input_text' => 1 
+                'validation' => $validation
             ));   
         }
 
