@@ -42,6 +42,7 @@
 		return this.each(function () {
 			var ul_obj = $(this).append('<ul id="' + frmb_id + '" class="frmb"></ul>').find('ul');
 			var field = '', field_type = '', last_id = 1, help, form_db_id;
+            var myid = get_random_int(1, 100);
 			// Add a unique class to the current element
 			$(ul_obj).addClass(frmb_id);
 			// load existing form data
@@ -198,8 +199,7 @@
 					help = '';
 					appendFieldLi(opts.messages.checkbox_group, field, required, help);
 				};
-			// Checkbox field html, since there may be multiple
-            var myid = 0;
+			// Checkbox field html, since there may be multiple 
 			var checkboxFieldHtml = function (values) {
 
 					var checked = false; 
@@ -211,7 +211,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
-					field += '<input type="text" id="checkbox' + myid++ + '" value="' + value + '" />';
+					field += '<input type="text" id="checkbox' + myid + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
@@ -334,23 +334,10 @@
 					marginBottom: '0px'
 				}, 'fast', function () {
 					$(this).remove();
-				});
-                myid = 0;
+				}); 
 			    e.preventDefault(); 
             });
-            /*
-			$('.remove_elm').live('click', function () {
-				$(this).parent('div').animate({
-					opacity: 'hide',
-					height: 'hide',
-					marginBottom: '0px'
-				}, 'fast', function () {
-					$(this).remove();
-				});
-                myid = 0;
-				return false;
-			});
-            */
+
 			// handle field display/hide
 			$('.toggle-form').live('click', function () {
 				var target = $(this).attr("id");
@@ -518,3 +505,7 @@
 		return (serialStr);
 	};
 })(jQuery);
+
+function get_random_int(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
