@@ -8,6 +8,11 @@ var S36FullpageCommon = function(){
 	|| Function needed to run by document ready
 	==========================================*/
 	this.init_fullpage_common = function(){
+		$('.feedback-icon').hover(function(){
+			$(this).find('.icon-tooltip').fadeIn('fast');
+		},function(){
+			$(this).find('.icon-tooltip').fadeOut('fast');
+		});
 		$('#fullpage_desc.editable').click(function(){
 			$('#fullpage_desc_textbox').show().focus();
 			$('#fullpage_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );

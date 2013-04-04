@@ -1,14 +1,18 @@
 var S36FeedbackActions = new function() {    
 
     var feedback = '.feedback';  // should be the parent of other vars in its group.
-    var flag = '.flag-as';
-    var undo_flag = '.undo_flag';
+    //var flag = '.flag-as';
+    var flag = '.flag-as-inapp';
+    //var undo_flag = '.undo_flag';
+    var undo_flag = '.undo_flag_inapp';
     var vote_container = '.vote-action';
-    var vote = '.vote-action a';
+    //var vote = '.vote-action a';
+    var vote = '.vote-action';
     var undo_vote = '.undo_vote';
     var vote_count = '.vote_count';
     var rating_stat = '.rating-stat';
-    var share = '.share-button';
+    //var share = '.share-button';
+    var share = '.share-icon';
     var fb_like_dummy = '.fb_like_dummy';  // fb-like
     var tw_share_dummy = '.tw_share_dummy';  // twitter-share-button
     var send_button = '.send-button';
@@ -64,8 +68,12 @@ var S36FeedbackActions = new function() {
                 type: 'post',
                 data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
                 success: function(result){
-                    this_flag.hide();
-                    this_flag.parents(feedback).find(undo_flag).show();
+                    this_flag.addClass('undo_flag_inapp active-icon');
+                    this_flag.removeClass('flag-as-inapp');
+                    this_flag.parent().find('.icon-tooltip-text').text('Undo flag');
+                    S36FeedbackActions.undo_flag();
+                    //this_flag.hide();
+                    //this_flag.parents(feedback).find(undo_flag).show();
                 }
             });
 
@@ -82,8 +90,12 @@ var S36FeedbackActions = new function() {
                 type: 'post',
                 data: {'feedbackId' : this_undo.parents(feedback).attr('fid')},
                 success: function(){
-                    this_undo.hide();
-                    this_undo.parents(feedback).find(flag).show();
+                    this_undo.addClass('flag-as-inapp');
+                    this_undo.removeClass('undo_flag_inapp active-icon');
+                    this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
+                    S36FeedbackActions.flag_inapprt();
+                    //this_undo.hide();
+                    //this_undo.parents(feedback).find(flag).show();
                 }
             });
             e.preventDefault();
@@ -95,7 +107,6 @@ var S36FeedbackActions = new function() {
             e.preventDefault();
             
             if( $(this).is('.off') ) return;
-            
             $(this).addClass('off');
             
             var this_vote = $(this);
@@ -109,7 +120,9 @@ var S36FeedbackActions = new function() {
                     this_vote.parents(feedback).find(rating_stat).css('display', 'block');
                     vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
                     
-                    this_vote.parents(feedback).find(vote_container).hide();
+                    this_vote.addClass('active-icon');
+                    this_vote.parent().find('.icon-tooltip-text').text('You found this useful');
+                    //this_vote.parents(feedback).find(vote_container).hide();
                     //this_vote.parents(feedback).find(undo_vote).show();
                 }
             });
@@ -140,9 +153,13 @@ var S36FeedbackActions = new function() {
 
     this.share = function() {
         $(share).unbind('click.share_feedback').bind('click.share_feedback', function(e) {
-     
+            
+            var this_share = $(this);
             var fb_like = $(this).parents(feedback).find(fb_like_dummy);
             var tw_share = $(this).parents(feedback).find(tw_share_dummy);
+            
+            if( ! this_share.is('.active-icon') ) $(this).addClass('active-icon');
+            else this_share.removeClass('active-icon');
 
             if( ! fb_like.is('.fb-like') ){
                 fb_like.addClass('fb-like');
@@ -154,8 +171,9 @@ var S36FeedbackActions = new function() {
                 twttr.widgets.load();
             } 
             
-            $(this).find('.share-box').toggle().hover(function(){},function(){
+            $(this).parents(feedback).find('.share-box').toggle().hover(function(){},function(){
                 $(this).fadeOut('fast');
+                this_share.removeClass('active-icon');
             });
             
             /*
