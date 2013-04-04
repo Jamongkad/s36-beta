@@ -445,7 +445,7 @@
 			var c = 1;
 			$(this).children().each(function () {
 
-                console.log($(this).children('.frm-fld').children('input'));
+                console.log($(this));
 
 				for (att = 0; att < opts.attributes.length; att++) {
  
