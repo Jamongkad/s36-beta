@@ -226,7 +226,7 @@
 					}
 					field += '<div class="rd_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" value="' + title + '" /></div>';
+					field += '<input type="text" name="title" id="radioBoxGroup' + last_id + '" value="' + title + '" /></div>';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
 					if (typeof (values) === 'object') {
@@ -270,7 +270,7 @@
 
 					field += '<div class="opt_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" value="' + title + '" /></div>';
+					field += '<input type="text" name="title" id="selectBoxGroup' + last_id + '" value="' + title + '" /></div>';
 					field += '';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
