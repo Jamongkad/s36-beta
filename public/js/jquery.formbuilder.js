@@ -183,7 +183,7 @@
 					}
 					field += '<div class="chk_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" id="' + last_id + '" value="' + title + '" /></div>';
+					field += '<input type="text" name="title" id="checkBoxGroup' + last_id + '" value="' + title + '" /></div>';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
 					if (typeof (values) === 'object') {
