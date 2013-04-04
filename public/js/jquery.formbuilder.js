@@ -199,10 +199,11 @@
 					appendFieldLi(opts.messages.checkbox_group, field, required, help);
 				};
 			// Checkbox field html, since there may be multiple
-            var myid = 0;
+            //var myid = 0;
 			var checkboxFieldHtml = function (values) {
 					var checked = false;
-                    console.log(myid++);
+                    var myid = 1;
+                    //console.log(myid++);
 					var value = '';
 					if (typeof (values) === 'object') {
 						value = values[0];
