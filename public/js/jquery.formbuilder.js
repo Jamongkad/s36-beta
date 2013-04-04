@@ -246,6 +246,7 @@
 			// Radio field html, since there may be multiple
 			var radioFieldHtml = function (values, name) {
 					var checked = false;
+                    var subject_id = get_random_int(1, 100);
 					var value = '';
 					if (typeof (values) === 'object') {
 						value = values[0];
@@ -254,7 +255,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="radio"' + (checked ? ' checked="checked"' : '') + ' name="radio_' + name + '" />';
-					field += '<input type="text" value="' + value + '" />';
+					field += '<input type="text" id="checkbox' + subject_id + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
@@ -500,6 +501,7 @@
 								else {
 									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][value]=' + encodeURIComponent($(this).val());
 									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][baseline]=' + $(this).prev().attr('checked');
+									serialStr += opts.prepend + '[' + li_count + '][values][' + c + '][id]=' + $(this).attr('id');
 								}
 								c++;
 							});
