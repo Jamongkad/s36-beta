@@ -200,9 +200,10 @@
 				};
 			// Checkbox field html, since there may be multiple
             //var myid = 0;
+            var myid = 1;
 			var checkboxFieldHtml = function (values) {
 					var checked = false;
-                    var myid = 1;
+
                     //console.log(myid++);
 					var value = '';
 					if (typeof (values) === 'object') {
