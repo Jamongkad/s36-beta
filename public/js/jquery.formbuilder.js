@@ -326,7 +326,7 @@
 				};
 			// handle field delete links
             $(document).delegate('.remove_elm', 'click', function(e) {
-                var child = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;                
+                var child = $(this).parents('.fields').children('div').children('input[type=text]').length;                
                 
                 if(child == 1) {
                     alert('Must have atleast one element!');
@@ -341,7 +341,6 @@
                     }); 
 
                 }
-
 			    e.preventDefault(); 
             });
 
