@@ -180,6 +180,7 @@ return array(
             */
             $fb = $tf->data->dbfeedback->televised_feedback_alt($company_name);
             $hosted = new Feedback\Services\HostedService($company_name, $fb->result);
+            $hosted->debug = true;
             $sets = $hosted->group_and_build();
             $tf->dump($sets);
         });    
