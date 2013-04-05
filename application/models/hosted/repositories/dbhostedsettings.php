@@ -7,7 +7,9 @@ class DBHostedSettings extends S36DataObject {
     private $hosted_settings;
     private $admin_panel_fields = array(
         'theme_name',
+        'active_background',
         'background_image',
+        'background_pattern',
         'page_bg_position',
         'page_bg_repeat',
         'page_bg_color',
@@ -155,12 +157,11 @@ class DBHostedSettings extends S36DataObject {
         // get only the data with valid keys.
         $valid_data = array_intersect_key((array)$data, $panel_fields);
         
-        
         // extra validatios on some fields.
         
         // thow away invalid social url.
-        $fb_regex = '/^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/';
-        $tw_regex = '/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/';
+        $fb_regex = '/^(https?:\/\/)?(www\.)?facebook\.com\/[\w\.-]+\/?$/';
+        $tw_regex = '/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?@?[\w\.-]+\/?$/';
         
         if( array_key_exists('facebook_url', $valid_data) ){
             if( $valid_data['facebook_url'] != '' && ! preg_match($fb_regex, $valid_data['facebook_url']) ) unset($valid_data['facebook_url']);

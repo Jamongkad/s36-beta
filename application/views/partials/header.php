@@ -122,6 +122,7 @@
                                                                                                                         , 'settings/change_card'
                                                                                                                         , 'settings/cancel_account')) ? 'selected' : null)))?></li>
                             <li><a href="http://36stories.freshdesk.com/" target=_>HELP</a></li>
+                            <li><a href="<?=Config::get('application.url')?>">FULLPAGE VIEW</a></li>
                         </ul>
                     </div>
                 </div>
