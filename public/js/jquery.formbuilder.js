@@ -192,7 +192,6 @@
 						}
 					} else {
 						field += checkboxFieldHtml('');
-                        console.log($('div.chk_group'));
 					}
 					field += '<div class="add-area"><a href="#" class="add add_ck">' + opts.messages.add + '</a></div>';
 					field += '</div>';
@@ -313,10 +312,6 @@
 					li += '<strong id="txt-title-' + last_id + '">' + title + '</strong></div>';
 					li += '<div id="frm-' + last_id + '-fld" class="frm-holder">';
 					li += '<div class="frm-elements">';
-                    /*
-					li += '<div class="frm-fld"><label for="required-' + last_id + '">' + opts.messages.required + '</label>';
-					li += '<input class="required" type="checkbox" value="1" name="required-' + last_id + '" id="required-' + last_id + '"' + (required ? ' checked="checked"' : '') + ' /></div>';
-                    */
 					li += field;
 					li += '</div>';
 					li += '</div>';
@@ -331,6 +326,9 @@
 				};
 			// handle field delete links
             $(document).delegate('.remove_elm', 'click', function(e) {
+                var child = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;                
+                console.log(child);
+
 				$(this).parent('div').animate({
 					opacity: 'hide',
 					height: 'hide',
@@ -338,6 +336,7 @@
 				}, 'fast', function () {
 					$(this).remove();
 				}); 
+
 			    e.preventDefault(); 
             });
 
@@ -379,11 +378,9 @@
 			// Attach a callback to add new checkboxes
             $(document).delegate('.add_ck', 'click', function(e) {
  
-                var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;
-                var checkbox = $(this).parents('.fields').children('div').children('input[type=checkbox]');
-                
+                var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;                
+
                 if(checkbox_child_count !== 3) {
-                    console.log($(checkbox[0]).parent('div').find('a'));
 				    $(this).parent().before(checkboxFieldHtml());
                 }
 
