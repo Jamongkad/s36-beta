@@ -39,9 +39,15 @@ class Fullpage {
 
     public function get_fullpage_css($company_id){
         $hs = $this->hosted_settings->get_panel_settings($company_id);
- 
+        /*for background image [uploaded or pattern]*/
+        if($hs->active_background=='image') $background_image = $this->uploaded_background_dir . '/' . $hs->background_image; 
+        if($hs->active_background=='pattern') $background_image = $this->pattern_dir . '/' . $hs->background_pattern; 
+
         $css = '<style type"text/css">';
-        $css .= ( $hs->background_image ? 'body{background-image:url("' . $this->uploaded_background_dir . '/' . $hs->background_image . '"); }' : '' );
+        $css .= ( $background_image ? 'body{background-image:url("' .$background_image. '"); }' : '' );
+        $css .= ( $background_image ? 'body{background-position:'.$hs->page_bg_position.'; }' : '' );
+        $css .= ( $background_image ? 'body{background-repeat:'.$hs->page_bg_repeat.'; }' : '' );
+
         
         if( in_array($hs->background_image, $this->patterns) ){
             $css .= ( $hs->page_bg_color ? ' #bodyColorOverlay{ background: ' . $hs->page_bg_color . '; opacity: ' . $hs->page_bg_color_opacity . '}' : '' );

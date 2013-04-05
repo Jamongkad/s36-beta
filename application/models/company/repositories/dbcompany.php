@@ -49,9 +49,9 @@ class DBCompany extends S36DataObject {
             SELECT 
                 * 
                 , Company.name AS company_name 
-                , (SELECT AVG(rating) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS avg_rating
-                , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS total_feedback
-                , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId AND isRecommended = 1) AS total_recommendations
+                , (SELECT AVG(rating) FROM Feedback WHERE Feedback.companyId = Company.companyId AND Feedback.isDeleted = 0) AS avg_rating
+                , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId AND Feedback.isDeleted = 0) AS total_feedback
+                , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId AND Feedback.isDeleted = 0 AND isRecommended = 1) AS total_recommendations
                 , WidgetStore.widgetKey
             FROM 
                 Company

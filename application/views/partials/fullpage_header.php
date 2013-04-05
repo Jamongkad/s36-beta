@@ -83,10 +83,32 @@ echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
 echo HTML::style('/fancybox/jquery.fancybox.css');
 echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
+
+$company = DB::table('Company')
+    ->left_join('HostedSettings', 'Company.companyId', '=', 'HostedSettings.companyId')
+    ->where('Company.name', '=', Config::get('application.subdomain'))
+    ->first(array(
+        'Company.name',
+        'HostedSettings.description AS description',
+        'Company.coverphoto_src AS image'
+    ));
+
+$title = ucfirst($company->name) . '\'s Customer Feedback & Reviews page';
+$description = (trim($company->description) != '' ? $company->description : 'Welcome to ' . ucfirst($company->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
+$url = Config::get('application.url');
+$image = ( trim($company->image) != '' ? $url . '/uploaded_images/coverphoto/' . $company->image : $url . '/fullpage/common/img/fdback-logo-vertical.jpg' );
+
 ?>
+<title><?php echo $title; ?></title>
+<meta property="og:title" content="<?php echo $title; ?>">
+<meta property="og:description" content="<?php echo $description; ?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?php echo $image; ?>">
+<meta property="og:url" content="<?php echo $url; ?>">
+<meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>">
 </head>
 <body>
-    
+
 <div id="theBar">   
     <div id="theBarInner" class="clear">
         <div id="barLeftContent">

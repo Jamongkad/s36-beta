@@ -1,6 +1,6 @@
 /* feedback */
 .regular .feedback-actions span{ margin-left: 0px; }
-.share-box{ width: 75px; }
+.share-box{ width: 75px !important; top: 25px !important; right: -9px !important; }
 .btn-block{ text-align: left; }
 .feedback-list{ overflow: visible !important; }
 

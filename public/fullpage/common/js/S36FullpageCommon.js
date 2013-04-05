@@ -8,18 +8,18 @@ var S36FullpageCommon = function(){
 	|| Function needed to run by document ready
 	==========================================*/
 	this.init_fullpage_common = function(){
+		$('.feedback-icon').hover(function(){
+			$(this).find('.icon-tooltip').fadeIn('fast');
+		},function(){
+			$(this).find('.icon-tooltip').fadeOut('fast');
+		});
 		$('#fullpage_desc.editable').click(function(){
-			$(this).hide();
 			$('#fullpage_desc_textbox').show().focus();
 			$('#fullpage_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
+			$(this).hide();
 		});
 		$('#fullpage_desc_textbox').blur(function(){
-			$(this).hide();
-			$('#fullpage_desc').fadeIn();
-			$('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
-			if( $('.companyDescription').length ){
-				$('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
-			}
+			$('#fullpage_desc_textbox').attr('disabled', 'disabled');
 			
 			$.ajax({
 		        url: '/update_desc',
@@ -31,6 +31,18 @@ var S36FullpageCommon = function(){
 	                }
 		        }
 		    });
+		    
+		    // delay this to avoid multiple saving.
+		    setTimeout(function(){
+		    	var desc_textbox = $('#fullpage_desc_textbox');
+				$('#fullpage_desc').fadeIn();
+				$('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities(desc_textbox.val()) ) );
+				if( $('.companyDescription').length ){
+					$('.companyDescription').html( Helpers.nl2br( Helpers.html2entities(desc_textbox.val()) ) );
+				}
+				desc_textbox.removeAttr('disabled');
+				desc_textbox.hide();
+		    }, 800);
 		});
 		
 		if( window.innerHeight < 700 ) $('#s36_modalbox').css({'margin-top': '30px', 'top' : '0px'});
