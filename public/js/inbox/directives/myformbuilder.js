@@ -15,6 +15,7 @@ angular.module('formbuilder', [])
             var widget_key = $(element).attr('widget_key');
             $(element).formbuilder({'load_url': '/feedsetup/load_formbuilder/' + widget_key, 'useJson': true});	
             $(element).children('ul').sortable({ opacity: 0.6, cursor: 'move', axis: "y" });
+            console.log($(this).children('input'));
         }
     }    
 })
