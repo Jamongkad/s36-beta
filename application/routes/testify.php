@@ -65,18 +65,29 @@ return array(
         $tf->beforeEach(function($tf) {
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
             $tf->data->replydata = new Email\Entities\ReplyData;
-            $tf->data->dbuser    = new DBUser;
         });
 
         $tf->test('Email Test', function($tf) {  
-            $feedback = $tf->data->feedback->pull_feedback_by_id(1107);
-            $emails = $tf->data->dbuser->pull_user_emails_by_company_id(6);
-            $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
-            $submission_data->set_feedback($feedback)
-                            ->set_sendtoaddresses($emails);
 
-            $emailservice = new Email\Services\EmailService($submission_data);
-            $emailservice->send_email();
+            $replyto = "wrm932@gmail.com";
+            $bcc = null;//"wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,";
+            $tf->data->replydata
+                      ->subject("Hey Mathew what's up?")
+                      ->bcc($bcc)
+                      ->sendto("wrm932@gmail.com")
+                      ->copyme(1, $replyto)
+                      ->from( 
+                          (object) Array(
+                            "replyto" => $replyto 
+                          , "username"  => "Mathew"
+                          ) 
+                        )
+                      ->message("Mathew is a kewl dude.")
+                      ->feedbackdata($tf->data->feedback->pull_feedback_by_id(528));            
+
+            $tf->dump($tf->data->replydata);  
+            $emailservice = new Email\Services\EmailService($tf->data->replydata); 
+            $tf->assert($emailservice->send_email());  
         });
 
         $tf->run();  
@@ -183,6 +194,7 @@ return array(
             $hosted->debug = true;
             $sets = $hosted->group_and_build();
             $tf->dump($sets);
+
         });    
         $tf->run();
     }, 
@@ -340,67 +352,20 @@ return array(
         
         $tf->run();         
     },
- 
-    'GET /testify/messageservice' => function() { 
 
-        $tf = new Testify("Message Service");  
-
-        $tf->test("MessageService: Inserting Message", function($tf) { 
-
-            $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback", "inbox:notification:newfeedback");
-            $st = new Message\Entities\Types\Inbox\Stub("8 New Stubs", "inbox:notification:stub");
-
-            $mq = new Message\Entities\MessageList;
-            $mq->add_message($im);
-            $mq->add_message($st);
-
-            $director = new Message\Services\MessageDirector;
-            $director->distribute_messages($mq); 
-
-        }); 
-
-        $tf->test("MessageService: Reading Message", function($tf) { 
-            $auth = S36Auth::user();
-            $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-            $inbox->edit("inbox:notification:newfeedback", "8 New Feedback");
-            Helpers::dump($inbox->read_all());
-            Helpers::dump($inbox->read("inbox:notification:newfeedback"));
-        });
-
-        $tf->run();          
-    },
-
-    'GET /testify/quickinbox' => function() { 
-        $tf = new Testify("Quick Inbox");  
-
+    'GET /testify/total_newfeedback' => function() {
+        $tf = new Testify("Total New Feedback");  
         $tf->beforeEach(function($tf) {
-            $tf->data->hosted_settings = new Hosted\Repositories\DBHostedSettings;
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
         });
-        
 
-        $tf->test("Quick Inbox: DBFeedback", function($tf) {  
-            $filter = Array(
-                'company_id'     => 6
-              //, 'rating'         => 'positive'
-              , 'privacy_policy' => 'all'
-            );
-            $feedback = $tf->data->dbfeedback->newfeedback_by_company($filter); 
-            $tf->dump($feedback);
+        $tf->test("Testing New Feedback Count ", function($tf) { 
+            $count = $tf->data->dbfeedback->total_newfeedback_by_company(); 
+            //$tf->dump($tf->data->dbfeedback);
+            $tf->dump($count);
         });
-
+        
         $tf->run();          
-    },
-
-    'GET /testify/test_https' => function() {
-        
-        $tf = new Testify("Test HTTPS");  
-
-        $tf->test("Test HTTPS", function($tf) {
-            $tf->dump(Request::protocol());
-        });
-
-        $tf->run();
     }
 
 );
