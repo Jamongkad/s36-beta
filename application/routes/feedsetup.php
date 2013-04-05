@@ -158,6 +158,7 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() {  
+        /*
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
         $form = new Widget\Entities\FormWidget;
@@ -166,6 +167,7 @@ return array(
         echo json_encode(Array(
             'submit' => $form->emit()
         ));   
+        */
     },
 
     'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
