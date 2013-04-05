@@ -52,7 +52,7 @@ angular.module('formbuilder', [])
                               , url: "/feedsetup/buildmetadata_options"
                               , data: $("ul[id^=frmb-]").serializeFormList({ prepend: "frmb" }) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                               , success: function(msg) {
-                                    if(validation in msg && msg.validation) {
+                                    if(msg.hasOwnProperty('validation') && msg.validation) {
                                         console.log(msg);     
                                     } else {
                                         console.log("All is clear! Its a GO for redirection.");
