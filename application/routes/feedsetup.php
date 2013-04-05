@@ -184,11 +184,9 @@ return array(
 
     'POST /feedsetup/buildmetadata_options' => function() { 
         //lets run some validations...
-        if(Input::has('frmb') and Input::has('form_id')) {
-
-            $validation = Array();
-            foreach(Input::get('frmb') as $controls) {
-                
+        $validation = Array();
+        if(Input::has('frmb')) {
+            foreach(Input::get('frmb') as $controls) {         
                 if($controls['cssClass'] != 'input_text') { 
                     if(!$controls['title']) {
                         $validation[] = $controls['groupId'];
@@ -208,11 +206,16 @@ return array(
                 }
             }
 
-            echo json_encode(Array(
-                'validation' => $validation
-            ));   
+            if($validation) {
+                //save form data on db...     
+            }
+
         }
 
+
+        echo json_encode(Array(
+            'validation' => $validation
+        ));   
         /*
         if(Input::has('frmb') and Input::has('form_id')) {
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
