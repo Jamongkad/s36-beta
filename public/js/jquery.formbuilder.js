@@ -330,16 +330,17 @@
                 
                 if(child == 1) {
                     alert('Must have atleast one element!');
-			        e.preventDefault(); 
-                }
+                } else {
+                    
+                    $(this).parent('div').animate({
+                        opacity: 'hide',
+                        height: 'hide',
+                        marginBottom: '0px'
+                    }, 'fast', function () {
+                        $(this).remove();
+                    }); 
 
-				$(this).parent('div').animate({
-					opacity: 'hide',
-					height: 'hide',
-					marginBottom: '0px'
-				}, 'fast', function () {
-					$(this).remove();
-				}); 
+                }
 
 			    e.preventDefault(); 
             });
