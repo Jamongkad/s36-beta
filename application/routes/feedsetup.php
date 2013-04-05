@@ -212,7 +212,6 @@ return array(
 
         }
 
-
         echo json_encode(Array(
             'validation' => $validation
         ));   
