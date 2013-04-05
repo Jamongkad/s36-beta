@@ -53,7 +53,9 @@ angular.module('formbuilder', [])
                               , data: $("ul[id^=frmb-]").serializeFormList({ prepend: "frmb" }) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                               , success: function(msg) {
                                     if(msg.validation.length > 0) {
-                                        console.log(msg);     
+                                        for(var i=0; i<msg.validation; i++) {
+                                            console.log(msg.validation[i]);                                                
+                                        }
                                     } else {
                                         console.log("All is clear! Its a GO for redirection.");
                                     } 
