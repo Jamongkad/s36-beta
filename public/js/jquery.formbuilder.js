@@ -381,11 +381,9 @@
  
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;
                 var checkbox = $(this).parents('.fields').children('div').children('input[type=checkbox]');
-
-                console.log(checkbox);
                 
                 if(checkbox_child_count !== 3) {
-                    console.log($(checkbox[0]).parent('div'));
+                    console.log($(checkbox[0]).parent('div').find('a'));
 				    $(this).parent().before(checkboxFieldHtml());
                 }
 
