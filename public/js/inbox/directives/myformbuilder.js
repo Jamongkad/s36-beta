@@ -54,8 +54,8 @@ angular.module('formbuilder', [])
                               , success: function(msg) {
                                     if(msg.validation.length > 0) {
                                         for(var i=0; i<msg.validation.length; i++) {
-                                            console.log(i);
-                                            console.log(msg.validation[i]);                                                
+                                            var elm = $("#" + msg.validation[i]);
+                                            console.log(elm);                                                
                                         }
                                     } else {
                                         console.log("All is clear! Its a GO for redirection.");
