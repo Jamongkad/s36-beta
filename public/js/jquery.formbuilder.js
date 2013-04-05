@@ -385,6 +385,7 @@
                 console.log(checkbox);
                 
                 if(checkbox_child_count !== 3) {
+                    console.log(checkbox[0].parents('div'));
 				    $(this).parent().before(checkboxFieldHtml());
                 }
 
