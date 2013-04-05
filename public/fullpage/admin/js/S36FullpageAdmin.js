@@ -712,6 +712,7 @@ var PanelAutoSaver = new function(layoutObj){
             $('#selectedLayout').val(this.id);
         });
         $('#chooseLayout').click(function(){
+            $('#maskDisabler').fadeIn();
             PanelAutoSaver.set_data('theme_name', $('#selectedLayout').val());
         });
         
