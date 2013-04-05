@@ -190,11 +190,9 @@
 						for (i = 0; i < values.length; i++) {
 							field += checkboxFieldHtml(values[i]);
 						}
-                        console.log("A");
-					}
-					else {
+					} else {
 						field += checkboxFieldHtml('');
-                        console.log("B");
+                        console.log($('div.chk_group'));
 					}
 					field += '<div class="add-area"><a href="#" class="add add_ck">' + opts.messages.add + '</a></div>';
 					field += '</div>';
