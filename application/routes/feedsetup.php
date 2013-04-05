@@ -184,7 +184,7 @@ return array(
 
     'POST /feedsetup/buildmetadata_options' => function() { 
         //lets run some validations...
-        if(Input::has('frmb')) {
+        if(Input::has('frmb') and Input::has('form_id')) {
 
             $validation = Array();
             foreach(Input::get('frmb') as $controls) {
