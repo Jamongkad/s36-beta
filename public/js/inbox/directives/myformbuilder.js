@@ -34,15 +34,10 @@ angular.module('formbuilder', [])
                             new Status().notify("Processing...", 1000); 
                         }
                       , success: function(responseText, statusText, xhr, $form) {     
-                            /*
+
                             var widget_key      = responseText.submit.widget.widgetkey;
                             var widget_store_id = responseText.submit.widget.widgetstoreid;
                             var company_id      = responseText.submit.widget.company_id;
-                            */
-                            //stub values
-                            var widget_key = '123123';
-                            var widget_store_id = '123131';
-                            var company_id = 6;
 
                             var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
@@ -59,8 +54,9 @@ angular.module('formbuilder', [])
                                         }
                                     } else {
                                         console.log("All is clear! Its a GO for redirection.");
+                                        //window.location = formcode_url;                             
                                     } 
-                                    //window.location = formcode_url;                             
+                            
                                 }
                             });
                         }
