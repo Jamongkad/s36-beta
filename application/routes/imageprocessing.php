@@ -57,32 +57,52 @@ return array(
     'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {
         
         // if the user is not logged in, return error msg.
+        $data = Input::all();
+        $file_name = '';  // we need this default shit.
+        
         if( ! is_object($user) ) return 'You should be logged in to do this action';
+        if( ! in_array($data['action'], array('change', 'reposition', 'remove')) ) return 'Invalid cover photo action';
         
-        $data       = Input::all();
-        $tmp_dir    = Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/';
-        $file_name  = 'coverphoto_'.$user->companyid.'.jpg'; //set the final filename
-        $orig_path  = $tmp_dir . $data['name'];
-        $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
         
-        if( is_readable($final_path) ) unlink($final_path);
-        exec('convert "' . $orig_path . '" "' . $final_path . '"'); //convert and rename uploaded image using image magick
-        
-        // delete the temporary uploads.
-        $tmp_uploads = scandir( $tmp_dir );
-        if( count($tmp_uploads) ){
-            foreach( $tmp_uploads as $v ){
-                if( $v == '.' || $v == '..' ) continue;
-                unlink( $tmp_dir . $v );
+        // deal with the uploaded image if changing coverphoto.
+        if( $data['action'] == 'change' ){
+            
+            // upload the cover photo to where it belongs.
+            $tmp_dir    = Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/';
+            $file_name  = 'coverphoto_'.$user->companyid.'.jpg'; //set the final filename
+            $orig_path  = $tmp_dir . $data['name'];
+            $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
+            
+            if( is_readable($final_path) ) unlink($final_path);
+            exec('convert "' . $orig_path . '" "' . $final_path . '"'); //convert and rename uploaded image using image magick
+            
+            // delete the temporary uploads.
+            $tmp_uploads = scandir( $tmp_dir );
+            if( count($tmp_uploads) ){
+                foreach( $tmp_uploads as $v ){
+                    if( $v == '.' || $v == '..' ) continue;
+                    unlink( $tmp_dir . $v );
+                }
             }
+            
         }
         
+        
+        // set the db data for cover photo actions.
+        $cover_data['change']['companyId'] = $user->companyid;
+        $cover_data['change']['coverphoto_src'] = $file_name;
+        $cover_data['change']['coverphoto_top'] = $data['top'];
+        
+        $cover_data['reposition']['companyId'] = $user->companyid;
+        $cover_data['reposition']['coverphoto_top'] = $data['top'];
+        
+        $cover_data['remove']['companyId'] = $user->companyid;
+        $cover_data['remove']['coverphoto_src'] = null;
+        $cover_data['remove']['coverphoto_top'] = null;
+        
+        
         //save to database
-        $company->update_coverphoto(array(
-            'company_id'    =>$user->companyid,
-            'file_name'     =>$file_name,
-            'top'           =>$data['top']
-        ));
+        $company->update_coverphoto( $cover_data[ $data['action'] ] );
         
     },
 

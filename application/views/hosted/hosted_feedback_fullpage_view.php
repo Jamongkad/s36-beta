@@ -17,7 +17,33 @@
             <div id="coverPhotoContainer">
                 
                 <?php if( ! is_null($user) ): ?>
-                    <div id="changeCoverButton">
+                    
+                    <div id="changeCoverButtonIcon">
+                        <div id="coverMenuList">
+                            <ul>
+                                <li id="coverChange">
+                                    Change cover photo
+                                    <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
+                                </li>
+                                <li id="coverReposition" style="<?= ( is_null($company->coverphoto_src) ? 'display: none;' : '' ); ?>">
+                                    Reposition
+                                </li>
+                                <li id="coverRemove" style="<?= ( is_null($company->coverphoto_src) ? 'display: none;' : '' ); ?>">
+                                    Remove
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="dragPhoto">Drag Image to Reposition Cover</div>
+                    <div id="saveCoverButton">Save</div>
+                    <div id="coverActionButtons">
+                        <ul>
+                            <li><a id="save_cover_photo" href="javascript:;">Save</a></li>
+                            <li><a id="cancel_cover_photo" href="javascript:;">Cancel</a></li>
+                        </ul>                   
+                    </div>
+                    
+                    <!-- <div id="changeCoverButton">
                         <div id="changeButtonText">
                             <span>Change Cover</span>
                         </div>
@@ -28,10 +54,15 @@
                     </div>
                     <div id="dragPhoto">
                         Drag Image to Reposition Cover
-                    </div>
+                    </div> -->
                 <?php endif; ?>
                 
                 <div id="coverPhoto">
+                    <?php if( ! is_null($user) ): ?>
+                        <?php $src = ( is_null($company->coverphoto_src) ? 'img/sample-cover.jpg' : '/uploaded_images/coverphoto/' . $company->coverphoto_src ); ?>
+                        <input type="hidden" id="hidden_cover_photo" src="<?php echo $src; ?>" style="top: <?php echo (int)$company->coverphoto_top; ?>px; position: relative;" />
+                    <?php endif; ?>
+                    
                     <?php if( ! is_null($company->coverphoto_src) ): ?>
                         <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
                     <?php else: ?>
