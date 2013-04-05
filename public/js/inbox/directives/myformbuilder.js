@@ -53,7 +53,7 @@ angular.module('formbuilder', [])
                               , data: $("ul[id^=frmb-]").serializeFormList({ prepend: "frmb" }) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                               , success: function(msg) {
                                     if(msg.validation.length > 0) {
-                                        for(var i=0; i<msg.validation; i++) {
+                                        for(var i=0; i<msg.validation.length; i++) {
                                             console.log(i);
                                             console.log(msg.validation[i]);                                                
                                         }
