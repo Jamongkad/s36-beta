@@ -102,7 +102,7 @@
 
 /* common content rules */
 .author .author-information .author-name{
-	color:#838383;
+	color:#3780c7;
 	font-size:18px;
 	font-weight:bold;
 	margin-bottom:2px;
@@ -113,7 +113,7 @@
 	margin-bottom:2px;
 }
 .author .author-information .author-location-info{
-	color:#b7b7b7;
+	color:#838383;
 	margin-bottom:2px;
 }
 .custom-meta-data .meta-data{float:left;margin-right:10px;}
