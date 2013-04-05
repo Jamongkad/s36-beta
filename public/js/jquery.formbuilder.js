@@ -161,7 +161,11 @@
 						break;
 					}
 
-                    console.log($("#form-builder > input"));
+                    //remove style when typing to make validation css disappear
+                    $(document).delegate('#form-builder input', 'keyup', function()) {
+                        $(this).removeAttr('style');
+                    }
+                   
 				};
 			// single line input type="text"
 			var appendTextInput = function (values, required) {
