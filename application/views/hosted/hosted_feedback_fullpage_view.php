@@ -8,7 +8,14 @@
     </div>
     <?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel))?>
 <?php endif; ?>
-
+<div id="maskDisabler">
+ <div id="maskPreloader">
+        <div class="loading-icon"></div>
+        <div class="loading-text">
+            Please wait while we change your layout...
+        </div>
+    </div>
+</div>
 <div id="bodyColorOverlay"></div>
 <div id="mainWrapper">
     <div id="fadedContainer">
