@@ -54,6 +54,7 @@ angular.module('formbuilder', [])
                               , success: function(msg) {
                                     if(msg.validation.length > 0) {
                                         for(var i=0; i<msg.validation; i++) {
+                                            console.log(i);
                                             console.log(msg.validation[i]);                                                
                                         }
                                     } else {
