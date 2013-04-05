@@ -206,8 +206,21 @@ return array(
                 }
             }
 
-            if($validation) {
+            if(!$validation) {
                 //save form data on db...     
+                Helpers::dump('saving metadata');
+                /*
+                $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
+                $data = $form->get_encoded_form_array();
+
+                $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
+            
+                if(!$dbw->metadata_exists()) { 
+                    return $dbw->save();
+                } else {                
+                    return $dbw->update();
+                }
+                */
             }
 
         }
