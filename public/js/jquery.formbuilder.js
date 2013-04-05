@@ -380,6 +380,9 @@
             $(document).delegate('.add_ck', 'click', function(e) {
  
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;
+                var checkbox = $(this).parents('.fields').children('div').children('input[type=checkbox]');
+
+                console.log(checkbox);
                 
                 if(checkbox_child_count !== 3) {
 				    $(this).parent().before(checkboxFieldHtml());
@@ -387,10 +390,7 @@
 
 				e.preventDefault();
             });
-            /*
-			$('.add_ck').live('click', function () { 
-			});
-            */
+
 			// Attach a callback to add new options for select dropdowns
 			$('.add_opt').live('click', function () {
 				$(this).parent().before(selectFieldHtml('', false));
