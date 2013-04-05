@@ -172,7 +172,7 @@ return array(
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
         });
 
-        $tf->test('Televised Feedback', function($tf) {  
+        $tf->test('Televised Feedback', function($tf) use($page){  
             $company_name = Config::get('application.subdomain');
             /*
             $feeds = array(1116, 1115);
@@ -180,9 +180,15 @@ return array(
             */
             $fb = $tf->data->dbfeedback->televised_feedback_alt($company_name);
             $hosted = new Feedback\Services\HostedService($company_name, $fb->result);
+            $hosted->page_number = $page; 
             $hosted->debug = True;
+            /*
             $sets = $hosted->group_and_build();
             $tf->dump($sets);
+            */
+            $hosted->build_data();
+            $feeds = $hosted->fetch_data_by_set();        
+            $tf->dump($feeds);
         });    
         $tf->run();
     }, 

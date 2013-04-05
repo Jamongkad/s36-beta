@@ -189,11 +189,12 @@
         S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
         var counter = 0;    
         function update() {
-            if( ($(window).scrollTop() + $(window).height() + 400) >= $(document).height()) {
+            if( $(window).scrollTop() + $(window).height() == $(document).height() ) {
                 if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
 
                 counter += 1;
                 var page_counter = counter + 1;
+
                 var container = $('#feedback-infinitescroll-landing');
                 if( fullpageLayout.layout_name == 'treble' ) container = $('.feedback-list');
                 $.ajax({ 
@@ -210,10 +211,10 @@
             fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
             fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
             S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
-            //S36FeedbackActions.vertically_center_attachments();
+
         }
         //rate limit this bitch
-        var throttled = _.throttle(update, 800);
+        var throttled = _.throttle(update, 1000);
         $(window).scroll(throttled);
         /*
         / FancyBox

@@ -19,7 +19,6 @@ return array(
 
         $hosted = new Feedback\Services\HostedService($company_name, $fb->result); 
         $hosted->page_number = $page;
-        $hosted->build_data();         
         $feeds = $hosted->fetch_data_by_set(); 
 
         return View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array(
