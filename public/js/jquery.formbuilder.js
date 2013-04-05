@@ -160,6 +160,8 @@
 						appendSelectList(values, options, required);
 						break;
 					}
+
+                    console.log($("#form-builder > input"));
 				};
 			// single line input type="text"
 			var appendTextInput = function (values, required) {
