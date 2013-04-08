@@ -8,13 +8,14 @@ var S36FullpageLayoutTimeline = function(){
     || Function needed to run by document ready
     ==========================================*/
     this.init_fullpage_layout = function(common){
+        $('.left-branch, .right-branch').remove();
         common.init_masonry(100,365,750);
         this.add_branches();
     }
     /* ========================================
     || This will apply the branches for every feedback on the timeline layout
     ==========================================*/
-    this.add_branches = function(){ 
+    this.add_branches = function(){
         var s = $('.feedback-list').find('.regular');
         $.each(s,function(i,obj){
             var posLeft = $(obj).css("left");
