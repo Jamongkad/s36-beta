@@ -98,15 +98,14 @@
                                                         //video attachments
                                                         if($attachments->attached_link->video=='yes'):?>
                                                             <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
-                                                            <div class="video-circle"></div>
                                                             <div class="the-thumb">
-                                                                <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                                <img src="<?=$attachments->attached_link->image?>"  />
                                                             </div>
                                                             </a>
                                                         <?else:?>
                                                             <div class="attached-link-thumb">
                                                                 <a href="<?=$attachments->attached_link->url?>" target="_blank">
-                                                                    <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                                    <img src="<?=$attachments->attached_link->image?>" />
                                                                 </a>
                                                             </div>
                                                             <div class="attached-link-details">
@@ -136,9 +135,9 @@
                                                             <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
 
                                                             <?if(count($attachments->uploaded_images) == 1):?>
-                                                                <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
+                                                                <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
                                                             <?else:?>
-                                                                <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                                <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"  />
                                                             <?endif?>
 
                                                             </a>
