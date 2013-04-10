@@ -85,35 +85,31 @@
                                             /*
                                             | Start Video and Web Link Attachment
                                             */
-                                            if(isset($attachments->attached_link)):
-                                            ?>
-                                            <div class="image-block video" style="width:100%;margin-bottom:15px">
-                                                <div class="delete-block">x</div>
-                                                    <?php 
-                                                    //video attachments
-                                                    if($attachments->attached_link->video=='yes'){?>
-                                                        <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
-                                                        <div class="video-circle"></div>
-                                                        <div class="the-thumb">
-                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                        </div>
-                                                        </a>
-                                                    <?php
-                                                    } else {
-                                                    //web link
-                                                    ?>
-                                                        <div class="attached-link-thumb">
-                                                            <a href="<?=$attachments->attached_link->url?>" target="_blank">
+                                            if(isset($attachments->attached_link)):?>
+                                                <div class="image-block video" style="width:100%;margin-bottom:15px">
+                                                    <div class="delete-block">x</div>
+                                                        <?php 
+                                                        //video attachments
+                                                        if($attachments->attached_link->video=='yes'):?>
+                                                            <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
+                                                            <div class="video-circle"></div>
+                                                            <div class="the-thumb">
                                                                 <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                            </div>
                                                             </a>
-                                                        </div>
-                                                        <div class="attached-link-details">
-                                                            <h3><?=$attachments->attached_link->title?></h3>
-                                                            <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
-                                                        </div>   
-                                                    <?php } ?>
-                                            </div>
-                                            <br/>
+                                                        <?else:?>
+                                                            <div class="attached-link-thumb">
+                                                                <a href="<?=$attachments->attached_link->url?>" target="_blank">
+                                                                    <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="attached-link-details">
+                                                                <h3><?=$attachments->attached_link->title?></h3>
+                                                                <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
+                                                            </div>   
+                                                        <?endif?>
+                                                </div>
+                                                <br/>
                                             <?php 
                                             /*
                                             | End Video and Web Link Attachment
@@ -122,13 +118,12 @@
                                             /*
                                             | Start Image Attachments
                                             */
-                                            if(isset($attachments->uploaded_images)):
-                                            ?>
-                                            <?php
-                                            if(count($attachments->uploaded_images) == 1) $width='100%';
-                                            if(count($attachments->uploaded_images) == 2) $width='50%';
-                                            if(count($attachments->uploaded_images) == 3) $width='33%';
-                                            ?>
+                                            if(isset($attachments->uploaded_images)):?>
+                                                <?php
+                                                if(count($attachments->uploaded_images) == 1) $width='100%';
+                                                if(count($attachments->uploaded_images) == 2) $width='50%';
+                                                if(count($attachments->uploaded_images) == 3) $width='33%';
+                                                ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div class="image-block" style="width:<?=$width;?>">
                                                         <div class="delete-block">x</div>
@@ -153,6 +148,7 @@
                                             endif;
                                             ?>
                                         </div>
+                                    <?php endif;?>
                                     <?php endif;?>
                             </div>
                                 <br />
