@@ -15,7 +15,7 @@
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
-            <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users</h2>
+            <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users i</h2>
             <div class="widget-types">
                 <table width="100%" cellpadding="5" cellspacing="0">
                     <tr>
