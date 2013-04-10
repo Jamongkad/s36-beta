@@ -22,8 +22,7 @@ class FastForward extends EmailFixture {
           , 'login_url' => $this->email_data->make_forward_url()
         ))->get();     
 
-        $this->postmark->to($this->email_data->sendto)
-                       ->subject($this->get_subject())->html_message($email_html)->send();
+        $this->postmark->to($this->email_data->sendto)->subject($this->get_subject())->html_message($email_html)->send();
     }
     
     public function get_subject() {
