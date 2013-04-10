@@ -158,7 +158,15 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() {  
-        Helpers::dump(Input::get());
+        
+        $theme_name = Input::get('theme_name');
+        $submit_form_text = Input::get('submit_form_text');
+        
+        Helpers::dump($theme_name);
+        Helpers::dump($submit_form_text);
+
+        Helpers::dump(Helpers::count_words($theme_name));
+        Helpers::dump(Helpers::count_words($submit_form_text));
         /*
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
