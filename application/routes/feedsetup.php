@@ -217,11 +217,11 @@ return array(
                     return $dbw->update();
                 }
             }
-
         }
 
         $result = Array(
             'validation' => $validation
+          , 'status' => 'ok' 
         );
 
         echo json_encode($result);   
