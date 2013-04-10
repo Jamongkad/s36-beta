@@ -70,6 +70,9 @@ angular.module('formbuilder', [])
                       , maxlength: 10
                     } 
                 }
+               , messages: {
+                    theme_name: "Please enter a theme name!"
+                }
             });
         }    
     }
