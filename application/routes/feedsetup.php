@@ -212,9 +212,9 @@ return array(
                 $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
             
                 if(!$dbw->metadata_exists()) { 
-                    return $dbw->save();
+                    $dbw->save();
                 } else {                
-                    return $dbw->update();
+                    $dbw->update();
                 }
             }
         }
