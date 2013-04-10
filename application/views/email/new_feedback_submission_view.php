@@ -93,7 +93,7 @@
                                             | Start Video and Web Link Attachment
                                             */
                                             if(isset($attachments->attached_link)):?>
-                                                <div style="float:left;width:100%;margin-bottom:15px">
+                                                <div class="image-block video" style="width:100%;margin-bottom:15px">
                                                         <?php 
                                                         //video attachments
                                                         if($attachments->attached_link->video=='yes'):?>
@@ -130,7 +130,7 @@
                                                 if(count($attachments->uploaded_images) == 3) $width='33%';
                                                 ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                    <div class="image-block" style="width:<?=$width;?>">
+                                                    <div  style="float:left;width:<?=$width;?>">
                                                         <div class="the-thumb">
                                                             <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
 
