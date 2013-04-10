@@ -61,8 +61,8 @@
         </div>
         <div class="widget-options">
             <h2><span>Step 3 :</span>Create custom fields for your form (optional)</h2>
-            <small>Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
-               Or want them to specify the type of service you are offering alongside the feedback they have provied. Either way custom fields gives you the flexibility to 
+            <small style="padding: 25px;">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
+               Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
                collect information in addition to your customer's feedback.</small>
             <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" style="padding: 25px" id="form-builder"></div>
         </div>
