@@ -72,6 +72,10 @@ angular.module('formbuilder', [])
                 }
                , messages: {
                     theme_name: "Please enter a theme name!"
+                  , submit_form_text: {
+                        required: "Please enter a text header"   
+                      , maxlength: "Derps you derp"
+                    }
                 }
             });
         }    
