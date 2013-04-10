@@ -74,7 +74,7 @@ angular.module('formbuilder', [])
                       , minlength: 20
                       , maxlength: 50
                     } 
-                  , submit_form_question { 
+                  , submit_form_question: { 
                         required: true   
                       , minlength: 20
                     }
