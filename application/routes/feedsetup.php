@@ -189,6 +189,12 @@ return array(
         $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
 
         if(Input::has('frmb')) {
+            
+            $validate = new Widget\Services\Formbuilder\FormbuilderValidation(Input::get('frmb'));
+            $validate->validate();
+            $validation = $validate->get_validation_array();
+            
+            /*
             foreach(Input::get('frmb') as $controls) {         
                 if($controls['cssClass'] != 'input_text') { 
                     if(!$controls['title']) {
@@ -208,6 +214,7 @@ return array(
                     } 
                 }
             }
+            */
             
             //if validation array is not filled...
             if(!$validation) {
