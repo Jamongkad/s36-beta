@@ -132,12 +132,12 @@
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div  style="float:left;width:<?=$width;?>">
                                                         <div class="the-thumb">
-                                                            <a class="inbox-fancybox-image" href="<?=Config::get('application.subdomain')?>/<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>">
+                                                            <a class="inbox-fancybox-image" href="https://<?=Config::get('application.subdomain')?>/<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>">
 
                                                             <?if(count($attachments->uploaded_images) == 1):?>
-                                                                <img src="<?=Config::get('application.subdomain')?>/<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
+                                                                <img src="https://<?=Config::get('application.subdomain')?>/<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
                                                             <?else:?>
-                                                                <img src="<?=Config::get('application.subdomain')?>/<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"  />
+                                                                <img src="https://<?=Config::get('application.subdomain')?>/<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"  />
                                                             <?endif?>
 
                                                             </a>
