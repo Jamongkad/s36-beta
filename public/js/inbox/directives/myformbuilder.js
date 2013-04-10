@@ -66,33 +66,33 @@ angular.module('formbuilder', [])
               , rules: {
                     theme_name: { 
                         required: true 
-                      , minlength: 20
+                      , minlength: 8
                       , maxlength: 50
                     }    
                   , submit_form_text: {
                         required: true   
-                      , minlength: 20
+                      , minlength: 8
                       , maxlength: 50
                     } 
                   , submit_form_question: { 
                         required: true   
-                      , minlength: 20
+                      , minlength: 8
                     }
                 }
                , messages: {
                     theme_name: { 
                         required: "required"   
-                      , minlength: "Must be atleast 20 characters."
+                      , minlength: "Must be atleast 8 characters."
                       , maxlength: "50 character length reached."
                     }
                   , submit_form_text: {
                         required: "required"   
-                      , minlength: "Must be atleast 20 characters."
+                      , minlength: "Must be atleast 8 characters."
                       , maxlength: "50 character length reached."
                     }
                   , submit_form_question: { 
                         required: "required"   
-                      , minlength: "Must be atleast 20 characters."
+                      , minlength: "Must be atleast 8 characters."
                     }
                 }
             });
