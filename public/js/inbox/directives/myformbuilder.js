@@ -74,10 +74,13 @@ angular.module('formbuilder', [])
                     } 
                 }
                , messages: {
-                    theme_name: "Please enter a theme name!"
+                    theme_name: { 
+                        required: "required"   
+                      , maxlength: "max character length reached."
+                    }
                   , submit_form_text: {
-                        required: "Please enter a form header text!"   
-                      , maxlength: "Form header text limit reached!"
+                        required: "required"   
+                      , maxlength: "max character length reached."
                     }
                 }
             });
