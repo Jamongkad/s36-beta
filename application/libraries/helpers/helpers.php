@@ -344,123 +344,7 @@ class Helpers {
     public static function randid() {
         return substr(uniqid ('', true), -3);
     }
-
-    public function makeThumbnail($sourcefile, $endfile, $thumbwidth, $thumbheight, $quality, $x, $y){
-        // Takes the sourcefile (path/to/image.jpg) and makes a thumbnail from it
-        // and places it at endfile (path/to/thumb.jpg).
-
-        // Load image and get image size.
-        $img = imagecreatefromjpeg($sourcefile);
-        $width = imagesx( $img );
-        $height = imagesy( $img );
-
-        if ($width > $height) {
-            $newwidth = $thumbwidth;
-            $divisor = $width / $thumbwidth;
-            $newheight = floor( $height / $divisor);
-        }
-        else {
-            $newheight = $thumbheight;
-            $divisor = $height / $thumbheight;
-            $newwidth = floor( $width / $divisor );
-        }
-
-        // Create a new temporary image.
-        $tmpimg = imagecreatetruecolor( 150, 150 );
-
-        // Copy and resize old image into new image.
-        imagecopyresampled( $tmpimg, $img, 0, 0, $x, $y, 150, 150, $width, $height );
-
-        // Save thumbnail into a file.
-        imagejpeg( $tmpimg, $endfile, $quality);
-
-        // release the memory
-        imagedestroy($tmpimg);
-        imagedestroy($img);
-    }
-
-    public static function upload_image($file=null, $targetpath=null, $options=null) {
-
-        $error      = "";
-        $msg        = "";
-        $filedir    = "";
-        $width      = "";
-
-        if(empty($file))        { die("Please provide a file to be uploaded");}
-        if(empty($targetpath))  { die("Please set the target path for the uploaded file");}
-
-        $options['options']  = array('quality' => 100);
-        $maxsize  = isset($options['maxsize']) ? $options['maxsize'] : 2000000;
  
-        if(!empty($_FILES[$file]['error']))
-        {
-          switch($_FILES[$file]['error'])
-          {
-
-            case '1':
-              $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
-              break;
-            case '2':
-              $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
-              break;
-            case '3':
-              $error = 'The uploaded file was only partially uploaded';
-              break;
-            case '4':
-              $error = 'No file was uploaded.';
-              break;
-            case '6':
-              $error = 'Missing a temporary folder';
-              break;
-            case '7':
-              $error = 'Failed to write file to disk';
-              break;
-            case '8':
-              $error = 'File upload stopped by extension';
-              break;
-            case '999':
-            default:
-              $error = 'No error code avaiable';
-          }
-        }elseif(empty($_FILES[$file]['tmp_name']) || $_FILES[$file]['tmp_name'] == 'none'){
-          $error = 'No file was uploaded..';
-        }elseif(($_FILES[$file]['type'] != "image/jpeg") && 
-            ($_FILES[$file]['type']     != "image/gif")  && 
-            ($_FILES[$file]['type']     != "image/pjpeg")&& 
-            ($_FILES[$file]['type']     != "image/x-png")&& 
-            ($_FILES[$file]['type']     != "image/png")){
-            $error = 'Please Upload Image Files Only';
-        }elseif($_FILES[$file]['size'] > $maxsize){
-            $error = "Please Upload Images with smaller file size";
-        }else{
-            $name_arr     = explode('.',$_FILES[$file]['name']);
-            $ext          = $name_arr[1];
-            $imagine      = new \Imagine\Gd\Imagine();
-            $filename     = (isset($options['rename'])) ? $options['rename'].".$ext" : date("Ydmhis").$_FILES[$file]['name'];
-            $filedir      = $targetpath.$filename;
-            $image        = $imagine->open($_FILES[$file]['tmp_name']);
-            if(!file_exists($targetpath)){
-                mkdir($targetpath, 0755, true);
-            }
-            if(file_exists($filedir)){
-                unlink($filedir);
-            }
-              //resize image if width and height has been set
-            if(isset($options['width']) && isset($options['height'])){
-                $image->resize(new Box($options['width'],$options['height']));
-            }
-
-            $image->save($filedir, $options['options']);
-        }
-         return json_encode(array(
-            'error'       => $error
-          , 'filename'    => $filename
-          , 'path'        => $filedir
-        ));
-   
-    }
-    
-    
     public static function get_client_ip(){
         
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -469,10 +353,14 @@ class Helpers {
             if( preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/', $_SERVER['HTTP_X_FORWARDED_FOR']) ){
                 $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
             }
-        }
-        
-        return $ip;
-        
+        } 
+        return $ip;        
     }
-    
+
+    public static function count_words($str) { 
+        while(substr_count($str, "  ") > 0) {
+            $str = str_replace("  ", " ", $str);
+        }
+        return substr_count($str, " ") + 1;
+    } 
 }
