@@ -64,17 +64,20 @@ angular.module('formbuilder', [])
                 }
               , errorElement: "em"
               , rules: {
-                    theme_name: { required: true }    
+                    theme_name: { 
+                        required: true 
+                      , maxlength: 50
+                    }    
                   , submit_form_text: {
                         required: true   
-                      , maxlength: 10
+                      , maxlength: 50
                     } 
                 }
                , messages: {
                     theme_name: "Please enter a theme name!"
                   , submit_form_text: {
-                        required: "Please enter a text header"   
-                      , maxlength: "Derps you derp"
+                        required: "Please enter a form header text!"   
+                      , maxlength: "Form header text limit reached!"
                     }
                 }
             });
