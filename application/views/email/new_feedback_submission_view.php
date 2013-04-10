@@ -132,7 +132,7 @@
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div  style="float:left;width:<?=$width;?>">
                                                         <div class="the-thumb">
-                                                            <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
+                                                            <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>">
 
                                                             <?if(count($attachments->uploaded_images) == 1):?>
                                                                 <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
@@ -141,7 +141,6 @@
                                                             <?endif?>
 
                                                             </a>
-                                                            <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>
@@ -160,7 +159,7 @@
                                 <?if($feedback_data->rating != "POOR"):?>
 
                                     <?if($feedback_data->permission == "FULL PERMISSION"):?>
-                                     <div style="float:left;padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;margin-bottom:10px;margin-top:10px;">
+                                     <div style="float:left;padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;margin-bottom:20px;margin-top:20px;">
                                      <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
                                         <span style="vertical-align: middle; " >
                                         <?=$feedback_data->firstname?> 
@@ -171,7 +170,7 @@
 
                                     <?if($feedback_data->permission == "PRIVATE"):?>
 
-                                     <div style="float:left;padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;margin-bottom:10px;margin-top:10px;">
+                                     <div style="float:left;padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;margin-bottom:20px;margin-top:20px;">
                                      <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
                                         <span style="vertical-align: middle; ">
                                         <?=$feedback_data->firstname?> has asked you keep his/her feedback and profile PRIVATE.
