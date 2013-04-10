@@ -42,8 +42,8 @@
                             <div style="padding:<?=$poor_style?>">
                                 <?=$feedback_data->text?>  
                                 <?
-                                    $metadata = (!empty($feedback_data->metadata)) ? $feedback_data->metadata : false; 
-                                    $attachments = (!empty($feedback_data->attachments)) ? $feedback_data->attachments : false; 
+                                    $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
+                                    $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
                                 ?>
 
                                     <?if($metadata || $attachments):?>
@@ -149,7 +149,7 @@
                                             ?>
                                         </div>
                                     <?php endif;?>
-                                    <?php endif;?>
+                                <?php endif;?>
                             </div>
                                 <br />
                                 <br /> 
