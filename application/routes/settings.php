@@ -166,9 +166,9 @@ return array (
     }),
 
     'POST /settings/save_companysettings' => function() {
-        $company_settings = new Company\Services\CompanySettings;
+        $company_settings = new Company\Services\CompanySettings( Input::get('companyid') );
         $company_settings->upload_companylogo($_FILES);
-
+        
         if(!$company_settings->get_errors()) {
             $company_settings->save_companysettings();
             return Redirect::to('settings/company');           

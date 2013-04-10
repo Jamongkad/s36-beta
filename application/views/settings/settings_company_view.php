@@ -17,7 +17,7 @@
             <br />
             <div class="grids">
                 <div class="g2of3"><strong>Add Company Logo</strong> <br />Select your company's logo and upload it here, it will be uploaded upon pressing the 'Save Settings' button.</div>
-                <div class="g2of3"><br /><input type="file" id="your_photo" class="fileupload regular-text" name="your_photo" /> </div>
+                <div class="g2of3"><br /><input type="file" name="your_photo" id="your_photoXXX" class="fileupload regular-text" /> </div>
             </div>
             
             <br />

@@ -1041,3 +1041,59 @@ ul.patternList li div.active{
 	background:#5293d3;
 	border:1px solid #2a70b3;
 }
+
+
+ /* avatar menu */
+#avatarButtonIcon {
+	background:url(https://kennwel-staging.gearfish.com/fullpage/admin/img/changeCoverIcon.png) no-repeat;
+	width:18px;
+	height:17px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	z-index:1;
+	cursor:pointer;
+}
+#avatarButtonIcon:hover {
+	background-position:bottom;
+}
+#avatarButtonIcon #avatarMenuList {
+	width:120px;
+	background:#FFF;
+	z-index:2;
+	display:none;
+	border:1px solid #a5b9cc;
+	color:#4f4f4f;
+	bottom:28px;
+	right:121px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+}
+#avatarButtonIcon #avatarMenuList ul li {
+	display:block;
+	padding:5px 4px 5px 6px;
+	font-size:11px;
+}
+#avatarButtonIcon #avatarMenuList ul li:hover {
+	background:#a5b9cc;
+	color:#FFF;
+}
+#avatarButtonIcon:hover #avatarMenuList {
+	display:block;
+}
+#avatarButtonIcon input {
+	cursor:pointer;
+	background:#000;
+	position:absolute;
+	left:-16px;
+	top:0;
+	margin:0;
+	opacity:0;
+	filter:alpha(opacity=0);
+	transform:translate(-300px, 0) scale(4);
+	direction:rtl;
+	width:140px;
+	height:17px;
+	font-size:17px;
+}

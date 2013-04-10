@@ -95,6 +95,22 @@
                         </a>
                     </div>
                 </div>
+                
+                
+                <!-- avatar -->
+                <div id="avatarContainer">
+                    <div id="avatar">
+                        <img src="/fullpage/common/img/samchloe.png" width="100%" />
+                    </div>
+                    <div id="avatarButtonIcon">
+                        <div id="avatarMenuList">
+                            <ul>
+                                <li><a href="javascript:;">Change Photo</a></li>
+                                <li><a href="javascript:;">Remove</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <?php if( $feed_count->published_feed_count == 0 ): ?>
