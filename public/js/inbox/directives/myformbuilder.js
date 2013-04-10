@@ -53,8 +53,8 @@ angular.module('formbuilder', [])
                                             elm.css({'border': '2px solid red'});
                                         }
                                     } else {
-                                        //window.location = formcode_url;                             
-                                        console.log("All good to go");
+                                        window.location = formcode_url;                             
+                                        //console.log("All good to go");
                                     }                             
                                 }
                             });

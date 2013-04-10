@@ -193,29 +193,7 @@ return array(
             $validate = new Widget\Services\Formbuilder\FormbuilderValidation(Input::get('frmb'));
             $validate->validate();
             $validation = $validate->get_validation_array();
-            
-            /*
-            foreach(Input::get('frmb') as $controls) {         
-                if($controls['cssClass'] != 'input_text') { 
-                    if(!$controls['title']) {
-                        $validation[] = $controls['groupId'];
-                    }
-
-                    if($controls['values']) {  
-                        foreach($controls['values'] as $elements) {
-                            if(!$elements['value']) {
-                                $validation[] = $elements['id'];
-                            }
-                        }
-                    }
-                } else {
-                    if(!$controls['values']) {
-                        $validation[] = $controls['groupId'];     
-                    } 
-                }
-            }
-            */
-            
+          
             //if validation array is not filled...
             if(!$validation) {
                 //save form data on db...  
