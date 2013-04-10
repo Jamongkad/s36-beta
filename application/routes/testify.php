@@ -58,7 +58,7 @@ return array(
         $tf->run(); 
     },
 
-    'GET /testify/email(:any?)' => function($id) {       
+    'GET /testify/email(:any?)' => function($id=Null) {       
 
         $tf = new Testify("Email Test Service");
 
