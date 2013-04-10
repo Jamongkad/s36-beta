@@ -39,7 +39,7 @@
                         
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
-                            <div style="padding:<?=$poor_style?>">
+                            <div style="padding:<?=$poor_style?>;float:left">
                                 <?=$feedback_data->text?>  
                                 <?
                                     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
