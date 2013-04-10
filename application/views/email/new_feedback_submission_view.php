@@ -49,14 +49,20 @@
                                     <?if($metadata || $attachments):?>
                                         <div style="background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
                                         ">
-                                            <div class="custom-meta-list grids">
+                                            <div style="margin-bottom: 10px">
                                                 <? 
                                                 //start metadata 
                                                 if($metadata):
                                                     foreach($metadata as $key => $val):?>
                                                         <?foreach($val as $k => $v):?>
-                                                            <div class="custom-meta">
-                                                                <div class="custom-meta-name">
+                                                            <div style="float:left">
+                                                                <div style=" 
+                                                                    font-weight:bold;
+                                                                    font-size:11px;
+                                                                    color:#6499cd;
+                                                                    float:left;
+                                                                    margin-right:10px;
+                                                                ">
                                                                     <?if($key == 'select'):?>
                                                                         <?=ucwords($k)?>: 
                                                                     <?endif?>
@@ -69,7 +75,7 @@
                                                                         $prefix = "";
                                                                         $value_list = "";
                                                                         foreach($v as $d) {
-                                                                            $value_list .= "<span class='value'>" . $prefix . $d->value . "</span>";    
+                                                                            $value_list .= "<span style='color:#a2a2a2;'>" . $prefix . $d->value . "</span>";    
                                                                             $prefix = ", ";
                                                                         }
                                                                         echo $value_list;
