@@ -53,8 +53,7 @@ angular.module('formbuilder', [])
                                             elm.css({'border': '2px solid red'});
                                         }
                                     } else {
-                                        console.log("All is clear! Its a GO for redirection.");
-                                        //window.location = formcode_url;                             
+                                        window.location = formcode_url;                             
                                     }                             
                                 }
                             });
