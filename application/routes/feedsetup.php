@@ -158,6 +158,7 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() {  
+        Helpers::dump(Input::get());
         /*
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
