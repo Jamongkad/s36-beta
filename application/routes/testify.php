@@ -58,18 +58,19 @@ return array(
         $tf->run(); 
     },
 
-    'GET /testify/email' => function() {       
+    'GET /testify/email(:any?)' => function($id) {       
 
         $tf = new Testify("Email Test Service");
 
-        $tf->beforeEach(function($tf) {
+        $tf->beforeEach(function($tf) use ($id) {
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
             $tf->data->replydata = new Email\Entities\ReplyData;
             $tf->data->dbuser    = new DBUser;
+            $tf->data->id = $id;
         });
 
         $tf->test('Email Test', function($tf) {  
-            $feedback = $tf->data->feedback->pull_feedback_by_id(1173);
+            $feedback = $tf->data->feedback->pull_feedback_by_id($tf->data->id);
             $emails = $tf->data->dbuser->pull_user_emails_by_company_id(6);
             $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
             $submission_data->set_feedback($feedback)
