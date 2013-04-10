@@ -65,6 +65,10 @@ angular.module('formbuilder', [])
               , errorElement: "em"
               , rules: {
                     theme_name: { required: true }    
+                  , submit_form_text: {
+                        required: true   
+                      , maxlength: 100
+                    } 
                 }
             });
         }    
