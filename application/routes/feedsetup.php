@@ -202,7 +202,8 @@ return array(
                     } 
                 }
             }
-
+            
+            //if validation array is not filled...
             if(!$validation) {
                 //save form data on db...     
                 $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
@@ -219,9 +220,13 @@ return array(
 
         }
 
-        echo json_encode(Array(
+        $result = Array(
             'validation' => $validation
-        ));   
+        );
+
+        Helpers::dump($result);
+
+        echo json_encode($result);   
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
