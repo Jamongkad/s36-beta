@@ -137,7 +137,7 @@
                                                             <?if(count($attachments->uploaded_images) == 1):?>
                                                                 <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
                                                             <?else:?>
-                                                                <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"  />
+                                                                <img src="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>"  />
                                                             <?endif?>
 
                                                             </a>
