@@ -224,6 +224,8 @@ return array(
           , 'status' => 'ok' 
         );
 
+        Helpers::dump($result);
+
         echo json_encode($result);   
     },
     
