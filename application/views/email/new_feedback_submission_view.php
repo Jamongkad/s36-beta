@@ -39,7 +39,7 @@
                         
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
-                            <div style="padding:<?=$poor_style?>;float:left">
+                            <div style="padding:<?=$poor_style?>">
                                 <?=$feedback_data->text?>  
                                 <?
                                     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
@@ -49,7 +49,7 @@
                                     <?if($metadata || $attachments):?>
                                         <div style="float:left;background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
                                         ">
-                                            <div style="margin-bottom: 10px">
+                                            <div style="margin-bottom: 10px;float:left">
                                                 <? 
                                                 //start metadata 
                                                 if($metadata):
@@ -87,7 +87,7 @@
                                                 <?endif?>
                                             </div>
                                     <?php if($attachments): ?>
-                                        <div class="uploaded-images-and-links grids">
+                                        <div style="float:left;">
                                             <?php 
                                             /*
                                             | Start Video and Web Link Attachment
