@@ -67,7 +67,7 @@ angular.module('formbuilder', [])
                     theme_name: { required: true }    
                   , submit_form_text: {
                         required: true   
-                      , maxlength: 100
+                      , maxlength: 10
                     } 
                 }
             });
