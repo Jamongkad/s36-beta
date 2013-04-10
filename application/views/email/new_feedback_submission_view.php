@@ -47,7 +47,8 @@
                                 ?>
 
                                     <?if($metadata || $attachments):?>
-                                        <div class="additional-info">
+                                        <div style="background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
+                                        ">
                                             <div class="custom-meta-list grids">
                                                 <? 
                                                 //start metadata 
@@ -87,7 +88,6 @@
                                             */
                                             if(isset($attachments->attached_link)):?>
                                                 <div class="image-block video" style="width:100%;margin-bottom:15px">
-                                                    <div class="delete-block">x</div>
                                                         <?php 
                                                         //video attachments
                                                         if($attachments->attached_link->video=='yes'):?>
@@ -126,7 +126,6 @@
                                                 ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div class="image-block" style="width:<?=$width;?>">
-                                                        <div class="delete-block">x</div>
                                                         <div class="the-thumb">
                                                             <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
 
