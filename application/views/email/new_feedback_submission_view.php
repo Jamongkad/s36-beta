@@ -40,7 +40,12 @@
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
                             <div style="padding:<?=$poor_style?>">
-                                <?=$feedback_data->text?>
+                                <?=$feedback_data->text?>  
+                                <?
+                                    $metadata = (!empty($feedback_data->metadata)) ? $feedback_data->metadata : false; 
+                                    $attachments = (!empty($feedback_data->attachments)) ? $feedback_data->attachments : false; 
+                                    print_r($metadata);
+                                ?>
                             </div>
                                 <br />
                                 <br /> 
