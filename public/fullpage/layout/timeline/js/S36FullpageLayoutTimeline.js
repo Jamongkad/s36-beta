@@ -9,7 +9,7 @@ var S36FullpageLayoutTimeline = function(){
     ==========================================*/
     this.init_fullpage_layout = function(common){
         common.init_masonry(100,365,750);
-        this.add_branches();
+        //this.add_branches();
     }
     /* ========================================
     || This will apply the branches for every feedback on the timeline layout
