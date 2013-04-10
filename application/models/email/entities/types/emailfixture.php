@@ -15,7 +15,7 @@ abstract class EmailFixture {
     public function send() {}
     public function get_subject() {} 
 
-    private function _send_email($email, $subject, $html) { 
+    public function _send_email($email, $subject, $html) { 
         $this->postmark->to($email)->subject($subject)->html_message($html)->send();
     }
 }
