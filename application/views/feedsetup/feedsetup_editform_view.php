@@ -51,7 +51,7 @@
                         <textarea name="submit_form_question" class="large-textarea" 
                                   style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
                                   title="<?=$widget->widgetattr->submit_form_question?>">
-                                  <?=$widget->widgetattr->submit_form_question?>
+<?=$widget->widgetattr->submit_form_question?>
                         </textarea>
                     </td>
                 </tr>
