@@ -224,8 +224,6 @@ return array(
             'validation' => $validation
         );
 
-        Helpers::dump($result);
-
         echo json_encode($result);   
     },
     
