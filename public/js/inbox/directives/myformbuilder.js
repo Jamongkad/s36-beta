@@ -47,8 +47,7 @@ angular.module('formbuilder', [])
                               , url: "/feedsetup/buildmetadata_options"
                               , data: $("ul[id^=frmb-]").serializeFormList({ prepend: "frmb" }) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                               , success: function(msg) {
-                                    console.log(msg);
-                                    if(msg.validation.length > 0) {
+                                    if(msg && msg.validation.length > 0) {
                                         for(var i=0; i<msg.validation.length; i++) {
                                             var elm = $("#" + msg.validation[i]);
                                             elm.css({'border': '2px solid red'});
