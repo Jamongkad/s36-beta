@@ -182,6 +182,12 @@ return array(
     'POST /feedsetup/buildmetadata_options' => function() { 
         //lets run some validations...
         $validation = Array();
+        $status = '';
+
+        $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
+        $data = $form->get_encoded_form_array();
+        $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
+
         if(Input::has('frmb')) {
             foreach(Input::get('frmb') as $controls) {         
                 if($controls['cssClass'] != 'input_text') { 
@@ -205,24 +211,25 @@ return array(
             
             //if validation array is not filled...
             if(!$validation) {
-                //save form data on db...     
-                $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
-                $data = $form->get_encoded_form_array();
-
-                $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
-            
+                //save form data on db...  
                 if(!$dbw->metadata_exists()) { 
-                    echo "Saved";
+                    $status = 'created';
                     $dbw->save();
                 } else {                
-                    echo "Updated";
+                    $status = 'updated';
                     $dbw->update();
                 }
+            } else {
+                $status = 'invalid';
             }
+        } else { 
+            $status = 'deleted';
+            $dbw->delete(); 
         }
 
         $result = Array(
             'validation' => $validation
+          , 'status' => $status
         );
 
         echo json_encode($result);   
