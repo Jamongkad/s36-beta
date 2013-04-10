@@ -47,7 +47,7 @@
                                 ?>
 
                                     <?if($metadata || $attachments):?>
-                                        <div style="background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
+                                        <div style="float:left;background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
                                         ">
                                             <div style="margin-bottom: 10px">
                                                 <? 
