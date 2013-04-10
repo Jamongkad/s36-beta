@@ -212,8 +212,10 @@ return array(
                 $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
             
                 if(!$dbw->metadata_exists()) { 
+                    echo "Saved";
                     $dbw->save();
                 } else {                
+                    echo "Updated";
                     $dbw->update();
                 }
             }
@@ -221,10 +223,7 @@ return array(
 
         $result = Array(
             'validation' => $validation
-          , 'status' => 'ok' 
         );
-
-        Helpers::dump($result);
 
         echo json_encode($result);   
     },
