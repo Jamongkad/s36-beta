@@ -93,7 +93,7 @@
                                             | Start Video and Web Link Attachment
                                             */
                                             if(isset($attachments->attached_link)):?>
-                                                <div class="image-block video" style="width:100%;margin-bottom:15px">
+                                                <div style="float:left;width:100%;margin-bottom:15px">
                                                         <?php 
                                                         //video attachments
                                                         if($attachments->attached_link->video=='yes'):?>
