@@ -108,7 +108,9 @@ class DBDashboard extends S36DataObject {
                $insert_query = Array();
                $geo_sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
                foreach ($geoscore as $rows) {
+
                    $insert_query[] = '(?, ?, ?, ?, ?)';
+                   
                    $insert_data[] = $this->company_id;
                    $insert_data[] = $rows->countryid; 
                    $insert_data[] = $rows->countryname;
