@@ -406,7 +406,7 @@ return array(
         });
 
         $tf->test("Test", function($tf) {
-            $tf->data->dump($tf->data->dbdashboard);
+            $tf->dump($tf->data->dbdashboard);
         });
 
         $tf->run();
