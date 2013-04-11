@@ -15,7 +15,7 @@ class DBDashboard extends S36DataObject {
                  FROM 
                     Feedback 
                  WHERE 1=1
-                    AND Feedback.companyId = :company_id
+                    AND Feedback.companyId = :company_id_one
                     AND Feedback.isDeleted = 0
                     AND Feedback.isPublished = 0
                     AND Feedback.isFeatured = 0
@@ -28,10 +28,11 @@ class DBDashboard extends S36DataObject {
             FROM 
                 Feedback
             WHERE 1=1
-                AND Feedback.companyId = :company_id
+                AND Feedback.companyId = :company_id_two
                 AND Feedback.dtAdded >= DATE_SUB(NOW(), INTERVAL 1 MONTH)");
 
-        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(":company_id_one", $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(":company_id_two", $this->company_id, PDO::PARAM_INT);
         $sth->execute(); 
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
