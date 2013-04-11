@@ -18,15 +18,8 @@ class DBDashboard extends S36DataObject {
               , SUM(Feedback.isFeatured) AS featured
             FROM 
                 Feedback
-            INNER JOIN
-                Site
-                    ON Site.siteId = Feedback.siteId
-            INNER JOIN
-                Company
-                    ON Company.companyId = Site.companyId
             WHERE 1=1
-                AND Company.companyId = :company_id
-                AND Feedback.isDeleted = 0
+                AND Feedback.companyId = :company_id
                 AND Feedback.dtAdded >= DATE_SUB(NOW(), INTERVAL 1 MONTH)");
 
         $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
