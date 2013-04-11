@@ -196,13 +196,10 @@ class DBFeedback extends S36DataObject {
             $company_id = $opts['company_id'];
         }
 
-        Helpers::dump($date_sql);
-
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
          
         if (!$is_published_filter) { 
-            Helpers::dump($opts);
             $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
             $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
             $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
@@ -217,6 +214,9 @@ class DBFeedback extends S36DataObject {
         $result_obj  = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
+
+        Helpers::dump($row_count->fetchColumn());
+
         return $result_obj; 
     }
 
