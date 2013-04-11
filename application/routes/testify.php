@@ -397,12 +397,16 @@ return array(
         $tf->run();          
     },
 
-    'GET /testify/test_https' => function() {
+    'GET /testify/dbdash' => function() {
         
-        $tf = new Testify("Test HTTPS");  
+        $tf = new Testify("DBDashboard Test");  
 
-        $tf->test("Test HTTPS", function($tf) {
-            $tf->dump(Request::protocol());
+        $tf->beforeEach(function($tf) {
+            $tf->data->dbdashboard = new DBDashboard;
+        });
+
+        $tf->test("Test", function($tf) {
+            $tf->data->dump($tf->data->dbdashboard);
         });
 
         $tf->run();
