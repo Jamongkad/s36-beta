@@ -196,6 +196,8 @@ class DBFeedback extends S36DataObject {
             $company_id = $opts['company_id'];
         }
 
+        Helpers::dump($date_sql);
+
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
          
