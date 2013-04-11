@@ -402,11 +402,11 @@ return array(
         $tf = new Testify("DBDashboard Test");  
 
         $tf->beforeEach(function($tf) {
-            $tf->data->dbdashboard = new DBDashboard;
+            $tf->data->dbdashboard = new DBDashboard(6);
         });
 
         $tf->test("Test", function($tf) {
-            $tf->dump($tf->data->dbdashboard->get_geochart_scores());
+            $tf->dump($tf->data->dbdashboard);
 
         });
 
