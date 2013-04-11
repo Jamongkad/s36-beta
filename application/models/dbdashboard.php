@@ -1,9 +1,12 @@
 <?php
 
 class DBDashboard extends S36DataObject {
-   
-   public $company_id;
 
+   public function __construct($company_id) {
+       parent::__construct();
+       $this->company_id = $company_id;
+   }
+   
    public function get_dashboard_scores() {
        $result = new StdClass;     
        $result->feedback_scores = $this->get_feedback_scores(); 
