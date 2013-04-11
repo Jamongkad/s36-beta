@@ -202,6 +202,7 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
          
         if (!$is_published_filter) { 
+            Helpers::dump($opts);
             $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
             $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
             $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
