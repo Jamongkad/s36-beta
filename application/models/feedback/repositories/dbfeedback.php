@@ -422,14 +422,8 @@ class DBFeedback extends S36DataObject {
                 Feedback.feedbackId
             FROM 
                 Feedback
-                    INNER JOIN
-                        Site
-                        ON Site.siteId = Feedback.siteId 
-                    INNER JOIN
-                        Company
-                        ON Company.companyId = Site.companyId
              WHERE 1=1
-                 AND Company.companyId = :company_id            
+                 AND Feedback.companyId = :company_id            
         ";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
