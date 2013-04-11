@@ -22,7 +22,6 @@ class SubmissionService {
    
     public function __construct($post_input) {
         $this->post_data        = new SimpleArray($post_input);
-        $this->dbdashboard      = new DBDashboard;
         $this->contact_details  = new ContactDetails($this->post_data);
         $this->feedback_details = new FeedbackDetails($this->post_data);
         $this->dbfeedback       = new DBFeedback;
@@ -141,8 +140,8 @@ class SubmissionService {
     
     public function _calculate_dashboard_analytics($company_id) { 
         //let's also update the summary for the dashboard analytics
-        $this->dbdashboard->company_id = $company_id;
-        $this->dbdashboard->write_summary();
+        $dbdashboard = new DBDashboard($company_id);
+        $dbdashboard->write_summary();
     }
     
     public function metric_response() {
