@@ -215,8 +215,6 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
 
-        Helpers::dump($result_obj);
-
         return $result_obj; 
     }
 
