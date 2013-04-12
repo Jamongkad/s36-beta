@@ -444,17 +444,20 @@ return array(
 
                 $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token, $token_secret); 
                 $token_credentials = $connection->getAccessToken($_REQUEST['oauth_verifier']);
+
                 $tf->dump($_REQUEST);
                 $tf->dump($token_credentials);
+
+                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token', $token_credentials['oauth_token']);
+                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token_secret', $token_credentials['oauth_token_secret']);
 
                 $me = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 $account = $me->get('account/verify_credentials');
                 $tweets = $me->get('statuses/home_timeline');
                 $tf->dump($account);
                 $tf->dump($tweets);
+
             }
-
-
         });
 
         $tf->run();
