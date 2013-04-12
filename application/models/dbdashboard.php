@@ -118,7 +118,7 @@ class DBDashboard extends S36DataObject {
             }
 
             //echo "Creating new Dashboard Summary Record<br/>";
-            $feedbackscore = $this->get_feedback_scores();
+            $feedbackscore  = $this->get_feedback_scores();
             $total_feedback = $feedback->total_feedback_by_company($this->company_id);
             $total_contacts = $contact->total_contacts_by_company($this->company_id); 
             /* Nightmare fuel DEBUG output
@@ -128,7 +128,7 @@ class DBDashboard extends S36DataObject {
             */
             $dashboard_sql = 'INSERT INTO DashboardSummary (
                                   companyId, totalFeed, newFeed, neutralFeed, negativeFeed, positiveFeed, ignoredFeed
-                               , contactTotal, contactReply, contactRequest, contactNotReply, feedFeatured , feedPublished, topCountry
+                                , contactTotal, contactReply, contactRequest, contactNotReply, feedFeatured , feedPublished, topCountry
                               ) VALUES (
                                   :company_id, :total_feed, :new_feed, :neutral_feed, :negative_feed, :positive_feed, :ignored_feed
                                 , :contact_total, :contact_reply, :contact_request, :contact_notreply, :feed_featured , :feed_published
@@ -162,8 +162,8 @@ class DBDashboard extends S36DataObject {
     public function check_summary() {
         $sql = "
            SELECT 
-                 DashboardSummary.companyId AS dscompanyId
-               , Geochart.companyId AS gccompanyId
+               DashboardSummary.companyId AS dscompanyId
+             , Geochart.companyId AS gccompanyId
            FROM 
                DashboardSummary
            INNER JOIN
