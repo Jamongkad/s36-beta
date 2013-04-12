@@ -42,7 +42,6 @@ class DBSocialFeedback extends S36DataObject {
                     'firstName' => $data->firstname
                   , 'siteId'    => $site_id->siteid
                   , 'countryId' => 895
-                  , 'companyId' => 6
                   , 'avatar'    => $data->avatar 
                   , 'profileLink' => 'http://twitter.com/'.$data->screen_name
                   , 'loginType'   => 'tw'
@@ -55,6 +54,7 @@ class DBSocialFeedback extends S36DataObject {
                     'text'    => $data->text
                   , 'siteId'  => $site_id->siteid
                   , 'dtAdded' => $data->date
+                  , 'companyId' => 6
                   , 'contactId'  => $contact_insert_id
                   , 'categoryId' => $ctgy_id->categoryid
                   , 'status'     => 'new'
