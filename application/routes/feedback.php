@@ -34,6 +34,8 @@ return array(
             $feed_obj = Array('feedid' => $id);
             $feedbackstate = new Feedback\Services\FeedbackState($state, Array($feed_obj), S36Auth::user()->companyid);
             $feedbackstate->change_state();
+            $feedbackstate->write_summary();
+
         }
     },
 
@@ -148,6 +150,7 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
+        $feedbackstate->write_summary();
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
@@ -189,6 +192,7 @@ return array(
         $feed_obj = Array('feedid' => $id);
         $feedbackstate = new Feedback\Services\FeedbackState('delete', Array($feed_obj), S36Auth::user()->companyid);
         $feedbackstate->change_state();
+        $feedbackstate->write_summary();
 
         return Redirect::to('inbox/deleted/all');  
     },

@@ -28,6 +28,7 @@ class FireMultiple {
         } else {  
             $feedbackstate = new FeedbackState($this->mode, $this->feed_ids, $this->company_id);
             $feedbackstate->change_state();
+            $feedbackstate->write_summary();
         } 
 
     }
