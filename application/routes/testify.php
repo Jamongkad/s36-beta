@@ -433,8 +433,8 @@ return array(
                 $token = $twitoauth->getRequestToken($callback_url);
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
 
-                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token', $token['oauth_token']);
-                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
+                $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token', $token['oauth_token']);
+                $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
                 $tf->dump($token);
                 $tf->dump($login_url); 
@@ -448,8 +448,8 @@ return array(
                 $tf->dump($_REQUEST);
                 $tf->dump($token_credentials);
 
-                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token', $token_credentials['oauth_token']);
-                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token_secret', $token_credentials['oauth_token_secret']);
+                $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token', $token_credentials['oauth_token']);
+                $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token_secret', $token_credentials['oauth_token_secret']);
 
                 $me = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 $account = $me->get('account/verify_credentials');
