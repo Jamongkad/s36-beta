@@ -423,7 +423,7 @@ return array(
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
-            $callback_url = Config::get('application.url').'/settings/connect/twitter';
+            $callback_url = Config::get('application.url').'/testify/twitteroauth';
             $token = $twitoauth->getRequestToken($callback_url);
             $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
 
