@@ -35,7 +35,6 @@ return array(
             $feedbackstate = new Feedback\Services\FeedbackState($state, Array($feed_obj), S36Auth::user()->companyid);
             $feedbackstate->change_state();
             $feedbackstate->write_summary();
-
         }
     },
 

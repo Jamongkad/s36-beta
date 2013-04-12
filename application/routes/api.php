@@ -111,6 +111,7 @@ return array(
             $feed_obj = Array('feedid' => $feedback_id);
             $feedbackstate = new Feedback\Services\FeedbackState($status, Array($feed_obj), $company_id);
             $publish_success = $feedbackstate->change_state();
+            $feedbackstate->write_summary();
 
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email

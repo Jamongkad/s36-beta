@@ -3,19 +3,19 @@
 if(!preg_match('~inbox/deleted/all~', Request::uri(), $matches)):?>
 
     <?
-    $links = Array(
-        'none' => '-'
-      , 'publish' => 'Publish'
-      , 'feature' => 'Feature'
-      , 'delete' => 'Delete'
+     $links = Array(
+         'none' => '-'
+       , 'publish' => 'Publish'
+       , 'feature' => 'Feature'
+       , 'delete' => 'Delete'
      );
 
-    if(preg_match_all('~inbox/published~', Request::uri(), $matches)) {
-        unset($links['publish']);     
-        unset($links['feature']);     
-    }
+     if(preg_match_all('~inbox/published~', Request::uri(), $matches)) {
+         unset($links['publish']);     
+         unset($links['feature']);     
+     }
 
-    echo Form::select('feed_selection', $links, 'none', 
+     echo Form::select('feed_selection', $links, 'none', 
          array('class' => 'feed-selection', 'hrefaction' => URL::to('/feedback/fire_multiple'), 'base-url' => URL::to('/')) );?> 
 <?else:?>
     <?=Form::select('feed_selection', Array(
