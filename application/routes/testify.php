@@ -420,6 +420,7 @@ return array(
 
         $tf->beforeEach(function($tf) { 
             $tf->data->redis = new redisent\Redis;
+            $tf->data->redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
         });
         
         $tf->test("Test", function($tf) {
@@ -427,15 +428,29 @@ return array(
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
-            $callback_url = Config::get('application.url').'/testify/twitteroauth';
-            $token = $twitoauth->getRequestToken($callback_url);
-            $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
+            if($tf->data->redis->hgetall($redis_oauth_key) == false) {    
+                $callback_url = Config::get('application.url').'/testify/twitteroauth';
+                $token = $twitoauth->getRequestToken($callback_url);
+                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
 
-            $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token['oauth_token'], $token['oauth_token_secret']); 
-            $tweets = $connection->get('statuses/home_timeline');
-            $tf->dump($token);
-            $tf->dump($login_url); 
-            $tf->dump($tweets);
+                $tf->data->redis->hsetnx($redis_oauth_key, 'oauth_token', $token['oauth_token']);
+                $tf->data->redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
+
+                $tf->dump($token);
+                $tf->dump($login_url); 
+            } else {
+                $token = $tf->data->redis->hget($redis_oauth_key, 'oauth_token');
+                $token_secret = $tf->data->redis->hget($redis_oauth_key, 'oauth_token_secret');
+                /*
+                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token['oauth_token'], $token['oauth_token_secret']); 
+                $tweets = $connection->get('statuses/home_timeline');
+                $tf->dump($tweets);
+                */
+                $tf->dump($token);
+                $tf->dump($token_secret);
+            }
+
+
         });
 
         $tf->run();
