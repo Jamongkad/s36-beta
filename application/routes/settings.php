@@ -4,7 +4,7 @@ $category = new DBCategory;
 $social_account = new Company\Repositories\DBCompanySocialAccount;
 $redis = new redisent\Redis;
 $redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
-$redis_twitter_key = config::get('application.subdomain').':twitter:feedback';
+$redis_twitter_key = Config::get('application.subdomain').':twitter:feedback';
 
 $category 			= new DBCategory;
 $company 			= new Company\Repositories\DBCompany;
