@@ -75,7 +75,8 @@
     </div> 
     <div class="block noborder grids">
         <div class="dashboard-updates">
-            <div class="dashboard-updates-title">Since your last visit... <?=date("jS F, l Y", time())?></div>
+            <!--<div class="dashboard-updates-title">Since your last visit... <?=date("F", time())?></div>-->
+            <div class="dashboard-updates-title">Feedback you've received for the month of <?=date("F", time())?></div>
             <div class="dashboard-updates-list pending">
                 <strong><?=HTML::link('inbox/all', $dashboard_summary->dashscores->newfeed." new entries")?></strong> are pending your review 
             </div>
