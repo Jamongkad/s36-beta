@@ -433,14 +433,14 @@ return array(
                 $token = $twitoauth->getRequestToken($callback_url);
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
 
-                $tf->data->redis->hsetnx($redis_oauth_key, 'oauth_token', $token['oauth_token']);
-                $tf->data->redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
+                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token', $token['oauth_token']);
+                $tf->data->redis->hsetnx($tf->data->redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
                 $tf->dump($token);
                 $tf->dump($login_url); 
             } else {
-                $token = $tf->data->redis->hget($redis_oauth_key, 'oauth_token');
-                $token_secret = $tf->data->redis->hget($redis_oauth_key, 'oauth_token_secret');
+                $token = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token');
+                $token_secret = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token_secret');
                 /*
                 $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token['oauth_token'], $token['oauth_token_secret']); 
                 $tweets = $connection->get('statuses/home_timeline');
