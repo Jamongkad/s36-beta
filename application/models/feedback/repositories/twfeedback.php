@@ -48,7 +48,6 @@ class TWFeedback {
             }
 
             if($request_count_check) {
-                Helpers::dump("Processing");
                 $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
                 $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
                 
