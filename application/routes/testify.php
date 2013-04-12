@@ -467,24 +467,22 @@ return array(
                     );
 
                     $tf->data->social_account->save_social_account($data);
-
+                    $tf->data->redis->delete($tf->data->redis_oauth_key);
                 }
             }
 
         });
 
-        $tf->test("Long Lasting Credentials", function($tf) {
-            /*
-            $token = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token');
-            $token_secret = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token_secret');
-
-            $me = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $token, $token_secret);
-            $account = $me->get('account/verify_credentials');
-            $tweets = $me->get('statuses/home_timeline');
-            $tf->dump($account);
-            $tf->dump($tweets); 
-            */
-
+        $tf->test("Long Lasting Credentials", function($tf) { 
+            $account = $tf->data->social_account->fetch_social_account('twitter');
+            if($account) { 
+                $token_credentials = Helpers::unwrap($account->socialaccountvalue);
+                $me = new TwitterOAuth($this->data->twitter_key, $this->data->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
+                $account = $me->get('account/verify_credentials');
+                $tweets = $me->get('statuses/home_timeline');
+                $tf->dump($account);
+                $tf->dump($tweets); 
+            }
         });
 
         $tf->run();
