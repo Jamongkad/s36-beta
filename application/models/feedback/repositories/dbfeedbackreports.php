@@ -72,9 +72,10 @@ class DBFeedbackReports extends S36DataObject {
 	        $sth->bindParam(':report_company', $data['reportCompany'], PDO::PARAM_STR);
 	        $sth->bindParam(':report_comments', $data['reportComments'], PDO::PARAM_STR);
 	        $sth->execute();
+	        return array('success'=>true,'message'=>'Success');
+    	}else{
+    		return array('success'=>false,'message'=>'Failed');
     	}
-
-    	return array('success'=>true,'message'=>'Success');
 	}
 
 	public function removeReport($data){

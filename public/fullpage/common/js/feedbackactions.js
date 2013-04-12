@@ -61,22 +61,26 @@ var S36FeedbackActions = new function() {
     | Start Feedback Flag Actions
     */
     this.flag_inapprt = function() {
-        var content = $('#flagBoxDiv').html();
-         $(".flag-feedback-fancy").fancybox({
-            'scrolling'     : 'no',
-            'overlayOpacity': 0.1,
-            'showCloseButton'   : false,
-            'content' : content
-         });
-
          $(flag).unbind('click.flag_inapprt').bind('click.flag_inapprt', function(e) {
-            $('#flagBoxDiv').show();
-            FormValidateReport.setFeedbackId($(this).parents(feedback).attr('fid'));
-            FormValidateReport.setDefaults();
+            var selected_feedback = $(this).parents(feedback).attr('fid');
+            $('#flagBox .flag-feedback-id').val(selected_feedback);
             e.preventDefault();
         });
+        
+        var setFlagBox = function(){
+            FormValidateReport.setDefaults();
+        }
+        var content = $('#flagBoxDiv').html();
+
+         $(".flag-feedback-fancy").fancybox({
+            'scrolling'         : 'no',
+            'overlayOpacity'    : 0.1,
+            'showCloseButton'   : false,
+            'content'           : content,
+            'beforeShow'        : setFlagBox
+        });
     }
-    
+
     this.undo_flag = function(){
         $(undo_flag).unbind('click.undo_flag').bind('click.undo_flag', function(e) {
             var this_undo = $(this);
@@ -111,12 +115,8 @@ var S36FeedbackActions = new function() {
         }
     }
     var FormValidateReport = new function() {
-        var feedback_id;
-        this.setFeedbackId = function(fid){
-            feedback_id = fid;
-        }
         this.getFeedbackId = function(){
-            return feedback_id;
+            return $('#flagBox .flag-feedback-id').val();
         }
         this.setDefaults = function(){
                 $('#flagBoxDiv').hide();
@@ -128,6 +128,7 @@ var S36FeedbackActions = new function() {
                 $('.fancybox-inner #flagBox #report_type_list').show();
                 $('.fancybox-inner #flagBox #report_user_info').hide();
                 $('.fancybox-inner .alert-message').hide();
+                $('input:radio[name=flag-item]').attr('checked',false);
         }
 
         this.validate = function() {
@@ -168,7 +169,7 @@ var S36FeedbackActions = new function() {
                             }
                     }else{
                             return true;
-                        }
+                    }
                 }else{
                         $('.fancybox-inner .alert-message').html(
                             '<div class="warning">Please select a report option below</div>'
@@ -178,6 +179,10 @@ var S36FeedbackActions = new function() {
                     }
                 }
     }
+
+    $(document).delegate('.reportTypeLabel', 'click', function(){
+        $('input:radio[name=flag-item]'+'.'+this.id).attr('checked',true);
+    });
 
     $(document).delegate('#back_report', 'click', function(){
         $('#flagBox #report_type_list').show();

@@ -264,7 +264,7 @@
 
 <div id="flagBoxDiv" style="display:none">
 <div id="flagBox">
-<input id="flag-feedback-id" type="hidden" value=""/>
+<input class="flag-feedback-id" type="hidden" value=""/>
 <div class="flagbox-content">
         <div class="flagbox-head">
             <h2>Flag as Inappropriate</h2>
@@ -278,8 +278,8 @@
                 foreach($reportTypes as $report_id=>$report_desc):
                 ?>
                     <li>
-                        <input class="feedbackReportItem" type="radio" name="flag-item" id="flag-item-<?=$report_id?>" value="<?=$report_id?>" />
-                        <label for="flag-item-<?=$report_id?>"><?=$report_desc?></label>
+                        <input class="feedbackReportItem flag-item-<?=$report_id?>" type="radio" name="flag-item" value="<?=$report_id?>" />
+                        <label id="flag-item-<?=$report_id?>" class="reportTypeLabel"><?=$report_desc?></label>
                     </li>
                 <?php endforeach; ?>
                 </ul>
