@@ -132,7 +132,6 @@ return array (
 
                 Helpers::dump($redis->hget($redis_oauth_key, 'oauth_token'));
                 Helpers::dump($redis->hget($redis_oauth_key, 'oauth_token_secret'));
-                Helpers::dump($twitoauth);
                 Helpers::dump($token_credentials);
                 /*
                 //If social account does not exist create one

@@ -443,11 +443,9 @@ return array(
                 $token_secret = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token_secret');
 
                 $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token, $token_secret); 
-                $tweets = $connection->get('statuses/home_timeline');
-
-                $tf->dump($token);
-                $tf->dump($token_secret);
-                $tf->dump($tweets);
+                $token_credentials = $connection->getAccessToken($_REQUEST['oauth_verifier']);
+                $tf->dump($_REQUEST);
+                $tf->dump($token_credentials);
 
             }
 
