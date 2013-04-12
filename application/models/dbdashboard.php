@@ -29,7 +29,7 @@ class DBDashboard extends S36DataObject {
                 Feedback
             WHERE 1=1
                 AND Feedback.companyId = :company_id_two
-                AND Feedback.dtAdded >= DATE_SUB(NOW(), INTERVAL 1 MONTH)");
+                ");
 
         $sth->bindParam(":company_id_one", $this->company_id, PDO::PARAM_INT);
         $sth->bindParam(":company_id_two", $this->company_id, PDO::PARAM_INT);
