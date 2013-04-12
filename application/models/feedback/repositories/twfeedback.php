@@ -38,8 +38,6 @@ class TWFeedback {
         if($this->company_social) {
             $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
 
-            Helpers::dump($request_count_check);
-
             if($this->redis->hgetall($this->redis_twitter_key)) {   
                 if($request_count_check) {
                     $this->redis->hincrby($this->redis_twitter_key, 'requests', 1);     
@@ -50,6 +48,7 @@ class TWFeedback {
             }
 
             if($request_count_check) {
+                Helpers::dump("Processing");
                 $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
                 $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
                 
