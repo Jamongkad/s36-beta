@@ -24,7 +24,7 @@ class FeedbackState {
         $this->company_id  = $company_id;
         $this->category_id = $category_id;
         $this->feedback    = new DBFeedback;
-        $this->dashboard   = new DBDashboard($compan_id);
+        $this->dashboard   = new DBDashboard($company_id);
     } 
 
     public function change_state() {        
