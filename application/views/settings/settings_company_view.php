@@ -28,9 +28,11 @@
             </div>
             <div class="grids">
                 <div id="image-container">
-                <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
+                    <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
                     <?if($company->logo):?>
-                        <?=HTML::image('/uploaded_images/company_logos/'.$company->logo)?>
+                        <div id="image-sub-container">
+                            <img src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
+                        </div>
                     <?else:?>
                         <?=HTML::image('img/company-logo-filler.jpg')?>
                     <?endif?>

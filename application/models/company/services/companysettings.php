@@ -34,6 +34,7 @@ class CompanySettings {
             // check the file type.
             if( ! in_array($this->files['your_photo']['type'], $valid_filetypes) ){
                 $this->errors = 'Invalid file type.';
+                return;
             }
             
             if($this->files['your_photo']['error'] > 0) {
