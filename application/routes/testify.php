@@ -467,8 +467,8 @@ return array(
                     );
 
                     $tf->data->social_account->save_social_account($data);
-                    $tf->data->redis->del($tf->data->redis_oauth_key);
                 }
+                $tf->data->redis->del($tf->data->redis_oauth_key);
             }
 
         });
