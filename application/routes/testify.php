@@ -447,6 +447,11 @@ return array(
                 $tf->dump($_REQUEST);
                 $tf->dump($token_credentials);
 
+                $me = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
+                $account = $me->get('account/verify_credentials');
+                $tweets = $me->get('statuses/home_timeline');
+                $tf->dump($account);
+                $tf->dump($tweets);
             }
 
 
