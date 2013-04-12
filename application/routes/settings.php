@@ -117,17 +117,19 @@ return array (
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
                 $token = $twitoauth->getRequestToken($callback_url);
 
-                $redis->hsetnx($redis_oauth_key, 'oauth_token', $token['oauth_token']);
-                $redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
+                $redis->hset($redis_oauth_key, 'oauth_token', $token['oauth_token']);
+                $redis->hset($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
                 header('Location:'.$login_url);
                 exit;
             } else {
+
                 $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, 
                                               $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
 
-                $token_credentials = $twitoauth->getAccessToken();
+               
+                $token_credentials = $twitoauth->getAccessToken($_REQUEST['oauth_verifier']);
                 $account = $social_account->fetch_social_account('twitter');
 
                 //If social account does not exist create one
@@ -148,6 +150,7 @@ return array (
                     $social_account->save_social_account($data);
                 } 
 
+                $redis->del($redis_oauth_key);
             }                
         }
 
