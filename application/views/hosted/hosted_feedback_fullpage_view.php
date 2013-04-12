@@ -97,19 +97,25 @@
                 </div>
                 
                 
-                <!-- avatar -->
+                <!-- profile pic -->
                 <div id="avatarContainer">
-                    <div id="avatar">
-                        <img src="/fullpage/common/img/samchloe.png" width="100%" />
-                    </div>
-                    <div id="avatarButtonIcon">
-                        <div id="avatarMenuList">
-                            <ul>
-                                <li><a href="javascript:;">Change Photo</a></li>
-                                <li><a href="javascript:;">Remove</a></li>
-                            </ul>
+                    <?php if( ! is_null($company->logo) ): ?>
+                        <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" /><? // needed in js. ?>
+                        <img src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
+                        <div id="avatarButtonIcon">
+                            <div id="avatarMenuList">
+                                <ul>
+                                    <li><a href="javascript:;">
+                                        Change Photo
+                                        <input type="file" id="company_logo" data-url="imageprocessing/upload_company_logo" />
+                                    </a></li>
+                                    <li><a href="javascript:;">Remove</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <img src="/img/public-profile-pic.jpg" width="100%" />
+                    <?php endif; ?>
                 </div>
             </div>
             
@@ -301,6 +307,7 @@
 <?= HTML::script('/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js'); ?>
 <?= HTML::script('/fullpage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js'); ?>
 <?= HTML::script('/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js'); ?>
+<?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
 <? endif ?>
 <?php 
 /*

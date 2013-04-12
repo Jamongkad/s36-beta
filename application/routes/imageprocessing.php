@@ -20,39 +20,6 @@ return array(
         new JqueryFileUploader($options); 
     }),
     
-    'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
-        $options = array(
-              'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_avatar'
-            , 'file_name'  => md5(uniqid()).'.jpg'
-            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/avatar/'
-            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/avatar/'
-            , 'param_name' => 'files'
-            , 'overwrite' => true
-            , 'image_versions' => array(
-                'small' => array(
-                    'max_width'     => 48,
-                    'max_height'    => 48,
-                ),
-                'medium' => array(
-                    'max_width'     => 150,
-                    'max_height'    => 150
-                )
-            )
-        );
-        $result = new JqueryFileUploader($options);
-        //we just need the versioned images. Remove the original uploaded image
-        unlink($options['upload_dir'].$options['file_name']);
-        //remove previous upload for the current session
-        if(Session::get('uploaded_avatar')){
-            foreach($options['image_versions'] as $versions=>$value){
-                unlink($options['upload_dir'].$versions.'/'.Session::get('uploaded_avatar'));
-            }
-            Session::put('uploaded_avatar',$options['file_name']);
-        }else{
-            Session::put('uploaded_avatar',$options['file_name']);
-        }
-    }),
-    
     // saving of cover photo in db and deletion of old cover photo.
     'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {
         
@@ -105,7 +72,78 @@ return array(
         $company->update_coverphoto( $cover_data[ $data['action'] ] );
         
     },
-
+    
+    'POST /imageprocessing/upload_company_logo' => array('name'=>'upload_company_logo', 'do' => function() use ($user) {
+        
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        
+        // upload the image in tmp dir.
+        $options = array(
+              'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_company_logo'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/uploaded_tmp/'
+            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/company_logos/'
+            , 'param_name' => 'files'
+        );
+        
+        new JqueryFileUploader($options);
+        
+        
+        // rename the temporary uploaded image.
+        // we didn't upload the image in company_logos dir right away
+        // because there are some weird things that happen. nevermind that shit.
+        $filename = 'logo_' . $user->companyid . '.' . pathinfo($_FILES['files']['name'][0], PATHINFO_EXTENSION);
+        $src = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $_FILES['files']['name'][0];
+        $des = Config::get('application.uploaded_images_dir') . '/company_logos/' . $filename;
+        rename($src, $des);
+        
+        
+        // update filename in db. yes we still need an update
+        // because filenames may differ in extensions.
+        $profile_data['change']['logo'] = $filename;
+        $profile_data['remove']['logo'] = null;
+        
+        
+        //save to database
+        DB::table('Company')
+            ->where('companyId', '=', $user->companyid)
+            ->update( $profile_data['change'] );
+        
+    }),
+    
+    'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
+        $options = array(
+              'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_avatar'
+            , 'file_name'  => md5(uniqid()).'.jpg'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/avatar/'
+            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/avatar/'
+            , 'param_name' => 'files'
+            , 'overwrite' => true
+            , 'image_versions' => array(
+                'small' => array(
+                    'max_width'     => 48,
+                    'max_height'    => 48,
+                ),
+                'medium' => array(
+                    'max_width'     => 150,
+                    'max_height'    => 150
+                )
+            )
+        );
+        $result = new JqueryFileUploader($options);
+        //we just need the versioned images. Remove the original uploaded image
+        unlink($options['upload_dir'].$options['file_name']);
+        //remove previous upload for the current session
+        if(Session::get('uploaded_avatar')){
+            foreach($options['image_versions'] as $versions=>$value){
+                unlink($options['upload_dir'].$versions.'/'.Session::get('uploaded_avatar'));
+            }
+            Session::put('uploaded_avatar',$options['file_name']);
+        }else{
+            Session::put('uploaded_avatar',$options['file_name']);
+        }
+    }),
+    
     'POST /imageprocessing/FormImageUploader' => array('do'=> function() {
         $options = array(
               'script_url'    => JqueryFileUploader::get_full_url().'/imageprocessing/FormImageUploader'

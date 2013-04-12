@@ -188,6 +188,44 @@ var S36FullpageAdmin = function(layoutObj){
                 $('#currentBg').show();
             }
         });
+
+        /* ========================================
+        || Apply the fileupload plugin for the profile pic.
+        ==========================================*/
+        $('#company_logo').fileupload({
+            dataType: 'json',
+            add: function(e, data){
+                var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
+                if( image_types.indexOf( data.files[0].type ) == -1 ){
+                    var error = ['Please select an image file'];
+                    Helpers.display_error_mes(error);
+                    return false;
+                }
+                if( data.files[0].size > 2000000 ){
+                    var error = ['Please upload an image not greater than 2mb in filesize'];
+                    Helpers.display_error_mes(error);
+                    return false;
+                }
+                data.submit();
+            },progress: function(e, data){
+                $('#avatarContainer img').css('opacity', '0.2');
+                self.show_notification('Changing Profile Picture', 0);
+            },done: function(e, data){
+                // set the new src for the image. the additional ? or any get param at the end of the src
+                // refereshes the displayed image. this is it dan, you bits!
+                // we also need the ext from result because they differ from server side.
+                //var new_src = $('#avatarContainer img').attr('src') + '?';
+                var ext = data.result[0].name.split('.').pop();
+                var rand = '';
+                var new_src = '/uploaded_images/company_logos/logo_' + $('#company_id').val() + '.' + ext + '?';
+                $('#avatarContainer img').css('opacity', '1').hide().removeAttr('src');
+                $('#avatarContainer img').attr('src', new_src).fadeIn();
+                self.hide_notification();
+                //data.result[0].name
+                console.log( data.result[0] );
+            }
+        });
+        
         /* ========================================
         || Apply the fileupload plugin for the cover photo
         ==========================================*/

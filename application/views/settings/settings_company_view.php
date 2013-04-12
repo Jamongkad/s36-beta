@@ -30,7 +30,7 @@
                 <div id="image-container">
                 <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
                     <?if($company->logo):?>
-                        <?=HTML::image('company_logos/'.$company->logo)?>
+                        <?=HTML::image('/uploaded_images/company_logos/'.$company->logo)?>
                     <?else:?>
                         <?=HTML::image('img/company-logo-filler.jpg')?>
                     <?endif?>

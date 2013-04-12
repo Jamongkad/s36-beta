@@ -14,8 +14,8 @@ class CompanySettings {
     private $files, $filename, $errors;
 
     public function __construct($company_id = null) {
-        $this->upload_dir  = "/var/www/s36-upload-images/uploaded_tmp/";
-        $this->company_dir = "/var/www/s36-upload-images/company_logos/";
+        $this->upload_dir  = "/var/www/s36-upload-images/uploaded_images/uploaded_tmp/";
+        $this->company_dir = "/var/www/s36-upload-images/uploaded_images/company_logos/";
         $this->dbcompany   = new DBCompany;
         $this->company_id = $company_id;
         //$this->twitter     = new TWFeedback;  
@@ -27,7 +27,7 @@ class CompanySettings {
         $filename = $this->files['your_photo']['name'];
         $final_file = $this->upload_dir.$filename;
         $valid_filetypes = array('image/gif', 'image/jpg', 'image/jpeg', 'image/png');
-
+        
         //check if photo is a part of the files array
         if($filename) { 
             
@@ -38,13 +38,13 @@ class CompanySettings {
             
             if($this->files['your_photo']['error'] > 0) {
                 $this->errors = "Return Code: " . $this->files['your_photo']['error'];
-            }else if( file_exists($final_file) or file_exists($this->company_dir.$filename) ) {
+            //}else if( file_exists($final_file) or file_exists($this->company_dir.$filename) ) {
                 // no need for this error.
                 //$this->errors = $filename . " already exists.";    
             } else {
-
-                $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
-
+                
+                $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);
+                
                 if($move_attempt) { 
                     $imagine = new Imagine\Gd\Imagine();
                     $size = new Imagine\Image\Box(250, 180);
