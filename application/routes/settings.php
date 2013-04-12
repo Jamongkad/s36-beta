@@ -121,8 +121,8 @@ return array (
                 $redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
-                print_r($login_url);
-                //header('Location:'.$login_url);
+                //print_r($login_url);
+                header('Location:'.$login_url);
                 exit;
             } else {
                 $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, 
