@@ -150,6 +150,13 @@ return array(
                 'tw' => $tf->data->twitter->pull_tweets()
             );
             $tf->dump($social_services);
+            /*
+            $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+            $tf->dump($tf->data->social->save_social_feeds());
+
+            $tf->dump($social_services['twitter']);
+            */
+
         });
 
         $tf->run();

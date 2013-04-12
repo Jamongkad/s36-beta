@@ -23,7 +23,7 @@ class TWFeedback {
         
         $dbcompany = new DBCompany;
         $dbcompany_social = new DBCompanySocialAccount;
-        $company = $dbcompany->get_company_info(Config::get('application.subdomain'));
+        $this->company = $dbcompany->get_company_info(Config::get('application.subdomain'));
 
         $this->company_social = $dbcompany_social->fetch_social_account($this->social_network);
     }
@@ -57,6 +57,7 @@ class TWFeedback {
                     $dt = new DateTime($tweet->created_at);
                     $node = new StdClass;
                     $node->id             = $tweet->id_str;
+                    $node->companyid      = $this->company->companyid;  
                     $node->firstname      = $tweet->user->name;
                     $node->screen_name    = $tweet->user->screen_name;
                     $node->avatar         = $tweet->user->profile_image_url_https;
