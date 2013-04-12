@@ -29,11 +29,12 @@ class FeedbackState {
 
     public function change_state() {        
         $feed_obj = $this->feedback_state_obj();
-
-        //write dashboard summary
-        $this->dashboard->write_summary();
-
         return $this->feedback->_toggle_multiple($feed_obj);
+    }
+
+    public function write_summary() {
+        //write dashboard summary
+        $this->dashboard->write_summary(); 
     }
 
     public function feedback_state_obj() {
