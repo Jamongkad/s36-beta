@@ -27,6 +27,64 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
     FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
 </script>
 
+
+<?php 
+/*
+| Start adding css,js, and html for hosted form
+*/
+$hostedForm = $_GET['hosted'];
+if (isset($hostedForm) && $hostedForm=true):
+$company_name       = Config::get('application.subdomain');
+$company            = new \Company\Repositories\DBCompany;
+$hosted_settings    = new \Hosted\Repositories\DBHostedSettings;
+$fullpage           = new \Hosted\Services\Fullpage;
+$company_info       = $company->get_company_info($company_name);
+$fullpage_css       = $fullpage->get_fullpage_css($company_info->companyid);
+?>
+<link type="text/css" rel="stylesheet" href="/fullpage/common/css/hosted-form.css" />
+<script src="/fullpage/common/js/hosted.form.script.js" type="text/javascript"></script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            var hostedForm = new S36HostedForm;
+                hostedForm.init_toggle_bar(1);
+        });
+</script>
+<div id="theBar">   
+    <div id="theBarInner" class="clear">
+        <div id="barLeftContent">
+            <div class="barLinks clear">
+                <div id="barImageLogo"><a href="http://beta.36stories.com/"><img src="/fullpage/common/img/36stories-logo.png" /></a></div>
+                <?php if( is_null(\S36Auth::user()) ): ?>
+                    <ul class="left-links">                 
+                        <li><a href="http://beta.36stories.com/">Create Your Own Feedback Page!</a></li>
+                    </ul>
+                <?php endif ?>
+            </div>
+        </div>
+        <div id="barRightContent">
+            <div class="barLinks">
+                <ul>
+                    <li> 
+                        <a href="/login?forward_to=me">Login</a>
+                    </li>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mainWrapper">
+    <div id="mainContainer">
+        <div id="theBarTab" class=""></div>
+    </div>
+<?php
+endif;
+/*
+| End adding css,js, and html for hosted form
+*/
+?>
+
+
+
 <div id="formBox">
     <form action="" method="POST" enctype="multipart/form-data">
     <input type="hidden" id="rating" name="rating" value="0" />
@@ -380,3 +438,24 @@ with others!</p>
     </div>
     </form>
 </div>
+
+
+<?php
+/*
+| Start adding css,js, and html for hosted form
+*/
+if (isset($hostedForm) && $hostedForm=true):
+?>
+    <div id="mainFooter">
+        <p align="center">Powered by <a href="#"> Fdback</a></p>
+    </div>
+    </div> <!-- clossing mainwrapper -->
+    <?php 
+    /*This is for adding override css from fullpage
+    <div id="fullpage_css"><?php echo $fullpage_css; ?></div>
+    */
+endif;
+/*
+| End adding css,js, and html for hosted form
+*/
+?>
