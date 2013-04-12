@@ -417,6 +417,10 @@ return array(
 
     'GET /testify/twitteroauth' => function() { 
         $tf = new Testify("Twitter OAuth");  
+
+        $tf->beforeEach(function($tf) { 
+            $tf->data->redis = new redisent\Redis;
+        });
         
         $tf->test("Test", function($tf) {
             $twitter_key    = Config::get('application.dev_twitter_key');
@@ -427,8 +431,11 @@ return array(
             $token = $twitoauth->getRequestToken($callback_url);
             $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
 
+            $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token['oauth_token'], $token['oauth_token_secret']); 
+            $tweets = $connection->get('statuses/home_timeline');
             $tf->dump($token);
-            $tf->dump($login_url);
+            $tf->dump($login_url); 
+            $tf->dump($tweets);
         });
 
         $tf->run();
