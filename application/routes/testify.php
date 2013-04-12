@@ -471,8 +471,6 @@ return array(
                 }
             }
 
-            $tf->data->redis->del($tf->data->redis_oauth_key);
-
         });
 
         $tf->test("Long Lasting Credentials", function($tf) { 
