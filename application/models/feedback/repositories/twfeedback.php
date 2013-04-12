@@ -38,6 +38,8 @@ class TWFeedback {
         if($this->company_social) {
             $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
 
+            Helpers::dump($request_count_check);
+
             if($this->redis->hgetall($this->redis_twitter_key)) {   
                 if($request_count_check) {
                     $this->redis->hincrby($this->redis_twitter_key, 'requests', 1);     
