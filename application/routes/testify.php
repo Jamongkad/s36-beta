@@ -427,6 +427,7 @@ return array(
         });
         
         $tf->test("Test", function($tf) {
+            /*
             $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
 
             if($tf->data->redis->hgetall($tf->data->redis_oauth_key) == false) {    
@@ -451,15 +452,8 @@ return array(
 
                 $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token', $token_credentials['oauth_token']);
                 $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token_secret', $token_credentials['oauth_token_secret']);
-                /*
-                $me = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
-                $account = $me->get('account/verify_credentials');
-                $tweets = $me->get('statuses/home_timeline');
-                $tf->dump($account);
-                $tf->dump($tweets);
-                */
-
             }
+            */
         });
 
         $tf->test("Long Lasting Credentials", function($tf) {
