@@ -121,7 +121,6 @@ return array (
                 $redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
-                //print_r($login_url);
                 header('Location:'.$login_url);
                 exit;
             } else {
@@ -134,7 +133,9 @@ return array (
                 Helpers::dump($redis->hget($redis_oauth_key, 'oauth_token'));
                 Helpers::dump($redis->hget($redis_oauth_key, 'oauth_token_secret'));
                 Helpers::dump($twitoauth);
+                Helpers::dump($token_credentials);
                 /*
+                //If social account does not exist create one
                 if(!$account) { 
                    
                     $twitter_account_data = Array( 
