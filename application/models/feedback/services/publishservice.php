@@ -50,6 +50,7 @@ class PublishService {
         $feedbackstate = new FeedbackState($status, Array($feed_obj), $this->company_id);
 
         if($state = $feedbackstate->change_state())  {  
+            $feedbackstate->write_summary();
             //Record action on activity log 
             $fba = new FeedbackActivity($this->user_id, $this->feedback_id, $status);
             

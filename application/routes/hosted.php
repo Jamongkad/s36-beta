@@ -50,6 +50,7 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feeds, $auth->companyid);
         $feedbackstate->change_state();
+        $feedbackstate->write_summary();
 
     },
 
