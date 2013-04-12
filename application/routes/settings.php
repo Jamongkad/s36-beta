@@ -130,6 +130,11 @@ return array (
 
                 $token_credentials = $twitoauth->getAccessToken();
                 $account = $social_account->fetch_social_account('twitter');
+
+                Helpers::dump($redis->hget($redis_oauth_key, 'oauth_token'));
+                Helpers::dump($redis->hget($redis_oauth_key, 'oauth_token_secret'));
+                Helpers::dump($twitoauth);
+                /*
                 if(!$account) { 
                    
                     $twitter_account_data = Array( 
@@ -146,6 +151,7 @@ return array (
 
                     $social_account->save_social_account($data);
                 } 
+                */
             }                
         }
 
