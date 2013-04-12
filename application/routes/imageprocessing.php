@@ -24,6 +24,9 @@ return array(
     'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {
         
         // if the user is not logged in, return error msg.
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
+        
         $data = Input::all();
         $file_name = '';  // we need this default shit.
         
@@ -76,7 +79,7 @@ return array(
     'POST /imageprocessing/upload_company_logo' => array('name'=>'upload_company_logo', 'do' => function() use ($user) {
         
         // if the user is not logged in, return error msg.
-        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
         
         // upload the image in tmp dir.
         $options = array(
@@ -100,16 +103,16 @@ return array(
         
         // update filename in db. yes we still need an update
         // because filenames may differ in extensions.
-        $profile_data['change']['logo'] = $filename;
-        $profile_data['remove']['logo'] = null;
-        
-        
-        //save to database
-        DB::table('Company')
-            ->where('companyId', '=', $user->companyid)
-            ->update( $profile_data['change'] );
+        DB::table('Company')->where('companyId', '=', $user->companyid)->update( array('logo' => $filename) );
         
     }),
+    
+    'POST /imageprocessing/remove_company_logo' => function() use($user) {
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        
+        DB::table('Company')->where('companyId', '=', $user->companyid)->update( array('logo' => null) );
+    },
     
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(

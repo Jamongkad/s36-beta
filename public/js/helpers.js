@@ -51,4 +51,17 @@ var Helpers = new function() {
         });
         return false;
     };
+    
+    this.get_random_int = function(min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
+    this.get_random_str = function(len){
+        var str = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        var rand_str = '';
+        for( a = 1; a <= len; a++ ){
+            rand_str += str.charAt( this.get_random_int(1, 26) );
+        }
+        return rand_str;
+    }
 }

@@ -977,7 +977,7 @@ ul.patternList li div.active{
 	border:1px solid #a5b9cc;
 	color:#4f4f4f;
 	top:16px;
-	right:104px;
+	right:106px;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;  
@@ -1050,7 +1050,7 @@ ul.patternList li div.active{
 	height:17px;
 	position:absolute;
 	right:10px;
-	bottom:10px;
+	top:10px;
 	z-index:1;
 	cursor:pointer;
 }
@@ -1064,8 +1064,8 @@ ul.patternList li div.active{
 	display:none;
 	border:1px solid #a5b9cc;
 	color:#4f4f4f;
-	bottom:28px;
-	right:121px;
+	top:16px;
+	right:105px;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;

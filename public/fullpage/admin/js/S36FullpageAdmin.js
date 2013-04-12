@@ -208,22 +208,49 @@ var S36FullpageAdmin = function(layoutObj){
                 }
                 data.submit();
             },progress: function(e, data){
-                $('#avatarContainer img').css('opacity', '0.2');
                 self.show_notification('Changing Profile Picture', 0);
+                $('#avatarContainer img').css('opacity', '0.2');
             },done: function(e, data){
                 // set the new src for the image. the additional ? or any get param at the end of the src
                 // refereshes the displayed image. this is it dan, you bits!
                 // we also need the ext from result because they differ from server side.
-                //var new_src = $('#avatarContainer img').attr('src') + '?';
                 var ext = data.result[0].name.split('.').pop();
-                var rand = '';
-                var new_src = '/uploaded_images/company_logos/logo_' + $('#company_id').val() + '.' + ext + '?';
-                $('#avatarContainer img').css('opacity', '1').hide().removeAttr('src');
-                $('#avatarContainer img').attr('src', new_src).fadeIn();
+                var rand_str = '?' + Helpers.get_random_str(5);
+                var new_src = '/uploaded_images/company_logos/logo_' + $('#company_id').val() + '.' + ext + rand_str;
+                $('#avatarContainer img').attr('src', new_src).animate({'opacity': '1'});
                 self.hide_notification();
-                //data.result[0].name
-                console.log( data.result[0] );
+                $('#remove_logo').show();
             }
+        });
+        
+        /* ========================================
+        || remove profile picture.
+        ==========================================*/
+        $('#remove_logo').click(function(){
+            var error;
+            self.show_notification('Removing Profile Picture', 0);
+            $('#avatarContainer img').css('opacity', '0.2');
+            
+            $.ajax({
+                async: false,
+                url: '/imageprocessing/remove_company_logo',
+                type: 'post',
+                success: function(result){
+                    error = result;
+                }
+            });
+            
+            if( $.trim(error) != '' ){
+                self.hide_notification();
+                $('#avatarContainer img').animate({'opacity': '1'});
+                Helpers.display_error_mes([error]);
+                return false;
+            }
+            
+            setTimeout(function(){
+                $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg').animate({'opacity': '1'});
+                $('#remove_logo').hide();
+            }, 800);
         });
         
         /* ========================================
@@ -246,12 +273,14 @@ var S36FullpageAdmin = function(layoutObj){
                 data.submit();
             },progress: function(e, data){
                 self.show_notification('Changing Cover Photo',0);
+                $('#coverPhoto img').css('opacity', '0.2');
             },done: function(e, data){
                 self.change_cover_image(data.result[0]);
                 self.turn_on_cp_edit_mode(true);
                 self.make_cover_undraggable(false);
                 self.cover_photo_action = 'change';
                 self.hide_notification();
+                $('#coverPhoto img').animate({'opacity': '1'});
             }
         });
         
