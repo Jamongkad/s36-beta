@@ -421,12 +421,13 @@ return array(
         $tf->beforeEach(function($tf) { 
             $tf->data->redis = new redisent\Redis;
             $tf->data->redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
+
+            $tf->data->twitter_key    = Config::get('application.dev_twitter_key');
+            $tf->data->twitter_secret = Config::get('application.dev_twitter_secret');
         });
         
         $tf->test("Test", function($tf) {
-            $twitter_key    = Config::get('application.dev_twitter_key');
-            $twitter_secret = Config::get('application.dev_twitter_secret');
-            $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
+            $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
 
             if($tf->data->redis->hgetall($tf->data->redis_oauth_key) == false) {    
                 $callback_url = Config::get('application.url').'/testify/twitteroauth';
@@ -442,7 +443,7 @@ return array(
                 $token = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token');
                 $token_secret = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token_secret');
 
-                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token, $token_secret); 
+                $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $token, $token_secret); 
                 $token_credentials = $connection->getAccessToken($_REQUEST['oauth_verifier']);
 
                 $tf->dump($_REQUEST);
@@ -450,14 +451,27 @@ return array(
 
                 $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token', $token_credentials['oauth_token']);
                 $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token_secret', $token_credentials['oauth_token_secret']);
-
+                /*
                 $me = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 $account = $me->get('account/verify_credentials');
                 $tweets = $me->get('statuses/home_timeline');
                 $tf->dump($account);
                 $tf->dump($tweets);
+                */
 
             }
+        });
+
+        $tf->test("Long Lasting Credentials", function($tf) {
+            $token = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token');
+            $token_secret = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token_secret');
+
+            $me = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $token, $token_secret);
+            $account = $me->get('account/verify_credentials');
+            $tweets = $me->get('statuses/home_timeline');
+            $tf->dump($account);
+            $tf->dump($tweets); 
+
         });
 
         $tf->run();
