@@ -2,6 +2,7 @@
 
 use DB, StdClass, Helpers;
 use Feedback\Repositories\DBFeedback;
+use DBDashboard;
 
 class FeedbackState {
 
@@ -23,10 +24,15 @@ class FeedbackState {
         $this->company_id  = $company_id;
         $this->category_id = $category_id;
         $this->feedback    = new DBFeedback;
+        $this->dashboard   = new DBDashboard($compan_id);
     } 
 
     public function change_state() {        
         $feed_obj = $this->feedback_state_obj();
+
+        //write dashboard summary
+        $this->dashboard->write_summary();
+
         return $this->feedback->_toggle_multiple($feed_obj);
     }
 
