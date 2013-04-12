@@ -420,14 +420,14 @@ return array(
 
         $tf->beforeEach(function($tf) { 
             $tf->data->redis = new redisent\Redis;
+            $tf->data->social_account = new Company\Repositories\DBCompanySocialAccount;
             $tf->data->redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
-
             $tf->data->twitter_key    = Config::get('application.dev_twitter_key');
             $tf->data->twitter_secret = Config::get('application.dev_twitter_secret');
         });
         
         $tf->test("Test", function($tf) {
-            /*
+
             $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
 
             if($tf->data->redis->hgetall($tf->data->redis_oauth_key) == false) {    
@@ -450,13 +450,31 @@ return array(
                 $tf->dump($_REQUEST);
                 $tf->dump($token_credentials);
 
-                $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token', $token_credentials['oauth_token']);
-                $tf->data->redis->hset($tf->data->redis_oauth_key, 'oauth_token_secret', $token_credentials['oauth_token_secret']);
+                $account = $tf->data->social_account->fetch_social_account('twitter');
+                if(!$account) { 
+                    $user = S36Auth::user(); 
+
+                    $twitter_account_data = Array( 
+                        'accountName' => $token_credentials['screen_name']
+                      , 'oauthToken' => $token_credentials['oauth_token']
+                      , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
+                    );
+
+                    $data = Array(
+                        'companyId' => $user->companyid
+                      , 'socialAccountOrigin' => 'twitter'
+                      , 'socialAccountValue' => Helpers::wrap($twitter_account_data)
+                    );
+
+                    $tf->data->social_account->save_social_account($data);
+
+                }
             }
-            */
+
         });
 
         $tf->test("Long Lasting Credentials", function($tf) {
+            /*
             $token = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token');
             $token_secret = $tf->data->redis->hget($tf->data->redis_oauth_key, 'oauth_token_secret');
 
@@ -465,6 +483,7 @@ return array(
             $tweets = $me->get('statuses/home_timeline');
             $tf->dump($account);
             $tf->dump($tweets); 
+            */
 
         });
 
