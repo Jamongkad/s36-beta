@@ -54,7 +54,7 @@ class DBSocialFeedback extends S36DataObject {
                     'text'    => $data->text
                   , 'siteId'  => $site_id->siteid
                   , 'dtAdded' => $data->date
-                  , 'companyId' => 6
+                  , 'companyId' => $data->companyid
                   , 'contactId'  => $contact_insert_id
                   , 'categoryId' => $ctgy_id->categoryid
                   , 'status'     => 'new'
