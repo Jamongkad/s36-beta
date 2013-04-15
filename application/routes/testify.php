@@ -64,14 +64,13 @@ return array(
 
         $tf->beforeEach(function($tf) use ($id) {
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
-            $tf->data->replydata = new Email\Entities\ReplyData;
             $tf->data->dbuser    = new DBUser;
             $tf->data->id = $id;
         });
 
         $tf->test('Email Test', function($tf) {  
 
-            $replydata = new ReplyData; 
+            $replydata = new Email\Entities\ReplyData; 
             $replydata->subject("and wanted you to know that we posted it on our website.")
                       ->sendto($to)
                       ->from( 
