@@ -82,6 +82,17 @@ angular.module('S36QuickInboxDirectives', [])
       , template: '<span compile-html="template"></span>'
     } 
 })
+.directive('avatar', function() {
+   return { 
+        restrict: 'A'     
+      , scope: {
+            logintype: "=login"
+        }
+      , link: function(scope, element, attrs) {
+            console.log(scope.logintype);
+        }
+    }    
+})
 .directive('attachments', function() {
     return {
         restrict: 'A'     
