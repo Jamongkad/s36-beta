@@ -364,7 +364,7 @@ class Helpers {
         return substr_count($str, " ") + 1;
     } 
 
-    public static avatar_render($avatar, $origin) { 
+    public static function avatar_render($avatar, $origin) { 
         if($origin == 'tw' && !empty($avatar)) {
             return $avatar; 
         }
