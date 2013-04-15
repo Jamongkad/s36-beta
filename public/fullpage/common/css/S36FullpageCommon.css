@@ -665,3 +665,114 @@ a:hover{
  top:60%;
  margin-top:-16px;
 }
+
+#flagBox{
+width:350px;
+z-index:100003;
+background:#FFF;
+}
+#flagBox .flagbox-body ul{
+list-style:none;
+margin-left:10px;
+}
+#flagBox .flagbox-body ul li{
+margin:3px 0px;
+}
+#flagBox .flagbox-body ul li label{
+cursor:pointer;
+font-size:11px;
+}
+#flagBox .flagbox-body input[type=text]{
+-webkit-border-radius:2px;
+-moz-border-radius:2px;
+border-radius:2px;
+border:1px solid #EEE;
+padding:4px 5px;
+font-size:11px;
+width:200px;
+}
+#flagBox .flagbox-body textarea{
+-webkit-border-radius:2px;
+-moz-border-radius:2px;
+border-radius:2px;
+border:1px solid #EEE;
+padding:4px 5px;
+font-size:11px;
+width:250px;
+height:40px;
+}
+
+#flagBox .flagbox-head{
+background:#11202b;
+padding:15px 30px;
+}
+#flagBox .flagbox-head h2{
+color:#FFF;
+font-weight:bold;
+font-size:13px;
+text-shadow:#000 0px 1px;
+}
+#flagBox .flagbox-body{
+padding:5px 10px;
+color:#666;
+}
+#flagBox .flagbox-foot{
+padding:10px 10px;
+background:#EEE;
+text-align:right;
+}
+.fdback-buttons ul{
+list-style:none;
+}
+.fdback-buttons ul li{
+display:inline;
+margin:0px 3px;
+}
+.fdback-buttons ul li a{
+display:inline-block;
+-webkit-border-radius:2px;
+-moz-border-radius:2px;
+border-radius:2px;
+background:#f5f7f9;
+border:1px solid #616f7c;
+padding:3px 8px;
+color:#5898d7;
+box-shadow:#AAA 0px 1px 3px;
+}
+.fdback-buttons ul li a:hover{
+color:#FFF;
+background:#5293d3;
+border:1px solid #2a70b3;
+}
+
+/*alert messages icons*/
+.alert-message{
+ margin:5px 0px;
+}
+.alert-message div{
+ -webkit-border-radius:2px;
+ -moz-border-radius:2px;
+ border-radius:2px;  
+ font-size:11px;
+ padding:8px 10px 8px 30px;
+}
+.alert-message .error{
+ background:#f5bcb9 url(/fullpage/common/img/alert-error.png) no-repeat left center;
+ border:1px solid #c72500;
+ color:#c72500;
+}
+.alert-message .success{
+ background:#e0f3ba url(/fullpage/common/img/alert-success.png) no-repeat left center;
+ border:1px solid #578b00;
+ color:#578b00;
+}
+.alert-message .warning{
+ background:#f9f1ad url(/fullpage/common/img/alert-warning.png) no-repeat left center;
+ border:1px solid #966400;
+ color:#966400;
+}
+.alert-message .info{
+ background:#c6e3fa url(/fullpage/common/img/alert-info.png) no-repeat left center;
+ border:1px solid #2c4d9f;
+ color:#2c4d9f;
+}

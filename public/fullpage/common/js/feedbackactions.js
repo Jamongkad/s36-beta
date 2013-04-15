@@ -21,8 +21,7 @@ var S36FeedbackActions = new function() {
     //var common = new S36FullpageCommon;
 
     this.initialize_actions = function(layoutObj, common) {
-        me.flag_inapprt();
-        me.undo_flag();
+        me.feedback_report_fancy();
         me.vote();
         me.undo_vote();
         me.share();
@@ -53,58 +52,192 @@ var S36FeedbackActions = new function() {
             if( att_container_h > uploaded_image_h ){
                 att_container.css('margin-top', -((att_container_h - uploaded_image_h) / 2));
             }
-            
             $(this).addClass('adjusted');
         });
     }
 
-    this.flag_inapprt = function() {
-        $(flag).unbind('click.flag_inapprt').bind('click.flag_inapprt', function(e) {
-            
-            var this_flag = $(this);
-            
-            this_flag.addClass('undo_flag_inapp active-icon');
-            this_flag.removeClass('flag-as-inapp');
-            this_flag.parent().find('.icon-tooltip-text').text('Undo flag');
-            S36FeedbackActions.undo_flag();
-            
-            $.ajax({
-                url: '/feedback_action/flag',
-                type: 'post',
-                data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
-                success: function(result){
-                    //this_flag.hide();
-                    //this_flag.parents(feedback).find(undo_flag).show();
-                }
-            });
-
-            e.preventDefault();
-            
-        }); 
+    /*
+    | Start Feedback Flag Actions
+    */
+    var validateEmail = new function(email){
+        this.valid = function(email){
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+                return true;
+                }else{
+                return false;}
+        }
     }
-    
-    this.undo_flag = function(){
-        $(undo_flag).unbind('click.undo_flag').bind('click.undo_flag', function(e) {
-            var this_undo = $(this);
-            
-            this_undo.addClass('flag-as-inapp');
-            this_undo.removeClass('undo_flag_inapp active-icon');
-            this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
-            S36FeedbackActions.flag_inapprt();
-            
-            $.ajax({
-                url: '/feedback_action/unflag',
-                type: 'post',
-                data: {'feedbackId' : this_undo.parents(feedback).attr('fid')},
-                success: function(){
-                    //this_undo.hide();
-                    //this_undo.parents(feedback).find(flag).show();
+    var FormValidateReport = new function() {
+        this.getFeedbackId = function(){
+            return $('#flagBox .flag-feedback-id').val();
+        }
+        this.setDefaults = function(){
+                $('#flagBoxDiv').hide();
+                $('.fancybox-inner #report_name').val('');
+                $('.fancybox-inner #report_email').val('');
+                $('.fancybox-inner #report_company').val('');
+                $('.fancybox-inner #report_comment').val('');
+                $('.fancybox-inner .continue_report').removeClass('continue_report_user');
+                $('.fancybox-inner #flagBox #report_type_list').show();
+                $('.fancybox-inner #flagBox #report_user_info').hide();
+                $('.fancybox-inner .alert-message').hide();
+                //$('input:radio[name=flag-item]').attr('checked',false);
+        }
+
+        this.validate = function() {
+                var report_type = $(".fancybox-inner .feedbackReportItem:checked").val();
+                var get_report_user = $('.fancybox-inner .continue_report').hasClass('continue_report_user');
+                if(report_type != undefined){
+                    if(get_report_user){
+                            var report_name     = $('.fancybox-inner #report_name');
+                            var report_email    = $('.fancybox-inner #report_email');
+                            var report_company  = $('.fancybox-inner #report_company');
+                            var report_comment  = $('.fancybox-inner #report_comment');
+                            $('.fancybox-inner .alert-message').hide();
+
+                            if(report_name.val()==''){
+                                $('.fancybox-inner .alert-message').html(
+                                    '<div class="warning">Please enter your name</div>'
+                                );
+                                $('.fancybox-inner .alert-message').show();
+                                return false;
+                            }
+                            else if(report_email.val()==''){
+                                $('.fancybox-inner .alert-message').html(
+                                    '<div class="warning">Please enter your email address</div>'
+                                );
+                                $('.fancybox-inner .alert-message').show();
+                                return false;
+                            }
+                            else if(report_email.val() !='' && !validateEmail.valid(report_email.val())){
+                                $('.fancybox-inner .alert-message').html(
+                                    '<div class="warning">Please enter a valid email address</div>'
+                                );
+                                $('.fancybox-inner .alert-message').show();
+                                return false;
+                            }
+                            else{
+                                $('.fancybox-inner .continue_report').removeClass('continue_report_user');
+                                return true;
+                            }
+                    }else{
+                            return true;
+                    }
+                }else{
+                        $('.fancybox-inner .alert-message').html(
+                            '<div class="warning">Please select a report option below</div>'
+                        );
+                        $('.fancybox-inner .alert-message').show();
+                        return false;
+                    }
                 }
-            });
-            e.preventDefault();
+    }
+
+    this.feedback_report_fancy = function(){
+        $(".flag-feedback-fancy").fancybox({
+            'scrolling'         : 'no',
+            'overlayOpacity'    : 0.1,
+            'showCloseButton'   : false,
+            'content'           : $('#flagBoxDiv').html()
         });
     }
 
+    $(document).delegate('.flag-as-inapp', 'click', function(){
+        $('#flagBox .flag-feedback-id').val($(this).parent().attr('fid'));
+    });
+
+    $(document).delegate('.undo_flag_inapp', 'click', function(){
+        var this_undo = $(this);
+        $.ajax({
+            url: '/feedback_action/unflag',
+            type: 'post',
+            dataType: 'json',
+            data: {'feedback_id' : this_undo.parents(feedback).attr('fid')},
+            success: function(result){
+                if(result.success==true){
+                    this_undo.addClass('flag-as-inapp');
+                    this_undo.removeClass('undo_flag_inapp active-icon');
+                    this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
+                    this_undo.parent().addClass('flag-feedback-fancy');
+                }
+                else{
+                    console.log('unflag feedback failed');
+                }
+            }
+        });
+        return false;
+    });
+
+    $(document).delegate('.reportTypeLabel', 'click', function(){
+        $('input:radio[name=flag-item]'+'.'+this.id).attr('checked',true);
+    });
+
+    $(document).delegate('#back_report', 'click', function(){
+        $('#flagBox #report_type_list').show();
+        $('#flagBox #report_user_info').hide();
+        FormValidateReport.setDefaults();
+    });
+    
+
+    $(document).delegate('.fancybox-inner .continue_report', 'click', function(){
+        var report_type = $(".fancybox-inner .feedbackReportItem:checked").val();
+        if(report_type=='7' && !$('.fancybox-inner .continue_report').hasClass('continue_report_user')){
+            $('.fancybox-inner #report_type_list').hide();
+            $('.fancybox-inner #report_user_info').show();
+            $('.fancybox-inner .continue_report').addClass('continue_report_user');
+            $('.fancybox-inner .alert-message').hide();
+            return false;
+        }
+        if(FormValidateReport.validate()){
+            var report_user_info = '';
+            if(report_type=='7'){
+                var report_user_info = {
+                    name        : $('.fancybox-inner #report_name').val(),
+                    email       : $('.fancybox-inner #report_email').val(),
+                    company     : $('.fancybox-inner #report_company').val(),
+                    comments    : $('.fancybox-inner #report_comment').val()
+                }
+            }
+            var report_data = {
+                feedback_id     :FormValidateReport.getFeedbackId(),
+                report_type     :$(".fancybox-inner .feedbackReportItem:checked").val(),
+                report_user     :report_user_info
+            }
+
+            $.ajax({
+                    url: '/feedback_action/report_feedback',
+                    type: 'post',
+                    dataType: 'json',
+                    data: report_data,
+                    success: function(result){
+                        if(result.success==true){
+                            var this_flag = $('#flag-feedback-icon-'+FormValidateReport.getFeedbackId());
+                            this_flag.addClass('undo_flag_inapp active-icon');
+                            this_flag.removeClass('flag-as-inapp');
+                            this_flag.parent().find('.icon-tooltip-text').text('Undo flag');
+                            this_flag.parent().removeClass('flag-feedback-fancy');
+                            $('.fancybox-inner .alert-message').html(
+                                '<div class="success">Your feedback report has been submitted</div>'
+                            );
+                            $('.fancybox-inner .alert-message').show();
+                            $('.fancybox-inner .flagbox-body').hide();
+                            $('.fancybox-inner #report_final').show();
+                        }else{
+                            $('.fancybox-inner .alert-message').html(
+                                '<div class="error">Feedback report was not submitted</div>'
+                            );
+                            $('.fancybox-inner .alert-message').show();
+                            $('.fancybox-inner .flagbox-body').hide();
+                            $('.fancybox-inner #report_final').show();
+                        }
+                    }
+            });
+        }   
+    });
+
+    /*
+    | End Feedback Flag Actions
+    */
     this.vote = function() { 
         $(vote).unbind('click.vote_feedback').bind('click.vote_feedback', function(e) {
             e.preventDefault();
@@ -261,7 +394,6 @@ var S36FeedbackActions = new function() {
         });
 
         $('.the-thumb, .video-circle').unbind('click.video_link').bind('click.video_link', function(e) {
-            console.log('fade in');
             var scroll_offset = $(document).scrollTop();
             var top_offset = scroll_offset + 100;
             $('.lightbox').fadeIn().css('top',top_offset);
@@ -275,7 +407,6 @@ var S36FeedbackActions = new function() {
         });
 
         $('.video-thumb, .video-circle').unbind('click.video_link_open').bind('click.video_link_open', function(e) {
-            console.log('replacing link');
             var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
             var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
@@ -316,3 +447,4 @@ var S36FeedbackActions = new function() {
         });
     }
 }
+

@@ -227,8 +227,8 @@
                     </div>
                 </div> -->
                 <div style="float: right;">
-                    <div class="feedback-icon">
-                        <div class="feedback-icon-class flag-icon <?= ($flagged ? 'undo_flag_inapp active-icon' : 'flag-as-inapp'); ?>"></div>
+                    <div class="flag-feedback feedback-icon <?=($flagged!=1) ? 'flag-feedback-fancy' : '' ?>" fid="<?=$feedback_id;?>">
+                        <div id="flag-feedback-icon-<?=$feedback_id;?>" class="feedback-icon-class flag-icon <?= ($flagged ? 'undo_flag_inapp active-icon' : 'flag-as-inapp'); ?>"></div>
                         <div class="icon-tooltip">
                             <div class="icon-tooltip-text">
                                 <?php if( $flagged ): ?>

@@ -316,3 +316,81 @@
 */
 ?>
 <div id="fullpage_css"><?php echo $fullpage_css; ?></div>
+
+<div id="flagBoxDiv" style="display:none">
+<div id="flagBox">
+<input class="flag-feedback-id" type="hidden" value=""/>
+<div class="flagbox-content">
+        <div class="flagbox-head">
+            <h2>Flag as Inappropriate</h2>
+        </div>
+        <div class="alert-message" style="display:none">
+        </div>
+        <div id="report_type_list" class="flagbox-body">
+            <div class="padded-5">
+                <ul>
+                <?php
+                foreach($reportTypes as $report_id=>$report_desc):
+                ?>
+                    <li>
+                        <input class="feedbackReportItem flag-item-<?=$report_id?>" type="radio" name="flag-item" value="<?=$report_id?>" />
+                        <label id="flag-item-<?=$report_id?>" class="reportTypeLabel"><?=$report_desc?></label>
+                    </li>
+                <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="flagbox-foot">
+                <div class="fdback-buttons">
+                    <ul>
+                        <li><a class="continue_report" href="#">Continue</a></li>
+                        <li><a onClick="parent.jQuery.fancybox.close();" href="#">Cancel</a></li>
+                    </ul>                   
+                </div>
+            </div>
+        </div>
+        
+        <div id="report_user_info" class="flagbox-body" style="display:none">
+            <div class="padded-5">
+                <ul>
+                    <li>To Continue, Fill up the fields below <br /><br /></li>
+                        <li>
+                            <label>Your Name :</label><br />
+                            <input id="report_name" type="text" name="flagger-name" class="regular-text" title="Your Name" />
+                        </li>
+                        <li>
+                            <label>Your Email :</label><br />
+                            <input id="report_email" type="text" name="flagger-email" class="regular-text" title="Your Email" />
+                        </li>
+                        <li>
+                            <label>Your Company (optional) :</label><br />
+                            <input id="report_company" type="text" name="flagger-company" class="regular-text" title="Your Company (optional)" />
+                        </li>
+                        <li>
+                            <label>Comments (optional) :</label><br />
+                            <textarea id="report_comment" title="Comments"></textarea>
+                        </li>
+                    </ul>
+                </div>
+            <div class="flagbox-foot">
+            <div class="fdback-buttons">
+                    <ul>
+                        <li><a id="back_report" href="#">Back</a></li>
+                        <li><a class="continue_report" href="#">Continue</a></li>
+                        <li><a onClick="parent.jQuery.fancybox.close();" href="#">Cancel</a></li>
+                    </ul>                   
+            </div>
+            </div>
+        </div>
+
+        <div id="report_final" class="flagbox-foot" style="display:none">
+            <div class="fdback-buttons">
+                    <ul>
+                        <li><a onClick="parent.jQuery.fancybox.close();" href="#">Close</a></li>
+                    </ul>                   
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
