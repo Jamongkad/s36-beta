@@ -350,9 +350,21 @@
                                             <br/>
                                             <br/>
                                         </div>
-                                    <?php endif; ?>
-                                    
+                                    <?php endif; ?>              
                                 </div>
+
+                                <?if($feedback->admin_reply && $feedback->admin_username):?>
+                                    <div class="admin-comment-block">
+                                        <div class="admin-comment">
+                                            <div class="admin-name"><?=$admin_companyname?> says..</div>
+                                            <div class="admin-message clear">
+                                                <div class="admin-avatar">
+                                                <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
+                                                <div class="message"><?=$feedback->admin_reply?></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?endif?>
                                 <!-- end of feedback text bubble -->
                                 <!-- feedback user actions -->
                                 <!--
