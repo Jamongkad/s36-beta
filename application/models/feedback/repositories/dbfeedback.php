@@ -372,6 +372,12 @@ class DBFeedback extends S36DataObject {
                 , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
                 , FeedbackActions.useful 
                 , FeedbackActions.flagged AS flagged_as_inappr
+                , FeedbackAdminReply.userId AS admin_userid
+                , FeedbackAdminReply.adminReply AS admin_reply
+                , User.username AS admin_username
+                , User.fullName AS admin_fullname
+                , User.avatar AS admin_avatar
+                , User.email AS admin_email 
                 , Company.companyId
                 , Company.name AS company_name
                 , Company.billTo AS company_billto
@@ -382,6 +388,9 @@ class DBFeedback extends S36DataObject {
                     LEFT JOIN
                         FeedbackAdminReply
                         ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
+                    LEFT JOIN
+                        User
+                        ON FeedbackAdminReply.userId = User.userId
                     INNER JOIN
                         Site
                         ON Site.siteId = Feedback.siteId
