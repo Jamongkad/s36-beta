@@ -147,10 +147,10 @@
                                     <?php if($attachments->attached_link->video=='yes'): ?>
                                         <div class="video-thumb">
                                             <a class="fancybox-video" href="<?=$attached_url?>" rel="uploaded-videos-<?=$feedback_id?>">
-                                            <div class="video-circle"></div>
-                                            <div class="the-thumb">
+                                                <div class="video-circle"></div>
+                                                <div class="the-thumb">
                                                     <img src="<?=$attached_image?>" width="100%" />
-                                            </div>
+                                                </div>
                                             </a>
                                         </div>
                                     <?php else: ?>
@@ -199,16 +199,16 @@
             </div>
             <?php else:?>
             <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
-            <div class="admin-comment-block">
-                <div class="admin-comment">
-                    <div class="admin-name"><?=$admin_companyname?> says..</div>
-                    <div class="admin-message clear">
-                        <div class="admin-avatar">
-                        <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
-                        <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                <div class="admin-comment-block">
+                    <div class="admin-comment">
+                        <div class="admin-name"><?=$admin_companyname?> says..</div>
+                        <div class="admin-message clear">
+                            <div class="admin-avatar">
+                            <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
+                            <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?endif?>
             <?php endif; ?>
         </div>

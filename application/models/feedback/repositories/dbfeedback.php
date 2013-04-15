@@ -383,6 +383,7 @@ class DBFeedback extends S36DataObject {
                 , Company.billTo AS company_billto
                 , Company.description AS company_description
                 , Company.logo AS company_logo 
+                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
             FROM 
                 Feedback
                     LEFT JOIN
