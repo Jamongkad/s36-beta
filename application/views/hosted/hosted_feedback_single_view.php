@@ -404,7 +404,7 @@
                             </div>
                         </div>
                         
-                        <?if($feedback->admin_reply && $feedback->->admin_username):?>
+                        <?if($feedback->admin_reply && $feedback->admin_username):?>
                             <div class="admin-comment-block">
                                 <div class="admin-comment">
                                     <div class="admin-name"><?=$admin_companyname?> says..</div>
