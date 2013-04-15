@@ -55,7 +55,6 @@
                                         $attachments = (!empty($feedback->attachments)) ? json_decode($feedback->attachments) : false; 
                                     ?>
                                     <table>
-                                    <tr>
                                     <?if($metadata || $attachments):?>
                                         <div style="float:left;background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
                                         ">
@@ -163,7 +162,6 @@
                                         </div>
                                     <?php endif;?>
                                 <?php endif;?>
-                                </tr>
                                 </table>
                                 </table>
                             </td>
