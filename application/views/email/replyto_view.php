@@ -37,6 +37,12 @@
                                 <div style="padding:10px;background:#f4f4f4;">
                                     <?=ucfirst($sender)?> says,<br/>
                                     "<?=ucfirst(strtolower($message))?>"
+                                    <?
+                                        $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
+                                        $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
+                                        print_r($metadata);
+                                        print_r($attachments);
+                                    ?>
                                 </div>
                             </td>
                         </tr>
