@@ -166,6 +166,7 @@
                                 </table>
                             </td>
                         </tr>
+                        <table>
                         <tr height="80">
                         	<td colspan="3"></td>
                         </tr> 
@@ -186,9 +187,6 @@
                         	<td colspan="3"><a href="#" style="color:#6e8cca;">No - I am not interested, do not ever mail me again.</a></td>
                         </tr>
                         -->
-                        <tr height="20">
-                        	<td colspan="3"></td>
-                        </tr> 
                         <tr>
                             <td style="font-size:10px;padding:0px 30px;line-height:16px;">
                                 This message was intended for <?=$emailto?>.  <br />
@@ -202,6 +200,7 @@
                                 -->
                            </td>
                         </tr>
+                        </table>
                         <!-- end footer -->    
                         <!-- end sig -->
                     </table>
