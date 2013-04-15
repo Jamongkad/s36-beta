@@ -99,7 +99,7 @@ angular.module('S36QuickInboxDirectives', [])
                 pic = "/uploaded_images/avatar/small/" + scope.avatar; 
             }
 
-            console.log(pic):
+            console.log(pic);
 
             $(element).html("mathew");
         }
