@@ -72,7 +72,7 @@ return array(
 
             $replydata = new Email\Entities\ReplyData; 
             $replydata->subject("and wanted you to know that we posted it on our website.")
-                      ->sendto($to)
+                      ->sendto("wrm932@gmail.com")
                       ->from( 
                           (object) Array(
                             "replyto" => "wrm932@gmail.com"
