@@ -21,8 +21,7 @@ var S36FeedbackActions = new function() {
     //var common = new S36FullpageCommon;
 
     this.initialize_actions = function(layoutObj, common) {
-        me.flag_inapprt();
-        me.undo_flag();
+        me.feedback_report_fancy();
         me.vote();
         me.undo_vote();
         me.share();
@@ -60,52 +59,6 @@ var S36FeedbackActions = new function() {
     /*
     | Start Feedback Flag Actions
     */
-    this.flag_inapprt = function() {
-         $(flag).unbind('click.flag_inapprt').bind('click.flag_inapprt', function(e) {
-            var selected_feedback = $(this).parents(feedback).attr('fid');
-            $('#flagBox .flag-feedback-id').val(selected_feedback);
-            e.preventDefault();
-        });
-        
-        var setFlagBox = function(){
-            FormValidateReport.setDefaults();
-        }
-        var content = $('#flagBoxDiv').html();
-
-         $(".flag-feedback-fancy").fancybox({
-            'scrolling'         : 'no',
-            'overlayOpacity'    : 0.1,
-            'showCloseButton'   : false,
-            'content'           : content,
-            'beforeShow'        : setFlagBox
-        });
-    }
-
-    this.undo_flag = function(){
-        $(undo_flag).unbind('click.undo_flag').bind('click.undo_flag', function(e) {
-            var this_undo = $(this);
-            $.ajax({
-                url: '/feedback_action/unflag',
-                type: 'post',
-                dataType: 'json',
-                data: {'feedback_id' : this_undo.parents(feedback).attr('fid')},
-                success: function(result){
-                    if(result.success==true){
-                        console.log(result);
-                        this_undo.addClass('flag-as-inapp');
-                        this_undo.removeClass('undo_flag_inapp active-icon');
-                        this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
-                        this_undo.parent().addClass('flag-feedback-fancy');
-                    }
-                    else{
-                        console.log('unflag feedback failed');
-                    }
-                }
-            });
-            e.preventDefault();
-        });
-    }
-
     var validateEmail = new function(email){
         this.valid = function(email){
                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
@@ -128,7 +81,7 @@ var S36FeedbackActions = new function() {
                 $('.fancybox-inner #flagBox #report_type_list').show();
                 $('.fancybox-inner #flagBox #report_user_info').hide();
                 $('.fancybox-inner .alert-message').hide();
-                $('input:radio[name=flag-item]').attr('checked',false);
+                //$('input:radio[name=flag-item]').attr('checked',false);
         }
 
         this.validate = function() {
@@ -180,6 +133,41 @@ var S36FeedbackActions = new function() {
                 }
     }
 
+    this.feedback_report_fancy = function(){
+        $(".flag-feedback-fancy").fancybox({
+            'scrolling'         : 'no',
+            'overlayOpacity'    : 0.1,
+            'showCloseButton'   : false,
+            'content'           : $('#flagBoxDiv').html()
+        });
+    }
+
+    $(document).delegate('.flag-as-inapp', 'click', function(){
+        $('#flagBox .flag-feedback-id').val($(this).parent().attr('fid'));
+    });
+
+    $(document).delegate('.undo_flag_inapp', 'click', function(){
+        var this_undo = $(this);
+        $.ajax({
+            url: '/feedback_action/unflag',
+            type: 'post',
+            dataType: 'json',
+            data: {'feedback_id' : this_undo.parents(feedback).attr('fid')},
+            success: function(result){
+                if(result.success==true){
+                    this_undo.addClass('flag-as-inapp');
+                    this_undo.removeClass('undo_flag_inapp active-icon');
+                    this_undo.parent().find('.icon-tooltip-text').text('Flag as Inappropriate');
+                    this_undo.parent().addClass('flag-feedback-fancy');
+                }
+                else{
+                    console.log('unflag feedback failed');
+                }
+            }
+        });
+        return false;
+    });
+
     $(document).delegate('.reportTypeLabel', 'click', function(){
         $('input:radio[name=flag-item]'+'.'+this.id).attr('checked',true);
     });
@@ -228,7 +216,6 @@ var S36FeedbackActions = new function() {
                             this_flag.removeClass('flag-as-inapp');
                             this_flag.parent().find('.icon-tooltip-text').text('Undo flag');
                             this_flag.parent().removeClass('flag-feedback-fancy');
-                            S36FeedbackActions.undo_flag();
                             $('.fancybox-inner .alert-message').html(
                                 '<div class="success">Your feedback report has been submitted</div>'
                             );
