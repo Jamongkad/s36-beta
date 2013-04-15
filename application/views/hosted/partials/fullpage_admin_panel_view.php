@@ -41,12 +41,11 @@
 
                                         <div class="right" checkfeed>
                                             <div class="widget-avatar" avatar login="feeds.logintype" pic="feeds.avatar"> 
-                                                <!--<img src="/uploaded_images/avatar/small/{{feeds.avatar}}" style="float:right"/>-->
                                             </div>
                                             <div class="widget-content">
                                                 <div class="widget-submitter" checkfeed>
                                                     <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                    <span class="social-src" social login="{{feeds.logintype}}"></span>
+                                                    <span class="social-src" social login="feeds.logintype"></span>
                                                 </div>
                                                 <div class="widget-date" checkfeed>
                                                     <span feedbackdate date="{{feeds.date}}"></span>
