@@ -16,12 +16,18 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('social', function() {
     return {
         restrict: 'A'
+      , scope: {
+            logintype: "=logintype"   
+        }
       , link: function(scope, element, attrs) {
+          /*
             attrs.$observe('login', function(at) {
                 if(at == 'fb') {
                     scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
                 } 
             }) 
+          */
+            console.log(scope.logintype + " gwiyomi");
         }
       , template: '<span ng-bind-html-unsafe="socialsrc"></span>'
     } 
