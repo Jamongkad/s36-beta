@@ -91,7 +91,7 @@ angular.module('S36QuickInboxDirectives', [])
         }
       , link: function(scope, element, attrs) {
             console.log(scope.logintype);
-            console.log(scope.pic);
+            console.log(scope.avatar);
         }
     }    
 })
