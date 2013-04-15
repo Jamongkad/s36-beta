@@ -165,20 +165,6 @@
                                     </tr>
                                 </table>
                             </td>
-                        </tr>
-                        <tr height="80">
-                        	<td colspan="3"></td>
-                        </tr> 
-                        <!-- end of contents -->
-                        
-                        <!-- end sig -->
-                    </table>
-                </td></tr>
-            </table>
-        </td>
-    </tr>
-    <!-- footer -->
-
                         <!-- sig -->
                         <tr>
                         	<td colspan="3">
@@ -208,6 +194,20 @@
                            </td>
                         </tr>
                         <!-- end footer -->    
+
+                        </tr>
+                        <tr height="80">
+                        	<td colspan="3"></td>
+                        </tr> 
+                        <!-- end of contents -->
+                        
+                        <!-- end sig -->
+                    </table>
+                </td></tr>
+            </table>
+        </td>
+    </tr>
+    <!-- footer -->
 </table>
 </body>
 </html>
