@@ -20,13 +20,7 @@ angular.module('S36QuickInboxDirectives', [])
             logintype: "=login"   
         }
       , link: function(scope, element, attrs) {
-          /*
-            attrs.$observe('login', function(at) {
-                if(at == 'fb') {
-                    scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
-                } 
-            }) 
-          */
+
             if(scope.logintype == 'fb') { 
                 scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
             }
@@ -34,6 +28,7 @@ angular.module('S36QuickInboxDirectives', [])
             if(scope.logintype == 'tw') {
                 scope.socialsrc = "<img src='img/small-tw-icon.png'/> Twitter Verified";      
             }
+
         }
       , template: '<span ng-bind-html-unsafe="socialsrc"></span>'
     } 
