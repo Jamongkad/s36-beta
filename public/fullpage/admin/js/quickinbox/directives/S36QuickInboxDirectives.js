@@ -17,7 +17,7 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , scope: {
-            logintype: "=logintype"   
+            logintype: "=login"   
         }
       , link: function(scope, element, attrs) {
           /*
