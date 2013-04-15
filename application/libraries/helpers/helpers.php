@@ -363,4 +363,16 @@ class Helpers {
         }
         return substr_count($str, " ") + 1;
     } 
+
+    public static avatar_render($avatar, $origin) { 
+        if($origin == 'tw' && !empty($avatar)) {
+            return $avatar; 
+        }
+
+        if(($origin == 'fb' && !empty($avatar)) || !empty($avatar)) {
+            return Config::get('application.avatar48_dir').'/'.$avatar;
+        }
+
+        return '/img/48x48-blank-avatar.jpg';
+    }
 }

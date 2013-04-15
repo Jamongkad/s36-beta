@@ -12,18 +12,6 @@
     <div class="feedback-list">
         <?php
 
-        function avatar($avatar, $origin) {
-            if($origin == 'tw' && !empty($avatar)) {
-                return $avatar; 
-            }
-
-            if(($origin == 'fb' && !empty($avatar)) || !empty($avatar)) {
-                return Config::get('application.avatar48_dir').'/'.$avatar;
-            }
-
-            return '/img/48x48-blank-avatar.jpg';
-        }
-
         foreach ($feed_list as $feed) : 
             $admin_avatar               = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
             $admin_companyname          = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname; 
@@ -31,8 +19,7 @@
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
             $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
             $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
-            //$avatar                     = (!empty($feed->feed_data->avatar)) ? Config::get('application.avatar48_dir').'/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
-            $avatar                     = avatar($feed->feed_data->avatar, $feed->feed_data->origin);
+            $avatar                     = Helpers::avatar_render($feed->feed_data->avatar, $feed->feed_data->origin);
             $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
