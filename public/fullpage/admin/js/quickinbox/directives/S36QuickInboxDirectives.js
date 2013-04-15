@@ -87,9 +87,11 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , scope: {
             logintype: "=login"
+          , avatar: "=pic"
         }
       , link: function(scope, element, attrs) {
             console.log(scope.logintype);
+            console.log(scope.pic);
         }
     }    
 })

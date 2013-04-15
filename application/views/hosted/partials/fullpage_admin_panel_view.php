@@ -40,8 +40,8 @@
                                         </div>
 
                                         <div class="right" checkfeed>
-                                            <div class="widget-avatar" avatar login="feeds.logintype"> 
-                                                <img src="/uploaded_images/avatar/small/{{feeds.avatar}}" style="float:right"/>
+                                            <div class="widget-avatar" avatar login="feeds.logintype" pic="feeds.avatar"> 
+                                                <!--<img src="/uploaded_images/avatar/small/{{feeds.avatar}}" style="float:right"/>-->
                                             </div>
                                             <div class="widget-content">
                                                 <div class="widget-submitter" checkfeed>
