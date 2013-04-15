@@ -171,6 +171,14 @@
                         </tr> 
                         <!-- end of contents -->
                         
+                        <!-- end sig -->
+                    </table>
+                </td></tr>
+            </table>
+        </td>
+    </tr>
+    <!-- footer -->
+
                         <!-- sig -->
                         <tr>
                         	<td colspan="3">
@@ -200,13 +208,6 @@
                            </td>
                         </tr>
                         <!-- end footer -->    
-                        <!-- end sig -->
-                    </table>
-                </td></tr>
-            </table>
-        </td>
-    </tr>
-    <!-- footer -->
 </table>
 </body>
 </html>
