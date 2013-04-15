@@ -294,6 +294,7 @@ var S36FullpageAdmin = function(layoutObj){
             });
             
             if( $.trim(error) != '' ){
+                self.turn_on_logo_edit_mode(false);
                 Helpers.display_error_mes([error]);
                 return false;
             }
