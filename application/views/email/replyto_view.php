@@ -51,8 +51,8 @@
                             	<table>
                                     <?=$profile_partial_view?>
                                     <?
-                                        $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
-                                        $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
+                                        $metadata = (!empty($feedback->metadata)) ? json_decode($feedback->metadata) : false; 
+                                        $attachments = (!empty($feedback->attachments)) ? json_decode($feedback->attachments) : false; 
                                         print_r($metadata);
                                         print_r($attachments);
                                     ?>
