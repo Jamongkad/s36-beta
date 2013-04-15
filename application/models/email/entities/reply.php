@@ -14,7 +14,7 @@ class Reply extends EmailFixture {
  
     public function send() {
 
-        Helpers::dump($this->email_data);
+        Helpers::dump($this->email_data->feedback);
 
         $email_html = View::make('email/replyto_view', Array(
             'message' => $this->email_data->message
