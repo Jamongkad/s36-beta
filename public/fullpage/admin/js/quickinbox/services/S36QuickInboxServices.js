@@ -8,6 +8,9 @@ angular.module('S36QuickInboxServices', [])
             type: 'POST'    
           , data: { 'feedstatus': feedstatus, 'feeds': unique(feeds) }
           , url: '/hosted/change_feedback_status'
+          , success: function() {    
+                window.location.reload(true);
+            }
         });
     }
    
