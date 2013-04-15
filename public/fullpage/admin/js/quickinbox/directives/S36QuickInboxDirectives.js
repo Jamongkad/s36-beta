@@ -90,8 +90,18 @@ angular.module('S36QuickInboxDirectives', [])
           , avatar: "=pic"
         }
       , link: function(scope, element, attrs) {
-            console.log(scope.logintype);
-            console.log(scope.avatar);
+
+            var pic;
+
+            if(scope.logintype == 'tw') {
+                pic = scope.avatar;   
+            } else {
+                pic = "/uploaded_images/avatar/small/" + scope.avatar; 
+            }
+
+            console.log(pic):
+
+            $(element).html("mathew");
         }
     }    
 })
