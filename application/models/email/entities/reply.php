@@ -18,6 +18,7 @@ class Reply extends EmailFixture {
             'message' => $this->email_data->message
           , 'sender' => ucfirst($this->email_data->from->username)
           , 'submission_date' => $this->email_data->feedback->date
+          , 'feedback' => $this->email_data->feedback
           , 'emailto' => $this->email_data->sendto
           , 'profile_partial_view' => View::make(  'email/partials/profile_partial_view'
                                                  , Array('feedback_data' => $this->email_data->feedback))
