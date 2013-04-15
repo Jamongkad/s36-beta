@@ -34,7 +34,6 @@ angular.module('S36QuickInboxDirectives', [])
             if(scope.logintype == 'tw') {
                 scope.socialsrc = "<img src='img/small-tw-icon.png'/> Twitter Verified";      
             }
-            console.log(scope.logintype + " gwiyomi");
         }
       , template: '<span ng-bind-html-unsafe="socialsrc"></span>'
     } 
