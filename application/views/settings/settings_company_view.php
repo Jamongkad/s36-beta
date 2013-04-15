@@ -1,7 +1,10 @@
+<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?= HTML::script('/js/jquery.ui.widget.js'); ?>
+<?= HTML::script('/js/jquery.fileupload.js'); ?>
+<?= HTML::script('/js/helpers.js'); ?>
 <?=Form::open_for_files('settings/save_companysettings')?>
-<?=Form::hidden('companyid', $user->companyid)?>
+<?=Form::hidden('companyid', $user->companyid, array('id' => 'company_id'))?>
 <?=Form::hidden('logo', $company->logo)?>
-
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>COMPANY PROFILE SETTINGS</h3>
@@ -17,7 +20,10 @@
             <br />
             <div class="grids">
                 <div class="g2of3"><strong>Add Company Logo</strong> <br />Select your company's logo and upload it here, it will be uploaded upon pressing the 'Save Settings' button.</div>
-                <div class="g2of3"><br /><input type="file" name="your_photo" id="your_photoXXX" class="fileupload regular-text" /> </div>
+                <div class="g2of3"><br />
+                    <!-- <input type="file" name="your_photo" id="your_photoXXX" class="fileupload regular-text" /> -->
+                    <input type="file" id="company_logo" data-url="/imageprocessing/upload_company_logo" />
+                </div>
             </div>
             
             <br />
@@ -29,13 +35,13 @@
             <div class="grids">
                 <div id="image-container">
                     <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
-                    <?if($company->logo):?>
-                        <div id="image-sub-container">
+                    <div id="image-sub-container">
+                        <?if($company->logo):?>
                             <img src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
-                        </div>
-                    <?else:?>
-                        <?=HTML::image('img/company-logo-filler.jpg')?>
-                    <?endif?>
+                        <?else:?>
+                            <img src="/img/company-logo-filler.jpg" width="100%" />
+                        <?endif?>
+                    </div>
                 </div>
             </div>
             <br />
@@ -80,6 +86,38 @@ jQuery(function($) {
 
     $(document).delegate('input[name="fullpagecompanyname"]', 'keyup', function(e) { 
         $("a#preview-link").attr('href', '<?=$url?>' + '?sample_name='+ $(this).val());
+    });
+    
+    
+    $('#company_logo').fileupload({
+        dataType: 'json',
+        add: function(e, data){
+            var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
+            if( image_types.indexOf( data.files[0].type ) == -1 ){
+                var error = ['Please select an image file'];
+                //Helpers.display_error_mes(error);
+                return false;
+            }
+            if( data.files[0].size > 2000000 ){
+                var error = ['Please upload an image not greater than 2mb in filesize'];
+                //Helpers.display_error_mes(error);
+                return false;
+            }
+            data.submit();
+        },progress: function(e, data){
+            //self.show_notification('Changing Profile Picture', 0);
+            $('#image-sub-container img').css('opacity', '0.2');
+        },done: function(e, data){
+            // set the new src for the image. the additional ? or any get param at the end of the src
+            // refereshes the displayed image. this is it dan, you bits!
+            // we also need the ext from result because they differ from server side.
+            var ext = data.result[0].name.split('.').pop();
+            var rand_str = '?' + Helpers.get_random_str(5);
+            var new_src = '/uploaded_images/company_logos/logo_' + $('#company_id').val() + '.' + ext + rand_str;
+            $('#image-sub-container img').attr('src', new_src).animate({'opacity': '1'});
+            //self.hide_notification();
+            //$('#remove_logo').show();
+        }
     });
 })
 </script>

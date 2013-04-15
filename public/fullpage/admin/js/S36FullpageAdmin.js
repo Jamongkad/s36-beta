@@ -15,6 +15,7 @@ var S36FullpageAdmin = function(layoutObj){
     var common = new S36FullpageCommon;
     this.patterns = ['45degreee_fabric.png', '60degree_gray.png', 'always_grey.png', 'batthern.png', 'beige_paper.png'];
     this.cover_photo_action = '';
+    this.logo_action = '';
     
     this.init_fullpage_admin = function(){
         
@@ -190,7 +191,7 @@ var S36FullpageAdmin = function(layoutObj){
         });
 
         /* ========================================
-        || Apply the fileupload plugin for the profile pic.
+        || Apply the fileupload plugin for the company logo.
         ==========================================*/
         $('#company_logo').fileupload({
             dataType: 'json',
@@ -216,41 +217,96 @@ var S36FullpageAdmin = function(layoutObj){
                 // we also need the ext from result because they differ from server side.
                 var ext = data.result[0].name.split('.').pop();
                 var rand_str = '?' + Helpers.get_random_str(5);
-                var new_src = '/uploaded_images/company_logos/logo_' + $('#company_id').val() + '.' + ext + rand_str;
-                $('#avatarContainer img').attr('src', new_src).animate({'opacity': '1'});
+                var basename = 'logo_' + $('#company_id').val() + '.' + ext;
+                var new_src = '/uploaded_images/uploaded_tmp/' + basename + rand_str;
+                $('#avatarContainer img').attr({
+                    'src': new_src,
+                    'basename': basename
+                }).animate({'opacity': '1'});
                 self.hide_notification();
-                $('#remove_logo').show();
+                self.turn_on_logo_edit_mode(true);
+                self.logo_action = 'change';
             }
         });
         
         /* ========================================
-        || remove profile picture.
+        || remove company logo.
         ==========================================*/
         $('#remove_logo').click(function(){
-            var error;
-            self.show_notification('Removing Profile Picture', 0);
-            $('#avatarContainer img').css('opacity', '0.2');
+            // var error;
+            // self.show_notification('Removing Profile Picture', 0);
+            // $('#avatarContainer img').css('opacity', '0.2');
+            
+            // $.ajax({
+            //     async: false,
+            //     url: '/imageprocessing/remove_company_logo',
+            //     type: 'post',
+            //     success: function(result){
+            //         error = result;
+            //     }
+            // });
+            
+            // if( $.trim(error) != '' ){
+            //     self.hide_notification();
+            //     $('#avatarContainer img').animate({'opacity': '1'});
+            //     Helpers.display_error_mes([error]);
+            //     return false;
+            // }
+            
+            // setTimeout(function(){
+            //     $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg').animate({'opacity': '1'});
+            //     $('#remove_logo').hide();
+            //     self.hide_notification();
+            // }, 800);
+            
+            
+            $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg');
+            self.logo_action = 'remove';
+            self.turn_on_logo_edit_mode(true);
+        });
+        
+        /* ========================================
+        || cancel any company logo action.
+        ==========================================*/
+        $('#cancel_company_logo').click(function(){
+            $('#avatarContainer img').attr('src', $('#hidden_company_logo').attr('src'));
+            
+            self.logo_action = '';
+            self.turn_on_logo_edit_mode(false);
+        });
+        
+        /* ========================================
+        || execute the company logo action.
+        ==========================================*/
+        $('#save_company_logo').click(function(){
             
             $.ajax({
                 async: false,
-                url: '/imageprocessing/remove_company_logo',
+                url: '/imageprocessing/save_company_logo',
                 type: 'post',
+                data: {
+                    'action' : self.logo_action,
+                    'basename': $('#avatarContainer img').attr('basename')
+                },
                 success: function(result){
                     error = result;
                 }
             });
             
             if( $.trim(error) != '' ){
-                self.hide_notification();
-                $('#avatarContainer img').animate({'opacity': '1'});
                 Helpers.display_error_mes([error]);
                 return false;
             }
             
-            setTimeout(function(){
-                $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg').animate({'opacity': '1'});
+            $('#hidden_company_logo').attr('src', $('#avatarContainer img').attr('src'));
+            self.turn_on_logo_edit_mode(false);
+            
+            if( self.logo_action == 'change' ){
+                $('#remove_logo').show();
+            }else if( self.logo_action == 'remove' ){
                 $('#remove_logo').hide();
-            }, 800);
+            }
+            
         });
         
         /* ========================================
@@ -490,6 +546,19 @@ var S36FullpageAdmin = function(layoutObj){
         }else if( edit_mode == false ){
             $('#changeCoverButtonIcon').show();
             $('#coverActionButtons').hide();
+        }
+    }
+    
+    /* ========================================
+    || logo edit mode.
+    ==========================================*/
+    this.turn_on_logo_edit_mode = function(edit_mode){
+        if( edit_mode == true ){
+            $('#avatarButtonIcon').hide();
+            $('#logoActionButtons').show();
+        }else if( edit_mode == false ){
+            $('#avatarButtonIcon').show();
+            $('#logoActionButtons').hide();
         }
     }
     

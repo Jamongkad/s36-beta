@@ -81,37 +81,42 @@ return array(
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action';
         
+        $upload_dir    = Config::get('application.uploaded_images_dir').'/uploaded_tmp/';
+        $filename      = 'logo_' . $user->companyid . '.' . pathinfo($_FILES['files']['name'][0], PATHINFO_EXTENSION);
+        $orig_filename = $_FILES['files']['name'][0];
+        
+        // remove the existing logo.
+        if( file_exists($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        
         // upload the image in tmp dir.
         $options = array(
               'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_company_logo'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/uploaded_tmp/'
-            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/company_logos/'
+            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
             , 'param_name' => 'files'
+            , 'file_name'  => $filename
         );
         
         new JqueryFileUploader($options);
         
-        
-        // rename the temporary uploaded image.
-        // we didn't upload the image in company_logos dir right away
-        // because there are some weird things that happen. nevermind that shit.
-        $filename = 'logo_' . $user->companyid . '.' . pathinfo($_FILES['files']['name'][0], PATHINFO_EXTENSION);
-        $src = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $_FILES['files']['name'][0];
-        $des = Config::get('application.uploaded_images_dir') . '/company_logos/' . $filename;
-        rename($src, $des);
-        
-        
-        // update filename in db. yes we still need an update
-        // because filenames may differ in extensions.
-        DB::table('Company')->where('companyId', '=', $user->companyid)->update( array('logo' => $filename) );
+        // remove the original upload duplicate.
+        if( file_exists($upload_dir . $orig_filename) && is_file($upload_dir . $orig_filename) ) unlink($upload_dir . $orig_filename);
         
     }),
     
-    'POST /imageprocessing/remove_company_logo' => function() use($user) {
+    'POST /imageprocessing/save_company_logo' => function() use($user) {
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action'; 
         
-        DB::table('Company')->where('companyId', '=', $user->companyid)->update( array('logo' => null) );
+        $filename = Input::get('basename');
+        $src      = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $filename;
+        $des      = Config::get('application.uploaded_images_dir') . '/company_logos/' . $filename;
+        if( file_exists($src) && is_file($src) ) rename($src, $des);
+        
+        $logo_data['change']['logo'] = $filename;
+        $logo_data['remove']['logo'] = null;
+        
+        DB::table('Company')->where('companyId', '=', $user->companyid)->update( $logo_data[ Input::get('action') ] );
     },
     
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {

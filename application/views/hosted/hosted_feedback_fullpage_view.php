@@ -99,11 +99,16 @@
                 
                 <!-- profile pic -->
                 <div id="avatarContainer">
-                    <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" /><? // needed in js. ?>
+                    <?php if( ! is_null($user) ): ?>
+                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/' . $company->logo ); ?>
+                        <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
+                        <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
+                    <?php endif; ?>
+                    
                     <?php if( ! empty($company->logo) ): ?>
-                        <img src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
+                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
                     <?php else: ?>
-                        <img src="/img/public-profile-pic.jpg" width="100%" />
+                        <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
                     <?php endif; ?>
                     <div id="avatarButtonIcon">
                         <div id="avatarMenuList">
@@ -117,6 +122,12 @@
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                    <div id="logoActionButtons">
+                        <ul>
+                            <li><a id="save_company_logo" href="javascript:;">Save</a></li>
+                            <li><a id="cancel_company_logo" href="javascript:;">Cancel</a></li>
+                        </ul>                   
                     </div>
                 </div>
             </div>

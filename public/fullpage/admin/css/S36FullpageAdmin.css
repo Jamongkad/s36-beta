@@ -1011,21 +1011,25 @@ ul.patternList li div.active{
 }
 
 /* the cover buttons baby! */
-#coverActionButtons{
+#coverActionButtons,
+#logoActionButtons{
 	display: none;
 	position:absolute;
 	right:10px;
 	bottom:10px;
 	z-index:1;
 }
-#coverActionButtons ul{
+#coverActionButtons ul,
+#logoActionButtons ul{
 	list-style:none;
 }
-#coverActionButtons ul li{
+#coverActionButtons ul li,
+#logoActionButtons ul li{
 	display:inline;
 	margin:0px 3px;
 }
-#coverActionButtons ul li a{
+#coverActionButtons ul li a,
+#logoActionButtons ul li a{
 	display:inline-block;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
@@ -1036,7 +1040,8 @@ ul.patternList li div.active{
 	color:#5898d7;
 	box-shadow:#AAA 0px 1px 3px;
 }
-#coverActionButtons ul li a:hover{
+#coverActionButtons ul li a:hover,
+#logoActionButtons ul li a:hover{
 	color:#FFF;
 	background:#5293d3;
 	border:1px solid #2a70b3;

@@ -75,14 +75,14 @@ return array (
         }         
     },
 
-    'GET /settings/company'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
+    'GET /settings/company'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){
         $user = S36Auth::user();
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($user->companyid);
 
         $url = Config::get('application.url');
-
-        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
+        
+        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array(
             'user' => $user, 'company' => $company_info, 'error' => Input::get('error_msg'), 'url' => $url
         ));
     }),
@@ -151,8 +151,7 @@ return array (
         return Redirect::to('settings/social');           
     }),
 
-    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key
-                                                                                                                          , $redis_twitter_key, $social_account) { 
+    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key, $redis_twitter_key, $social_account) {
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
             $redis->del($redis_oauth_key);
@@ -171,7 +170,7 @@ return array (
         
         if(!$company_settings->get_errors()) {
             $company_settings->save_companysettings();
-            return Redirect::to('settings/company');           
+            return Redirect::to('settings/company');
         } else {
             return Redirect::to('settings/company?error_msg="'.$company_settings->get_errors().'"');
         } 
