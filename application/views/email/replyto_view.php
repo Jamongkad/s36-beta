@@ -51,6 +51,9 @@
                             	<table>
                                     <?=$profile_partial_view?>
                                 </table>
+                            	<table>
+                                    <?=$attachments_partial_view?>  
+                                </table>
                             </td>
                         </tr>
                         <tr height="80">
