@@ -11,6 +11,19 @@
     <!--start feedback-list -->
     <div class="feedback-list">
         <?php
+
+        function avatar($avatar, $origin) {
+            if($origin == 'tw' && !empty($avatar)) {
+                return $avatar; 
+            }
+
+            if($origin == 'fb' && !empty($avatar)) {
+                return Config::get('application.avatar48_dir').'/'.$avatar;
+            }
+
+            return '/img/48x48-blank-avatar.jpg';
+        }
+
         foreach ($feed_list as $feed) : 
             $admin_avatar               = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
             $admin_companyname          = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname; 
@@ -30,18 +43,6 @@
             $company_name               = $feed->feed_data->companyname;
             $city                       = $feed->feed_data->city;
             $country_name               = $feed->feed_data->countryname;
-
-            function avatar($avatar, $origin) {
-                if($origin == 'tw' && !empty($avatar)) {
-                    return $avatar; 
-                }
-
-                if($origin == 'fb' && !empty($avatar)) {
-                    return Config::get('application.avatar48_dir').'/'.$avatar;
-                }
-
-                return '/img/48x48-blank-avatar.jpg';
-            }
         ?>
         <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
         <?=$tw_marker?>
