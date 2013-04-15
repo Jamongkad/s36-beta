@@ -17,7 +17,7 @@
                 return $avatar; 
             }
 
-            if($origin == 'fb' && !empty($avatar)) {
+            if(($origin == 'fb' && !empty($avatar)) || !empty($avatar)) {
                 return Config::get('application.avatar48_dir').'/'.$avatar;
             }
 
