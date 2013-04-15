@@ -72,9 +72,9 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.check_select_length = function() { 
         if($scope.selected.length > 0) {
-            $("#quickInboxActions").slideUp();
+            $("#quickInboxActions").show();
         } else { 
-            $("#quickInboxActions").slideDown();
+            $("#quickInboxActions").hide();
         }
     }
 
