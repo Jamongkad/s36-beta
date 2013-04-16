@@ -94,7 +94,6 @@ angular.module('reply', [])
                 configure.children('#msgtype').val("msg");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
                 */
-                scope.template = { name: "shoot", url: "/feedback/load_edit_form" };
                 e.preventDefault();
             }) 
         }
