@@ -17,9 +17,12 @@ angular.module('reply', [])
 .directive('myReply', function(MessageService) {    
     return {
         restrict: 'A'       
+      , scope: {
+            feedid: "=feedid"   
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                var feedid = $(this).attr('feedid');  
+                var feedid = scope.feedid;
 
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
