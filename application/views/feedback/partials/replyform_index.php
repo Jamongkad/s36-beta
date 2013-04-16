@@ -40,17 +40,15 @@
             </td>
 
             <td>   
-                <span ng-controller="ReplyCtrl">
-                    <ul class="custom-message">
-                        <li ng-repeat="msg in get_reply_messages()"> 
-                            <a href='#'  add-reply req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
-                            <span style="float:right">
-                                <a href='#' edit-reply>edit</a> 
-                                <a href='#' delete-reply ng-click="del_reply(msg.id, $event)">delete</a>
-                            </span>
-                        </li>
-                    </ul> 
-                </span>
+                <ul class="custom-message">
+                    <li ng-repeat="msg in get_reply_messages()"> 
+                        <a href='#'  add-reply req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
+                        <span style="float:right">
+                            <a href='#' edit-reply>edit</a> 
+                            <a href='#' delete-reply ng-click="del_reply(msg.id, $event)">delete</a>
+                        </span>
+                    </li>
+                </ul> 
                 <div class="conf-repl" configure-reply style="margin-left:0px !important;">
                     <?=HTML::link('settings', '(add template reply message)')?>
                 </div>
