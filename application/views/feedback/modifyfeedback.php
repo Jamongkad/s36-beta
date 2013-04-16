@@ -300,6 +300,10 @@ $(function() {
         </div>
     </div>
 </div>
+
+<div class="dialog-form" feedid="<?=$id?>"> 
+    <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message))?>
+</div>
 <!--
 <div class="block" style="background:#babfc2;border-top:1px solid #868f94;">
     <input type="submit" href="#" value="Save Changes" class="newbtn">
