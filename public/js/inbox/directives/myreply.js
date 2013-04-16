@@ -82,6 +82,7 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) { 
+                /*
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
                 var configure = $('.modal-configure');
@@ -92,7 +93,8 @@ angular.module('reply', [])
                 configure.children('.regular-text').val(req_text);
                 configure.children('#msgtype').val("msg");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
-
+                */
+                scope.template = { name: "shoot", url: "/feedback/load_edit_form" };
                 e.preventDefault();
             }) 
         }
