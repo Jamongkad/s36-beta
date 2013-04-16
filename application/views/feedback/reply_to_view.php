@@ -10,7 +10,6 @@
     <div class="lightbox-styles">
         <h2>Reply To User</h2>
         <div class="lightbox-content">
-        <!--
         <div class="lightbox-form">
             <table cellpadding="1" width="100%">
             <tr>
@@ -112,7 +111,6 @@
                 <input type="submit" class="large-btn" value="Send" reply-send/>
             </div>
         </div>
-        -->
     </div>
     <!-- end of lightbox styles -->
 </div>
