@@ -107,12 +107,6 @@
             </div>
             -->
         </div>
-        <div class="lightbox-footer">
-            <div class="lightbox-buttons">
-                <input type="button" class="large-btn" value="Cancel" reply-cancel/>
-                <input type="submit" class="large-btn" value="Send" reply-send/>
-            </div>
-        </div>
     </div>
     <!-- end of lightbox styles -->
 </div>

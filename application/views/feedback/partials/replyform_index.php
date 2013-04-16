@@ -58,3 +58,9 @@
                                            <span class="reply-text">send me a copy ()</span></td></tr>
     </table>                
 </div>
+<div class="lightbox-footer">
+    <div class="lightbox-buttons">
+        <input type="button" class="large-btn" value="Cancel" reply-cancel/>
+        <input type="submit" class="large-btn" value="Send" reply-send/>
+    </div>
+</div>
