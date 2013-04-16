@@ -1,3 +1,3 @@
 function MainReplyCtrl($scope, MessageService) { 
-    $scope.template = { name: "test", url: "mathew.html" }
+    $scope.template = { name: "test", url: "/api/mathew.html" }
 }
