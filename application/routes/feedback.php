@@ -26,7 +26,7 @@ return array(
     }),
 
     'GET /feedback/load_reply_form' => function() {
-        return "Mathew";
+        return View::make('feedback/partials/replyform_index');
     },
 
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {
