@@ -998,7 +998,7 @@ margin-bottom: 3px;
 
 .lightbox {
     position:absolute;
-    z-index:4;
+    z-index:100000;
     top:10%;
     left:50%;
     width:780px;
