@@ -38,7 +38,7 @@
                     <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
                     <div id="image-sub-container">
                         <?if($company->logo):?>
-                            <img src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
+                            <img src="/uploaded_images/company_logos/<?php echo $company->logo . '?' . str_shuffle(md5('get rid of cache')); ?>" width="100%" />
                         <?else:?>
                             <img src="/img/company-logo-filler.jpg" width="100%" />
                         <?endif?>
