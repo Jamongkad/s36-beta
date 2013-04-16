@@ -27,6 +27,7 @@ angular.module('reply', [])
             $(this).parents(".dialog-form").fadeOut();
 
             $('div#reply-to-user').draggable("destroy");
+            $("#send_button").val("Send");
             e.preventDefault();
         });
     }
@@ -82,6 +83,7 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) { 
+                $("#send_button").val("Save");
                 /*
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
@@ -140,4 +142,15 @@ angular.module('reply', [])
             })
         }
     }    
+})
+.directive('goback', function() {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attr) {
+            $(element).bind("click", function(e) { 
+                $("#send_button").val("Send");
+            })
+        }
+    }    
+    
 })
