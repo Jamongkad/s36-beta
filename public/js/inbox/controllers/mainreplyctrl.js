@@ -5,7 +5,11 @@ function MainReplyCtrl($scope, MessageService) {
         return $scope.messages;    
     }
 
-    $scope.del_reply = function(id) { 
+    $scope.edit_reply = function(id, $event) {
+        console.log("edit reply at id " + id);
+    }
+
+    $scope.del_reply = function(id, $event) { 
         MessageService.delete_msg({'id': id, 'type': 'msg'});
     }
      
