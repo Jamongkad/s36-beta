@@ -1,4 +1,4 @@
-<div class="modal-configure" style="display:none">  
+<div class="modal-configure" style="display:none;z-index:2147483647">  
     <h4>Configure Message</h4>
     <textarea class="regular-text" style="width: 436px; height: 301px" name="msg"></textarea><br/>
     <input type="hidden" name="msgid" value="" id="msgid"/>
