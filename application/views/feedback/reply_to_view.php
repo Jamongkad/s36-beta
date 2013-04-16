@@ -7,9 +7,9 @@
 
 <div id="reply-to-user" class="lightbox">
     <div class="lightbox-close" reply-cancel></div>
-    <div class="lightbox-styles">
+    <div class="lightbox-styles" ng-controller="MainReplyCtrl">
         <h2>Reply To User</h2>
-        <div class="lightbox-content" ng-controller="MainReplyCtrl">
+        <div class="lightbox-content" >
             <div ng-include src="template.url"></div>
             <!--
             <div class="lightbox-form">
@@ -109,7 +109,7 @@
         </div>
         <div class="lightbox-footer">
             <div class="lightbox-buttons">
-                <input type="button" class="large-btn" value="Cancel" reply-cancel/>
+                <input type="button" class="large-btn" value="Cancel" ng-click="cancel_reply()" reply-cancel/>
                 <input type="submit" class="large-btn" value="Send" reply-send/>
             </div>
         </div>
