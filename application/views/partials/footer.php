@@ -34,6 +34,7 @@
 <?=HTML::script('js/inbox/directives/myfeedbackcount.js')?>
 <?=HTML::script('js/inbox/directives/myformbuilder.js')?>
 
+<?=HTML::script('js/inbox/controllers/mainreplyctrl.js')?>
 <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/controllers/requestctrl.js')?>
 <?=HTML::script('js/inbox/controllers/replyctrl.js')?>

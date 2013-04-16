@@ -9,7 +9,8 @@
     <div class="lightbox-close" reply-cancel></div>
     <div class="lightbox-styles">
         <h2>Reply To User</h2>
-        <div class="lightbox-content">
+        <div class="lightbox-content" ng-controller="MainReplyCtrl">
+            <div ng-include src="template.url"></div>
             <!--
             <div class="lightbox-form">
                 <table cellpadding="1" width="100%">
