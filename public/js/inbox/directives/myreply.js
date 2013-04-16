@@ -1,4 +1,15 @@
 angular.module('reply', [])
+.directive('reply', function(MessageService) {
+    return { 
+        restrict: 'A'       
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log("Do you think this is funny?");
+                e.preventDefault();
+            });
+        }
+    }    
+})
 .directive('myReply', function(MessageService) {    
     return {
         restrict: 'A'       
