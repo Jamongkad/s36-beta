@@ -2,9 +2,13 @@ angular.module('reply', [])
 .directive('reply', function(MessageService) {
     return { 
         restrict: 'A'       
+      , scope: {
+            feedid: "=feedid"   
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log("Do you think this is funny?");
+                console.log(scope.feedid);
                 e.preventDefault();
             });
         }
