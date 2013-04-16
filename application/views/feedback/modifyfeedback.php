@@ -162,7 +162,7 @@ $(function() {
                 </div> 
                 <!-- email picker block-->            
                 <div class="feedback-info-menu">
-                    <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto', 'reply' => '', 'feedid' => $id))?>  
+                    <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto', 'my-reply' => '', 'feedid' => $id))?>  
                     <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
                     <?if($feedback->rating != "POOR" and $feedback->permission_css != 'private-permission'):?>
                         <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', 
