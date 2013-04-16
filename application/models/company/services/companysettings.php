@@ -65,11 +65,21 @@ class CompanySettings {
         }     
 
     }
+    
+    public function move_uploaded_file($filename){
+        if( empty($filename) ) return;
+        
+        // move the uploaded file to permanent dir.
+        $src      = $this->upload_dir . $filename;
+        $des      = $this->company_dir . $filename;
+        if( file_exists($src) && is_file($src) ) rename($src, $des);
+    }
 
     public function save_companysettings() {
         if($this->errors == False) { 
             $post_data = (object)Input::get();
-            //if a new file has been uploaded
+            //if a new file has been uploaded.
+            // we're not gonna get inside this because we didn't use upload_companylogo().
             if($this->filename) {
                 if($post_data->logo) {
                     unlink($this->company_dir.$post_data->logo);          
@@ -77,6 +87,7 @@ class CompanySettings {
                 $post_data->logo = $this->filename;  
             } 
             
+            $this->move_uploaded_file($post_data->logo);
             $this->dbcompany->update_companyinfo($post_data);
         }
     }

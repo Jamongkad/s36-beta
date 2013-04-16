@@ -2,9 +2,10 @@
 <?= HTML::script('/js/jquery.ui.widget.js'); ?>
 <?= HTML::script('/js/jquery.fileupload.js'); ?>
 <?= HTML::script('/js/helpers.js'); ?>
+<?= HTML::script('/js/inbox/Status.js'); ?>
 <?=Form::open_for_files('settings/save_companysettings')?>
 <?=Form::hidden('companyid', $user->companyid, array('id' => 'company_id'))?>
-<?=Form::hidden('logo', $company->logo)?>
+<?=Form::hidden('logo', $company->logo, array('id' => 'logo'))?>
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>COMPANY PROFILE SETTINGS</h3>
@@ -89,23 +90,23 @@ jQuery(function($) {
     });
     
     
+    var myStatus = new Status();
+    
     $('#company_logo').fileupload({
         dataType: 'json',
         add: function(e, data){
             var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
             if( image_types.indexOf( data.files[0].type ) == -1 ){
-                var error = ['Please select an image file'];
-                //Helpers.display_error_mes(error);
+                myStatus.notify('Please select an image file', 3000);
                 return false;
             }
             if( data.files[0].size > 2000000 ){
-                var error = ['Please upload an image not greater than 2mb in filesize'];
-                //Helpers.display_error_mes(error);
+                myStatus.notify('Please upload an image not greater than 2mb in filesize', 3000);
                 return false;
             }
             data.submit();
         },progress: function(e, data){
-            //self.show_notification('Changing Profile Picture', 0);
+            //myStatus.notify('Changing Profile Picture', 3000);
             $('#image-sub-container img').css('opacity', '0.2');
         },done: function(e, data){
             // set the new src for the image. the additional ? or any get param at the end of the src
@@ -113,10 +114,10 @@ jQuery(function($) {
             // we also need the ext from result because they differ from server side.
             var ext = data.result[0].name.split('.').pop();
             var rand_str = '?' + Helpers.get_random_str(5);
-            var new_src = '/uploaded_images/company_logos/logo_' + $('#company_id').val() + '.' + ext + rand_str;
+            var new_src = '/uploaded_images/uploaded_tmp/logo_' + $('#company_id').val() + '.' + ext + rand_str;
             $('#image-sub-container img').attr('src', new_src).animate({'opacity': '1'});
+            $('#logo').val('logo_' + $('#company_id').val() + '.' + ext);
             //self.hide_notification();
-            //$('#remove_logo').show();
         }
     });
 })

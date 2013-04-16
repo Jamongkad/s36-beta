@@ -226,6 +226,11 @@ var S36FullpageAdmin = function(layoutObj){
                 self.hide_notification();
                 self.turn_on_logo_edit_mode(true);
                 self.logo_action = 'change';
+            }, error: function(jqXHR){
+                Helpers.display_error_mes([jqXHR.responseText]);
+                self.hide_notification();
+                $('#avatarContainer img').css('opacity', '1');
+                self.turn_on_logo_edit_mode(false);
             }
         });
         
@@ -233,33 +238,6 @@ var S36FullpageAdmin = function(layoutObj){
         || remove company logo.
         ==========================================*/
         $('#remove_logo').click(function(){
-            // var error;
-            // self.show_notification('Removing Profile Picture', 0);
-            // $('#avatarContainer img').css('opacity', '0.2');
-            
-            // $.ajax({
-            //     async: false,
-            //     url: '/imageprocessing/remove_company_logo',
-            //     type: 'post',
-            //     success: function(result){
-            //         error = result;
-            //     }
-            // });
-            
-            // if( $.trim(error) != '' ){
-            //     self.hide_notification();
-            //     $('#avatarContainer img').animate({'opacity': '1'});
-            //     Helpers.display_error_mes([error]);
-            //     return false;
-            // }
-            
-            // setTimeout(function(){
-            //     $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg').animate({'opacity': '1'});
-            //     $('#remove_logo').hide();
-            //     self.hide_notification();
-            // }, 800);
-            
-            
             $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg');
             self.logo_action = 'remove';
             self.turn_on_logo_edit_mode(true);
@@ -338,6 +316,11 @@ var S36FullpageAdmin = function(layoutObj){
                 self.cover_photo_action = 'change';
                 self.hide_notification();
                 $('#coverPhoto img').animate({'opacity': '1'});
+            }, error: function(jqXHR){
+                Helpers.display_error_mes([jqXHR.responseText]);
+                self.hide_notification();
+                $('#coverPhoto img').css('opacity', '1');
+                self.turn_on_cp_edit_mode(false);
             }
         });
         

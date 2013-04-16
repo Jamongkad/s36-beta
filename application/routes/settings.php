@@ -166,7 +166,7 @@ return array (
 
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings( Input::get('companyid') );
-        $company_settings->upload_companylogo($_FILES);
+        //$company_settings->upload_companylogo($_FILES);  // no longer need this. we used jquery fileupload.
         
         if(!$company_settings->get_errors()) {
             $company_settings->save_companysettings();

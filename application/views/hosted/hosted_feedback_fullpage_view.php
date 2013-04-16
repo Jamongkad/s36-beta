@@ -110,25 +110,28 @@
                     <?php else: ?>
                         <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
                     <?php endif; ?>
-                    <div id="avatarButtonIcon">
-                        <div id="avatarMenuList">
-                            <ul>
-                                <li><a href="javascript:;">
-                                    Change Photo
-                                    <input type="file" id="company_logo" data-url="imageprocessing/upload_company_logo" />
-                                </a></li>
-                                <li id="remove_logo" style="<?php echo ( empty($company->logo) ? 'display: none;' : '' ); ?>">
-                                    <a href="javascript:;">Remove</a>
-                                </li>
-                            </ul>
+                    
+                    <?php if( ! is_null($user) ): ?>
+                        <div id="avatarButtonIcon">
+                            <div id="avatarMenuList">
+                                <ul>
+                                    <li><a href="javascript:;">
+                                        Change Photo
+                                        <input type="file" id="company_logo" data-url="imageprocessing/upload_company_logo" />
+                                    </a></li>
+                                    <li id="remove_logo" style="<?php echo ( empty($company->logo) ? 'display: none;' : '' ); ?>">
+                                        <a href="javascript:;">Remove</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div id="logoActionButtons">
-                        <ul>
-                            <li><a id="save_company_logo" href="javascript:;">Save</a></li>
-                            <li><a id="cancel_company_logo" href="javascript:;">Cancel</a></li>
-                        </ul>                   
-                    </div>
+                        <div id="logoActionButtons">
+                            <ul>
+                                <li><a id="save_company_logo" href="javascript:;">Save</a></li>
+                                <li><a id="cancel_company_logo" href="javascript:;">Cancel</a></li>
+                            </ul>                   
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
             
