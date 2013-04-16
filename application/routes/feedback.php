@@ -29,6 +29,10 @@ return array(
         return View::make('feedback/partials/replyform_index');
     },
 
+    'GET /feedback/load_edit_form' => function() {
+        return View::make('feedback/partials/editform_view');
+    },
+
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {
         $post = (object)Input::get();
         $feedbackservice = new Feedback\Services\FeedbackService($feedback, $badwords);
