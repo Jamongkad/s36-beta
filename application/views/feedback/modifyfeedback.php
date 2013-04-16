@@ -27,6 +27,11 @@ $(function() {
 })
 </script>
 <? $id = $feedback->id ?>
+
+<div class="dialog-form" feedid="<?=$id?>"> 
+    <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feedback, 'reply_message' => $reply_message))?>
+</div>
+
 <div class="block noborder">
     <div class="grids">
         <div class="g3of4">
@@ -300,21 +305,6 @@ $(function() {
         </div>
     </div>
 </div>
-
-<div class="dialog-form" feedid="<?=$id?>"> 
-    <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feedback, 'reply_message' => $reply_message))?>
-</div>
-<!--
-<div class="block" style="background:#babfc2;border-top:1px solid #868f94;">
-    <input type="submit" href="#" value="Save Changes" class="newbtn">
-    <input type="submit" href="#" value="Cancel" class="newbtn">
-</div>
--->
-<!-- spacer -->
-<!--
-<div class="block noborder" style="height:10px;">
-</div>
--->
 <!-- spacer -->
 </div>
 
