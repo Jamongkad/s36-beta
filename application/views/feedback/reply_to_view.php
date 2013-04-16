@@ -7,6 +7,7 @@
 
 <div id="reply-to-user" class="lightbox">
     <div class="lightbox-close" reply-cancel></div>
+    <!--
     <div class="lightbox-styles">
         <h2>Reply To User</h2>
         <div class="lightbox-content">
@@ -112,6 +113,7 @@
             </div>
         </div>
     </div>
+    -->
     <!-- end of lightbox styles -->
 </div>
 <?=Form::close()?>
