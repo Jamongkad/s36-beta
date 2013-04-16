@@ -10,6 +10,10 @@ $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {
+
+        //Reply messages
+        $sm = new Message\Services\SettingMessage(new Message\Repositories\DBMessage('msg'));
+        $sm->get_messages();
          
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
@@ -17,6 +21,7 @@ return array(
            , 'status' => DB::table('Status', 'master')->get()
            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
            , 'admin_check' => S36Auth::user()
+           , 'reply_message' => json_encode($sm->jsonify())
         ));
     }),
 
