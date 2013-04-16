@@ -12,11 +12,9 @@ angular.module('reply', [])
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
                 
-                /*
                 $('div#reply-to-user').draggable();
                 $('div#reply-to-user.lightbox').show();
                 $(".dialog-form[feedid="+feedid+"]").show();
-                */
                 e.preventDefault();
             });
         }
