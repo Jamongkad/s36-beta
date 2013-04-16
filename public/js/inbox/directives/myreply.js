@@ -17,11 +17,9 @@ angular.module('reply', [])
                 $('div#reply-to-user.lightbox').show();
                 $(".dialog-form[feedid="+feedid+"]").show();
                 */
-                scope.template = "Mathew";
                 e.preventDefault();
             });
         }
-      , template: '<span compile-html="template"></span>'
     } 
 })
 .directive('replyCancel', function(){
