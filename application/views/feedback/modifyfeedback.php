@@ -161,7 +161,6 @@ $(function() {
                     </div>
                 </div> 
                 <!-- email picker block-->            
-
                 <div class="feedback-info-menu">
                     <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto', 'reply' => '', 'feedid' => $id))?>  
                     <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
