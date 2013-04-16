@@ -27,7 +27,6 @@ angular.module('reply', [])
             $(this).parents(".dialog-form").fadeOut();
 
             $('div#reply-to-user').draggable("destroy");
-            console.log("this should close");
             e.preventDefault();
         });
     }
@@ -87,7 +86,7 @@ angular.module('reply', [])
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
                 var configure = $('.modal-configure');
                 
-                configure.dialog({ zIndex: 100001 });
+                configure.dialog({ zIndex: 100010 });
                 configure.dialog('open');
                 configure.children('#msgid').val(msgid);
                 configure.children('.regular-text').val(req_text);
