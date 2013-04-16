@@ -85,13 +85,16 @@ angular.module('reply', [])
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
                 var configure = $('.modal-configure');
-                
+
+                configure.draggable();
+                /*               
                 configure.dialog({ zIndex: 2147483647 });
                 configure.dialog('open');
                 configure.children('#msgid').val(msgid);
                 configure.children('.regular-text').val(req_text);
                 configure.children('#msgtype').val("msg");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
+                */
                 e.preventDefault();
             }) 
         }
