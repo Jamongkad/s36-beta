@@ -95,7 +95,6 @@ return array(
         $tf->beforeEach(function($tf) {
             $type = "rqs";
             $tf->data->dbm = new Message\Repositories\DBMessage($type);
-            $tf->data->rdm = new Message\Repositories\RDMessage($type);       
         });
  
         $tf->test("SettingMessage Test", function($tf)  {
@@ -104,9 +103,6 @@ return array(
             $tf->data->dbmset->get_messages();
             $tf->dump($tf->data->dbmset->jsonify());
            
-            $tf->data->rdmset = new Message\Services\SettingMessage($tf->data->rdm);
-            $tf->data->rdmset->get_messages();
-            $tf->dump($tf->data->rdmset->jsonify());
         });
 
         $tf->run();  
