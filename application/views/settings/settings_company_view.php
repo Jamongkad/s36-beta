@@ -57,22 +57,22 @@
             &nbsp;
         </div>
     </div>
-    <br /> 
-    <!-- <div class="grids">
+    <!-- <br />  -->
+    <div class="grids">
         <div class="g3of4">
             <div class="grids">
-                <strong>
+                <!-- <strong>
                     <a href="<?=$url?>" id="preview-link" class="dark-blue" target="_blank" style="text-decoration:underline">Link preview this on your public feedback page</a>
                 </strong>
                 <p>If you leave a field empty, it will not appear on your public feedback page</p>
-                <br />
+                <br /> -->
                 <input type="submit" class="large-btn" value="Save Settings" />
             </div>
         </div>
         <div class="g1of4">
             &nbsp;
         </div>
-    </div> -->
+    </div>
 </div>
 
 <?=Form::close()?>
