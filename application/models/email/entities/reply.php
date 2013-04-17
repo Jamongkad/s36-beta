@@ -6,7 +6,7 @@ use View, Config, Helpers;
 class Reply extends EmailFixture {
     
     private $email_data;
-    private $subject = "36Stories: We received your feedback ";
+    private $subject = "FDBack: We received your feedback ";
 
     public function gather($email_data) {
         $this->email_data = $email_data; 
