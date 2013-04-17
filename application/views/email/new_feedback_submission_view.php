@@ -91,7 +91,7 @@
                         	<td colspan="3">
                                 <div style="padding:<?=$poor_style?>">
                                     Thanks, <br />
-                                    The 36Stories Team
+                                    The FDBack Team
                                 </div>
                             </td>
                         </tr>
