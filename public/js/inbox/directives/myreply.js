@@ -35,7 +35,7 @@ angular.module('reply', [])
 .directive('replySend', function() {
     return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
-            console.lot($(this).attr('value'));
+            console.log($(this).attr('value'));
             console.log("Clicked");
         });
         /*
