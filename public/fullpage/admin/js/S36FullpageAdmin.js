@@ -690,7 +690,7 @@ var S36FullpageAdmin = function(layoutObj){
                     var ipW = imgW-parW-offsetX;
                     $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});
                 });
-            }, 300);
+            }, 800);
                 
             //$("#coverPhoto img").load(function(){
             //     $('#dragPhoto').fadeIn();
