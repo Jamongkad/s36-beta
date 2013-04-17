@@ -29,7 +29,8 @@ return array(
         return View::make('feedback/partials/replyform_index');
     },
 
-    'GET /feedback/load_edit_form' => function() {
+    'GET /feedback/load_edit_form/(:any?)' => function($id=Null) {
+        Helpers::dump($id);
         return View::make('feedback/partials/editform_view');
     },
 
