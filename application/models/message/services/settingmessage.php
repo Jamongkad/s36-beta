@@ -42,4 +42,8 @@ class SettingMessage {
     public function jsonify() {
         return $this->datastore->jsonify();
     }
+
+    public function dbresult() {
+        return $this->datastore->dbresult();
+    }
 }
