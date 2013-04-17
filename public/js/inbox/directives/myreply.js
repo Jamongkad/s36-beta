@@ -33,7 +33,12 @@ angular.module('reply', [])
     }
 })
 .directive('replySend', function() {
-    return function(scope, element, attrs){
+    return function(scope, element, attrs) {
+        $(element).bind('click', function(e) {
+            console.lot($(this).attr('value'));
+            console.log("Clicked");
+        });
+        /*
         $(element).parents('form').validate({
             submitHandler: function(form) {
                 $(form).ajaxSubmit({
@@ -52,6 +57,7 @@ angular.module('reply', [])
                 }
             }
         });
+        */
     }
 })
 .directive('addReply', function() {
