@@ -100,7 +100,11 @@ return array(
         $tf->test("SettingMessage Test", function($tf)  {
              
             $tf->data->dbmset = new Message\Services\SettingMessage($tf->data->dbm);
+
             $tf->data->dbmset->get_messages();
+            $tf->dump($tf->data->dbmset->jsonify());
+
+            $tf->data->dbmset->get(28);
             $tf->dump($tf->data->dbmset->jsonify());
            
         });
