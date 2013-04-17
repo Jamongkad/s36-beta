@@ -39,6 +39,7 @@ return array(
             $msg = $dbmset->dbresult();
         }
         return View::make('feedback/partials/editform_view', Array('msg' => $msg));
+
     },
 
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {

@@ -36,6 +36,8 @@ angular.module('reply', [])
     return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
             console.log($(this).attr('value'));
+            console.log($("#msgid").attr('value'));
+            console.log($("#msgtype").attr('value'));
             console.log("Clicked");
             e.preventDefault();
         });
