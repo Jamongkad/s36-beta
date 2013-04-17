@@ -93,7 +93,7 @@ return array(
         $tf = new Testify("Message Services/DB");
 
         $tf->beforeEach(function($tf) {
-            $type = "rqs";
+            $type = "msg";
             $tf->data->dbm = new Message\Repositories\DBMessage($type);
         });
  
