@@ -9,6 +9,8 @@ return array(
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->get_messages();
         echo $sm->jsonify();
+        $sm->get(28);
+        echo $sm->jsonify();
     }
 
     , 'POST /message/save_msg' => function() {
