@@ -37,6 +37,7 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             console.log($(this).attr('value'));
             console.log("Clicked");
+            e.preventDefault();
         });
         /*
         $(element).parents('form').validate({
