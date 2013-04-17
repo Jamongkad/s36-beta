@@ -90,25 +90,24 @@ $company = DB::table('Company')
     ->first(array(
         'Company.name',
         'HostedSettings.description AS description',
-        'Company.coverphoto_src AS image'
+        'Company.coverphoto_src AS image',
+        'Company.logo AS logo'
     ));
 
-$title = ucfirst($company->name) . '\'s Customer Feedback & Reviews page';
-$description = (trim($company->description) != '' ? $company->description : 'Welcome to ' . ucfirst($company->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
-$url = Config::get('application.url');
-$image = ( trim($company->image) != '' ? $url . '/uploaded_images/coverphoto/' . $company->image : $url . '/fullpage/common/img/fdback-logo-vertical.jpg' );
-
+$title          = ucfirst($company->name) . '\'s Customer Feedback & Reviews page';
+$description    = (trim($company->description) != '' ? $company->description : 'Welcome to ' . ucfirst($company->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
+$url            = Config::get('application.url');
+$logo           = ( empty($company->logo) ? $url.'/img/public-profile-pic.jpg' : $url.'/uploaded_images/company_logos/' . $company->logo );
 ?>
 <title><?php echo $title; ?></title>
 <meta property="og:title" content="<?php echo $title; ?>">
 <meta property="og:description" content="<?php echo $description; ?>">
 <meta property="og:type" content="website">
-<meta property="og:image" content="<?php echo $image; ?>">
+<meta property="og:image" content="<?php echo $logo; ?>">
 <meta property="og:url" content="<?php echo $url; ?>">
 <meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>">
 </head>
 <body>
-
 <div id="theBar">   
     <div id="theBarInner" class="clear">
         <div id="barLeftContent">
