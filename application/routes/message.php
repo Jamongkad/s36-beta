@@ -5,7 +5,7 @@ return array(
     'GET /message/get_msgs' => function() {
         $type = Input::get('type'); 
         $dbm = new Message\Repositories\DBMessage($type);
-        //$rdm = new Message\Repositories\RDMessage($type);       
+
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->get_messages();
         echo $sm->jsonify();
@@ -14,7 +14,7 @@ return array(
     , 'POST /message/save_msg' => function() {
         $type = Input::get('type'); 
         $dbm = new Message\Repositories\DBMessage($type);
-        //$rdm = new Message\Repositories\RDMessage($type);       
+
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->save(Input::get('msg'));
         $sm->last_insert();
@@ -24,7 +24,7 @@ return array(
     , 'POST /message/update' => function() {
         $type = Input::get('type'); 
         $dbm = new Message\Repositories\DBMessage($type);
-        //$rdm = new Message\Repositories\RDMessage($type);       
+
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->update(Input::get('id'), Input::get('msg'));
         $sm->get(Input::get('id'));
@@ -34,7 +34,7 @@ return array(
     , 'POST /message/delete_msg' => function() {
         $type = Input::get('type'); 
         $dbm = new Message\Repositories\DBMessage($type);
-        //$rdm = new Message\Repositories\RDMessage($type);       
+
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->delete(Input::get('id'));
     }
