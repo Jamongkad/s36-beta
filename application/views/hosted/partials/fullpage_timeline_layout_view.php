@@ -12,7 +12,8 @@
     <div class="feedback-list">
         <?php
         foreach ($feed_list as $feed) : 
-            $admin_avatar               = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
+            $admin_avatar               = ( ! is_null($user) ? '/uploaded_images/admin_avatar/' . $user->avatar : '/img/48x48-blank-avatar.jpg' );
+            $admin_avatar               = ($feed->feed_data->admin_avatar) ? '/uploaded_images/admin_avatar/' . $feed->feed_data->admin_avatar : $admin_avatar;
             $admin_companyname          = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname; 
             $feedback_id                = $feed->feed_data->id;
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
@@ -176,7 +177,7 @@
             <div class="admin-comment-block">
                 <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                 <div class="admin-name">
-                    <?=$user->fullname?> from <?=$admin_companyname?> says.. 
+                    <?=$user->fullname?> from <?=$admin_companyname?> says...
                     <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                 </div>
                 <div class="admin-message clear">

@@ -119,6 +119,34 @@ return array(
         DB::table('Company')->where('companyId', '=', $user->companyid)->update( $logo_data[ Input::get('action') ] );
     },
     
+    'POST /imageprocessing/upload_admin_avatar' => function() use($user) {
+        $upload_dir    = Config::get('application.uploaded_images_dir').'/uploaded_tmp/';
+        $filename      = 'avatar_' . $user->userid . '.' . pathinfo($_FILES['files']['name'][0], PATHINFO_EXTENSION);
+        $orig_filename = $_FILES['files']['name'][0];
+        
+        // remove the existing admin avatar.
+        if( file_exists($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        
+        $options = array(
+              'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_admin_avatar'
+            , 'upload_dir' => $upload_dir
+            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
+            , 'param_name' => 'files'
+            , 'file_name'  => $filename
+            , 'image_versions' => array(
+                array(
+                    'max_width'     => 48,
+                    'max_height'    => 48
+                )
+            )
+        );
+        
+        new JqueryFileUploader($options);
+        
+        // remove the original upload duplicate.
+        if( file_exists($upload_dir . $orig_filename) && is_file($upload_dir . $orig_filename) ) unlink($upload_dir . $orig_filename);
+    },
+    
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
               'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_avatar'

@@ -1194,3 +1194,9 @@ margin-bottom: 3px;
 .attached-link-details{
     margin-left: 110px !important;
 }
+
+.admin-avatar-container{
+    max-width: 48px;
+    max-height: 48px;
+    overflow: hidden;
+}
