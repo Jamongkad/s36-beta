@@ -106,6 +106,7 @@ return array(
 
             $tf->data->dbmset->get(28);
             $tf->dump($tf->data->dbmset->jsonify());
+            $tf->dump($tf->data->dbmset->dbresult());
            
         });
 
