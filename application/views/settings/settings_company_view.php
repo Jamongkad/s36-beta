@@ -58,7 +58,7 @@
         </div>
     </div>
     <br /> 
-    <div class="grids">
+    <!-- <div class="grids">
         <div class="g3of4">
             <div class="grids">
                 <strong>
@@ -72,7 +72,7 @@
         <div class="g1of4">
             &nbsp;
         </div>
-    </div>
+    </div> -->
 </div>
 
 <?=Form::close()?>

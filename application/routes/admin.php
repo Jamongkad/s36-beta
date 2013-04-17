@@ -68,8 +68,10 @@ return array(
         $details = $admin->fetch_admin_details_by_id($id);
         
         return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
-            'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-          , 'errors' => Array(), 'admin' => $user
+            'admin_details' => $details
+          , 'ims' => DB::Table('IM', 'master')->get()
+          , 'errors' => Array()
+          , 'admin' => $user
           , 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
         ));
      }),
