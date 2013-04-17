@@ -30,7 +30,9 @@ return array(
     },
 
     'GET /feedback/load_edit_form/(:any?)' => function($id=Null) {
-        Helpers::dump($id);
+        $dbm = new Message\Repositories\DBMessage('msg');
+        $dbmset = new Message\Services\SettingMessage($dbm);
+        $dbmset->get($id);
         return View::make('feedback/partials/editform_view');
     },
 

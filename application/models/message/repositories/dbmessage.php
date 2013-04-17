@@ -92,6 +92,10 @@ class DBMessage extends S36DataObject {
         return json_encode($this->result);
     }
 
+    public function dbresult() {
+        return $this->result;     
+    }
+
     public function _get_leaf($msgid) {
 
         $sql = "SELECT * FROM MessageSettings WHERE 1=1 AND msgid = :msgid AND companyId = :company_id";
