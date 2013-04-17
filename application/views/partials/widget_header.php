@@ -2,7 +2,7 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>36Stories Widgets</title>
+        <title>FDback Widgets</title>
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> 
         <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
