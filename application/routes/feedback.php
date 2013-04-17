@@ -33,6 +33,8 @@ return array(
         $dbm = new Message\Repositories\DBMessage('msg');
         $dbmset = new Message\Services\SettingMessage($dbm);
         $dbmset->get($id);
+        $dbmset->dbresult();
+        Helpers::dump($dbmset->dbresult());
         return View::make('feedback/partials/editform_view');
     },
 
