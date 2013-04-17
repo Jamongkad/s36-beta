@@ -1003,7 +1003,7 @@ ul.patternList li div.active{
 	margin: 0px;
 	opacity: 0;
 	filter: alpha(opacity=0);
-	transform: translate(-300px, 0) scale(4);
+	/*transform: translate(-300px, 0) scale(4);*/ /* gets fucked up in firefox */
 	direction: rtl;
 	width: 140px;
 	height: 17px;
@@ -1096,7 +1096,7 @@ ul.patternList li div.active{
 	margin:0;
 	opacity:0;
 	filter:alpha(opacity=0);
-	transform:translate(-300px, 0) scale(4);
+	/*transform:translate(-300px, 0) scale(4);*/ /* gets fucked up in firefox */
 	direction:rtl;
 	width:140px;
 	height:17px;
