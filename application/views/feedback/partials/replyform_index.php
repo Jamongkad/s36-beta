@@ -49,7 +49,7 @@
                         </span>
                     </li>
                 </ul> 
-                <div class="conf-repl" configure-reply style="margin-left:0px !important;">
+                <div class="conf-repl" configure-reply ng-click="add_reply()" style="margin-left:0px !important;">
                     <?=HTML::link('settings', '(add template reply message)')?>
                 </div>
             </td>

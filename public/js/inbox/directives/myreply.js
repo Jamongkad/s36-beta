@@ -127,6 +127,8 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
+                $("#send_button").val("Save");
+                /*
                 var configure = $('.modal-configure');
                 configure.dialog({ zIndex: 100001 });
                 configure.dialog('open');
@@ -135,6 +137,7 @@ angular.module('reply', [])
                 configure.children('#msgtype').val("msg");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
                 e.preventDefault();
+                */
             })
         }
     }   
