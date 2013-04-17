@@ -34,6 +34,6 @@ class NewFeedbackSubmission extends EmailFixture {
     }
 
     public function get_subject() {
-        return "36Stories: "." ".Helpers::limit_string(strip_tags($this->feedback_data->text));
+        return "FDBack: "." ".Helpers::limit_string(strip_tags($this->feedback_data->text));
     } 
 }
