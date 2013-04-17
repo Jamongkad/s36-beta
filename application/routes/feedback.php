@@ -30,12 +30,15 @@ return array(
     },
 
     'GET /feedback/load_edit_form/(:any?)' => function($id=Null) {
-        $dbm = new Message\Repositories\DBMessage('msg');
-        $dbmset = new Message\Services\SettingMessage($dbm);
-        $dbmset->get($id);
-        $dbmset->dbresult();
-        Helpers::dump($dbmset->dbresult());
-        return View::make('feedback/partials/editform_view');
+
+        $msg = Null;
+        if($id) { 
+            $dbm = new Message\Repositories\DBMessage('msg');
+            $dbmset = new Message\Services\SettingMessage($dbm);
+            $dbmset->get($id);
+            $msg = $dbmset->dbresult();
+        }
+        return View::make('feedback/partials/editform_view', Array('msg' => $msg));
     },
 
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {
