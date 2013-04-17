@@ -136,8 +136,8 @@ angular.module('reply', [])
                 configure.children('#msgid').val("");
                 configure.children('#msgtype').val("msg");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
-                e.preventDefault();
                 */
+                e.preventDefault();
             })
         }
     }   
