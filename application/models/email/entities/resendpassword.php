@@ -5,7 +5,7 @@ use View, Config;
 
 class ResendPassword extends EmailFixture {    
     private $email_data;
-    private $subject = "36Stories: Reset your 36Stories password";
+    private $subject = "FDBack: Reset your FDBack password";
 
     public function gather($email_data) {
         $this->email_data = $email_data; 

@@ -32,8 +32,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
 /*
 | Start adding css,js, and html for hosted form
 */
-$hostedForm = $_GET['hosted'];
-if (isset($hostedForm) && $hostedForm=true):
+if (isset($_GET['hosted']) && $_GET['hosted']=true):
 $company_name       = Config::get('application.subdomain');
 $company            = new \Company\Repositories\DBCompany;
 $hosted_settings    = new \Hosted\Repositories\DBHostedSettings;
@@ -444,7 +443,7 @@ with others!</p>
 /*
 | Start adding css,js, and html for hosted form
 */
-if (isset($hostedForm) && $hostedForm=true):
+if (isset($_GET['hosted']) && $_GET['hosted']=true):
 ?>
     <div id="mainFooter">
         <p align="center">Powered by <a href="#"> Fdback</a></p>

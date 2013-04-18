@@ -28,6 +28,6 @@ class PublishedFeedback extends EmailFixture {
     } 
 
     public function get_subject() {
-        return "36Stories: Published Feedback Notification";
+        return "FDBack: Published Feedback Notification";
     }
 }
