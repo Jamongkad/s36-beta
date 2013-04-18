@@ -443,7 +443,7 @@ with others!</p>
 /*
 | Start adding css,js, and html for hosted form
 */
-if (isset($hostedForm) && $hostedForm=true):
+if (isset($_GET['hosted']) && $_GET['hosted']=true):
 ?>
     <div id="mainFooter">
         <p align="center">Powered by <a href="#"> Fdback</a></p>
