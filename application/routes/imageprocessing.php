@@ -13,8 +13,12 @@ return array(
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/'
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/tmp/coverphoto_' . $user->companyid . '/'
             , 'param_name' => 'files'
-            , 'width'      => 800
-            , 'height'     => 500
+            , 'image_versions' => array(
+                array(
+                    'max_width'     => 850,
+                    'max_height'    => 500
+                )
+            )
         );     
 
         new JqueryFileUploader($options); 
@@ -95,6 +99,12 @@ return array(
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
             , 'param_name' => 'files'
             , 'file_name'  => $filename
+            , 'image_versions' => array(
+                array(
+                    'max_width'     => 210,
+                    'max_height'    => 175
+                )
+            )
         );
         
         new JqueryFileUploader($options);

@@ -106,7 +106,7 @@
                     <?php endif; ?>
                     
                     <?php if( ! empty($company->logo) ): ?>
-                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" width="100%" />
+                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" />
                     <?php else: ?>
                         <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
                     <?php endif; ?>

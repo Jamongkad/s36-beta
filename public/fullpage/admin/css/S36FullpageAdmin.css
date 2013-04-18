@@ -1018,6 +1018,7 @@ ul.patternList li div.active{
 	right:10px;
 	bottom:10px;
 	z-index:1;
+	text-align: right;
 }
 #coverActionButtons ul,
 #logoActionButtons ul{
@@ -1026,7 +1027,8 @@ ul.patternList li div.active{
 #coverActionButtons ul li,
 #logoActionButtons ul li{
 	display:inline;
-	margin:0px 3px;
+	/*margin:0px 3px;*/
+	margin-left: 6px;
 }
 #coverActionButtons ul li a,
 #logoActionButtons ul li a{
@@ -1050,7 +1052,7 @@ ul.patternList li div.active{
 
  /* avatar menu */
 #avatarButtonIcon {
-	background:url(https://kennwel-staging.gearfish.com/fullpage/admin/img/changeCoverIcon.png) no-repeat;
+	background:url(/fullpage/admin/img/changeCoverIcon.png) no-repeat;
 	width:18px;
 	height:17px;
 	position:absolute;
@@ -1063,14 +1065,14 @@ ul.patternList li div.active{
 	background-position:bottom;
 }
 #avatarButtonIcon #avatarMenuList {
-	width:120px;
+	width: 85px;
 	background:#FFF;
 	z-index:2;
 	display:none;
 	border:1px solid #a5b9cc;
 	color:#4f4f4f;
 	top:16px;
-	right:105px;
+	right: 71px;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;
