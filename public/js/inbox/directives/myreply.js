@@ -25,6 +25,8 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             var choice = $(this).val();
 
+            $scope.template = { name: "test", url: "/feedback/load_reply_form" };
+
             if(choice == 'Cancel') { 
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
                 $(this).parents(".dialog-form").fadeOut();
@@ -34,8 +36,7 @@ angular.module('reply', [])
 
             if(choice == 'Back') {
                 console.log('meet you');
-                $scope.template = { name: "test", url: "/feedback/load_reply_form" };
-                $scope.add_reply();
+                $scope.template = { name: "test", url: "/feedback/load_reply_form" }; 
             }
 
             $("#send_button").val("Send");
