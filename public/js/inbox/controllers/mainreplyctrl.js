@@ -1,5 +1,6 @@
 function MainReplyCtrl($scope, MessageService) { 
-    $scope.template = { name: "test", url: "/feedback/load_reply_form" }
+
+    $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" }
 
     $scope.get_reply_messages = function() {
         return $scope.messages;    
@@ -7,11 +8,11 @@ function MainReplyCtrl($scope, MessageService) {
 
     $scope.edit_reply = function(id, $event) {
         console.log("edit reply at id " + id);
-        $scope.template = { name: "meet", url: "/feedback/load_edit_form/" + id };
+        $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" + id };
     }
 
     $scope.add_reply = function() {
-        $scope.template = { name: "meet", url: "/feedback/load_edit_form" };
+        $scope.template = { name: "edit_form", url: "/feedback/load_edit_form" };
     }
     
     /*
