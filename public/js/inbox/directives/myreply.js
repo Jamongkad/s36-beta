@@ -47,15 +47,16 @@ angular.module('reply', [])
         });
     }
 })
-.directive('replySend', function() {
+.directive('replySend', function(MessageService) {
     return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
         
             var choice = $(this).attr('value');
 
-            console.log($(this).attr('value'));
-            console.log($("#msgid"));
-            console.log($("#msgtype"));
+
+
+            console.log(choice);
+            console.log(MessageService.msgid);
             console.log("Clicked");
             e.preventDefault();
         });
