@@ -36,6 +36,7 @@ angular.module('reply', [])
                 });
 
                 $("#cancel_button").val("Cancel");
+                console.log("cancel");
             }
 
             if(choice == 'Back') {
@@ -43,6 +44,7 @@ angular.module('reply', [])
                     $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
                 });
                 $("#cancel_button").val("Cancel");
+                console.log("back");
             }
 
             $("#send_button").val("Send");
