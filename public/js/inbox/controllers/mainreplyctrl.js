@@ -7,10 +7,8 @@ function MainReplyCtrl($scope, MessageService) {
     }
 
     $scope.edit_reply = function(id, $event) {
-        $scope.$apply(function() {
-            $scope.tmplvar = MessageService.get_message(id);      
-        });
-       
+        MessageService.get_message(id);
+        $scope.tmplvar = MessageService.msgdata;
         console.log($scope.tmplvar);
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
     }

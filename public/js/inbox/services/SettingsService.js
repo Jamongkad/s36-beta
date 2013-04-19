@@ -3,6 +3,7 @@ angular.module('Services', [])
 
     var shared_service = {};
     shared_service.message;
+    shared_service.msgdata;
     shared_service.pushdata;
     shared_service.editdata;
 
@@ -72,7 +73,7 @@ angular.module('Services', [])
           , async: false
           , dataType: 'json'
           , success: function(data) {
-                shared_service.msg = data;
+                shared_service.msgdata = data;
             }
         });      
     }
