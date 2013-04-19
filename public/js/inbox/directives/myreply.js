@@ -52,10 +52,9 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
         
             var choice = $(this).attr('value');
-
             console.log(choice);
+            console.log("From Directive");
             console.log(MessageService);
-            console.log("Clicked");
             e.preventDefault();
         });
         /*
