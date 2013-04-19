@@ -53,10 +53,8 @@ angular.module('reply', [])
         
             var choice = $(this).attr('value');
 
-
-
             console.log(choice);
-            console.log(MessageService.msgid);
+            console.log(MessageService);
             console.log("Clicked");
             e.preventDefault();
         });
