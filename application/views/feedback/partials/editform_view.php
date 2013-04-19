@@ -4,7 +4,7 @@
         <textarea class="regular-text" style="width: 692px; height: 140px" name="msg">
 <?=($msg) ? $msg->text : Null ?>
         </textarea><br/>
-        <input type="hidden" name="msgid" value="<?=($msg) ? $msg->id : Null?>" id="msgid" ng-model="data.msgid"/>
+        <input type="hidden" ng-model="messages.msgid" ng-init="messages.msgid='<?=($msg) ? $msg->id : Null?>'"/>
         <input type="hidden" name="msgtype" value="msg" id="msgtype"/>
         <!--
         <div class="add-msg-box-buttons">
