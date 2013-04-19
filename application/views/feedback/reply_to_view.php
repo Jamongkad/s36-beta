@@ -7,7 +7,7 @@
 
 <div id="reply-to-user" class="lightbox">
     <div class="lightbox-styles" ng-controller="MainReplyCtrl">
-        <div class="lightbox-close" ng-click="cancel_reply()"></div>
+    <div class="lightbox-close" reply-cancel value="Cancel" ng-click="cancel_reply()"></div>
         <h2>Reply To User</h2>
         <div class="lightbox-content" >
             <div ng-include src="template.url"></div>
