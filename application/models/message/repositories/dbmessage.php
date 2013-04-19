@@ -43,6 +43,7 @@ class DBMessage extends S36DataObject {
 
             $leaf->text = $text;
             $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
+            $leaf->msgtype = $value->msgtype;
             $leaf->id   = $value->msgid;
             $tree[] = $leaf; 
         }
