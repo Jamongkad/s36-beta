@@ -21,7 +21,7 @@ function MainReplyCtrl($scope, MessageService) {
     }
 
     $scope.send = function() { 
-        //console.log(MessageService);
+        console.log(MessageService);
     }
 
     $scope.del_reply = function(id, $event) { 
