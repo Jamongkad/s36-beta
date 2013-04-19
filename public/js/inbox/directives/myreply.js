@@ -93,6 +93,7 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) { 
                 $("#send_button").val("Save");
+                $("#cancel_button").val("Back");
                 /*
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
