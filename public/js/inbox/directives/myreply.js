@@ -24,19 +24,22 @@ angular.module('reply', [])
     return function($scope, element, attrs){
         $(element).bind('click', function(e) {
             var choice = $(this).val();
-
-            $scope.template = { name: "test", url: "/feedback/load_reply_form" };
+            
+            $scope.apply(function() {
+                $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
+            });
+           
 
             if(choice == 'Cancel') { 
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
-                $scope.template = { name: "test", url: "/feedback/load_reply_form" };
+                $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };
             }
 
             if(choice == 'Back') {
                 console.log('meet you');
-                $scope.template = { name: "test", url: "/feedback/load_reply_form" }; 
+                $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" }; 
             }
 
             $("#send_button").val("Send");
