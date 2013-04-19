@@ -21,7 +21,14 @@ return array(
     }
    
     , 'POST /message/save_msg' => function() {
-        Helpers::dump(Input::get());
+        if(Input::get('id')) {
+            echo "Update";
+            Helpers::dump(Input::get());                
+        } else { 
+            echo "Save";
+            Helpers::dump(Input::get());                
+        }
+
     }
 
     /*
