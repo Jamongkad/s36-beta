@@ -37,15 +37,6 @@ class DBMessage extends S36DataObject {
         
         $tree = Array();
         foreach($result as $value) {
-            /*
-            $leaf = new StdClass;
-            $text = ucfirst(strtolower($value->msgtext));
-
-            $leaf->text = $text;
-            $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
-            $leaf->msgtype = $value->msgtype;
-            $leaf->id   = $value->msgid;
-            */
             $tree[] = new MsgValueObject($value);
         }
 
@@ -108,17 +99,6 @@ class DBMessage extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ);
 
         return new MsgValueObject($result);
-        /*
-        $leaf = new StdClass;
-        $text = ucfirst(strtolower($result->msgtext));
-
-        $leaf->text = $text;
-        $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
-        $leaf->msgtype = $result->msgtype;
-        $leaf->id   = $result->msgid;
-
-        return $leaf; 
-        */
     }
 }
 
@@ -127,14 +107,11 @@ class MsgValueObject {
     private $text_limit = 3;
 
     public function __construct($data) {
-
         $text = ucfirst(strtolower($data->msgtext));
         $this->text = $text; 
         $this->short_text = Helpers::limit_text($text, $this->text_limit);
         $this->msgtype = $data->msgtype;
         $this->id = $data->msgid;
-
     }
-
 
 }

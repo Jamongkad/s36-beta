@@ -52,7 +52,8 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
         
             var choice = $(this).attr('value');
-            console.log(choice);
+            console.log(choice); 
+            console.log(MessageService.msgdata);
             e.preventDefault();
         });
         /*
