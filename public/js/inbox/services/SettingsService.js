@@ -52,11 +52,11 @@ angular.module('Services', [])
         }); 
     }
  
-    shared_service.get_message = function(id) {
+    shared_service.get_message = function(id, type) {
         $.ajax({
             url: "/message/get_msg"  
           , type: 'GET'
-          , data: { id: id }
+          , data: { id: id, type: type }
           , async: false
           , dataType: 'json'
           , success: function(data) {

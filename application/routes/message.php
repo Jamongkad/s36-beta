@@ -13,7 +13,7 @@ return array(
 
     , 'GET /message/get_msg' => function() { 
         if($id = Input::get('id')) { 
-            $dbm = new Message\Repositories\DBMessage('msg');
+            $dbm = new Message\Repositories\DBMessage(Input::get('type'));
             $dbmset = new Message\Services\SettingMessage($dbm);
             $dbmset->get($id);
             echo $dbmset->jsonify();
