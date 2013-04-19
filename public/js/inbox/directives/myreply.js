@@ -27,14 +27,14 @@ angular.module('reply', [])
 
             console.log(choice);
 
-            if(choice == 'cancel') { 
+            if(choice == 'Cancel') { 
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
                 $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
             }
 
-            if(choice == 'back') {
+            if(choice == 'Back') {
                 $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
             }
 
