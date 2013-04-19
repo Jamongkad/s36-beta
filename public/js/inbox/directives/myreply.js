@@ -36,6 +36,7 @@ angular.module('reply', [])
                 $scope.$apply(function() {
                     $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
                 });
+                $("#cancel_button").val("Cancel");
             }
 
             $("#send_button").val("Send");
