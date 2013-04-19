@@ -31,7 +31,7 @@ return array(
 
     'GET /feedback/get_replybody' => function() {
         $data = Array(
-            'email' => S36Auth::user()->email
+            'replyto' => S36Auth::user()->email
         );
         echo json_encode($data);
     },
