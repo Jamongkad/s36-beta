@@ -17,7 +17,7 @@ function MainReplyCtrl($scope, MessageService) {
     
 
     $scope.cancel_reply = function() { 
-        $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
+        $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };
     }
 
 
