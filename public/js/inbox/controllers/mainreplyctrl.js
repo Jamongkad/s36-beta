@@ -14,7 +14,7 @@ function MainReplyCtrl($scope, MessageService) {
 
     $scope.add_reply = function() { 
         MessageService.msgdata = {};
-        MessageService.msgdata.text = '';
+        MessageService.msgdata.text = null;
         MessageService.msgdata.id = null;
         MessageService.msgdata.msgtype = 'msg';
         $scope.tmplvar = MessageService.msgdata;
