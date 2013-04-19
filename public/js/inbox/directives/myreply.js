@@ -34,7 +34,7 @@ angular.module('reply', [])
 
             if(choice == 'Back') {
                 console.log('meet you');
-                $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
+                $scope.template = { name: "meet", url: "/feedback/load_reply_form_2" };
                 console.log($scope);
             }
 
