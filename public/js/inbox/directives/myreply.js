@@ -54,6 +54,7 @@ angular.module('reply', [])
             var choice = $(this).attr('value');
             console.log(choice); 
             console.log(MessageService.msgdata);
+            MessageService.save(MessageService.msgdata);
             e.preventDefault();
         });
         /*

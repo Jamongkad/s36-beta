@@ -19,7 +19,12 @@ return array(
             echo $dbmset->jsonify();
         }
     }
+   
+    , 'POST /message/save_msg' => function() {
+        Helpers::dump(Input::get());
+    }
 
+    /*
     , 'POST /message/save_msg' => function() {
           $type = Input::get('type'); 
           $dbm = new Message\Repositories\DBMessage($type);
@@ -37,6 +42,7 @@ return array(
         $sm->get(Input::get('id'));
         echo $sm->jsonify();
     }
+    */
 
     , 'POST /message/delete_msg' => function() {
         $type = Input::get('type'); 
