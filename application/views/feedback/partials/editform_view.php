@@ -1,6 +1,5 @@
 <div class="lightbox-form">
     <div class="modal-configure">  
-        <a href="#" ng-click="cancel_reply()" goback>Back</a>
         <h4>Configure Message</h4>
         <textarea class="regular-text" style="width: 692px; height: 140px" name="msg">
 <?=($msg) ? $msg->text : Null ?>

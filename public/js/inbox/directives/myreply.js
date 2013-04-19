@@ -23,9 +23,9 @@ angular.module('reply', [])
 .directive('replyCancel', function(){
     return function($scope, element, attrs){
         $(element).bind('click', function(e) {
-            var choice = $(this).val();
-              
 
+            var choice = $(this).attr('value');
+              
             if(choice == 'Cancel') { 
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
                 $(this).parents(".dialog-form").fadeOut();
