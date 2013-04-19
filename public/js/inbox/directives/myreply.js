@@ -35,6 +35,7 @@ angular.module('reply', [])
             if(choice == 'Back') {
                 console.log('meet you');
                 $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
+                console.log($scope);
             }
 
             $("#send_button").val("Send");
