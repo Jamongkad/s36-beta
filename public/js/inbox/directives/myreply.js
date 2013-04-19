@@ -25,7 +25,7 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             var choice = $(this).val();
             
-            $scope.apply(function() {
+            $scope.$apply(function() {
                 $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
             });
            
