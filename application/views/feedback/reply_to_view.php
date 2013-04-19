@@ -6,7 +6,7 @@
 <?=Form::hidden('username', $user->username)?>
 
 <div id="reply-to-user" class="lightbox">
-    <div class="lightbox-close" reply-cancel></div>
+    <div class="lightbox-close" reply-cancel value="Cancel"></div>
     <div class="lightbox-styles" ng-controller="MainReplyCtrl">
         <h2>Reply To User</h2>
         <div class="lightbox-content" >
