@@ -28,7 +28,7 @@ angular.module('reply', [])
 
             console.log($(this).val());
 
-            $('div#reply-to-user').draggable("destroy");
+            //$('div#reply-to-user').draggable("destroy");
             $("#send_button").val("Send");
    
             e.preventDefault();
