@@ -12,8 +12,8 @@ function MainReplyCtrl($scope, MessageService) {
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
     }
 
-    $scope.add_reply = function() {
-        MessageService.msgdata = null;
+    $scope.add_reply = function() { 
+        $scope.tmplvar = null;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form" };
     }
     
