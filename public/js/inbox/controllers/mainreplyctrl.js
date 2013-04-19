@@ -13,6 +13,7 @@ function MainReplyCtrl($scope, MessageService) {
     }
 
     $scope.add_reply = function() { 
+        MessageService.msgdata;
         console.log(MessageService);
         /*
         MessageService.msgdata.text = '';
