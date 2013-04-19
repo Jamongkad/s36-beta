@@ -50,14 +50,30 @@ angular.module('Services', [])
             }
         }); 
     }
-    
-    shared_service.delete_msg = function(msg_obj) {
+
+    shared_service.update = function(msg_obj) {
         $.ajax({
-            url: "/message/delete_msg"  
+            url: "/message/update"  
           , type: 'POST'
-          , data: msg_obj
+          , data: msg_obj 
           , async: false
           , dataType: 'json'
+          , success: function(data) {
+                shared_service.editdata = data;
+            }
+        }); 
+    }
+    
+    shared_service.get_message = function(id) {
+        $.ajax({
+            url: "/message/get_msg"  
+          , type: 'GET'
+          , data: { id: id }
+          , async: false
+          , dataType: 'json'
+          , success: function(data) {
+                shared_service.msg = data;
+            }
         });      
     }
 

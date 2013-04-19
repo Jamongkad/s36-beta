@@ -30,7 +30,7 @@ return array(
     },
 
     'GET /feedback/load_edit_form/(:any?)' => function($id=Null) {
-
+        /*
         $msg = Null;
         if($id) { 
             $dbm = new Message\Repositories\DBMessage('msg');
@@ -38,8 +38,9 @@ return array(
             $dbmset->get($id);
             $msg = $dbmset->dbresult();
         }
-        return View::make('feedback/partials/editform_view', Array('msg' => $msg));
-
+        */
+        //return View::make('feedback/partials/editform_view', Array('msg' => $msg));
+        return View::make('feedback/partials/editform_view');
     },
 
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {

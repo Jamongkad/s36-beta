@@ -2,9 +2,10 @@
     <div class="modal-configure">  
         <h4>Configure Message</h4>
         <textarea class="regular-text" style="width: 692px; height: 140px" name="msg">
-<?=($msg) ? $msg->text : Null ?>
+<?//=($msg) ? $msg->text : Null ?>
         </textarea><br/>
-        <input type="hidden" ng-model="messages.msgid" ng-init="messages.msgid='<?=($msg) ? $msg->id : Null?>'"/>
+        <!--<input type="hidden" ng-model="messages.msgid" ng-init="messages.msgid='<?//=($msg) ? $msg->id : Null?>'"/>-->
+        <input type="hidden" ng-model="messages.msgid"/>
         <input type="hidden" name="msgtype" value="msg" id="msgtype"/>
         <!--
         <div class="add-msg-box-buttons">
