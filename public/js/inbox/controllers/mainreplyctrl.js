@@ -36,4 +36,10 @@ function MainReplyCtrl($scope, MessageService) {
             $scope.messages = MessageService.message;
         })
     });
+
+    $scope.on('fetchReplyBody', function() {
+        $scope.$apply(function() {
+            $scope.replybody = MessageService.replybody;
+        }) 
+    })
 }

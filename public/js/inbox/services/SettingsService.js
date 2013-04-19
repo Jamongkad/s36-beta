@@ -7,6 +7,21 @@ angular.module('Services', [])
     shared_service.pushdata;
     shared_service.editdata;
 
+    shared_service.replybody;
+
+    shared_service.get_replybody = function() {
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: false
+          , url: '/feedback/get_replybody'
+          , success: function(data) {
+                shared_service.replybody = data;
+            }
+        });
+        
+    }
+
     shared_service.get_messages = function(type) { 
         $.ajax({
             type: 'GET'    
@@ -69,6 +84,10 @@ angular.module('Services', [])
 
     shared_service.register_reply_message = function()  {
         $rootScope.$broadcast('fetchReplyMessage');
+    }
+    
+    shared_service.register_reply_body = function()  {
+        $rootScope.$broadcast('fetchReplyBody');
     }
     
     return shared_service;
