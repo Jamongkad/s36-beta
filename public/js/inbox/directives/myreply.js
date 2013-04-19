@@ -35,12 +35,10 @@ angular.module('reply', [])
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
                 $("#cancel_button").val("Cancel");
-                console.log("cancel");
             }
 
             if(choice == 'Back') {
                 $("#cancel_button").val("Cancel");
-                console.log("back");
             }
 
             $("#send_button").val("Send");
