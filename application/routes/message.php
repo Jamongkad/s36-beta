@@ -16,7 +16,7 @@ return array(
             $dbm = new Message\Repositories\DBMessage('msg');
             $dbmset = new Message\Services\SettingMessage($dbm);
             $dbmset->get($id);
-            json_encode($dbmset->jsonify());
+            echo $dbmset->jsonify();
         }
     }
 
