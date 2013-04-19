@@ -21,13 +21,16 @@ angular.module('reply', [])
     } 
 })
 .directive('replyCancel', function(){
-    return function(scope, element, attrs){
+    return function($scope, element, attrs){
         $(element).bind('click', function(e) {
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents(".dialog-form").fadeOut();
 
             $('div#reply-to-user').draggable("destroy");
             $("#send_button").val("Send");
+   
+            $scope.template = { name: "test", url: "/feedback/load_reply_form" }
+
             e.preventDefault();
         });
     }
@@ -92,7 +95,6 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function($scope, element, attrs) {
             $(element).bind("click", function(e) { 
-                console.log($scope.template);
                 $("#send_button").val("Save");
                 $("#cancel_button").val("Back");
                 /*
