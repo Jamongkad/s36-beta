@@ -23,14 +23,20 @@ angular.module('reply', [])
 .directive('replyCancel', function(){
     return function($scope, element, attrs){
         $(element).bind('click', function(e) {
-            $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-            //$(this).parents(".dialog-form").fadeOut();
+            var choice = $(this).val();
+            if(choice == 'cancel') { 
+                $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
+                $(this).parents(".dialog-form").fadeOut();
+                $('div#reply-to-user').draggable("destroy");
+                $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
+            }
 
-            console.log($(this).val());
+            if(choice == 'back') {
+                $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
+            }
 
-            //$('div#reply-to-user').draggable("destroy");
             $("#send_button").val("Send");
-   
+ 
             e.preventDefault();
         });
     }
