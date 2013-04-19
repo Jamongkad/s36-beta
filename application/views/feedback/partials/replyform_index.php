@@ -44,7 +44,7 @@
                     <li ng-repeat="msg in get_reply_messages()"> 
                         <a href='#'  add-reply req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                         <span style="float:right">
-                            <a href='#' edit-reply ng-click="edit_reply(msg.id, $event)">edit</a> 
+                            <a href='#' edit-reply ng-click="edit_reply(msg.id, msg.msgtype, $event)">edit</a> 
                             <a href='#' delete-reply ng-click="del_reply(msg.id, $event)">delete</a>
                         </span>
                     </li>
