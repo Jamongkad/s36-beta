@@ -52,9 +52,15 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
         
             var choice = $(this).attr('value');
-            console.log(choice); 
-            console.log(MessageService.msgdata);
-            MessageService.save(MessageService.msgdata);
+
+            if(choice == 'Save') { 
+                console.log(MessageService.msgdata);
+                MessageService.save(MessageService.msgdata);
+            }
+
+            if(choice == 'Send') {
+                console.log("Sending Email");
+            }
             e.preventDefault();
         });
         /*
