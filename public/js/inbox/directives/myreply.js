@@ -24,13 +24,13 @@ angular.module('reply', [])
     return function($scope, element, attrs){
         $(element).bind('click', function(e) {
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-            $(this).parents(".dialog-form").fadeOut();
+            //$(this).parents(".dialog-form").fadeOut();
+
+            console.log($(this).val());
 
             $('div#reply-to-user').draggable("destroy");
             $("#send_button").val("Send");
    
-            $scope.template = { name: "test", url: "/feedback/load_reply_form" }
-
             e.preventDefault();
         });
     }

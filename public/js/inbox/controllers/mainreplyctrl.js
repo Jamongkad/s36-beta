@@ -13,10 +13,12 @@ function MainReplyCtrl($scope, MessageService) {
     $scope.add_reply = function() {
         $scope.template = { name: "meet", url: "/feedback/load_edit_form" };
     }
-
+    
+    /*
     $scope.cancel_reply = function() { 
         $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
     }
+    */
 
     $scope.del_reply = function(id, $event) { 
         MessageService.delete_msg({'id': id, 'type': 'msg'});
