@@ -37,7 +37,7 @@ function MainReplyCtrl($scope, MessageService) {
         })
     });
 
-    $scope.on('fetchReplyBody', function() {
+    $scope.$on('fetchReplyBody', function() {
         $scope.$apply(function() {
             $scope.replybody = MessageService.replybody;
         }) 
