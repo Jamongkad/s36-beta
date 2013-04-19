@@ -50,6 +50,9 @@ angular.module('reply', [])
 .directive('replySend', function() {
     return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
+        
+            var choice = $(this).attr('value');
+
             console.log($(this).attr('value'));
             console.log($("#msgid"));
             console.log($("#msgtype"));
@@ -134,6 +137,7 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 $("#send_button").val("Save");
+                $("#cancel_button").val("Back");
                 /*
                 var configure = $('.modal-configure');
                 configure.dialog({ zIndex: 100001 });
