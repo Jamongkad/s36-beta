@@ -110,7 +110,7 @@
         <div class="lightbox-footer">
             <div class="lightbox-buttons">
                 <input type="button" id="cancel_button" class="large-btn" value="Cancel" reply-cancel/>
-                <input type="submit" id="send_button" class="large-btn" value="Send" reply-send/>
+                <input type="submit" id="send_button" class="large-btn" value="Send" ng-click="send()" reply-send/>
             </div>
         </div>
     </div>
