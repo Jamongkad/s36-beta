@@ -20,6 +20,9 @@ function MainReplyCtrl($scope, MessageService) {
         $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };
     }
 
+    $scope.send = function() { 
+        console.log(MessageService);
+    }
 
     $scope.del_reply = function(id, $event) { 
         MessageService.delete_msg({'id': id, 'type': 'msg'});
