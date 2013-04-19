@@ -29,17 +29,14 @@ return array(
         return View::make('feedback/partials/replyform_index');
     },
 
+    'GET /feedback/get_replybody' => function() {
+        $data = Array(
+            'email' => S36Auth::user()->email
+        );
+        echo json_encode($data);
+    },
+
     'GET /feedback/load_edit_form/(:any?)' => function($id=Null) {
-        /*
-        $msg = Null;
-        if($id) { 
-            $dbm = new Message\Repositories\DBMessage('msg');
-            $dbmset = new Message\Services\SettingMessage($dbm);
-            $dbmset->get($id);
-            $msg = $dbmset->dbresult();
-        }
-        */
-        //return View::make('feedback/partials/editform_view', Array('msg' => $msg));
         return View::make('feedback/partials/editform_view');
     },
 
