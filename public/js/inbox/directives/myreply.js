@@ -29,13 +29,12 @@ angular.module('reply', [])
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
-                $scope.template = { name: "meet", url: "/feedback/load_reply_form" };
+                $scope.template = { name: "test", url: "/feedback/load_reply_form" };
             }
 
             if(choice == 'Back') {
                 console.log('meet you');
-                $scope.template = { name: "meet", url: "/feedback/load_reply_form_2" };
-                console.log($scope);
+                $scope.template = { name: "test", url: "/feedback/load_reply_form" };
             }
 
             $("#send_button").val("Send");
