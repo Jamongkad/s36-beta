@@ -14,7 +14,7 @@ angular.module('reply', [])
 
 
                 MessageService.get_replybody();
-                MessageService.register_reply_body();
+                MessageService.register_replybody();
                 
                 $('div#reply-to-user').draggable();
                 $('div#reply-to-user.lightbox').show();

@@ -86,7 +86,7 @@ angular.module('Services', [])
         $rootScope.$broadcast('fetchReplyMessage');
     }
     
-    shared_service.register_reply_body = function()  {
+    shared_service.register_replybody = function()  {
         $rootScope.$broadcast('fetchReplyBody');
     }
     
