@@ -7,8 +7,6 @@ angular.module('Services', [])
     shared_service.pushdata;
     shared_service.editdata;
 
-    shared_service.msgid;
-
     shared_service.get_messages = function(type) { 
         $.ajax({
             type: 'GET'    
