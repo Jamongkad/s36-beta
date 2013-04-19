@@ -30,6 +30,10 @@ angular.module('reply', [])
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
+
+                $scope.$apply(function() {
+                    $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
+                });
             }
 
             if(choice == 'Back') {
