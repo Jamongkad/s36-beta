@@ -13,8 +13,10 @@ function MainReplyCtrl($scope, MessageService) {
     }
 
     $scope.add_reply = function() { 
-        MessageService.msgdata = null;
-        $scope.tmplvar = null;
+        MessageService.msgdata.text = '';
+        MessageService.msgdata.msgid = null;
+        MessageService.msgdata.msgtype = null;
+        $scope.tmplvar = MessageService.msgdata;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form" };
     }
     
