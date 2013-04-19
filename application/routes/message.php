@@ -12,7 +12,6 @@ return array(
     },
 
     'GET /message/get_msg/(:any?)' => function($id) { 
-        $msg = Null;
         if($id) { 
             $dbm = new Message\Repositories\DBMessage('msg');
             $dbmset = new Message\Services\SettingMessage($dbm);
