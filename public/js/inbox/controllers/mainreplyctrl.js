@@ -14,14 +14,11 @@ function MainReplyCtrl($scope, MessageService) {
 
     $scope.add_reply = function() { 
         MessageService.msgdata = {};
-        console.log(MessageService);
-        /*
         MessageService.msgdata.text = '';
         MessageService.msgdata.id = null;
         MessageService.msgdata.msgtype = 'msg';
         $scope.tmplvar = MessageService.msgdata;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form" };
-        */
     }
     
 
