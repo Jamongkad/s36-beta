@@ -795,3 +795,20 @@ opacity: 0.5;
 -moz-opacity:0.5;
 -webkit-opacity:0.5;
 }
+
+/* this is the awesome pre loader and do not mess around this code */
+#thePreloader{
+	background:#FFF;position:absolute;top:0;bottom:0;left:0;right:0;z-index:1000;
+	width:448px;
+	height:600px;
+}
+#thePreloadStatus{
+	/*background:url(../../img/status.gif) no-repeat;*/
+	width:32px;
+	height:32px;
+	left:50%;
+	top:50%;
+	margin-top:-16px;
+	margin-left:-16px;
+	position:absolute;
+}

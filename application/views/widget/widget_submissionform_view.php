@@ -1,4 +1,7 @@
-
+<!-- this is the awesome pre loader and do not mess around this code -->
+<div id="thePreloader">
+    <div id="thePreloadStatus"><img src="/img/status.gif" /></div>
+</div>
 <!-- file upload js requirements -->
 
 <!-- link preview js -->
@@ -458,3 +461,11 @@ endif;
 | End adding css,js, and html for hosted form
 */
 ?>
+<script type="text/javascript">
+    //<![CDATA[
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#thePreloadStatus').fadeOut(); // will first fade out the loading animation
+            $("#thePreloader").delay(350).fadeOut("slow"); // will fade out the white DIV that covers the website.
+        })
+    //]]>
+</script>
