@@ -51,20 +51,7 @@ angular.module('Services', [])
             }
         }); 
     }
-
-    shared_service.update = function(msg_obj) {
-        $.ajax({
-            url: "/message/update"  
-          , type: 'POST'
-          , data: msg_obj 
-          , async: false
-          , dataType: 'json'
-          , success: function(data) {
-                shared_service.editdata = data;
-            }
-        }); 
-    }
-    
+ 
     shared_service.get_message = function(id) {
         $.ajax({
             url: "/message/get_msg"  

@@ -23,7 +23,7 @@ function MainReplyCtrl($scope, MessageService) {
 
     $scope.send = function() { 
         console.log("From Controller");
-        console.log(MessageService);
+        console.log(MessageService.msgdata);
     }
 
     $scope.del_reply = function(id, $event) { 
