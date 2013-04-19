@@ -1,8 +1,8 @@
 <div class="lightbox-form">
     <table cellpadding="1" width="100%">
         <tr>
-            <td width="15%"><strong>Reply To : {{replybody.email}}</strong></td>
-            <td width="50%" class="small"><span>&nbsp;&nbsp;</span></td>
+            <td width="15%"><strong>Reply To : </strong></td>
+            <td width="50%" class="small"><span>&nbsp;&nbsp;</span>{{replybody.user.email}}</td>
             <td class="small">
                 Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)
             </td>
