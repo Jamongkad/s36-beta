@@ -9,7 +9,17 @@ return array(
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->get_messages();
         echo $sm->jsonify();
-    }
+    },
+
+    'GET /message/get_msg/(:any?)' => function($id) { 
+        $msg = Null;
+        if($id) { 
+            $dbm = new Message\Repositories\DBMessage('msg');
+            $dbmset = new Message\Services\SettingMessage($dbm);
+            $dbmset->get($id);
+            json_encode($dbmset->jsonify());
+        }
+    },
 
     , 'POST /message/save_msg' => function() {
         $type = Input::get('type'); 
