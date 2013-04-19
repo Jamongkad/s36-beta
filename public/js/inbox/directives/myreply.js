@@ -13,6 +13,7 @@ angular.module('reply', [])
                 MessageService.register_reply_message();
 
 
+                MessageService.get_replybody();
                 MessageService.register_reply_body();
                 
                 $('div#reply-to-user').draggable();
