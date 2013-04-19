@@ -54,7 +54,7 @@ angular.module('reply', [])
             var choice = $(this).attr('value');
             console.log(choice);
             console.log("From Directive");
-            console.log(MessageService);
+            console.log(MessageService.msgdata);
             e.preventDefault();
         });
         /*
