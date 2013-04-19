@@ -11,8 +11,8 @@ return array(
         echo $sm->jsonify();
     }
 
-    , 'GET /message/get_msg/(:any?)' => function($id) { 
-        if($id) { 
+    , 'GET /message/get_msg' => function() { 
+        if($id = Input::get('id')) { 
             $dbm = new Message\Repositories\DBMessage('msg');
             $dbmset = new Message\Services\SettingMessage($dbm);
             $dbmset->get($id);
