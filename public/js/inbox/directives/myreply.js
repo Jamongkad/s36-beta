@@ -130,11 +130,12 @@ angular.module('reply', [])
     return {     
         restrict: 'A'
       , scope: {
-            load: "=load"
+            feedid: "=feedid" 
+          , email: "=email"
         }
-      , link: function(scope, element, attrs){
-            console.log(scope.load);
+      , link: function(scope, element, attrs){ 
             console.log(element);
+            console.log(scope);
             /*
             $(element).bind('click', function(e) {
                 console.log(scope.feedid);
