@@ -88,6 +88,14 @@ angular.module('Services', [])
         });      
     }
 
+    shared_service.send_email = function(data) {
+        $.ajax({
+            url: "/feedback/reply_to"  
+          , type: 'POST'
+          , data: { email: data }
+        });       
+    }
+
     shared_service.register_request_message = function()  {
         $rootScope.$broadcast('addRequestMessage');
     }
