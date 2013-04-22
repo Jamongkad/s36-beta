@@ -32,22 +32,20 @@
             </td>
             <td>
                 <div >
-
-                         <div bcc class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
-                            {{replybody.user.alias1}} {{replybody.user.ffemail1}}
-                        </div>
-
-
-                        <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
-                            {{replybody.user.alias2}} {{replybody.user.ffemail2}}
-                        </div>
+                     <div bcc class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
+                        {{replybody.user.alias1}} {{replybody.user.ffemail1}}
+                    </div>
 
 
-                        <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
-                            {{replybody.user.alias3}} {{replybody.user.ffemail3}}
-                        </div>
+                    <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
+                        {{replybody.user.alias2}} {{replybody.user.ffemail2}}
+                    </div>
 
-                </ul>
+
+                    <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
+                        {{replybody.user.alias3}} {{replybody.user.ffemail3}}
+                    </div>
+                </div>
             </td>
             <td class="small" valign="top"></td>
         </tr>
