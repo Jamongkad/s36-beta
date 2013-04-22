@@ -176,6 +176,8 @@ angular.module('reply', [])
                 console.log('clicked');
                 console.log($(this).attr('feedid'));
                 console.log($(this).attr('email'));
+
+                console.log($('textarea[name=bcc][feedid=' + $(this).attr('feedid')+ ']'));
                 e.preventDefault();
             });
 
