@@ -47,6 +47,7 @@ angular.module('Services', [])
           , async: false
           , dataType: 'json'
           , success: function(data) {
+                console.log(data);
                 shared_service.pushdata = data;             
             }
         });
