@@ -84,6 +84,8 @@ angular.module('reply', [])
 
                 if(choice == 'Send') {
                     console.log("Sending Email");
+                    var data = $('form.reply-form').serializeArray();
+                    console.log(data);
                 }
 
                 $("#cancel_button").val("Cancel");
