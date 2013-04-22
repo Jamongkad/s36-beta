@@ -16,6 +16,7 @@
             <td>
                 <strong>Bcc :</strong>
             </td>
+
             <td class="bcc-target" feedid="">
                 <textarea class="regular-text" name="bcc" rows="2" style='width: 95%'></textarea>
             </td>
@@ -26,25 +27,27 @@
             </td>
         </tr>
         <tr> 
-            <td>
+            <td valign="top">
                 <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
             </td>
             <td>
-                <div>
-                     <div bcc class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
-                        {{replybody.user.alias1}} {{replybody.user.ffemail1}}
-                    </div>
-
-
-                    <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
-                        {{replybody.user.alias2}} {{replybody.user.ffemail2}}
-                    </div>
-
-
-                    <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
-                        {{replybody.user.alias3}} {{replybody.user.ffemail3}}
-                    </div>
-                </div>
+                <ul class="add-bcc" >
+                    <li>
+                         <div bcc href="/goto" class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
+                            {{replybody.user.alias1}} {{replybody.user.ffemail1}}
+                        </div>
+                    </li> 
+                    <li>
+                        <div bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
+                            {{replybody.user.alias2}} {{replybody.user.ffemail2}}
+                        </div>
+                    </li>
+                    <li>
+                        <div bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
+                            {{replybody.user.alias3}} {{replybody.user.ffemail3}}
+                        </div>
+                    </li>
+                </ul>
             </td>
             <td class="small" valign="top"></td>
         </tr>
