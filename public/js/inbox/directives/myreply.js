@@ -126,33 +126,6 @@ angular.module('reply', [])
         }
     }     
 })
-.directive('bcc', function() {
-    return {     
-        restrict: 'EAC'
-      , scope: {}
-      , link: function(scope, element, attrs){ 
-            console.log(element);
-            /*
-            $(element).bind('click', function(e) {
-                console.log(scope.feedid);
-                console.log(scope.email);
-                e.preventDefault();
-            })
-            */
-            /*
-            $(element).children('li').bind('click', function(e) { 
-                var children = $(this).children('a');
-                var email = children.attr('email');
-                var my_id = children.attr('feedid');
-                var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
-
-                textarea.val(textarea.val() + email + ","); 
-                e.preventDefault();
-            });
-            */
-        }
-    } 
-})
 .directive('configureReply', function() { 
     return {
         restrict: 'A'     
