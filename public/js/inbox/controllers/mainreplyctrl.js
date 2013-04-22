@@ -27,8 +27,7 @@ function MainReplyCtrl($scope, MessageService) {
     }
 
     $scope.del_reply = function(id) { 
-        console.log(id);
-        //MessageService.delete_msg({'id': id, 'type': 'msg'});
+        MessageService.delete_msg(id, 'msg');
     }
      
     //Broadcast Messages
