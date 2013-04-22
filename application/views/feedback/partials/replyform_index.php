@@ -31,18 +31,18 @@
                 <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
             </td>
             <td>
-                <ul>
-                    <li><a shoot href="/goto" feedid="replybody.feedid" email="replybody.user.ffemail1">
+                <ul class="add-bcc">
+                    <li><a shoot href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">
                             {{replybody.user.alias1}} {{replybody.user.ffemail1}}
                         </a>
                     </li> 
                     <li>
-                        <a shoot href="/goto" feedid="replybody.feedid" email="replybody.user.ffemail2">
+                        <a shoot href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
                             {{replybody.user.alias2}} {{replybody.user.ffemail2}}
                         </a>
                     </li>
                     <li>
-                        <a shoot href="/goto" feedid="replybody.feedid" email="replybody.user.ffemail3">
+                        <a shoot href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
                             {{replybody.user.alias3}} {{replybody.user.ffemail3}}
                         </a>
                     </li>
