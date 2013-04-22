@@ -82,34 +82,15 @@ angular.module('reply', [])
 
                 }
 
-                if(choice == 'Send') {
-                    /*
+                if(choice == 'Send') { 
                     console.log("Sending Email");
                     var data = $('form.reply-form').serializeArray();
                     console.log(data);
-                    */
-                    $(this).parents('form').validate({
-                        submitHandler: function(form) {
-                            $(form).ajaxSubmit({
-                                success: function() {
-                                    alert("Your reply has been sent!");
-                                    $(element).parents(".dialog-form").fadeOut();
-                                    $('div#reply-to-user').draggable("destroy");
-                                    $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-                                }        
-                            });
-                         }
-                        , errorElement: "em"
-                        , rules: {
-                            message: {
-                               required: true     
-                            }
-                         }
-                    });
+                
                 }
 
                 $("#cancel_button").val("Cancel");
-                $("#cancel_button").val("Send");
+                $("#send_button").val("Send");
                 e.preventDefault();
             });
         }
