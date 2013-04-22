@@ -130,15 +130,17 @@ angular.module('reply', [])
     return {     
         restrict: 'A'
       , scope: {
-            feedid: "=feedid"   
-          , email: "=email"
+            load: "=load"
         }
       , link: function(scope, element, attrs){
+            console.log(scope.load);
+            /*
             $(element).bind('click', function(e) {
                 console.log(scope.feedid);
                 console.log(scope.email);
                 e.preventDefault();
             })
+            */
             /*
             $(element).children('li').bind('click', function(e) { 
                 var children = $(this).children('a');
