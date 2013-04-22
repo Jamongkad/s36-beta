@@ -126,17 +126,11 @@ angular.module('reply', [])
         }
     }     
 })
-.directive('shoot', function() {
+.directive('bcc', function() {
     return {     
         restrict: 'EAC'
-      , scope: {
-            feedid: "=feedid" 
-          , email: "=email"
-        }
+      , scope: {}
       , link: function(scope, element, attrs){ 
-            console.log($(element).show());
-            console.log(scope.feedid);
-            console.log(scope.email);
             /*
             $(element).bind('click', function(e) {
                 console.log(scope.feedid);
