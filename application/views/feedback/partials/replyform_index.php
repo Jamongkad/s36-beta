@@ -32,9 +32,20 @@
             </td>
             <td>
                 <ul class="add-bcc">
-                    <li><a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">{{replybody.user.alias1}} {{replybody.user.ffemail1}}</a></li> 
-                    <li><a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">{{replybody.user.alias2}} {{replybody.user.ffemail2}}</a></li>
-                    <li><a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">{{replybody.user.alias3}} {{replybody.user.ffemail3}}</a></li>
+                    <li><a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">
+                            {{replybody.user.alias1}} {{replybody.user.ffemail1}}
+                        </a>
+                    </li> 
+                    <li>
+                        <a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
+                            {{replybody.user.alias2}} {{replybody.user.ffemail2}}
+                        </a>
+                    </li>
+                    <li>
+                        <a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
+                            {{replybody.user.alias3}} {{replybody.user.ffemail3}}
+                        </a>
+                    </li>
                 </ul>
             </td>
             <td class="small" valign="top"></td>
