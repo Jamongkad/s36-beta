@@ -2,9 +2,6 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('bcc', function() {
     return {  
         restrict: 'A'     
-      , scope: {
-            fdid: "=fdid"   
-        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log('clicked');
