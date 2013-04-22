@@ -33,7 +33,7 @@
             <td>
                 <ul class="add-bcc">
                     <li>
-                        <a href="#" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">{{replybody.user.alias1}} {{replybody.user.ffemail1}}</a>
+                        <a href="#" reply-bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">{{replybody.user.alias1}} {{replybody.user.ffemail1}}</a>
                     </li>
                 </ul>
             </td>
