@@ -54,36 +54,39 @@ angular.module('reply', [])
     }
 })
 .directive('replySend', function(MessageService) {
-    return function($scope, element, attrs) {
-        $(element).bind('click', function(e) {
-        
-            var choice = $(this).attr('value');
+    return {
+        restrict: 'A' 
+      , link: function($scope, element, attrs) {
+            $(element).bind('click', function(e) {
+            
+                var choice = $(this).attr('value');
 
-            if(choice == 'Save') { 
-                MessageService.save(MessageService.msgdata);
+                if(choice == 'Save') { 
+                    MessageService.save(MessageService.msgdata);
 
-                var msgtype = MessageService.msgdata.msgtype;
+                    var msgtype = MessageService.msgdata.msgtype;
 
-                if(msgtype == 'msg') {
-                    MessageService.fetch_messages(msgtype);     
-                    MessageService.register_reply_message();
+                    if(msgtype == 'msg') {
+                        MessageService.fetch_messages(msgtype);     
+                        MessageService.register_reply_message();
+                    }
+
+                    if(msgtype == 'rqs') {
+                        MessageService.fetch_messages(msgtype);     
+                        MessageService.register_request_message();
+                    }
+
+                    $scope.$apply(function() {
+                        $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
+                    });
                 }
 
-                if(msgtype == 'rqs') {
-                    MessageService.fetch_messages(msgtype);     
-                    MessageService.register_request_message();
+                if(choice == 'Send') {
+                    console.log("Sending Email");
                 }
-
-                $scope.$apply(function() {
-                    $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
-                });
-            }
-
-            if(choice == 'Send') {
-                console.log("Sending Email");
-            }
-            e.preventDefault();
-        });
+                e.preventDefault();
+            });
+        }
     }
 })
 .directive('addReply', function() {
