@@ -26,6 +26,19 @@
                 </span>
             </td>
         </tr>
+        <tr> 
+            <td valign="top">
+                <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
+            </td>
+            <td>
+                <ul class="add-bcc" reply-bcc>
+                    <li>
+                        <a href="#" class="linky" feedid="replybody.user.feedid" email="replybody.user.ffemail1">{{replybody.user.alias1}} {{replybody.user.ffemail1}}</a>
+                    </li>
+                </ul>
+            </td>
+            <td class="small" valign="top"></td>
+        </tr>
         <tr>
             <td><strong>Subject : </strong> </td>
             <td>

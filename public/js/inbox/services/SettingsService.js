@@ -9,17 +9,17 @@ angular.module('Services', [])
 
     shared_service.replybody;
 
-    shared_service.get_replybody = function() {
+    shared_service.get_replybody = function(feedid) {
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
+          , data: {feedid: feedid}
           , async: false
           , url: '/feedback/get_replybody'
           , success: function(data) {
                 shared_service.replybody = data;
             }
-        });
-        
+        }); 
     }
 
     shared_service.get_messages = function(type) { 
