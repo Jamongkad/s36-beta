@@ -36,7 +36,11 @@ angular.module('reply', [])
             });
 
             if(choice == 'Cancel') { 
+                /*
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
+                */
+                $('textarea[name=bcc]').clearFields();
+                $('textarea[name=message]').clearFields();
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
                 $("#cancel_button").val("Cancel");
@@ -68,26 +72,6 @@ angular.module('reply', [])
             }
             e.preventDefault();
         });
-        /*
-        $(element).parents('form').validate({
-            submitHandler: function(form) {
-                $(form).ajaxSubmit({
-                    success: function() {
-                        alert("Your reply has been sent!");
-                        $(element).parents(".dialog-form").fadeOut();
-                        $('div#reply-to-user').draggable("destroy");
-                        $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-                    }        
-                });
-            }
-		  , errorElement: "em"
-          , rules: {
-                message: {
-                    required: true     
-                }
-            }
-        });
-        */
     }
 })
 .directive('addReply', function() {
@@ -133,15 +117,6 @@ angular.module('reply', [])
             $(element).bind('click', function(e) {  
                 $("#send_button").val("Save");
                 $("#cancel_button").val("Back");
-                /*
-                var configure = $('.modal-configure');
-                configure.dialog({ zIndex: 100001 });
-                configure.dialog('open');
-                configure.children('.regular-text').val("");
-                configure.children('#msgid').val("");
-                configure.children('#msgtype').val("msg");
-                configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
-                */
                 e.preventDefault();
             })
         }
