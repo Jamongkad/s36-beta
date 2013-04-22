@@ -3,7 +3,7 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
     return {  
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-          
+            console.log(element);
         }
     }    
 })
