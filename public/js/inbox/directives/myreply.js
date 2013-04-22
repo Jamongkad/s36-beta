@@ -60,8 +60,19 @@ angular.module('reply', [])
             var choice = $(this).attr('value');
 
             if(choice == 'Save') { 
-                console.log(MessageService.msgdata);
                 MessageService.save(MessageService.msgdata);
+
+                var msgtype = MessageService.msgdata.msgtype;
+
+                if(msgtype == 'msg') {
+                    MessageService.fetch_messages(msgtype);     
+                    MessageService.register_reply_message();
+                }
+
+                if(msgtype == 'rqs') {
+                    MessageService.fetch_messages(msgtype);     
+                    MessageService.register_request_message();
+                }
             }
 
             if(choice == 'Send') {
