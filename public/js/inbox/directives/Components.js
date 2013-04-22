@@ -9,6 +9,7 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
     return {
         restrict: 'A'
       , link: function(scope, element, attr) {
+          //for deletion
             $(element).bind("click", function(e) {
                 var configure = $('.modal-configure');
                 var msgid = configure.children('#msgid').val();

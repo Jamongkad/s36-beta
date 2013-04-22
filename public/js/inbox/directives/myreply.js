@@ -54,7 +54,7 @@ angular.module('reply', [])
     }
 })
 .directive('replySend', function(MessageService) {
-    return function(scope, element, attrs) {
+    return function($scope, element, attrs) {
         $(element).bind('click', function(e) {
         
             var choice = $(this).attr('value');
@@ -73,6 +73,10 @@ angular.module('reply', [])
                     MessageService.fetch_messages(msgtype);     
                     MessageService.register_request_message();
                 }
+
+                $scope.$apply(function() {
+                    $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
+                });
             }
 
             if(choice == 'Send') {
