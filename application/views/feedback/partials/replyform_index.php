@@ -32,17 +32,17 @@
             </td>
             <td>
                 <ul>
-                    <li><a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">
+                    <li><a bcc href="/goto" feedid="replybody.feedid" email="replybody.user.ffemail1">
                             {{replybody.user.alias1}} {{replybody.user.ffemail1}}
                         </a>
                     </li> 
                     <li>
-                        <a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
+                        <a bcc href="/goto" feedid="replybody.feedid" email="replybody.user.ffemail2">
                             {{replybody.user.alias2}} {{replybody.user.ffemail2}}
                         </a>
                     </li>
                     <li>
-                        <a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
+                        <a bcc href="/goto" feedid="replybody.feedid" email="replybody.user.ffemail3">
                             {{replybody.user.alias3}} {{replybody.user.ffemail3}}
                         </a>
                     </li>
