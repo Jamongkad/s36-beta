@@ -174,10 +174,9 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log('clicked');
-                console.log($(this).attr('feedid'));
-                console.log($(this).attr('email'));
-
-                console.log($('textarea[name=bcc][feedid=' + $(this).attr('feedid') + ']'));
+                var feedid = $(this).attr('feedid');
+                var email = $(this).attr('email');
+                $('textarea[name=bcc][feedid=' + feedid + ']').val(email + ',');
                 e.preventDefault();
             });
 
