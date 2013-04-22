@@ -3,6 +3,10 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
     return {  
         restrict: 'A'     
       , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log('clicked');
+                e.preventDefault();
+            });
             console.log(element);
             console.log(scope.feedid);
             console.log(scope.email);
