@@ -80,6 +80,6 @@
             </td>
         </tr> 
         <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="1" /> 
-                                           <span class="reply-text">send me a copy ()</span></td></tr>
+                                           <span class="reply-text">send me a copy ({{replybody.user.replyto}})</span></td></tr>
     </table>                
 </div>
