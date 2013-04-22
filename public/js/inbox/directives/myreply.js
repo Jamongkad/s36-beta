@@ -134,7 +134,7 @@ angular.module('reply', [])
           , email: "=email"
         }
       , link: function(scope, element, attrs){ 
-            console.log(element);
+            console.log($(element).show());
             console.log(scope);
             /*
             $(element).bind('click', function(e) {
