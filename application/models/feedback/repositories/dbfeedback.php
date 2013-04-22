@@ -25,7 +25,7 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
                   END AS priority
                 , Feedback.title
-                , TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) AS text
+                , Feedback.text AS text
                 , Feedback.dtAdded AS date
                 , DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "EUR")) AS head_date_format 
                 , CASE

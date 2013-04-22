@@ -151,9 +151,11 @@
 	left:25px;
 }
 .feedback-text p{
-	margin-bottom:15px;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 .feedback-text p:last-child{
+	margin-top:0px;
 	margin-bottom:0px;
 }
 .regular-featured .feedback-text{

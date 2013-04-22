@@ -812,3 +812,13 @@ opacity: 0.5;
 	margin-left:-16px;
 	position:absolute;
 }
+
+#review-feedback-text p,#all-done-textbox p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#review-feedback-text p:last-child, #all-done-textbox p:last-child{
+	margin-top:0px;
+	margin-bottom:0px;
+}

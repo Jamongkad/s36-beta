@@ -490,8 +490,8 @@ $(document).keypress(function(event){
 		if(validate_feedback($('#textEditor'))){
 			$('#lightbox-text-editor-container').fadeOut();
 			$('#lightbox-editor-s').fadeOut();
-			$('#feedbackText').val($('#textEditor').val());
-			$('#review-feedback-text p').html($('#textEditor').val());
+			/*$('#feedbackText').val($('#textEditor').val());*/
+			/*$('#review-feedback-text p').html($('#textEditor').val());*/
 			return 0;
 		}
 	}
@@ -560,7 +560,7 @@ $(document).keypress(function(event){
 		$('#lightbox-text-editor-container').fadeIn('fast');
 		$('#lightbox-editor-s').fadeIn('fast');
 		$('#textEditor').focus();
-		$('#textEditor').val($('#feedbackText').val());
+		/*$('#textEditor').val($('#feedbackText').val());*/
 		return false;
 	}
 	function display_prev_btn(elem){
@@ -646,7 +646,7 @@ $(document).keypress(function(event){
 	}
 
 	function push_to_last_window(){
-		$('#all-done-textbox p').html($('#feedbackText').val());
+		$('#all-done-textbox').html($('#review-feedback-text').html());
 		$('#back').fadeOut('fast');
 		$('#next').fadeOut('fast');
 		return true;
@@ -873,7 +873,6 @@ $(document).keypress(function(event){
 		$('#review-name').html(fname+" "+lname);
 		$('#review-company').html(company_position);
 		$('#review-location').html(city_country);
-		$('#review-feedback-text').html('<p>'+feedback_text+'</p>');
 		
 		if(permission == 1){
 			$('#review-permission').show();
