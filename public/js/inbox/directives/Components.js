@@ -2,8 +2,14 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('bcc', function() {
     return {  
         restrict: 'A'     
+      , scope: {
+            feedid: '=feedid'    
+          , email: '=email'    
+        }
       , link: function(scope, element, attrs) {
             console.log(element);
+            console.log(scope.feedid);
+            console.log(scope.email);
         }
     }    
 })
