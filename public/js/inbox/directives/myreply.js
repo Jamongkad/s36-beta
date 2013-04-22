@@ -36,9 +36,6 @@ angular.module('reply', [])
             });
 
             if(choice == 'Cancel') { 
-                /*
-                $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields(); 
-                */
                 $('textarea[name=bcc]').clearFields();
                 $('textarea[name=message]').clearFields();
                 $(this).parents(".dialog-form").fadeOut();
@@ -121,27 +118,6 @@ angular.module('reply', [])
             })
         }
     }   
-})
-.directive('cancelReply', function() { 
-    return {
-        restrict: 'A'
-      , link: function(scope, element, attr) {
-            $(element).bind("click", function(e) { 
-                var configure = $('.modal-configure');
-                configure.dialog('close');
-            })
-        }
-    }    
-})
-.directive('goback', function() {
-    return {
-        restrict: 'A'
-      , link: function(scope, element, attr) {
-            $(element).bind("click", function(e) { 
-                $("#send_button").val("Send");
-            })
-        }
-    }        
 })
 .directive('bcc', function() {
     return {  
