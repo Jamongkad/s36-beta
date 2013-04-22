@@ -31,7 +31,7 @@
                 <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
             </td>
             <td>
-                <ul class="add-bcc">
+                <ul>
                     <li><a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail1">
                             {{replybody.user.alias1}} {{replybody.user.ffemail1}}
                         </a>
