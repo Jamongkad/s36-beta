@@ -126,7 +126,7 @@ angular.module('reply', [])
         }
     }     
 })
-.directive('replyBcc', function() {
+.directive('bcc', function() {
     return {     
         restrict: 'A'
       , scope: {
