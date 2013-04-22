@@ -109,7 +109,7 @@ angular.module('reply', [])
                 }
 
                 $("#cancel_button").val("Cancel");
-
+                $("#cancel_button").val("Send");
                 e.preventDefault();
             });
         }
