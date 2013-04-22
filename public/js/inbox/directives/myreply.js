@@ -128,7 +128,7 @@ angular.module('reply', [])
 })
 .directive('bcc', function() {
     return {     
-        restrict: 'A'
+        restrict: 'EAC'
       , scope: {
             feedid: "=feedid" 
           , email: "=email"
