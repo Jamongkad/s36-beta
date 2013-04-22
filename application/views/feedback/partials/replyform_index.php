@@ -33,19 +33,19 @@
             <td>
                 <ul class="add-bcc" >
                     <li>
-                         <a bcc href="/goto" class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
+                         <div bcc href="/goto" class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
                             {{replybody.user.alias1}} {{replybody.user.ffemail1}}
-                        </a>
+                        </div>
                     </li> 
                     <li>
-                        <a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
+                        <div bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
                             {{replybody.user.alias2}} {{replybody.user.ffemail2}}
-                        </a>
+                        </div>
                     </li>
                     <li>
-                        <a bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
+                        <div bcc href="/goto" class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
                             {{replybody.user.alias3}} {{replybody.user.ffemail3}}
-                        </a>
+                        </div>
                     </li>
                 </ul>
             </td>
