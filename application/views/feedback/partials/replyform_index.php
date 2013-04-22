@@ -31,22 +31,22 @@
                 <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
             </td>
             <td>
-                <ul class="add-bcc" >
-                    <li>
+                <div >
+
                          <div bcc class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
                             {{replybody.user.alias1}} {{replybody.user.ffemail1}}
                         </div>
-                    </li> 
-                    <li>
+
+
                         <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail2">
                             {{replybody.user.alias2}} {{replybody.user.ffemail2}}
                         </div>
-                    </li>
-                    <li>
+
+
                         <div bcc class="linky" feedid="replybody.feedid" email="replybody.user.ffemail3">
                             {{replybody.user.alias3}} {{replybody.user.ffemail3}}
                         </div>
-                    </li>
+
                 </ul>
             </td>
             <td class="small" valign="top"></td>
