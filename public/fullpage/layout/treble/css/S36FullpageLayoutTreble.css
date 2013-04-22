@@ -63,6 +63,7 @@
 	text-align: right;
 }
 .regular-featured .author-location{
+	font-weight: bold;
 	float:left;
 }
 
@@ -227,6 +228,7 @@
 	float: right;
 }
 .regular .author-location{
+	font-weight: bold;
 	float:left;
 }
 .regular .author .author-information .author-name{

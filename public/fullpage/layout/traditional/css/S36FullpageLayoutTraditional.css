@@ -59,6 +59,7 @@
 .feedback-header .reviews{
 }
 .author-location{
+	font-weight: bold;
 	float:left;
 }
 
