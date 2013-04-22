@@ -131,7 +131,7 @@ angular.module('reply', [])
         restrict: 'A'
       , scope: {
             feedid: "=feedid"   
-            email: "=email"
+          , email: "=email"
         }
       , link: function(scope, element, attrs){
             $(element).bind('click', function(e) {
