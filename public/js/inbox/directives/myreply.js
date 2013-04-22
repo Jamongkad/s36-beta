@@ -134,6 +134,7 @@ angular.module('reply', [])
         }
       , link: function(scope, element, attrs){
             console.log(scope.load);
+            console.log(element);
             /*
             $(element).bind('click', function(e) {
                 console.log(scope.feedid);
