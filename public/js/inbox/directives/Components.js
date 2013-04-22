@@ -2,14 +2,16 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('bcc', function() {
     return {  
         restrict: 'A'     
+      , scope: {
+            fdid: "=fdid"   
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log('clicked');
+                console.log(scope.fdid);
                 e.preventDefault();
             });
-            console.log(element);
-            console.log(scope.feedid);
-            console.log(scope.email);
+
         }
     }    
 })
