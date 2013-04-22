@@ -129,6 +129,7 @@ angular.module('reply', [])
 .directive('replyBcc', function() {
     return function(scope, element, attrs){
         $(element).children('li').bind('click', function(e) {
+
             var children = $(this).children('a');
             var email = children.attr('email');
             var my_id = children.attr('feedid');
