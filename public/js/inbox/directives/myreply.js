@@ -176,7 +176,8 @@ angular.module('reply', [])
                 console.log('clicked');
                 var feedid = $(this).attr('feedid');
                 var email = $(this).attr('email');
-                $('textarea[name=bcc][feedid=' + feedid + ']').val(email + ',');
+                var textarea = $('textarea[name=bcc][feedid=' + feedid + ']');
+                textarea.val(textarea.val() + email + ',');
                 e.preventDefault();
             });
 
