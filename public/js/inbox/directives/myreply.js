@@ -126,7 +126,7 @@ angular.module('reply', [])
         }
     }     
 })
-.directive('bcc', function() {
+.directive('shoot', function() {
     return {     
         restrict: 'EAC'
       , scope: {
