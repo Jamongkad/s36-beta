@@ -25,15 +25,14 @@ return array(
         $dbm = new Message\Repositories\DBMessage(Input::get('msgtype'));
         $sm = new Message\Services\SettingMessage($dbm);       
         if(Input::get('id')) {
-            echo "Update";
-            Helpers::dump(Input::get());                
-            Helpers::dump($sm);                
+            $sm->update(Input::get('id'), Input::get('text'));
+            $sm->get(Input::get('id'));
         } else { 
-            echo "Save";
-            Helpers::dump(Input::get());                
-            Helpers::dump($sm);                
+            $sm->save(Input::get('text'));
+            $sm->last_insert();
         }
 
+        echo $sm->jsonify();
     }
 
     /*
