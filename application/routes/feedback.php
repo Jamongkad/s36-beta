@@ -32,6 +32,7 @@ return array(
     'GET /feedback/get_replybody' => function() {
         $data = Array(
             'user' => S36Auth::user()
+          , 'feedid' => Input::get('feedid')
         );
         echo json_encode($data);
     },

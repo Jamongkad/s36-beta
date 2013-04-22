@@ -7,19 +7,20 @@ angular.module('reply', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
+
                 var feedid = scope.feedid;
 
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
 
-
-                MessageService.get_replybody();
+                MessageService.get_replybody(feedid);
                 MessageService.register_replybody();
                 
                 $('div#reply-to-user').draggable();
                 $('div#reply-to-user.lightbox').show();
                 $(".dialog-form[feedid="+feedid+"]").show();
                 e.preventDefault();
+
             });
         }
     } 
