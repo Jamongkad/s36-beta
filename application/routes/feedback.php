@@ -240,7 +240,7 @@ return array(
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
-
+        /*
         $replyto = Input::get('replyto'); 
         $replydata = new Email\Entities\ReplyData; 
         $replydata->subject(Input::get('subject'))
@@ -258,6 +258,8 @@ return array(
  
         $emailservice = new Email\Services\EmailService($replydata);  
         return $emailservice->send_email(); 
+        */
+        Helpers::dump(Input::get());
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
