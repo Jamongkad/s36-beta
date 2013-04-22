@@ -36,10 +36,12 @@ return array(
     }
 
     , 'POST /message/delete_msg' => function() {
+        /*
         $type = Input::get('type'); 
         $dbm = new Message\Repositories\DBMessage($type);
-
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->delete(Input::get('id'));
+        */
+        Helpers::dump(Input::get());
     }
 );
