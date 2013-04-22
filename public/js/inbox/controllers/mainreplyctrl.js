@@ -26,8 +26,9 @@ function MainReplyCtrl($scope, MessageService) {
         $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };
     }
 
-    $scope.del_reply = function(id, $event) { 
-        MessageService.delete_msg({'id': id, 'type': 'msg'});
+    $scope.del_reply = function(id) { 
+        console.log(id);
+        //MessageService.delete_msg({'id': id, 'type': 'msg'});
     }
      
     //Broadcast Messages
