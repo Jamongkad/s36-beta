@@ -21,12 +21,17 @@ return array(
     }
    
     , 'POST /message/save_msg' => function() {
+
+        $dbm = new Message\Repositories\DBMessage(Input::get('msgtype'));
+        $sm = new Message\Services\SettingMessage($dbm);       
         if(Input::get('id')) {
             echo "Update";
             Helpers::dump(Input::get());                
+            Helpers::dump($sm);                
         } else { 
             echo "Save";
             Helpers::dump(Input::get());                
+            Helpers::dump($sm);                
         }
 
     }
