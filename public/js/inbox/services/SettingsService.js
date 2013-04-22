@@ -79,6 +79,15 @@ angular.module('Services', [])
         });      
     }
 
+    shared_service.delete_msg = function(id, type) { 
+        $.ajax({
+            url: "/message/delete_msg"  
+          , type: 'POST'
+          , data: { id: id, type: type }
+          , dataType: 'json'
+        });      
+    }
+
     shared_service.register_request_message = function()  {
         $rootScope.$broadcast('addRequestMessage');
     }
