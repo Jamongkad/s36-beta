@@ -80,12 +80,14 @@ angular.module('reply', [])
                         $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
                     });
 
-                    $("#cancel_button").val("Cancel");
                 }
 
                 if(choice == 'Send') {
                     console.log("Sending Email");
                 }
+
+                $("#cancel_button").val("Cancel");
+
                 e.preventDefault();
             });
         }
