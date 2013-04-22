@@ -10,6 +10,7 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
                     id = at; 
                 }) 
                 console.log(id);
+                console.log($(this).attr('feedid'));
                 e.preventDefault();
             });
 
