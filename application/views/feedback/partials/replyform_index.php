@@ -30,7 +30,7 @@
                 <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
             </td>
             <td>
-                <div >
+                <div>
                      <div bcc class="linky" fdid="replybody.feedid" email="replybody.user.ffemail1">
                         {{replybody.user.alias1}} {{replybody.user.ffemail1}}
                     </div>
