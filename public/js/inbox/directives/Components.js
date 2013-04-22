@@ -1,18 +1,4 @@
 angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
-.directive('bcc', function() {
-    return {  
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {
-                console.log('clicked');
-                console.log($(this).attr('feedid'));
-                console.log($(this).attr('email'));
-                e.preventDefault();
-            });
-
-        }
-    }    
-})
 .directive('helloSettings', function() {
     return {
         restrict: 'E'     

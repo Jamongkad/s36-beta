@@ -17,7 +17,7 @@
                 <strong>Bcc :</strong>
             </td>
 
-            <td class="bcc-target" feedid="">
+            <td class="bcc-target" feedid="{{replybody.feedid}}">
                 <textarea class="regular-text" name="bcc" rows="2" style='width: 95%'></textarea>
             </td>
             <td class="small" valign="top">
