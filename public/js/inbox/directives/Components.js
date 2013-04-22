@@ -2,7 +2,7 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('bcc', function() {
     return {  
         restrict: 'A'     
-      , function(scope, element, attrs) {
+      , link: function(scope, element, attrs) {
           
         }
     }    
