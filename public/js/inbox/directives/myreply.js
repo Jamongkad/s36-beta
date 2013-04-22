@@ -83,7 +83,7 @@ angular.module('reply', [])
                 }
 
                 if(choice == 'Send') { 
-                    var data = $('form.reply-form').serializeArray();
+                    var data = $('form.reply-form').serializeForm();
                     MessageService.send_email(data);     
                 }
 
