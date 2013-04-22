@@ -54,7 +54,7 @@
         <tr>
             <td><strong>Subject : </strong> </td>
             <td>
-                <input type="text" class="regular-text" name="subject" value="Re: Your feedback for {{replybody.user.companyname}}" style='width: 95%' />
+                <input type="text" class="regular-text" name="subject" value="Re: regarding your feedback for {{replybody.user.companyname}}." style='width: 95%' />
             </td>
             <td></td>
         </tr>
