@@ -5,11 +5,6 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log('clicked');
-                var id;
-                attrs.$observe('feedid', function(at) {
-                    id = at; 
-                }) 
-                console.log(id);
                 console.log($(this).attr('feedid'));
                 e.preventDefault();
             });
