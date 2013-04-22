@@ -16,7 +16,6 @@
             <td>
                 <strong>Bcc :</strong>
             </td>
-
             <td class="bcc-target" feedid="">
                 <textarea class="regular-text" name="bcc" rows="2" style='width: 95%'></textarea>
             </td>
@@ -27,7 +26,7 @@
             </td>
         </tr>
         <tr> 
-            <td valign="top">
+            <td>
                 <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
             </td>
             <td>
