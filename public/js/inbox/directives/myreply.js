@@ -84,7 +84,15 @@ angular.module('reply', [])
 
                 if(choice == 'Send') { 
                     var data = $('form.reply-form').serializeForm();
-                    MessageService.send_email(data);     
+                    //MessageService.send_email(data);     
+                    $('form.reply-form').isHappy({
+                        fields: {
+                            '#email_message' : {
+                                required: true     
+                            }
+                        }  
+                        , submitButton: "#send_button" 
+                    });
                 }
 
                 $("#cancel_button").val("Cancel");
