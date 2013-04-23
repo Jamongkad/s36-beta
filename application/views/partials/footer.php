@@ -22,8 +22,6 @@
 | FancyBox
 |--------------------------------------------------------------------------
 */
-echo HTML::script('/fancybox/jquery.fancybox.js');
-echo HTML::script('/fancybox/jquery.fancybox.pack.js');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
