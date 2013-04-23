@@ -138,6 +138,7 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function($scope, element, attrs) {
             $(element).bind("click", function(e) { 
+                console.log("mathew");
                 $("#send_button").val("Save");
                 $("#cancel_button").val("Back");
                 e.preventDefault();
