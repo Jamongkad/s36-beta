@@ -257,12 +257,8 @@ return array(
                     )
                   ->message($email['message'])
                   ->feedbackdata(json_decode($email['feedbackdata']));            
-        Helpers::dump($replydata);
-        /* 
         $emailservice = new Email\Services\EmailService($replydata);  
         return $emailservice->send_email(); 
-        */
-
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
