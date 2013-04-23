@@ -62,24 +62,33 @@ angular.module('reply', [])
                 var choice = $(this).attr('value');
 
                 if(choice == 'Save') { 
-                    MessageService.save(MessageService.msgdata);
+ 
+                    if($('#mymessage').val() == "") {
+                        $('#mymessage').css({
+                            'border': '1px solid red'
+                        })
+                    } else {
 
-                    var msgtype = MessageService.msgdata.msgtype;
+                        $('#mymessage').removeAttr('style');
 
-                    if(msgtype == 'msg') {
-                        MessageService.fetch_messages(msgtype);     
-                        MessageService.register_reply_message();
+                        MessageService.save(MessageService.msgdata);
+
+                        var msgtype = MessageService.msgdata.msgtype;
+
+                        if(msgtype == 'msg') {
+                            MessageService.fetch_messages(msgtype);     
+                            MessageService.register_reply_message();
+                        }
+
+                        if(msgtype == 'rqs') {
+                            MessageService.fetch_messages(msgtype);     
+                            MessageService.register_request_message();
+                        }
+
+                        $scope.$apply(function() {
+                            $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
+                        });
                     }
-
-                    if(msgtype == 'rqs') {
-                        MessageService.fetch_messages(msgtype);     
-                        MessageService.register_request_message();
-                    }
-
-                    $scope.$apply(function() {
-                        $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
-                    });
-
                 }
 
                 if(choice == 'Send') { 
@@ -89,9 +98,9 @@ angular.module('reply', [])
                             'border': '1px solid red'
                         })
                     } else {
+                        $('#email_message').removeAttr('style');
                         MessageService.send_email(data, function() { 
                             alert("Email Sent!");
-                            $('#email_message').removeAttr('style');
                             $('textarea[name=bcc]').clearFields();
                             $('textarea[name=message]').clearFields();
                             $(".dialog-form").fadeOut();
