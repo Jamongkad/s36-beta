@@ -77,11 +77,9 @@ $(function() {
                 <div class="feedback-data">
                     <span id="indlock_url" hrefaction="<?=URL::to('/feedback/lock_feedback_display')?>"></span>
                     <table cellpadding="0">
-                        <!--<tr><td width="90">Feedback Form:	</td><td>Testimonial Form</td>-->
                         <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td></tr>
                         <tr><td>DEFAULT DISPLAY RULES:</td><td><?=Form::checkbox('resetIndLock', 1, 
                                                                       ($feedback->indlock ? True : Null))?></td></tr>
-                        <!--<tr><td>License:		</td><td>Full license</td>-->
                         <tr><td>Submission Date (dd-mm-yyyy):</td><td>
                             <input type="text" name="date_change" 
                                    value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
@@ -167,8 +165,9 @@ $(function() {
                 </div> 
                 <!-- email picker block-->            
                 <div class="feedback-info-menu">
-
-                    <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto', 'my-reply' => '', 'feedid' => $id))?>  
+                    <?if($feedback->email):?>
+                        <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto', 'my-reply' => '', 'feedid' => $id))?>  
+                    <?endif?>
 
                     <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
                     <?if($feedback->rating != "POOR" and $feedback->permission_css != 'private-permission'):?>
