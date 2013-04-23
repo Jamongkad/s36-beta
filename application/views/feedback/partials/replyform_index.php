@@ -1,5 +1,9 @@
 <div class="lightbox-form">
     <input type="hidden" name="username" value="{{replybody.user.username}}" />
+    <input type="hidden" name="replyto" value="{{replybody.user.replyto}}" />
+    <input type="hidden" name="emailto" value="pwet@gmail.com" />
+    <input type="hidden" name="feedbackid" value="{{replybody.feedid}}" />
+
     <table cellpadding="1" width="100%">
         <tr>
             <td width="15%"><strong>Reply To : </strong></td>
