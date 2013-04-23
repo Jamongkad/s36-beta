@@ -89,6 +89,7 @@ angular.module('reply', [])
                         fields: {
                             '#email_message' : {
                                 required: true     
+                              , message: 'Please supply a message.'
                             }
                         }  
                         , submitButton: "#send_button" 
