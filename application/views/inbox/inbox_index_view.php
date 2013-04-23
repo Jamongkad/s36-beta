@@ -284,7 +284,7 @@
                                         <?if($feed->email):?>
                                             <input type="button" feedid="<?=$id?>" my-reply class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
                                         <?else:?>
-                                            <input type="button" class="reply" tooltip="Reply to user" tt_width="65" 
+                                            <input type="button" class="reply" tooltip="No email available" tt_width="65" 
                                                    style="background-position: -40px -34px"/>
                                         <?endif?>
                                         <?if($admin_check->inbox_fastforward == 0):?>
