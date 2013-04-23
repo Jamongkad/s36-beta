@@ -147,7 +147,6 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log('clicked');
                 var feedid = $(this).attr('feedid');
                 var email = $(this).attr('email');
                 var textarea = $('textarea[name=bcc][feedid=' + feedid + ']');
