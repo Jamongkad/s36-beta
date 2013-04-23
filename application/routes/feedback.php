@@ -240,26 +240,28 @@ return array(
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
+
+        $replyto = Input::get('email'); 
         /*
-        $replyto = Input::get('replyto'); 
         $replydata = new Email\Entities\ReplyData; 
-        $replydata->subject(Input::get('subject'))
-                  ->bcc(Input::get('bcc'))
-                  ->sendto(Input::get('emailto'))
-                  ->copyme(Input::get('email_me'), $replyto)
+        $replydata->subject($replyto['subject'])
+                  ->bcc($replyto['bcc'])
+                  ->sendto($replyto['emailto'])
+                  //->copyme(Input::get('email_me'), $replyto)
                   ->from( 
                       (object) Array(
                         "replyto" => $replyto 
                       , "username"  => ucfirst(Input::get('username'))
                       ) 
                     )
-                  ->message(Input::get('message'))
+                  ->message($replyto['message'])
                   ->feedbackdata($feedback->pull_feedback_by_id(Input::get('feedbackid')));            
- 
+        */
+        /* 
         $emailservice = new Email\Services\EmailService($replydata);  
         return $emailservice->send_email(); 
         */
-        Helpers::dump(Input::get('email'));
+        Helpers::dump($replyto);
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
