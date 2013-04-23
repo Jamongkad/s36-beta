@@ -248,7 +248,7 @@ return array(
         $replydata->subject($email['subject'])
                   ->bcc($email['bcc'])
                   ->sendto($email['emailto'])
-                  ->copyme((array_key_exists($email['email_me'])) ? $email['email_me'] : null, $replyto)
+                  ->copyme((isset($email['email_me'])) ? $email['email_me'] : null, $replyto)
                   ->from( 
                       (object) Array(
                         "replyto" => $email['replyto']
