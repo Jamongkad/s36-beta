@@ -89,7 +89,7 @@
                 <?php endif; ?>
             </div>
             <div class="feedback-text">
-                <p><?= HTML::entities($feed->feed_data->text);?></p>
+                <p><?= nl2br(HTML::entities($feed->feed_data->text));?></p>
             </div>
             <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>

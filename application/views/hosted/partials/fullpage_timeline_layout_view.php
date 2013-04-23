@@ -111,7 +111,7 @@
                 </div>
             <?php endif; ?>
             <div class="feedback-text">
-                <p><?= HTML::entities($feed->feed_data->text);?></p>
+                <?= nl2br(HTML::entities($feed->feed_data->text));?>
             </div>
             <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>
