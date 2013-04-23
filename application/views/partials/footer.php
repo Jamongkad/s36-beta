@@ -22,11 +22,11 @@
 | FancyBox
 |--------------------------------------------------------------------------
 */
+echo HTML::script('/fancybox/jquery.fancybox.js');
+echo HTML::script('/fancybox/jquery.fancybox.pack.js');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
-echo HTML::script('/js/happy.js');
-echo HTML::script('/js/happy.methods.js');
 echo HTML::style('/fancybox/jquery.fancybox.css');
 echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
