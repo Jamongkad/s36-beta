@@ -152,7 +152,7 @@ angular.module('reply', [])
                 var textarea = $('textarea[name=bcc][feedid=' + feedid + ']');
                 var values = textarea.val() + email + ',';
 
-                textarea.val(values.substring(0, s.length - 1));
+                textarea.val(values.substring(0, values.length - 1));
                 e.preventDefault();
             });
 
