@@ -88,11 +88,12 @@ angular.module('Services', [])
         });      
     }
 
-    shared_service.send_email = function(data) {
+    shared_service.send_email = function(data, success_callback) {
         $.ajax({
             url: "/feedback/reply_to"  
           , type: 'POST'
           , data: { email: data }
+          , success: success_callback
         });       
     }
 
