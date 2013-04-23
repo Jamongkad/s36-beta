@@ -29,10 +29,11 @@ return array(
         return View::make('feedback/partials/replyform_index');
     },
 
-    'GET /feedback/get_replybody' => function() {
+    'GET /feedback/get_replybody' => function() use ($feedback) {
         $data = Array(
             'user' => S36Auth::user()
           , 'feedid' => Input::get('feedid')
+          , 'feedback' => $feedback->pull_feedback_by_id(Input::get('feedid'))
         );
         echo json_encode($data);
     },

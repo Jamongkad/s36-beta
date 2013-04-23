@@ -1,7 +1,8 @@
 <div class="lightbox-form">
     <input type="hidden" name="username" value="{{replybody.user.username}}" />
     <input type="hidden" name="replyto" value="{{replybody.user.replyto}}" />
-    <input type="hidden" name="emailto" value="pwet@gmail.com" />
+    <input type="hidden" name="emailto" value="{{replybody.feedback.email}}" />
+    <input type="hidden" name="feedbackdata" value="{{replybody.feedback}}" />
     <input type="hidden" name="feedbackid" value="{{replybody.feedid}}" />
 
 
