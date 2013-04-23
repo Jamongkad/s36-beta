@@ -94,7 +94,7 @@ angular.module('reply', [])
                             $('#email_message').removeAttr('style');
                             $('textarea[name=bcc]').clearFields();
                             $('textarea[name=message]').clearFields();
-                            $(this).parents(".dialog-form").fadeOut();
+                            $(".dialog-form").fadeOut();
                             $('div#reply-to-user').draggable("destroy");
                             $("#cancel_button").val("Cancel");
                         });           
