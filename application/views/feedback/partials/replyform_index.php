@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td><strong>To :</strong> </td>
-            <td class="small"><span>&nbsp;&nbsp;</span></td>
+            <td class="small"><span>&nbsp;&nbsp;</span>{{replybody.feedback.email}}</td>
             <td></td>
         </tr>
         <tr>
