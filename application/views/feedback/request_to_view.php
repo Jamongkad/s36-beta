@@ -15,6 +15,7 @@
                 <h3>Recepient Details</h3>
                 <br />
                 <div class="widget-form" ng-controller="MainRequestCtrl">
+                    <div ng-include src="template.url"></div>
                     <table width="80%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="110">
