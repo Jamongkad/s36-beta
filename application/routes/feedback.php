@@ -242,27 +242,27 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
 
-        $replyto = Input::get('email'); 
-        /*
+        $email = Input::get('email'); 
+
         $replydata = new Email\Entities\ReplyData; 
-        $replydata->subject($replyto['subject'])
-                  ->bcc($replyto['bcc'])
-                  ->sendto($replyto['emailto'])
-                  //->copyme(Input::get('email_me'), $replyto)
+        $replydata->subject($email['subject'])
+                  ->bcc($email['bcc'])
+                  ->sendto($email['emailto'])
+                  ->copyme((array_key_exists($email['email_me'])) ? $email['email_me'] : null, $replyto)
                   ->from( 
                       (object) Array(
-                        "replyto" => $replyto 
-                      , "username"  => ucfirst(Input::get('username'))
+                        "replyto" => $email['replyto']
+                      , "username"  => ucfirst($email['username'])
                       ) 
                     )
-                  ->message($replyto['message'])
-                  ->feedbackdata($feedback->pull_feedback_by_id(Input::get('feedbackid')));            
-        */
+                  ->message($email['message'])
+                  ->feedbackdata(json_decode($email['feedbackdata']));            
+        Helpers::dump($replydata);
         /* 
         $emailservice = new Email\Services\EmailService($replydata);  
         return $emailservice->send_email(); 
         */
-        Helpers::dump($replyto);
+
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
