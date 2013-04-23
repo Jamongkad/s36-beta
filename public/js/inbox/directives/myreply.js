@@ -150,7 +150,9 @@ angular.module('reply', [])
                 var feedid = $(this).attr('feedid');
                 var email = $(this).attr('email');
                 var textarea = $('textarea[name=bcc][feedid=' + feedid + ']');
-                textarea.val(textarea.val() + email + ',');
+                var values = textarea.val() + email + ',';
+
+                textarea.val(values.slice(0, -4));
                 e.preventDefault();
             });
 
