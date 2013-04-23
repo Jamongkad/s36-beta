@@ -1,4 +1,5 @@
 <div class="lightbox-form">
+    <input type="hidden" name="username" value="{{replybody.user.username}}" />
     <table cellpadding="1" width="100%">
         <tr>
             <td width="15%"><strong>Reply To : </strong></td>
