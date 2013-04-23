@@ -68,7 +68,7 @@
         <tr>
             <td><label style="font-size:11px;font-weight:bold;">Message: </label> </td>
             <td>
-                <textarea class="regular-text" rows="6" name="message" style='width: 95%'></textarea>
+                <textarea class="regular-text" rows="6" id="email_message" name="message" style='width: 95%'></textarea>
             </td>
 
             <td>   
