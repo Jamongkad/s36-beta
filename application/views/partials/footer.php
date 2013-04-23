@@ -52,6 +52,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('js/inbox/directives/myformbuilder.js')?>
 
 <?=HTML::script('js/inbox/controllers/mainreplyctrl.js')?>
+<?=HTML::script('js/inbox/controllers/mainrequestctrl.js')?>
 <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/controllers/requestctrl.js')?>
 

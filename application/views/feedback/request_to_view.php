@@ -14,7 +14,7 @@
                 <br />
                 <h3>Recepient Details</h3>
                 <br />
-                <div class="widget-form">
+                <div class="widget-form" ng-controller="MainRequestCtrl">
                     <table width="80%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="110">
