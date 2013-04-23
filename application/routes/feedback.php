@@ -259,7 +259,7 @@ return array(
         $emailservice = new Email\Services\EmailService($replydata);  
         return $emailservice->send_email(); 
         */
-        Helpers::dump(Input::get());
+        Helpers::dump(Input::get('email'));
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
