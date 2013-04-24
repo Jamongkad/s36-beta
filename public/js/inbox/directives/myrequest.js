@@ -23,31 +23,32 @@ angular.module('request', [])
 
         $(element).bind('click', function(e) {
             var choice = $(this).attr('value');                  
-            console.log(choice);
+            if(choice == 'Send') {
+                $(element).parents('#request-form').validate({
+                    submitHandler: function(form) {
+                        $(form).ajaxSubmit({ 
+                            success: function(data) {
+                                alert("Your request has been sent!");
+                                $(form).clearForm();
+                                $('div#request-feedback').draggable("destroy");
+                                $(element).parents('.request-dialog').fadeOut(); 
+                            }
+                        }) 
+                    }
+                  , errorElement: "em"
+                  , rules: {
+                        first_name: { required: true }    
+                      , last_name: { required: true }
+                      , message: { required: true }
+                      , email: {
+                            required: true   
+                          , email: true 
+                        }
+                    }
+                }); 
+            }
         })
 
-        $(element).parents('#request-form').validate({
-            submitHandler: function(form) {
-                $(form).ajaxSubmit({ 
-                    success: function(data) {
-                        alert("Your request has been sent!");
-                        $(form).clearForm();
-                        $('div#request-feedback').draggable("destroy");
-                        $(element).parents('.request-dialog').fadeOut(); 
-                    }
-                }) 
-            }
-          , errorElement: "em"
-          , rules: {
-                first_name: { required: true }    
-              , last_name: { required: true }
-              , message: { required: true }
-              , email: {
-                    required: true   
-                  , email: true 
-                }
-            }
-        });
     } 
 })
 .directive('addRequest', function() {
