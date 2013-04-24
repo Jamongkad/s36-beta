@@ -1,11 +1,4 @@
 <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'request-form'))?>
-<h2>Request Feedback</h2>
-<div class="lightbox-content">
-<span class="gray">
-Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. 
-</span>
-
-<br />
 <div class="lightbox-form">
         <br />
         <h3>Recepient Details</h3>
@@ -49,7 +42,7 @@ Drop a request to someone you want to get feedback from. You can write your own 
                             <li ng-repeat="msg in get_request_msgs()">
                                 <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                                 <span style="float:right">
-                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="edit_reply(msg.id, msg.msgtype, $event)" id="{{msg.id}}">edit</a> 
+                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="edit_reply(msg.id, msg.msgtype)" id="{{msg.id}}">edit</a> 
                                     <a href='#' delete-request ng-click="del_request(msg.id, $event)">delete</a>
                                 </span>
                             </li>
