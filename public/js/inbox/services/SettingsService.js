@@ -97,6 +97,15 @@ angular.module('Services', [])
         });       
     }
 
+    shared_service.send_request_email = function(data, success_callback) {
+        $.ajax({
+            url: "/feedback/requestfeedback"  
+          , type: 'POST'
+          , data: { email: data }
+          , success: success_callback
+        });       
+    }
+
     shared_service.register_request_message = function()  {
         $rootScope.$broadcast('fetchRequestMessage');
     }
