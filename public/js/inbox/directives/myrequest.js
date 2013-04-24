@@ -55,9 +55,9 @@ angular.module('request', [])
 
         $(element).bind('click', function(e) {
             var choice = $(this).attr('value');                  
+            var validate = ['#first_name', '#last_name', '#recipient-email', '#recipient-message'];
             if(choice == 'Send') {
                 var data = $('form#request-form').serializeForm();
-                var validate = ['#first_name', '#last_name', '#recipient-email', '#recipient-message'];
                 var validcount = [];
                 for(var i=0; i<validate.length; i++) {
                     var me = validate[i];
@@ -72,12 +72,15 @@ angular.module('request', [])
                     }   
                 }
 
-                console.log(validcount);
                 if(validcount.length == 0)  {
                     console.log(data);              
                     MessageService.send_request_email(data, function() { 
                         alert("Your request has been sent!");
-                        $(form).clearForm();
+                        $('#first_namej').clearFields();
+                        $('#last_name').clearFields();
+                        $('#recipient-email').clearFields();
+                        $('#recipient-message').clearFields();
+
                         $('div#request-feedback').draggable("destroy");
                         $(element).parents('.request-dialog').fadeOut(); 
                     })
