@@ -53,9 +53,7 @@ angular.module('request', [])
                         $(me).css({'border': '1px solid red'});
                         console.log('push ' + me);
                         validcount.push(me);
-                        if(me == "#recipient-email") {
-                            console.log(validateEmail($(me).val()));
-                        }
+                        console.log(validateEmail($(me).val())); 
                     } else { 
                         $(me).removeAttr('style'); 
                         console.log('pop ' + me);
