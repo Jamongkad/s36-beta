@@ -76,9 +76,8 @@ return array(
     }),
 
     'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($dbwidget) {
-        $data = Input::get();
-        Helpers::dump($data);
-        /*
+        $data = Input::get('email');
+
         $underscore = new Underscore\Underscore;
         $company_id = S36Auth::user()->companyid;
         $widgets = $underscore->first($dbwidget->fetch_widgets_by_company()->form_widgets->widget->widgets);
@@ -97,7 +96,7 @@ return array(
         
         $emailservice = new Email\Services\EmailService($request_data);
         return $emailservice->send_email();
-        */
+
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
