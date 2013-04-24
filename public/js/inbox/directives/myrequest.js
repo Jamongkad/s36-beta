@@ -59,8 +59,10 @@ angular.module('request', [])
                 }
 
                 console.log(validcount);
-            
-                console.log(data);         
+                if(validcount.length == 0)  {
+                    console.log(data);              
+                }
+               
 
                
                 /*
