@@ -59,10 +59,9 @@ angular.module('request', [])
                 }
 
                 console.log(validcount);
-                
-                if(isvalid) {
-                    console.log(data);         
-                }
+            
+                console.log(data);         
+
                
                 /*
                 $(element).parents('#request-form').validate({
