@@ -15,18 +15,20 @@ angular.module('request', [])
 
             var choice = $(this).attr('value');                  
 
+            $scope.$apply(function() {
+                $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }     
+            })      
+
             if(choice == 'Cancel') { 
                 $('.request-dialog').fadeOut();
                 $('div#request-feedback').draggable("destroy");
             }
 
             if(choice == 'Back') {
-
+                $("#cancel_button").val("Cancel");
             }
 
-            $scope.$apply(function() {
-                $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }     
-            })      
+            $("#send_button").val("Send");
 
             e.preventDefault();
         })
