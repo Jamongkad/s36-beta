@@ -6,7 +6,7 @@ function MainReplyCtrl($scope, MessageService) {
         return $scope.messages;    
     }
 
-    $scope.edit_reply = function(id, type, $event) {
+    $scope.edit_reply = function(id, type) {
         MessageService.get_message(id, type);
         $scope.tmplvar = MessageService.msgdata;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
