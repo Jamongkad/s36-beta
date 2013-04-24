@@ -9,7 +9,7 @@ angular.module('request', [])
         });
     }
 })
-.directive('myRequestClose', function() {
+.directive('myRequestClose', function(MessageService) {
     return function($scope, element, attr) {
         $(element).bind('click', function(e) {
 
@@ -30,6 +30,9 @@ angular.module('request', [])
             }
 
             $("#send_button").val("Send");
+
+            MessageService.fetch_messages('rqs');     
+            MessageService.register_request_message();
 
             e.preventDefault();
         })
@@ -83,12 +86,10 @@ angular.module('request', [])
                         MessageService.save(MessageService.msgdata);
 
                         var msgtype = MessageService.msgdata.msgtype;
-
-                        if(msgtype == 'rqs') {
-                            MessageService.fetch_messages(msgtype);     
-                            MessageService.register_request_message();
-                        }
-
+  
+                        MessageService.fetch_messages(msgtype);     
+                        MessageService.register_request_message();
+                       
                         $scope.$apply(function() {
                             $scope.template = { name: "request_form", url: "/feedback/load_request_form" };     
                         });

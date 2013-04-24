@@ -30,7 +30,7 @@ function MainRequestCtrl($scope, MessageService) {
     }
     
     //Broadcast Messages
-    $scope.$on('addRequestMessage', function()  {
+    $scope.$on('fetchRequestMessage', function()  {
         $scope.$apply(function() {
             $scope.requests = MessageService.message;
         })
