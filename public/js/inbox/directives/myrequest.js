@@ -35,7 +35,7 @@ angular.module('request', [])
         })
     } 
 })
-.directive('myRequestSend', function() {
+.directive('myRequestSend', function(MessageService) {
     return function(scope, element, attr) {
 
         $(element).bind('click', function(e) {
