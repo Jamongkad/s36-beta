@@ -46,6 +46,8 @@ angular.module('request', [])
                 $(this).removeAttr('style');
             } else {
                 $(this).css({'border': '1px solid red'});               
+                $("#invalid_email").remove();
+                $(this).after('<p id="invalid_email">invalid email</p>');
             }
         })
     }
