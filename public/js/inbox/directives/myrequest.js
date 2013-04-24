@@ -2,6 +2,11 @@ angular.module('request', [])
 .directive('myRequest', function() {
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
+
+            $scope.$apply(function() {
+                $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }
+            })      
+
             $('.request-dialog').fadeIn();
             $('div#request-feedback').draggable();
             $('div#request-feedback.lightbox').show();
