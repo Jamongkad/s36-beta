@@ -20,6 +20,12 @@ angular.module('request', [])
 })
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
+
+        $(element).bind('click', function(e) {
+            var choice = $(this).attr('value');                  
+            console.log(choice);
+        })
+
         $(element).parents('#request-form').validate({
             submitHandler: function(form) {
                 $(form).ajaxSubmit({ 
@@ -73,6 +79,8 @@ angular.module('request', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
+                $("#send_button").val("Save");
+                $("#cancel_button").val("Back");
                 /*
                 var msgid = $(this).attr('id');
                 var configure = $('.modal-configure');
@@ -95,6 +103,8 @@ angular.module('request', [])
         restrict: 'C'
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
+                $("#send_button").val("Save");
+                $("#cancel_button").val("Back");
                 /*
                 var configure = $('.modal-configure');
 
