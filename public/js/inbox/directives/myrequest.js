@@ -73,6 +73,7 @@ angular.module('request', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
+                /*
                 var msgid = $(this).attr('id');
                 var configure = $('.modal-configure');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
@@ -83,6 +84,7 @@ angular.module('request', [])
                 configure.children('.regular-text').val(req_text);
                 configure.children('#msgtype').val("rqs");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
+                */
                 e.preventDefault();
             });
         }
@@ -93,6 +95,7 @@ angular.module('request', [])
         restrict: 'C'
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
+                /*
                 var configure = $('.modal-configure');
 
                 configure.dialog({ zIndex: 100001 });
@@ -101,6 +104,7 @@ angular.module('request', [])
                 configure.children('.regular-text').val('');
                 configure.children('#msgtype').val("rqs");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
+                */
                 e.preventDefault();
             });
         }

@@ -4,5 +4,4 @@
     <div class="lightbox-styles" ng-controller="MainRequestCtrl">
         <div ng-include src="template.url"></div>
     </div>
-    <!-- end of lightbox styles -->
 </div>
