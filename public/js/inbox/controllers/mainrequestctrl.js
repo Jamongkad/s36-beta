@@ -16,9 +16,17 @@ function MainRequestCtrl($scope, MessageService) {
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
     }
 
-    $scope.del_request = function(id, $event) {
-        MessageService.delete_msg({'id': id, 'type': 'rqs'});
-        $event.preventDefault();
+    $scope.add_reply = function() { 
+        MessageService.msgdata = {};
+        MessageService.msgdata.text = null;
+        MessageService.msgdata.id = null;
+        MessageService.msgdata.msgtype = 'msg';
+        $scope.tmplvar = MessageService.msgdata;
+        $scope.template = { name: "edit_form", url: "/feedback/load_edit_form" };
+    }
+
+    $scope.del_request = function(id) {
+        MessageService.delete_msg(id, 'rqs');
     }
     
     //Broadcast Messages
