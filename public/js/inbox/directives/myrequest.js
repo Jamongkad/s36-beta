@@ -71,6 +71,28 @@ angular.module('request', [])
 
             if(choice == 'Save') {
                 console.log('saving');
+
+                    if($('#mymessage').val() == "") {
+                        $('#mymessage').css({
+                            'border': '1px solid red'
+                        })
+                    } else {
+
+                        $('#mymessage').removeAttr('style');
+
+                        MessageService.save(MessageService.msgdata);
+
+                        var msgtype = MessageService.msgdata.msgtype;
+
+                        if(msgtype == 'rqs') {
+                            MessageService.fetch_messages(msgtype);     
+                            MessageService.register_request_message();
+                        }
+
+                        $scope.$apply(function() {
+                            $scope.template = { name: "request_form", url: "/feedback/load_request_form" };     
+                        });
+                    }
             }
 
             e.preventDefault();

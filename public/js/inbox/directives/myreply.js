@@ -80,11 +80,6 @@ angular.module('reply', [])
                             MessageService.register_reply_message();
                         }
 
-                        if(msgtype == 'rqs') {
-                            MessageService.fetch_messages(msgtype);     
-                            MessageService.register_request_message();
-                        }
-
                         $scope.$apply(function() {
                             $scope.template = { name: "reply_form", url: "/feedback/load_reply_form" };     
                         });
