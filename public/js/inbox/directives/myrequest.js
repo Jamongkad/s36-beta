@@ -38,41 +38,43 @@ angular.module('request', [])
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
 
-        var choice;
-
         $(element).bind('click', function(e) {
-            choice = $(this).attr('value');                  
+            var choice = $(this).attr('value');                  
+            if(choice == 'Send') {
+                var data = $('form#request-form').serializeForm();
+                console.log(data);
+                /*
+                $(element).parents('#request-form').validate({
+                    submitHandler: function(form) {
+                        $(form).ajaxSubmit({ 
+                            success: function(data) {
+                                alert("Your request has been sent!");
+                                $(form).clearForm();
+                                $('div#request-feedback').draggable("destroy");
+                                $(element).parents('.request-dialog').fadeOut(); 
+                            }
+                        }) 
+                    }
+                  , errorElement: "em"
+                  , rules: {
+                        first_name: { required: true }    
+                      , last_name: { required: true }
+                      , message: { required: true }
+                      , email: {
+                            required: true   
+                          , email: true 
+                        }
+                    }
+                }); 
+                */
+            }
+
+            if(choice == 'Save') {
+                console.log('saving');
+            }
+
             e.preventDefault();
         })
-
-        if(choice == 'Send') {
-            $(element).parents('#request-form').validate({
-                submitHandler: function(form) {
-                    $(form).ajaxSubmit({ 
-                        success: function(data) {
-                            alert("Your request has been sent!");
-                            $(form).clearForm();
-                            $('div#request-feedback').draggable("destroy");
-                            $(element).parents('.request-dialog').fadeOut(); 
-                        }
-                    }) 
-                }
-              , errorElement: "em"
-              , rules: {
-                    first_name: { required: true }    
-                  , last_name: { required: true }
-                  , message: { required: true }
-                  , email: {
-                        required: true   
-                      , email: true 
-                    }
-                }
-            }); 
-        }
-
-        if(choice == 'Save') {
-            console.log('saving');
-        }
 
     } 
 })
