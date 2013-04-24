@@ -1,8 +1,16 @@
 angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
-.directive('helloSettings', function() {
+.directive('openform', function() {
     return {
         restrict: 'E'     
-      , template: '<h3>EMAIL SETTINGS</h3>'
+      , scope: {
+            widgetkey: "=widgetkey"   
+        }
+      , link: function(scope, element, attr) {
+            $(element).bind('click', function(e) {
+                console.log(scope.widgetkey);
+                e.preventDefault();
+            });
+        }
     }  
 })
 .directive('execItem', function(MessageService) { 
