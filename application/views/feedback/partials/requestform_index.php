@@ -49,7 +49,7 @@ Drop a request to someone you want to get feedback from. You can write your own 
                             <li ng-repeat="msg in get_request_msgs()">
                                 <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                                 <span style="float:right">
-                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="" id="{{msg.id}}">edit</a> 
+                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="edit_reply(msg.id, msg.msgtype, $event)" id="{{msg.id}}">edit</a> 
                                     <a href='#' delete-request ng-click="del_request(msg.id, $event)">delete</a>
                                 </span>
                             </li>
