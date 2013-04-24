@@ -45,17 +45,15 @@ Drop a request to someone you want to get feedback from. You can write your own 
                         <textarea class="regular-text" name="message" style="width: 266px" rows="7" id="recipient-message" ></textarea>
                     </td>
                     <td> 
-                        <span ng-controller="RequestCtrl" >
-                            <ul class="custom-message" style="margin-left:-10px">   
-                                <li ng-repeat="msg in get_request_msgs()">
-                                    <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
-                                    <span style="float:right">
-                                        <a href='#' edit-request req-text="{{msg.text}}" ng-click="" id="{{msg.id}}">edit</a> 
-                                        <a href='#' delete-request ng-click="del_request(msg.id, $event)">delete</a>
-                                    </span>
-                                </li>
-                            </ul>
-                        </span>
+                        <ul class="custom-message" style="margin-left:-10px">   
+                            <li ng-repeat="msg in get_request_msgs()">
+                                <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
+                                <span style="float:right">
+                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="" id="{{msg.id}}">edit</a> 
+                                    <a href='#' delete-request ng-click="del_request(msg.id, $event)">delete</a>
+                                </span>
+                            </li>
+                        </ul>
 
                         <div class="conf-repl" style="margin-left:-10px">
                             <?=HTML::link('settings', '(add request message)', array('class' => 'add-request-msg'))?>
