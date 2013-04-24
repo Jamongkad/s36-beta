@@ -50,7 +50,9 @@ angular.module('request', [])
                     var me = validate[i];
                     if($(me).val() == "") {
                         $(me).css({'border': '1px solid red'});
-                    }    
+                    } else { 
+                        $(me).removeAttr('style');
+                    }   
                 }
                 /* 
                 if($('#first_name').val() == "") {
