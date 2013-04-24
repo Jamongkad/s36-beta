@@ -1193,3 +1193,7 @@ margin-bottom: 3px;
 .attached-link-details{
     margin-left: 110px !important;
 }
+#invalid_email {
+    color: red;
+    margin-left: 10px;
+}
