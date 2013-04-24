@@ -9,6 +9,12 @@ function MainRequestCtrl($scope, MessageService) {
         return $scope.requests;     
     }
 
+    $scope.edit_reply = function(id, type, $event) {
+        MessageService.get_message(id, type);
+        $scope.tmplvar = MessageService.msgdata;
+        $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
+    }
+
     $scope.del_request = function(id, $event) {
         MessageService.delete_msg({'id': id, 'type': 'rqs'});
         $event.preventDefault();
