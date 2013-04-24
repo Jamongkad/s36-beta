@@ -4,7 +4,9 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
         restrict: 'A'     
       , link: function(scope, element, attr) {
             $(element).bind('click', function(e) {
+                var widgetkey = $(this).attr('widgetkey');
                 console.log("mathew");
+                console.log(widgetkey);
                 e.preventDefault();
             });
         }
