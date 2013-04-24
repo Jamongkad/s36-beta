@@ -63,6 +63,12 @@
                     -->
                 </ul>
             </div>
+            <?
+                $company = new Company\Repositories\DBCompany;
+                $company_info = $company->get_company_info(S36Auth::user()->companyid);
+                print_r($company_info);
+            ?>
+
             <div class="left-buttons">
                 <ul>
                     <li class="request" my-request><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
