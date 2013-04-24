@@ -44,6 +44,7 @@ angular.module('request', [])
             console.log($(this).val());
             if(validateEmail($.trim($(this).val()))) {
                 $(this).removeAttr('style');
+                $("#invalid_email").remove();
             } else {
                 $(this).css({'border': '1px solid red'});               
                 $("#invalid_email").remove();
