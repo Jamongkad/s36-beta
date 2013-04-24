@@ -98,7 +98,7 @@ angular.module('Services', [])
     }
 
     shared_service.register_request_message = function()  {
-        $rootScope.$broadcast('addRequestMessage');
+        $rootScope.$broadcast('fetchRequestMessage');
     }
 
     shared_service.register_reply_message = function()  {
