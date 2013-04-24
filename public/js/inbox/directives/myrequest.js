@@ -21,10 +21,12 @@ angular.module('request', [])
             }
 
             if(choice == 'Back') {
-                $scope.$apply(function() {
-                    $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }     
-                })      
+
             }
+
+            $scope.$apply(function() {
+                $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }     
+            })      
 
             e.preventDefault();
         })
