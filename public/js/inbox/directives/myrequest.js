@@ -54,7 +54,8 @@ angular.module('request', [])
                         validcount.push(i);
                     } else { 
                         $(me).removeAttr('style'); 
-                        validcount.pop();
+                        var index = validcount.indexOf(i);
+                        validcount.splice(index, 1);
                     }   
                 }
 
