@@ -45,13 +45,13 @@ Drop a request to someone you want to get feedback from. You can write your own 
                             <li ng-repeat="msg in get_request_msgs()">
                                 <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                                 <span style="float:right">
-                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="edit_reply(msg.id, msg.msgtype)" id="{{msg.id}}">edit</a> 
+                                    <a href='#' edit-request req-text="{{msg.text}}" ng-click="edit_request(msg.id, msg.msgtype)" id="{{msg.id}}">edit</a> 
                                     <a href='#' delete-request ng-click="del_request(msg.id, $event)">delete</a>
                                 </span>
                             </li>
                         </ul>
 
-                        <div class="conf-repl" style="margin-left:-10px">
+                        <div class="conf-repl" style="margin-left:-10px" ng-click="add_request()">
                             <?=HTML::link('settings', '(add request message)', array('class' => 'add-request-msg'))?>
                         </div>
                     </td>

@@ -10,17 +10,17 @@ function MainRequestCtrl($scope, MessageService) {
         return $scope.requests;     
     }
 
-    $scope.edit_reply = function(id, type) {
+    $scope.edit_request = function(id, type) {
         MessageService.get_message(id, type);
         $scope.tmplvar = MessageService.msgdata;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
     }
 
-    $scope.add_reply = function() { 
+    $scope.add_request = function() { 
         MessageService.msgdata = {};
         MessageService.msgdata.text = null;
         MessageService.msgdata.id = null;
-        MessageService.msgdata.msgtype = 'msg';
+        MessageService.msgdata.msgtype = 'rqs';
         $scope.tmplvar = MessageService.msgdata;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form" };
     }
