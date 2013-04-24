@@ -1,7 +1,7 @@
 angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('openform', function() {
     return {
-        restrict: 'E'     
+        restrict: 'A'     
       , scope: {
             widgetkey: "=widgetkey"   
         }
