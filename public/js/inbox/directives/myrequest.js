@@ -46,35 +46,21 @@ angular.module('request', [])
             if(choice == 'Send') {
                 var data = $('form#request-form').serializeForm();
                 var validate = ['#first_name', '#last_name', '#recipient-email', '#recipient-message'];
+                var isvalid = false
                 for(var i=0; i<validate.length; i++) {
                     var me = validate[i];
                     if($(me).val() == "") {
                         $(me).css({'border': '1px solid red'});
                     } else { 
                         $(me).removeAttr('style');
+                        isvalid = true;
                     }   
                 }
-                /* 
-                if($('#first_name').val() == "") {
-                    $('#first_name').css({
-                        'border': '1px solid red'
-                    })
-                } else if($('#last_name').val() == "") {
-                    $('#last_name').css({
-                        'border': '1px solid red'
-                    })
-                } else if($('#recipient-email').val() == "") {
-                    $('#recipient-email').css({
-                        'border': '1px solid red'
-                    })
-                } else if($('#recipient-message').val() == "") {
-                    $('#recipient-message').css({
-                        'border': '1px solid red'
-                    })
-                } else {
-                    console.log(data);    
+                
+                if(isvalid) {
+                    console.log(data);         
                 }
-                */
+               
                 /*
                 $(element).parents('#request-form').validate({
                     submitHandler: function(form) {
