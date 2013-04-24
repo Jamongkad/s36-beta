@@ -4,7 +4,6 @@
 <span class="gray">
 Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. 
 </span>
-
 <br />
 <div class="lightbox-form">
         <br />
