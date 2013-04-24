@@ -49,11 +49,21 @@ angular.module('request', [])
                 var validcount = [];
                 for(var i=0; i<validate.length; i++) {
                     var me = validate[i];
-                    if($(me).val() == "") {
+                    if(me == "#recipient-email") {
+                        if( $(me).val() == "" or validateEmail($(me).val()) ) {
+                            $(me).css({'border': '1px solid red'});
+                            console.log('push ' + me);
+                            validcount.push(me);
+                        } else { 
+                            $(me).removeAttr('style'); 
+                            console.log('pop ' + me);
+                            removeA(validcount, me);
+                        }    
+                    }
+                    if($(me).val() == "" && me != "#recipient-email") {
                         $(me).css({'border': '1px solid red'});
                         console.log('push ' + me);
                         validcount.push(me);
-                        console.log(validateEmail($(me).val())); 
                     } else { 
                         $(me).removeAttr('style'); 
                         console.log('pop ' + me);
