@@ -2,12 +2,9 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('openform', function() {
     return {
         restrict: 'A'     
-      , scope: {
-            widgetkey: "=widgetkey"   
-        }
       , link: function(scope, element, attr) {
             $(element).bind('click', function(e) {
-                console.log(scope.widgetkey);
+                console.log("mathew");
                 e.preventDefault();
             });
         }
