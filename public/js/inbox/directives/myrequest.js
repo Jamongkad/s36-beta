@@ -56,7 +56,7 @@ angular.module('request', [])
                     } else { 
                         $(me).removeAttr('style'); 
                         console.log('pop ' + i);
-                        validcount.pop();
+                        removeA(validcount, i);
                     }   
                 }
 
@@ -153,18 +153,6 @@ angular.module('request', [])
             $(element).bind('click', function(e) {
                 $("#send_button").val("Save");
                 $("#cancel_button").val("Back");
-                /*
-                var msgid = $(this).attr('id');
-                var configure = $('.modal-configure');
-                var req_text = $(this).parents('span').siblings('a').attr('req-text');
-
-                configure.dialog({ zIndex: 100001 });
-                configure.dialog("open"); 
-                configure.children('#msgid').val(msgid);
-                configure.children('.regular-text').val(req_text);
-                configure.children('#msgtype').val("rqs");
-                configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
-                */
                 e.preventDefault();
             });
         }
@@ -177,16 +165,6 @@ angular.module('request', [])
             $(element).bind('click', function(e) {
                 $("#send_button").val("Save");
                 $("#cancel_button").val("Back");
-                /*
-                var configure = $('.modal-configure');
-
-                configure.dialog({ zIndex: 100001 });
-                configure.dialog("open");
-                configure.children('#msgid').val('');
-                configure.children('.regular-text').val('');
-                configure.children('#msgtype').val("rqs");
-                configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
-                */
                 e.preventDefault();
             });
         }
@@ -204,3 +182,14 @@ angular.module('request', [])
         }
     }     
 })
+
+function removeA(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+}
