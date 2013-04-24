@@ -1,5 +1,6 @@
 function MainRequestCtrl($scope, MessageService) { 
-    $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }
+
+    $scope.template = { name: "request_form", url: "/feedback/load_request_form" }
 
     var type = "rqs";
     MessageService.get_messages(type);
@@ -9,7 +10,7 @@ function MainRequestCtrl($scope, MessageService) {
         return $scope.requests;     
     }
 
-    $scope.edit_reply = function(id, type, $event) {
+    $scope.edit_reply = function(id, type) {
         MessageService.get_message(id, type);
         $scope.tmplvar = MessageService.msgdata;
         $scope.template = { name: "edit_form", url: "/feedback/load_edit_form/" };
