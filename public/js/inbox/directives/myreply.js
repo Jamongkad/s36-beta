@@ -25,7 +25,7 @@ angular.module('reply', [])
         }
     } 
 })
-.directive('replyCancel', function(){
+.directive('replyCancel', function(MessageService){
     return function($scope, element, attrs){
         $(element).bind('click', function(e) {
 
@@ -48,6 +48,9 @@ angular.module('reply', [])
             }
 
             $("#send_button").val("Send");
+
+            MessageService.fetch_messages('msg');     
+            MessageService.register_request_message();
  
             e.preventDefault();
         });

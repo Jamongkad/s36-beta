@@ -45,7 +45,26 @@ angular.module('request', [])
             var choice = $(this).attr('value');                  
             if(choice == 'Send') {
                 var data = $('form#request-form').serializeForm();
-                console.log(data);
+                
+                if($('#first_name').val() == "") {
+                    $('#first_name').css({
+                        'border': '1px solid red'
+                    })
+                } else if($('#last_name').val() == "") {
+                    $('#last_name').css({
+                        'border': '1px solid red'
+                    })
+                } else if($('#recipient-email').val() == "") {
+                    $('#recipient-email').css({
+                        'border': '1px solid red'
+                    })
+                } else if($('#recipient-message').val() == "") {
+                    $('#recipient-message').css({
+                        'border': '1px solid red'
+                    })
+                } else {
+                    console.log(data);    
+                }
                 /*
                 $(element).parents('#request-form').validate({
                     submitHandler: function(form) {
