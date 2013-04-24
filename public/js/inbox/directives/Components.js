@@ -5,8 +5,9 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
       , link: function(scope, element, attr) {
             $(element).bind('click', function(e) {
                 var widgetkey = $(this).attr('widgetkey');
-                console.log("mathew");
                 console.log(widgetkey);
+                createLightboxes();
+                s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey);  
                 e.preventDefault();
             });
         }
