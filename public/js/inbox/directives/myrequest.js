@@ -38,6 +38,13 @@ angular.module('request', [])
         })
     } 
 })
+.directive('requestemail', function() {
+    return function(scope, element, attrs) {
+        $(element).bind('keyup', function() {
+            console.log($(this).val());
+        })
+    }
+})
 .directive('myRequestSend', function(MessageService) {
     return function($scope, element, attr) {
 
@@ -49,21 +56,10 @@ angular.module('request', [])
                 var validcount = [];
                 for(var i=0; i<validate.length; i++) {
                     var me = validate[i];
-                    if(me == "#recipient-email") {
-                        if( $(me).val() == "" || !validateEmail($(me).val()) ) {
-                            $(me).css({'border': '1px solid red'});
-                            console.log('push ' + me);
-                            validcount.push(me);
-                        } else { 
-                            $(me).removeAttr('style'); 
-                            console.log('pop ' + me);
-                            removeA(validcount, me);
-                        }    
-                    }
-                    if($(me).val() == "" && me != "#recipient-email") {
+                    if($(me).val() == "") {
                         $(me).css({'border': '1px solid red'});
                         console.log('push ' + me);
-                        validcount.push(me);
+                        validcount.push(me);                        
                     } else { 
                         $(me).removeAttr('style'); 
                         console.log('pop ' + me);

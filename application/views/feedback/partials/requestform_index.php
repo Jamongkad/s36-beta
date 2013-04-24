@@ -30,7 +30,7 @@ Drop a request to someone you want to get feedback from. You can write your own 
                     <label>Email : </label>
                     </td>
                     <td>
-                        <input type="text" name="email" class="regular-text" id="recipient-email" value=""/>
+                        <input type="text" name="email" class="regular-text" id="recipient-email" requestemail value=""/>
                     </td>
                 </tr>
                 <tr>
