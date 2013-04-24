@@ -51,46 +51,33 @@ angular.module('request', [])
                     var me = validate[i];
                     if($(me).val() == "") {
                         $(me).css({'border': '1px solid red'});
-                        console.log('push ' + i);
-                        validcount.push(i);
+                        console.log('push ' + me);
+                        validcount.push(me);
+                        if(me == "#recipient-email") {
+                            if(validateEmail($(me).val())) { 
+                                $(me).css({'border': '1px solid red'});
+                                console.log('push ' + me);
+                                validcount.push(me);
+                            }
+                        }
                     } else { 
                         $(me).removeAttr('style'); 
-                        console.log('pop ' + i);
-                        removeA(validcount, i);
+                        console.log('pop ' + me);
+                        removeA(validcount, me);
                     }   
                 }
 
                 console.log(validcount);
                 if(validcount.length == 0)  {
                     console.log(data);              
+                    MessageService.send_request_email(data, function() { 
+                        alert("Your request has been sent!");
+                        $(form).clearForm();
+                        $('div#request-feedback').draggable("destroy");
+                        $(element).parents('.request-dialog').fadeOut(); 
+                    })
                 }
-               
-
-               
-                /*
-                $(element).parents('#request-form').validate({
-                    submitHandler: function(form) {
-                        $(form).ajaxSubmit({ 
-                            success: function(data) {
-                                alert("Your request has been sent!");
-                                $(form).clearForm();
-                                $('div#request-feedback').draggable("destroy");
-                                $(element).parents('.request-dialog').fadeOut(); 
-                            }
-                        }) 
-                    }
-                  , errorElement: "em"
-                  , rules: {
-                        first_name: { required: true }    
-                      , last_name: { required: true }
-                      , message: { required: true }
-                      , email: {
-                            required: true   
-                          , email: true 
-                        }
-                    }
-                }); 
-                */
+                
             }
 
             if(choice == 'Save') {
@@ -192,4 +179,9 @@ function removeA(arr) {
         }
     }
     return arr;
+}
+
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
 }
