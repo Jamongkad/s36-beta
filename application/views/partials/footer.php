@@ -35,8 +35,6 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
-<?=HTML::script('/fullpage/common/js/s36_client_script.js')?>
-
 <?=HTML::script('js/jquery.validate.js')?>
 <?=HTML::script('js/jquery.serializeform.js')?>
 <?=HTML::script('js/jquery.formbuilder.js')?>
@@ -92,6 +90,11 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?endif?>
 
 </div>
+<script type="text/javascript">
+                var widgetId = '47w09';
+                                var host = (("https:" == document.location.protocol) ? "https://" : "http://");
+                                                document.write(unescape("%3Cscript src='" + host + "mathew-staging.gearfish.com/widget/js_output?widgetId="+widgetId+"' type='text/javascript'%3E%3C/script%3E"));
+</script> 
 
 <div id="notification">
 	<div id="notification-design">
@@ -101,4 +104,5 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
     </div>
 </div>
 </body>
+
 </html>
