@@ -66,7 +66,6 @@
             <?
                 $company = new Company\Repositories\DBCompany;
                 $company_info = $company->get_company_info(S36Auth::user()->companyid);
-                print_r($company_info->widgetkey);
             ?>
 
             <div class="left-buttons">
