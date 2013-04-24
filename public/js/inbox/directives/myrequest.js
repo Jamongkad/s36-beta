@@ -47,6 +47,12 @@ angular.module('request', [])
                     }
                 }); 
             }
+
+            if(choice == 'Save') {
+                console.log('saving');
+            }
+
+            e.preventDefault();
         })
 
     } 
