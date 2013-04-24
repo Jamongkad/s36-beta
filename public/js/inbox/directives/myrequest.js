@@ -50,7 +50,7 @@ angular.module('request', [])
                 for(var i=0; i<validate.length; i++) {
                     var me = validate[i];
                     if(me == "#recipient-email") {
-                        if( $(me).val() == "" or !validateEmail($(me).val()) ) {
+                        if( $(me).val() == "" || !validateEmail($(me).val()) ) {
                             $(me).css({'border': '1px solid red'});
                             console.log('push ' + me);
                             validcount.push(me);
