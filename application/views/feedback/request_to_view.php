@@ -10,8 +10,8 @@
         <div class="lightbox-padding"></div> 
         <div class="lightbox-footer">
             <div class="lightbox-buttons">
-                <input type="button" class="large-btn" value="Cancel" my-request-close/>
-                <input type="submit" class="large-btn" value="Send" my-request-send/>
+                <input type="button" id="cancel_button" class="large-btn" value="Cancel" my-request-close/>
+                <input type="submit" id="send_button" class="large-btn" value="Send" my-request-send/>
             </div>
         </div>
     </div>
