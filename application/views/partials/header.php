@@ -72,7 +72,9 @@
             <div class="left-buttons">
                 <ul>
                     <li class="request" my-request><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
-                    <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback', array('openform' => '', 'widgetkey' => $company_info->widgetkey))?></li>
+                    <li class="add">
+                        <a href="/feedback/addfeedback" openform widgetkey="<?=$company_info->widgetkey?>">Add Feedback</a>
+                    </li>
                     <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?></li>
                 </ul>
             </div>
