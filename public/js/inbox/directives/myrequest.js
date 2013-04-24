@@ -36,7 +36,7 @@ angular.module('request', [])
     } 
 })
 .directive('myRequestSend', function(MessageService) {
-    return function(scope, element, attr) {
+    return function($scope, element, attr) {
 
         $(element).bind('click', function(e) {
             var choice = $(this).attr('value');                  
