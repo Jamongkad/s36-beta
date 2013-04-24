@@ -42,7 +42,11 @@ angular.module('request', [])
     return function(scope, element, attrs) {
         $(element).bind('keyup', function() {
             console.log($(this).val());
-            console.log(validateEmail($.trim($(this).val())));
+            if(validateEmail($.trim($(this).val()))) {
+                $(this).removeAttr('style');
+            } else {
+                $(this).css({'border': '1px solid red'});               
+            }
         })
     }
 })
