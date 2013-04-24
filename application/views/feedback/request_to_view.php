@@ -1,7 +1,7 @@
 <!-- start of lightbox request feedback -->
 <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'request-form'))?>
 <div id="request-feedback" class="lightbox">
-    <div class="lightbox-close" my-request-close></div>
+    <div class="lightbox-close" my-request-close value="Cancel" ></div>
     <div class="lightbox-styles" ng-controller="MainRequestCtrl">
         <h2>Request Feedback</h2>
         <div class="lightbox-content">
