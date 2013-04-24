@@ -42,6 +42,7 @@ angular.module('request', [])
     return function(scope, element, attrs) {
         $(element).bind('keyup', function() {
             console.log($(this).val());
+            console.log(validateEmail($(this).val()));
         })
     }
 })
