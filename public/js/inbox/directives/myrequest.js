@@ -51,11 +51,12 @@ angular.module('request', [])
                     var me = validate[i];
                     if($(me).val() == "") {
                         $(me).css({'border': '1px solid red'});
+                        console.log('push ' + i);
                         validcount.push(i);
                     } else { 
                         $(me).removeAttr('style'); 
-                        var index = validcount.indexOf(i);
-                        validcount.splice(index, 1);
+                        console.log('pop ' + i);
+                        validcount.pop();
                     }   
                 }
 
