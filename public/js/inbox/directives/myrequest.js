@@ -46,16 +46,19 @@ angular.module('request', [])
             if(choice == 'Send') {
                 var data = $('form#request-form').serializeForm();
                 var validate = ['#first_name', '#last_name', '#recipient-email', '#recipient-message'];
-                var isvalid = false
+                var validcount = [];
                 for(var i=0; i<validate.length; i++) {
                     var me = validate[i];
                     if($(me).val() == "") {
                         $(me).css({'border': '1px solid red'});
+                        validcount.push(i);
                     } else { 
-                        $(me).removeAttr('style');
-                        isvalid = true;
+                        $(me).removeAttr('style'); 
+                        validcount.pop();
                     }   
                 }
+
+                console.log(validcount);
                 
                 if(isvalid) {
                     console.log(data);         
