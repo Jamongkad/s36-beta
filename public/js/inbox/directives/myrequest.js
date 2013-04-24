@@ -10,10 +10,22 @@ angular.module('request', [])
     }
 })
 .directive('myRequestClose', function() {
-    return function(scope, element, attr) {
+    return function($scope, element, attr) {
         $(element).bind('click', function(e) {
-            $('.request-dialog').fadeOut();
-            $('div#request-feedback').draggable("destroy");
+
+            var choice = $(this).attr('value');                  
+
+            if(choice == 'Cancel') { 
+                $('.request-dialog').fadeOut();
+                $('div#request-feedback').draggable("destroy");
+            }
+
+            if(choice == 'Back') {
+                $scope.$apply(function() {
+                    $scope.template = { name: "reply_form", url: "/feedback/load_request_form" }     
+                })      
+            }
+
             e.preventDefault();
         })
     } 
