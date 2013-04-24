@@ -9,7 +9,7 @@
         </span>
 
     <br />
-    </div>
+
 
         <div ng-include src="template.url"></div>
 
