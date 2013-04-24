@@ -1,5 +1,5 @@
 <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'request-form'))?>
-<div class="lightbox-content">
+
 <span class="gray">
 Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. 
 </span>
@@ -61,12 +61,4 @@ Drop a request to someone you want to get feedback from. You can write your own 
             </table>
         </div>
     </div>
-</div>
-<div class="lightbox-padding"></div> 
-<div class="lightbox-footer">
-    <div class="lightbox-buttons">
-        <input type="button" class="large-btn" value="Cancel" my-request-close/>
-        <input type="submit" class="large-btn" value="Send" my-request-send/>
-    </div>
-</div>
 <?=Form::close()?>
