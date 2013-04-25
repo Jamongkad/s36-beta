@@ -30,7 +30,7 @@ class DBFeedbackReports extends S36DataObject {
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        Helpers::dump($result);
+        return $result; 
     }
 
 	public function get_feebackReport($feedbackId){
