@@ -4,10 +4,10 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
         restrict: 'A'     
       , link: function(scope, element, attr) {
             $(element).bind('click', function(e) {
-                var widgetkey = $(this).attr('widgetkey');
-                console.log(widgetkey);
+                var widgetkey = $(this).attr('widgetkey'); 
                 createLightboxes();
                 s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey);  
+                $('#s36_modalbox').css({'top': '30%'});
                 e.preventDefault();
             });
         }
