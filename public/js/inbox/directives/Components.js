@@ -8,7 +8,6 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
                 createLightboxes();
                 s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey + "&addfeedback=1");  
                 $('#s36_modalbox').css({'top': '35%'});
-                $('.form-page-head h1').text('Add Feedback');
                 e.preventDefault();
             });
         }
