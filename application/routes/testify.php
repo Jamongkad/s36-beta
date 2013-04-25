@@ -10,6 +10,22 @@ return array(
         //TODO: 09-13-2012 this feature will be temporarily closed off until further notice.
         $tf->run();
     },
+    
+    'GET /testify/feedbackreports' => function() {     
+        $tf = new Testify("Feedback Reports");
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->fr = new Feedback\Repositories\DBFeedbackReports;
+        });
+        
+        $tf->test('Test', function($tf) {
+            $reports = $tf->data->fr->get_reports_by_companyid(6);
+            $tf->dump($reports);
+        });
+        
+
+        $tf->run(); 
+    },
 
     'GET /testify/publishservice' => function() { 
 
