@@ -24,6 +24,10 @@ class DBFeedbackReports extends S36DataObject {
 		return $this->reportTypes;
 	}
 
+    public function get_reports_by_companyid($company_id) { 
+		$sql = "SELECT reportType,count(reportType) as count FROM {$this->dbtable} WHERE feedbackId = :feedback_id GROUP BY reportType";
+    }
+
 	public function get_feebackReport($feedbackId){
 		$sql = "SELECT reportType,count(reportType) as count FROM {$this->dbtable} WHERE feedbackId = :feedback_id GROUP BY reportType";
         $sth = $this->dbh->prepare($sql);
@@ -80,7 +84,7 @@ class DBFeedbackReports extends S36DataObject {
 
 	public function removeReport($data){
 
-			$sql = "UPDATE FeedbackActions set flagged='' WHERE ip_address = :report_ip and feedbackId = :feedback_id";
+			$sql = "UPDATE FeedbackActions set flagged=NULL WHERE ip_address = :report_ip and feedbackId = :feedback_id";
 			$sth = $this->dbh->prepare($sql);
 	        $sth->bindParam(':feedback_id', $data['feedbackId'], PDO::PARAM_INT);
 	        $sth->bindParam(':report_ip', $data['reportIp'], PDO::PARAM_STR);
