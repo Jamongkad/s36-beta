@@ -139,11 +139,7 @@
                 <div class="hosted-block">
                         <div class="company-description clear">
                             <div class="company-text" style="width:100%">
-                                <? // keep the content of fullpage_desc_text in one line. ?>
                                 <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
-                                <?php if( ! is_null($user) ): ?>
-                                    <textarea id="fullpage_desc_textbox" rows="3"></textarea>
-                                <?php endif; ?>
                             </div>
                         </div>
                 </div>
