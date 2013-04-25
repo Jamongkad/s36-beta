@@ -33,13 +33,13 @@ return array(
         $rules = Array(
             'username' => 'required'
           , 'fullName' => 'required'
-          , 'email' => 'required|email|s36email'
+          , 'email' => 'required|email'
           , 'password' => 'required|min:8|confirmed'
           , 'title' => 'required'
           , 'perms' => 'required'
         );
 
-        $validator = Validator::make($data, $rules, Array('s36email' => 'This email is already taken.'));
+        $validator = Validator::make($data, $rules);
         
         if(!$validator->valid()) {
             return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
@@ -56,7 +56,18 @@ return array(
             $admin = new DBAdmin;
             $admin->perms_data = $perm_factory->build();
             $admin->input_data = (object)$data; 
-            $admin->save();
+            $user_id = $admin->save();
+            
+            // move the avatar to permanent dir.
+            $filename = 'avatar_' . $user_id . '.' . pathinfo($data['avatar'], PATHINFO_EXTENSION);
+            $src = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $data['tmp_avatar'];
+            $des = Config::get('application.uploaded_images_dir') . '/admin_avatar/' . $filename;
+            if( file_exists($src) && is_file($src) ) rename($src, $des);
+            
+            DB::table('User', 'master')
+                ->where('userId', '=', $user_id)
+                ->update( array('avatar' => $filename) );
+            
             return Redirect::to('admin'); 
         } 
 
@@ -68,8 +79,10 @@ return array(
         $details = $admin->fetch_admin_details_by_id($id);
         
         return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
-            'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-          , 'errors' => Array(), 'admin' => $user
+            'admin_details' => $details
+          , 'ims' => DB::Table('IM', 'master')->get()
+          , 'errors' => Array()
+          , 'admin' => $user
           , 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
         ));
      }),
@@ -107,6 +120,12 @@ return array(
             $admin->perms_data = $perm_factory->build();
             $admin->input_data = (object)$data; 
             $admin->update($user);
+            
+            // move the avatar to permanent dir.
+            $src = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $data['tmp_avatar'];
+            $des = Config::get('application.uploaded_images_dir') . '/admin_avatar/' . $data['avatar'];
+            if( file_exists($src) && is_file($src) ) rename($src, $des);
+            
             return Redirect::to('admin');    
         }
      },

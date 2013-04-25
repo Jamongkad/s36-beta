@@ -24,7 +24,33 @@
             <div id="coverPhotoContainer">
                 
                 <?php if( ! is_null($user) ): ?>
-                    <div id="changeCoverButton">
+                    
+                    <div id="changeCoverButtonIcon">
+                        <div id="coverMenuList">
+                            <ul>
+                                <li id="coverChange">
+                                    Change cover photo
+                                    <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
+                                </li>
+                                <li id="coverReposition" style="<?= ( is_null($company->coverphoto_src) ? 'display: none;' : '' ); ?>">
+                                    Reposition
+                                </li>
+                                <li id="coverRemove" style="<?= ( is_null($company->coverphoto_src) ? 'display: none;' : '' ); ?>">
+                                    Remove
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="dragPhoto">Drag Image to Reposition Cover</div>
+                    <div id="saveCoverButton">Save</div>
+                    <div id="coverActionButtons">
+                        <ul>
+                            <li><a id="save_cover_photo" href="javascript:;">Save</a></li>
+                            <li><a id="cancel_cover_photo" href="javascript:;">Cancel</a></li>
+                        </ul>                   
+                    </div>
+                    
+                    <!-- <div id="changeCoverButton">
                         <div id="changeButtonText">
                             <span>Change Cover</span>
                         </div>
@@ -35,10 +61,15 @@
                     </div>
                     <div id="dragPhoto">
                         Drag Image to Reposition Cover
-                    </div>
+                    </div> -->
                 <?php endif; ?>
                 
                 <div id="coverPhoto">
+                    <?php if( ! is_null($user) ): ?>
+                        <?php $src = ( is_null($company->coverphoto_src) ? 'img/sample-cover.jpg' : '/uploaded_images/coverphoto/' . $company->coverphoto_src ); ?>
+                        <input type="hidden" id="hidden_cover_photo" src="<?php echo $src; ?>" style="top: <?php echo (int)$company->coverphoto_top; ?>px; position: relative;" />
+                    <?php endif; ?>
+                    
                     <?php if( ! is_null($company->coverphoto_src) ): ?>
                         <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
                     <?php else: ?>
@@ -63,6 +94,44 @@
                             <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
                         </a>
                     </div>
+                </div>
+                
+                
+                <!-- profile pic -->
+                <div id="avatarContainer">
+                    <?php if( ! is_null($user) ): ?>
+                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/' . $company->logo ); ?>
+                        <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
+                        <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
+                    <?php endif; ?>
+                    
+                    <?php if( ! empty($company->logo) ): ?>
+                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" />
+                    <?php else: ?>
+                        <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
+                    <?php endif; ?>
+                    
+                    <?php if( ! is_null($user) ): ?>
+                        <div id="avatarButtonIcon">
+                            <div id="avatarMenuList">
+                                <ul>
+                                    <li><a href="javascript:;">
+                                        Change Photo
+                                        <input type="file" id="company_logo" data-url="imageprocessing/upload_company_logo" />
+                                    </a></li>
+                                    <li id="remove_logo" style="<?php echo ( empty($company->logo) ? 'display: none;' : '' ); ?>">
+                                        <a href="javascript:;">Remove</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="logoActionButtons">
+                            <ul>
+                                <li><a id="save_company_logo" href="javascript:;">Save</a></li>
+                                <li><a id="cancel_company_logo" href="javascript:;">Cancel</a></li>
+                            </ul>                   
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
             
@@ -191,7 +260,7 @@
         function update() {
             if( $(window).scrollTop() + $(window).height() == $(document).height() ) {
                 if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
-
+                
                 counter += 1;
                 var page_counter = counter + 1;
 
@@ -207,7 +276,7 @@
                     }
                 });
             }
-
+            
             fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
             fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
             S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
@@ -262,3 +331,81 @@
 */
 ?>
 <div id="fullpage_css"><?php echo $fullpage_css; ?></div>
+
+<div id="flagBoxDiv" style="display:none">
+<div id="flagBox">
+<input class="flag-feedback-id" type="hidden" value=""/>
+<div class="flagbox-content">
+        <div class="flagbox-head">
+            <h2>Flag as Inappropriate</h2>
+        </div>
+        <div class="alert-message" style="display:none">
+        </div>
+        <div id="report_type_list" class="flagbox-body">
+            <div class="padded-5">
+                <ul>
+                <?php
+                foreach($reportTypes as $report_id=>$report_desc):
+                ?>
+                    <li>
+                        <input class="feedbackReportItem flag-item-<?=$report_id?>" type="radio" name="flag-item" value="<?=$report_id?>" />
+                        <label id="flag-item-<?=$report_id?>" class="reportTypeLabel"><?=$report_desc?></label>
+                    </li>
+                <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="flagbox-foot">
+                <div class="fdback-buttons">
+                    <ul>
+                        <li><a class="continue_report" href="#">Continue</a></li>
+                        <li><a onClick="parent.jQuery.fancybox.close();" href="#">Cancel</a></li>
+                    </ul>                   
+                </div>
+            </div>
+        </div>
+        
+        <div id="report_user_info" class="flagbox-body" style="display:none">
+            <div class="padded-5">
+                <ul>
+                    <li>To Continue, Fill up the fields below <br /><br /></li>
+                        <li>
+                            <label>Your Name :</label><br />
+                            <input id="report_name" type="text" name="flagger-name" class="regular-text" title="Your Name" />
+                        </li>
+                        <li>
+                            <label>Your Email :</label><br />
+                            <input id="report_email" type="text" name="flagger-email" class="regular-text" title="Your Email" />
+                        </li>
+                        <li>
+                            <label>Your Company (optional) :</label><br />
+                            <input id="report_company" type="text" name="flagger-company" class="regular-text" title="Your Company (optional)" />
+                        </li>
+                        <li>
+                            <label>Comments (optional) :</label><br />
+                            <textarea id="report_comment" title="Comments"></textarea>
+                        </li>
+                    </ul>
+                </div>
+            <div class="flagbox-foot">
+            <div class="fdback-buttons">
+                    <ul>
+                        <li><a id="back_report" href="#">Back</a></li>
+                        <li><a class="continue_report" href="#">Continue</a></li>
+                        <li><a onClick="parent.jQuery.fancybox.close();" href="#">Cancel</a></li>
+                    </ul>                   
+            </div>
+            </div>
+        </div>
+
+        <div id="report_final" class="flagbox-foot" style="display:none">
+            <div class="fdback-buttons">
+                    <ul>
+                        <li><a onClick="parent.jQuery.fancybox.close();" href="#">Close</a></li>
+                    </ul>                   
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+

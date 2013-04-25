@@ -17,6 +17,6 @@ class Invitation extends EmailFixture {
     }
     
     public function get_subject() {
-        return "36Stories: Admin Invitation";
+        return "FDBack: Admin Invitation";
     } 
 }

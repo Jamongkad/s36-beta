@@ -1,7 +1,11 @@
+<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?= HTML::script('/js/jquery.ui.widget.js'); ?>
+<?= HTML::script('/js/jquery.fileupload.js'); ?>
+<?= HTML::script('/js/helpers.js'); ?>
+<?= HTML::script('/js/inbox/Status.js'); ?>
 <?=Form::open_for_files('settings/save_companysettings')?>
-<?=Form::hidden('companyid', $user->companyid)?>
-<?=Form::hidden('logo', $company->logo)?>
-
+<?=Form::hidden('companyid', $user->companyid, array('id' => 'company_id'))?>
+<?=Form::hidden('logo', $company->logo, array('id' => 'logo'))?>
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>COMPANY PROFILE SETTINGS</h3>
@@ -17,7 +21,10 @@
             <br />
             <div class="grids">
                 <div class="g2of3"><strong>Add Company Logo</strong> <br />Select your company's logo and upload it here, it will be uploaded upon pressing the 'Save Settings' button.</div>
-                <div class="g2of3"><br /><input type="file" id="your_photo" class="fileupload regular-text" name="your_photo" /> </div>
+                <div class="g2of3"><br />
+                    <!-- <input type="file" name="your_photo" id="your_photoXXX" class="fileupload regular-text" /> -->
+                    <input type="file" id="company_logo" data-url="/imageprocessing/upload_company_logo" />
+                </div>
             </div>
             
             <br />
@@ -28,12 +35,14 @@
             </div>
             <div class="grids">
                 <div id="image-container">
-                <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
-                    <?if($company->logo):?>
-                        <?=HTML::image('company_logos/'.$company->logo)?>
-                    <?else:?>
-                        <?=HTML::image('img/company-logo-filler.jpg')?>
-                    <?endif?>
+                    <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
+                    <div id="image-sub-container">
+                        <?if($company->logo):?>
+                            <img src="/uploaded_images/company_logos/<?php echo $company->logo . '?' . str_shuffle(md5('get rid of cache')); ?>" width="100%" />
+                        <?else:?>
+                            <img src="/img/company-logo-filler.jpg" width="100%" />
+                        <?endif?>
+                    </div>
                 </div>
             </div>
             <br />
@@ -48,15 +57,15 @@
             &nbsp;
         </div>
     </div>
-    <br /> 
+    <!-- <br />  -->
     <div class="grids">
         <div class="g3of4">
             <div class="grids">
-                <strong>
+                <!-- <strong>
                     <a href="<?=$url?>" id="preview-link" class="dark-blue" target="_blank" style="text-decoration:underline">Link preview this on your public feedback page</a>
                 </strong>
                 <p>If you leave a field empty, it will not appear on your public feedback page</p>
-                <br />
+                <br /> -->
                 <input type="submit" class="large-btn" value="Save Settings" />
             </div>
         </div>
@@ -78,6 +87,38 @@ jQuery(function($) {
 
     $(document).delegate('input[name="fullpagecompanyname"]', 'keyup', function(e) { 
         $("a#preview-link").attr('href', '<?=$url?>' + '?sample_name='+ $(this).val());
+    });
+    
+    
+    var myStatus = new Status();
+    
+    $('#company_logo').fileupload({
+        dataType: 'json',
+        add: function(e, data){
+            var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
+            if( image_types.indexOf( data.files[0].type ) == -1 ){
+                myStatus.notify('Please select an image file', 3000);
+                return false;
+            }
+            if( data.files[0].size > 2000000 ){
+                myStatus.notify('Please upload an image not greater than 2mb in filesize', 3000);
+                return false;
+            }
+            data.submit();
+        },progress: function(e, data){
+            //myStatus.notify('Changing Profile Picture', 3000);
+            $('#image-sub-container img').css('opacity', '0.2');
+        },done: function(e, data){
+            // set the new src for the image. the additional ? or any get param at the end of the src
+            // refereshes the displayed image. this is it dan, you bits!
+            // we also need the ext from result because they differ from server side.
+            var ext = data.result[0].name.split('.').pop();
+            var rand_str = '?' + Helpers.get_random_str(5);
+            var new_src = '/uploaded_images/uploaded_tmp/logo_' + $('#company_id').val() + '.' + ext + rand_str;
+            $('#image-sub-container img').attr('src', new_src).animate({'opacity': '1'});
+            $('#logo').val('logo_' + $('#company_id').val() + '.' + ext);
+            //self.hide_notification();
+        }
     });
 })
 </script>

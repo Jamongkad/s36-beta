@@ -13,7 +13,8 @@
         <?php
 
         foreach ($feed_list as $feed) : 
-            $admin_avatar               = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
+            $admin_avatar               = ( ! is_null($user) ? '/uploaded_images/admin_avatar/' . $user->avatar : '/img/48x48-blank-avatar.jpg' );
+            $admin_avatar               = ($feed->feed_data->admin_avatar) ? '/uploaded_images/admin_avatar/' . $feed->feed_data->admin_avatar : $admin_avatar;
             $admin_companyname          = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname; 
             $feedback_id                = $feed->feed_data->id;
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
@@ -111,7 +112,7 @@
                 </div>
             <?php endif; ?>
             <div class="feedback-text">
-                <p><?= HTML::entities($feed->feed_data->text);?></p>
+                <?= nl2br(HTML::entities($feed->feed_data->text));?>
             </div>
             <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>
@@ -250,8 +251,8 @@
                     </div>
                 </div> -->
                 <div style="float: right;">
-                    <div class="feedback-icon">
-                        <div class="feedback-icon-class flag-icon <?= ($flagged ? 'undo_flag_inapp active-icon' : 'flag-as-inapp'); ?>"></div>
+                    <div class="flag-feedback feedback-icon <?=($flagged!=1) ? 'flag-feedback-fancy' : '' ?>" fid="<?=$feedback_id;?>">
+                        <div id="flag-feedback-icon-<?=$feedback_id;?>" class="feedback-icon-class flag-icon <?= ($flagged ? 'undo_flag_inapp active-icon' : 'flag-as-inapp'); ?>"></div>
                         <div class="icon-tooltip">
                             <div class="icon-tooltip-text">
                                 <?php if( $flagged ): ?>

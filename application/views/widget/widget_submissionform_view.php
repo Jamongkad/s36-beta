@@ -1,31 +1,131 @@
+<?php
+/*
+| Pre-Loader Start
+*/
+?>
+    <script type="text/javascript">
+    //<![CDATA[
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#thePreloadStatus').fadeOut(); // will first fade out the loading animation
+            $("#thePreloader").delay(350).fadeOut("slow"); // will fade out the white DIV that covers the website.
+        });
+    //]]>
+    </script>
 
-<!-- file upload js requirements -->
-
-<!-- link preview js -->
-<?=HTML::script('js/link.preview.js');?>
-<!-- link preview js -->
-<!--[if lt IE 8]>
-    <script src="js/ie7.js"></script>
-<![endif]-->
-<?
-$facebook_username = Null;
-$twitter_username = Null;
-if($twitter = $company_social->fetch_social_account('twitter')) {
-    $tw = Helpers::unwrap($twitter->socialaccountvalue);
-    $twitter_username = $tw['accountName'];
-}
-
-if($facebook = $company_social->fetch_social_account('facebook')) {
-    $fb = Helpers::unwrap($facebook->socialaccountvalue);
-    $facebook_username = $fb['accountName'];
-}
+    <!-- this is the awesome pre loader and do not mess around this code -->
+    <div id="thePreloader">
+        <div id="thePreloadStatus"><img src="/img/status.gif" /></div>
+    </div>
+<?php
+/*
+| Pre-Loader End
+*/
 ?>
 
-<div id="fb-root"></div>
-<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+<?php
+/*
+| Added Hallo scripts for submission form's text editor
+*/
+?>
+    <?=HTML::script('https://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js');?>
+    <?=HTML::script('/fullpage/common/js/hosted.form.editor.showdown.script.js');?>
+    <?=HTML::script('/fullpage/common/js/hosted.form.editor.to-markdown.script.js');?>
+    <?=HTML::script('/fullpage/common/js/hosted.form.editor.script.js');?>
+    <?=HTML::script('/fullpage/common/js/hallo.js');?>
+    <script type="text/javascript">
+        $(document).ready(function(){
+                $('#feedbackText').hallo();
+                $('#review-feedback-text').hallo();
+        });
+    </script>
+<?php
+/*
+| Hallo scripts end
+*/
+?>
+
+<?php
+/*
+| Facebook Start
+*/
+    $facebook_username = Null;
+    $twitter_username = Null;
+    if($twitter = $company_social->fetch_social_account('twitter')) {
+        $tw = Helpers::unwrap($twitter->socialaccountvalue);
+        $twitter_username = $tw['accountName'];
+    }
+
+    if($facebook = $company_social->fetch_social_account('facebook')) {
+        $fb = Helpers::unwrap($facebook->socialaccountvalue);
+        $facebook_username = $fb['accountName'];
+    }
+    ?>
+    <div id="fb-root"></div>
+    <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript">
+        FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
+    </script>
+<?php
+/*
+| Facebook End
+*/
+?>
+
+<?php 
+/*
+| Start adding css,js, and html for hosted form
+*/
+if (isset($_GET['hosted']) && $_GET['hosted']=true):
+$company_name       = Config::get('application.subdomain');
+$company            = new \Company\Repositories\DBCompany;
+$hosted_settings    = new \Hosted\Repositories\DBHostedSettings;
+$fullpage           = new \Hosted\Services\Fullpage;
+$company_info       = $company->get_company_info($company_name);
+$fullpage_css       = $fullpage->get_fullpage_css($company_info->companyid);
+?>
+<link type="text/css" rel="stylesheet" href="/fullpage/common/css/hosted-form.css" />
+<script src="/fullpage/common/js/hosted.form.script.js" type="text/javascript"></script>
 <script type="text/javascript">
-    FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
+        $(document).ready(function(){
+            var hostedForm = new S36HostedForm;
+                hostedForm.init_toggle_bar(1);
+        });
 </script>
+<div id="theBar">   
+    <div id="theBarInner" class="clear">
+        <div id="barLeftContent">
+            <div class="barLinks clear">
+                <div id="barImageLogo"><a href="http://beta.36stories.com/"><img src="/fullpage/common/img/36stories-logo.png" /></a></div>
+                <?php if( is_null(\S36Auth::user()) ): ?>
+                    <ul class="left-links">                 
+                        <li><a href="http://beta.36stories.com/">Create Your Own Feedback Page!</a></li>
+                    </ul>
+                <?php endif ?>
+            </div>
+        </div>
+        <div id="barRightContent">
+            <div class="barLinks">
+                <ul>
+                    <li> 
+                        <a href="/login?forward_to=me">Login</a>
+                    </li>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mainWrapper">
+    <div id="mainContainer">
+        <div id="theBarTab" class=""></div>
+    </div>
+<?php
+endif;
+/*
+| End adding css,js, and html for hosted form
+*/
+?>
+
+
 
 <div id="formBox">
     <form action="" method="POST" enctype="multipart/form-data">
@@ -128,7 +228,9 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                      
                     <!-- start of feedback form -->
                     <div class="form-feedback-textbox">
+                        <!--
                         <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
+                        -->
                         <textarea id="feedbackText" class="feedback-textarea" title="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
                     </div>
                     <!-- end of feedback form -->
@@ -299,11 +401,14 @@ one more time.</span>
                             </div>
                         </div>
                         <div id="review-feedback-text-container" class="feedback-text">
+                            <!--
                             <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
-                            <div id="review-feedback-text" class="feedback-box">
-                                <p></p>
+                            -->
+                            <div id="review-feedback-text" class="feedback-box" contenteditable="true">
                             </div>
+                            <!--
                             <div class="feedback-edit clear"><a href="javascript:;" id="edit_text_link" class="edit-text">edit</a></div>
+                            -->
                         </div>
                         <div class="review-permission" id="review-permission">
                             <h2><img src="/img/check-ico.png" /> You allowed this feedback to be published</h2>
@@ -355,7 +460,6 @@ with others!</p>
                     </div>
                     <div id="all-done-box">
                         <div id="all-done-textbox" class="all-done-feedback-box">
-                            <p>test</p>
                         </div>
                     </div>
                     <div id="share-boxes" class="clear">
@@ -384,3 +488,24 @@ with others!</p>
     </div>
     </form>
 </div>
+
+
+<?php
+/*
+| Start adding css,js, and html for hosted form
+*/
+if (isset($_GET['hosted']) && $_GET['hosted']=true):
+?>
+    <div id="mainFooter">
+        <p align="center">Powered by <a href="#"> Fdback</a></p>
+    </div>
+    </div> <!-- clossing mainwrapper -->
+    <?php 
+    /*This is for adding override css from fullpage
+    <div id="fullpage_css"><?php echo $fullpage_css; ?></div>
+    */
+endif;
+/*
+| End adding css,js, and html for hosted form
+*/
+?>

@@ -97,6 +97,7 @@
 	text-align:right;
 }
 .regular-featured .author-location{
+	font-weight: bold;
 	float:left;
 }
 
@@ -151,9 +152,11 @@
 	left:25px;
 }
 .feedback-text p{
-	margin-bottom:15px;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 .feedback-text p:last-child{
+	margin-top:0px;
 	margin-bottom:0px;
 }
 .regular-featured .feedback-text{
@@ -260,6 +263,7 @@
 	color:#999999;
 }
 .regular .author-location{
+	font-weight: bold;
 	float:left;
 }
 .regular .author .author-information .author-name{
@@ -274,7 +278,6 @@
 	margin-bottom:2px;
 }
 .regular  .author .author-information .author-location-info{
-	color:#b7b7b7;
 	margin-bottom:2px;
 }
 .regular .custom-meta-data .meta-data{float:left;margin-right:10px;}

@@ -6,7 +6,7 @@ use View;
 class FastForward extends EmailFixture {
 
     private $email_data;
-    private $subject = "36Stories: Fast Forward";
+    private $subject = "FDBack: Fast Forward";
 
 	public function gather($email_data){
         $this->email_data = $email_data; 
