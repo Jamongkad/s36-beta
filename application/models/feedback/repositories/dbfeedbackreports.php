@@ -25,7 +25,12 @@ class DBFeedbackReports extends S36DataObject {
 	}
 
     public function get_reports_by_companyid($company_id) { 
-		$sql = "SELECT reportType,count(reportType) as count FROM {$this->dbtable} WHERE feedbackId = :feedback_id GROUP BY reportType";
+		$sql = "SELECT * FROM {$this->dbtable} WHERE companyId = :company_id";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        Helpers::dump($result);
     }
 
 	public function get_feebackReport($feedbackId){
