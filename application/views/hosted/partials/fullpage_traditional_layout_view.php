@@ -34,25 +34,27 @@
                         <span class="last_name"><?= HTML::entities($feed->feed_data->lastname); ?></span>
                         <span class="last_name_ini"><?= HTML::entities(substr($feed->feed_data->lastname, 0, 1)); ?>.</span>
                     </div>
-                    <div class="author-company">
-                        <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
-                            <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
-                        </span>
-                        <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
-                            <?= HTML::entities($company_name); ?>
-                        </span>
-                    </div>
-                    <div class="author-location-info clear">
-                        <div class="author-location">
-                            <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
+                    <?php if( trim($tw_marker) == '' ): ?>
+                        <div class="author-company">
+                            <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
                             </span>
-                            <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($country_name); ?>
+                            <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                <?= HTML::entities($company_name); ?>
                             </span>
                         </div>
-                        <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
-                    </div>
+                        <div class="author-location-info clear">
+                            <div class="author-location">
+                                <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
+                                </span>
+                                <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($country_name); ?>
+                                </span>
+                            </div>
+                            <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                        </div>
+                    <?php endif; ?>
                 </div>  
             </div>
             <div class="reviews clear">
@@ -75,18 +77,20 @@
                 <? endif; ?>
                      found this useful
             </div>
-            <div class="custom-meta-data clear">
-                <?php if( ! is_null($metadata) ): ?>
-                    <?php foreach( $metadata as $group ): ?>
-                        <?php foreach( $group as $item ): ?>
-                            <div class="meta-data">
-                                <span class="meta-name"><?= HTML::entities( ucwords(str_replace('_', ' ', $item[0]->name)) ); ?> : </span>
-                                <span class="meta-value"><?= HTML::entities($item[0]->value); ?></span>
-                            </div>
+            <?php if( trim($tw_marker) == '' ): ?>
+                <div class="custom-meta-data clear">
+                    <?php if( ! is_null($metadata) ): ?>
+                        <?php foreach( $metadata as $group ): ?>
+                            <?php foreach( $group as $item ): ?>
+                                <div class="meta-data">
+                                    <span class="meta-name"><?= HTML::entities( ucwords(str_replace('_', ' ', $item[0]->name)) ); ?> : </span>
+                                    <span class="meta-value"><?= HTML::entities($item[0]->value); ?></span>
+                                </div>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
             <div class="feedback-text">
                 <p><?= nl2br(HTML::entities($feed->feed_data->text));?></p>
             </div>
