@@ -7,7 +7,10 @@
                         <?=(!$admin->confirmed) ? "<span style='padding: 2px; background-color: #E9EFF4; font-size:10px;font-weight:bold'>Invited</span>" : null?>
                         <div class="g1of3">
                             <?if($admin->avatar):?> 
-                                <?=HTML::image('uploaded_cropped/48x48/'.$admin->avatar)?>
+                                <?//=HTML::image('uploaded_cropped/48x48/'.$admin->avatar)?>
+                                <div class="admin-avatar-container">
+                                    <img src="/uploaded_images/admin_avatar/<?php echo $admin->avatar . '?' . str_shuffle(md5('get rid of cache')); ?>" width="48px" height="48px" />
+                                </div>
                             <?else:?>
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                             <?endif?>

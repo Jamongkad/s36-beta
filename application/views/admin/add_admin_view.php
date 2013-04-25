@@ -1,6 +1,14 @@
-<?=Form::open('admin/add_admin')?>
+<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?= HTML::script('/js/jquery.ui.widget.js'); ?>
+<?= HTML::script('/js/jquery.fileupload.js'); ?>
+<?= HTML::script('/js/helpers.js'); ?>
+<?= HTML::script('/js/inbox/Status.js'); ?>
+<?=Form::open_for_files('admin/add_admin')?>
 <?//=Form::open('admin/test_invite_email')?>
 <input type="hidden" name="companyId" value="<?=$admin->companyid?>" />
+<input type="hidden" name="userId" value="<?=$admin->userid?>" id="user_id" />
+<input type="hidden" name="avatar" value="" id="avatar" />
+<input type="hidden" name="tmp_avatar" value="" id="tmp_avatar" />
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Required Information</div>
     <div class="label"><label>User Name</label></div>
@@ -61,7 +69,29 @@
     <div class="c"></div>
 </div>
 
-<?=$photo_upload_view?>
+<?//=$photo_upload_view?>
+<!-- Photo Stuff here-->
+<div class="block">
+    <div class="grids">
+        <div class="g1of3">
+            <div>
+                <div style="font-size:11px; font-weight:bold; padding: 8px 0 0"><label>Preview</label></div>
+                <div id="upload-image-container" class="admin-avatar-container" style="border: 2px solid #CCC;">
+                    <img src="/img/blank-avatar.png" width="48px" height="48px" />
+                </div>
+            </div>
+        </div>
+        <div class="g1of3">
+            <div style="font-size:11px; font-weight:bold; padding: 8px 0 0"><label>Add Photo</label></div>
+            <div style="padding-left:10px;font-weight:bold;">
+                <div style="margin:5px 0px;">
+                    <input type="file" id="avatar_uploader" data-url="/imageprocessing/upload_admin_avatar" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Photo Stuff here-->
 
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Permissions</div>
@@ -133,3 +163,31 @@
 <div class="c"></div>
 </div>
 <?=Form::close()?>
+<script type="text/javascript">
+    var myStatus = new Status();
+    $('#avatar_uploader').fileupload({
+        dataType: 'json',
+        add: function(e, data){
+            var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
+            if( image_types.indexOf( data.files[0].type ) == -1 ){
+                myStatus.notify('Please select an image file', 3000);
+                return false;
+            }
+            if( data.files[0].size > 2000000 ){
+                myStatus.notify('Please upload an image not greater than 2mb in filesize', 3000);
+                return false;
+            }
+            data.submit();
+        },progress: function(e, data){
+            $('#upload-image-container img').css('opacity', '0.2');
+        },done: function(e, data){
+            var filename = data.result[0].name;
+            var ext = data.result[0].name.split('.').pop();
+            var rand_str = '?' + Helpers.get_random_str(5);
+            var new_src = '/uploaded_images/uploaded_tmp/' + filename + rand_str;
+            $('#upload-image-container img').attr('src', new_src).animate({'opacity': '1'});
+            $('#avatar').val('avatar_new' + '.' + ext);
+            $('#tmp_avatar').val(filename);
+        }
+    });
+</script>

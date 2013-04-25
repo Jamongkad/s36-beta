@@ -720,6 +720,11 @@ h2.h2-fix{
 
 select.regular-custom-field{
     width:304px;
+    margin-top: 5px;
+}
+.select.form-field-block label{
+	font-size: 10px;
+	font-weight: bold;
 }
 .radio-container,.checkbox-container{
     padding:4px 0px;
@@ -730,17 +735,18 @@ select.regular-custom-field{
     display:inline-block;
 }
 .radio-container .title{
-    float:left;
+    /*float:left;*/
     font-weight:bold;
-    top:-2px;
+    /*top:-2px;*/
 }
 .checkbox-container .title{
     display:block;
     font-weight:bold;
 }
 .radio-container .inputs{
-    float:left;
-    margin-top:-3px;
+    /*float:left;*/
+    /*margin-top:-3px;*/
+    margin-top: 5px;
 }
 .radio-container .inputs input,.checkbox-container .inputs input{
     width: 13px;
@@ -756,7 +762,8 @@ select.regular-custom-field{
     display: inline-block;
     padding-left: 15px;
     text-indent: -15px;
-    margin-left:5px;
+    /*margin-left:5px;*/
+    margin-right: 5px;
 }
 .checkbox-container .inputs{
     margin-top:5px;
@@ -794,4 +801,31 @@ background: #fff;
 opacity: 0.5;
 -moz-opacity:0.5;
 -webkit-opacity:0.5;
+}
+
+/* this is the awesome pre loader and do not mess around this code */
+#thePreloader{
+	background:#FFF;position:absolute;top:0;bottom:0;left:0;right:0;z-index:1000;
+	width:448px;
+	height:600px;
+}
+#thePreloadStatus{
+	/*background:url(../../img/status.gif) no-repeat;*/
+	width:32px;
+	height:32px;
+	left:50%;
+	top:50%;
+	margin-top:-16px;
+	margin-left:-16px;
+	position:absolute;
+}
+
+#review-feedback-text p,#all-done-textbox p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#review-feedback-text p:last-child, #all-done-textbox p:last-child{
+	margin-top:0px;
+	margin-bottom:0px;
 }

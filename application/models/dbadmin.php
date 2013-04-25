@@ -20,7 +20,8 @@ class DBAdmin extends S36DataObject {
          , 'home' => $this->input_data->home
          , 'imId' => $this->input_data->imId
          , 'im' => $this->input_data->im
-         , 'avatar' => $this->input_data->cropped_image_nm
+         //, 'avatar' => $this->input_data->cropped_image_nm
+         , 'avatar' => $this->input_data->avatar
        );
        
        //check if password has been changed...
@@ -51,6 +52,8 @@ class DBAdmin extends S36DataObject {
             $emailservice = new Email\Services\EmailService($invite_data);
             $emailservice->send_email();
         } 
+        
+        return $user_id;
     }
 
     public function update($user=False) {

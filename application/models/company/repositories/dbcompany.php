@@ -134,16 +134,18 @@ class DBCompany extends S36DataObject {
     }
 
     public function update_coverphoto($data){
+        // contents of $data changes depending on the action done (change, reposition, remove).
         $updated = DB::table('Company')
-            ->where('companyId', '=', $data['company_id'])
-            ->update(array('coverphoto_src' => $data['file_name'], 'coverphoto_top' => $data['top']));  
+            ->where('companyId', '=', $data['companyId'])
+            ->update( $data );
         
-        $result = new StdClass;
-        $result->company_id     = $data['company_id'];
-        $result->src            = $data['file_name'];
-        $result->top            = $data['top'];
-        $result->update_success = $updated;
-        return $result;
+        // codes below probably not used.
+        // $result = new StdClass;
+        // $result->company_id     = $data['company_id'];
+        // $result->src            = $data['file_name'];
+        // $result->top            = $data['top'];
+        // $result->update_success = $updated;
+        // return $result;
     }
      
     // update description from hosted page.

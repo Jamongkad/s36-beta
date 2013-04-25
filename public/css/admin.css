@@ -205,7 +205,8 @@ sup.count{
 #admin-panel .main-panel .block h3{font-size:11px;color:#343434;margin:10px 0px 10px 0px;}
 #admin-panel .main-panel .block h4{font-size:11px;color:#3b5e75;margin:10px 0px 10px 0px;}
 #admin-panel .main-panel .block h4 a{color:#3b5e75;text-decoration:underline;}
-#admin-panel .main-panel .block img{margin:10px 20px 10px 0px;}
+#admin-panel .main-panel .block img{/*margin:10px 20px 10px 0px;*/}
+#admin-panel .main-panel .block #image-sub-container{ width: 210px; max-height: 175px; overflow: hidden; border: 3px solid #FFF; box-shadow: #CCC 0 1px 2px; }
 #admin-panel .main-panel .block a.customize{padding:4px 10px;background:#6a7882;font-size:10px;font-weight:bold;color:#FFF;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;text-shadow:#4c5a63 0px -1px;}
 #admin-panel .main-panel .block a.customize:hover{background:#7e8e99;}
 #admin-panel .main-panel .block ul.invoices{font-size:11px;color:#777777;list-style:none;margin:10px 0px;}
@@ -1196,4 +1197,9 @@ margin-bottom: 3px;
 #invalid_email {
     color: red;
     margin-left: 5px;
+}
+.admin-avatar-container{
+    max-width: 48px;
+    max-height: 48px;
+    overflow: hidden;
 }

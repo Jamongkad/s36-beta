@@ -57,6 +57,8 @@ return array(
            , 'company_id'   => $company_info->companyid
         ));
 
+        $feedbackReports = new \Feedback\Repositories\DBFeedbackReports;
+
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
                                                   , 'company_social'    => $company_social
@@ -67,6 +69,7 @@ return array(
                                                   , 'hosted_page_url'   => $hosted_page_url
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
+                                                  , 'reportTypes'       => $feedbackReports->get_reportTypes()
                                                   , 'panel'             => $panel ));
         
         // increment page view count of company.
@@ -117,13 +120,38 @@ return array(
         $hosted_settings->update_desc($data, $user->companyid);
     },
     
-    'POST /feedback_action/(:any)' => function($action) use ($feedback) {
-        
-        $fd = new Feedback\Entities\FeedbackActionsData( $action, (object)Input::get() );
-        if( ! is_null($fd->data) ) $feedback->exec_feedback_action($fd->data);
-        
+    'POST /feedback_action/report_feedback' => function() use ($feedback) {
+        $feedbackReports = new \Feedback\Repositories\DBFeedbackReports;
+        $report = Input::get();
+        $data   = array(
+            'feedbackId'    =>$report['feedback_id'],
+            'reportType'    =>$report['report_type'],
+            'reportIp'      =>Helpers::get_client_ip(),
+            'reportName'    =>(isset($report['report_user']['name'])) ? $report['report_user']['name'] : '',
+            'reportEmail'   =>(isset($report['report_user']['email'])) ? $report['report_user']['email'] : '',
+            'reportCompany' =>(isset($report['report_user']['company'])) ? $report['report_user']['company'] : '',
+            'reportComments'=>(isset($report['report_user']['comments'])) ? $report['report_user']['comments'] : ''
+        );
+
+        $result = $feedbackReports->addReport($data);
+        return json_encode($result);
     },
-        
+    'POST /feedback_action/unflag' => function() use ($feedback) {
+        $feedbackReports = new \Feedback\Repositories\DBFeedbackReports;
+        $report = Input::get();
+        $data   = array(
+            'feedbackId'    =>$report['feedback_id'],
+            'reportIp'      =>Helpers::get_client_ip()
+            );
+        $result = $feedbackReports->removeReport($data);
+        return json_encode($result);
+    },
+    
+    'POST /feedback_action/vote' => function() use ($feedback) {
+        $fd = new Feedback\Entities\FeedbackActionsData('vote', (object)Input::get() );
+        if( ! is_null($fd->data) ) $feedback->exec_feedback_action($fd->data); 
+    },
+    
     'GET /submit/(:any)' => function($widgetkey) use ($hosted_settings, $dbw, $company) {
         $widgetloader = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
         $widget = $widgetloader->load();        

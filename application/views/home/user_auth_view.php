@@ -81,7 +81,7 @@ $(document).ready(function(){
 	<div class="mainContent">
     	<div class="formBody">
         	<div class="formHeader">
-            	<h1>Hi, <?=ucfirst($user_data[0])?>. Let's finish setting up your 36Stories account!</h1>
+            	<h1>Hi, <?=ucfirst($user_data[0])?>. Let's finish setting up your FDBack account!</h1>
                 <p>If you already have an account, <?=HTML::link('/login', 'Sign')?> in with the username and password you already have.</p>
             </div>
             

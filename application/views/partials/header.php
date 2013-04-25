@@ -4,7 +4,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
-	<title>36Stories - Get amazing feedback for your brand and business.</title>
+	<title>FDBack - Get amazing feedback for your brand and business.</title>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
@@ -99,7 +99,10 @@
             <div class="admin-session-bar">
                 <div class="admin-avatar">
                      <?if($avatar = S36Auth::user()->avatar):?> 
-                         <?=HTML::image('uploaded_cropped/48x48/'.$avatar)?>
+                        <?//=HTML::image('uploaded_cropped/48x48/'.$avatar)?>
+                        <div class="admin-avatar-container">
+                            <img src="/uploaded_images/admin_avatar/<?php echo $avatar . '?' . str_shuffle(md5('get rid of cache')); ?>" width="48px" height="48px" />
+                        </div>
                      <?else:?>
                          <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                      <?endif?>

@@ -255,7 +255,7 @@
     </div>
     <div id="widgetFooter" class="block">
         <div class="theFooterText">
-        	<a href="#">Powered by 36Stories</a>
+        	<a href="#">Powered by FDBack</a>
         </div>
     </div>
 </div>

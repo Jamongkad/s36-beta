@@ -13,12 +13,149 @@ return array(
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/'
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/tmp/coverphoto_' . $user->companyid . '/'
             , 'param_name' => 'files'
-            , 'width'      => 800
-            , 'height'     => 500
+            , 'image_versions' => array(
+                array(
+                    'max_width'     => 850,
+                    'max_height'    => 500
+                )
+            )
         );     
 
         new JqueryFileUploader($options); 
     }),
+    
+    // saving of cover photo in db and deletion of old cover photo.
+    'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {
+        
+        // if the user is not logged in, return error msg.
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
+        
+        $data = Input::all();
+        $file_name = '';  // we need this default shit.
+        
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
+        if( ! in_array($data['action'], array('change', 'reposition', 'remove')) ) return 'Invalid cover photo action';
+        
+        
+        // deal with the uploaded image if changing coverphoto.
+        if( $data['action'] == 'change' ){
+            
+            // upload the cover photo to where it belongs.
+            $tmp_dir    = Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/';
+            $file_name  = 'coverphoto_'.$user->companyid.'.jpg'; //set the final filename
+            $orig_path  = $tmp_dir . $data['name'];
+            $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
+            
+            if( is_readable($final_path) ) unlink($final_path);
+            exec('convert "' . $orig_path . '" "' . $final_path . '"'); //convert and rename uploaded image using image magick
+            
+            // delete the temporary uploads.
+            $tmp_uploads = scandir( $tmp_dir );
+            if( count($tmp_uploads) ){
+                foreach( $tmp_uploads as $v ){
+                    if( $v == '.' || $v == '..' ) continue;
+                    unlink( $tmp_dir . $v );
+                }
+            }
+            
+        }
+        
+        
+        // set the db data for cover photo actions.
+        $cover_data['change']['companyId'] = $user->companyid;
+        $cover_data['change']['coverphoto_src'] = $file_name;
+        $cover_data['change']['coverphoto_top'] = $data['top'];
+        
+        $cover_data['reposition']['companyId'] = $user->companyid;
+        $cover_data['reposition']['coverphoto_top'] = $data['top'];
+        
+        $cover_data['remove']['companyId'] = $user->companyid;
+        $cover_data['remove']['coverphoto_src'] = null;
+        $cover_data['remove']['coverphoto_top'] = null;
+        
+        
+        //save to database
+        $company->update_coverphoto( $cover_data[ $data['action'] ] );
+        
+    },
+    
+    'POST /imageprocessing/upload_company_logo' => array('name'=>'upload_company_logo', 'do' => function() use ($user) {
+        
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
+        
+        $upload_dir    = Config::get('application.uploaded_images_dir').'/uploaded_tmp/';
+        $filename      = 'logo_' . $user->companyid . '.' . pathinfo($_FILES['files']['name'][0], PATHINFO_EXTENSION);
+        $orig_filename = $_FILES['files']['name'][0];
+        
+        // remove the existing logo.
+        if( file_exists($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        
+        // upload the image in tmp dir.
+        $options = array(
+              'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_company_logo'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/uploaded_tmp/'
+            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
+            , 'param_name' => 'files'
+            , 'file_name'  => $filename
+            , 'image_versions' => array(
+                array(
+                    'max_width'     => 210,
+                    'max_height'    => 175
+                )
+            )
+        );
+        
+        new JqueryFileUploader($options);
+        
+        // remove the original upload duplicate.
+        if( file_exists($upload_dir . $orig_filename) && is_file($upload_dir . $orig_filename) ) unlink($upload_dir . $orig_filename);
+        
+    }),
+    
+    'POST /imageprocessing/save_company_logo' => function() use($user) {
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        
+        $filename = Input::get('basename');
+        $src      = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $filename;
+        $des      = Config::get('application.uploaded_images_dir') . '/company_logos/' . $filename;
+        if( file_exists($src) && is_file($src) ) rename($src, $des);
+        
+        $logo_data['change']['logo'] = $filename;
+        $logo_data['remove']['logo'] = null;
+        
+        DB::table('Company')->where('companyId', '=', $user->companyid)->update( $logo_data[ Input::get('action') ] );
+    },
+    
+    'POST /imageprocessing/upload_admin_avatar' => function() use($user) {
+        $upload_dir    = Config::get('application.uploaded_images_dir').'/uploaded_tmp/';
+        $filename      = 'avatar_' . $user->userid . '.' . pathinfo($_FILES['files']['name'][0], PATHINFO_EXTENSION);
+        $orig_filename = $_FILES['files']['name'][0];
+        
+        // remove the existing admin avatar.
+        if( file_exists($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        
+        $options = array(
+              'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_admin_avatar'
+            , 'upload_dir' => $upload_dir
+            , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
+            , 'param_name' => 'files'
+            , 'file_name'  => $filename
+            , 'image_versions' => array(
+                array(
+                    'max_width'     => 48,
+                    'max_height'    => 48
+                )
+            )
+        );
+        
+        new JqueryFileUploader($options);
+        
+        // remove the original upload duplicate.
+        if( file_exists($upload_dir . $orig_filename) && is_file($upload_dir . $orig_filename) ) unlink($upload_dir . $orig_filename);
+    },
     
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
@@ -53,39 +190,6 @@ return array(
         }
     }),
     
-    // saving of cover photo in db and deletion of old cover photo.
-    'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {
-        
-        // if the user is not logged in, return error msg.
-        if( ! is_object($user) ) return 'You should be logged in to do this action';
-        
-        $data       = Input::all();
-        $tmp_dir    = Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/';
-        $file_name  = 'coverphoto_'.$user->companyid.'.jpg'; //set the final filename
-        $orig_path  = $tmp_dir . $data['name'];
-        $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
-        
-        if( is_readable($final_path) ) unlink($final_path);
-        exec('convert "' . $orig_path . '" "' . $final_path . '"'); //convert and rename uploaded image using image magick
-        
-        // delete the temporary uploads.
-        $tmp_uploads = scandir( $tmp_dir );
-        if( count($tmp_uploads) ){
-            foreach( $tmp_uploads as $v ){
-                if( $v == '.' || $v == '..' ) continue;
-                unlink( $tmp_dir . $v );
-            }
-        }
-        
-        //save to database
-        $company->update_coverphoto(array(
-            'company_id'    =>$user->companyid,
-            'file_name'     =>$file_name,
-            'top'           =>$data['top']
-        ));
-        
-    },
-
     'POST /imageprocessing/FormImageUploader' => array('do'=> function() {
         $options = array(
               'script_url'    => JqueryFileUploader::get_full_url().'/imageprocessing/FormImageUploader'
