@@ -22,6 +22,7 @@
 | FancyBox
 |--------------------------------------------------------------------------
 */
+echo HTML::script('/fullpage/common/js/s36_client_script.js');
 echo HTML::script('/fancybox/jquery.fancybox.js');
 echo HTML::script('/fancybox/jquery.fancybox.pack.js');
 echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
