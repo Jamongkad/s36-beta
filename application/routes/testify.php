@@ -16,11 +16,13 @@ return array(
 
         $tf->beforeEach(function($tf) {
             $tf->data->fr = new Feedback\Repositories\DBFeedbackReports;
+            $this->underscore = new Underscore\Underscore;
         });
         
         $tf->test('Test', function($tf) {
             $reports = $tf->data->fr->get_reports_by_companyid(6);
-            $tf->dump($reports);
+            $result = $this->underscore->groupBy($reports, 'feedbackid');
+            $tf->dump($result);
         });
         
 
