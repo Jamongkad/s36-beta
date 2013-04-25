@@ -6,7 +6,7 @@ angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
             $(element).bind('click', function(e) {
                 var widgetkey = $(this).attr('widgetkey'); 
                 createLightboxes();
-                s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey + "&addfeedback=1");  
+                s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey + "?addfeedback=1");  
                 $('#s36_modalbox').css({'top': '35%'});
                 e.preventDefault();
             });
