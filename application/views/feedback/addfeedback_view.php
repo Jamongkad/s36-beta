@@ -62,13 +62,6 @@ $(function() {
                             </select>
                         </div>
                     </div>
-                    <br/>
-                    <div class="grids">
-                        <label><strong>Display Options :</strong></label> 
-                        <input type="radio" checked="checked" name="permission" value="1" id="permission1"/> <label for="permission1" >Full Permission</label> 
-                        <input type="radio" name="permission" value="2" id="permission2" /> <label for="permission2" >Limited Permission </label>
-                        <input type="radio" name="permission" value="3" id="permission3" /> <label for="permission3" >Private</label>
-                    </div>
                     <br />
                     <div class="grids">
                         <div class="g1of3">

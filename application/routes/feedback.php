@@ -112,6 +112,8 @@ return array(
 
     'POST /feedback/addfeedback' => Array('do' => function() { 
         $data = Input::get();
+        Helpers::dump($data);
+        /*
         $rules = Array(
             'first_name' => 'required'
           , 'email' => 'email'
@@ -134,6 +136,7 @@ return array(
             $addfeedback->perform(); 
             return Redirect::to('inbox/all');  
         }
+        */
     }),
 
     //Ajax Routes...
