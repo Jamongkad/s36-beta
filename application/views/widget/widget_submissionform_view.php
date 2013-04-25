@@ -85,6 +85,7 @@ $fullpage_css       = $fullpage->get_fullpage_css($company_info->companyid);
 ?>
 <link type="text/css" rel="stylesheet" href="/fullpage/common/css/hosted-form.css" />
 <script src="/fullpage/common/js/hosted.form.script.js" type="text/javascript"></script>
+<script src="/js/form.script.js" type="text/javascript"></script>
 <script type="text/javascript">
         $(document).ready(function(){
             var hostedForm = new S36HostedForm;

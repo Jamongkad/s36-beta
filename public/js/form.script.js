@@ -468,6 +468,7 @@ $(document).keypress(function(event){
 	
 	function adjust_feedback_textbox_height(val){
 		$('#feedbackText').animate({ 'height':val, 'width':357 }, 100);
+		$('#feedbackText').animate({ 'min-height':val, 'width':357 }, 100);
 	}
 	function adjust_review_textbox_height(val){
 		$('#review-feedback-text').animate({'height':val},100);
