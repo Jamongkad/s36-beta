@@ -72,9 +72,7 @@ class InboxService {
                 $total_rows = $date_result->total_rows;
                 $data = Array();
                 foreach($date_result->result as $feeds) {
-
                    Helpers::dump($feeds->feedbackids);
-
                    $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids);
                    $feeds->children_count = count($feeds->children);
                    $data[] = $feeds;
