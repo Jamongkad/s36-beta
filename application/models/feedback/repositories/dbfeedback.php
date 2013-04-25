@@ -347,9 +347,6 @@ class DBFeedback extends S36DataObject {
             INNER JOIN
                 Country
                 ON Country.countryId = Contact.countryId
-            LEFT JOIN
-                FeedbackReports
-                ON FeedbackReports.feedbackId = Feedback.feedbackId
             WHERE 1=1
                 AND Feedback.feedbackId IN ('.$in_query.')
             ORDER BY
