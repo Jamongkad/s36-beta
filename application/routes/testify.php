@@ -22,7 +22,8 @@ return array(
         $tf->test('Test', function($tf) {
             $reports = $tf->data->fr->get_reports_by_companyid(6);
             $result = $tf->data->underscore->groupBy($reports, 'feedbackid');
-            $tf->dump($result[20000]);
+            $tf->dump(array_key_exists(20000, $result));
+            $tf->dump(array_key_exists(1300, $result));
         });
         
 
