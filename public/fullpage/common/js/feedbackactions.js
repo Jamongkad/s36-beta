@@ -219,16 +219,16 @@ var S36FeedbackActions = new function() {
                             $('.fancybox-inner .alert-message').html(
                                 '<div class="success">Your feedback report has been submitted</div>'
                             );
-                            $('.fancybox-inner .alert-message').show();
                             $('.fancybox-inner .flagbox-body').hide();
-                            $('.fancybox-inner #report_final').show();
+                            $('.fancybox-inner .alert-message').show();
+                            $('.fancybox-inner #report_final').fadeIn();
                         }else{
                             $('.fancybox-inner .alert-message').html(
                                 '<div class="error">Feedback report was not submitted</div>'
                             );
-                            $('.fancybox-inner .alert-message').show();
                             $('.fancybox-inner .flagbox-body').hide();
-                            $('.fancybox-inner #report_final').show();
+                            $('.fancybox-inner .alert-message').show();
+                            $('.fancybox-inner #report_final').fadeIn();
                         }
                     }
             });

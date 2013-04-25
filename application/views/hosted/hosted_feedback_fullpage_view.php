@@ -392,11 +392,13 @@
             </div>
         </div>
 
-        <div id="report_final" class="flagbox-foot" style="display:none">
+        <div id="report_final" class="flagbox-body" style="display:none">
+            <div class="flagbox-foot">
             <div class="fdback-buttons">
                     <ul>
                         <li><a onClick="parent.jQuery.fancybox.close();" href="#">Close</a></li>
                     </ul>                   
+            </div>
             </div>
         </div>
 
