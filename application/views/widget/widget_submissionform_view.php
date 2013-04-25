@@ -93,7 +93,11 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
             <!-- form window 1 -->
             <div id="step1" class="form-page" style="display:none;">
                 <div class="form-page-head">
-                    <h1>Share your feedback</h1> 
+                    <?if(Input::has('addfeedback')):?> 
+                        <h1>Manually add your feedback</h1> 
+                    <?else:?>
+                        <h1>Share your feedback</h1> 
+                    <?endif?>
                 </div>
                 <div class="form-page-body">
                     <!-- star ratings -->
