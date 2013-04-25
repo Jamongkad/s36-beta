@@ -2,7 +2,6 @@
 
 use StdClass;
 use Helpers;
-use \Feedback\Repositories\DBFeedbackReports;
 
 class FeedbackNode {
 
@@ -10,14 +9,10 @@ class FeedbackNode {
 
     public function __construct($data) {
         $this->data = $data;     
-        $this->reports = new DBFeedbackReports; 
     }
 
     public function generate() {
         
-        $reports = $this->reports->get_reports_by_companyid(6);
-        Helpers::dump($reports);
-
         $node = new StdClass; 
         foreach($this->data as $key => $value) {
             if($key) { 
