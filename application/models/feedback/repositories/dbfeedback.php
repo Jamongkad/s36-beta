@@ -214,7 +214,6 @@ class DBFeedback extends S36DataObject {
         $result_obj  = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
-
         return $result_obj; 
     }
 
@@ -348,6 +347,9 @@ class DBFeedback extends S36DataObject {
             INNER JOIN
                 Country
                 ON Country.countryId = Contact.countryId
+            LEFT JOIN
+                FeedbackReports
+                ON FeedbackReports.feedbackId = Feedback.feedbackId
             WHERE 1=1
                 AND Feedback.feedbackId IN ('.$in_query.')
             ORDER BY
@@ -372,26 +374,16 @@ class DBFeedback extends S36DataObject {
                 , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
                 , FeedbackActions.useful 
                 , FeedbackActions.flagged AS flagged_as_inappr
-                , FeedbackAdminReply.userId AS admin_userid
-                , FeedbackAdminReply.adminReply AS admin_reply
-                , User.username AS admin_username
-                , User.fullName AS admin_fullname
-                , User.avatar AS admin_avatar
-                , User.email AS admin_email 
                 , Company.companyId
                 , Company.name AS company_name
                 , Company.billTo AS company_billto
                 , Company.description AS company_description
                 , Company.logo AS company_logo 
-                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
             FROM 
                 Feedback
                     LEFT JOIN
                         FeedbackAdminReply
                         ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
-                    LEFT JOIN
-                        User
-                        ON FeedbackAdminReply.userId = User.userId
                     INNER JOIN
                         Site
                         ON Site.siteId = Feedback.siteId
@@ -433,8 +425,14 @@ class DBFeedback extends S36DataObject {
                 Feedback.feedbackId
             FROM 
                 Feedback
+                    INNER JOIN
+                        Site
+                        ON Site.siteId = Feedback.siteId 
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = Site.companyId
              WHERE 1=1
-                 AND Feedback.companyId = :company_id            
+                 AND Company.companyId = :company_id            
         ";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
@@ -583,6 +581,7 @@ class DBFeedback extends S36DataObject {
                 , User.username AS admin_username
                 , User.fullName AS admin_fullname
                 , User.avatar AS admin_avatar
+                , User.email AS admin_email 
                 , User.email AS admin_email 
                 , Company.name AS admin_companyname 
                 , Company.fullpageCompanyName AS admin_fullpagecompanyname 
