@@ -924,7 +924,6 @@ class DBFeedback extends S36DataObject {
 
         foreach($feedback as $data)  {
             $node = new FeedbackNode($data);
-            Helpers::dump($node);
             $collection[] = $node->generate();
         }
 
