@@ -477,6 +477,7 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
+                                    Feedback has been flagged: <br/>
                                     <div class="custom-meta-list grids">
                                         <?foreach($reports as $report):?>
                                             <div class="custom-meta">
