@@ -5,6 +5,7 @@ use \Feedback\Entities\FeedbackNode;
 use \Profile\Services\ProfileImage;
 use \Company\Repositories\DBCompany;
 use Underscore\Underscore;
+use Config;
 use Exception;
 
 class DBFeedbackReports extends S36DataObject {
