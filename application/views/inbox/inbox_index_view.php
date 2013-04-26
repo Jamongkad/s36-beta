@@ -448,42 +448,41 @@
                                             if(isset($attachments->uploaded_images)):
                                             ?>
                                             <?php
-                                            if(count($attachments->uploaded_images) == 1) $width='100%';
-                                            if(count($attachments->uploaded_images) == 2) $width='50%';
-                                            if(count($attachments->uploaded_images) == 3) $width='33%';
-                                            ?>
-                                                <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                    <div class="image-block" style="width:<?=$width;?>">
-                                                        <div class="delete-block">x</div>
-                                                        <div class="the-thumb">
-                                                            <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
+                                                if(count($attachments->uploaded_images) == 1) $width='100%';
+                                                if(count($attachments->uploaded_images) == 2) $width='50%';
+                                                if(count($attachments->uploaded_images) == 3) $width='33%';
+                                                ?>
+                                                    <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                        <div class="image-block" style="width:<?=$width;?>">
+                                                            <div class="delete-block">x</div>
+                                                            <div class="the-thumb">
+                                                                <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
 
-                                                            <?if(count($attachments->uploaded_images) == 1):?>
-                                                                <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
-                                                            <?else:?>
-                                                                <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
-                                                            <?endif?>
+                                                                <?if(count($attachments->uploaded_images) == 1):?>
+                                                                    <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
+                                                                <?else:?>
+                                                                    <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                                <?endif?>
 
-                                                            </a>
-                                                            <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                                                </a>
+                                                                <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                <?php endforeach; ?>
+                                                    <?php endforeach; ?>
                                             <?php
                                             /*
                                             | End Image Attachments
                                             */
                                             endif;
                                             ?>
-                                            <?if($reports):?>
-                                                <?print_r($reports);?>
-                                            <? 
-                                            /*
-                                            | End Image Attachments
-                                            */
-                                            endif?>
-
                                         </div>
+                                        <?if($reports):?>
+                                            <?print_r($reports);?>
+                                        <? 
+                                        /*
+                                        | End Image Attachments
+                                        */
+                                        endif?>
                                     <?php endif;?>
                                     </div>
                                     <!-- end of additional info block -->
