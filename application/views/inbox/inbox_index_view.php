@@ -364,8 +364,6 @@
                                         $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
                                         $attachments = (!empty($feed->attachments)) ? $feed->attachments : false; 
                                         $reports = (!empty($feed->reports)) ? $feed->reports : false; 
-                                        print_r($feed->reports);
-                                        print_r($reports);
                                     ?>
                                     <?if($metadata || $attachments || $reports):?>
                                         <div class="additional-info">
@@ -476,14 +474,15 @@
                                             endif;
                                             ?>
                                         </div>
-                                        <?if($reports):?>
-                                            <?print_r($reports);?>
-                                        <? 
-                                        /*
-                                        | End Image Attachments
-                                        */
-                                        endif?>
                                     <?php endif;?>
+
+                                    <?if($reports):?>
+                                        <?print_r($reports);?>
+                                    <? 
+                                    /*
+                                    | End Image Attachments
+                                    */
+                                    endif?>
                                     </div>
                                     <!-- end of additional info block -->
                                 <? endif; ?>
