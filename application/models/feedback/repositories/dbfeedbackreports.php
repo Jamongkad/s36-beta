@@ -42,7 +42,7 @@ class DBFeedbackReports extends S36DataObject {
             $container['reportcompany'] = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
         }
-        return $result; 
+        return $container; 
     }
 
 	public function get_feebackReport($feedbackId){
