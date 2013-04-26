@@ -58,7 +58,7 @@ class DBFeedbackReports extends S36DataObject {
             $container['reportemail']    = $val['reportemail'];
             $container['reportcompany']  = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
-            $container['reporttype_count'] += 1;
+            $container['reportcount']    = $val['reportcount'];
 
             $storage[] = $container;
         }
