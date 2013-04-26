@@ -363,8 +363,9 @@
                                     <?
                                         $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
                                         $attachments = (!empty($feed->attachments)) ? $feed->attachments : false; 
+                                        $reports = (!empty($feed->reports)) ? $feed->reports : false; 
                                     ?>
-                                    <?if($metadata || $attachments):?>
+                                    <?if($metadata || $attachments || $reports):?>
                                         <div class="additional-info">
                                             <div class="custom-meta-list grids">
                                                 <? 
@@ -472,6 +473,14 @@
                                             */
                                             endif;
                                             ?>
+                                            <?if($reports):?>
+                                                <?print_r($reports);?>
+                                            <? 
+                                            /*
+                                            | End Image Attachments
+                                            */
+                                            endif?>
+
                                         </div>
                                     <?php endif;?>
                                     </div>
