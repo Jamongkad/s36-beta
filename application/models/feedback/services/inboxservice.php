@@ -79,10 +79,8 @@ class InboxService {
                 $reports = $fr->get_reports_by_companyid($this->dbfeedback->company_id);
                 $reports_filter = $_->groupBy($reports, 'feedbackid');
 
-                Helpers::dump($reports_filter);
-
                 foreach($date_result->result as $feeds) { 
-                   $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids);
+                   $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids, $reports_filter);
                    $feeds->children_count = count($feeds->children);
                    $data[] = $feeds;
                 } 
