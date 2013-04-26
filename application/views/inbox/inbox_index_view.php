@@ -296,8 +296,8 @@
                                     </div>
                                     <?endif?>
                                     <div class="author-info">
+                                        <h2><?=$feed->title?></h2>
                                         <h3> 
-                                            <?=$feed->title?><br/>
                                             <?=$feed->firstname?> <?=$feed->lastname?>
                                             <?if($feed->origin == 's36'):?>
                                                 <?if($feed->rating != "POOR"):?>
