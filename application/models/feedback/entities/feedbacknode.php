@@ -85,6 +85,17 @@ class FeedbackNode {
         $node->origin = $this->data->origin;
         $node->socialid = $this->data->socialid;
         $node->word_count = $this->data->word_count;
+        $node->vote_count = $this->data->vote_count;
+        $node->useful = $this->data->useful;
+        $node->flagged_as_inappr = $this->data->flagged_as_inappr;
+        $node->admin_userid = $this->data->admin_userid;
+        $node->admin_reply = $this->data->admin_reply;
+        $node->admin_username = $this->data->admin_username;
+        $node->admin_fullname = $this->data->admin_fullname;
+        $node->admin_avatar = $this->data->admin_avatar;
+        $node->admin_email = $this->data->admin_email;
+        $node->admin_companyname = $this->data->admin_companyname;
+        $node->admin_fullpagecompanyname = $this->data->admin_fullpagecompanyname;
         return $node;
     }    
 }
