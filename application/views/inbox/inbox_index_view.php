@@ -482,7 +482,7 @@
                                             <?foreach($reports as $report):?>
                                                 <div>
                                                     <?=$report['reporttype'];?>:
-                                                    <span class='value'><?=$report['reportcount']?></span>
+                                                    <span style="color: #a2a2a2; font-weight: normal"><?=$report['reportcount']?></span>
                                                 </div>
                                             <?endforeach?>
                                         </div>
