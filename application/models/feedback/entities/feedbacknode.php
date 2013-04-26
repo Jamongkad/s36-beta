@@ -77,6 +77,8 @@ class FeedbackNode {
         $node->logintype = $this->data->logintype;
         $node->ipaddress = $this->data->ipaddress;
         $node->browser = $this->data->browser;
+        $node->countryname = $this->data->countryname;
+        $node->countrycode = $this->data->countrycode;
         $node->avatar = $this->data->avatar;
         $node->siteid = $this->data->siteid;
         $node->sitedomain = $this->data->sitedomain;
