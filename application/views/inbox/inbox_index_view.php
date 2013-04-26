@@ -478,7 +478,7 @@
 
                                     <?if($reports):?>
                                         <?foreach($reports as $report):?>
-                                            <?print_r($report);?>
+                                            <?=$report['reporttype'];?>
                                         <?endforeach?>
                                     <? 
                                     /*
