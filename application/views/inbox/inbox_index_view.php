@@ -477,7 +477,7 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
-                                        <h4 style="color:#6499CD">Feedback has been flagged:</h4>
+                                        <div style="color:#6499CD; font-size:11px; font-weight:bold">Feedback has been flagged:</div>
                                         <div class="custom-meta-list grids">
                                             <?foreach($reports as $report):?>
                                                 <div>
