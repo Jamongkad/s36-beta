@@ -45,6 +45,12 @@ class DBFeedbackReports extends S36DataObject {
             $container['reportcompany']  = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
 
+            if(array_key_exists($val['reporttype'], $container)) {
+                $container['reporttype_count'] += 1;
+            } else { 
+                $container['reporttype_count'] = 1;
+            }
+
             $storage[] = $container;
         }
 
