@@ -918,10 +918,6 @@ class DBFeedback extends S36DataObject {
 
         $collection = Array();
 
-        $reports = new \Feedback\Repositories\DBFeedbackReports;
-        $report_result = $reports->get_reports_by_companyid(6);
-        Helpers::dump($report_result);
-
         foreach($feedback as $data)  {
             $node = new FeedbackNode($data);
             $collection[] = $node->generate();
