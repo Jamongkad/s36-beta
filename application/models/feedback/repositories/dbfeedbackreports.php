@@ -30,9 +30,12 @@ class DBFeedbackReports extends S36DataObject {
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $container = Array();
+
+        $storage = Array();
         foreach($result as $val) {
-            $container['id'] = $val['id'];
+
+            $container = Array();
+            $container['id']             = $val['id'];
             $container['companyid']      = $val['companyid'];
             $container['feedbackid']     = $val['feedbackid'];
             $container['reporttype']     = $this->reportTypes[$val['reporttype']];
@@ -41,6 +44,8 @@ class DBFeedbackReports extends S36DataObject {
             $container['reportemail']    = $val['reportemail'];
             $container['reportcompany']  = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
+
+            $storage[] = $container;
         }
         print_r($container);
         return $container; 
