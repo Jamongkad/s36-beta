@@ -25,7 +25,21 @@ class DBFeedbackReports extends S36DataObject {
 	}
 
     public function get_reports_by_companyid($company_id) { 
-		$sql = "SELECT * FROM {$this->dbtable} WHERE companyId = :company_id";
+		$sql = "SELECT 
+                    id
+                  , companyId
+                  , feedbackId
+                  , reportType
+                  , reportIp
+                  , reportName
+                  , reportEmail
+                  , reportCompany
+                  , reportComments
+                  , COUNT(reportType) AS reportCount
+                FROM {$this->dbtable} 
+                WHERE 1=1 
+                    AND companyId = :company_id 
+                GROUP BY reportType, feedbackId";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
@@ -44,7 +58,7 @@ class DBFeedbackReports extends S36DataObject {
             $container['reportemail']    = $val['reportemail'];
             $container['reportcompany']  = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
-            $container['reporttype_count'] += 1;
+            $container['reportcount']    = $val['reportcount'];
 
             $storage[] = $container;
         }
