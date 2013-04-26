@@ -1,8 +1,10 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, Helpers, DB;
+use Feedback\Repositories\DBFeedbackReports;
 use Feedback\Repositories\TWFeedback, Feedback\Repositories\Stub;
 use Company\Repositories\DBCompany;
+use  Underscore\Underscore;
 use Exception, StdClass, LimitIterator, ArrayIterator;
 use Halcyonic;
 
@@ -72,7 +74,12 @@ class InboxService {
                 $total_rows = $date_result->total_rows;
                 $data = Array();
 
-                Helpers::dump($this->dbfeedback->company_id);
+                $fr = new DBFeedbackReports;
+                $_ = new Underscore;
+                $reports = $fr->get_reports_by_companyid($this->dbfeedback->company_id);
+                $reports_filter = $_->groupBy($reports, 'feedbackid');
+
+                Helpers::dump($reports_filter);
 
                 foreach($date_result->result as $feeds) { 
                    $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids);
