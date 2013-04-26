@@ -477,7 +477,10 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
-                                        <?print_r($reports);?>
+                                        <?foreach($reports as $report):?>
+                                            <?print_r($report);?>
+                                        <?endforeach?>
+
                                     <? 
                                     /*
                                     | End Image Attachments
