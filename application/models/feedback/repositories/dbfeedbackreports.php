@@ -3,6 +3,7 @@
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
 use \Feedback\Entities\FeedbackNode;
 use \Profile\Services\ProfileImage;
+use \Company\Repositories\DBCompany;
 use Underscore\Underscore;
 use Exception;
 
@@ -102,10 +103,15 @@ class DBFeedbackReports extends S36DataObject {
         $sth->bindParam(':feedback_id', $data['feedbackId'], PDO::PARAM_INT);
         $sth->bindParam(':report_ip', $data['reportIp'], PDO::PARAM_STR);
         $feedbackAction 	= $sth->execute();
+        
+        $dbcompany = new DBCompany;
+        $company = $dbcompany->get_company_info(Config::get('application.subdomain'));
 
     	if($feedbackAction){
-    		$sql = "INSERT IGNORE INTO {$this->dbtable} (feedbackId, reportType, reportIp, reportName, reportEmail, reportCompany, reportComments) VALUES (:feedback_id, :report_id, :report_ip, :report_name, :report_email, :report_company, :report_comments)";
+    		$sql = "INSERT IGNORE INTO {$this->dbtable} (companyId, feedbackId, reportType, reportIp, reportName, reportEmail, reportCompany, reportComments) 
+                                                 VALUES (:company_id, :feedback_id, :report_id, :report_ip, :report_name, :report_email, :report_company, :report_comments)";
     		$sth = $this->dbh->prepare($sql);
+    		$sth->bindParam(':company_id', $company->companyid, PDO::PARAM_INT);
     		$sth->bindParam(':feedback_id', $data['feedbackId'], PDO::PARAM_INT);
     		$sth->bindParam(':report_id', $data['reportType'], PDO::PARAM_INT);
     		$sth->bindParam(':report_ip', $data['reportIp'], PDO::PARAM_INT);
