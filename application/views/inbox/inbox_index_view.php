@@ -480,7 +480,7 @@
                                         <?foreach($reports as $report):?>
                                             <div class="custom-meta-name">
                                                 <?=$report['reporttype'];?>
-                                                <span><?=$report['reportcount']?></span>
+                                                <span class='value'><?=$report['reportcount']?></span>
                                             </div>
                                         <?endforeach?>
                                     <? 
