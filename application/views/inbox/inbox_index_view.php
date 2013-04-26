@@ -364,6 +364,7 @@
                                         $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
                                         $attachments = (!empty($feed->attachments)) ? $feed->attachments : false; 
                                         $reports = (!empty($feed->reports)) ? $feed->reports : false; 
+                                        print_r($feed->reports);
                                     ?>
                                     <?if($metadata || $attachments || $reports):?>
                                         <div class="additional-info">
