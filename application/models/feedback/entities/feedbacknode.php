@@ -25,9 +25,7 @@ class FeedbackNode {
                 if($key == 'metadata' || $key == 'attachments') {
                     $node->$key = json_decode($value);
                 }
-                if($key == 'id') {
-                    $node->$key = 'mathew';
-                }
+                print_r($value);
             } 
         }
         return $node;
