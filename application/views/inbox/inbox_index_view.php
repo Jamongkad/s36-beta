@@ -477,9 +477,11 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
-                                        <span class="value">Flag Reports</span>
                                         <?foreach($reports as $report):?>
-                                            <?=$report['reporttype'];?>
+                                            <div class="custom-meta-name">
+                                                <?=$report['reporttype'];?>
+                                                <span><?=$report['reportcount']?></span>
+                                            </div>
                                         <?endforeach?>
                                     <? 
                                     /*
