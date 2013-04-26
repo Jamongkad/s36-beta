@@ -11,13 +11,13 @@ class DBFeedbackReports extends S36DataObject {
 	private $dbtable = "FeedbackReports";
 	public $reportIp;
 	public $reportTypes = array(
-		 '1'=>"This information is incorrect"
-		,'2'=>"Hate speech"
-		,'3'=>"Sexually explicit content"
-		,'4'=>"Violence or harmful behavior"
-		,'5'=>"Spam or scam"
-		,'6'=>"I don't like this post"
-		,'7'=>"This post is violating intellectual property"
+		 1 => "This information is incorrect"
+	   , 2 => "Hate speech"
+	   , 3 => "Sexually explicit content"
+	   , 4 => "Violence or harmful behavior"
+	   , 5 => "Spam or scam"
+	   , 6 => "I don't like this post"
+	   , 7 => "This post is violating intellectual property"
 	);
 
 	public function get_reportTypes(){
@@ -30,6 +30,18 @@ class DBFeedbackReports extends S36DataObject {
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $container = Array();
+        foreach($result as $val) {
+            $container['id'] = $val['id'];
+            $container['companyid'] = $val['companyid'];
+            $container['feedbackid'] = $val['feedbackid'];
+            $container['reporttype'] = $this->reportTypes[$val['reporttype']];
+            $container['reportip'] = $val['reportip'];
+            $container['reportname'] = $val['reportname'];
+            $container['reportemail'] = $val['reportemail'];
+            $container['reportcompany'] = $val['reportcompany'];
+            $container['reportcomments'] = $val['reportcomments'];
+        }
         return $result; 
     }
 
