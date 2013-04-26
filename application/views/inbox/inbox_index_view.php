@@ -477,14 +477,16 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
+                                    <div class="custom-meta-list grids">
                                         <?foreach($reports as $report):?>
-                                        <div class="custom-meta">
-                                            <div class="custom-meta-name">
-                                                <?=$report['reporttype'];?>:
-                                                <span class='value'><?=$report['reportcount']?></span>
+                                            <div class="custom-meta">
+                                                <div class="custom-meta-name">
+                                                    <?=$report['reporttype'];?>:
+                                                    <span class='value'><?=$report['reportcount']?></span>
+                                                </div>
                                             </div>
-                                        </div>
                                         <?endforeach?>
+                                    </div>
                                     <? 
                                     /*
                                     | End Image Attachments
