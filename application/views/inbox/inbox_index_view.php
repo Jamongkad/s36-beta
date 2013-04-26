@@ -478,10 +478,12 @@
 
                                     <?if($reports):?>
                                         <?foreach($reports as $report):?>
+                                        <div class="custom-meta">
                                             <div class="custom-meta-name">
                                                 <?=$report['reporttype'];?>:
                                                 <span class='value'><?=$report['reportcount']?></span>
                                             </div>
+                                        </div>
                                         <?endforeach?>
                                     <? 
                                     /*
