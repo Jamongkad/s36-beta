@@ -477,15 +477,15 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
-                                    <h4>Feedback has been flagged:</h4>
-                                    <div class="custom-meta-list grids">
-                                        <?foreach($reports as $report):?>
-                                            <div>
-                                                <?=$report['reporttype'];?>:
-                                                <span class='value'><?=$report['reportcount']?></span>
-                                            </div>
-                                        <?endforeach?>
-                                    </div>
+                                        <h4 style="color:#6499CD">Feedback has been flagged:</h4>
+                                        <div class="custom-meta-list grids">
+                                            <?foreach($reports as $report):?>
+                                                <div>
+                                                    <?=$report['reporttype'];?>:
+                                                    <span class='value'><?=$report['reportcount']?></span>
+                                                </div>
+                                            <?endforeach?>
+                                        </div>
                                     <? 
                                     /*
                                     | End Image Attachments
