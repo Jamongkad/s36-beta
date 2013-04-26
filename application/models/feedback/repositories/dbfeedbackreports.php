@@ -47,8 +47,8 @@ class DBFeedbackReports extends S36DataObject {
 
             $storage[] = $container;
         }
-        print_r($container);
-        return $container; 
+
+        return $storage; 
     }
 
 	public function get_feebackReport($feedbackId){
