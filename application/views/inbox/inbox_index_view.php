@@ -477,7 +477,7 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
-                                    Feedback has been flagged: <br/>
+                                    <h3>Feedback has been flagged:</h3>
                                     <div class="custom-meta-list grids">
                                         <?foreach($reports as $report):?>
                                             <div>
