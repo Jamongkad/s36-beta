@@ -33,13 +33,13 @@ class DBFeedbackReports extends S36DataObject {
         $container = Array();
         foreach($result as $val) {
             $container['id'] = $val['id'];
-            $container['companyid'] = $val['companyid'];
-            $container['feedbackid'] = $val['feedbackid'];
-            $container['reporttype'] = $this->reportTypes[$val['reporttype']];
-            $container['reportip'] = $val['reportip'];
-            $container['reportname'] = $val['reportname'];
-            $container['reportemail'] = $val['reportemail'];
-            $container['reportcompany'] = $val['reportcompany'];
+            $container['companyid']      = $val['companyid'];
+            $container['feedbackid']     = $val['feedbackid'];
+            $container['reporttype']     = $this->reportTypes[$val['reporttype']];
+            $container['reportip']       = $val['reportip'];
+            $container['reportname']     = $val['reportname'];
+            $container['reportemail']    = $val['reportemail'];
+            $container['reportcompany']  = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
         }
         print_r($container);
