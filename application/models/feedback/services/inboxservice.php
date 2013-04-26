@@ -72,7 +72,7 @@ class InboxService {
                 $total_rows = $date_result->total_rows;
                 $data = Array();
 
-                Helpers::dump($this->company_id);
+                Helpers::dump($this->dbfeedback->company_id);
 
                 foreach($date_result->result as $feeds) { 
                    $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids);
