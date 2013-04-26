@@ -84,18 +84,18 @@ class FeedbackNode {
         $node->sitedomain = $this->data->sitedomain;
         $node->origin = $this->data->origin;
         $node->socialid = $this->data->socialid;
-        $node->word_count = $this->data->word_count;
-        $node->vote_count = $this->data->vote_count;
-        $node->useful = $this->data->useful;
-        $node->flagged_as_inappr = $this->data->flagged_as_inappr;
-        $node->admin_userid = $this->data->admin_userid;
-        $node->admin_reply = $this->data->admin_reply;
-        $node->admin_username = $this->data->admin_username;
-        $node->admin_fullname = $this->data->admin_fullname;
-        $node->admin_avatar = $this->data->admin_avatar;
-        $node->admin_email = $this->data->admin_email;
-        $node->admin_companyname = $this->data->admin_companyname;
-        $node->admin_fullpagecompanyname = $this->data->admin_fullpagecompanyname;
+        $node->word_count = property_exists($this->data, 'word_count') ? $this->data->word_count: null;
+        $node->vote_count = property_exists($this->data, 'vote_count') ? $this->data->vote_count: null;
+        $node->useful = property_exists($this->data, 'useful') ? $this->data->useful: null;
+        $node->flagged_as_inappr = property_exists($this->data, 'flagged_as_inappr') ? $this->data->flagged_as_inappr: null;
+        $node->admin_userid = property_exists($this->data, 'admin_userid') ? $this->data->admin_userid: null;
+        $node->admin_reply = property_exists($this->data, 'admin_reply') ? $this->data->admin_reply: null;
+        $node->admin_username = property_exists($this->data, 'admin_username') ? $this->data->admin_username: null;
+        $node->admin_fullname = property_exists($this->data, 'admin_fullname') ? $this->data->admin_fullname: null;
+        $node->admin_avatar = property_exists($this->data, 'admin_avatar') ? $this->data->admin_avatar: null;
+        $node->admin_email = property_exists($this->data, 'admin_email') ? $this->data->admin_email: null;
+        $node->admin_companyname = property_exists($this->data, 'admin_companyname') ? $this->data->admin_companyname: null;
+        $node->admin_fullpagecompanyname = property_exists($this->data, 'admin_fullpagecompanyname') ? $this->data->admin_fullpagecompanyname: null;
         return $node;
     }    
 }
