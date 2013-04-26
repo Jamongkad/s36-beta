@@ -32,6 +32,7 @@ class DBFeedbackReports extends S36DataObject {
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
         $storage = Array();
+        $i = 1;
         foreach($result as $val) {
 
             $container = Array();
@@ -45,13 +46,14 @@ class DBFeedbackReports extends S36DataObject {
             $container['reportcompany']  = $val['reportcompany'];
             $container['reportcomments'] = $val['reportcomments'];
 
-            if(array_key_exists($val['reporttype'], $container)) {
+            if(array_key_exists($container['reporttype'], $storage[$i])) {
                 $container['reporttype_count'] += 1;
             } else { 
                 $container['reporttype_count'] = 1;
             }
 
             $storage[] = $container;
+            $i++;
         }
 
         return $storage; 
