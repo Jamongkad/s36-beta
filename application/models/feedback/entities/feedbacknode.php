@@ -6,9 +6,14 @@ use Helpers;
 class FeedbackNode {
 
     private $data;
+    private $additional_data;
 
     public function __construct($data) {
         $this->data = $data;     
+    }
+
+    public function set_additional_data($data) {
+        $this->additional_data = $data; 
     }
 
     public function generate() {

@@ -311,7 +311,7 @@ class DBFeedback extends S36DataObject {
         return $result_obj;       
     }
     
-    public function pull_feedback_group($feedbackids) {
+    public function pull_feedback_group($feedbackids, $additional_data=False) {
         
         if(is_string($feedbackids)) {
             $ids = explode("|", $feedbackids);     
@@ -361,7 +361,7 @@ class DBFeedback extends S36DataObject {
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
         
-        return $this->_return_feedback_nodes($results);
+        return $this->_return_feedback_nodes($results, $additional_data);
     }
 
     public function pull_feedback_by_id($feedback_id) { 
@@ -448,13 +448,7 @@ class DBFeedback extends S36DataObject {
                 if(array_key_exists('rating', $filter)) {
                     if($filter['rating'] == 'positive') { 
                         $statement .= 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
-                    }
-                    
-                    /* this seems like a bad idea
-                    if($filter['rating'] == 'all') { 
-                        $statement .= 'AND (Feedback.rating = 5 OR Feedback.rating = 4 OR Feedback.rating = 3 OR Feedback.rating = 2 OR Feedback.rating = 1)';
-                    }
-                    */
+                    }    
                 }
 
                 if(array_key_exists('privacy_policy', $filter)) {
@@ -914,12 +908,17 @@ class DBFeedback extends S36DataObject {
             return DB::table('Feedback')->insert_get_id($feedback_data);
     }
 
-    public function _return_feedback_nodes($feedback) { 
+    public function _return_feedback_nodes($feedback, $additional_data=False) { 
 
         $collection = Array();
 
         foreach($feedback as $data)  {
             $node = new FeedbackNode($data);
+
+            if($additional_data) {
+                $node->set_additional_data($additional_data);
+            }
+
             $collection[] = $node->generate();
         }
 
