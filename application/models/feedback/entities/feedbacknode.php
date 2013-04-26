@@ -19,18 +19,7 @@ class FeedbackNode {
     public function generate() {
           
         $node = new StdClass; 
-        /*
-        foreach($this->data as $key => $value) {
-            if($key) { 
-                $node->$key = $value;
-                if($key == 'metadata' || $key == 'attachments') {
-                    $node->$key = json_decode($value);
-                }
-            } 
-        }
-        */
         $node->id = $this->data->id;
-        /*
         $node->intname = $this->data->intname;
         $node->category = $this->data->category;
         $node->category = $this->data->category;
@@ -97,7 +86,6 @@ class FeedbackNode {
         $node->admin_email = property_exists($this->data, 'admin_email') ? $this->data->admin_email: null;
         $node->admin_companyname = property_exists($this->data, 'admin_companyname') ? $this->data->admin_companyname: null;
         $node->admin_fullpagecompanyname = property_exists($this->data, 'admin_fullpagecompanyname') ? $this->data->admin_fullpagecompanyname: null;
-        */
 
         if($this->additional_data) {
             $node->reports = array_key_exists($this->data->id, $this->additional_data) ? $this->additional_data[$this->data->id] : null;
