@@ -95,7 +95,6 @@ class DBFeedback extends S36DataObject {
                 , Contact.browser
                 , Country.name AS countryname
                 , Country.code AS countrycode
-                , Contact.ipaddress
                 , Contact.avatar AS avatar
                 , Site.siteId AS siteid
                 , Site.name AS sitename
@@ -571,7 +570,6 @@ class DBFeedback extends S36DataObject {
                 , User.username AS admin_username
                 , User.fullName AS admin_fullname
                 , User.avatar AS admin_avatar
-                , User.email AS admin_email 
                 , User.email AS admin_email 
                 , Company.name AS admin_companyname 
                 , Company.fullpageCompanyName AS admin_fullpagecompanyname 
