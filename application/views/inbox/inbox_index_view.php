@@ -477,12 +477,12 @@
                                     <?php endif;?>
 
                                     <?if($reports):?>
-                                    <h3>Feedback has been flagged:</h3>
+                                    <h4>Feedback has been flagged:</h4>
                                     <div class="custom-meta-list grids">
                                         <?foreach($reports as $report):?>
                                             <div>
-                                            <?=$report['reporttype'];?>:
-                                            <span class='value'><?=$report['reportcount']?></span>
+                                                <?=$report['reporttype'];?>:
+                                                <span class='value'><?=$report['reportcount']?></span>
                                             </div>
                                         <?endforeach?>
                                     </div>
