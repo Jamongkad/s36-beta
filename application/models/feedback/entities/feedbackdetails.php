@@ -32,6 +32,8 @@ class FeedbackDetails extends FeedbackDataTypes {
         $hosted->set_hosted_settings(Array('company_id' => $this->post_data->get('company_id')));
         $hosted_settings = $hosted->hosted_settings();
 
+        Helpers::dump($hosted_settings);
+
         $is_published = 0;
         if($hosted_settings->autopost_enable == 1) {
             $is_published = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
