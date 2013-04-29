@@ -42,7 +42,8 @@
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget form">
-                <?=HTML::link('feedsetup/overview/submit', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> 
+                <?//=HTML::link('feedsetup/overview/submit', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> 
+                Submission Forms
                 <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors)</small>
             </h2>
             <?//=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
