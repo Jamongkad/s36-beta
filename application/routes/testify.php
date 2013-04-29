@@ -89,7 +89,7 @@ return array(
         });
 
         $tf->test('Email Test', function($tf) {  
-            $feedback = $tf->data->feedback->pull_feedback_by_id(1354);
+            $feedback = $tf->data->feedback->pull_feedback_by_id($tf->data->id);
             $accounts = $tf->data->dbuser->pull_user_emails_by_company_id(6);
 
             $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
