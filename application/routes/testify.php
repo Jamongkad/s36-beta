@@ -89,20 +89,15 @@ return array(
         });
 
         $tf->test('Email Test', function($tf) {  
+            $feedback = $tf->data->feedback->pull_feedback_by_id($tf->data->id);
+            $accounts = $tf->data->dbuser->pull_user_emails_by_company_id(6);
 
-            $replydata = new Email\Entities\ReplyData; 
-            $replydata->subject("and wanted you to know that we posted it on our website.")
-                      ->sendto("wrm932@gmail.com")
-                      ->from( 
-                          (object) Array(
-                            "replyto" => "wrm932@gmail.com"
-                          , "username"  => ucfirst("mathew wong")
-                          ) 
-                        )
-                      ->message("Hello we featured and replied to your feedback check it out <a href='".URL::to('/single/'.$tf->data->id)."'>on our website</a>.")
-                      ->feedbackdata($tf->data->feedback->pull_feedback_by_id($tf->data->id));            
+            $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
+            $submission_data->set_feedback($feedback)
+                            ->set_sendtoaddresses($accounts);
+
      
-            $emailservice = new Email\Services\EmailService($replydata);
+            $emailservice = new Email\Services\EmailService($submission_data);
             $emailservice->send_email();
         });
 
