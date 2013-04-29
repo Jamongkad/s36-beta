@@ -20,7 +20,7 @@ class NewFeedbackSubmission extends EmailFixture {
                 , 'encryptstring' => $address->encryptstring
                 , 'companyid' => $address->companyid
                 , 'login_url' => $login_url
-                , 'attachments_partial_view' => View::make('email/partials/attachments_partial_view', Array('feedback_data' => $this->email_data->feedback)) 
+                , 'attachments_partial_view' => View::make('email/partials/attachments_partial_view', Array('feedback_data' => $this->feedback_data)) 
                 , 'profile_partial_view' => View::make('email/partials/profile_partial_view'
                                                        , Array('feedback_data' => $this->feedback_data))
             ))->get();     
