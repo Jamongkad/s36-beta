@@ -33,6 +33,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         $hosted_settings = $hosted->hosted_settings();
 
         Helpers::dump($hosted_settings);
+        Helpers::dump($this->post_data);
 
         $is_published = 0;
         if($hosted_settings->autopost_enable == 1) {
