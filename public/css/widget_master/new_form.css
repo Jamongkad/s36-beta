@@ -137,6 +137,7 @@ a:hover{
 }
 .form-custom-fields{
 	margin-top:10px;
+	font-size: 12px;
 }
 .form-field-block,.form-feedback-textbox{
 	margin-bottom:8px;
@@ -144,7 +145,7 @@ a:hover{
 .regular-custom-field{
 	width:290px;
 	padding:4px 6px;
-	font-size:14px;
+	font-size:12px;
 	font-weight:normal;
 	color:#000;
 	border:1px solid #e0e0e0;
@@ -723,12 +724,12 @@ select.regular-custom-field{
     margin-top: 5px;
 }
 .select.form-field-block label{
-	font-size: 10px;
+	font-size: 12px;
 	font-weight: bold;
 }
 .radio-container,.checkbox-container{
     padding:4px 0px;
-    font-size:10px;
+    font-size:12px;
     font-weight:normal;
     color:#000;
     margin:0px;
@@ -828,4 +829,8 @@ opacity: 0.5;
 #review-feedback-text p:last-child, #all-done-textbox p:last-child{
 	margin-top:0px;
 	margin-bottom:0px;
+}
+
+#feedbackTitle{
+	font-size: 14px;
 }
