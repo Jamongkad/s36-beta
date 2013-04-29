@@ -2,8 +2,8 @@
     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
     $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
 ?>
-<p><?=$feedback_data->text?></p>
 <?if($metadata || $attachments):?>
+<p><?=$feedback_data->text?></p>
     <div style="float:left;background:#f7f7f7;border:1px solid #dde7ef;padding:15px;margin-top:10px;
     ">
         <div style="margin-bottom: 10px;float:left">
