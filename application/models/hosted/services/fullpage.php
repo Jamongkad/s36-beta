@@ -38,6 +38,7 @@ class Fullpage {
     }
 
     public function get_fullpage_css($company_id){
+        $background_image = null;  /* we need a default value for $background_image for newly created accounts. */
         $hs = $this->hosted_settings->get_panel_settings($company_id);
         /*for background image [uploaded or pattern]*/
         if($hs->active_background=='image') $background_image = $this->uploaded_background_dir . '/' . $hs->background_image; 
