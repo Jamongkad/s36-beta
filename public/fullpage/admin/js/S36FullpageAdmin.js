@@ -91,7 +91,6 @@ var S36FullpageAdmin = function(layoutObj){
         || Change the background color
         ==========================================*/
         $('.backgroundColorPicker').on('change',function(){
-            if( $('.patternItem.active').length == 0 ) return;  // if there's bg image, don't apply bg color.
             self.change_background_color($(this).val(),$(this).attr('data-opacity'));
         });
         /* ========================================
@@ -794,7 +793,6 @@ var PanelAutoSaver = new function(layoutObj){
         });
         
         $('.backgroundColorPicker').on('change', function(){
-            if( $('.patternItem.active').length == 0 ) return;  // if there's bg image, don't apply bg color.
             PanelAutoSaver.set_data('page_bg_color', $(this).val());
             PanelAutoSaver.set_data('page_bg_color_opacity', $(this).attr('data-opacity'));
         });
