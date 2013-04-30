@@ -43,7 +43,7 @@
                     <div class="author-name clear">
                         <span class="first_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
                         <span class="last_name"><?= HTML::entities($feed->feed_data->lastname); ?></span>
-                        <span class="last_name_ini"><?= HTML::entities(substr($feed->feed_data->lastname, 0, 1)); ?>.</span>
+                        <span class="last_name_ini"><?=(strlen($feed->feed_data->lastname)>0) ? HTML::entities(substr($feed->feed_data->lastname, 0, 1)).'.' : '' ?></span>
                     </div>
                     <?php if( trim($tw_marker) == '' ): ?>
                         <div class="author-company">
@@ -114,7 +114,7 @@
                 </div>
             <?php endif; ?>
             <div class="feedback-text">
-                <?= nl2br(HTML::entities($feed->feed_data->text));?>
+                <?= nl2br($feed->feed_data->text);?>
             </div>
             <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>
