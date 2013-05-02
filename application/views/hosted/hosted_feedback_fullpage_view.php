@@ -264,17 +264,6 @@
                 if( fullpageLayout.layout_name == 'treble' ) {
                     container = $('.feedback-list');   
                 }
-                /*
-                $.ajax({ 
-                    async: false,
-                    url: '/hosted/fullpage_partial/' + page_counter
-                  , success: function(msg) { 
-                      var boxes = $(msg);
-                      if( fullpageLayout.layout_name == 'treble' ) container.append(boxes.find('.feedback')); 
-                      else container.append(boxes); 
-                    }
-                });
-                */
                 render_children(container, page_counter);
             }
             
