@@ -244,13 +244,13 @@
 
         for(var i=0; i<6; i++) {
             counter += 1; 
-            console.log(counter);
+            var pg_c = counter + 1;
 
             var container = $('#feedback-infinitescroll-landing');
             if( fullpageLayout.layout_name == 'treble' ) {
                 container = $('.feedback-list');   
             }
-            render_children(container, counter);
+            render_children(container, pg_c);
         }
 
         function update() {
