@@ -44,6 +44,7 @@ return array(
         $hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();        
+        $feed_advance_count = $hosted->determine_feed_advance();
 
         //hosted settings 
         $panel = $hosted_settings->get_panel_settings($company_info->companyid);
@@ -70,7 +71,8 @@ return array(
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
                                                   , 'reportTypes'       => $feedbackReports->get_reportTypes()
-                                                  , 'panel'             => $panel ));
+                                                  , 'panel'             => $panel 
+                                                  , 'feed_advance_count' => $feed_advance_count));
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);

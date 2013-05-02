@@ -11,6 +11,7 @@ class HostedService {
     public $page_number = 0;
     public $units = 10;
     public $starting_units_onload = 5;
+    public $feed_advance_count = 6;
     public $debug = False;
     public $dump_build_data = False;
 
@@ -23,6 +24,8 @@ class HostedService {
 
     private $featured_count;
     private $published_count;
+
+    private $total_collection;
     
     public function __construct($company_name, $feeds=Null) {
         $this->redis    = new redisent\Redis;
@@ -99,7 +102,7 @@ class HostedService {
     public function build_data() {
 
         //We want to generalize this algorithm
-        $total_collection = (int)count($this->feeds);
+        $this->total_collection = (int)count($this->feeds);
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
 
         //Helpers::dump($total_collection);
@@ -107,7 +110,7 @@ class HostedService {
         $key = $this->redis->hgetall($this->key_name);
         $hosted_feeds = $this->group_and_build();       
 
-        if(!$key || $redis_total_set !== $total_collection) {
+        if(!$key || $redis_total_set !== $this->total_collection) {
             //echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
@@ -124,5 +127,14 @@ class HostedService {
 
     public function bust_hostfeed_data() {
         return $this->redis->del($this->key_name); 
+    }
+
+    //method to determine feedback rendering.
+    public function determine_feed_advance() {
+        if($this->total_collection >= $this->feed_advance_count) {
+            return 6;     
+        } else {
+            return 1;     
+        }
     }
 }
