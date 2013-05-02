@@ -50,18 +50,6 @@
                         </ul>                   
                     </div>
                     
-                    <!-- <div id="changeCoverButton">
-                        <div id="changeButtonText">
-                            <span>Change Cover</span>
-                        </div>
-                        <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
-                    </div>
-                    <div id="saveCoverButton">
-                        Save Cover
-                    </div>
-                    <div id="dragPhoto">
-                        Drag Image to Reposition Cover
-                    </div> -->
                 <?php endif; ?>
                 
                 <div id="coverPhoto">
@@ -261,7 +249,10 @@
                 var page_counter = counter + 1;
 
                 var container = $('#feedback-infinitescroll-landing');
-                if( fullpageLayout.layout_name == 'treble' ) container = $('.feedback-list');
+                if( fullpageLayout.layout_name == 'treble' ) {
+                    container = $('.feedback-list');   
+                }
+                /*
                 $.ajax({ 
                     async: false,
                     url: '/hosted/fullpage_partial/' + page_counter
@@ -271,12 +262,26 @@
                       else container.append(boxes); 
                     }
                 });
+                */
+                render_children(container, page_counter);
             }
             
             fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
             fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
             S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
 
+        }
+
+        function render_children(container, counter) { 
+            $.ajax({ 
+                async: false,
+                url: '/hosted/fullpage_partial/' + page_counter
+              , success: function(msg) { 
+                  var boxes = $(msg);
+                  if( fullpageLayout.layout_name == 'treble' ) container.append(boxes.find('.feedback')); 
+                  else container.append(boxes); 
+                }
+            });
         }
         //rate limit this bitch
         var throttled = _.throttle(update, 1000);
