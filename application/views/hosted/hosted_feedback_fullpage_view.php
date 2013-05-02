@@ -247,9 +247,8 @@
         }
 
         var counter = 0;    
-
+        //lets get the first 6 months of feedback if there are any...
         for(var i=0; i<6; i++) {
-
             counter += 1; 
             var pg_c = counter + 1;
 
