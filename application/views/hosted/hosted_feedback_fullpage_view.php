@@ -275,7 +275,7 @@
         function render_children(container, counter) { 
             $.ajax({ 
                 async: false,
-                url: '/hosted/fullpage_partial/' + page_counter
+                url: '/hosted/fullpage_partial/' + counter
               , success: function(msg) { 
                   var boxes = $(msg);
                   if( fullpageLayout.layout_name == 'treble' ) container.append(boxes.find('.feedback')); 
@@ -411,4 +411,3 @@
     </div>
 </div>
 </div>
-
