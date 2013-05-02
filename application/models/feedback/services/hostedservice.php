@@ -101,6 +101,8 @@ class HostedService {
         //We want to generalize this algorithm
         $total_collection = (int)count($this->feeds);
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
+
+        Helpers::dump($total_collection);
  
         $key = $this->redis->hgetall($this->key_name);
         $hosted_feeds = $this->group_and_build();       
