@@ -245,9 +245,13 @@
         for(var i=0; i<6; i++) {
             counter += 1; 
             console.log(counter);
-        }
 
-        console.log(counter);
+            var container = $('#feedback-infinitescroll-landing');
+            if( fullpageLayout.layout_name == 'treble' ) {
+                container = $('.feedback-list');   
+            }
+            render_children(container, counter);
+        }
 
         function update() {
             if( $(window).scrollTop() + $(window).height() == $(document).height() ) {
