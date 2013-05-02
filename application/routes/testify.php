@@ -198,12 +198,15 @@ return array(
             $fb = $tf->data->dbfeedback->cherry_pick_feedback($feeds, $company_name);
             */
             $fb = $tf->data->dbfeedback->televised_feedback_alt($company_name);
+            /* 
             $hosted = new Feedback\Services\HostedService($company_name, $fb->result);
             $hosted->page_number = $page; 
             $hosted->debug = True; 
             $hosted->build_data();
             $feeds = $hosted->fetch_data_by_set();        
             $tf->dump($feeds);
+            */
+            $tf->dump($fb->result);
 
         });    
         $tf->run();
