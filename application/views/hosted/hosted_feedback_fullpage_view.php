@@ -243,9 +243,8 @@
         var counter = 0;    
 
         for(var i=0; i<6; i++) {
-            counter += i;
-            var page_counter = counter + 1; 
-            console.log(page_counter);
+            counter += i; 
+            console.log(counter);
         }
 
         console.log(counter);
