@@ -241,6 +241,14 @@
         */
         S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
         var counter = 0;    
+
+        for(var i=0; i<6; i++) {
+            counter += 1;
+            var page_counter = counter + 1; 
+        }
+
+        console.log(counter);
+
         function update() {
             if( $(window).scrollTop() + $(window).height() == $(document).height() ) {
                 if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
