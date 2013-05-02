@@ -240,16 +240,19 @@
         / Infinite Scroll
         */
         S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
+
+        var container = $('#feedback-infinitescroll-landing');
+        if( fullpageLayout.layout_name == 'treble' ) {
+            container = $('.feedback-list');   
+        }
+
         var counter = 0;    
 
         for(var i=0; i<6; i++) {
+
             counter += 1; 
             var pg_c = counter + 1;
 
-            var container = $('#feedback-infinitescroll-landing');
-            if( fullpageLayout.layout_name == 'treble' ) {
-                container = $('.feedback-list');   
-            }
             render_children(container, pg_c);
         }
 
@@ -260,10 +263,6 @@
                 counter += 1;
                 var page_counter = counter + 1;
 
-                var container = $('#feedback-infinitescroll-landing');
-                if( fullpageLayout.layout_name == 'treble' ) {
-                    container = $('.feedback-list');   
-                }
                 render_children(container, page_counter);
             }
             
