@@ -104,8 +104,6 @@ class HostedService {
         //We want to generalize this algorithm
         $this->total_collection = (int)count($this->feeds);
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
-
-        //Helpers::dump($total_collection);
  
         $key = $this->redis->hgetall($this->key_name);
         $hosted_feeds = $this->group_and_build();       
@@ -113,7 +111,7 @@ class HostedService {
         if(!$key || $redis_total_set !== $this->total_collection) {
             //echo "Processing: Insert Data into Redis";
             //insert data into redis
-            $this->redis->hset($this->key_name, 'total:set', $total_collection);
+            $this->redis->hset($this->key_name, 'total:set', $this->total_collection);
             $page = 0;
             foreach($hosted_feeds as $feed_group => $feed_list) {
                 $page_number = ++$page;
