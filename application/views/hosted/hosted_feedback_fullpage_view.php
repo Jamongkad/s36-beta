@@ -243,7 +243,7 @@
         var counter = 0;    
 
         for(var i=0; i<6; i++) {
-            counter += i; 
+            counter += 1; 
             console.log(counter);
         }
 
