@@ -245,6 +245,7 @@
         for(var i=0; i<6; i++) {
             counter += 1;
             var page_counter = counter + 1; 
+            console.log(page_counter);
         }
 
         console.log(counter);
