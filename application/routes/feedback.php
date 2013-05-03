@@ -284,7 +284,7 @@ return array(
 
     'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $auth) {  
         //delete feedback count calculator
-        $company_id = $auth->company_id; 
+        $company_id = $auth->companyid; 
         Helpers::dump($company_id);
         //$redis->del("$company_id:feedback_count");
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
