@@ -36,7 +36,6 @@ class DBUserDirectory extends S36DataObject {
             //echo "Creating new Object"; 
             return $this->_build_user_object($this->redis->smembers($this->redis_key)); 
         }
-
     }
 
     public function delete_user($user_id = False) {
