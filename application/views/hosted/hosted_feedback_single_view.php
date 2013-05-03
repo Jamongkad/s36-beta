@@ -128,29 +128,47 @@
 
             <div id="coverPhotoContainer">
                 <div id="coverPhoto">
+                    <?php if( ! is_null($user) ): ?>
+                        <?php $src = ( is_null($company->coverphoto_src) ? '/img/sample-cover.jpg' : '/uploaded_images/coverphoto/' . $company->coverphoto_src ); ?>
+                        <input type="hidden" id="hidden_cover_photo" src="<?php echo $src; ?>" style="top: <?php echo (int)$company->coverphoto_top; ?>px; position: relative;" />
+                    <?php endif; ?>
+                    
                     <?php if( ! is_null($company->coverphoto_src) ): ?>
-                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" 
-                             src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" 
-                             style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
                     <?php else: ?>
                         <?php if( ! is_null($user) ): ?>
-                            <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
+                            <img dir="/uploaded_images/coverphoto/" basename="" src="/img/sample-cover.jpg" />
                         <?php else: ?>
-                            <img width="850px" src="img/public-coverphoto.jpg" />
+                            <img width="850px" src="/img/public-coverphoto.jpg" />
                         <?php endif; ?>
                     <?php endif; ?>
-                </div>                
+                </div>
                 <div id="socialLinkIcons" class="clear">
                     <div class="social-icon fb" style="display: <?= (trim($panel->facebook_url) == '' ? 'none' : ''); ?>;">
-                        <a id="fb_url" href="<?= $panel->facebook_url; ?>">
+                        <a id="fb_url" href="<?= $panel->facebook_url; ?>" target="_blank">
                             <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
                         </a>
                     </div>
                     <div class="social-icon tw" style="display: <?= (trim($panel->twitter_url) == '' ? 'none' : ''); ?>;">
-                        <a href="<?= $panel->twitter_url; ?>">
+                        <a href="<?= $panel->twitter_url; ?>" target="_blank">
                             <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
                         </a>
                     </div>
+                </div>
+                
+                <!-- profile pic -->
+                <div id="avatarContainer">
+                    <?php if( ! is_null($user) ): ?>
+                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/' . $company->logo ); ?>
+                        <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
+                        <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
+                    <?php endif; ?>
+                    
+                    <?php if( ! empty($company->logo) ): ?>
+                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" />
+                    <?php else: ?>
+                        <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -211,6 +229,7 @@
             $feedback_id                = $feedback->id;
             $tw_marker                  = ($feedback->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
             $avatar                     = Config::get('application.avatar48_dir').'/'.$feedback->avatar;
+            $avatar                     = Helpers::avatar_render($feedback->avatar, $feedback->origin);
             $attachments                = (!empty($feedback->attachments)) ? $feedback->attachments : false;
             $vote_count                 = $feedback->vote_count;
             $voted                      = $feedback->useful;
@@ -221,7 +240,6 @@
             $company_name               = $feedback->companyname;
             $city                       = $feedback->city;
             $country_name               = $feedback->countryname;
-
             $admin_avatar               = ($feedback->admin_avatar) ? $feedback->admin_avatar : '/img/48x48-blank-avatar.jpg';
             $admin_companyname          = ($feedback->admin_fullpagecompanyname) ? $feedback->admin_fullpagecompanyname : $feedback->companyname; 
             ?>
@@ -292,7 +310,7 @@
                                         <span class="vote_count"><?= $vote_count; ?></span> people found this useful
                                     </div>
                                     <div class="feedback-text">
-                                        <p><?= HTML::entities($feedback->text);?></p>
+                                        <p><?= nl2br(HTML::entities($feedback->text)); ?></p>
                                     </div>
                                     <!-- are there any additional info uploaded?? -->
                                     
@@ -353,7 +371,7 @@
                                     <?php endif; ?>              
                                 </div>
 
-                                <?if($feedback->admin_reply && $feedback->admin_username):?>
+                                <? //if($feedback->admin_reply && $feedback->admin_username): ?>
                                     <div class="admin-comment-block">
                                         <div class="admin-comment">
                                             <div class="admin-name"><?=$admin_companyname?> says..</div>
@@ -364,7 +382,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?endif?>
+                                <? //endif; ?>
                                 <!-- end of feedback text bubble -->
                                 <!-- feedback user actions -->
                                 <!--
@@ -425,8 +443,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-//S36FeedbackActions.vertically_center_attachments();
-</script>
+<div id="fullpage_css"><?php echo $fullpage_css; ?></div>
 </body>
 </html>

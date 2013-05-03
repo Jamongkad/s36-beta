@@ -218,6 +218,7 @@ return array(
           , 'feedback'          => $feed_data->generate()
           , 'fb_id'             => $fb_id
           , 'panel'             => $hosted_settings->get_panel_settings($feedback->companyid)
+          , 'fullpage_css'      => $fullpage->get_fullpage_css($feedback->companyid)
         ));
     },
 

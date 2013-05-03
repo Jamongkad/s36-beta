@@ -42,7 +42,10 @@ class Fullpage {
         $hs = $this->hosted_settings->get_panel_settings($company_id);
         /*for background image [uploaded or pattern]*/
         if($hs->active_background=='image') $background_image = $this->uploaded_background_dir . '/' . $hs->background_image; 
-        if($hs->active_background=='pattern') $background_image = $this->pattern_dir . '/' . $hs->background_pattern; 
+        if($hs->active_background=='pattern') $background_image = '/' . $this->pattern_dir . '/' . $hs->background_pattern; 
+        // that extra / before $this->pattern_dir on the above line is intended.
+        // $this->uploaded_background_dir starts with /, $this->pattern_dir does not
+        // therefore causing bg url problem in single page.
 
         $css = '<style type"text/css">';
         $css .= ( $background_image ? 'body{background-image:url("' .$background_image. '"); }' : '' );
