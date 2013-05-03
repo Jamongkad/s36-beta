@@ -263,10 +263,8 @@ return array(
         return $emailservice->send_email(); 
     }),
 
-    'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
+    'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback, $auth) {
         $data = (object)Input::get();
-        $auth = new S36Auth;
-
         $fastdata = new Email\Entities\FastForwardData;
 
         $fastdata->sendto = $data->email;
@@ -284,7 +282,11 @@ return array(
         echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     }),
 
-    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox) {  
+    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $auth) {  
+        //delete feedback count calculator
+        $company_id = $auth->company_id; 
+        Helpers::dump($company_id);
+        //$redis->del("$company_id:feedback_count");
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
     })
 );
