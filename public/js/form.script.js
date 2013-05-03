@@ -647,10 +647,17 @@ $(document).keypress(function(event){
 	}
 
 	function push_to_last_window(){
-		$('#all-done-textbox').html($('#review-feedback-text').html());
-		$('#back').fadeOut('fast');
-		$('#next').fadeOut('fast');
-		return true;
+		var review_feedback_text = $.trim($('#review-feedback-text').text().replace(/(<([^>]+)>)/ig,""));
+		if(review_feedback_text.length > 0){
+			$('#all-done-textbox').html($('#review-feedback-text').html());
+			$('#back').fadeOut('fast');
+			$('#next').fadeOut('fast');
+			return true;
+		}else{
+			error_mes = ['Please provide your feedback.'];
+			display_error_mes(error_mes);     
+			return false;
+		}
 	}
 
     var FormValidatePageOne = new function() {
