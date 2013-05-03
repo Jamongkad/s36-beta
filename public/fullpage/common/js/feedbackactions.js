@@ -247,7 +247,6 @@ var S36FeedbackActions = new function() {
             
             var this_vote = $(this);
             var vote_count_obj = $(this).parents(feedback).find(vote_count);
-            
             $.ajax({
                 url: '/feedback_action/vote',
                 type: 'post',

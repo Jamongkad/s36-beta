@@ -17,7 +17,7 @@
 	text-shadow:#1c5573 0px 1px;
 }
 #threeColumnLayout{
-	padding-bottom:30px;
+	/*padding-bottom:30px;*/
 }
 
 .feedback-block{
@@ -330,7 +330,7 @@ uploaded-image{
 }
 .send-button a{
 	background:#1cb0ff;
-	border:1px solid #118bcc;
+	/*border:1px solid #118bcc;*/
 }
 .send-button a:hover{
 	background:#31b7ff;

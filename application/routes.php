@@ -199,7 +199,8 @@ return array(
     },
     
     'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
-
+        
+        $feedbackReports = new \Feedback\Repositories\DBFeedbackReports;
         $feedback  = $feedback->pull_feedback_by_id($id);
         
         //if no feedback then redirect back to home page.
@@ -218,6 +219,8 @@ return array(
           , 'feedback'          => $feed_data->generate()
           , 'fb_id'             => $fb_id
           , 'panel'             => $hosted_settings->get_panel_settings($feedback->companyid)
+          , 'fullpage_css'      => $fullpage->get_fullpage_css($feedback->companyid)
+          , 'reportTypes'       => $feedbackReports->get_reportTypes()
         ));
     },
 
