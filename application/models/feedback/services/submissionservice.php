@@ -10,6 +10,7 @@ use Message\Entities\MessageList;
 use Message\Services\MessageDirector;
 
 use DBBadWords, DBDashboard, DBUser;
+use redisent\Redis;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
 use Email\Services\EmailService;
@@ -45,14 +46,17 @@ class SubmissionService {
             $this->_calculate_dashboard_analytics($company_id);
             
             //this solution is a bit heavy handed try to find a much faster way to get it.
-
             $feedbackcount = $this->dbfeedback->newfeedback_by_company(Array(
                 'company_id'     => $company_id
               , 'privacy_policy' => 'all'
             ));
 
+            $redis = new Redis;
+
             $mq = new MessageList;
-            $mq->add_message(new Notification("{$feedbackcount->row_count} New Feedback", "inbox:notification:newfeedback"));
+            //$mq->add_message( new Notification("{$feedbackcount->row_count} New Feedback", "inbox:notification:newfeedback") );
+            $mq->add_message( new Notification("{$newfeedback_count} New Feedback", "inbox:notification:newfeedback") );
+
             $director = new MessageDirector;
             $director->distribute_messages($mq); 
 

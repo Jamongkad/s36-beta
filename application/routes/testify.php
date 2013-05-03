@@ -369,8 +369,17 @@ return array(
 
         $tf = new Testify("Message Service");  
 
-        $tf->test("MessageService: Inserting Message", function($tf) { 
+        $tf->beforeEach(function($tf) { 
+            $tf->data->redis = new redisent\Redis;
+        });
 
+        $tf->test("MessageService: Testing Inbox Message Increment", function($tf) { 
+            $tf->data->redis->hincrby("6:feedback_count", "count");
+            $result = $tf->data->redis->hget("6:feedback_count", "count");
+            $tf->dump($result);
+        });
+        /*
+        $tf->test("MessageService: Inserting Message", function($tf) { 
             $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback", "inbox:notification:newfeedback");
             $st = new Message\Entities\Types\Inbox\Stub("8 New Stubs", "inbox:notification:stub");
 
@@ -380,7 +389,6 @@ return array(
 
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq); 
-
         }); 
 
         $tf->test("MessageService: Reading Message", function($tf) { 
@@ -390,6 +398,7 @@ return array(
             Helpers::dump($inbox->read_all());
             Helpers::dump($inbox->read("inbox:notification:newfeedback"));
         });
+        */
 
         $tf->run();          
     },
