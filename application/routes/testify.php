@@ -374,7 +374,7 @@ return array(
         });
 
         $tf->test("MessageService: Testing Inbox Message Increment", function($tf) { 
-            $tf->data->redis->hincrby("6:feedback_count", "count");
+            $tf->data->redis->hincrby("6:feedback_count", "count", 1);
             $result = $tf->data->redis->hget("6:feedback_count", "count");
             $tf->dump($result);
         });
