@@ -27,7 +27,7 @@ if(!preg_match_all($regex, Request::uri(), $matches) and S36Auth::check()):?>
                     <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>High</option>
                 </select>
             </div>
-            <div class="select-options">
+            <div class="select-options" style="width:90px">
                 <label>Status</label>
                 <select name="status-filter">
                     <option value="default">-</option>
