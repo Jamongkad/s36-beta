@@ -23,11 +23,11 @@ $(document).ready(function() {
 
 
   var updateHtml = function(content) {
-    if (markdownize($('#review-feedback-text').html()) == content) {
+    if (markdownize($('#review-feedback-text').text()) == content) {
       return;
     }
     var html = htmlize(content);
-    $('#review-feedback-text').html(html);
+    $('#review-feedback-text').text(html);
   };
 
   // Update Markdown every time content is modified
@@ -37,5 +37,5 @@ $(document).ready(function() {
   $('#feedbackText').bind('keyup', function() {
     updateHtml(this.value);
   });
-  showSource($('#review-feedback-text').html());
+  showSource($('#review-feedback-text').text());
 }); 

@@ -491,8 +491,8 @@ $(document).keypress(function(event){
 		if(validate_feedback($('#textEditor'))){
 			$('#lightbox-text-editor-container').fadeOut();
 			$('#lightbox-editor-s').fadeOut();
-			/*$('#feedbackText').val($('#textEditor').val());*/
-			/*$('#review-feedback-text p').html($('#textEditor').val());*/
+			$('#feedbackText').val($('#textEditor').val());
+			$('#review-feedback-text p').html($('#textEditor').val().replace(/\n\r?/g, '<br />'));
 			return 0;
 		}
 	}
@@ -561,7 +561,7 @@ $(document).keypress(function(event){
 		$('#lightbox-text-editor-container').fadeIn('fast');
 		$('#lightbox-editor-s').fadeIn('fast');
 		$('#textEditor').focus();
-		/*$('#textEditor').val($('#feedbackText').val());*/
+		 $('#textEditor').val($('#feedbackText').val());
 		return false;
 	}
 	function display_prev_btn(elem){
@@ -649,7 +649,7 @@ $(document).keypress(function(event){
 	function push_to_last_window(){
 		var review_feedback_text = $.trim($('#review-feedback-text').text().replace(/(<([^>]+)>)/ig,""));
 		if(review_feedback_text.length > 0){
-			$('#all-done-textbox').html($('#review-feedback-text').html());
+			$('#all-done-textbox p').html($('#review-feedback-text').html());
 			$('#back').fadeOut('fast');
 			$('#next').fadeOut('fast');
 			return true;
@@ -881,6 +881,7 @@ $(document).keypress(function(event){
 		$('#review-name').html(fname+" "+lname);
 		$('#review-company').html(company_position);
 		$('#review-location').html(city_country);
+		$('#review-feedback-text').html('<p>'+feedback_text.replace(/\n\r?/g, '<br />')+'</p>');
 		
 		if(permission == 1){
 			$('#review-permission').show();

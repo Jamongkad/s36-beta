@@ -16,7 +16,7 @@
                 / start re-building attachment array
                 */
                 var attachments = new Array;
-                if(div.find('.image-block').length>0){
+                if(div.find('.uploaded_image').length>0){
                     var new_uploaded_images = new Array;
                     div.find('.the-thumb').each(function(){
                         new_uploaded_images.push({
@@ -25,7 +25,7 @@
                     });
                 }
 
-                if(div.find('.video').length>0){
+                if(div.find('.attached_link').length>0){
                     var new_attached_link = {
                         title           : div.find('.link-title').val(),
                         description     : div.find('.link-description').val(),
@@ -38,7 +38,6 @@
                         uploaded_images : new_uploaded_images,
                         attached_link   : new_attached_link
                 }
-                
                 //send to backend
                 $.ajax({
                     type: "POST",
@@ -407,7 +406,12 @@
                                             */
                                             if(isset($attachments->attached_link)):
                                             ?>
-                                            <div class="image-block video" style="width:100%;margin-bottom:15px">
+                                            <div class="image-block attached_link" style="width:100%;margin-bottom:15px">
+                                                <input type="hidden" class="link-title" value="<?=$attachments->attached_link->title?>"/>
+                                                <input type="hidden" class="link-description" value="<?=$attachments->attached_link->description?>"/>
+                                                <input type="hidden" class="link-image" value="<?=$attachments->attached_link->image?>"/>
+                                                <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
+                                                <input type="hidden" class="link-video" value="<?=$attachments->attached_link->video?>"/>
                                                 <div class="delete-block">x</div>
                                                     <?php 
                                                     //video attachments
@@ -451,7 +455,7 @@
                                                 if(count($attachments->uploaded_images) == 3) $width='33%';
                                                 ?>
                                                     <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                        <div class="image-block" style="width:<?=$width;?>">
+                                                        <div class="image-block uploaded_image" style="width:<?=$width;?>">
                                                             <div class="delete-block">x</div>
                                                             <div class="the-thumb">
                                                                 <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
@@ -464,6 +468,9 @@
 
                                                                 </a>
                                                                 <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                                                <input type="hidden" class="small-image-url" value="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>"/>
+                                                                <input type="hidden" class="medium-image-url" value="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"/>
+                                                                <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
                                                             </div>
                                                         </div>
                                                     <?php endforeach; ?>
