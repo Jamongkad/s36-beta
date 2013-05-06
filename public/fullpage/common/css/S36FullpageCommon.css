@@ -330,10 +330,10 @@ a:hover{
 	padding:5px;
 }
 .admin-comment-textbox-container{
-	margin-bottom:7px;
+	margin: -3px 0px 5px -3px;
 }
 .admin-comment-textbox-container textarea{
-	padding:6px 8px;
+	padding: 4px 6px;
 	margin:0px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
@@ -341,12 +341,15 @@ a:hover{
 	border:1px solid #EEE;
 }
 .regular-featured .admin-comment-textbox-container textarea{	
-	width:690px;
+	width: 655px;
+	margin-left: 3px;
 }
 .regular .admin-comment-textbox-container textarea{
-	width:255px;
+	width: 227px;
+	height: 15px;
 	font-size:12px;
-	height:40px;
+	margin-top: -1px;
+	margin-left: 3px;
 }
 .admin-comment-leave-a-reply{
 	text-align:right;
