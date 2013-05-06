@@ -32,6 +32,7 @@ var S36FullpageAdmin = function(layoutObj){
         // editing of panel description.
         $('#panel_desc_container').jScrollPane();
         $('.companyDescription').click(function(){
+            $('#desc_hint').hide();
             $('#panel_desc_container').hide();
             $('#panel_desc_textbox').show().focus();
             $('#panel_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
@@ -39,6 +40,7 @@ var S36FullpageAdmin = function(layoutObj){
         
         $('#panel_desc_textbox').blur(function(){
             $(this).hide();
+            if( $.trim($(this).val()) == '' ) $('#desc_hint').show();
             $('#panel_desc_container').fadeIn();
             $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
             $('#panel_desc_container').jScrollPane();
