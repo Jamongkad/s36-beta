@@ -59,6 +59,7 @@ if(!preg_match_all($regex, Request::uri(), $matches) and S36Auth::check()):?>
                 </select>
             </div>
             <?endif?>
+            <!--
             <div class="select-options">
                 <label>Display</label>
                 <?$limit = Input::get('limit')?>
@@ -69,6 +70,7 @@ if(!preg_match_all($regex, Request::uri(), $matches) and S36Auth::check()):?>
                     <option value="50" <?=($limit == 50) ? "selected" : null?>>50</option>
                 </select>
             </div>
+            -->
         </div>
         <div class="c"></div>
     </div>
