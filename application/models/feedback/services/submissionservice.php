@@ -54,7 +54,6 @@ class SubmissionService {
             $redis = new Redis;
 
             $mq = new MessageList;
-            //$mq->add_message( new Notification("{$feedbackcount->row_count} New Feedback", "inbox:notification:newfeedback") );
             $redis->hincrby("$company_id:feedback_count", "count", 1);
             $newfeedback_count = $redis->hget("$company_id:feedback_count", "count");
             $mq->add_message( new Notification("{$newfeedback_count} New Feedback", "inbox:notification:newfeedback") );
