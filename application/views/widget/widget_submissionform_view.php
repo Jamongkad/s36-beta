@@ -24,28 +24,6 @@
 
 <?php
 /*
-| Added Hallo scripts for submission form's text editor
-*/
-?>
-    <?=HTML::script('https://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js');?>
-    <?=HTML::script('/fullpage/common/js/hosted.form.editor.showdown.script.js');?>
-    <?=HTML::script('/fullpage/common/js/hosted.form.editor.to-markdown.script.js');?>
-    <?=HTML::script('/fullpage/common/js/hosted.form.editor.script.js');?>
-    <?=HTML::script('/fullpage/common/js/hallo.js');?>
-    <script type="text/javascript">
-        $(document).ready(function(){
-                $('#feedbackText').hallo();
-                $('#review-feedback-text').hallo();
-        });
-    </script>
-<?php
-/*
-| Hallo scripts end
-*/
-?>
-
-<?php
-/*
 | Facebook Start
 */
     $facebook_username = Null;
@@ -222,16 +200,14 @@ endif;
                     <!-- start of form title -->
                     <div class="form-feedback-title">
                         <div class="form-field-block">
-                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35"  />
+                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35" />
                         </div>
                     </div>
                     <!-- end of form title -->
                      
                     <!-- start of feedback form -->
                     <div class="form-feedback-textbox">
-                        <!--
                         <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
-                        -->
                         <textarea id="feedbackText" class="feedback-textarea" title="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
                     </div>
                     <!-- end of feedback form -->
@@ -405,11 +381,10 @@ one more time.</span>
                             <!--
                             <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
                             -->
-                            <div id="review-feedback-text" class="feedback-box" contenteditable="true">
+                            <div id="review-feedback-text" class="feedback-box">
+                                <p></p>
                             </div>
-                            <!--
                             <div class="feedback-edit clear"><a href="javascript:;" id="edit_text_link" class="edit-text">edit</a></div>
-                            -->
                         </div>
                         <div class="review-permission" id="review-permission">
                             <h2><img src="/img/check-ico.png" /> You allowed this feedback to be published</h2>
@@ -461,6 +436,7 @@ with others!</p>
                     </div>
                     <div id="all-done-box">
                         <div id="all-done-textbox" class="all-done-feedback-box">
+                            <p></p>
                         </div>
                     </div>
                     <div id="share-boxes" class="clear">
