@@ -163,18 +163,22 @@
                             <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                         </div>
                         <div class="admin-message clear">
-                            <div class="admin-avatar"><img src="<?=$admin_avatar?>" width="32" height="32" /></div>
+                            <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
                             <div class="message"><?=$feed->feed_data->admin_reply?></div>
                         </div>
                     </div>
-
+                    
+                    <? // admin comment box. ?>
                     <div class="admin-comment-box" feedid="<?=$feed->feed_data->id?>" <?=($feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                         <div class="admin-comment-textbox-container">
-                            <textarea class="admin-comment-textbox"></textarea>
+                            <div class="admin-avatar">
+                                <img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" />
+                            </div>
+                            <textarea class="admin-comment-textbox" placeholder="Leave a comment as <?=$admin_companyname;?>..."></textarea>
                         </div>
-                        <div class="admin-comment-leave-a-reply">
+                        <div class="admin-comment-leave-a-reply" STYLE="DISPLAY: NONE;">
                             <!-- <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span> -->
                             <input type="button" class="adminReply regular-button" value="Post Comment" />
                         </div>
@@ -186,8 +190,7 @@
                             <div class="admin-comment">
                                 <div class="admin-name"><?=$admin_companyname?> says..</div>
                                 <div class="admin-message clear">
-                                    <div class="admin-avatar">
-                                    <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
+                                    <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
                                     <div class="message"><?=$feed->feed_data->admin_reply?></div>
                                 </div>
                             </div>

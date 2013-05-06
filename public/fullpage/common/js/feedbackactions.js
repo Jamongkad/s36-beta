@@ -41,7 +41,7 @@ var S36FeedbackActions = new function() {
             starOff: 'star-empty.png',
             readOnly: true
         });
-        $('.admin-comment-textbox').autoGrowTextArea();
+        //$('.admin-comment-textbox').autoGrowTextArea(); // comment out for time being.
     }
     
     this.vertically_center_attachments = function(){
@@ -391,7 +391,7 @@ var S36FeedbackActions = new function() {
         if( $.trim($(this).val()) != '' && ! e.shiftKey && e.keyCode == 13 ){
             e.preventDefault();
             $(this).parents('.admin-comment-block').find('.adminReply').trigger('click');
-            $(this).css('height', '15px');
+            //$(this).css('height', '15px'); // comment out for time being.
         }
     });
     

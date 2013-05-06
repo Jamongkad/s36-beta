@@ -309,13 +309,13 @@ uploaded-image{
 	border-top:1px solid #FFF;
 }
 .regular-featured .admin-comment-textbox-container textarea{	
-	width:808px;
-	height:30px;
+	width: 775px;
+	height:40px;
 	font-size: 12px;
 }
 .regular .admin-comment-textbox-container textarea{
-	width:790px;
-	height:30px;
+	width: 755px;
+	height:40px;
 	font-size: 12px;
 }
 .admin-logged-session{
