@@ -88,13 +88,13 @@
                 <!-- profile pic -->
                 <div id="avatarContainer">
                     <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/' . $company->logo ); ?>
+                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $company->logo ); ?>
                         <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
                         <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
                     <?php endif; ?>
                     
                     <?php if( ! empty($company->logo) ): ?>
-                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" />
+                        <img basename="" src="/uploaded_images/company_logos/main/<?php echo $company->logo; ?>" />
                     <?php else: ?>
                         <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
                     <?php endif; ?>

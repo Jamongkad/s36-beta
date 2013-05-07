@@ -90,7 +90,11 @@ return array(
         $orig_filename = $_FILES['files']['name'][0];
         
         // remove the existing logo.
-        if( file_exists($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        //if( file_exists($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        
+        // remove the existing logos in our sub folders.
+        if( file_exists($upload_dir . 'main/' . $filename) ) unlink($upload_dir . 'main/' . $filename);
+        if( file_exists($upload_dir . 'comment/' . $filename) ) unlink($upload_dir . 'comment/' . $filename);
         
         // upload the image in tmp dir.
         $options = array(
@@ -99,20 +103,14 @@ return array(
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
             , 'param_name' => 'files'
             , 'file_name'  => $filename
-            // , 'image_versions' => array(
-            //     'main' => array(
-            //         'max_width'     => 210,
-            //         'max_height'    => 175,
-            //     ),
-            //     'comment' => array(
-            //         'max_width'     => 32,
-            //         'max_height'    => 32
-            //     )
-            // )
             , 'image_versions' => array(
-                array(
+                'main' => array(
                     'max_width'     => 210,
-                    'max_height'    => 175
+                    'max_height'    => 175,
+                ),
+                'comment' => array(
+                    'max_width'     => 32,
+                    'max_height'    => 32
                 )
             )
         );
@@ -122,6 +120,9 @@ return array(
         // remove the original upload duplicate.
         if( file_exists($upload_dir . $orig_filename) && is_file($upload_dir . $orig_filename) ) unlink($upload_dir . $orig_filename);
         
+        // remove also the duplicate outside our sub folders.
+        if( file_exists($upload_dir . $filename) && is_file($upload_dir . $filename) ) unlink($upload_dir . $filename);
+        
     }),
     
     'POST /imageprocessing/save_company_logo' => function() use($user) {
@@ -129,9 +130,18 @@ return array(
         if( ! is_object($user) ) return 'You should be logged in to do this action'; 
         
         $filename = Input::get('basename');
-        $src      = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/' . $filename;
-        $des      = Config::get('application.uploaded_images_dir') . '/company_logos/' . $filename;
-        if( file_exists($src) && is_file($src) ) rename($src, $des);
+        $tmp_dir  = Config::get('application.uploaded_images_dir') . '/uploaded_tmp/';
+        $perm_dir = Config::get('application.uploaded_images_dir') . '/company_logos/';
+        
+        $main_src = $tmp_dir . 'main/' . $filename;
+        $main_des = $perm_dir . 'main/' . $filename;
+        
+        $comment_src = $tmp_dir . 'comment/' . $filename;
+        $comment_des = $perm_dir . 'comment/' . $filename;
+        
+        if( file_exists($main_src) && is_file($main_src) ) rename($main_src, $main_des);
+        if( file_exists($comment_src) && is_file($comment_src) ) rename($comment_src, $comment_des);
+        
         
         $logo_data['change']['logo'] = $filename;
         $logo_data['remove']['logo'] = null;

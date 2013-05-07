@@ -19,7 +19,7 @@
         $title          = ucfirst($comp->name) . '\'s Customer Feedback & Reviews page';
         $description    = (trim($comp->description) != '' ? $comp->description : 'Welcome to ' . ucfirst($comp->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
         $url            = Config::get('application.url');
-        $logo           = ( empty($comp->logo) ? $url.'/img/public-profile-pic.jpg' : $url.'/uploaded_images/company_logos/' . $comp->logo );
+        $logo           = ( empty($comp->logo) ? $url.'/img/public-profile-pic.jpg' : $url.'/uploaded_images/company_logos/main/' . $comp->logo );
     ?>
     <title><?php echo $title; ?></title>
     <meta property="og:title" content="<?php echo $title; ?>">
@@ -186,13 +186,13 @@
                 <!-- profile pic -->
                 <div id="avatarContainer">
                     <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/' . $company->logo ); ?>
+                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $company->logo ); ?>
                         <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
                         <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
                     <?php endif; ?>
                     
                     <?php if( ! empty($company->logo) ): ?>
-                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" />
+                        <img basename="" src="/uploaded_images/company_logos/main/<?php echo $company->logo; ?>" />
                     <?php else: ?>
                         <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
                     <?php endif; ?>
@@ -399,7 +399,7 @@
                                         <div class="admin-comment">
                                             <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
                                             <div class="admin-message clear">
-                                                <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
+                                                <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
                                                 <div class="message break-word"><?= Helpers::fb_comment_str($feedback->admin_reply); ?></div>
                                             </div>
                                         </div>

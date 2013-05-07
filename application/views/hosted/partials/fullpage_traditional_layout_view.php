@@ -162,7 +162,7 @@
                             <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                         </div>
                         <div class="admin-message clear">
-                            <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
+                            <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
                             <div class="message break-word"><?= Helpers::fb_comment_str($feed->feed_data->admin_reply); ?></div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                         <div class="admin-comment-textbox-container">
                             <div class="admin-avatar">
-                                <img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" />
+                                <img src="<?= '/uploaded_images/company_logos/comment/' . $feed->feed_data->company_logo; ?>" width="32" height="32" />
                             </div>
                             <textarea class="admin-comment-textbox" placeholder="Leave a comment as <?=$admin_companyname;?>..."></textarea>
                         </div>
@@ -190,7 +190,7 @@
                         <div class="admin-comment">
                             <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
                             <div class="admin-message clear">
-                                <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
+                                <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
                                 <div class="message break-word"><?= Helpers::fb_comment_str($feed->feed_data->admin_reply); ?></div>
                             </div>
                         </div>

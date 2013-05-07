@@ -219,7 +219,7 @@ var S36FullpageAdmin = function(layoutObj){
                 var ext = data.result[0].name.split('.').pop();
                 var rand_str = '?' + Helpers.get_random_str(5);
                 var basename = 'logo_' + $('#company_id').val() + '.' + ext;
-                var new_src = '/uploaded_images/uploaded_tmp/' + basename + rand_str;
+                var new_src = '/uploaded_images/uploaded_tmp/main/' + basename + rand_str;
                 $('#avatarContainer img').attr({
                     'src': new_src,
                     'basename': basename
