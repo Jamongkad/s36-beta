@@ -117,7 +117,8 @@ class DBFeedback extends S36DataObject {
 
         if($is_published_filter) {
             $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
-                                 AND Feedback.isDeleted = 0";
+                                 AND Feedback.isDeleted = 0
+                                 AND Feedback.isNew = 0";
         } else { 
             $inbox_statements = '
                     AND Feedback.isDeleted = :is_deleted
@@ -508,6 +509,7 @@ class DBFeedback extends S36DataObject {
                  AND Feedback.isFlagged = 0
                  AND Feedback.isSticked = 0
                  AND Feedback.isArchived = 0
+                 AND Feedback.isNew = 1
                  AND Feedback.dtAdded BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
                  ".$filter_statement()."
              ORDER BY 
