@@ -42,7 +42,8 @@ class DBAdminReply extends S36DataObject {
     				->first(array('Contact.email'));
             
     		if(!empty($contact->email)) {
-                $this->email_admin_reply($contact->email, $feedback_id);
+                // disable admin reply email for time being.
+                //$this->email_admin_reply($contact->email, $feedback_id);
             }
         }
 	}

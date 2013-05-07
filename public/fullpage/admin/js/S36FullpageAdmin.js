@@ -32,6 +32,7 @@ var S36FullpageAdmin = function(layoutObj){
         // editing of panel description.
         $('#panel_desc_container').jScrollPane();
         $('.companyDescription').click(function(){
+            $('#desc_hint').hide();
             $('#panel_desc_container').hide();
             $('#panel_desc_textbox').show().focus();
             $('#panel_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
@@ -39,6 +40,7 @@ var S36FullpageAdmin = function(layoutObj){
         
         $('#panel_desc_textbox').blur(function(){
             $(this).hide();
+            if( $.trim($(this).val()) == '' ) $('#desc_hint').show();
             $('#panel_desc_container').fadeIn();
             $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
             $('#panel_desc_container').jScrollPane();
@@ -217,7 +219,7 @@ var S36FullpageAdmin = function(layoutObj){
                 var ext = data.result[0].name.split('.').pop();
                 var rand_str = '?' + Helpers.get_random_str(5);
                 var basename = 'logo_' + $('#company_id').val() + '.' + ext;
-                var new_src = '/uploaded_images/uploaded_tmp/' + basename + rand_str;
+                var new_src = '/uploaded_images/uploaded_tmp/main/' + basename + rand_str;
                 $('#avatarContainer img').attr({
                     'src': new_src,
                     'basename': basename

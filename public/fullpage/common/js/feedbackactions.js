@@ -41,6 +41,8 @@ var S36FeedbackActions = new function() {
             starOff: 'star-empty.png',
             readOnly: true
         });
+        //$('.admin-comment-textbox').not('.auto_grow_textbox').autoGrowTextArea().addClass('auto_grow_textbox');
+        $('.admin-comment-textbox').autoGrowTextArea();
     }
     
     this.vertically_center_attachments = function(){
@@ -355,7 +357,7 @@ var S36FeedbackActions = new function() {
                     type: "POST",
                     success: function(result) {
                         if(undefined != result.feedbackid){
-                            $(my_parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                            $(my_parent).find('.admin-comment .admin-message .message').html( Helpers.fb_comment_str(result.adminreply) );
                             $(my_parent).find('.admin-comment-box').css('display','none');
                             $(my_parent).find('.admin-comment').css('display','block');
                         }
@@ -384,7 +386,16 @@ var S36FeedbackActions = new function() {
             e.preventDefault();
         });
     }
-
+    
+    // trigger .adminReply when .admin-comment-textbox is entered.
+    $(document).delegate('.admin-comment-textbox', 'keydown', function(e){
+        if( $.trim($(this).val()) != '' && ! e.shiftKey && e.keyCode == 13 ){
+            e.preventDefault();
+            $(this).parents('.admin-comment-block').find('.adminReply').trigger('click');
+            $(this).removeAttr('style');
+        }
+    });
+    
     this.attachment_controls = function() { 
         /*lightbox attachment code*/
         $('.uploaded-images-close').unbind('click.upload_images_close').bind('click.upload_images_close', function(e) {

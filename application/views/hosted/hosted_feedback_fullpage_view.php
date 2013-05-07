@@ -88,13 +88,13 @@
                 <!-- profile pic -->
                 <div id="avatarContainer">
                     <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/' . $company->logo ); ?>
+                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $company->logo ); ?>
                         <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
                         <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
                     <?php endif; ?>
                     
                     <?php if( ! empty($company->logo) ): ?>
-                        <img basename="" src="/uploaded_images/company_logos/<?php echo $company->logo; ?>" />
+                        <img basename="" src="/uploaded_images/company_logos/main/<?php echo $company->logo; ?>" />
                     <?php else: ?>
                         <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
                     <?php endif; ?>
@@ -127,7 +127,7 @@
                 <div class="hosted-block">
                         <div class="company-description clear">
                             <div class="company-text" style="width:100%">
-                                <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                             </div>
                         </div>
                 </div>
@@ -149,7 +149,7 @@
                         <div class="company-description clear">
                             <div class="company-text">
                                 <? // keep the content of fullpage_desc_text in one line. ?>
-                                <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                                 <?php if( ! is_null($user) ): ?>
                                     <textarea id="fullpage_desc_textbox" rows="3"></textarea>
                                 <?php endif; ?>

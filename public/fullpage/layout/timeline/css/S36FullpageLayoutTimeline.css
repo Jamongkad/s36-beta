@@ -271,14 +271,18 @@
 	font-size:14px;
 	font-weight:bold;
 	margin-bottom:2px;
+	width: 180px;
 }
 .regular .author .author-information .author-company{
 	font-weight:bold;
 	color:#838383;
 	margin-bottom:2px;
 }
-.regular  .author .author-information .author-location-info{
+.regular .author .author-information .author-location-info{
 	margin-bottom:2px;
+	width: 185px;
+	margin-right: 95px;
+	overflow: hidden;
 }
 .regular .custom-meta-data .meta-data{float:left;margin-right:10px;}
 .regular .custom-meta-data .meta-name{color:#838383;font-weight:bold;}
@@ -314,7 +318,7 @@
 }
 .regular .admin-comment-block{
 	margin-top:15px;
-	padding:10px;
+	padding:8px;
 	background:#e3f4f9;
 }
 .regular .admin-name{

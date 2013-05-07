@@ -38,7 +38,7 @@
                     <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
                     <div id="image-sub-container">
                         <?if($company->logo):?>
-                            <img src="/uploaded_images/company_logos/<?php echo $company->logo . '?' . str_shuffle(md5('get rid of cache')); ?>" width="100%" />
+                            <img src="/uploaded_images/company_logos/main/<?php echo $company->logo . '?' . str_shuffle(md5('get rid of cache')); ?>" width="100%" />
                         <?else:?>
                             <img src="/img/company-logo-filler.jpg" width="100%" />
                         <?endif?>
@@ -114,7 +114,7 @@ jQuery(function($) {
             // we also need the ext from result because they differ from server side.
             var ext = data.result[0].name.split('.').pop();
             var rand_str = '?' + Helpers.get_random_str(5);
-            var new_src = '/uploaded_images/uploaded_tmp/logo_' + $('#company_id').val() + '.' + ext + rand_str;
+            var new_src = '/uploaded_images/uploaded_tmp/main/logo_' + $('#company_id').val() + '.' + ext + rand_str;
             $('#image-sub-container img').attr('src', new_src).animate({'opacity': '1'});
             $('#logo').val('logo_' + $('#company_id').val() + '.' + ext);
             //self.hide_notification();

@@ -491,8 +491,8 @@ $(document).keypress(function(event){
 		if(validate_feedback($('#textEditor'))){
 			$('#lightbox-text-editor-container').fadeOut();
 			$('#lightbox-editor-s').fadeOut();
-			/*$('#feedbackText').val($('#textEditor').val());*/
-			/*$('#review-feedback-text p').html($('#textEditor').val());*/
+			$('#feedbackText').val($('#textEditor').val());
+			$('#review-feedback-text p').html($('#textEditor').val().replace(/\n\r?/g, '<br />'));
 			return 0;
 		}
 	}
@@ -561,7 +561,7 @@ $(document).keypress(function(event){
 		$('#lightbox-text-editor-container').fadeIn('fast');
 		$('#lightbox-editor-s').fadeIn('fast');
 		$('#textEditor').focus();
-		/*$('#textEditor').val($('#feedbackText').val());*/
+		 $('#textEditor').val($('#feedbackText').val());
 		return false;
 	}
 	function display_prev_btn(elem){
@@ -649,7 +649,7 @@ $(document).keypress(function(event){
 	function push_to_last_window(){
 		var review_feedback_text = $.trim($('#review-feedback-text').text().replace(/(<([^>]+)>)/ig,""));
 		if(review_feedback_text.length > 0){
-			$('#all-done-textbox').html($('#review-feedback-text').html());
+			$('#all-done-textbox p').html($('#review-feedback-text').html());
 			$('#back').fadeOut('fast');
 			$('#next').fadeOut('fast');
 			return true;
@@ -705,7 +705,7 @@ $(document).keypress(function(event){
 		var feedback_text = $.trim(feedback_elem.val());
 		var error_mes = [];
 		if((feedback_text.length <= 0) || (feedback_text == feedback_elem.attr('title'))) {
-			error_mes = ['Please Enter A Feedback'];
+			error_mes = ['Please enter a feedback'];
 			display_error_mes(error_mes);
 			return false;
 		} else {
@@ -859,18 +859,20 @@ $(document).keypress(function(event){
 	}
 	function synchronize_inputs(){
 		
-		var feedback_text = $('#feedbackText').val();
-		var recommend = $('#recommend').val();
-		var fname = $('#your_fname').val();
-		var lname = $('#your_lname').val();
-		var email = $('#your_email').val();
-		var city = $('#your_city');
-		var country = $('#your_country');
-		var company = $('#your_company');
-		var occupation = $('#your_occupation');
-		var website = $('#your_website').val();
-		var profile_img = $('#preview_photo').attr('src');
-		var permission = $('#your_permission').val();
+		var feedback_text 	= $('#feedbackText').val();
+		feedback_text 		= feedback_text.replace(/\n\r?/g, '<br />');
+		feedback_text 		= feedback_text.replace(/(<([^>]+)>)/ig,"");
+		var recommend 		= $('#recommend').val();
+		var fname 			= $('#your_fname').val();
+		var lname 			= $('#your_lname').val();
+		var email 			= $('#your_email').val();
+		var city 			= $('#your_city');
+		var country 		= $('#your_country');
+		var company 		= $('#your_company');
+		var occupation 		= $('#your_occupation');
+		var website 		= $('#your_website').val();
+		var profile_img 	= $('#preview_photo').attr('src');
+		var permission 		= $('#your_permission').val();
 		
 		var company_position = get_proper_string(occupation,company);
 		var city_country = get_proper_string(city,country);
@@ -881,6 +883,7 @@ $(document).keypress(function(event){
 		$('#review-name').html(fname+" "+lname);
 		$('#review-company').html(company_position);
 		$('#review-location').html(city_country);
+		$('#review-feedback-text').html('<p>'+feedback_text+'</p>');
 		
 		if(permission == 1){
 			$('#review-permission').show();

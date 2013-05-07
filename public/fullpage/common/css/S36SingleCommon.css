@@ -320,6 +320,8 @@ a:hover{
 	background-position:center center;
 }
 /* end of common header css */
+.break-word{ word-wrap: break-word; }
+
 .padded-5{
 	padding:5px;
 }

@@ -834,3 +834,6 @@ opacity: 0.5;
 #feedbackTitle{
 	font-size: 14px;
 }
+
+/* a special space for our special friend. */
+.break-word{ word-wrap: break-word; }

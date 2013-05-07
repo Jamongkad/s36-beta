@@ -86,6 +86,7 @@ class FeedbackNode {
         $node->admin_email = property_exists($this->data, 'admin_email') ? $this->data->admin_email: null;
         $node->admin_companyname = property_exists($this->data, 'admin_companyname') ? $this->data->admin_companyname: null;
         $node->admin_fullpagecompanyname = property_exists($this->data, 'admin_fullpagecompanyname') ? $this->data->admin_fullpagecompanyname: null;
+        $node->company_logo = property_exists($this->data, 'company_logo') ? $this->data->company_logo: null;
 
         if($this->additional_data) {
             $node->reports = array_key_exists($this->data->id, $this->additional_data) ? $this->additional_data[$this->data->id] : null;
