@@ -282,10 +282,10 @@ return array(
         echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     }),
 
-    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $auth) {  
+    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis) {  
         //delete feedback count calculator
-        $company_id = $auth->companyid; 
-        $redis->del("$company_id:feedback_count");
+        $company_name = Config::get('application.subdomain');
+        $redis->del("$company_name:feedback_count");
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
     })
 );
