@@ -7,6 +7,7 @@ $badwords = new DBBadWords;
 $redis = new redisent\Redis;
 $auth = S36Auth::user();
 $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
+$company_name = Config::get('application.subdomain');
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {
@@ -140,8 +141,7 @@ return array(
     }),
 
     //Ajax Routes...
-    'GET /feedback/bust_hostfeed_data' => function() { 
-        $company_name = Config::get('application.subdomain');
+    'GET /feedback/bust_hostfeed_data' => function() use ($company_name) { 
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->bust_hostfeed_data();
     },
@@ -282,10 +282,9 @@ return array(
         echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     }),
 
-    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $auth) {  
+    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
         //delete feedback count calculator
-        $company_id = $auth->companyid; 
-        $redis->del("$company_id:feedback_count");
+        $redis->del("$company_name:feedback_count");
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
     })
 );

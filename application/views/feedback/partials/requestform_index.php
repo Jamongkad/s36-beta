@@ -4,7 +4,7 @@ Drop a request to someone you want to get feedback from. You can write your own 
 <br />
 <div class="lightbox-form">
         <br />
-        <h3>Recepient Details</h3>
+        <h3>Recipient Details</h3>
         <br />
         <div class="widget-form">
 

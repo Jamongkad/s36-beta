@@ -14,6 +14,7 @@ use redisent\Redis;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
 use Email\Services\EmailService;
+use Config;
 use SimpleArray;
 use StdClass, PDOException;
 
@@ -44,19 +45,12 @@ class SubmissionService {
             $this->_create_metadata($feedback_id);    
             $this->_send_feedbacksubmission_email($feedback, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
-            
-            //this solution is a bit heavy handed try to find a much faster way to get it.
-            $feedbackcount = $this->dbfeedback->newfeedback_by_company(Array(
-                'company_id'     => $company_id
-              , 'privacy_policy' => 'all'
-            ));
-
+             
             $redis = new Redis;
-
-            $mq = new MessageList;
-            //$mq->add_message( new Notification("{$feedbackcount->row_count} New Feedback", "inbox:notification:newfeedback") );
-            $redis->hincrby("$company_id:feedback_count", "count", 1);
-            $newfeedback_count = $redis->hget("$company_id:feedback_count", "count");
+            $mq    = new MessageList;
+            $company_name = Config::get('application.subdomain');
+            $redis->hincrby("$company_name:feedback_count", "count", 1);
+            $newfeedback_count = $redis->hget("$company_name:feedback_count", "count");
             $mq->add_message( new Notification("{$newfeedback_count} New Feedback", "inbox:notification:newfeedback") );
 
             $director = new MessageDirector;
@@ -80,6 +74,7 @@ class SubmissionService {
         $contact_data = $this->contact_details->generate_data(); 
         
         if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
+
             $feedback_data = $this->feedback_details->generate_data();
             $feedback_data['contactId'] = $new_contact_id; 
 
