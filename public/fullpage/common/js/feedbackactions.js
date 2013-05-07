@@ -41,6 +41,7 @@ var S36FeedbackActions = new function() {
             starOff: 'star-empty.png',
             readOnly: true
         });
+        //$('.admin-comment-textbox').autoGrowTextArea(); // comment out for time being.
     }
     
     this.vertically_center_attachments = function(){
@@ -384,7 +385,16 @@ var S36FeedbackActions = new function() {
             e.preventDefault();
         });
     }
-
+    
+    // trigger .adminReply when .admin-comment-textbox is entered.
+    $(document).delegate('.admin-comment-textbox', 'keydown', function(e){
+        if( $.trim($(this).val()) != '' && ! e.shiftKey && e.keyCode == 13 ){
+            e.preventDefault();
+            $(this).parents('.admin-comment-block').find('.adminReply').trigger('click');
+            //$(this).css('height', '15px'); // comment out for time being.
+        }
+    });
+    
     this.attachment_controls = function() { 
         /*lightbox attachment code*/
         $('.uploaded-images-close').unbind('click.upload_images_close').bind('click.upload_images_close', function(e) {

@@ -14,6 +14,7 @@ var S36FullpageCommon = function(){
 			$(this).find('.icon-tooltip').fadeOut('fast');
 		});
 		$('#fullpage_desc.editable').click(function(){
+			$('#desc_hint').hide();
 			$('#fullpage_desc_textbox').show().focus();
 			$('#fullpage_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
 			$(this).hide();
@@ -22,6 +23,7 @@ var S36FullpageCommon = function(){
 			$('#fullpage_desc_textbox').attr('disabled', 'disabled');
 			
 			$.ajax({
+				async: false,
 		        url: '/update_desc',
 		        type: 'post',
 		        data: {description : $('#fullpage_desc_textbox').val()},
@@ -35,6 +37,7 @@ var S36FullpageCommon = function(){
 		    // delay this to avoid multiple saving.
 		    setTimeout(function(){
 		    	var desc_textbox = $('#fullpage_desc_textbox');
+		    	if( $.trim(desc_textbox.val()) == '' ) $('#desc_hint').show();
 				$('#fullpage_desc').fadeIn();
 				$('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities(desc_textbox.val()) ) );
 				if( $('.companyDescription').length ){

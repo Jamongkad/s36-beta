@@ -19,6 +19,7 @@ $groups = array(
             ,'/js/angular.compilehtml.js'
             ,'/js/date.js'
             ,'/js/inbox/Status.js'
+            ,'/js/jquery-autogrow-textarea.js'
         )
      ),
      'FullpageCommon.js' => array(

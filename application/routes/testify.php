@@ -1,5 +1,6 @@
 <?php
 return array(
+    
     'GET /testify/contact' => function() { 
         $tf = new Testify("Contact Module Refactor");
         //requirements for contact key first:lastname:email:city:country

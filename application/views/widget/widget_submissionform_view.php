@@ -351,7 +351,7 @@ one more time.</span>
                             <img src="/img/facebook-blank-avatar.jpg" width="100" id="review_photo" />
                         </div>
                         <div class="user-details">
-                            <div id="review-name" class="user-name">Leica Chang</div>
+                            <div id="review-name" class="user-name break-word">Leica Chang</div>
                             <div class="user-position" id="review-company"></div>
                             <div class="user-location clear"><span id="review-location"></span><span id="flag" class="flags flag-ph"></span></div>
                             
@@ -381,7 +381,7 @@ one more time.</span>
                             <!--
                             <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
                             -->
-                            <div id="review-feedback-text" class="feedback-box">
+                            <div id="review-feedback-text" class="feedback-box break-word">
                                 <p></p>
                             </div>
                             <div class="feedback-edit clear"><a href="javascript:;" id="edit_text_link" class="edit-text">edit</a></div>
@@ -435,7 +435,7 @@ with others!</p>
                         </div>
                     </div>
                     <div id="all-done-box">
-                        <div id="all-done-textbox" class="all-done-feedback-box">
+                        <div id="all-done-textbox" class="all-done-feedback-box break-word">
                             <p></p>
                         </div>
                     </div>

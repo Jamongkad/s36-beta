@@ -230,6 +230,7 @@
 .regular .author-location{
 	font-weight: bold;
 	float:left;
+	width: 185px;
 }
 .regular .author .author-information .author-name{
 	color:#3780c7;
@@ -245,6 +246,7 @@
 .regular  .author .author-information .author-location-info{
 	color:#838383;
 	margin-bottom:2px;
+	width: 185px;
 }
 .regular .custom-meta-data .meta-data{float:left;margin-right:10px;}
 .regular .reviews .feedback-timestamp{
@@ -470,13 +472,14 @@
 	margin-bottom:-21px;
 }
 .regular-featured .admin-comment-textbox-container textarea{	
-	width:761px;
+	width: 725px;
 	height:50px;
 }
 .regular .admin-comment-textbox-container textarea{
-	width:206px;
+	width: 175px;
 	font-size:12px;
-	height:20px;
+	/*height:20px;*/
+	height:25px;
 }
 .regular .admin-logged-session{
 	float:left;

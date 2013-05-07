@@ -207,7 +207,7 @@
                 <div class="company-description clear">
                     <div class="company-text">
                         <? // keep the content of fullpage_desc_text in one line. ?>
-                        <div id="fullpage_desc" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                        <div id="fullpage_desc" class="break-word" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                     </div>
                     <div class="send-button" widgetkey="<?=$company->widgetkey?>">
                         <a href="javascript:;">
@@ -278,12 +278,12 @@
                                     <div class="author">
                                         <div class="author-avatar"><img src="<?=$avatar?>" width="100%"/></div>  
                                         <div class="author-information">
-                                            <div class="author-name clear">                                            
+                                            <div class="author-name break-word clear">                                            
                                                 <span class="first_name"><?= HTML::entities($feedback->firstname); ?></span>
                                                 <span class="last_name"><?= HTML::entities($feedback->lastname); ?></span>
                                                 <span class="last_name_ini"><?= HTML::entities(substr($feedback->lastname, 0, 1)); ?>.</span>
                                             </div>
-                                            <div class="author-company">
+                                            <div class="author-company break-word">
                                                 <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
                                                     <?= HTML::entities($position); ?><span class="company_comma">, </span>
                                                 </span>
@@ -291,7 +291,7 @@
                                                     <?= HTML::entities($company_name); ?>
                                                 </span>
                                             </div>
-                                            <div class="author-location-info clear">
+                                            <div class="author-location-info break-word clear">
                                                 <div class="author-location">
                                                     <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
                                                         <?= HTML::entities($city); ?><span class="location_comma">, </span>
@@ -302,7 +302,7 @@
                                                 </div>
                                                 <div class="flag flag-<?=strtolower($feedback->countrycode)?>"></div>
                                             </div>
-                                            <div class="custom-meta-data clear">
+                                            <div class="custom-meta-data break-word clear">
                                                 <?php if( ! is_null($metadata) ): ?>
                                                     <?php foreach( $metadata as $group ): ?>
                                                         <?php foreach( $group as $item ): ?>
@@ -332,7 +332,7 @@
                                     <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>;">
                                         <span class="vote_count"><?= $vote_count; ?></span> people found this useful
                                     </div>
-                                    <div class="feedback-text">
+                                    <div class="feedback-text break-word">
                                         <p><?= nl2br(HTML::entities($feedback->text)); ?></p>
                                     </div>
                                     <!-- are there any additional info uploaded?? -->
@@ -397,11 +397,10 @@
                                 <? if($feedback->admin_reply && $feedback->admin_username): ?>
                                     <div class="admin-comment-block">
                                         <div class="admin-comment">
-                                            <div class="admin-name"><?=$admin_companyname?> says..</div>
+                                            <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
                                             <div class="admin-message clear">
-                                                <div class="admin-avatar">
-                                                <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
-                                                <div class="message"><?=$feedback->admin_reply?></div>
+                                                <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
+                                                <div class="message break-word"><?=$feedback->admin_reply?></div>
                                             </div>
                                         </div>
                                     </div>

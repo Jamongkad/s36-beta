@@ -36,13 +36,13 @@
             <div class="author">
                 <div class="author-avatar"><img src="<?=$avatar?>" width="100%" /></div>  
                 <div class="author-information">
-                    <div class="author-name clear">
+                    <div class="author-name break-word clear">
                         <span class="first_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
                         <span class="last_name"><?= HTML::entities($feed->feed_data->lastname); ?></span>
                         <span class="last_name_ini"><?=(strlen($feed->feed_data->lastname)>0) ? HTML::entities(substr($feed->feed_data->lastname, 0, 1)).'.' : '' ?></span>
                     </div>
                     <?php if( trim($tw_marker) == '' ): ?>
-                        <div class="author-company">
+                        <div class="author-company break-word">
                             <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
                                 <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
                             </span>
@@ -50,7 +50,7 @@
                                 <?= HTML::entities($company_name); ?>
                             </span>
                         </div>
-                        <div class="author-location-info clear">
+                        <div class="author-location-info break-word clear">
                             <div class="author-location">
                                 <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
                                     <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
@@ -79,7 +79,7 @@
                     found this useful
             </div>
             <?php if( trim($tw_marker) == '' ): ?>
-                <div class="custom-meta-data clear">
+                <div class="custom-meta-data break-word clear">
                     <?php if( ! is_null($metadata) ): ?>
                         <?php foreach( $metadata as $group ): ?>
                             <?php foreach( $group as $item ): ?>
@@ -92,7 +92,7 @@
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-            <div class="feedback-text">
+            <div class="feedback-text break-word">
                 <p><?= nl2br($feed->feed_data->text);?></p>
             </div>
             <!-- are there any additional info uploaded?? -->
@@ -158,23 +158,27 @@
             <?php if(isset($user) && !empty($user)): ?>
                 <div class="admin-comment-block">
                     <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
-                        <div class="admin-name">
+                        <div class="admin-name break-word">
                             <?=$admin_companyname?> says.. 
                             <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                         </div>
                         <div class="admin-message clear">
-                            <div class="admin-avatar"><img src="<?=$admin_avatar?>" width="32" height="32" /></div>
-                            <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                            <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
+                            <div class="message break-word"><?=$feed->feed_data->admin_reply?></div>
                         </div>
                     </div>
-
+                    
+                    <? // admin comment box. ?>
                     <div class="admin-comment-box" feedid="<?=$feed->feed_data->id?>" <?=($feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                         <div class="admin-comment-textbox-container">
-                            <textarea class="admin-comment-textbox"></textarea>
+                            <div class="admin-avatar">
+                                <img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" />
+                            </div>
+                            <textarea class="admin-comment-textbox" placeholder="Leave a comment as <?=$admin_companyname;?>..."></textarea>
                         </div>
-                        <div class="admin-comment-leave-a-reply">
+                        <div class="admin-comment-leave-a-reply" STYLE="DISPLAY: NONE;">
                             <!-- <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span> -->
                             <input type="button" class="adminReply regular-button" value="Post Comment" />
                         </div>
@@ -184,11 +188,10 @@
                     <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
                         <div class="admin-comment-block">
                             <div class="admin-comment">
-                                <div class="admin-name"><?=$admin_companyname?> says..</div>
+                                <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
                                 <div class="admin-message clear">
-                                    <div class="admin-avatar">
-                                    <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
-                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                    <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
+                                    <div class="message break-word"><?=$feed->feed_data->admin_reply?></div>
                                 </div>
                             </div>
                         </div>

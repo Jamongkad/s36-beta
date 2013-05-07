@@ -43,14 +43,14 @@
                                             <div class="widget-avatar" avatar login="feeds.logintype" pic="feeds.avatar"> 
                                             </div>
                                             <div class="widget-content">
-                                                <div class="widget-submitter" checkfeed>
+                                                <div class="widget-submitter break-word" checkfeed>
                                                     <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
                                                     <span class="social-src" social login="feeds.logintype"></span>
                                                 </div>
-                                                <div class="widget-date" checkfeed>
+                                                <div class="widget-date break-word" checkfeed>
                                                     <span feedbackdate date="{{feeds.date}}"></span>
                                                 </div>
-                                                <div class="widget-text">
+                                                <div class="widget-text break-word">
                                                     <p>{{feeds.text}}</p>
                                                     <div infoblock load="{{feeds}}">
                                                         <span metadata load="{{feeds.metadata}}"></span>
@@ -303,11 +303,14 @@
                     </div>
                     <div class="pageBody">
                         <div class="optionList clear">
-                            <div class="label"><strong>Text</strong> </div>
+                            <div class="label"><strong>Company/Brand Description</strong> </div>
                             <div class="input">
+                                <p id="desc_hint" style="<?= (trim($panel->description) == '' ? '' : 'display: none;'); ?>">
+                                    This will be shown on your main public page
+                                </p>
                                 <? // keep the content of companyDescription in one line. ?>
                                 <div id="panel_desc_container" class="rounded_corner">
-                                    <p class="companyDescription"><?= nl2br(HTML::entities($panel->description)); ?></p>
+                                    <p class="companyDescription break-word"><?= nl2br(HTML::entities($panel->description)); ?></p>
                                 </div>
                                 <textarea id="panel_desc_textbox"></textarea>
                             </div>
