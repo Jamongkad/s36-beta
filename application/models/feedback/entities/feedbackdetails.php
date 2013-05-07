@@ -59,6 +59,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'formId'        => 1
           , 'status'        => 'new'
           , 'isRecommended' => $this->post_data->get('recommend')
+          , 'isNew'         => 1
           , 'isPublished'   => $is_published
           , 'rating'        => $this->post_data->get('rating')
           , 'text'          => $feedback_text
