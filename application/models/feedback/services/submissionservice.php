@@ -14,6 +14,7 @@ use redisent\Redis;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
 use Email\Services\EmailService;
+use Config;
 use SimpleArray;
 use StdClass, PDOException;
 
