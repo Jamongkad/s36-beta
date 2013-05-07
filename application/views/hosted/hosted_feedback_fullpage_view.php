@@ -127,7 +127,7 @@
                 <div class="hosted-block">
                         <div class="company-description clear">
                             <div class="company-text" style="width:100%">
-                                <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                             </div>
                         </div>
                 </div>
@@ -149,7 +149,7 @@
                         <div class="company-description clear">
                             <div class="company-text">
                                 <? // keep the content of fullpage_desc_text in one line. ?>
-                                <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                                 <?php if( ! is_null($user) ): ?>
                                     <textarea id="fullpage_desc_textbox" rows="3"></textarea>
                                 <?php endif; ?>

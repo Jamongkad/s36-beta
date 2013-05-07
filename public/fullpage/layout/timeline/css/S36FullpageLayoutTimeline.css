@@ -271,15 +271,16 @@
 	font-size:14px;
 	font-weight:bold;
 	margin-bottom:2px;
+	width: 180px;
 }
 .regular .author .author-information .author-company{
 	font-weight:bold;
 	color:#838383;
 	margin-bottom:2px;
 }
-.regular  .author .author-information .author-location-info{
+.regular .author .author-information .author-location-info{
 	margin-bottom:2px;
-	width: 275px;
+	width: 185px;
 	margin-right: 95px;
 	overflow: hidden;
 }
