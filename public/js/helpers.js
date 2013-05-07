@@ -18,6 +18,10 @@ var Helpers = new function() {
     this.entities2html = function(s) {
         return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');       
     };
+    
+    this.fb_comment_str = function(s){
+        return me.nl2br(me.html2entities( s.replace(/^\s+|\s+$/g, '').replace(/[\n]{3,}/g, '\n\n') ));
+    };
 
     this.close_lightbox = function() { 
         $('.error-close-button').bind("click", function(e) {

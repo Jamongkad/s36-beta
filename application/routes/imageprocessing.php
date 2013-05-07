@@ -99,6 +99,16 @@ return array(
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/uploaded_tmp/'
             , 'param_name' => 'files'
             , 'file_name'  => $filename
+            // , 'image_versions' => array(
+            //     'main' => array(
+            //         'max_width'     => 210,
+            //         'max_height'    => 175,
+            //     ),
+            //     'comment' => array(
+            //         'max_width'     => 32,
+            //         'max_height'    => 32
+            //     )
+            // )
             , 'image_versions' => array(
                 array(
                     'max_width'     => 210,

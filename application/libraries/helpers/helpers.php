@@ -1,6 +1,6 @@
 <?php namespace Helpers;
 
-use Request, View, DB, Config;
+use Request, View, DB, Config, HTML;
 
 class Helpers {
 
@@ -33,6 +33,10 @@ class Helpers {
 
     public static function request() {
         return Request::uri();
+    }
+    
+    public static function fb_comment_str($str){
+        return nl2br(HTML::entities( preg_replace('/[\n]{3,}/', "\n\n", trim($str)) ));
     }
     
     //TODO: Refactor

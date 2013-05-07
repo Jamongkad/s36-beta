@@ -41,7 +41,8 @@ var S36FeedbackActions = new function() {
             starOff: 'star-empty.png',
             readOnly: true
         });
-        //$('.admin-comment-textbox').autoGrowTextArea(); // comment out for time being.
+        //$('.admin-comment-textbox').not('.auto_grow_textbox').autoGrowTextArea().addClass('auto_grow_textbox');
+        $('.admin-comment-textbox').autoGrowTextArea();
     }
     
     this.vertically_center_attachments = function(){
@@ -356,7 +357,7 @@ var S36FeedbackActions = new function() {
                     type: "POST",
                     success: function(result) {
                         if(undefined != result.feedbackid){
-                            $(my_parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                            $(my_parent).find('.admin-comment .admin-message .message').html( Helpers.fb_comment_str(result.adminreply) );
                             $(my_parent).find('.admin-comment-box').css('display','none');
                             $(my_parent).find('.admin-comment').css('display','block');
                         }
@@ -391,7 +392,7 @@ var S36FeedbackActions = new function() {
         if( $.trim($(this).val()) != '' && ! e.shiftKey && e.keyCode == 13 ){
             e.preventDefault();
             $(this).parents('.admin-comment-block').find('.adminReply').trigger('click');
-            //$(this).css('height', '15px'); // comment out for time being.
+            $(this).removeAttr('style');
         }
     });
     

@@ -186,7 +186,7 @@
                         </div>
                         <div class="admin-message clear">
                             <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
-                            <div class="message break-word"><?=$feed->feed_data->admin_reply?></div>
+                            <div class="message break-word"><?= Helpers::fb_comment_str($feed->feed_data->admin_reply); ?></div>
                         </div>
                     </div>
                     
@@ -214,7 +214,7 @@
                             <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
-                                <div class="message break-word"><?=$feed->feed_data->admin_reply?></div>
+                                <div class="message break-word"><?= Helpers::fb_comment_str($feed->feed_data->admin_reply); ?></div>
                             </div>
                         </div>
                     </div>
