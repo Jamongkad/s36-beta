@@ -31,47 +31,22 @@ Checky.prototype.init = function() {
 
             if (mode == 'restore' || mode == 'inbox') {
                 confirm_message("restore", checkedFeedCount);
-                /*
-                if(checkedFeedCount > 1) {
-                    conf     = confirm("Are you sure you want to restore these feedbacks?");          
-                } else { 
-                    conf     = confirm("Are you sure you want to restore this feedback?");          
-                } 
-                */
             }
            
             if (mode == 'remove') {
-                if(checkedFeedCount > 1) {
-                    conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                       
-                } else { 
-                    conf  = confirm("Are you sure you want to permanently remove this feedback?");                       
-                }
-               
+                confirm_message("permanently remove", checkedFeedCount); 
             }
            
             if (mode == 'publish') {
-                if(checkedFeedCount > 1) {
-                    conf     = confirm("Are you sure want to publish these feedbacks?");                     
-                } else {
-                    conf     = confirm("Are you sure want to publish this feedback?");                     
-                }
-               
+                confirm_message("publish", checkedFeedCount); 
             }
            
-            if (mode == 'feature') {
-                if(checkedFeedCount > 1) { 
-                    conf     = confirm("Are you sure want to feature these feedbacks?");     
-                } else {
-                    conf     = confirm("Are you sure want to feature this feedback?");     
-                } 
+            if (mode == 'feature') { 
+                confirm_message("feature", checkedFeedCount); 
             }
            
             if (mode == 'delete') {
-                if(checkedFeedCount > 1) {
-                    conf     = confirm("Are you sure want to delete these feedbacks?");          
-                } else { 
-                    conf     = confirm("Are you sure want to delete this feedback?");          
-                } 
+                confirm_message("delete", checkedFeedCount); 
             } 
 
             if (conf) {
