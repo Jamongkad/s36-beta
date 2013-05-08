@@ -375,8 +375,13 @@ return array(
         });
 
         $tf->test("MessageService: Testing Inbox Message Increment", function($tf) { 
+            /*
             $tf->data->redis->hincrby("mathew-staging:feedback_count", "count", 1);
             $result = $tf->data->redis->hget("mathew-staging:feedback_count", "count");
+            $tf->dump($result);
+            */
+
+            $result = $tf->data->redis->smembers("mathew-staging:new_feedback");
             $tf->dump($result);
         });
         /*
