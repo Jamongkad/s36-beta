@@ -80,7 +80,7 @@ Checky.prototype.init = function() {
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                            if((my_ratings != 'POOR' && my_perm == 3) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             }
