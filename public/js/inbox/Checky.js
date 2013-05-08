@@ -29,23 +29,23 @@ Checky.prototype.init = function() {
             var checkedFeedCount = checkFeed.filter(':checked').length;
 
             if (mode == 'restore' || mode == 'inbox') {
-                confirm_message("restore", checkedFeedCount);
+                conf = confirm_message("restore", checkedFeedCount);
             }
            
             if (mode == 'remove') {
-                confirm_message("permanently remove", checkedFeedCount); 
+                conf = confirm_message("permanently remove", checkedFeedCount); 
             }
            
             if (mode == 'publish') {
-                confirm_message("publish", checkedFeedCount); 
+                conf = confirm_message("publish", checkedFeedCount); 
             }
            
             if (mode == 'feature') { 
-                confirm_message("feature", checkedFeedCount); 
+                conf = confirm_message("feature", checkedFeedCount); 
             }
            
             if (mode == 'delete') {
-                confirm_message("delete", checkedFeedCount); 
+                conf = confirm_message("delete", checkedFeedCount); 
             } 
 
             if (conf) {
