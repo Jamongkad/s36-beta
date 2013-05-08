@@ -26,6 +26,8 @@ Checky.prototype.init = function() {
 
             var conf, color, parent_id;
 
+            console.log(checkFeed);
+
             if (mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
             }
@@ -111,6 +113,7 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
+                /*
                 if(collection.length > 0) { 
                     $.ajax({
                         type: "POST"      
@@ -149,6 +152,7 @@ Checky.prototype.init = function() {
                        }
                     });
                 }
+                */
 
             }
 
