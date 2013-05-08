@@ -27,7 +27,6 @@ Checky.prototype.init = function() {
             var conf, color, parent_id;
 
             var checkedFeedCount = checkFeed.filter(':checked').length;
-            console.log(checkedFeedCount);
 
             if (mode == 'restore' || mode == 'inbox') {
                 confirm_message("restore", checkedFeedCount);
@@ -114,7 +113,6 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
-                /*
                 if(collection.length > 0) { 
                     $.ajax({
                         type: "POST"      
@@ -153,8 +151,6 @@ Checky.prototype.init = function() {
                        }
                     });
                 }
-                */
-
             }
 
             $(this).val("none");
