@@ -26,8 +26,8 @@ Checky.prototype.init = function() {
 
             var conf, color, parent_id;
 
-            var checkedFeedCount = checkFeed.filter(':checked');
-            console.log(checkedFeedCount.length);
+            var checkedFeedCount = checkFeed.filter(':checked').length;
+            console.log(checkedFeedCount);
 
             if (mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
