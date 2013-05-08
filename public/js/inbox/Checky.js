@@ -211,10 +211,13 @@ function process_feedbacks(collection, data, units) {
 }
 
 function confirm_message(text, checkcount) {
+    var conf;
+
     if(checkcount > 1) {
-        return confirm("Are you sure you want to " + + " these feedbacks?");     
+        conf = confirm("Are you sure you want to " + text + " these feedbacks?");     
     } else { 
-        return confirm("Are you sure you want to " + + " this feedback?");     
+        conf = confirm("Are you sure you want to " + text + " this feedback?");     
     }
-   
+
+    return conf; 
 }
