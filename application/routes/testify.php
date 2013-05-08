@@ -383,6 +383,8 @@ return array(
 
             $result = $tf->data->redis->smembers("mathew-staging:new_feedback");
             $tf->dump($result);
+            $feedback_count = count($result);
+            $tf->dump($feedback_count);
         });
         /*
         $tf->test("MessageService: Inserting Message", function($tf) { 
