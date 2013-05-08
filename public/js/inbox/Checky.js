@@ -30,7 +30,11 @@ Checky.prototype.init = function() {
             console.log(checkedFeedCount);
 
             if (mode == 'restore' || mode == 'inbox') {
-                conf     = confirm("Are you sure you want to restore these feedbacks?");     
+                if(checkedFeedCount > 1) {
+                    conf     = confirm("Are you sure you want to restore these feedbacks?");          
+                } else { 
+                    conf     = confirm("Are you sure you want to restore this feedback?");          
+                } 
             }
            
             if (mode == 'remove') {
