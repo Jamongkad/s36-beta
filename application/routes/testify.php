@@ -385,6 +385,7 @@ return array(
             $tf->dump($result);
             $feedback_count = count($result);
             $tf->dump($feedback_count);
+            $tf->data->redis->hmset("mathew-staging:feedback_count", "count", $feedback_count);
         });
         /*
         $tf->test("MessageService: Inserting Message", function($tf) { 
