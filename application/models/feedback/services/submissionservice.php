@@ -50,10 +50,9 @@ class SubmissionService {
             $mq    = new MessageList;
             $company_name = Config::get('application.subdomain');
             $redis->sadd("$company_name:new_feedback", $feedback_id);
-            $feedbackcount = $redis->smembers("$company_name:new_feedback");
-            //$redis->hset("$company_name:feedback_count", "count", 1);
-            //$newfeedback_count = $redis->hget("$company_name:feedback_count", "count");
-            //$mq->add_message( new Notification("{$newfeedback_count} New Feedback", "inbox:notification:newfeedback") );
+            $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
+            $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
+            $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
 
             $director = new MessageDirector;
             $director->distribute_messages($mq); 
