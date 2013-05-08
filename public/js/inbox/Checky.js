@@ -22,7 +22,7 @@ Checky.prototype.init = function() {
         var collection   = new Array();
         var exam_collection = new Array();
 
-        if (ifChecked && mode != 'none') { 
+        if (ifChecked && mode != 'none') {
 
             var conf, color, parent_id;
 
@@ -30,27 +30,48 @@ Checky.prototype.init = function() {
             console.log(checkedFeedCount);
 
             if (mode == 'restore' || mode == 'inbox') {
+                confirm_message("restore", checkedFeedCount);
+                /*
                 if(checkedFeedCount > 1) {
                     conf     = confirm("Are you sure you want to restore these feedbacks?");          
                 } else { 
                     conf     = confirm("Are you sure you want to restore this feedback?");          
                 } 
+                */
             }
            
             if (mode == 'remove') {
-                conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                  
+                if(checkedFeedCount > 1) {
+                    conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                       
+                } else { 
+                    conf  = confirm("Are you sure you want to permanently remove this feedback?");                       
+                }
+               
             }
            
             if (mode == 'publish') {
-                conf     = confirm("Are you sure want to publish these feedbacks?");     
+                if(checkedFeedCount > 1) {
+                    conf     = confirm("Are you sure want to publish these feedbacks?");                     
+                } else {
+                    conf     = confirm("Are you sure want to publish this feedback?");                     
+                }
+               
             }
            
             if (mode == 'feature') {
-                conf     = confirm("Are you sure want to feature these feedbacks?");     
+                if(checkedFeedCount > 1) { 
+                    conf     = confirm("Are you sure want to feature these feedbacks?");     
+                } else {
+                    conf     = confirm("Are you sure want to feature this feedback?");     
+                } 
             }
            
             if (mode == 'delete') {
-                conf     = confirm("Are you sure want to delete these feedbacks?");     
+                if(checkedFeedCount > 1) {
+                    conf     = confirm("Are you sure want to delete these feedbacks?");          
+                } else { 
+                    conf     = confirm("Are you sure want to delete this feedback?");          
+                } 
             } 
 
             if (conf) {
@@ -187,4 +208,13 @@ function process_feedbacks(collection, data, units) {
     collection.push(data);
     //units to vanished
     $(units).fadeOut(300, function() { $(this).hide(); });       
+}
+
+function confirm_message(text, checkcount) {
+    if(checkcount > 1) {
+        return confirm("Are you sure you want to " + + " these feedbacks?");     
+    } else { 
+        return confirm("Are you sure you want to " + + " this feedback?");     
+    }
+   
 }
