@@ -187,7 +187,7 @@ jQuery(function($) {
     });
 
     //End of FastForward
-    //new InboxStatusChange('.check, .feature, .remove, .popup-delete').initialize(); 
+    new InboxStatusChange('.check, .feature, .remove, .popup-delete').initialize(); 
     $('div.undo-bar').hide(); 
 
     //TODO: Please update
