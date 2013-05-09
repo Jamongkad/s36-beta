@@ -13,7 +13,9 @@ function newfeedback_process(collection) {
               , success: function(feedback) {
                     if(feedback.msg) {
                         $("span[feedbackcount]").html("<sup class='count'>" + feedback.msg + "</sup>");
-                    }   
+                    } else { 
+                        $("span[feedbackcount]").html();
+                    }
                 }
             });
         }
