@@ -292,7 +292,7 @@ return array(
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
     }),
 
-    'POST /feedback/redis_feedback_process' => function($inbox, $redis, $company_name) {
+    'POST /feedback/redis_feedback_process' => function() use ($inbox, $redis, $company_name) {
         $key = "$company_name:new_feedback";
         $group = Input::get('feedids');
         $collection = Array();
