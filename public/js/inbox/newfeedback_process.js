@@ -11,8 +11,10 @@ function newfeedback_process(collection) {
               , async: false
               , url: '/feedback/get_feedback_count'
               , success: function(feedback) {
-                    if(feedback.msg) {
-                        $("span[feedbackcount]").html("<sup class='count'>" + feedback.msg + "</sup>");
+                    if(feedback) {
+                        if(feedback.msg) {
+                            $("span[feedbackcount]").html("<sup class='count'>" + feedback.msg + "</sup>");
+                        }   
                     } else { 
                         $("span[feedbackcount]").html("");
                     }
