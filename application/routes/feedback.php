@@ -297,7 +297,7 @@ return array(
         $group = Input::get('feedids');
         $collection = Array();
         foreach($group as $k) {
-            $redis->sadd($key, $k['feedid']);
+            $redis->srem($key, $k['feedid']);
         }
 
         $feedbackcount = count($redis->smembers($key));
