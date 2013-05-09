@@ -300,6 +300,7 @@ return array(
             $redis->srem($key, $k['feedid']);
         }
         Helpers::dump($redis->smembers($key));
+        Helpers::dump( count($redis->smembers($key)) );
         /*
         $feedbackcount = count($redis->smembers($key));
         $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
