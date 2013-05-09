@@ -175,6 +175,7 @@ function checky_bar_message(opts, undo_msg) {
 
     var notify  = $('<div/>').addClass(opts.identifier).css({'text-align': 'center'}).html(notify_msg);
     check_message.html(notify).show();
+    check_message.delay(1000).fadeOut('fast');
 }
 
 function change_view(opts) { 
