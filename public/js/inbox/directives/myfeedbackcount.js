@@ -8,7 +8,9 @@ angular.module('feedback', [])
 
             if(feedback.msg) {
                 $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
-            }   
+            } else { 
+                $(element).html("");
+            }
         }
     }    
 })
