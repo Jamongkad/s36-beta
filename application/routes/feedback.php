@@ -306,7 +306,5 @@ return array(
         $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
         $director = new MessageDirector;
         $director->distribute_messages($mq); 
-
-        echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     },
 );
