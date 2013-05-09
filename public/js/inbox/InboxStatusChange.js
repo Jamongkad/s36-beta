@@ -220,7 +220,7 @@ function published_feed_view_change(me) {
 
 //server side processing
 function change_state(state_data) { 
-    console.log(state_data);
+    newfeedback_process(state_data.feed_ids);
     /*
     $.ajax({ 
         type: "POST"
