@@ -113,6 +113,8 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
+                console.log(collection);
+                /*
                 if(collection.length > 0) { 
                     $.ajax({
                         type: "POST"      
@@ -151,6 +153,7 @@ Checky.prototype.init = function() {
                        }
                     });
                 }
+                */
             }
 
             $(this).val("none");
