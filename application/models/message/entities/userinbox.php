@@ -41,7 +41,7 @@ class UserInbox {
     private function _save_to_redis($messages) {
         foreach($messages as $message) {
             $parts = $message->read_message();
-            $this->redis->hset($this->user_id, $parts->redis_key, $parts->message);         
+            $this->redis->hmset($this->user_id, $parts->redis_key, $parts->message);         
         } 
     }
 
