@@ -25,25 +25,26 @@ Checky.prototype.init = function() {
         if (ifChecked && mode != 'none') { 
 
             var conf, color, parent_id;
+            var feedback_str = ( $(me.check_feed_id + ':checked').length == 1 ? 'this feedback?' : 'these feedbacks?' );
 
             if (mode == 'restore' || mode == 'inbox') {
-                conf     = confirm("Are you sure you want to restore these feedbacks?");     
+                conf     = confirm("Are you sure you want to restore " + feedback_str);
             }
            
             if (mode == 'remove') {
-                conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                  
+                conf  = confirm("Are you sure you want to permanently remove " + feedback_str);
             }
            
             if (mode == 'publish') {
-                conf     = confirm("Are you sure want to publish these feedbacks?");     
+                conf     = confirm("Are you sure want to publish " + feedback_str);
             }
            
             if (mode == 'feature') {
-                conf     = confirm("Are you sure want to feature these feedbacks?");     
+                conf     = confirm("Are you sure want to feature " + feedback_str);
             }
            
             if (mode == 'delete') {
-                conf     = confirm("Are you sure want to delete these feedbacks?");     
+                conf     = confirm("Are you sure want to delete " + feedback_str);
             } 
 
             if (conf) {
