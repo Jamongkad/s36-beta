@@ -303,6 +303,7 @@ return array(
         $feedbackcount = count($redis->smembers($key));
         $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
 
+        $mq    = new MessageList;
         $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
         $director = new MessageDirector;
         $director->distribute_messages($mq); 
