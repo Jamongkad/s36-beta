@@ -65,7 +65,6 @@ echo HTML::style('/fullpage/common/css/s36_client_style.css');
 <?
     $js_scripts = Array(
        '/js/jquery.switcharoo.js'
-     , '/js/newfeedback_process.js'
      , '/js/jquery.fancytips.js'
      , '/js/jquery.form.js'
      , '/js/jquery.tmpl.js'
@@ -73,6 +72,7 @@ echo HTML::style('/fullpage/common/css/s36_client_style.css');
      , '/js/jquery.ajaxfileupload.js' 
      , '/js/jquery.zclip.js' 
      , '/js/jquery.zclip.js' 
+     , '/js/inbox/newfeedback_process.js'
      , '/js/inbox/s36LightBox.js'
      , '/js/inbox/ZClip.js'
      , '/js/inbox/Checky.js'
