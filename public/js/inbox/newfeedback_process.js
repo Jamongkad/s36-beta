@@ -10,8 +10,10 @@ function newfeedback_process(collection) {
               , dataType: 'json'
               , async: false
               , url: '/feedback/get_feedback_count'
-              , success: function(data) {
-                    console.log(data) 
+              , success: function(feedback) {
+                    if(feedback.msg) {
+                        $("span[feedbackcount]").html("<sup class='count'>" + feedback.msg + "</sup>");
+                    }   
                 }
             });
         }
