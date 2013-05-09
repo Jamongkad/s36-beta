@@ -282,7 +282,7 @@ return array(
     }),
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox, $company_name) {  
-        if($redis->hget("$company_name:feedback_count", "count") !== 0) {
+        if($redis->hget("$company_name:feedback_count", "count") != 0) {
             echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));     
         } 
     }),
