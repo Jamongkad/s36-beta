@@ -400,14 +400,13 @@ return array(
             $director->distribute_messages($mq); 
         }); 
 
+        */
         $tf->test("MessageService: Reading Message", function($tf) { 
             $auth = S36Auth::user();
-            $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-            $inbox->edit("inbox:notification:newfeedback", "8 New Feedback");
+            $inbox = new Message\Entities\UserInbox("{$auth->username}:messages"); 
             Helpers::dump($inbox->read_all());
             Helpers::dump($inbox->read("inbox:notification:newfeedback"));
         });
-        */
 
         $tf->run();          
     },
