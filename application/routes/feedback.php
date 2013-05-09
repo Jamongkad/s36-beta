@@ -209,6 +209,10 @@ return array(
             ->update(Array('dtAdded' => $date));
         return $affected;
     },
+
+    'POST /feedback/redis_feedback_process' => function() {
+        Helpers::dump(Input::get('feedids'));
+    },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feed_obj = Array('feedid' => $id);
