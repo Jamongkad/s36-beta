@@ -97,7 +97,6 @@ return array(
         
         $emailservice = new Email\Services\EmailService($request_data);
         return $emailservice->send_email();
-
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
