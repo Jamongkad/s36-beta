@@ -116,7 +116,7 @@ Checky.prototype.init = function() {
 
                 if(collection.length > 0) { 
                     newfeedback_process(collection);
-                    /*
+
                     $.ajax({
                         type: "POST"      
                       , data: {  
@@ -153,7 +153,7 @@ Checky.prototype.init = function() {
                           mouse_is_inside = false;  
                        }
                     });
-                    */
+
                 }
 
             }
