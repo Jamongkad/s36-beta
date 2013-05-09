@@ -299,9 +299,6 @@ return array(
         foreach($group as $k) {
             $redis->srem($key, $k['feedid']);
         }
-        Helpers::dump($redis->smembers($key));
-        Helpers::dump( count($redis->smembers($key)) );
-        /*
         $feedbackcount = count($redis->smembers($key));
         $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
 
@@ -311,6 +308,5 @@ return array(
         $director->distribute_messages($mq); 
 
         echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
-        */
     },
 );
