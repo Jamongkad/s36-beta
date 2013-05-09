@@ -221,7 +221,7 @@ function published_feed_view_change(me) {
 //server side processing
 function change_state(state_data) { 
     newfeedback_process(state_data.feed_ids);
-    /*
+
     $.ajax({ 
         type: "POST"
       , url: state_data.href
@@ -231,5 +231,5 @@ function change_state(state_data) {
             myStatus.notify("Processing...", 1000);
         } 
     });
-    */
+
 }
