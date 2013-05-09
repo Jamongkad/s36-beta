@@ -113,10 +113,10 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
-                console.log(collection);
-                newfeedback_process(collection);
-                /*
+
                 if(collection.length > 0) { 
+                    newfeedback_process(collection);
+                    /*
                     $.ajax({
                         type: "POST"      
                       , data: {  
@@ -153,8 +153,9 @@ Checky.prototype.init = function() {
                           mouse_is_inside = false;  
                        }
                     });
+                    */
                 }
-                */
+
             }
 
             $(this).val("none");
