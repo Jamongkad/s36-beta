@@ -148,7 +148,7 @@ Checky.prototype.init = function() {
                             , 'padding': '5px'
                             , 'font-weight': 'bold'
                           }).html(message).show();
-
+                          checkyBar.delay(1000).fadeOut('fast');
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
                        }
