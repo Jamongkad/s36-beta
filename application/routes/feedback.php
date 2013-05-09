@@ -212,6 +212,7 @@ return array(
 
     'POST /feedback/redis_feedback_process' => function() {
         //Helpers::dump(Input::get('feedids'));
+        $group = Input::get('feedids');
         $collection = Array();
         foreach($group as $k) {
             $collection[] = $k['feedid'];
