@@ -65,6 +65,7 @@ echo HTML::style('/fullpage/common/css/s36_client_style.css');
 <?
     $js_scripts = Array(
        '/js/jquery.switcharoo.js'
+     , '/js/newfeedback_process.js'
      , '/js/jquery.fancytips.js'
      , '/js/jquery.form.js'
      , '/js/jquery.tmpl.js'

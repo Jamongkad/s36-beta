@@ -114,6 +114,7 @@ Checky.prototype.init = function() {
 
                 $("option:first", this).prop("selected", true);
                 console.log(collection);
+                newfeedback_process(collection);
                 /*
                 if(collection.length > 0) { 
                     $.ajax({
