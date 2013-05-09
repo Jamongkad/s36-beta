@@ -212,6 +212,9 @@ return array(
 
     'POST /feedback/redis_feedback_process' => function() {
         Helpers::dump(Input::get('feedids'));
+        $underscore = new Underscore\Underscore;
+        $group = $underscore->groupBy(Input::get('feedids'), 'feedid');
+        Helpers::dump($group);
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
