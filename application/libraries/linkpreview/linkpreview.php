@@ -55,7 +55,8 @@
                 ini_set('allow_url_fopen', 1);
             }
             
-            $text = $_GET["text"];
+            //$text = $_GET["text"];  // replaced with $_POST because $_GET has char limit.
+            $text = $_POST["text"];
             $text = " ".str_replace("\n", " ", $text);
             $urlRegex = "/(https?\:\/\/|\s)[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*/i";
             

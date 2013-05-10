@@ -234,7 +234,8 @@ return array(
         $result = new JqueryFileUploader($options);
     }),
 
-    'GET /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {
+    //'GET /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {  // replaced with $_POST because $_GET has char limit.
+    'POST /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {
         $link_preview = new LinkPreview();
         $link_preview->text_crawler();
     }),
