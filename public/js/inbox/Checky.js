@@ -25,6 +25,7 @@ Checky.prototype.init = function() {
         if (ifChecked && mode != 'none') {
 
             var conf, color, parent_id;
+            var feedback_str = ( $(me.check_feed_id + ':checked').length == 1 ? 'this feedback?' : 'these feedbacks?' );
 
             var checkedFeedCount = checkFeed.filter(':checked').length;
 

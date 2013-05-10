@@ -19,10 +19,10 @@
 		$(this).keyup(function(e){
 			if((e.which == 13 || e.which == 32 || e.which == 17 || e.which == 224) && trim( $(this).val() ) != ""){
 				text = $(this).val();
-				
-				if( urlRegex.test(text)){
+				if( urlRegex.test(text) ){
 					$('.loading-box').fadeIn('fast');
-					$.get('/imageprocessing/linkpreview/', {text: text}, function(answer) {
+					//$.get('/imageprocessing/linkpreview/', {'text': text}, function(answer) {  // replaced with $_POST because $_GET has char limit.
+					$.post('/imageprocessing/linkpreview/', {'text': text}, function(answer) {
 						if(answer.url == null) answer.url = "";
 						if(answer.pageUrl == null) answer.pageUrl = "";
 						if(answer.title == null) answer.title = answer.titleEsc;
@@ -73,7 +73,7 @@
 						init_thumbnail_vid_close_btn();
 						scale_review_textbox();
 						scale_feedback_textbox();
-						$('.loading-box').fadeOut('fast');						
+						$('.loading-box').fadeOut('fast');
 					}, "json");
 				}
 				
