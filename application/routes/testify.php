@@ -375,9 +375,17 @@ return array(
         });
 
         $tf->test("MessageService: Testing Inbox Message Increment", function($tf) { 
-            $tf->data->redis->hincrby("6:feedback_count", "count", 1);
-            $result = $tf->data->redis->hget("6:feedback_count", "count");
+            /*
+            $tf->data->redis->hincrby("mathew-staging:feedback_count", "count", 1);
+            $result = $tf->data->redis->hget("mathew-staging:feedback_count", "count");
             $tf->dump($result);
+            */
+
+            $result = $tf->data->redis->smembers("mathew-staging:new_feedback");
+            $tf->dump($result);
+            $feedback_count = count($result);
+            $tf->dump($feedback_count);
+            $tf->data->redis->hmset("mathew-staging:feedback_count", "count", $feedback_count);
         });
         /*
         $tf->test("MessageService: Inserting Message", function($tf) { 
@@ -392,14 +400,13 @@ return array(
             $director->distribute_messages($mq); 
         }); 
 
+        */
         $tf->test("MessageService: Reading Message", function($tf) { 
             $auth = S36Auth::user();
-            $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-            $inbox->edit("inbox:notification:newfeedback", "8 New Feedback");
+            $inbox = new Message\Entities\UserInbox("{$auth->username}:messages"); 
             Helpers::dump($inbox->read_all());
             Helpers::dump($inbox->read("inbox:notification:newfeedback"));
         });
-        */
 
         $tf->run();          
     },

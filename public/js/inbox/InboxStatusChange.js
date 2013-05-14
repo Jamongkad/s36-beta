@@ -50,7 +50,6 @@ InboxStateObject.prototype.process = function() {
             //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
 
-                //$(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
                 feed_fadeout(me);
 
                 if(mode == 'inbox') {
@@ -62,8 +61,6 @@ InboxStateObject.prototype.process = function() {
             change_state(state_data);
 
         } else {
-
-            //$(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
             feed_fadeout(me);
             checky_bar_message(me);
             change_state(state_data);
@@ -223,6 +220,8 @@ function published_feed_view_change(me) {
 
 //server side processing
 function change_state(state_data) { 
+    newfeedback_process(state_data.feed_ids);
+
     $.ajax({ 
         type: "POST"
       , url: state_data.href
@@ -232,4 +231,5 @@ function change_state(state_data) {
             myStatus.notify("Processing...", 1000);
         } 
     });
+
 }

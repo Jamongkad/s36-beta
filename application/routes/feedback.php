@@ -1,5 +1,9 @@
 <?php
 
+use Message\Entities\Types\Inbox\Notification;
+use Message\Entities\MessageList;
+use Message\Services\MessageDirector;
+
 $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
@@ -97,7 +101,6 @@ return array(
         
         $emailservice = new Email\Services\EmailService($request_data);
         return $emailservice->send_email();
-
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
@@ -210,7 +213,7 @@ return array(
             ->update(Array('dtAdded' => $date));
         return $affected;
     },
-    
+ 
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feed_obj = Array('feedid' => $id);
         $feedbackstate = new Feedback\Services\FeedbackState('delete', Array($feed_obj), S36Auth::user()->companyid);
@@ -278,13 +281,32 @@ return array(
         return $emailservice->send_email();
     }),
 
-    'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox) {  
-        echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
+    'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox, $redis, $company_name) {  
+        if($redis->hget("$company_name:feedback_count", "count") != 0) {
+            echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));     
+        } 
     }),
 
     'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
         //delete feedback count calculator
         $redis->del("$company_name:feedback_count");
+        $redis->del("$company_name:new_feedback");
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
-    })
+    }),
+
+    'POST /feedback/redis_feedback_process' => function() use ($inbox, $redis, $company_name) {
+        $key = "$company_name:new_feedback";
+        $group = Input::get('feedids');
+        $collection = Array();
+        foreach($group as $k) {
+            $redis->srem($key, $k['feedid']);
+        }
+        $feedbackcount = count($redis->smembers($key));
+        $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
+
+        $mq    = new MessageList;
+        $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
+        $director = new MessageDirector;
+        $director->distribute_messages($mq); 
+    },
 );

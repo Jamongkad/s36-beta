@@ -22,28 +22,31 @@ Checky.prototype.init = function() {
         var collection   = new Array();
         var exam_collection = new Array();
 
-        if (ifChecked && mode != 'none') { 
+        if (ifChecked && mode != 'none') {
 
             var conf, color, parent_id;
+            var feedback_str = ( $(me.check_feed_id + ':checked').length == 1 ? 'this feedback?' : 'these feedbacks?' );
+
+            var checkedFeedCount = checkFeed.filter(':checked').length;
 
             if (mode == 'restore' || mode == 'inbox') {
-                conf     = confirm("Are you sure you want to restore these feedbacks?");     
+                conf = confirm_message("restore", checkedFeedCount);
             }
            
             if (mode == 'remove') {
-                conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                  
+                conf = confirm_message("permanently remove", checkedFeedCount); 
             }
            
             if (mode == 'publish') {
-                conf     = confirm("Are you sure want to publish these feedbacks?");     
+                conf = confirm_message("publish", checkedFeedCount); 
             }
            
-            if (mode == 'feature') {
-                conf     = confirm("Are you sure want to feature these feedbacks?");     
+            if (mode == 'feature') { 
+                conf = confirm_message("feature", checkedFeedCount); 
             }
            
             if (mode == 'delete') {
-                conf     = confirm("Are you sure want to delete these feedbacks?");     
+                conf = confirm_message("delete", checkedFeedCount); 
             } 
 
             if (conf) {
@@ -78,7 +81,7 @@ Checky.prototype.init = function() {
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                            if((my_ratings != 'POOR' && my_perm == 3) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             }
@@ -111,7 +114,10 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
+
                 if(collection.length > 0) { 
+                    newfeedback_process(collection);
+
                     $.ajax({
                         type: "POST"      
                       , data: {  
@@ -143,11 +149,12 @@ Checky.prototype.init = function() {
                             , 'padding': '5px'
                             , 'font-weight': 'bold'
                           }).html(message).show();
-
+                          checkyBar.delay(1000).fadeOut('fast');
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
                        }
                     });
+
                 }
 
             }
@@ -178,4 +185,12 @@ function process_feedbacks(collection, data, units) {
     collection.push(data);
     //units to vanished
     $(units).fadeOut(300, function() { $(this).hide(); });       
+}
+
+function confirm_message(text, checkcount) {
+    if(checkcount > 1) {
+        return confirm("Are you sure you want to " + text + " these feedbacks?");     
+    } else { 
+        return confirm("Are you sure you want to " + text + " this feedback?");     
+    }
 }
