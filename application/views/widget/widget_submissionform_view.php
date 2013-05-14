@@ -234,7 +234,7 @@ endif;
                     </div>
                     
                     <div id="uploaded_images_preview" class="form-image-thumbs clear">
-                   
+
                     </div>
                     <!-- end of uploads -->
                     

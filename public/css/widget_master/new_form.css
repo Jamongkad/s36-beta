@@ -256,9 +256,39 @@ a:hover{
 	margin-bottom:5px;
 }
 .form-image-thumbs .image-thumb{
-	float:left;
-	width:100px;
-	margin-right:20px;
+	 float:left;
+	 width:109px;
+	 margin-right:5px;
+	 background:#efefef;
+	 padding:4px 6px;
+	 -webkit-border-radius:2px;
+	 -moz-border-radius:2px;
+	 border-radius:2px; 
+	 border:1px solid #e4e1e1; 
+}
+.image-thumb .thumb-container{
+ width:22px;
+ height:16px;
+ overflow:hidden;
+ float:left;
+}
+.image-thumb .thumb-name{
+ margin-left:25px;
+ padding-top:3px;
+ overflow:hidden;
+ font-size:10px;
+ color:#616161;
+}
+.thumb-img-close {
+ width: 11px;
+ height: 12px;
+ background: url(../../img/close-button.jpg);
+ background-repeat: none;
+ background-position: top;
+ position: absolute;
+ right: 2px;
+ top: 6px;
+ z-index:1;
 }
 .form-video-meta{
 	overflow:hidden;
@@ -312,7 +342,7 @@ a:hover{
 .form-button-right{
 	float:right;
 }
-.thumb-img-close,.thumb-vid-close{
+.thumb-vid-close{
 	width:11px;
 	height:12px;
 	background:url(../../img/close-button.jpg);
