@@ -63,9 +63,7 @@ class HostedService {
                 //Helpers::dump($child); 
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
                     $repack[$date_key][] = $child;
-                } else {
-                    $repack[$date_key][] = $child;   
-                }
+                } 
                 /*
                 if($child->isfeatured == 0 and $child->ispublished == 1) {
                  
@@ -90,8 +88,14 @@ class HostedService {
             }
            
             //$repack[$date_key]   = $new_child;//$children_collection[0];
-            $children_collection = Null;
+            //$children_collection = Null;
+            foreach($children as $child) {
+                if($child->isfeatured == 0 and $child->ispublished == 1) {
+                    $repack[$date_key][] = $child;
+                }  
+            }
         } 
+
         //clear memory
         $collection = Null; 
         $feeds = Null;
