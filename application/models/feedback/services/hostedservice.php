@@ -9,7 +9,7 @@ use Exception, StdClass, ArrayIterator, LimitIterator;
 class HostedService {
     
     public $page_number = 0;
-    public $units = 10;
+    public $units = 4;
     public $starting_units_onload = 5;
     public $feed_advance_count = 6;
     public $debug = False;
