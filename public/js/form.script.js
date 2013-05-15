@@ -300,7 +300,7 @@ $(document).keypress(function(event){
 										$('<img />').attr({'src':data.result[0].medium_url,'width':'100%'})
 								)
 							)
-							.append($('<div class="thumb-name" />').html(data.result[0].name))
+							.append($('<div class="thumb-name" />').html(data.result[0].original_file_name))
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 					);
 				$('#review-images')
@@ -314,7 +314,7 @@ $(document).keypress(function(event){
 										$('<img />').attr({'src':data.result[0].medium_url,'width':'100%'})
 								)
 							)
-							.append($('<div class="thumb-name" />').html(data.result[0].name))
+							.append($('<div class="thumb-name" />').html(data.result[0].original_file_name))
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 					);
 				
