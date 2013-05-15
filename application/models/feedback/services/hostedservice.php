@@ -49,7 +49,10 @@ class HostedService {
             $ctr = 0;            
             $children_collection = Array();
 
-            if($this->layout !== 'traditional') {
+            if($this->layout == 'traditional') {
+                echo "traditional";
+                $repack[$date_key] = $children;
+            } else {
                 echo "not traditional";
                 foreach($children as $child) {
 
@@ -80,9 +83,6 @@ class HostedService {
                         $repack[$date_key][] = $child;
                     }
                 }
-            } else {
-                echo "traditional";
-                $repack[$date_key] = $children;
             } 
         } 
         //clear memory
