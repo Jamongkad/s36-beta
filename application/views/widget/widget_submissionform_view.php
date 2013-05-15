@@ -200,7 +200,8 @@ endif;
                     <!-- start of form title -->
                     <div class="form-feedback-title">
                         <div class="form-field-block">
-                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35" />
+                            <!-- <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35" /> -->
+                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" placeholder="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35" />
                         </div>
                     </div>
                     <!-- end of form title -->
@@ -208,7 +209,8 @@ endif;
                     <!-- start of feedback form -->
                     <div class="form-feedback-textbox">
                         <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
-                        <textarea id="feedbackText" class="feedback-textarea" title="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
+                        <!-- <textarea id="feedbackText" class="feedback-textarea" title="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea> -->
+                        <textarea id="feedbackText" class="feedback-textarea" placeholder="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
                     </div>
                     <!-- end of feedback form -->
 
@@ -233,14 +235,13 @@ endif;
                         <a href="javascript:;" class="video-icon" title="Just paste any link in the feedback text box and we'll do the rest" alt="Just paste any link in the feedback text box and we'll do the rest"></a><a href="#" class="image-icon" title="Upload Images" alt="Upload Images" id="addImage">Add Image(s)</a><span> - optional (3 maximum)</span>
                     </div>
                     
-                    <div id="uploaded_images_preview" class="form-image-thumbs clear">
-
-                    </div>
+                    <? // keep this div in one line. ?>
+                    <div id="uploaded_images_preview" class="form-image-thumbs clear"></div>
                     <!-- end of uploads -->
                     
                     <!-- start of video upload -->
-                    <div class="form-video-thumbs clear"></div>
-                    
+                    <? // keep this div in one line. ?>
+                    <div id="uploaded_video_preview" class="form-video-thumbs clear"></div> 
                     <!-- end of form upload -->
                 </div>
                 <!-- end of form page body window 1 -->
