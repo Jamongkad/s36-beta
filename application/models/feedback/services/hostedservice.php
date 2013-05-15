@@ -42,6 +42,8 @@ class HostedService {
             $head_date = Null;
         }  
 
+        Helpers::dump($collection);
+
         $repack = Array();
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
