@@ -53,9 +53,8 @@ class HostedService {
                 sort($children);               
             }
 
-            Helpers::dump($children);
-
             $units = count($children);
+            Helpers::dump($units);
             foreach($children as $val) {
                 $arranged_collection = Array();
                 if(($ctr % $units) == 0) { 
