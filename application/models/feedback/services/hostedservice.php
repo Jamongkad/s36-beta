@@ -55,21 +55,22 @@ class HostedService {
             */
 
             $units = count($children);
-            //$featured = Array();
+            $d = Array();
             //$published = Array();
 
             foreach($children as $child) {
-
-                $feature = Array();
-                $publish = Array();
-                
+ 
                 //Helpers::dump($child); 
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
-                    $feature[] = $child;
+                    $repack[$date_key]['featured'][] = $child;
+                } else {
+                    $repack[$date_key]['published'][] = $child;   
                 }
+                /*
                 if($child->isfeatured == 0 and $child->ispublished == 1) {
-                    $publish[] = $child;
+                 
                 }
+                */
 
                 //$new_child = $feature + $publish;
                 Helpers::dump($feature + $publish);
