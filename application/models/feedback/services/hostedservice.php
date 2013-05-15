@@ -57,7 +57,15 @@ class HostedService {
             $units = count($children);
             foreach($children as $child) {
 
-                if($child->feed_data->isfeatured == 1) {
+                $isfeatured = null;
+
+                if(property_exists($child, 'feed_data')) {
+                   $isfeatured = $child->feed_data->isfeatured;
+                } else {
+                   $isfeatured = $child->isfeatured;     
+                }
+
+                if($isfeatured == 1) {
                     $repack[$date_key][] = $child;
                 }
                
@@ -75,7 +83,16 @@ class HostedService {
             }
 
             foreach($children as $child) {
-                if($child->feed_data->ispublished == 1) {
+
+                $ispublished = null;
+
+                if(property_exists($child, 'feed_data')) {
+                   $ispublished = $child->feed_data->ispublished;
+                } else {
+                   $ispublished = $child->ispublished;     
+                }
+
+                if($ispublished == 1) {
                     $repack[$date_key][] = $child;
                 }
             }
