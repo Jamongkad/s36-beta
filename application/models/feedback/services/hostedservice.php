@@ -59,7 +59,7 @@ class HostedService {
             $published = Array();
             foreach($children as $child) {
                 
-                Helpers::dump($child);
+                //Helpers::dump($child);
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
                     echo "featured";
                     $featured[] = $child;
@@ -78,7 +78,7 @@ class HostedService {
                 */
             }
             echo '------------------';
-            //Helpers::dump($featured);
+            Helpers::dump($featured);
             echo '------------------';
             //Helpers::dump($published);
             echo '------------------';
