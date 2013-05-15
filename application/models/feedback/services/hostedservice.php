@@ -54,7 +54,7 @@ class HostedService {
             }
             */
 
-            $units = count($children);
+            //$units = count($children);
             foreach($children as $child) {
 
                 $isfeatured = null;
