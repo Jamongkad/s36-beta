@@ -72,7 +72,7 @@ class HostedService {
                 }
 
                 //$new_child = $feature + $publish;
-                Helpers::dump($feature);
+                Helpers::dump(Array($feature, $publish));
             
                 /*
                 $arranged_collection = Array();
