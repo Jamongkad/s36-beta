@@ -57,7 +57,7 @@ class HostedService {
             $units = count($children);
             foreach($children as $child) {
                 Helpers::dump($child);
-                if($child->isfeatured == 1) {
+                if($child->feed_data->isfeatured == 1) {
                     $repack[$date_key][] = $child;
                 }
                
@@ -75,7 +75,7 @@ class HostedService {
             }
 
             foreach($children as $child) {
-                if($child->ispublished == 1) {
+                if($child->feed_data->ispublished == 1) {
                     $repack[$date_key][] = $child;
                 }
             }
