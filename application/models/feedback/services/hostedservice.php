@@ -77,7 +77,6 @@ class HostedService {
                     }
 
                     if($ispublished == 1) {
-                        Helpers::dump($child);
                         $repack[$date_key][] = $child;
                     }
                 }
