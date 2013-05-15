@@ -55,9 +55,18 @@ class HostedService {
             */
 
             $units = count($children);
+            $featured = Array();
+            $published = Array();
             foreach($children as $child) {
                 
                 Helpers::dump($child);
+                if($child->isfeatured) {
+                    $featured[] = $child;
+                }
+
+                if($child->ispublished) {
+                    $published[] = $child;
+                }
                 /*
                 $arranged_collection = Array();
 
@@ -71,6 +80,9 @@ class HostedService {
                 $ctr += 1;
                 */
             }
+
+            Helpers::dump($featured);
+            Helpers::dump($published);
             //$repack[$date_key]   = $children_collection[0];
             $children_collection = Null;
         } 
