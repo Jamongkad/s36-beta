@@ -22,7 +22,7 @@ class FeedbackNode {
         $node->id = $this->data->id;
         $node->intname = $this->data->intname;
         $node->category = $this->data->category;
-        $node->category = $this->data->category;
+        $node->categoryid = $this->data->categoryid;
         $node->status = $this->data->status;
         $node->priority = $this->data->priority;
         $node->title = $this->data->title;
