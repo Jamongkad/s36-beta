@@ -112,7 +112,7 @@
                 </div>
 
                 <?php foreach($feeds->children as $feed):?>
-                    <p></p>
+                    <p><?=$feed->categoryid?></p>
                     <? $id = $feed->id ?>
                     
                     <div class="dialog-form" feedid="<?=$id?>"> 
