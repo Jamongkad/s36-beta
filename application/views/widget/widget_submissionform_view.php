@@ -239,7 +239,8 @@ endif;
                     <!-- end of uploads -->
                     
                     <!-- start of video upload -->
-                    <div class="form-video-thumbs clear"></div>
+                    <div class="form-video-thumbs clear">
+                    </div>
                     
                     <!-- end of form upload -->
                 </div>

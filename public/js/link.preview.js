@@ -55,13 +55,13 @@
 
 						$('.form-video-thumbs')
 							.html(
-								$('<div />')
+								$('<div class="video-container clear" />')
+								.append($('<div />')
 									.addClass('form-video-meta')
 									.append(
 										$('<div />')
 											.addClass('video-thumb e_vid_check')
 											.append($('<img />').attr({'src':link_image[0],'width':'100%'}))
-											.append($('<div />').addClass('thumb-vid-close'))
 									)
 									.append(
 										$('<div />')
@@ -69,6 +69,8 @@
 											.append('<h3>'+e_title+'</h3>')
 											.append('<p>'+e_desc+'</p>')
 									)
+								)
+								.append($('<div />').addClass('thumb-vid-close'))
 							);
 						init_thumbnail_vid_close_btn();
 						scale_review_textbox();
