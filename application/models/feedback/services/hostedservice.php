@@ -46,9 +46,6 @@ class HostedService {
 
         $repack = Array();
         foreach($collection as $date_key => $children) {
-            $ctr = 0;            
-            $children_collection = Array();
-
             if($this->layout == 'traditional') {
                 $repack[$date_key] = $children;
             } else {
@@ -80,6 +77,7 @@ class HostedService {
                     }
 
                     if($ispublished == 1) {
+                        Helpers::dump($child);
                         $repack[$date_key][] = $child;
                     }
                 }
