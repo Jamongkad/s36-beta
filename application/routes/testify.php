@@ -202,7 +202,7 @@ return array(
 
             $fb = $tf->data->dbfeedback->televised_feedback_alt($company_name);
 
-            $hosted = new Feedback\Services\HostedService($company_name, $fb->result);
+            $hosted = new Feedback\Services\HostedService($company_name, $fb->result, 'Traditional');
             $hosted->page_number = $page; 
             $hosted->debug = True; 
             $hosted->dump_build_data = True; 
