@@ -53,6 +53,8 @@ class HostedService {
                 sort($children);               
             }
 
+            Helpers::dump($date_key);
+
             $units = count($children);
             foreach($children as $val) {
                 $arranged_collection = Array();
