@@ -60,19 +60,19 @@ class HostedService {
 
             foreach($children as $child) {
 
-                $feature = null;
-                $publish = null;
+                $feature = Array();
+                $publish = Array();
                 
                 //Helpers::dump($child); 
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
-                    $feature = $child;
+                    $feature[] = $child;
                 }
                 if($child->isfeatured == 0 and $child->ispublished == 1) {
-                    $publish = $child;
+                    $publish[] = $child;
                 }
 
                 //$new_child = $feature + $publish;
-                Helpers::dump(Array($feature, $publish));
+                Helpers::dump($feature + $publish);
             
                 /*
                 $arranged_collection = Array();
