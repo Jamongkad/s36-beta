@@ -195,14 +195,9 @@ return array(
 
             $company_name = Config::get('application.subdomain');
 
-            /*
-            $feeds = array(1116, 1115);
-            $fb = $tf->data->dbfeedback->cherry_pick_feedback($feeds, $company_name);
-            */
-
             $fb = $tf->data->dbfeedback->televised_feedback_alt($company_name);
 
-            $hosted = new Feedback\Services\HostedService($company_name, $fb->result, 'Timeline');
+            $hosted = new Feedback\Services\HostedService($company_name, $fb->result, 'Treble');
             $hosted->page_number = $page; 
             $hosted->debug = True; 
             $hosted->dump_build_data = True; 
