@@ -48,56 +48,40 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-            /*              
+
             if($this->layout !== 'traditional') {
-                sort($children);               
-            }
-            */
+                foreach($children as $child) {
 
-            //$units = count($children);
-            foreach($children as $child) {
+                    $isfeatured = null;
 
-                $isfeatured = null;
-
-                if(property_exists($child, 'feed_data')) {
-                   $isfeatured = $child->feed_data->isfeatured;
-                } else {
-                   $isfeatured = $child->isfeatured;     
-                }
-
-                if($isfeatured == 1) {
-                    $repack[$date_key][] = $child;
-                }
-               
-                /*
-                $arranged_collection = Array();
-                if(($ctr % $units) == 0) { 
-                    foreach(new LimitIterator(new ArrayIterator($children), $ctr, $units) as $fr) {    
-                        $arranged_collection[] = $fr;     
+                    if(property_exists($child, 'feed_data')) {
+                       $isfeatured = $child->feed_data->isfeatured;
+                    } else {
+                       $isfeatured = $child->isfeatured;     
                     }
-                    $children_collection[] = $arranged_collection;
-                    $arranged_collection   = Null;
-                }
-                $ctr += 1;
-                */
-            }
 
-            foreach($children as $child) {
-
-                $ispublished = null;
-
-                if(property_exists($child, 'feed_data')) {
-                   $ispublished = $child->feed_data->ispublished;
-                } else {
-                   $ispublished = $child->ispublished;     
+                    if($isfeatured == 1) {
+                        $repack[$date_key][] = $child;
+                    }   
                 }
 
-                if($ispublished == 1) {
-                    $repack[$date_key][] = $child;
+                foreach($children as $child) {
+
+                    $ispublished = null;
+
+                    if(property_exists($child, 'feed_data')) {
+                       $ispublished = $child->feed_data->ispublished;
+                    } else {
+                       $ispublished = $child->ispublished;     
+                    }
+
+                    if($ispublished == 1) {
+                        $repack[$date_key][] = $child;
+                    }
                 }
-            }
-            //$repack[$date_key]   = $children_collection[0];
-            $children_collection = Null;
+            } else {
+                $repack[$date_key] = $children;
+            } 
         } 
         //clear memory
         $collection = Null; 
