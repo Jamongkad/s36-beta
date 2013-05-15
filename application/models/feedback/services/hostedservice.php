@@ -21,16 +21,18 @@ class HostedService {
     private $number_of_pages;
     private $pages;
     private $feeds;
+    private $layout;
 
     private $featured_count;
     private $published_count;
 
     private $total_collection;
     
-    public function __construct($company_name, $feeds=Null) {
+    public function __construct($company_name, $feeds=Null, $layout=Null) {
         $this->redis    = new redisent\Redis;
         $this->key_name = $company_name.":fullpage:data";
         $this->feeds    = $feeds;
+        $this->layout   = strtolower($layout);
     }
 
     public function group_and_build() { 
@@ -46,7 +48,11 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-            //sort($children);
+
+            if($this->layout !== 'traditional') {
+                sort($children);               
+            }
+
             $units = count($children);
             foreach($children as $val) {
                 $arranged_collection = Array();

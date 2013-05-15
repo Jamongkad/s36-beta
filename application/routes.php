@@ -38,8 +38,8 @@ return array(
 
         //hosted settings 
         $panel = $hosted_settings->get_panel_settings($company_info->companyid);
-
         Helpers::dump($panel);
+
         //Feeds
         $feeds = $feedback->televised_feedback_alt($company_name);
         $hosted = new Feedback\Services\HostedService($company_name, $feeds->result); 
