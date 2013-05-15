@@ -48,37 +48,15 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-            /*
+
             if($this->layout !== 'traditional') {
                 sort($children);               
             }
-            */
 
             $units = count($children);
-            $d = Array();
-            //$published = Array();
-
             foreach($children as $child) {
- 
-                //Helpers::dump($child); 
-                if($child->isfeatured == 1 and $child->ispublished == 0) {
-                    $repack[$date_key][] = $child;
-                } 
 
-                if($child->isfeatured == 0 and $child->ispublished == 1) {
-                    $repack[$date_key][] = $child;
-                }  
-                /*
-                if($child->isfeatured == 0 and $child->ispublished == 1) {
-                 
-                }
-                */
-
-                //$new_child = $feature + $publish;
-            
-                /*
                 $arranged_collection = Array();
-
                 if(($ctr % $units) == 0) { 
                     foreach(new LimitIterator(new ArrayIterator($children), $ctr, $units) as $fr) {    
                         $arranged_collection[] = $fr;     
@@ -87,14 +65,10 @@ class HostedService {
                     $arranged_collection   = Null;
                 }
                 $ctr += 1;
-                */
-                //$new_child = $featured + $published;
             }
-           
-            //$repack[$date_key]   = $new_child;//$children_collection[0];
-            //$children_collection = Null;
+            $repack[$date_key]   = $children_collection[0];
+            $children_collection = Null;
         } 
-
         //clear memory
         $collection = Null; 
         $feeds = Null;
@@ -124,8 +98,7 @@ class HostedService {
             $obj->sort_id = $feed->id;
             $obj->isfeatured = $feed->isfeatured;
             $obj->ispublished = $feed->ispublished;
-            $obj->date = $feed->date;
-            $obj->title = $feed->title;
+            $obj->feed_data = $feed->date;
 
             return $obj;
         } else { 
