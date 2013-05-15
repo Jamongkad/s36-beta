@@ -62,9 +62,9 @@ class HostedService {
  
                 //Helpers::dump($child); 
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
-                    $repack[$date_key]['featured'][] = $child;
+                    $repack[$date_key][] = $child;
                 } else {
-                    $repack[$date_key]['published'][] = $child;   
+                    $repack[$date_key][] = $child;   
                 }
                 /*
                 if($child->isfeatured == 0 and $child->ispublished == 1) {
