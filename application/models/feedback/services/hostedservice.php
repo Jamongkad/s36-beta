@@ -50,10 +50,10 @@ class HostedService {
             $children_collection = Array();
 
             if($this->layout == 'traditional') {
-                echo "traditional";
                 $repack[$date_key] = $children;
             } else {
-                echo "not traditional";
+                //holy fuck what is this shit?!?!
+                //inserts feed insertion order with featured first order by date. 
                 foreach($children as $child) {
 
                     $isfeatured = null;
