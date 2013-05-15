@@ -50,6 +50,7 @@ class HostedService {
             $children_collection = Array();
 
             if($this->layout !== 'traditional') {
+                echo "not traditional";
                 foreach($children as $child) {
 
                     $isfeatured = null;
@@ -80,6 +81,7 @@ class HostedService {
                     }
                 }
             } else {
+                echo "traditional";
                 $repack[$date_key] = $children;
             } 
         } 
