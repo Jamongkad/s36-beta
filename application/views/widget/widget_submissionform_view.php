@@ -241,8 +241,7 @@ endif;
                     
                     <!-- start of video upload -->
                     <? // keep this div in one line. ?>
-                    <div id="uploaded_video_preview" class="form-video-thumbs clear"></div>
-                    
+                    <div id="uploaded_video_preview" class="form-video-thumbs clear"></div> 
                     <!-- end of form upload -->
                 </div>
                 <!-- end of form page body window 1 -->
