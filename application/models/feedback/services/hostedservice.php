@@ -46,7 +46,7 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-            sort($children);
+            //sort($children);
             $units = count($children);
             foreach($children as $val) {
                 $arranged_collection = Array();
