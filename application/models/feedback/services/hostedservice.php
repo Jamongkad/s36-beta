@@ -70,7 +70,7 @@ class HostedService {
                 $ctr += 1;
                 */
             }
-            $repack[$date_key]   = $children_collection[0];
+            //$repack[$date_key]   = $children_collection[0];
             $children_collection = Null;
         } 
         //clear memory
