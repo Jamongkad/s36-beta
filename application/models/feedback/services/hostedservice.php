@@ -60,13 +60,9 @@ class HostedService {
             foreach($children as $child) {
                 
                 Helpers::dump($child);
-                if($child->isfeatured == 1) {
+                if($child->isfeatured == 1 and $child->ispublished == 0) {
                     echo "featured";
                     $featured[] = $child;
-                }
-
-                if($child->ispublished == 1) {
-                    $published[] = $child;
                 }
                 /*
                 $arranged_collection = Array();
