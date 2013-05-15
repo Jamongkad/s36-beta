@@ -80,19 +80,19 @@ class HostedService {
                 }
                 $ctr += 1;
                 */
-
+                $new_child = $featured + $published;
             }
 
-
+            /*
             echo '------------------';
             Helpers::dump($featured);
             echo '------------------';
             Helpers::dump($published);
             echo '------------------';
-
-            //$new_child = $featured + $published;
+            */
+            
            
-            $repack[$date_key]   = $children;//$children_collection[0];
+            $repack[$date_key]   = $new_children;//$children_collection[0];
             $children_collection = Null;
         } 
         //clear memory
