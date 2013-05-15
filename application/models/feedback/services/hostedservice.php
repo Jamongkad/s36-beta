@@ -9,7 +9,7 @@ use Exception, StdClass, ArrayIterator, LimitIterator;
 class HostedService {
     
     public $page_number = 0;
-    public $units = 4;
+    public $units = 10;
     public $starting_units_onload = 5;
     public $feed_advance_count = 6;
     public $debug = False;
@@ -57,14 +57,15 @@ class HostedService {
             $units = count($children);
             $featured = Array();
             $published = Array();
+            /*
             foreach($children as $child) {
                 
                 //Helpers::dump($child);
-                /*
+             
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
                     $featured[] = $child;
                 }
-                */
+            
 
                 $arranged_collection = Array();
 
@@ -78,6 +79,7 @@ class HostedService {
                 $ctr += 1;
 
             }
+            */
             /*
             echo '------------------';
             //Helpers::dump($featured);
@@ -85,7 +87,7 @@ class HostedService {
             //Helpers::dump($published);
             echo '------------------';
             */
-            $repack[$date_key]   = $children_collection[0];
+            $repack[$date_key]   = $children;//$children_collection[0];
             $children_collection = Null;
         } 
         //clear memory
