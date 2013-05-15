@@ -48,10 +48,11 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-
+            /*
             if($this->layout !== 'traditional') {
                 sort($children);               
             }
+            */
 
             $units = count($children);
             foreach($children as $child) {
