@@ -67,6 +67,7 @@ function s36_openLightbox(width,height,src) {
 		s36_iframe.setAttribute('frameborder',0);
 		s36_iframe.setAttribute('noresize','noresize');
 		s36_iframe.setAttribute('scrolling','no');
+		s36_iframe.setAttribute('id','s36_iframe');
 		
 	if(s36_modalbox != null){
 		
@@ -161,6 +162,11 @@ function s36_openForm(form_url) {
 /* Create that widget button
 ****************************************************************/
 function s36_closeLightbox(){	
+	
+	if( form_value_changed() ){
+		if( ! confirm('Are you sure you want to return to the display page? All your changes will be lost') ) return;
+	}
+	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
 	
@@ -170,6 +176,29 @@ function s36_closeLightbox(){
 	
 	s36_modalbox.style.display 		= 'none';
 	s36_modalshadow.style.display 	= 'none';		
+}
+
+function form_value_changed(){
+	
+	var s36_iframe = document.getElementById('s36_iframe');
+	var s36_iframe_contents = s36_iframe.contentDocument || s36_iframe.contentWindow.document;
+	
+	var rating = s36_iframe_contents.getElementById('rating');
+	var title = s36_iframe_contents.getElementById('feedbackTitle');
+	var feedback_text = s36_iframe_contents.getElementById('feedbackText');
+	var recommend = s36_iframe_contents.getElementById('recommend');
+	var uploaded_images = s36_iframe_contents.getElementById('uploaded_images_preview');
+	var uploaded_video = s36_iframe_contents.getElementById('uploaded_video_preview');
+	
+	if( rating.value != 0 ) return true;
+	if( title.value != '' ) return true;
+	if( feedback_text.value != '' ) return true;
+	if( recommend.value != '1' ) return true;
+	if( uploaded_images.hasChildNodes() ) return true;
+	if( uploaded_video.hasChildNodes() ) return true;
+	
+	return false;
+	
 }
 
 /****************************************************************
