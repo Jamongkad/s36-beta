@@ -80,16 +80,16 @@ class HostedService {
                 }
                 $ctr += 1;
                 */
-                $new_child = $featured + $published;
+                //$new_child = $featured + $published;
             }
 
-            /*
+
             echo '------------------';
             Helpers::dump($featured);
             echo '------------------';
             Helpers::dump($published);
             echo '------------------';
-            */
+
             
            
             $repack[$date_key]   = $new_child;//$children_collection[0];
