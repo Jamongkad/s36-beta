@@ -61,6 +61,7 @@ class HostedService {
                 
                 Helpers::dump($child);
                 if($child->isfeatured == 1) {
+                    echo "featured";
                     $featured[] = $child;
                 }
 
@@ -81,7 +82,7 @@ class HostedService {
                 */
             }
             echo '------------------';
-            Helpers::dump($featured);
+            //Helpers::dump($featured);
             echo '------------------';
             //Helpers::dump($published);
             echo '------------------';
