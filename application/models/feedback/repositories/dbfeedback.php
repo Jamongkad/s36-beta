@@ -30,7 +30,7 @@ class DBFeedback extends S36DataObject {
                 , DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "EUR")) AS head_date_format 
                 , CASE
                       WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
-                          THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
+                          THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago poo")
                        WHEN datediff(now(), dtAdded) = 1 
                           THEN "Yesterday"
                        WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
