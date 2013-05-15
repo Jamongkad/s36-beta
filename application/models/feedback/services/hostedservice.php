@@ -83,7 +83,7 @@ class HostedService {
             echo '------------------';
             Helpers::dump($featured);
             echo '------------------';
-            Helpers::dump($published);
+            //Helpers::dump($published);
             echo '------------------';
             //$repack[$date_key]   = $children_collection[0];
             $children_collection = Null;
