@@ -55,18 +55,24 @@ class HostedService {
             */
 
             $units = count($children);
-            $featured = Array();
-            $published = Array();
+            //$featured = Array();
+            //$published = Array();
 
             foreach($children as $child) {
+
+                $feature = null;
+                $publish = null;
                 
                 //Helpers::dump($child); 
                 if($child->isfeatured == 1 and $child->ispublished == 0) {
-                    $featured[] = $child;
+                    $feature = $child;
                 }
                 if($child->isfeatured == 0 and $child->ispublished == 1) {
-                    $published[] = $child;
+                    $publish = $child;
                 }
+
+                $new_child = $feature + $publish;
+                Helpers::dump($new_child);
             
                 /*
                 $arranged_collection = Array();
@@ -82,17 +88,8 @@ class HostedService {
                 */
                 //$new_child = $featured + $published;
             }
-
-
-            echo '------------------';
-            Helpers::dump($featured);
-            echo '------------------';
-            Helpers::dump($published);
-            echo '------------------';
-
-            
            
-            $repack[$date_key]   = $new_child;//$children_collection[0];
+            //$repack[$date_key]   = $new_child;//$children_collection[0];
             $children_collection = Null;
         } 
         //clear memory
