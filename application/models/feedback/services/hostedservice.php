@@ -48,14 +48,19 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-
+            /*              
             if($this->layout !== 'traditional') {
                 sort($children);               
             }
+            */
 
             $units = count($children);
             foreach($children as $child) {
-
+                if($child->isfeatured == 1) {
+                    $repack[$date_key][] = $child;
+                }
+               
+                /*
                 $arranged_collection = Array();
                 if(($ctr % $units) == 0) { 
                     foreach(new LimitIterator(new ArrayIterator($children), $ctr, $units) as $fr) {    
@@ -65,8 +70,15 @@ class HostedService {
                     $arranged_collection   = Null;
                 }
                 $ctr += 1;
+                */
             }
-            $repack[$date_key]   = $children_collection[0];
+
+            foreach($children as $child) {
+                if($child->ispublished == 1) {
+                    $repack[$date_key][] = $child;
+                }
+            }
+            //$repack[$date_key]   = $children_collection[0];
             $children_collection = Null;
         } 
         //clear memory
