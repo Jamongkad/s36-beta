@@ -34,8 +34,12 @@ return array(
 	*/
     'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url, $fullpage) {
         //consider placing this into a View Object
-        $company_info = $company->get_company_info($company_name);
- 
+        $company_info = $company->get_company_info($company_name); 
+
+        //hosted settings 
+        $panel = $hosted_settings->get_panel_settings($company_info->companyid);
+
+        Helpers::dump($panel);
         //Feeds
         $feeds = $feedback->televised_feedback_alt($company_name);
         $hosted = new Feedback\Services\HostedService($company_name, $feeds->result); 
@@ -45,10 +49,6 @@ return array(
         $feeds = $hosted->fetch_data_by_set();        
         $feed_advance_count = $hosted->determine_feed_advance();
 
-        //hosted settings 
-        $panel = $hosted_settings->get_panel_settings($company_info->companyid);
-
-        Helpers::dump($panel);
 
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
