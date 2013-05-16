@@ -161,7 +161,9 @@ function s36_openForm(form_url) {
 /****************************************************************
 /* Create that widget button
 ****************************************************************/
-function s36_closeLightbox(){	
+function s36_closeLightbox(){
+	
+	//s36_pop_up_box(['test test ching', 'ang kapal ng muka ni dan calpatura', 'test']);
 	
 	if( form_value_changed() ){
 		if( ! confirm('Are you sure you want to return to the display page? All your changes will be lost') ) return;
@@ -189,6 +191,10 @@ function form_value_changed(){
 	var recommend = s36_iframe_contents.getElementById('recommend');
 	var uploaded_images = s36_iframe_contents.getElementById('uploaded_images_preview');
 	var uploaded_video = s36_iframe_contents.getElementById('uploaded_video_preview');
+	var all_done_page = s36_iframe_contents.getElementById('step4');
+	
+	// don't show the confirm box in all done page.
+	if( all_done_page.className == 'form-page current' ) return false;
 	
 	if( rating.value != 0 ) return true;
 	if( title.value != '' ) return true;
@@ -198,6 +204,40 @@ function form_value_changed(){
 	if( uploaded_video.hasChildNodes() ) return true;
 	
 	return false;
+	
+}
+
+function s36_pop_up_box(msgs, title, type){
+	
+	// default values.
+	msgs = ( typeof(msgs) == 'undefined' ? ['ang kapal ng muka ni dan calpatura'] : msgs );
+	msgs = ( typeof(msgs) != 'object' ? [msgs] : msgs );
+	title = ( typeof(title) == 'undefined' ? 'Oops! Something went wrong...' : title );
+	type = ( typeof(type) == 'undefined' ? 'alert' : type );
+	
+	// objects.
+	var s36_pop_up_box = document.createElement('div');
+	var header = document.createElement('div');
+	var body = document.createElement('div');
+	var button_container = document.createElement('div');
+	
+	// properties.
+	s36_pop_up_box.className = 's36_pop_up_box';
+	header.className = 'header';
+	body.className = 'body';
+	button_container.className = 'button_container';
+	
+	// contents.
+	title.textContent = title;
+	body.textContent = '<ul><li>' + msgs.join('</li><li>') + '</li></ul>';
+	
+	// birth of the objects.
+	s36_pop_up_box.appendChild(header);
+	s36_pop_up_box.appendChild(body);
+	body.appendChild(button_container);
+	document.body.appendChild(s36_pop_up_box);
+	
+	//alert('ching');
 	
 }
 
