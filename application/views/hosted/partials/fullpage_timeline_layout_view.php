@@ -5,6 +5,7 @@
     <div class="spine-spacer"></div>
     <div class="feedback-date">
     <h2><?=date('M d',$feed_group)?></h2>
+    <?=$feed_group?>
     <span><?=ucfirst(Helpers::relative_time($feed_group))?></span>
     </div>
     <div class="spine-spacer"></div>
