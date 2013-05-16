@@ -513,8 +513,8 @@ class JqueryFileUploader
                     | to rename and convert uploaded images into any image format using the option file_name
                     */
                     if(isset($this->options['file_name'])){
-                        $name = $this->options['file_name'];
-                        $file->name = $this->trim_file_name($name, $type, $index, $content_range);
+                        $file->original_file_name = $name;
+                        $file->name = $this->trim_file_name($this->options['file_name'], $type, $index, $content_range);
                         $final_path = $this->get_upload_path($file->name);
                         exec('convert "' . $file_path . '" "' . $final_path . '"');
                     }

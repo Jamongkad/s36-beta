@@ -289,21 +289,6 @@ $(document).keypress(function(event){
                 $('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 
-				/*
-					<div class="image-thumb e_img_check">
-                         <div class="thumb-img-close" data-url="server/?file=sample-avatar.png&amp;_method=DELETE"></div>
-                            <div class="thumb-container">
-                             <img src="uploaded_tmp/thumbnail/sample-avatar.png" width="100%" />
-                            </div>
-                            <div class="thumb-name">
-                             sample..pic01.jpg
-                            </div>
-                            <input type="hidden" class="img-url" value="uploaded_tmp/sample-avatar.png"><input type="hidden" class="img-large-url" value="uploaded_tmp/thumbnail/sample-avatar.png"><input type="hidden" class="img-medium-url" value="uploaded_tmp/thumbnail/sample-avatar.png"><input type="hidden" class="img-small-url" value="uploaded_tmp/thumbnail/sample-avatar.png">
-                        </div>
-		
-				*/
-
-
 				$('#uploaded_images_preview')
 					.append(
 						$('<div />')
@@ -315,7 +300,7 @@ $(document).keypress(function(event){
 										$('<img />').attr({'src':data.result[0].medium_url,'width':'100%'})
 								)
 							)
-							.append($('<div class="thumb-name" />').html(data.result[0].name))
+							.append($('<div class="thumb-name" />').html(data.result[0].original_file_name))
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 					);
 				$('#review-images')
@@ -329,7 +314,7 @@ $(document).keypress(function(event){
 										$('<img />').attr({'src':data.result[0].medium_url,'width':'100%'})
 								)
 							)
-							.append($('<div class="thumb-name" />').html(data.result[0].name))
+							.append($('<div class="thumb-name" />').html(data.result[0].original_file_name))
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 					);
 				
@@ -841,8 +826,8 @@ $(document).keypress(function(event){
         /* set the default textbox height px */
         var default_ht = 270;
         /* set heights of the elements by px */
-        var im = 40; // image container
-        var vd = 68; // video container
+        var im = 35; // image container
+        var vd = 78; // video container
         var cf_box_ht = $('.form-custom-fields').height();
 
 
@@ -854,7 +839,7 @@ $(document).keypress(function(event){
         if(active_im && !active_vd){
             adjust_feedback_textbox_height(default_ht - (cf_box_ht + im));
         }else if(active_im && active_vd){
-            adjust_feedback_textbox_height(default_ht - (cf_box_ht + im + vd));
+            adjust_feedback_textbox_height(default_ht - (cf_box_ht + im + vd - 10));
         }else if(!active_im && active_vd){
             adjust_feedback_textbox_height(default_ht - (cf_box_ht + vd));
         }else{
@@ -866,8 +851,8 @@ $(document).keypress(function(event){
 
 		/* set the default textbox height px */
 		var default_ht = 180;
-		var im = 40; // image container
-		var vd = 75; // video container
+		var im = 35; // image container
+		var vd = 78; // video container
 		/* check if containers are active */
 		var active_im = $('#review-images .e_img_check').length;
 		var active_vd = $('#review-videos .e_vid_check').length;
@@ -875,7 +860,7 @@ $(document).keypress(function(event){
 		if(active_im && !active_vd){
 			adjust_review_textbox_height(default_ht - im);
 		}else if(active_im && active_vd){
-			adjust_review_textbox_height(default_ht - (im + vd));
+			adjust_review_textbox_height(default_ht - (im + vd - 10));
 		}else if(!active_im && active_vd){
 			adjust_review_textbox_height(default_ht - vd);
 		}else{

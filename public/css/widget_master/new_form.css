@@ -290,26 +290,45 @@ a:hover{
  top: 6px;
  z-index:1;
 }
+.video-container{
+ width: 365px;
+ max-height:54px;
+ background:#efefef;
+ padding:4px 6px;
+ -webkit-border-radius:2px;
+ -moz-border-radius:2px;
+ border-radius:2px; 
+ border:1px solid #e4e1e1;
+}
 .form-video-meta{
 	overflow:hidden;
 	max-height:68px;
 }
 .form-video-thumbs .video-thumb{
 	float:left;
-	width:100px;
+	width:80px;
+	overflow:hidden;
+	height:54px; 
+}
+.form-video-thumbs .video-thumb img{
+ margin-top:-4px;
 }
 .form-video-thumbs .video-thumb img,.form-image-thumbs .image-thumb img{
 	
 }
 .form-video-thumbs .video-details{
-	margin-left:120px;
+	margin-left:90px;
 }
 .form-video-thumbs .video-details h3{
 	font-weight:bold;
 	margin-bottom:5px;
+	color:#616177;
+ 	font-size:11px;
+
 }
 .form-video-thumbs .video-details p{
-	font-size:11px;
+	font-size:10px;
+	color:#616177; 
 }
 .form-button{
 	width:63px;
@@ -348,8 +367,9 @@ a:hover{
 	background:url(../../img/close-button.jpg);
 	background-repeat:none;
 	background-position:top;
-	position:absolute;right:-12px;
-	top:0px;
+	position:absolute;right:2px;
+	top:4px;
+	z-index:1;
 }
 .thumb-img-close:hover,.thumb-vid-close:hover{
 	background-position:bottom;

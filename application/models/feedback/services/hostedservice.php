@@ -21,16 +21,18 @@ class HostedService {
     private $number_of_pages;
     private $pages;
     private $feeds;
+    private $layout;
 
     private $featured_count;
     private $published_count;
 
     private $total_collection;
     
-    public function __construct($company_name, $feeds=Null) {
+    public function __construct($company_name, $feeds=Null, $layout=Null) {
         $this->redis    = new redisent\Redis;
         $this->key_name = $company_name.":fullpage:data";
         $this->feeds    = $feeds;
+        $this->layout   = strtolower($layout);
     }
 
     public function group_and_build() { 
@@ -44,23 +46,41 @@ class HostedService {
 
         $repack = Array();
         foreach($collection as $date_key => $children) {
-            $ctr = 0;            
-            $children_collection = Array();
-            sort($children);
-            $units = count($children);
-            foreach($children as $val) {
-                $arranged_collection = Array();
-                if(($ctr % $units) == 0) { 
-                    foreach(new LimitIterator(new ArrayIterator($children), $ctr, $units) as $fr) {    
-                        $arranged_collection[] = $fr;     
+            if($this->layout == 'traditional') {
+                $repack[$date_key] = $children;
+            } else {
+                //holy fuck what is this shit?!?!
+                //inserts feed insertion order with featured first order by date. 
+                foreach($children as $child) {
+
+                    $isfeatured = null;
+
+                    if(property_exists($child, 'feed_data')) {
+                       $isfeatured = $child->feed_data->isfeatured;
+                    } else {
+                       $isfeatured = $child->isfeatured;     
                     }
-                    $children_collection[] = $arranged_collection;
-                    $arranged_collection   = Null;
+
+                    if($isfeatured == 1) {
+                        $repack[$date_key][] = $child;
+                    }   
                 }
-                $ctr += 1;
-            }
-            $repack[$date_key]   = $children_collection[0];
-            $children_collection = Null;
+
+                foreach($children as $child) {
+
+                    $ispublished = null;
+
+                    if(property_exists($child, 'feed_data')) {
+                       $ispublished = $child->feed_data->ispublished;
+                    } else {
+                       $ispublished = $child->ispublished;     
+                    }
+
+                    if($ispublished == 1) {
+                        $repack[$date_key][] = $child;
+                    }
+                }
+            } 
         } 
         //clear memory
         $collection = Null; 
@@ -91,7 +111,8 @@ class HostedService {
             $obj->sort_id = $feed->id;
             $obj->isfeatured = $feed->isfeatured;
             $obj->ispublished = $feed->ispublished;
-            $obj->feed_data = $feed->date;
+            $obj->date = $feed->date;
+            $obj->title = $feed->title;
 
             return $obj;
         } else { 
