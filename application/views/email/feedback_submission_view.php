@@ -65,7 +65,7 @@
                 <tr bgcolor="#f3f3f3" height="13"><td colspan="5"></td></tr>
                 <tr bgcolor="#f3f3f3" ><td width="50"></td><td width="20"></td>
                 <td>
-                
+                <?=$feedback_data->int_rating?>                
                 <img src="images/fill.png" /> <img src="images/fill.png" /> <img src="images/fill.png" /> <img src="images/fill.png" /> <img src="images/empt.png" />
                 
                 </td><td></td></tr>
