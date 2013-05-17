@@ -185,10 +185,9 @@
     	<td style="padding:10px 50px 20px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #CCC">
                 <tr>
-                   <td bgcolor="#f7f7f7" style="padding:20px;">
-
-                       <table style="">
-                            <?php if($attachments): ?>
+                   <td bgcolor="#f7f7f7" style="padding:20px;">                       
+                        <?php if($attachments): ?>
+                        <table style="">
                             <tr>
                                 <?php 
                                 /*
@@ -252,8 +251,9 @@
                                 endif;
                                 ?>
                                 </tr>
-                            <?php endif;?>
-                       </table>
+                        </table>
+                        <?php endif;?>
+
                    <!--
                 	  <table style=""> 
                         <tr>
