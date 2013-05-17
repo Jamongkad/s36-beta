@@ -66,8 +66,13 @@
                 <tr bgcolor="#f3f3f3" ><td width="50"></td><td width="20"></td>
                 <td>
                 <?=$feedback_data->int_rating?>                
-                <img src="images/fill.png" /> <img src="images/fill.png" /> <img src="images/fill.png" /> <img src="images/fill.png" /> <img src="images/empt.png" />
-                
+                <?if($feedback_data->int_rating == 5):?>
+                    <?=HTML::image('img/star-fill.png')?>
+                    <?=HTML::image('img/star-fill.png')?>
+                    <?=HTML::image('img/star-fill.png')?>
+                    <?=HTML::image('img/star-fill.png')?>
+                    <?=HTML::image('img/star-fill.png')?>
+                <?endif?>                
                 </td><td></td></tr>
                 <tr bgcolor="#f3f3f3" height="10"><td colspan="5"></td></tr>
                 <tr bgcolor="#f3f3f3"><td width="50"></td><td width="20"></td><td>
