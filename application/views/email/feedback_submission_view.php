@@ -198,16 +198,12 @@
                                         <?php 
                                         //video attachments
                                         if($attachments->attached_link->video=='yes'):?>
-                                            <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
                                             <div class="the-thumb">
                                                 <img src="<?=$attachments->attached_link->image?>"  />
                                             </div>
-                                            </a>
                                         <?else:?>
                                             <div class="attached-link-thumb">
-                                                <a href="<?=$attachments->attached_link->url?>" target="_blank">
-                                                    <img src="<?=$attachments->attached_link->image?>" />
-                                                </a>
+                                                <img src="<?=$attachments->attached_link->image?>" />
                                             </div>
                                             <div class="attached-link-details">
                                                 <h3><?=$attachments->attached_link->title?></h3>
@@ -232,15 +228,11 @@
                                     <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                         <td style="width:<?=$width;?>">
                                             <div class="the-thumb">
-                                                <a class="inbox-fancybox-image" href="<?=Config::get('application.url')?><?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>">
-
                                                 <?if(count($attachments->uploaded_images) == 1):?>
                                                     <img src="<?=Config::get('application.url')?><?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
                                                 <?else:?>
-                                                    <img src="<?=Config::get('application.url')?><?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"  />
+                                                    <img src="<?=Config::get('application.url')?><?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"/>
                                                 <?endif?>
-
-                                                </a>
                                             </div>
                                         </td>
                                     <?php endforeach; ?>
