@@ -251,8 +251,6 @@
                                 */
                                 endif;
                                 ?>
-
-                            <?php endif;?>
                             <?php endif;?>
                        </table>
                     <!--
