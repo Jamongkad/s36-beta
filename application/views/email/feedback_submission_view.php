@@ -97,7 +97,7 @@
                     <?=HTML::image('img/star-empty.png')?>
                 <?endif?>
 
-                <?if($feedback_data->int_rating == 2):?>
+                <?if($feedback_data->int_rating == 1):?>
                     <?=HTML::image('img/star-fill.png')?>
                     <?=HTML::image('img/star-empty.png')?>
                     <?=HTML::image('img/star-empty.png')?>
