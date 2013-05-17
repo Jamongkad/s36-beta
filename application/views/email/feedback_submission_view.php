@@ -253,13 +253,11 @@
                                 ?>
                             <?php endif;?>
                        </table>
-                    <!--
-                	  <table style="">
-                        <!-- link -->
+                   <!--
+                	  <table style=""> 
                         <tr>
                         	<td colspan="3"><img src="images/sample.jpg" width="100%" /></td>
-                        </tr>
-                      	<!-- images -->
+                        </tr> 
                       	<tr>
                         	<td width="33%"><img src="images/sample.jpg" width="100%" /></td>
                         	<td width="33%"><img src="images/sample.jpg" width="100%" /></td>
