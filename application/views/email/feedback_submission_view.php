@@ -253,7 +253,7 @@
                                 ?>
 
                             <?php endif;?>
-                            <?php endif;?>
+                        <?php endif;?>
                        </table>
                     <!--
                 	  <table style="">
