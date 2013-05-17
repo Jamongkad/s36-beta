@@ -32,9 +32,8 @@ class NewFeedbackSubmission extends EmailFixture {
                 , 'companyid' => $address->companyid
                 , 'login_url' => $login_url 
             ))->get();
-
-            Helpers::dump($email_html); 
-            //$this->_send_email($address->email, $this->get_subject(), $email_html);
+ 
+            $this->_send_email($address->email, $this->get_subject(), $email_html);
         }    
     }
 
