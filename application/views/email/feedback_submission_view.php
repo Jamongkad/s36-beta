@@ -189,12 +189,13 @@
 
                        <table style="">
                             <?php if($attachments): ?>
+                            <tr>
                                 <?php 
                                 /*
                                 | Start Video and Web Link Attachment
                                 */
                                 if(isset($attachments->attached_link)):?>
-                                    <div style="float:left;width:100%;margin-bottom:15px">
+                                    <td colspan="3">
                                         <?php 
                                         //video attachments
                                         if($attachments->attached_link->video=='yes'):?>
@@ -214,24 +215,23 @@
                                                 <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
                                             </div>   
                                         <?endif?>
-                                    </div>
-                                    <br/>
+                                    </td>
                                 <?php 
                                 /*
                                 | End Video and Web Link Attachment
                                 */
                                 endif;
-                                /*
-                                | Start Image Attachments
-                                */
-                                if(isset($attachments->uploaded_images)):?>
+                                ?>
+                                </tr>
+                                <tr>
+                                <?if(isset($attachments->uploaded_images)):?>
                                     <?php
                                     if(count($attachments->uploaded_images) == 1) $width='100%';
                                     if(count($attachments->uploaded_images) == 2) $width='50%';
                                     if(count($attachments->uploaded_images) == 3) $width='33%';
                                     ?>
                                     <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                        <div  style="float:left;width:<?=$width;?>">
+                                        <td style="width:<?=$width;?>">
                                             <div class="the-thumb">
                                                 <a class="inbox-fancybox-image" href="<?=Config::get('application.url')?><?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>">
 
@@ -243,7 +243,7 @@
 
                                                 </a>
                                             </div>
-                                        </div>
+                                        </td>
                                     <?php endforeach; ?>
                                 <?php
                                 /*
@@ -251,6 +251,7 @@
                                 */
                                 endif;
                                 ?>
+                                </tr>
                             <?php endif;?>
                        </table>
                    <!--
