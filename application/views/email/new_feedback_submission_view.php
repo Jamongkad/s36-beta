@@ -67,8 +67,9 @@
                                         <br style="clear:both" />
                                     </div>
                                     <?endif?> 
-                                <br />
+                                    <br />
                                 <?endif?>
+
                                 <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
                                     <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;float:left">
                                     <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
