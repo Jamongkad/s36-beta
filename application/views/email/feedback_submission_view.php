@@ -199,10 +199,10 @@
                                         //video attachments
                                         if($attachments->attached_link->video=='yes'):?>
                                             <div class="the-thumb">
-                                                <img src="<?=$attachments->attached_link->image?>"  />
+                                                <img src="<?=$attachments->attached_link->image?>"  style="width:100%"/>
                                             </div>
                                         <?else:?>
-                                            <div class="attached-link-thumb">
+                                            <div style="float:left; padding-right:10px">
                                                 <img src="<?=$attachments->attached_link->image?>" />
                                             </div>
                                             <div class="attached-link-details">
