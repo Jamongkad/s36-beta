@@ -17,7 +17,11 @@
     if($feedback_data->rating == "EXCELLENT" || $feedback_data->rating == "GOOD") {
         $color = "#109CA5";
     }
+
+    $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
+    $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
 ?>
+
 <body style="background:#e8e9ec;padding:0;margin:0;">
 <br />
 <table align="center" bgcolor="#FFFFFF" width="710" bordercolor="#d2d2d2" cellpadding="0" cellspacing="0" style="border-radius:5px;border:1px solid #CCC;font-family:Arial, Helvetica, sans-serif">
@@ -116,8 +120,41 @@
                 <tr bgcolor="#f3f3f3" height="15"><td colspan="5"></td></tr>
                 <tr bgcolor="#e6e6e6" height="15"><td colspan="5"></td></tr>
                 <tr bgcolor="#e6e6e6"><td width="50"></td><td width="20"></td>
-                <td><span style="font-size:12px;color:#005983;">Sample Meta : </span><span style="color:#727272;font-size:12px;">Content #1</span>
+                <td>
                 
+                <? 
+                //start metadata 
+                if($metadata):
+                    foreach($metadata as $key => $val):?>
+                        <?foreach($val as $k => $v):?>
+                            <div>
+                                <span style="font-size:12px;color:#005983;">
+                                    <?if($key == 'select'):?>
+                                        <?=ucwords($k)?>: 
+                                    <?endif?>
+
+                                    <?if($key == 'checkbox' || $key == 'radio' || $key == 'text'):?>
+                                        <?=ucwords(str_replace("_", " ", $k));?>:
+                                    <?endif?>
+
+                                    <?
+                                        $prefix = "";
+                                        $value_list = "";
+                                        foreach($v as $d) {
+                                            $value_list .= "<span style='color:#727272;font-size:12px;'>" . $prefix . $d->value . "</span>";    
+                                            $prefix = ", ";
+                                        }
+                                        echo $value_list;
+                                    ?>
+                                </span>
+                            </div>
+                        <?endforeach?> 
+                    <?endforeach?>
+                <?endif?>
+                <!--
+                <span style="font-size:12px;color:#005983;">Sample Meta : </span>
+                <span style="color:#727272;font-size:12px;">Content #1</span>
+                -->
                 </td>
                 
                 <td></td></tr> 
