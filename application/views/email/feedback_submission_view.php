@@ -174,9 +174,9 @@
                 	<p style="font-size:13px;">
                         Thanks,<br />
                         The FDBack Team.
-                    </p>
-                    <p style="">
-                        <b>36Stories Inc</b> 340 Lemon Ave #6168 Walnut CA, 91789 United States
+                        <br/>
+                        <br/>
+                       <b>36Stories Inc</b> 340 Lemon Ave #6168 Walnut CA, 91789 United States
                     </p>
                 </td></tr>
             </table>    
