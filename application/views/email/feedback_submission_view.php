@@ -27,7 +27,7 @@
                 <tr>
                 	<td align="left"><?=HTML::image('img/36storieslogo.jpg')?></td>
                     <td align="right">
-                    	<a href="<?=$login_url?>" style="font-family:Arial, Helvetica, sans-serif;text-decoration:none;background:#e0f4ff;border:1px solid #76bfe8;border-radius:5px;padding:10px;color:#005983;font-size:14px;"><img src="images/manage-icon.jpg" /> Manage Feedback</a>
+                    	<a href="<?=$login_url?>" style="font-family:Arial, Helvetica, sans-serif;text-decoration:none;background:#e0f4ff;border:1px solid #76bfe8;border-radius:5px;padding:10px;color:#005983;font-size:14px;"><?=HTML::image('img/manage-icon.jpg')?> Manage Feedback</a>
                     </td>
                 </tr>
             </table>    
@@ -97,9 +97,8 @@
 
                 <!--publish feedback section -->
                 <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                    <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;float:left">
-                    <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
-                    <span style="vertical-align: middle">Publish this feedback now</span>
+                    <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
+                        <?=HTML::image('img/email-publish.jpg', 'Icon Check')?>
                     </a> 
                 <?endif?> 
 
