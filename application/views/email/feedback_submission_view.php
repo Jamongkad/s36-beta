@@ -212,7 +212,6 @@
                         Thanks,<br />
                         The FDBack Team.
                         <br/>
-                        <br/>
                        <b>36Stories Inc</b> 340 Lemon Ave #6168 Walnut CA, 91789 United States
                     </p>
                 </td></tr>
