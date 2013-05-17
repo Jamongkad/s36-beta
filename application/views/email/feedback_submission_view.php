@@ -151,10 +151,6 @@
                         <?endforeach?> 
                     <?endforeach?>
                 <?endif?>
-                <!--
-                <span style="font-size:12px;color:#005983;">Sample Meta : </span>
-                <span style="color:#727272;font-size:12px;">Content #1</span>
-                -->
                 </td>
                 
                 <td></td></tr> 
@@ -190,6 +186,76 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #CCC">
                 <tr>
                    <td bgcolor="#f7f7f7" style="padding:20px;">
+
+                       <table style="">
+                            <?php if($attachments): ?>
+                                <?php 
+                                /*
+                                | Start Video and Web Link Attachment
+                                */
+                                if(isset($attachments->attached_link)):?>
+                                    <div style="float:left;width:100%;margin-bottom:15px">
+                                        <?php 
+                                        //video attachments
+                                        if($attachments->attached_link->video=='yes'):?>
+                                            <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
+                                            <div class="the-thumb">
+                                                <img src="<?=$attachments->attached_link->image?>"  />
+                                            </div>
+                                            </a>
+                                        <?else:?>
+                                            <div class="attached-link-thumb">
+                                                <a href="<?=$attachments->attached_link->url?>" target="_blank">
+                                                    <img src="<?=$attachments->attached_link->image?>" />
+                                                </a>
+                                            </div>
+                                            <div class="attached-link-details">
+                                                <h3><?=$attachments->attached_link->title?></h3>
+                                                <p style="font-size:10px"><?=$attachments->attached_link->description?></p>
+                                            </div>   
+                                        <?endif?>
+                                    </div>
+                                    <br/>
+                                <?php 
+                                /*
+                                | End Video and Web Link Attachment
+                                */
+                                endif;
+                                /*
+                                | Start Image Attachments
+                                */
+                                if(isset($attachments->uploaded_images)):?>
+                                    <?php
+                                    if(count($attachments->uploaded_images) == 1) $width='100%';
+                                    if(count($attachments->uploaded_images) == 2) $width='50%';
+                                    if(count($attachments->uploaded_images) == 3) $width='33%';
+                                    ?>
+                                    <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                        <div  style="float:left;width:<?=$width;?>">
+                                            <div class="the-thumb">
+                                                <a class="inbox-fancybox-image" href="<?=Config::get('application.url')?><?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>">
+
+                                                <?if(count($attachments->uploaded_images) == 1):?>
+                                                    <img src="<?=Config::get('application.url')?><?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" />
+                                                <?else:?>
+                                                    <img src="<?=Config::get('application.url')?><?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"  />
+                                                <?endif?>
+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php
+                                /*
+                                | End Image Attachments
+                                */
+                                endif;
+                                ?>
+
+                            <?php endif;?>
+                            <?php endif;?>
+                       </table>
+                    <!--
                 	  <table style="">
                         <!-- link -->
                         <tr>
@@ -202,6 +268,7 @@
                             <td width="33%"><img src="images/sample.jpg" width="100%" /></td>
                         </tr>
                       </table>
+                    -->
                    </td>
                 </tr>
             </table>    
