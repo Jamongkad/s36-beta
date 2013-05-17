@@ -40,8 +40,7 @@
                	<tr bgcolor="#f3f3f3" ><td width="50"></td>
                 <td rowspan="8" width="150" style="background:#e6e6e6">                
                     <?if($feedback_data->avatar):?>
-                        <td><?=HTML::image('uploaded_images/avatar/medium/'.$feedback_data->avatar, 'Avatar')?></td>
-                        <td width="10"></td>
+                        <?=HTML::image('uploaded_images/avatar/medium/'.$feedback_data->avatar, 'Avatar')?>
                     <?endif?>
                 </td>
                 <td width="20"></td>
