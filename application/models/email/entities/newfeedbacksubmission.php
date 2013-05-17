@@ -26,7 +26,7 @@ class NewFeedbackSubmission extends EmailFixture {
                                                        , Array('feedback_data' => $this->feedback_data))
             ))->get();     
             */
-            $email_html = View::make('email/new_feedback_submission_view', Array(
+            $email_html = View::make('email/feedback_submission_view', Array(
                   'feedback_data' => $this->feedback_data
                 , 'encryptstring' => $address->encryptstring
                 , 'companyid' => $address->companyid
