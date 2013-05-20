@@ -168,7 +168,7 @@ function s36_closeLightbox(forced){
 	
 	// this will not execute if forced is true.
 	if( ! forced && form_value_changed() ){
-		s36_pop_up_box( 'confirm', 'You haven\'t finished your feedback', 'Are you sure you want to return to the display page? All your changes will be lost', 's36_closeLightbox(true)' );
+		s36_pop_up_box( 'confirm', 'Your feedback is not yet complete.', 'You are about to close the feedback form. All your changes will be lost.', 's36_closeLightbox(true)' );
 		return;
 	}
 	
