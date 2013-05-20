@@ -19,12 +19,10 @@ function createLightboxes(){
 		s36_modalboxshadow.className = "s36_modalshadow";
 	
 	if(browser.msie) {
-        //s36_modalboxshadow.attachEvent("onclick", s36_closeLightbox);
-        s36_modalboxshadow.attachEvent("onclick", open_s36_pop_up_box);
+        s36_modalboxshadow.attachEvent("onclick", s36_closeLightbox);
         
     } else {
-        //s36_modalboxshadow.setAttribute("onclick","s36_closeLightbox()");            
-        s36_modalboxshadow.setAttribute("onclick","open_s36_pop_up_box()");
+        s36_modalboxshadow.setAttribute("onclick","s36_closeLightbox()");
     }
         
 		document.body.appendChild(s36_modalboxshadow);
@@ -54,11 +52,9 @@ function s36_openLightbox(width,height,src) {
 		s36_closebtn.id = "s36_closebtn";
 
         if(browser.msie) {
-            //s36_closebtn.attachEvent("onclick", s36_closeLightbox);
-            s36_closebtn.attachEvent("onclick", open_s36_pop_up_box);
+            s36_closebtn.attachEvent("onclick", s36_closeLightbox);
         } else {
-            //s36_closebtn.setAttribute("onclick","s36_closeLightbox()");
-            s36_closebtn.setAttribute("onclick","open_s36_pop_up_box()");
+            s36_closebtn.setAttribute("onclick","s36_closeLightbox()");
         }
 	
 		s36_closebtn.className = "s36_closebtn";
@@ -165,9 +161,17 @@ function s36_openForm(form_url) {
 /****************************************************************
 /* Create that widget button
 ****************************************************************/
-function s36_closeLightbox(){
+function s36_closeLightbox(forced){
 	
-	//new s36_pop_up_box( 'Are you sure you want to return to the display page? All your changes will be lost', 'confirm', 'You haven\'t finished your feedback' );
+	forced = ( typeof(forced) == 'undefined' ? false : true );
+	
+	
+	// this will not execute if forced is true.
+	if( ! forced && form_value_changed() ){
+		s36_pop_up_box( 'confirm', 'You haven\'t finished your feedback', 'Are you sure you want to return to the display page? All your changes will be lost', 's36_closeLightbox(true)' );
+		return;
+	}
+	
 	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
@@ -207,131 +211,134 @@ function form_value_changed(){
 	
 }
 
-// function confirm_close_lightbox(){
-// 	s36_closeLightbox();
-// }
-
-// function cancel_dialog(){
-// 	// close pop up box.
-// }
-
-function close_s36_pop_up_box(){
+function s36_pop_up_box(type, title, msgs, ok_callback_as_str){
+	
+	// there should only be one existing s36_pop_up_box in document.
+	if( document.getElementById('s36_pop_up_box') != null ) return;
+	
+	// default values.
+	title = ( typeof(title) == 'undefined' ? 'Oops! Something went wrong...' : title );
+	msgs = ( typeof(msgs) == 'undefined' ? ['ang kapal ng muka ni dan calpatura'] : msgs );
+	msgs = ( typeof(msgs) != 'object' ? [msgs] : msgs );
+	type = ( typeof(type) == 'undefined' ? 'alert' : type );
+	type = type.toLowerCase();
+	
+	// objects.
+	var s36_iframe = document.getElementById('s36_iframe');
+	var s36_iframe_contents = s36_iframe.contentDocument || s36_iframe.contentWindow.document;
+	var form_box = s36_iframe_contents.getElementById('formBox');
 	var s36_modalbox = document.getElementById('s36_modalbox');
-	var lightbox = document.getElementById('lightbox');
-	s36_modalbox.removeChild(lightbox);
+	var s36_pop_up_box = document.createElement('div');
+	var pandora = document.createElement('div');
+	var header = document.createElement('div');
+	var body = document.createElement('div');
+	var msg_list_container = document.createElement('div');
+	var msg_list = document.createElement('ul');
+	var button_container = document.createElement('div');
+	var ok_button = document.createElement('a');
+	var cancel_button = document.createElement('a');
+	
+	// properties.
+	s36_pop_up_box.id = 's36_pop_up_box';
+	
+	// css.
+	s36_pop_up_box.style.display = 'block';
+	s36_pop_up_box.style.position = 'absolute';
+	s36_pop_up_box.style.width = '290px';
+	s36_pop_up_box.style.background = 'url(../../img/faded-black.png)';
+	s36_pop_up_box.style.zIndex = '1000';
+	s36_pop_up_box.style.webkitBorderRadius = '5px';
+	s36_pop_up_box.style.MozBorderRadius = '5px';
+	s36_pop_up_box.style.borderRadius = '5px';
+	s36_pop_up_box.style.top = '30%';
+	s36_pop_up_box.style.left = '50%';
+	s36_pop_up_box.style.marginLeft = '-145px';
+	
+	pandora.style.background = '#FFF';
+	pandora.style.margin = '5px';
+	pandora.style.webkitBorderRadius = '4px';
+	pandora.style.MozBorderRadius = '4px';
+	pandora.style.borderRadius = '4px';
+	pandora.style.overflow = 'hidden';
+	
+	header.style.padding = '10px 15px';
+	header.style.color = '#000';
+	header.style.fontSize = '15px';
+	header.style.fontWeight = 'bold';
+	header.style.borderBottom = '1px solid #ccc';
+	header.style.background = '#e8e8e8';
+	header.style.webkitBorderTopRightRadius = '4px';
+	header.style.mozBorderTopRightRadius = '4px';
+	header.style.borderTopRightRadius = '4px';
+	header.style.webkitBorderTopLeftRadius = '4px';
+	header.style.mozBorderTopLeftRadius = '4px';
+	header.style.borderTopLeftRadius = '4px';
+	
+	body.style.position = 'relative';
+	body.style.display = 'block';
+	
+	msg_list_container.style.padding = '10px 15px';
+	msg_list_container.style.fontWeight = 'bold';
+	
+	msg_list.style.color = '#960505';
+	msg_list.style.fontWeight = 'bold';
+	msg_list.style.listStyle = 'none';
+	
+	button_container.style.textAlign = 'center';
+	button_container.style.padding = '5px 0';
+	
+	ok_button.style.width = '63px';
+	ok_button.style.background = 'url(/fullpage/common/img/form-button.png)';
+	ok_button.style.backgroundRepeat = 'no-repeat';
+	ok_button.style.backgroundPosition = 'top center';
+	ok_button.style.display = 'inline-block';
+	ok_button.style.padding = '9px 10px';
+	ok_button.style.textAlign = 'center';
+	ok_button.style.color = '#000';
+	ok_button.style.textShadow = '#FFF 0 1px';
+	ok_button.style.fontWeight = 'bold';
+	
+	cancel_button.style.width = '63px';
+	cancel_button.style.background = 'url(/fullpage/common/img/form-button.png)';
+	cancel_button.style.backgroundRepeat = 'no-repeat';
+	cancel_button.style.backgroundPosition = 'top center';
+	cancel_button.style.display = 'inline-block';
+	cancel_button.style.padding = '9px 10px';
+	cancel_button.style.textAlign = 'center';
+	cancel_button.style.color = '#000';
+	cancel_button.style.textShadow = '#FFF 0 1px';
+	cancel_button.style.fontWeight = 'bold';
+	
+	
+	// contents.
+	header.textContent = title;
+	msg_list.innerHTML = '<li>' + msgs.join('</li><li>') + '</li>';
+	ok_button.textContent = 'OK';
+	cancel_button.textContent = 'Cancel';
+	
+	// events here probably.
+	if(browser.msie){
+    	ok_button.attachEvent("onclick", ok_callback_as_str);
+    	cancel_button.attachEvent("onclick", '(elem=document.getElementById(\'s36_pop_up_box\')).parentNode.removeChild(elem)');
+        
+    }else{
+		ok_button.setAttribute('onclick', ok_callback_as_str);
+		cancel_button.setAttribute('onclick', '(elem=document.getElementById(\'s36_pop_up_box\')).parentNode.removeChild(elem)');
+    }
+	
+	// birth of the objects.
+	s36_pop_up_box.appendChild(pandora);
+	pandora.appendChild(header);
+	pandora.appendChild(body);
+	body.appendChild(msg_list_container);
+	msg_list_container.appendChild(msg_list);
+	body.appendChild(button_container);
+	( type == 'confirm' ? button_container.appendChild(cancel_button) : '' );
+	button_container.appendChild(ok_button);
+	s36_modalbox.appendChild(s36_pop_up_box);
+	
 }
 
-//var s36_pop_up_box = new function (){
-function s36_pop_up_box(title, msgs, type){
-	
-	// this.ok_callback;
-	// this.cancel_callback;
-	// this.callbacks = function(ok_function, cancel_function){
-	// 	this.ok_callback = ok_function;
-	// 	this.cancel_callback = cancel_function;
-	// };
-	// this.dialog_ok = function(){
-	// 	return this.ok_callback();
-	// }
-	// this.dialog_cancel = function(){
-	// 	return this.cancel_callback();
-	// }
-	
-	//this.init = function(title, msgs, type){
-	
-		// default values.
-		title = ( typeof(title) == 'undefined' ? 'Oops! Something went wrong...' : title );
-		msgs = ( typeof(msgs) == 'undefined' ? ['ang kapal ng muka ni dan calpatura'] : msgs );
-		msgs = ( typeof(msgs) != 'object' ? [msgs] : msgs );
-		type = ( typeof(type) == 'undefined' ? 'alert' : type );
-		type = type.toLowerCase();
-		
-		// objects.
-		var s36_iframe = document.getElementById('s36_iframe');
-		var s36_iframe_contents = s36_iframe.contentDocument || s36_iframe.contentWindow.document;
-		var form_box = s36_iframe_contents.getElementById('formBox');
-		var s36_modalbox = document.getElementById('s36_modalbox');
-		var s36_pop_up_box = document.createElement('div');
-		var pandora = document.createElement('div');
-		var header = document.createElement('div');
-		var body = document.createElement('div');
-		var msg_list_container = document.createElement('div');
-		var msg_list = document.createElement('ul');
-		var button_container = document.createElement('div');
-		var ok_button = document.createElement('a');
-		var cancel_button = document.createElement('a');
-		
-		// properties.
-		s36_pop_up_box.id = 'lightbox';
-		pandora.className = 'lightbox-pandora';
-		header.className = 'lightbox-header';
-		body.className = 'lightbox-body';
-		msg_list_container.className = 'lightbox-message error';
-		msg_list.className = 'lightbox-message error';
-		button_container.className = 'lightbox-buttons';
-		ok_button.className = 'lightbox-button';
-		cancel_button.className = 'lightbox-button';
-		
-		// css.
-		s36_pop_up_box.style.display = 'block';
-		s36_pop_up_box.style.position = 'absolute';
-		s36_pop_up_box.style.width = '290px';
-		s36_pop_up_box.style.background = 'url(../../img/faded-black.png)';
-		s36_pop_up_box.style.zIndex = '1000';
-		s36_pop_up_box.style.webkitBorderRadius = '5px';
-		s36_pop_up_box.style.MozBorderRadius = '5px';
-		s36_pop_up_box.style.borderRadius = '5px';
-		s36_pop_up_box.style.top = '30%';
-		s36_pop_up_box.style.left = '50%';
-		s36_pop_up_box.style.marginLeft = '-145px';
-		
-		// contents.
-		header.textContent = title;
-		msg_list.innerHTML = '<li>' + msgs.join('</li><li>') + '</li>';
-		ok_button.textContent = 'OK';
-		cancel_button.textContent = 'Cancel';
-		
-		// events here probably.
-		if(browser.msie){
-	    	ok_button.attachEvent("onclick", s36_closeLightbox);
-	    	cancel_button.attachEvent("onclick", close_s36_pop_up_box);
-	        
-	    }else{
-			ok_button.setAttribute('onclick', 's36_closeLightbox()');
-			cancel_button.setAttribute('onclick', 'close_s36_pop_up_box()');
-	    }
-		
-		// birth of the objects.
-		s36_pop_up_box.appendChild(pandora);
-		pandora.appendChild(header);
-		pandora.appendChild(body);
-		body.appendChild(msg_list_container);
-		msg_list_container.appendChild(msg_list);
-		body.appendChild(button_container);
-		( type == 'confirm' ? button_container.appendChild(cancel_button) : '' );
-		button_container.appendChild(ok_button);
-		s36_modalbox.appendChild(s36_pop_up_box);
-		//form_box.appendChild(s36_pop_up_box);
-		//s36_iframe.appendChild(s36_pop_up_box);
-		
-	//}
-	
-}
-
-function open_s36_pop_up_box(){
-	if( form_value_changed() ){
-		//if( ! confirm('Are you sure you want to return to the display page? All your changes will be lost') ) return;
-		//s36_pop_up_box.callbacks(confirm_close_lightbox, cancel_dialog);
-		//s36_pop_up_box.init( 'You haven\'t finished your feedback', 'Are you sure you want to return to the display page? All your changes will be lost', 'confirm' );
-		
-		if( document.getElementById('lightbox') != null ) return;
-		
-		s36_pop_up_box( 'You haven\'t finished your feedback', 'Are you sure you want to return to the display page? All your changes will be lost', 'confirm' );
-		return;
-	}
-	
-	s36_closeLightbox();
-}
 
 
 /****************************************************************
