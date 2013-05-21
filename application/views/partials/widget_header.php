@@ -9,6 +9,7 @@
         <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 
         <?=HTML::script('js/head.min.js')?>
+        <?=HTML::script('js/helpers.js')?>
         <?=HTML::script('js/form.script.js');?>
         <?=HTML::script('js/jcycle.js');?>
         <?=HTML::script('js/jquery.ui.widget.js');?>

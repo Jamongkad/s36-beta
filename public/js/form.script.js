@@ -465,6 +465,10 @@ $(document).keypress(function(event){
 			display_text_editor();
 		});
 		
+		$('#edit_feedback_title').click(function(){
+			display_text_editor('feedback_title');
+		});
+		
 		/* add image click to upload */
 		$('#addImage').bind('click',function(e){
 			init_file_upload();
@@ -497,14 +501,27 @@ $(document).keypress(function(event){
 		$('#lightbox').fadeOut('fast');
 		return 0;
 	}
-	function close_text_editor(){
-		if(validate_feedback($('#textEditor'))){
-			$('#lightbox-text-editor-container').fadeOut();
-			$('#lightbox-editor-s').fadeOut();
+	function close_text_editor(item){
+		item = ( typeof(item) == 'undefined' ? 'feedback_text' : item );
+		
+		if( item == 'feedback_text' ){
+			if( ! validate_feedback($('#textEditor')) ) return;
 			$('#feedbackText').val($('#textEditor').val());
 			$('#review-feedback-text p').html($('#textEditor').val().replace(/\n\r?/g, '<br />'));
-			return 0;
 		}
+		
+		if( item == 'feedback_title' ){
+			if( ! validate_feedback($('#feedback_title_editor')) ) return;
+			$('#feedbackTitle').val( $('#feedback_title_editor').val() );
+			$('#review-feedback-title').text( $('#feedback_title_editor').val() );
+		}
+		
+		$('#lightbox-text-editor-container').fadeOut();
+		$('#lightbox-editor-s').fadeOut();
+		$('#feedback_text_stuff').hide();
+		$('#feedback_title_stuff').hide();
+		
+		return 0;
 	}
 
 	function convert_rating_to_text(val){
@@ -567,11 +584,24 @@ $(document).keypress(function(event){
 		return false;
 	}
 
-	function display_text_editor(){
+	function display_text_editor(item){
+		item = ( typeof(item) == 'undefined' ? 'feedback_text' : item );
+		
 		$('#lightbox-text-editor-container').fadeIn('fast');
 		$('#lightbox-editor-s').fadeIn('fast');
-		$('#textEditor').focus();
-		 $('#textEditor').val($('#feedbackText').val());
+		
+		if( item == 'feedback_text' ){
+			$('#feedback_text_stuff').show();
+			$('#textEditor').focus();
+			$('#textEditor').val($('#feedbackText').val());
+		}
+		
+		if( item == 'feedback_title' ){
+			$('#feedback_title_stuff').show();
+			$('#feedback_title_editor').focus();
+			$('#feedback_title_editor').val( $('#review-feedback-title').text() );
+		}
+		
 		return false;
 	}
 	function display_prev_btn(elem){
@@ -659,6 +689,7 @@ $(document).keypress(function(event){
 	function push_to_last_window(){
 		var review_feedback_text = $.trim($('#review-feedback-text').text().replace(/(<([^>]+)>)/ig,""));
 		if(review_feedback_text.length > 0){
+			$('#all-done-feedback-title').text( $('#review-feedback-title').text() );
 			$('#all-done-textbox p').html($('#review-feedback-text').html());
 			$('#back').fadeOut('fast');
 			$('#next').fadeOut('fast');
@@ -718,6 +749,7 @@ $(document).keypress(function(event){
 		var error_mes = [];
 		if((feedback_text.length <= 0) || (feedback_text == feedback_elem.attr('title'))) {
 			error_mes = ['Please enter a feedback'];
+			error_mes = ( feedback_elem.is('#feedback_title_editor') ? ['Please enter a feedback title'] : error_mes );
 			display_error_mes(error_mes);
 			return false;
 		} else {
@@ -850,7 +882,8 @@ $(document).keypress(function(event){
 	function scale_review_textbox(){
 
 		/* set the default textbox height px */
-		var default_ht = 180;
+		//var default_ht = 180;
+		var default_ht = 140;
 		var im = 35; // image container
 		var vd = 78; // video container
 		/* check if containers are active */
@@ -871,6 +904,8 @@ $(document).keypress(function(event){
 	}
 	function synchronize_inputs(){
 		
+		var feedback_title 	= $('#feedbackTitle').val();
+		feedback_title		= Helpers.add_ellipse(feedback_title, 35);
 		var feedback_text 	= $('#feedbackText').val();
 		feedback_text 		= feedback_text.replace(/\n\r?/g, '<br />');
 		feedback_text 		= feedback_text.replace(/(<([^>]+)>)/ig,"");
@@ -895,6 +930,7 @@ $(document).keypress(function(event){
 		$('#review-name').html(fname+" "+lname);
 		$('#review-company').html(company_position);
 		$('#review-location').html(city_country);
+		$('#review-feedback-title').text(feedback_title);
 		$('#review-feedback-text').html('<p>'+feedback_text+'</p>');
 		
 		if(permission == 1){
