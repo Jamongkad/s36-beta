@@ -871,6 +871,28 @@ opacity: 0.5;
 	position:absolute;
 }
 
+#review-feedback-title-container,
+#all-done-feedback-title-container{
+	width: 290px;
+}
+
+#review-feedback-title-container p:first-child,
+#all-done-feedback-title-container p{
+	padding: 7px 10px;
+	float: left;
+	max-width: 240px;
+	overflow: hidden;
+}
+
+#all-done-feedback-title-container p{
+	color: #545454;
+}
+
+#review-feedback-title-container p:last-child{
+	padding: 7px 2px;
+	float: right;
+}
+
 #review-feedback-text p,#all-done-textbox p{
 	margin-top: 10px;
 	margin-bottom: 10px;

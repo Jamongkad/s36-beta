@@ -1,4 +1,3 @@
-// convert \n to br tags.
 var Helpers = new function() {
 
     var me = this;
@@ -67,5 +66,9 @@ var Helpers = new function() {
             rand_str += str.charAt( this.get_random_int(1, 26) );
         }
         return rand_str;
+    }
+    
+    this.add_ellipse = function(str, len){
+        return ( str.length > len ? str.substr(0, len) + '...' : str );
     }
 }

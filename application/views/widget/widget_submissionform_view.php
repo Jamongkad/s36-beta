@@ -122,12 +122,21 @@ endif;
         <!-- the text editor popup -->
         <div id="lightbox-text-editor-container">
             <div id="editor-white-area">
-                <h2 class="text-editor-title">Feedback Text Editor</h2>
-                <div class="editor-container-box">
-                    <textarea id="textEditor" class="feedback-textarea small" title="Please Enter Your Feedback"  style="height:450px;width:348px;"></textarea>
+                <div id="feedback_text_stuff" style="display: none;">
+                    <h2 class="text-editor-title">Feedback Text Editor</h2>
+                    <div class="editor-container-box">
+                        <textarea id="textEditor" class="feedback-textarea small" title="Please Enter Your Feedback"  style="height:450px;width:348px;"></textarea>
+                    </div>
+                    <div class="editor-buttons">
+                        <a href="javascript:;" class="lightbox-button" onclick="javascript:close_text_editor();">Save</a>
+                    </div>
                 </div>
-                <div class="editor-buttons">
-                    <a href="#" class="lightbox-button" onclick="javascript:close_text_editor();">Save</a>
+                <div id="feedback_title_stuff" style="display: none;">
+                    <h2 class="text-editor-title">Feedback Title Editor</h2>
+                    <input type="text" id="feedback_title_editor" class="regular-custom-field" maxlength="35" title="Please Enter Feedback Title" style="width: 345px; margin-left: 10px;" />
+                    <div class="editor-buttons">
+                        <a href="javascript:;" class="lightbox-button" onclick="javascript:close_text_editor('feedback_title');">Save</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -343,8 +352,7 @@ endif;
                 </div>
                 <div class="form-page-body">
                     
-                    <span>Just before you send in your feedback, be sure to check it 
-one more time.</span>
+                    <span>Just before you send in your feedback, be sure to check it one more time.</span>
                     
                     <!-- start of profile review block -->
                     <div class="profile-review-block clear">
@@ -377,6 +385,10 @@ one more time.</span>
                                     <span class="">Excellent!</span>
                                 </div>
                             </div>
+                        </div>
+                        <div id="review-feedback-title-container" class="feedback-text clear">
+                            <p id="review-feedback-title" class="break-word"></p>
+                            <p><a href="javascript:;" id="edit_feedback_title" class="edit-text">edit</a></p>
                         </div>
                         <div id="review-feedback-text-container" class="feedback-text">
                             <!--
@@ -418,8 +430,7 @@ one more time.</span>
                     <h2>Thank you for sending in your feedback!</h2>
                     <br />
                     <br />
-                    <p>We'd greatly appreciate it if you would share your feedback 
-with others!</p>
+                    <p>We'd greatly appreciate it if you would share your feedback with others!</p>
                     <br />
                     <!-- start of feedback details -->
                     <div class="feedback-details">
@@ -434,6 +445,9 @@ with others!</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div id="all-done-feedback-title-container" class="feedback-text clear">
+                        <p id="all-done-feedback-title" class="break-word"></p>
                     </div>
                     <div id="all-done-box">
                         <div id="all-done-textbox" class="all-done-feedback-box break-word">
