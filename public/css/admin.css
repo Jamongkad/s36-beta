@@ -128,6 +128,7 @@ sup.count{
 #admin-panel .main-panel .admin-sorter-bar .pagination input.pagination-input{font-size:11px;width:10px;text-align:center;font-weight:bold;color:#5c646a;padding:1px 3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;border:1px solid #ababab;}
 
 #admin-panel .main-panel .admin-sorter-bar .select-options {width:11%;float:left;display:inline;overflow:hidden;margin-right:auto;margin-left:auto;padding-left:20px}
+#admin-panel .main-panel .admin-sorter-bar .select-options .feed-selection { width: 100px }
 
 #admin-panel .main-panel .the-feedbacks{padding:0px 0px;display:block;background:#FFF;font-size:10px;}
 #admin-panel .main-panel .the-feedbacks div{position:relative;margin:0; padding:0;}
