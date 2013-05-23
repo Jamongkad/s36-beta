@@ -71,6 +71,8 @@ Checky.prototype.init = function() {
                             };
 
                             console.log(my_perm);
+                            console.log(my_ratings);
+                            console.log(mode);
 
                             //console.log(window.location.pathname.match(/published|contacts/g)); 
                             if(my_ratings != 'POOR' && (my_perm == 1 || my_perm == 2)) { 
