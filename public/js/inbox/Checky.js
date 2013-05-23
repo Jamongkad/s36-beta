@@ -72,43 +72,27 @@ Checky.prototype.init = function() {
 
                             //console.log(window.location.pathname.match(/published|contacts/g));                             
                             if(my_ratings != 'POOR' && my_perm == 1) { 
-                                console.log("all can pass");
-                                //process_feedbacks(collection, data, feed_unit); 
+                                //console.log("all can pass");
+                                process_feedbacks(collection, data, feed_unit); 
                             } 
 
                             if((my_ratings != 'POOR' && my_perm == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
-                                console.log("private and limited feeds can pass");
-                                //process_feedbacks(collection, data, feed_unit); 
+                                //console.log("private and limited feeds can pass");
+                                process_feedbacks(collection, data, feed_unit); 
                             }
 
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
-                                console.log("poor rated feeds can pass");  
-                                //process_feedbacks(collection, data, feed_unit); 
+                                //console.log("poor rated feeds can pass");  
+                                process_feedbacks(collection, data, feed_unit); 
                             } 
-                            /*
-                            if(my_ratings != 'POOR' && my_perm == 1) { 
-                                console.log("all can pass");
-                                //process_feedbacks(collection, data, feed_unit); 
-                            } 
-                           
-                            if((my_ratings != 'POOR' && my_perm == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
-                                console.log("private and limited feeds cannot pass");
-                                //process_feedbacks(collection, data, feed_unit); 
-                            }
 
-                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
-                                console.log("poor rated feeds cannot pass");  
-                                //process_feedbacks(collection, data, feed_unit); 
-                            } 
-                            */
-
-                            //exam_collection.push(data);
+                            exam_collection.push(data);
                         } 
                     }
                 });    
 
                 var restricted_feeds = exam_collection.filter(function(el) {
-                    return (el.perm == 3 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
+                    return (el.perm == 0 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
                 if(restricted_feeds.length > 0) { 
@@ -130,7 +114,7 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
-
+                /*
                 if(collection.length > 0) { 
                     newfeedback_process(collection);
 
@@ -172,6 +156,7 @@ Checky.prototype.init = function() {
                     });
 
                 }
+                */
 
             }
 
