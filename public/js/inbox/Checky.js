@@ -76,13 +76,13 @@ Checky.prototype.init = function() {
                                 //process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if((my_ratings != 'POOR' && my_perm == 0) && (mode == 'publish' || mode == 'feature')) {
-                                console.log("private and limited feeds cannot pass");
+                            if((my_ratings != 'POOR' && my_perm == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                                console.log("private and limited feeds can pass");
                                 //process_feedbacks(collection, data, feed_unit); 
                             }
 
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
-                                console.log("poor rated feeds cannot pass");  
+                                console.log("poor rated feeds can pass");  
                                 //process_feedbacks(collection, data, feed_unit); 
                             } 
                             /*
