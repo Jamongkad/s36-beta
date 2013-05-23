@@ -97,9 +97,9 @@ Checky.prototype.init = function() {
 
                 if(restricted_feeds.length > 0) { 
                     if(restricted_feeds.length == 1) {
-                        confirm("Warning: There is feedback that has been marked as private/limited or poor and will not be processed.");         
+                        confirm("Warning: There is feedback that has been marked as private or poor and will not be processed.");         
                     } else { 
-                        confirm("Warning: There are feedback that have been marked as private/limited or poor and will not be processed.");     
+                        confirm("Warning: There are feedback that have been marked as private or poor and will not be processed.");     
                     }
                     
                     $.each(restricted_feeds, function(index, value) {
@@ -114,7 +114,7 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
-                /*
+
                 if(collection.length > 0) { 
                     newfeedback_process(collection);
 
@@ -156,7 +156,7 @@ Checky.prototype.init = function() {
                     });
 
                 }
-                */
+
 
             }
 
