@@ -70,10 +70,6 @@ Checky.prototype.init = function() {
                               , "total_units": my_parent.attr('data-total') 
                             };
 
-                            console.log(my_perm);
-                            console.log(my_ratings);
-                            console.log(mode);
-
                             //console.log(window.location.pathname.match(/published|contacts/g));                             
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 console.log("all can pass");
@@ -85,6 +81,10 @@ Checky.prototype.init = function() {
                                 //process_feedbacks(collection, data, feed_unit); 
                             }
 
+                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
+                                console.log("poor rated feeds cannot pass");  
+                                //process_feedbacks(collection, data, feed_unit); 
+                            } 
                             /*
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 console.log("all can pass");
