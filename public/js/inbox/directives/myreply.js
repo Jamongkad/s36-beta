@@ -148,7 +148,7 @@ angular.module('reply', [])
                 $(".reply_send_button").val("Send");
                 $(".reply_cancel_button").val("Back");
                 e.preventDefault();
-            }) 
+            })
         }
     }     
 })
