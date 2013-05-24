@@ -554,7 +554,7 @@
                     <?if(!$feedback_present):?>
                         Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
                             on your website already? 
-                    <?else:?>
+                    <?endif?>
                <?else:?>
 
                     <?if(!$feedback_present):?>
