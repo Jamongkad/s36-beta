@@ -40,14 +40,14 @@ angular.module('reply', [])
                 $('textarea[name=message]').clearFields();
                 $(this).parents(".dialog-form").fadeOut();
                 $('div#reply-to-user').draggable("destroy");
-                $("#cancel_button").val("Cancel");
+                $("#reply_cancel_button").val("Cancel");
             }
 
             if(choice == 'Back') {
-                $("#cancel_button").val("Cancel");
+                $("#reply_cancel_button").val("Cancel");
             }
 
-            $("#send_button").val("Send");
+            $("#reply_send_button").val("Send");
 
             MessageService.fetch_messages('msg');     
             MessageService.register_request_message();
@@ -103,14 +103,14 @@ angular.module('reply', [])
                             $('textarea[name=message]').clearFields();
                             $(".dialog-form").fadeOut();
                             $('div#reply-to-user').draggable("destroy");
-                            $("#cancel_button").val("Cancel");
+                            $("#reply_cancel_button").val("Cancel");
                         });           
                     }
                    
                 }
 
-                $("#cancel_button").val("Cancel");
-                $("#send_button").val("Send");
+                $("#reply_cancel_button").val("Cancel");
+                $("#reply_send_button").val("Send");
                 e.preventDefault();
             });
         }
@@ -145,10 +145,8 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function($scope, element, attrs) {
             $(element).bind("click", function(e) {  
-                $("#send_button").val("Send");
-                $("#cancel_button").val("Back");
-                console.log("Mathew loves Irene");
-                console.log($("#cancel_button"));
+                $("#reply_send_button").val("Send");
+                $("#reply_cancel_button").val("Back");
                 e.preventDefault();
             }) 
         }
@@ -159,8 +157,8 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                $("#send_button").val("Save");
-                $("#cancel_button").val("Back");
+                $("#reply_send_button").val("Save");
+                $("#reply_cancel_button").val("Back");
                 e.preventDefault();
             })
         }

@@ -9,8 +9,8 @@
         </div>
         <div class="lightbox-footer">
             <div class="lightbox-buttons">
-                <input type="button" id="cancel_button" class="large-btn" value="Cancel" reply-cancel/>
-                <input type="submit" id="send_button" class="large-btn" value="Send" reply-send/>
+                <input type="button" id="reply_cancel_button" class="large-btn" value="Cancel" reply-cancel/>
+                <input type="submit" id="reply_send_button" class="large-btn" value="Send" reply-send/>
             </div>
         </div>
     </div>
