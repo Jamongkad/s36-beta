@@ -145,22 +145,9 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function($scope, element, attrs) {
             $(element).bind("click", function(e) {  
-                $("#send_button").val("Pwet");
+                $("#send_button").val("Send");
                 $("#cancel_button").val("Back");
-                e.preventDefault();
-            }) 
-        }
-    }     
-})
-.directive('pwetlings', function() { 
-    return {
-        restrict: 'A'
-      , link: function($scope, element, attrs) {
-            $(element).bind("click", function(e) {  
-
-                $("#send_button").val("Pwet");
-                $("#cancel_button").val("Back");
-                console.log("Mathew");
+                console.log("Mathew loves Irene");
                 e.preventDefault();
             }) 
         }
