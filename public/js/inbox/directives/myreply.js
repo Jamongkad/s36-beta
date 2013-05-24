@@ -147,6 +147,7 @@ angular.module('reply', [])
             $(element).bind("click", function(e) {  
                 $("#reply_send_button").val("Send");
                 $("#reply_cancel_button").val("Back");
+                console.log("What are you doing?");
                 e.preventDefault();
             }) 
         }
