@@ -57,7 +57,7 @@ $(document).ready(function(){
     <p class="small"><strong></strong></p>
     <div class="grids border-bottom">
         <div class="grids">
-            <strong style="margin-left:6px;">Fast forwarding Options</strong>
+            <strong style="margin-left:6px;">Fast Forwarding Options</strong>
             <br/>
             <span style="margin-left:6px;">Fast forward allows you to forward feedback to a specific person with a single click.</span>
         </div>
