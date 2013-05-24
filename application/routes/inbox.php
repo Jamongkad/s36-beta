@@ -1,7 +1,9 @@
 <?php
 
+$dbfeedback = new Feedback\Repositories\DBFeedback;
+
 return array( 
-    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
+    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) use ($dbfeedback) {  
 
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
@@ -50,6 +52,7 @@ return array(
 
         $view_data = Array(
             'feedback' => $feedback->grouped_feeds
+          , 'feedback_present' => $dbfeedback->is_feedback_present()
           , 'pagination' => $feedback->pagination
           , 'admin_check' => $admin_check
           , 'categories' => $category->pull_site_categories()
@@ -68,13 +71,13 @@ return array(
         } 
     }), 
 
-    'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() { 
+    'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() use ($dbfeedback) { 
         $input = Input::get();
-        $feedback = new Feedback\Repositories\DBFeedback;
+
         echo "<pre>";print_r($input);echo "</pre>";
         /*update feedback attachments in database*/
         $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
-        $feedback->update_feedback($input['feedbackId'],array('attachments'=>$attachments));
+        $dbfeedback->update_feedback($input['feedbackId'],array('attachments'=>$attachments));
 
         /*start to remove images from the file system*/
         if(isset($input['remove_images'])){

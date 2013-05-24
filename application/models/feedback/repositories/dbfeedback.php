@@ -806,7 +806,14 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($delete_sql);
         $sth->execute();
+    }
 
+    public function is_feedback_present() {
+        $sql = "SELECT feedbackId FROM Feedback WHERE 1=1 AND companyId = :company_id LIMIT 1";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $this->company_id);
+        $sth->execute();
+        return $sth->fetchAll(PDO::FETCH_OBJ); 
     }
 
     private function _toggle_state($table, $where_column, $id, $column, $state) {  
