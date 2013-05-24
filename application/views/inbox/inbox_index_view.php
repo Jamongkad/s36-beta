@@ -546,6 +546,7 @@
     <?endif?>
 </div>
 <?else:?>
+      <?print_r($feedback_present)?>
       <div class="woops">
             <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
             <p class="woops-content">
