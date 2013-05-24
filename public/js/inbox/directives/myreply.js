@@ -148,6 +148,7 @@ angular.module('reply', [])
                 $("#send_button").val("Send");
                 $("#cancel_button").val("Back");
                 console.log("Mathew loves Irene");
+                console.log($("#cancel_button"));
                 e.preventDefault();
             }) 
         }
