@@ -548,21 +548,17 @@
 <?else:?>
       <div class="woops">
             <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
-            <p class="woops-content">
-               <?if($filter == 'all'):?>
-                    <?if(!$feedback_present):?>
+            <?if(!$feedback_present):?>
+                <p class="woops-content">
+                   <?if($filter == 'all'):?>  
                         Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
                             on your website already? 
-                    <?endif?>
-               <?else:?>
-
-                    <?if(!$feedback_present):?>
+                   <?else:?>
                         Looks like you haven’t <?=$filter?> any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. <br/>either that,
-                        have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
-                    <?endif?>
-               
-               <?endif?>
-            </p>
+                        have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already? 
+                   <?endif?>
+                </p>
+            <?endif?>
       </div>
 <?endif?>
 <!-- end of feedback list -->
