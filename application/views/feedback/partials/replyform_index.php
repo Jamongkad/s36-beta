@@ -76,7 +76,7 @@
                     <li ng-repeat="msg in get_reply_messages()"> 
                         <a href='#'  add-reply req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                         <span style="float:right">
-                            <a href='#' pwet ng-click="edit_reply(msg.id, msg.msgtype)">edit</a> 
+                            <a href='#' pwetlings ng-click="edit_reply(msg.id, msg.msgtype)">edit</a> 
                             <a href='#' ng-click="del_reply(msg.id)">delete</a>
                         </span>
                     </li>
