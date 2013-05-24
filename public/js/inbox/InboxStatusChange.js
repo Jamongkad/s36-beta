@@ -53,7 +53,7 @@ InboxStateObject.prototype.process = function() {
                 feed_fadeout(me);
 
                 if(mode == 'inbox') {
-                    me.message = "feedback returned to inbox";     
+                    me.message = "Feedback returned to inbox";     
                 } 
                 checky_bar_message(me);
             }
