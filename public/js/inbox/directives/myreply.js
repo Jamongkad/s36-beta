@@ -152,6 +152,17 @@ angular.module('reply', [])
         }
     }     
 })
+.directive('pwetlings', function() { 
+    return {
+        restrict: 'A'
+      , link: function($scope, element, attrs) {
+            $(element).bind("click", function(e) {  
+                console.log("Mathew");
+                e.preventDefault();
+            }) 
+        }
+    }     
+})
 .directive('configureReply', function() { 
     return {
         restrict: 'A'     
