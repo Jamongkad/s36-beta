@@ -551,11 +551,16 @@
             <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
             <p class="woops-content">
                <?if($filter == 'all'):?>
-                    Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
-                        on your website already? 
+                    <?if(!$feedback_present):?>
+                        Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
+                            on your website already? 
+                    <?else:?>
                <?else:?>
-                    Looks like you haven’t <?=$filter?> any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. <br/>either that,
-                    have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
+
+                    <?if(!$feedback_present):?>
+                        Looks like you haven’t <?=$filter?> any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. <br/>either that,
+                        have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
+                    <?endif?>
                
                <?endif?>
             </p>
