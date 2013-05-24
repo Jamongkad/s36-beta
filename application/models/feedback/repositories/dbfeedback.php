@@ -809,7 +809,7 @@ class DBFeedback extends S36DataObject {
     }
 
     public function is_feedback_present() {
-        $sql = "SELECT feedbackId FROM Feedback WHERE 1=1 AND companyId = :company_id LIMIT 1";
+        $sql = "SELECT COUNT(feedbackId) FROM Feedback WHERE 1=1 AND companyId = :company_id LIMIT 1";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->company_id);
         $sth->execute();
