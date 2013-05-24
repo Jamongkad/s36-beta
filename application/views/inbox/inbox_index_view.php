@@ -547,8 +547,9 @@
 </div>
 <?else:?>
       <div class="woops">
-            <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
+            <h2 class="woops-header">Woops. There's no feedback here.</h2>
             <?if(!$feedback_present):?>
+                <br/><br/>
                 <p class="woops-content">
                    <?if($filter == 'all'):?>  
                         Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
