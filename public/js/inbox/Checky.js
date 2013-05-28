@@ -133,29 +133,6 @@ Checky.prototype.init = function() {
                       , success: function(msg) { 
 
                           $.ajax({url: "/feedback/bust_hostfeed_data"});
-                                                    
-                          if(msg.ui) {      
-                              for(var key in msg.ui) {
-                                  $('#' + key).hide();
-                              }
-
-                              setTimeout(function() {
-
-                                  checkyBar.css({
-                                      'background': '#fef1b5'
-                                    , 'width': '200px'
-                                    , 'right': '35%'
-                                    , 'top': '15%'
-                                    , 'text-align': 'center'
-                                    , 'padding': '5px'
-                                    , 'font-weight': 'bold'
-                                  }).html("Reloading...").show();
-                                  checkyBar.delay(2000).fadeOut('fast');
-
-                                  window.location.reload(1);
-                              }, 2000);
-
-                          }
 
                           var message = msg.message
 
@@ -168,7 +145,31 @@ Checky.prototype.init = function() {
                             , 'padding': '5px'
                             , 'font-weight': 'bold'
                           }).html(message).show();
-                          checkyBar.delay(2000).fadeOut('fast');
+                          checkyBar.delay(1000).fadeOut('fast');
+  
+                          if(msg.ui) {      
+
+                              checkyBar.css({
+                                  'background': '#fef1b5'
+                                , 'width': '200px'
+                                , 'right': '35%'
+                                , 'top': '15%'
+                                , 'text-align': 'center'
+                                , 'padding': '5px'
+                                , 'font-weight': 'bold'
+                              }).html("Reloading...").show();
+                              checkyBar.delay(1000).fadeOut('fast');
+
+                              for(var key in msg.ui) {
+                                  $('#' + key).hide();
+                              }
+                              
+                              setTimeout(function() {
+                                  window.location.reload(1);
+                              }, 2000);
+
+                          }
+
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
                        }
