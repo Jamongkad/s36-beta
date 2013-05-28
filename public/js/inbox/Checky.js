@@ -140,20 +140,20 @@ Checky.prototype.init = function() {
                               }
 
                               setTimeout(function() {
+
+                                  checkyBar.css({
+                                      'background': '#fef1b5'
+                                    , 'width': '200px'
+                                    , 'right': '35%'
+                                    , 'top': '15%'
+                                    , 'text-align': 'center'
+                                    , 'padding': '5px'
+                                    , 'font-weight': 'bold'
+                                  }).html("Reloading...").show();
+                                  checkyBar.delay(2000).fadeOut('fast');
+
                                   window.location.reload(1);
                               }, 2000);
-
-
-                              checkyBar.css({
-                                  'background': '#fef1b5'
-                                , 'width': '200px'
-                                , 'right': '35%'
-                                , 'top': '15%'
-                                , 'text-align': 'center'
-                                , 'padding': '5px'
-                                , 'font-weight': 'bold'
-                              }).html("Reloading...").show();
-                              checkyBar.delay(2000).fadeOut('fast');
 
                           }
 
