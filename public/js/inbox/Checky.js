@@ -133,8 +133,6 @@ Checky.prototype.init = function() {
                       , success: function(msg) { 
 
                           $.ajax({url: "/feedback/bust_hostfeed_data"});
-
-                          var reload;
                                                     
                           if(msg.ui) {      
                               for(var key in msg.ui) {
@@ -145,10 +143,21 @@ Checky.prototype.init = function() {
                                   window.location.reload(1);
                               }, 2000);
 
-                              reload = "...reloading";
+
+                              checkyBar.css({
+                                  'background': '#fef1b5'
+                                , 'width': '200px'
+                                , 'right': '35%'
+                                , 'top': '15%'
+                                , 'text-align': 'center'
+                                , 'padding': '5px'
+                                , 'font-weight': 'bold'
+                              }).html("Reloading...").show();
+                              checkyBar.delay(2000).fadeOut('fast');
+
                           }
 
-                          var message = msg.message + reload;
+                          var message = msg.message
 
                           checkyBar.css({
                               'background': '#fef1b5'
