@@ -193,7 +193,10 @@ function feedback_group_display(feedid) {
     var feed_group = $("#" + feedid).parents('.feedback-group');
     var child_counts = feed_group.children('.feedback:visible').length;
 
-    if(child_counts == 0) { feed_group.hide(); } 
+    if(child_counts == 0) { 
+        feed_group.hide(); 
+        console.log("Cool beans");
+    } 
 }
 
 function featured_feed_view_change(me) { 
