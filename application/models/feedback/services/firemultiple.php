@@ -61,6 +61,8 @@ class FireMultiple {
                 if($is_full) { 
                     $members = $this->redis->smembers($hseek);
                     $obj[$hseek] = $members;
+                    $this->redis->hdel($hseek);
+                    $this->redis->del($hseek);
                 }
             }
              
