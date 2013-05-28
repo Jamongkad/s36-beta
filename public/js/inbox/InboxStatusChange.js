@@ -90,7 +90,7 @@ FeatureStateObject.prototype = new InboxStateObject();
 
 function RemoveStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
-    this.message = "Feedback has been " + "<a href='" +this.baseUrl+ "inbox/deleted'>deleted</a>"; 
+    this.message = "Feedback has been " + "<a href='" +this.baseUrl+ "inbox/deleted/all'>deleted</a>"; 
     this.mode    = "delete";
 }
 RemoveStateObject.prototype = new InboxStateObject();
@@ -195,7 +195,7 @@ function feedback_group_display(feedid) {
 
     if(child_counts == 0) { 
         feed_group.hide(); 
-        console.log("Cool beans");
+        setTimeout(function() { window.location.reload(1); }, 2000);
     } 
 }
 
