@@ -29,7 +29,7 @@
 <div id="maskDisabler">
  <div id="maskPreloader">
         <div class="loading-icon"></div>
-        <div class="loading-text">
+        <div class="loading-text" style="display:block; position:relative">
             Please wait while we are reloading the page...
         </div>
     </div>
