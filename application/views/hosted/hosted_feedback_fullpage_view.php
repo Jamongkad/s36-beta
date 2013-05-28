@@ -10,10 +10,10 @@
 <?php endif; ?>
 <div id="maskDisabler">
  <div id="maskPreloader">
+        <div class="loading-icon"></div>
         <div class="loading-text">
             Please wait while we change your layout...
         </div>
-        <div class="loading-icon"></div>
     </div>
 </div>
 <div id="bodyColorOverlay"></div>
