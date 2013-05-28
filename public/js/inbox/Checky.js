@@ -146,9 +146,9 @@ Checky.prototype.init = function() {
                               for(var key in msg.ui) {
                                   $('#' + key).hide();
                               }
-                              
+
+                              $('#maskDisabler').fadeIn();
                               setTimeout(function() {
-                                 $('#maskDisabler').fadeIn();
                                   window.location.reload(1);
                               }, 2000);
 
