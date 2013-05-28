@@ -138,6 +138,8 @@ Checky.prototype.init = function() {
                               for(var key in msg.ui) {
                                   $('#' + key).hide();
                               }
+
+                              console.log("Feedback group release");
                           }
 
                           var message = msg.message;
