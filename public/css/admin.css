@@ -1239,9 +1239,11 @@ margin-bottom: 3px;
  width:32px;
  height:32px;
  background:url(/fullpage/common/img/maskLoader.gif) no-repeat;
- margin-left:-16px;
+ margin-left:130px;
  left:50%;
  top:60%;
- margin-top:-16px;
+ margin-top:14px;
 }
-
+.loading-text {
+    padding-top:15px;    
+}
