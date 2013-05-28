@@ -28,10 +28,10 @@
 
 <div id="maskDisabler">
  <div id="maskPreloader">
+        <div class="loading-icon"></div>
         <div class="loading-text">
             Please wait while we are reloading the page...
         </div>
-        <div class="loading-icon"></div>
     </div>
 </div>
 
