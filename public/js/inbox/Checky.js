@@ -148,6 +148,7 @@ Checky.prototype.init = function() {
                               }
                               
                               setTimeout(function() {
+                                 $('#maskDisabler').fadeIn();
                                   window.location.reload(1);
                               }, 2000);
 
