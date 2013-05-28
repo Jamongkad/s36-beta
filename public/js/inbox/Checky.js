@@ -134,31 +134,14 @@ Checky.prototype.init = function() {
 
                           $.ajax({url: "/feedback/bust_hostfeed_data"});
 
-                          var message = msg.message
-
-                          checkyBar.css({
-                              'background': '#fef1b5'
-                            , 'width': '200px'
-                            , 'right': '35%'
-                            , 'top': '15%'
-                            , 'text-align': 'center'
-                            , 'padding': '5px'
-                            , 'font-weight': 'bold'
-                          }).html(message).show();
-                          checkyBar.delay(1000).fadeOut('fast');
-  
+                          var message = msg.message;
+                          var width = "200px";
+ 
                           if(msg.ui) {      
 
-                              checkyBar.css({
-                                  'background': '#fef1b5'
-                                , 'width': '200px'
-                                , 'right': '35%'
-                                , 'top': '15%'
-                                , 'text-align': 'center'
-                                , 'padding': '5px'
-                                , 'font-weight': 'bold'
-                              }).html("Reloading...").show();
-                              checkyBar.delay(1000).fadeOut('fast');
+                              var message = msg.message + "...reloading.";
+                              var width = "400px";
+
 
                               for(var key in msg.ui) {
                                   $('#' + key).hide();
@@ -169,6 +152,17 @@ Checky.prototype.init = function() {
                               }, 2000);
 
                           }
+
+                          checkyBar.css({
+                              'background': '#fef1b5'
+                            , 'width': width
+                            , 'right': '35%'
+                            , 'top': '15%'
+                            , 'text-align': 'center'
+                            , 'padding': '5px'
+                            , 'font-weight': 'bold'
+                          }).html(message).show();
+                          checkyBar.delay(1000).fadeOut('fast');
 
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
