@@ -1205,3 +1205,43 @@ margin-bottom: 3px;
     max-height: 48px;
     overflow: hidden;
 }
+
+#maskDisabler{
+ display: none;
+ width:100%;
+ height:100%;
+ z-index:100002;
+ background:url(/fullpage/common/img/faded-white.png);
+ bottom:0;
+ top:0;
+ left:0;
+ right:0;
+ position:fixed;
+}
+#maskPreloader{
+ background:#FFF;
+ position:fixed;
+ width:300px;
+ height:100px;
+ margin-top:-60px;
+ top:50%;
+ left:50%;
+ margin-left:-150px;
+ z-index:100001;
+ -webkit-border-radius:10px;
+ -moz-border-radius:10px;
+ border-radius:10px;
+ border:3px solid #CCC;
+ text-align:center;
+ color:#333;
+}
+.loading-icon{
+ width:32px;
+ height:32px;
+ background:url(/fullpage/common/img/maskLoader.gif) no-repeat;
+ margin-left:-16px;
+ left:50%;
+ top:60%;
+ margin-top:-16px;
+}
+
