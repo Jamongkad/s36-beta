@@ -133,6 +133,8 @@ Checky.prototype.init = function() {
                       , success: function(msg) { 
 
                           $.ajax({url: "/feedback/bust_hostfeed_data"});
+
+                          var reload;
                                                     
                           if(msg.ui) {      
                               for(var key in msg.ui) {
@@ -141,10 +143,12 @@ Checky.prototype.init = function() {
 
                               setTimeout(function() {
                                   window.location.reload(1);
-                              }, 2000)    
+                              }, 2000);
+
+                              reload = "...reloading";
                           }
 
-                          var message = msg.message;
+                          var message = msg.message + reload;
 
                           checkyBar.css({
                               'background': '#fef1b5'
@@ -155,7 +159,7 @@ Checky.prototype.init = function() {
                             , 'padding': '5px'
                             , 'font-weight': 'bold'
                           }).html(message).show();
-                          checkyBar.delay(1000).fadeOut('fast');
+                          checkyBar.delay(2000).fadeOut('fast');
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
                        }
