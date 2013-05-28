@@ -139,7 +139,9 @@ Checky.prototype.init = function() {
                                   $('#' + key).hide();
                               }
 
-                              console.log("Feedback Group Released");
+                              setTimeout(function() {
+                                  window.location.reload(1);
+                              }, 2000)    
                           }
 
                           var message = msg.message;
