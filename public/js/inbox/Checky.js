@@ -133,6 +133,8 @@ Checky.prototype.init = function() {
                       , success: function(msg) { 
 
                           $.ajax({url: "/feedback/bust_hostfeed_data"});
+                          
+                          console.log(msg.ui);
                                                        
                           if(msg.ui) {
                               for(var key in msg.ui) {
