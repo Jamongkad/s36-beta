@@ -195,6 +195,7 @@ function feedback_group_display(feedid) {
 
     if(child_counts == 0) { 
         feed_group.hide(); 
+        $('#maskDisabler').fadeIn();
         setTimeout(function() { window.location.reload(1); }, 2000);
     } 
 }
