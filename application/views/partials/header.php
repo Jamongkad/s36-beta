@@ -25,6 +25,16 @@
 
 <?if(S36Auth::check()):?>
 <?=Form::hidden('baseUrl', URL::to('/'))?>
+
+<div id="maskDisabler">
+ <div id="maskPreloader">
+        <div class="loading-icon"></div>
+        <div class="loading-text">
+            Please wait while we change your layout...
+        </div>
+    </div>
+</div>
+
 <div id="admin-container">
     <div id="admin-panel">
 		<div class="left-panel">
