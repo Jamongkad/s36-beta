@@ -55,7 +55,7 @@ class FireMultiple {
         } 
 
         if($hkeys = $this->redis->hkeys($company_key)) {
-            $obj = Array();
+            $obj = Null;
             foreach($hkeys as $hseek) {  
                 $is_full = $this->redis->hget($company_key, $hseek);
                 if($is_full) { 
@@ -66,7 +66,7 @@ class FireMultiple {
                 }
             }
              
-            $message = null;
+            $message = Null;
             if($this->mode == 'publish') {
                 $message = "Feedback has been published.";
             }
