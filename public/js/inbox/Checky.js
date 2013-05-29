@@ -70,6 +70,8 @@ Checky.prototype.init = function() {
                               , "total_units": my_parent.attr('data-total') 
                             };
 
+                            console.log(data);
+
                             //console.log(window.location.pathname.match(/published|contacts/g));                             
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 //console.log("all can pass");
@@ -138,10 +140,6 @@ Checky.prototype.init = function() {
                           var width = "200px";
  
                           if(msg.ui) {      
-
-                              var message = msg.message + "...reloading.";
-                              var width = "400px";
-
 
                               for(var key in msg.ui) {
                                   $('#' + key).hide();
