@@ -29,7 +29,6 @@ class FeedbackState {
 
     public function change_state() {        
         $feed_obj = $this->feedback_state_obj();
-        Helpers::dump($feed_obj);
         return $this->feedback->_toggle_multiple($feed_obj);
     }
 
