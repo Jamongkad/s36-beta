@@ -70,9 +70,6 @@ Checky.prototype.init = function() {
                               , "total_units": my_parent.attr('data-total') 
                             };
 
-                            console.log(data);
-
-                            //console.log(window.location.pathname.match(/published|contacts/g));                             
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 //console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
