@@ -443,9 +443,11 @@ return array(
 
         $tf->test("Test", function($tf) {
             $tf->dump($tf->data->dbdashboard->get_feedback_scores());
+            /*
             $tf->dump($tf->data->dbdashboard->get_geochart_scores());
             $tf->dump($tf->data->dbdashboard->check_summary());
             $tf->dump($tf->data->feedback->total_feedback_by_company(6));
+            */
         });
 
         $tf->run();
