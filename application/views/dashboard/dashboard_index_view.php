@@ -109,7 +109,7 @@
             <div class="g1of3">
                 <h3>Feedback Submitters</h3>
                 <p>Top country:<strong><?=$dashboard_summary->dashscores->topcountry?></strong> </p>
-                <p>Unique submitters: <strong> <?=$dashboard_summary->dashscores->contacttotal?> </strong> </p>
+                <p>Unique submitters: <strong> <?=$dashboard_summary->dashscores->contacttotal?></strong> </p>
             </div>
         </div>
     </div>

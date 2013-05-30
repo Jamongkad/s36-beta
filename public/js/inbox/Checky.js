@@ -149,16 +149,20 @@ Checky.prototype.init = function() {
 
                           }
 
-                          checkyBar.css({
-                              'background': '#fef1b5'
-                            , 'width': width
-                            , 'right': '35%'
-                            , 'top': '15%'
-                            , 'text-align': 'center'
-                            , 'padding': '5px'
-                            , 'font-weight': 'bold'
-                          }).html(message).show();
-                          checkyBar.delay(1000).fadeOut('fast');
+                          if(message) {
+                              
+                              checkyBar.css({
+                                  'background': '#fef1b5'
+                                , 'width': width
+                                , 'right': '35%'
+                                , 'top': '15%'
+                                , 'text-align': 'center'
+                                , 'padding': '5px'
+                                , 'font-weight': 'bold'
+                              }).html(message).show();
+                              checkyBar.delay(1000).fadeOut('fast');
+
+                          }
 
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
