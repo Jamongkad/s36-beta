@@ -19,6 +19,7 @@ class DBDashboard extends S36DataObject {
                     AND Feedback.isDeleted = 0
                     AND Feedback.isPublished = 0
                     AND Feedback.isFeatured = 0
+                    AND Feedback.isNew = 1
                 ) AS pending
               , SUM(IF(Feedback.rating BETWEEN 4 AND 5, 1, 0)) AS excellent
               , SUM(IF(Feedback.rating = 3, 1, 0)) AS average
