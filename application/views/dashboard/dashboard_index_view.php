@@ -81,13 +81,13 @@
                 <strong><?=HTML::link('inbox/all', $dashboard_summary->dashscores->newfeed." new entries")?></strong> are pending your review 
             </div>
             <div class="dashboard-updates-list positive">
-                <strong><?=HTML::link('inbox/positive', $dashboard_summary->dashscores->positivefeed." new entries")?></strong> are rated positively 
+                <strong><?=HTML::link('inbox/positive', $dashboard_summary->dashscores->positivefeed." entries")?></strong> are rated positively 
             </div>
             <div class="dashboard-updates-list neutral">
-                <strong><?=HTML::link('inbox/neutral', $dashboard_summary->dashscores->neutralfeed." new entries")?></strong> are rated neutral 
+                <strong><?=HTML::link('inbox/neutral', $dashboard_summary->dashscores->neutralfeed." entries")?></strong> are rated neutral 
             </div>
             <div class="dashboard-updates-list negative">
-                <strong><?=HTML::link('inbox/negative', $dashboard_summary->dashscores->negativefeed." new entries")?></strong> are rated negatively 
+                <strong><?=HTML::link('inbox/negative', $dashboard_summary->dashscores->negativefeed." entries")?></strong> are rated negatively 
             </div>
         </div>
         <div class="dashboard-pie-chart">
