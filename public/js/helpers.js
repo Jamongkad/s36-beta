@@ -71,4 +71,25 @@ var Helpers = new function() {
     this.add_ellipse = function(str, len){
         return ( str.length > len ? str.substr(0, len) + '...' : str );
     }
+    
+    /* ========================================
+    || Display an awesome notification, mes = messages in array, delay = integer in millisecond
+    ==========================================*/
+    this.show_notification = function(mes, delay){
+        var delay = delay;
+        $('#notification-message').empty().html(mes);
+        $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
+            if(delay){
+                setTimeout(this.hide_notification,delay);       
+            }
+        });
+    }
+    
+    /* ========================================
+    || Hide the Notification
+    ==========================================*/
+    this.hide_notification = function(){
+        $("#notification").animate({ height: 0, opacity: 0 }, 'fast');
+    }
+    
 }

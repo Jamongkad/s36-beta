@@ -11,6 +11,7 @@ $dbadmin_reply = new Feedback\Repositories\DBAdminReply;
 $company_name = Config::get('application.subdomain');
 $hosted_page_url = Config::get('application.url');
 $fullpage =  new Hosted\Services\Fullpage;
+$db_fullpage_cover = new \Hosted\Repositories\DBFullpageCover($company_name);
 Package::load('eden');
 
 eden()->setLoader();
@@ -32,7 +33,7 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url, $fullpage) {
+    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url, $fullpage, $db_fullpage_cover) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
 
@@ -72,7 +73,9 @@ return array(
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
                                                   , 'reportTypes'       => $feedbackReports->get_reportTypes()
                                                   , 'panel'             => $panel 
-                                                  , 'feed_advance_count' => $feed_advance_count));
+                                                  , 'feed_advance_count'=> $feed_advance_count
+                                                  , 'db_fullpage_cover' => $db_fullpage_cover->get_data()
+                                                ));
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);

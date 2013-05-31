@@ -122,6 +122,11 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <?= HTML::script('/fullpage/admin/js/FullpageCover.js'); ?>
+            <script type="text/javascript">
+                fullpage_cover = new FullpageCover();
+                fullpage_cover.init();
+            </script>
             
             <?php if( $feed_count->published_feed_count == 0 ): ?>
                 <div class="hosted-block">
