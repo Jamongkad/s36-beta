@@ -14,6 +14,10 @@ class DBDashboard extends S36DataObject {
                     COUNT(Feedback.feedbackId)
                  FROM 
                     Feedback 
+                 INNER JOIN
+                     FeedbackContactOrigin
+                         ON Feedback.contactId = FeedbackContactOrigin.contactId
+                        AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
                  WHERE 1=1
                     AND Feedback.companyId = :company_id_one
                     AND Feedback.isDeleted = 0
@@ -28,9 +32,18 @@ class DBDashboard extends S36DataObject {
               , SUM(Feedback.isFeatured) AS featured
             FROM 
                 Feedback
+            INNER JOIN
+                FeedbackContactOrigin
+                    ON Feedback.contactId = FeedbackContactOrigin.contactId
+                   AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+            INNER JOIN
+                Category 
+                    ON Category.categoryId = Feedback.categoryId
+                   AND Category.intName = 'default'
+
             WHERE 1=1
                 AND Feedback.companyId = :company_id_two
-                /*AND Feedback.dtAdded >= DATE_SUB(NOW(), INTERVAL 1 MONTH)*/
+                AND Feedback.isDeleted = 0
         ");
 
         $sth->bindParam(":company_id_one", $this->company_id, PDO::PARAM_INT);
