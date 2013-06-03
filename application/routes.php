@@ -74,7 +74,7 @@ return array(
                                                   , 'reportTypes'       => $feedbackReports->get_reportTypes()
                                                   , 'panel'             => $panel 
                                                   , 'feed_advance_count'=> $feed_advance_count
-                                                  , 'db_fullpage_cover' => $db_fullpage_cover->get_data()
+                                                  , 'fullpage_cover'    => $db_fullpage_cover->get_data()
                                                 ));
         
         // increment page view count of company.

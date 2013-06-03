@@ -92,6 +92,9 @@ var S36FullpageCommon = function(){
 				$('#mainWrapper').animate({'top':'-=40'},'fast');
 				show = 1;
 			}
+			
+			fullpage_cover = new FullpageCover();
+			if( $('#dragPhoto').css('display') == 'block' ) fullpage_cover.make_cover_undraggable(false);
 		});
 	}
 	/* ========================================

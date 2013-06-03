@@ -1,7 +1,4 @@
-// requires JqueryFileUpload, Helpers
-
-// copy self.show_notification() and self.hide_notification() from S36FullpageAdmin to Helpers.
-// S36FullpageAdmin carries a lot of baggages.
+// requires JqueryFileUpload, Helpers.
 
 var FullpageCover = function(){
     
@@ -64,8 +61,8 @@ var FullpageCover = function(){
         ==========================================*/
         $('#coverRemove').click(function(){
             $('#coverPhoto img').attr({
-                'src': 'img/sample-cover.jpg',
-                'style': 'top: 0px; position: relative;'
+                'src': '/img/sample-cover.jpg',
+                'style': 'opacity: 1; top: 0px; position: relative;'
             });
             
             self.turn_on_cp_edit_mode(true);
@@ -85,6 +82,7 @@ var FullpageCover = function(){
             self.cover_photo_action = '';
             self.make_cover_undraggable(true);
             self.turn_on_cp_edit_mode(false);
+            $('#coverPhoto img').css('opacity', '1');
         });
         
         
@@ -100,6 +98,7 @@ var FullpageCover = function(){
             self.upload_to_server( self.cover_photo_action );
             self.make_cover_undraggable(true);
             self.turn_on_cp_edit_mode(false);
+            $('#coverPhoto img').css('opacity', '1');
             
             if( self.cover_photo_action == 'change' ){
                 $('#coverReposition, #coverRemove').show();
@@ -256,13 +255,16 @@ var FullpageCover = function(){
                 var offset = $("#coverPhoto img").parent().offset();
                 var offsetX = offset.left;
                 $("#coverPhoto img").each(function(){
-                    var imgH = $(this).height();
-                    var parH = $(this).parent().height();
                     var imgW = $(this).width();
+                    var imgH = $(this).height();
                     var parW = $(this).parent().width();  
-                    var ipH = imgH-parH;
+                    var parH = $(this).parent().height();
                     var ipW = imgW-parW-offsetX;
-                    $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});
+                    var ipH = imgH-parH;
+                    var y1 = offset.top - (imgH - parH);
+                    var y2 = offset.top;
+                    //$(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});
+                    $(this).draggable({ containment: [-ipW, y1, offsetX, y2], scroll: false, disabled: opt});
                 });
             }, 800);
             

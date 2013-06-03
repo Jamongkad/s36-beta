@@ -10,6 +10,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
+        
+        <?=HTML::script('/js/helpers.js'); ?>
+        <?=HTML::script('/js/jquery.iframe-transport.js'); ?>
+        <?=HTML::script('/js/jquery.fileupload.js'); ?>
 
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
 

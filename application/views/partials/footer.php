@@ -44,8 +44,9 @@ echo HTML::style('/fullpage/common/css/s36_client_style.css');
 <?=HTML::script('js/jquery.formbuilder.js')?>
 <?=HTML::script('js/jquery.ae.image.resize.min.js')?>
 
-<?=HTML::script('js/jquery.iframe-transport.js'); ?>
-<?=HTML::script('js/jquery.fileupload.js'); ?>
+<? // transferred to header.php. fullpage_cover needs this two guys. ?>
+<?//=HTML::script('js/jquery.iframe-transport.js'); ?>
+<?//=HTML::script('js/jquery.fileupload.js'); ?>
 
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 

@@ -74,15 +74,6 @@ a:hover{
 
 /* end of universal CSS */
 
-#socialLinkIcons{
-	position:absolute;
-	right:15px;
-	bottom:12px;
-}
-#socialLinkIcons .social-icon{
-	margin-left:8px;
-	float:left;
-}
 #theBar{
 	background:#e6eaed url(/fullpage/common/img/topBarBg.jpg) repeat-x;
 	height:40px;
@@ -185,11 +176,6 @@ a:hover{
 	display:block;
  	background:#e6eaed;
 }
-#coverPhoto{
-	width:850px;
-	height:240px;
-	overflow:hidden;
-}
 #bodyColorOverlay{
 	/*background:#FFF;*/
 	position:fixed;
@@ -208,20 +194,6 @@ a:hover{
 #mainContainer{
 	margin:0 auto;
 	width:850px;
-}
-#avatarContainer{
-	position:absolute;
-	/*width:210px;
-	max-height:175px;*/
-	max-width: 210px;
-	max-height: 175px;
-	border:3px solid #FFF;
-	box-shadow:#CCC 0px 1px 2px;
-	bottom:0px;
-	left:20px;
-	background:#FEFEFE;
-	overflow: hidden;
-	bottom: -20px;
 }
 #facepile{
 	margin-top:2px;

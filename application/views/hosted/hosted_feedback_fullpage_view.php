@@ -21,120 +21,17 @@
     <div id="fadedContainer">
         <div id="mainContainer">
             <div id="theBarTab" class=""></div>
-            <div id="coverPhotoContainer">
-                
-                <?php if( ! is_null($user) ): ?>
-                    
-                    <div id="changeCoverButtonIcon">
-                        <div id="coverMenuList">
-                            <ul>
-                                <li id="coverChange">
-                                    Change cover photo
-                                    <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
-                                </li>
-                                <li id="coverReposition" style="<?= ( is_null($company->coverphoto_src) ? 'display: none;' : '' ); ?>">
-                                    Reposition
-                                </li>
-                                <li id="coverRemove" style="<?= ( is_null($company->coverphoto_src) ? 'display: none;' : '' ); ?>">
-                                    Remove
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="dragPhoto">Drag Image to Reposition Cover</div>
-                    <div id="saveCoverButton">Save</div>
-                    <div id="coverActionButtons">
-                        <ul>
-                            <li><a id="save_cover_photo" href="javascript:;">Save</a></li>
-                            <li><a id="cancel_cover_photo" href="javascript:;">Cancel</a></li>
-                        </ul>                   
-                    </div>
-                    
-                <?php endif; ?>
-                
-                <div id="coverPhoto">
-                    <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( is_null($company->coverphoto_src) ? '/img/sample-cover.jpg' : '/uploaded_images/coverphoto/' . $company->coverphoto_src ); ?>
-                        <input type="hidden" id="hidden_cover_photo" src="<?php echo $src; ?>" style="top: <?php echo (int)$company->coverphoto_top; ?>px; position: relative;" />
-                    <?php endif; ?>
-                    
-                    <?php if( ! is_null($company->coverphoto_src) ): ?>
-                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
-                    <?php else: ?>
-                        <?php if( ! is_null($user) ): ?>
-                            <img dir="/uploaded_images/coverphoto/" basename="" src="/img/sample-cover.jpg" />
-                        <?php else: ?>
-                            <img width="850px" src="/img/public-coverphoto.jpg" />
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
-                
-                
-                <!-- social link icons 1/28/2013 -->
-                <div id="socialLinkIcons" class="clear">
-                    <div class="social-icon fb" style="display: <?= (trim($panel->facebook_url) == '' ? 'none' : ''); ?>;">
-                        <a id="fb_url" href="<?= $panel->facebook_url; ?>" target="_blank">
-                            <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
-                        </a>
-                    </div>
-                    <div class="social-icon tw" style="display: <?= (trim($panel->twitter_url) == '' ? 'none' : ''); ?>;">
-                        <a id="tw_url" href="<?= $panel->twitter_url; ?>" target="_blank">
-                            <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
-                        </a>
-                    </div>
-                </div>
-                
-                
-                <!-- profile pic -->
-                <div id="avatarContainer">
-                    <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $company->logo ); ?>
-                        <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
-                        <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
-                    <?php endif; ?>
-                    
-                    <?php if( ! empty($company->logo) ): ?>
-                        <img basename="" src="/uploaded_images/company_logos/main/<?php echo $company->logo; ?>" />
-                    <?php else: ?>
-                        <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
-                    <?php endif; ?>
-                    
-                    <?php if( ! is_null($user) ): ?>
-                        <div id="avatarButtonIcon">
-                            <div id="avatarMenuList">
-                                <ul>
-                                    <li><a href="javascript:;">
-                                        Change Photo
-                                        <input type="file" id="company_logo" data-url="imageprocessing/upload_company_logo" />
-                                    </a></li>
-                                    <li id="remove_logo" style="<?php echo ( empty($company->logo) ? 'display: none;' : '' ); ?>">
-                                        <a href="javascript:;">Remove</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="logoActionButtons">
-                            <ul>
-                                <li><a id="save_company_logo" href="javascript:;">Save</a></li>
-                                <li><a id="cancel_company_logo" href="javascript:;">Cancel</a></li>
-                            </ul>                   
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <?= HTML::script('/fullpage/admin/js/FullpageCover.js'); ?>
-            <script type="text/javascript">
-                fullpage_cover = new FullpageCover();
-                fullpage_cover.init();
-            </script>
+            
+            <? // hey, here's our new friend Fullpage Cover. ?>
+            <?= View::make('hosted/partials/fullpage_cover_view', array('fullpage_cover' => $fullpage_cover) ); ?>
             
             <?php if( $feed_count->published_feed_count == 0 ): ?>
                 <div class="hosted-block">
-                        <div class="company-description clear">
-                            <div class="company-text" style="width:100%">
-                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
-                            </div>
+                    <div class="company-description clear">
+                        <div class="company-text" style="width:100%">
+                            <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                         </div>
+                    </div>
                 </div>
                 <div id="blankHostedPage">
                     <h1 class="first-head">Hey! Looks like you're the first one here. </h1>
@@ -146,6 +43,7 @@
                     </p>
                 </div>
             <?php endif; ?>
+            
             
             <?php if( $feed_count->published_feed_count > 0 ): ?>
                 <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
