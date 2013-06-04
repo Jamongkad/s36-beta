@@ -62,5 +62,12 @@ class EmailService {
             return $email->send();
         }
 
+        
+        if($this->email_data->get_type() == 'Email\Entities\AutopublishData') {
+            $email = new Autopublish;
+            $email->gather($this->email_data); 
+            return $email->send();
+        }
+
     }
 }
