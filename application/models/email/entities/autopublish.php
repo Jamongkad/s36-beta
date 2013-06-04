@@ -14,7 +14,7 @@ class Autopublish extends EmailFixture {
 
     public function send() {
       
-        $email_html = View::make('email/replyto_view')->get();
+        $email_html = View::make('email/autopublish_view')->get();
 
         Helpers::dump($email_html);
     }
