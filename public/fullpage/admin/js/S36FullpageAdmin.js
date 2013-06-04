@@ -207,7 +207,8 @@ var S36FullpageAdmin = function(layoutObj){
                 $('#backgroundImageOptions').hide();
                 $('#backgroundPatternOptions').fadeIn('fast');
                 $('#adminWindowPages').animate({height:'235'});
-                $('body').css('background-image','url('+image_path+')');
+                //$('body').css('background-image','url('+image_path+')');
+                $('#body_image_overlay').css('background-image','url('+image_path+')');
 
                 self.change_background_position('left');
                 self.change_background_repeat('repeat');
@@ -220,7 +221,8 @@ var S36FullpageAdmin = function(layoutObj){
                 $('#backgroundImageOptions').fadeIn();
                 $('#backgroundPatternOptions').hide();
                 $('#adminWindowPages').animate({height:'496'});
-                $('body').css('background-image','url('+image_path+')');
+                //$('body').css('background-image','url('+image_path+')');
+                $('#body_image_overlay').css('background-image','url('+image_path+')');
                 $('#currentBgImage').attr('src',image_path);
                 if(image_path==''){
                     $('#blankBgImage').show();
@@ -349,13 +351,15 @@ var S36FullpageAdmin = function(layoutObj){
     || Background repeat attribute changer
     ==========================================*/
     this.change_background_repeat = function(rules){
-        $('body').css('background-repeat',rules);
+        //$('body').css('background-repeat',rules);
+        $('#body_image_overlay').css('background-repeat',rules);
     }
     /* ========================================
     || Background position attribute changer
     ==========================================*/
     this.change_background_position = function(pos){
-        $('body').css('background-position',pos);
+        //$('body').css('background-position',pos);
+        $('#body_image_overlay').css('background-position',pos);
     }
     /* ========================================
     || Button Font Color Changer

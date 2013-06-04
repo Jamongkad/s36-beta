@@ -16,14 +16,17 @@
         </div>
     </div>
 </div>
-<div id="bodyColorOverlay"></div>
+
+<? // meet our new friend Fullpage Background. ?>
+<?= View::make('hosted/partials/fullpage_background_view'); ?>
+
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">
             <div id="theBarTab" class=""></div>
             
             <? // hey, here's our new friend Fullpage Cover. ?>
-            <?= View::make('hosted/partials/fullpage_cover_view', array('fullpage_cover' => $fullpage_cover) ); ?>
+            <?= View::make('hosted/partials/fullpage_cover_view'); ?>
             
             <?php if( $feed_count->published_feed_count == 0 ): ?>
                 <div class="hosted-block">

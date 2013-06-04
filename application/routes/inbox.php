@@ -1,10 +1,9 @@
 <?php
 
 $dbfeedback = new Feedback\Repositories\DBFeedback;
-$db_fullpage_cover = new \Hosted\Repositories\DBFullpageCover(Config::get('application.subdomain'));
 
 return array( 
-    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) use ($dbfeedback, $db_fullpage_cover) {  
+    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) use ($dbfeedback) {  
 
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
@@ -63,7 +62,6 @@ return array(
           , 'filter' => $filter
           , 'company_id' => $company_id
           , 'reply_message' => json_encode($sm->jsonify())
-          , 'fullpage_cover' => $db_fullpage_cover->get_data()
         );
         
         if(!Input::get('_pjax')) { 

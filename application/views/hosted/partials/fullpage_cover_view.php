@@ -1,3 +1,7 @@
+<?php
+    $db_fullpage_cover = new \Hosted\Repositories\DBFullpageCover(Config::get('application.subdomain'));
+    $fullpage_cover = $db_fullpage_cover->get_data();
+?>
 <div id="coverPhotoContainer">
     <?php if( ! is_null($fullpage_cover->user) ): ?>
         <div id="changeCoverButtonIcon">

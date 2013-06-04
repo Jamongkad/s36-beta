@@ -102,7 +102,7 @@
         });
     });
 </script>
-<?//= View::make('hosted/partials/fullpage_cover_view', array('fullpage_cover' => $fullpage_cover) ); ?>
+
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>

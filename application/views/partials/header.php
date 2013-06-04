@@ -27,6 +27,8 @@
 </head>
 <body>
 
+<?//= View::make('hosted/partials/fullpage_background_view'); ?>
+
 <?if(S36Auth::check()):?>
 <?=Form::hidden('baseUrl', URL::to('/'))?>
 
