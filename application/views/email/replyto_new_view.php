@@ -43,7 +43,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr><td colspan="2"><span style="color:#444;font-size:20px;"><?=$message?></span></td><td align="right"></td></tr>
                 <tr height="45"></tr>
-                <tr><td colspan="2"><span style="font-weight:bold;font-style:italic;font-size:12px;">In response to your feedback that you sent on Tuesday, 12th May 2013</span></td></tr>
+                <tr><td colspan="2"><span style="font-weight:bold;font-style:italic;font-size:12px;">In response to your feedback that you sent on <?=date('F j, Y', strtotime($submission_date));?></span></td></tr>
                 <tr height="5"></tr>
                 <tr><td colspan="2" style="border-top:1px solid #999;"></td></tr>
                 <tr height="45"></tr>
