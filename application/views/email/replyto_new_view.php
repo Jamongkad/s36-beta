@@ -12,7 +12,9 @@
     	<td style="padding:20px 50px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                	<td align="left" width="170"><img src="images/lola.jpg" /></td>
+                	<td align="left" width="170">
+                        <img src="/company_logos/<?=$email_data->company_logo?>" /> 
+                    </td>
                     <td>
                     	<span style="font-size:20px;color:#06C;"><?=ucfirst($email_data->company_name)?></span>
                     </td>
