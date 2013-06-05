@@ -43,7 +43,7 @@
                         <tr>
                             <td colspan="3">
                                 <br/><br/>
-                                <h5 style="line-height:normal">Your feedback was submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
+                                <h5 style="line-height:normal">Your feedback was submitted on <?=date('l, jS M Y', strtotime($submission_date));?>.</h5> 
                             </td>
                         </tr>
                         <tr>
