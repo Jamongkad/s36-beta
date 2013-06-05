@@ -99,6 +99,13 @@ return array(
  
             $emailservice = new Email\Services\EmailService($submission_data);
             $emailservice->send_email();
+
+            $autopublish = new Email\Entities\AutopublishData; 
+            $autopublish->set_feedback($feedback)
+                            ->set_sendtoaddresses($accounts);
+ 
+            $emailservice = new Email\Services\EmailService($autopublish);
+            $emailservice->send_email();
         });
 
         $tf->run();  

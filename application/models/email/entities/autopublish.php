@@ -12,10 +12,12 @@ class Autopublish extends EmailFixture {
         $this->feedback_data = $email_data->get_feedback();
     }
 
-    public function send() {
-      
+    public function send() { 
         $email_html = View::make('email/autopublish_view')->get();
-
         Helpers::dump($email_html);
     }
+
+    public function get_subject() {
+        return "FDBack: Thank you! We've received your feedback!";
+    } 
 }
