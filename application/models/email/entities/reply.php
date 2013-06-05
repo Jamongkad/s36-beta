@@ -19,9 +19,9 @@ class Reply extends EmailFixture {
           , 'sender' => ucfirst($this->email_data->from->username)
           , 'submission_date' => $this->email_data->feedback->date
           , 'emailto' => $this->email_data->sendto
-          , 'attachments_partial_view' => View::make('email/partials/attachments_partial_view', Array('feedback_data' => $this->email_data->feedback)) 
-          , 'profile_partial_view' => View::make(  'email/partials/profile_partial_view'
-                                                 , Array('feedback_data' => $this->email_data->feedback))
+          , 'email_data' => $this->email_data->feedback
+          //, 'attachments_partial_view' => View::make('email/partials/attachments_partial_view', Array('feedback_data' => $this->email_data->feedback)) 
+          //, 'profile_partial_view' => View::make(  'email/partials/profile_partial_view', Array('feedback_data' => $this->email_data->feedback))
         );
 
         Helpers::dump($this->email_data->feedback);
