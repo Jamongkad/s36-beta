@@ -79,25 +79,6 @@ var S36FullpageCommon = function(){
 		});
 	}
 	/* ========================================
-	|| Function needed for the top navigation bar
-	==========================================*/
-	this.init_toggle_bar = function(show){
-		$('#theBarTab').click(function(){
-			$('#theBar').slideToggle('fast');
-			$(this).toggleClass('dropped');
-			if(show == 1){
-				$('#mainWrapper').animate({'top':'+=40'},'fast');
-				show = 0;
-			}else{
-				$('#mainWrapper').animate({'top':'-=40'},'fast');
-				show = 1;
-			}
-			
-			fullpage_cover = new FullpageCover();
-			if( $('#dragPhoto').css('display') == 'block' ) fullpage_cover.make_cover_undraggable(false);
-		});
-	}
-	/* ========================================
 	|| Function needed to close the lightbox
 	==========================================*/
 	this.close_lightbox = function(){

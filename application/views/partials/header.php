@@ -28,6 +28,8 @@
 <body>
 
 <?//= View::make('hosted/partials/fullpage_background_view'); ?>
+<?//= View::make('hosted/partials/fullpage_bar_view'); ?>
+<?//= View::make('hosted/partials/fullpage_cover_view'); ?>
 
 <?if(S36Auth::check()):?>
 <?=Form::hidden('baseUrl', URL::to('/'))?>

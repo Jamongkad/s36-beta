@@ -1,3 +1,6 @@
+<? // another new friend Fullpage Bar. ?>
+<?= View::make('hosted/partials/fullpage_bar_view'); ?>
+
 <?php if( ! is_null($user) ): ?>
     <div id="notification">
         <div id="notification-design">
@@ -23,7 +26,7 @@
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">
-            <div id="theBarTab" class=""></div>
+            <!-- <div id="theBarTab" class=""></div> -->
             
             <? // hey, here's our new friend Fullpage Cover. ?>
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>
@@ -137,9 +140,6 @@
         <?php if($user): //then display the admin bar by default ?> 
             var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);
             fullpageAdmin.init_fullpage_admin();
-            fullpageCommon.init_toggle_bar(0);
-        <?php else:  // then hide the admin bar by default ?>
-            fullpageCommon.init_toggle_bar(1);
         <?php endif; ?>
 
         /*

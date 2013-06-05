@@ -321,14 +321,6 @@ var S36FullpageAdmin = function(layoutObj){
             }
             timeout = setTimeout(self.hide_save_button, 1000);
         });
-        /* ========================================
-        || By Default, the bar toggle switch will have a dropped class. (When admin is logged in)
-        ==========================================*/
-        $('#theBarTab').addClass('dropped');
-        /* ========================================
-        || Display the bar by default
-        ==========================================*/
-        $('#theBar').show();
     }
     
     
