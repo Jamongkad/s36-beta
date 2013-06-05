@@ -12,9 +12,19 @@
     	<td style="padding:20px 50px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  
+                   <?
+                      $padding = null;
+                      if($email_data->company_logo) {
+                          $padding = "padding-left:10px";
+                      }
+                   ?>
+                    <?if($email_data->company_logo):?>
+                        <td align="left" width="170">
+                            <img src="/company_logos/<?=$email_data->company_logo?>" /> 
+                        </td>
+                    <?endif?>
                     <td>
-                    	<span style="font-size:20px;color:#06C;padding-left:10px"><?=ucfirst($email_data->company_name)?></span>
+                    	<span style="font-size:20px;color:#06C;<?=$padding?>"><?=ucfirst($email_data->company_name)?></span>
                     </td>
                     <td align="right"> 
                         <?=HTML::image('img/36storieslogo.jpg')?>
@@ -31,7 +41,7 @@
     <tr>
     	<td style="padding:10px 50px 10px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr><td colspan="2"><span style="color:#444;font-size:20px;">Thanks for your support! We really appreciate it!<br />Hope to see you back soon!</span></td><td align="right"></td></tr>
+                <tr><td colspan="2"><span style="color:#444;font-size:20px;"><?=$message?></span></td><td align="right"></td></tr>
                 <tr height="45"></tr>
                 <tr><td colspan="2"><span style="font-weight:bold;font-style:italic;font-size:12px;">In response to your feedback that you sent on Tuesday, 12th May 2013</span></td></tr>
                 <tr height="5"></tr>
