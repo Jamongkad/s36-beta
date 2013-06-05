@@ -100,7 +100,7 @@ return array(
             $emailservice = new Email\Services\EmailService($submission_data);
             $emailservice->send_email();
 
-            $replydata = new ReplyData; 
+            $replydata = new Email\Entities\ReplyData; 
             $replydata->subject("and wanted you to know that we posted it on our website.")
                       ->sendto("wrm932@gmail.com")
                       ->from( 
