@@ -93,7 +93,7 @@ return array(
             $feedback = $tf->data->feedback->pull_feedback_by_id($tf->data->id);
             $accounts = $tf->data->dbuser->pull_user_emails_by_company_id(6);
 
-            $submission_data = new Email\Entities\AutopublishData; 
+            $submission_data = new Email\Entities\NewFeedbackSubmission; 
             $submission_data->set_feedback($feedback)
                             ->set_sendtoaddresses($accounts);
  
