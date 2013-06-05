@@ -100,6 +100,7 @@ return array(
             $emailservice = new Email\Services\EmailService($submission_data);
             $emailservice->send_email();
 
+            /*
             $replydata = new Email\Entities\ReplyData; 
             $replydata->subject("and wanted you to know that we posted it on our website.")
                       ->sendto("wrm932@gmail.com")
@@ -113,7 +114,8 @@ return array(
                       ->feedbackdata($feedback);            
      
             $emailservice = new Email\Services\EmailService($replydata);  
-            return $emailservice->send_email(); 
+            $emailservice->send_email(); 
+            */
         });
 
         $tf->run();  
