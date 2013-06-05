@@ -26,7 +26,7 @@
                     <td>
                     	<span style="font-size:20px;color:#06C;<?=$padding?>"><?=ucfirst($email_data->company_name)?></span>
                     </td>
-                    <td align="right"> 
+                    <td valign="top" align="right"> 
                         <?=HTML::image('img/36storieslogo.jpg')?>
                     </td>
                 </tr>
