@@ -47,6 +47,6 @@
     
     $('#theBarTab').click(function(){
         $(this).toggleClass('dropped');
-        $('#theBar').animate( {'top': (-parseInt($('#theBar').css('top')) + (-40))}, 'fast' );  // algebra, bitch!
+        $('#theBar').animate( {'top': (-parseInt($('#theBar').css('top')) + (-40))}, 'fast' );
     });
 </script>

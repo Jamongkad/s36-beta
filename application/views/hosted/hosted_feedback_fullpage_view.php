@@ -26,7 +26,6 @@
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">
-            <!-- <div id="theBarTab" class=""></div> -->
             
             <? // hey, here's our new friend Fullpage Cover. ?>
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>

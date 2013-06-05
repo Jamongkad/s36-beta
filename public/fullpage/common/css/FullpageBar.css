@@ -68,7 +68,7 @@
     padding:0px;
     width:160px;
     box-shadow:#999 0px 2px 3px;
-
+    z-index: 1;
 }
 #barImageLogo{
     float:left;
