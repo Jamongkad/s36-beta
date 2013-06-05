@@ -13,12 +13,8 @@ class Reply extends EmailFixture {
     }
  
     public function send() {
-        /*
-        $email_html = View::make('email/autopublish_view')->get();
-        Helpers::dump($email_html);
-        */
 
-        $email_html = View::make('email/replyto_view', Array(
+        $data = Array(
             'message' => $this->email_data->message
           , 'sender' => ucfirst($this->email_data->from->username)
           , 'submission_date' => $this->email_data->feedback->date
@@ -26,8 +22,17 @@ class Reply extends EmailFixture {
           , 'attachments_partial_view' => View::make('email/partials/attachments_partial_view', Array('feedback_data' => $this->email_data->feedback)) 
           , 'profile_partial_view' => View::make(  'email/partials/profile_partial_view'
                                                  , Array('feedback_data' => $this->email_data->feedback))
-        ))->get();
+        );
+
+        Helpers::dump($this->email_data->feedback);
+
+        $email_html = View::make('email/autopublish_view', $data)->get();
         Helpers::dump($email_html);
+
+        /*
+        $email_html = View::make('email/replyto_view', $data)->get();
+        Helpers::dump($email_html);
+        */
         /*
         return $this->postmark->to($this->email_data->sendto)
                        ->bcc($this->email_data->bcc)
