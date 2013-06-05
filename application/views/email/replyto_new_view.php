@@ -48,16 +48,17 @@
                 <tr><td colspan="2" style="border-top:1px solid #999;"></td></tr>
                 <tr height="45"></tr>
                 <tr>
-                    <?if($email_data->avatar):?> 
-                        <td valign="top" width="78" style="padding-top:5px;">
-                            <td><?=HTML::image('uploaded_images/avatar/small/'.$email_data->avatar, 'Avatar')?></td>
-                        </td>
-                    <?endif?>
+
+                <?if($email_data->avatar):?>
+                    <td valign="top" width="78" style="padding-top:5px;">
+                        <?=HTML::image('uploaded_images/avatar/small/'.$email_data->avatar, 'Avatar')?>
+                    </td>
+                <?endif?>
+
                     <td colspan="2">
                         <p style="line-height:1.6em;font-size:14px;color:#484747;">The technology was great, I have never seen one like this in the market yet. 
         I like how you became so innovative with what you offer to your customers. 
-        I will definitely buy more of your stuff! 
-                        </p>
+        I will definitely buy more of your stuff!</p>
                     </td>
                 </tr>
 				<tr height="40"></tr>
