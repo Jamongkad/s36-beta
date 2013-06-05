@@ -56,9 +56,7 @@
                 <?endif?>
 
                     <td colspan="2">
-                        <p style="line-height:1.6em;font-size:14px;color:#484747;">The technology was great, I have never seen one like this in the market yet. 
-        I like how you became so innovative with what you offer to your customers. 
-        I will definitely buy more of your stuff!</p>
+                        <p style="line-height:1.6em;font-size:14px;color:#484747;"><?=$email_data->text?></p>
                     </td>
                 </tr>
 				<tr height="40"></tr>
