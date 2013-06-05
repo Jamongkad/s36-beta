@@ -100,12 +100,20 @@ return array(
             $emailservice = new Email\Services\EmailService($submission_data);
             $emailservice->send_email();
 
-            $autopublish = new Email\Entities\AutopublishData; 
-            $autopublish->set_feedback($feedback)
-                            ->set_sendtoaddresses($accounts);
- 
-            $emailservice = new Email\Services\EmailService($autopublish);
-            $emailservice->send_email();
+            $replydata = new ReplyData; 
+            $replydata->subject("and wanted you to know that we posted it on our website.")
+                      ->sendto("wrm932@gmail.com")
+                      ->from( 
+                          (object) Array(
+                            "replyto" => "me"
+                          , "username"  => ucfirst("Mathew")
+                          ) 
+                        )
+                      ->message("Hello we featured and replied to your feedback check it out <a href='".URL::to('/single/')."'>on our website</a>.")
+                      ->feedbackdata($feedback);            
+     
+            $emailservice = new EmailService($replydata);  
+            return $emailservice->send_email(); 
         });
 
         $tf->run();  

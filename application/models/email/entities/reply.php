@@ -14,6 +14,9 @@ class Reply extends EmailFixture {
  
     public function send() {
 
+        $email_html = View::make('email/autopublish_view')->get();
+        Helpers::dump($email_html);
+        /*
         $email_html = View::make('email/replyto_view', Array(
             'message' => $this->email_data->message
           , 'sender' => ucfirst($this->email_data->from->username)
@@ -30,6 +33,7 @@ class Reply extends EmailFixture {
                        ->subject($this->get_subject())
                        ->html_message($email_html)
                        ->send();
+        */
     }
 
     public function get_subject() {
