@@ -14,7 +14,7 @@
                 <tr>
                 	<td align="left" width="170"><img src="images/lola.jpg" /></td>
                     <td>
-                    	<span style="font-size:20px;color:#06C;">Petopia</span>
+                    	<span style="font-size:20px;color:#06C;"><?=ucfirst($email_data->company_name)?></span>
                     </td>
                     <td align="right"> 
                         <?=HTML::image('img/36storieslogo.jpg')?>
