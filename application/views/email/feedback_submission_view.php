@@ -166,6 +166,7 @@
                 <tr><td><span style="color:#15528c;font-size:20px;"><?=$feedback_data->title?></span></td><td align="right">
 
                 <!--publish feedback section -->
+                <?print_r($hosted_data)?>
                 <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
                     <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
                         <?=HTML::image('img/email-publish.jpg', 'Icon Check')?>

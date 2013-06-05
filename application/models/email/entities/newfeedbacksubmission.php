@@ -13,8 +13,6 @@ class NewFeedbackSubmission extends EmailFixture {
 
     public function send() {
 
-        Helpers::dump($this->hosted_data);
-
         foreach($this->address as $address) {
 
             $login_url = Helpers::make_forward_url($address->companyid, '/feedback/modifyfeedback/'.$this->feedback_data->id);
@@ -23,6 +21,7 @@ class NewFeedbackSubmission extends EmailFixture {
                 , 'encryptstring' => $address->encryptstring
                 , 'companyid' => $address->companyid
                 , 'login_url' => $login_url 
+                , 'hosted_data' => $this->hosted_data
             ))->get();
  
             Helpers::dump($email_html);
