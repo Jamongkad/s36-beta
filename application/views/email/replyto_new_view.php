@@ -41,9 +41,9 @@
     <tr>
     	<td style="padding:10px 50px 10px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr><td colspan="2"><span style="color:#444;font-size:20px;"><?=$message?></span></td><td align="right"></td></tr>
+                <tr><td colspan="3"><span style="color:#444;font-size:20px;"><?=$message?></span></td><td align="right"></td></tr>
                 <tr height="45"></tr>
-                <tr><td colspan="2"><span style="font-weight:bold;font-style:italic;font-size:12px;">In response to your feedback that you sent on <?=date('l, jS M Y', strtotime($submission_date));?></span></td></tr>
+                <tr style="border-bottom:2px solid #005000"><td colspan="3"><span style="font-weight:bold;font-style:italic;font-size:12px;">In response to your feedback that you sent on <?=date('l, jS M Y', strtotime($submission_date));?></span></td></tr>
                 <tr height="5"></tr>
                 <tr><td colspan="2" style="border-top:1px solid #999;"></td></tr>
                 <tr height="45"></tr>
