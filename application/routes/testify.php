@@ -112,7 +112,7 @@ return array(
                       ->message("Hello we featured and replied to your feedback check it out <a href='".URL::to('/single/')."'>on our website</a>.")
                       ->feedbackdata($feedback);            
      
-            $emailservice = new EmailService($replydata);  
+            $emailservice = new Email\Services\EmailService($replydata);  
             return $emailservice->send_email(); 
         });
 
