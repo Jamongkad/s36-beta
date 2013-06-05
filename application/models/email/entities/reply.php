@@ -26,7 +26,7 @@ class Reply extends EmailFixture {
 
         Helpers::dump($this->email_data->feedback);
 
-        $email_html = View::make('email/autopublish_view', $data)->get();
+        $email_html = View::make('email/replyto_new_view', $data)->get();
         Helpers::dump($email_html);
 
         /*
