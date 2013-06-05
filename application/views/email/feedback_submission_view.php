@@ -167,11 +167,19 @@
 
                 <!--publish feedback section -->
                 <?print_r($hosted_data)?>
-                <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                    <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
-                        <?=HTML::image('img/email-publish.jpg', 'Icon Check')?>
-                    </a> 
-                <?endif?> 
+                <?if($hosted_data->autopost_enable == 0):?>
+                    <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
+                        <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
+                            <?=HTML::image('img/email-publish.jpg', 'Icon Check')?>
+                        </a> 
+                    <?endif?> 
+                <?else:?>
+                    <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
+                        <a href="<?=URL::to("api/unpublish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
+                            <?=HTML::image('img/email-unpublish.jpg', 'Icon Check')?>
+                        </a> 
+                    <?endif?> 
+                <?endif?>
 
                 </td></tr>
                 <tr height="25"></tr>
