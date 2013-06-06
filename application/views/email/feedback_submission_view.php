@@ -20,6 +20,7 @@
 
     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
     $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
+    $autopost = ($hosted_data->autopost_enable == 1) ? "unpublish" : "publish";
 ?>
 
 <body style="background:#e8e9ec;padding:0;margin:0;">
@@ -164,23 +165,13 @@
     	<td style="padding:10px 50px 10px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr><td><span style="color:#15528c;font-size:20px;"><?=$feedback_data->title?></span></td><td align="right">
-
                 <!--publish feedback section -->
                 <?//print_r($hosted_data)?>
-                <?if($hosted_data->autopost_enable == 0):?>
-                    <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                        <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
-                            <?=HTML::image('img/email-publish.png', 'Icon Check')?>
-                        </a> 
-                    <?endif?> 
-                <?else:?>
-                    <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                        <a href="<?=URL::to("api/unpublish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
-                            <?=HTML::image('img/email-unpublish.png', 'Icon Check')?>
-                        </a> 
-                    <?endif?> 
-                <?endif?>
-
+                <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
+                    <a href="<?=URL::to("api/".$autopost."?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
+                        <?=HTML::image('img/email-'.$autopost.'.png', 'Icon Check')?>
+                    </a> 
+                <?endif?> 
                 </td></tr>
                 <tr height="25"></tr>
                 <tr><td colspan="2"><p style="line-height:1.6em;font-size:14px;color:#484747;"><?=$feedback_data->text?></p></td></tr>
