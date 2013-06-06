@@ -102,6 +102,8 @@ return array(
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
 
+        $status = 'restore';
+
         Helpers::dump($key);
         Helpers::dump($decrypt_string);
         Helpers::dump($string_params);
