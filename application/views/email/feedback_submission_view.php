@@ -167,11 +167,6 @@
                 <tr><td><span style="color:#15528c;font-size:20px;"><?=$feedback_data->title?></span></td><td align="right">
                 <!--publish feedback section -->
                 <?//print_r($hosted_data)?>
-                <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                    <a href="<?=URL::to("api/".$autopost."?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
-                        <?=HTML::image('img/email-'.$autopost.'.png', 'Icon Check')?>
-                    </a> 
-                <?endif?> 
                 </td></tr>
                 <tr height="25"></tr>
                 <tr><td colspan="2"><p style="line-height:1.6em;font-size:14px;color:#484747;"><?=$feedback_data->text?></p></td></tr>
@@ -295,6 +290,15 @@
                 </td></tr>
             </table>    
     	</td>
+    </tr>
+    <tr>
+        <td style="padding:10px 50px 10px;">
+            <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
+                <a href="<?=URL::to("api/".$autopost."?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
+                    <?=HTML::image('img/email-'.$autopost.'.png', 'Icon Check')?>
+                </a> 
+            <?endif?> 
+        </td>
     </tr>
     <tr>
     	<td style="padding:10px 50px 20px;">
