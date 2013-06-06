@@ -93,6 +93,7 @@ return array(
     //TODO: REFACTOR THIS BITCH
     'GET /api/unpublish' => Array('needs' => 'S36ValueObjects', 'do'  => function() use ($feedback) {
         
+        $encrypt = new Encryption\Encryption;
         $string_params  = Input::get('params');
         $feedback_id = Input::get('feedback_id');
         $company_id  = Input::get('company_id');
