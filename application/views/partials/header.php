@@ -18,6 +18,8 @@
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
         <?=HTML::style('css/jquery.formbuilder.css')?>
+        <?=HTML::style('css/jquery.formbuilder.css')?>
+        <?=HTML::style('fullpage/common/css/S36FullpageCommon.css')?>
 
     </meta>    
 </head>
