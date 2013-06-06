@@ -104,6 +104,17 @@
 </script>
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
+    
+    <div class="c"></div>    
+
+    <?if($pagination):?>
+        <div style="padding:10px 28px 30px"> 
+            <?=$pagination?>
+        </div>
+    <?endif?>
+</div>
+<?else:?>
+
     <?foreach($feedback as $feeds):?>
         <?if($feeds->children):?>
             <div class="feedback-group" id="feed-grp-<?=$feeds->unix_timestamp?>" data-total="<?=$feeds->children_count?>">
@@ -537,15 +548,7 @@
             </div>
         <?endif;?>
     <?endforeach;?>
-    <div class="c"></div>
-    
-    <?if($pagination):?>
-        <div style="padding:10px 28px 30px"> 
-            <?=$pagination?>
-        </div>
-    <?endif?>
-</div>
-<?else:?>
+
       <div class="woops">
             <h2 class="woops-header">Woops. There's no feedback here.</h2>
             <?if(!$feedback_present):?>
