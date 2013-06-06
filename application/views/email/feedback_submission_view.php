@@ -291,6 +291,9 @@
             </table>    
     	</td>
     </tr>
+    <?if($hosted_data->autopost_enable == 1):?>
+    <tr><td style="padding:10px 50px 10px;"><span style="font-size:12px;color:#333;">Based on your auto-posting settings, we have automatically published this feedback. (<a href="#">Change</a>)</span></td></tr>
+    <?endif?>
     <tr>
         <td style="padding:10px 50px 10px;">
             <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
