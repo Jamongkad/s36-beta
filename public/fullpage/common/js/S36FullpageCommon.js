@@ -16,7 +16,12 @@ var S36FullpageCommon = function(){
 		$('#fullpage_desc.editable').click(function(){
 			$('#desc_hint').hide();
 			$('#fullpage_desc_textbox').show().focus();
-			$('#fullpage_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
+			
+			text = $(this).html().replace(/\n/g,'');
+			text = Helpers.br2nl( text );
+			text = Helpers.entities2html( text );
+			text = Helpers.links_to_urls( text );
+			$('#fullpage_desc_textbox').val( text );
 			$(this).hide();
 		});
 		$('#fullpage_desc_textbox').blur(function(){
@@ -39,9 +44,15 @@ var S36FullpageCommon = function(){
 		    	var desc_textbox = $('#fullpage_desc_textbox');
 		    	if( $.trim(desc_textbox.val()) == '' ) $('#desc_hint').show();
 				$('#fullpage_desc').fadeIn();
-				$('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities(desc_textbox.val()) ) );
+				
+				text = desc_textbox.val();
+				text = Helpers.html2entities(text);
+				text = Helpers.nl2br(text);
+				text = Helpers.urls_to_links(text);
+				$('#fullpage_desc').html( text );
+				
 				if( $('.companyDescription').length ){
-					$('.companyDescription').html( Helpers.nl2br( Helpers.html2entities(desc_textbox.val()) ) );
+					$('.companyDescription').html( text );
 				}
 				desc_textbox.removeAttr('disabled');
 				desc_textbox.hide();

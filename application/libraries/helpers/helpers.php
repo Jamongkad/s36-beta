@@ -39,6 +39,43 @@ class Helpers {
         return nl2br(HTML::entities( preg_replace('/[\n]{3,}/', "\n\n", trim($str)) ));
     }
     
+    // a function to make a single replacement of $search with $replace in $subject.
+    // because str_replace replaces all the matches found.
+    public static function single_str_replace($search, $replace, $subject){
+        
+        $pos = strpos($subject, $search);
+        
+        if( $pos === false ) return $subject;
+            
+        return substr_replace($subject, $replace, $pos, strlen($search));
+        
+    }
+    
+    public static function urls_to_links($str){
+        
+        // that extra "http" in $link will be removed in link if "http" or "https" already exists.
+        $url_regex = '/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/i';
+        $link = '<a href="http://$1" target="_blank">$1</a>';
+        return preg_replace($url_regex, $link, $str);
+        
+        
+        // don't wanna remove the codes below. just a remembrance. if i'll ever remember this.
+        // preg_match_all($url_regex, $str, $urls);
+        // $offset = 0;
+        
+        // foreach( $urls[0] as $url ){
+        //     $http = ( ! strstr($url, 'http') ? 'http://' : '' );
+        //     $link = '<a href="' . $http . $url . '" target="_blank">' . $url . '</a>';
+            
+        //     $pos = strpos($str, $url, $offset);
+        //     $str = substr_replace($str, $link, $pos, strlen($url));
+        //     $offset = $pos + strlen($link);
+        // }
+        
+        // return $str;
+        
+    }
+    
     //TODO: Refactor
     public static function switchable($element, $id, $catid, $hrefaction, $background) { 
         echo "state='".(($element) == 0 ? 0 : 1)."'";

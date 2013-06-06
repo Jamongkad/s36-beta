@@ -18,6 +18,14 @@ var Helpers = new function() {
         return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');       
     };
     
+    this.links_to_urls = function(s){
+        return s.replace(/<a.+?>/g, '').replace(/<\/a>/g, '');
+    }
+    
+    this.urls_to_links = function(s){
+        return s.replace(/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/gi, '<a href="http://$1" target="_blank">$1</a>');
+    }
+    
     this.fb_comment_str = function(s){
         return me.nl2br(me.html2entities( s.replace(/^\s+|\s+$/g, '').replace(/[\n]{3,}/g, '\n\n') ));
     };

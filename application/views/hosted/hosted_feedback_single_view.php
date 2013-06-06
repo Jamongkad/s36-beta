@@ -166,7 +166,7 @@
                 <div class="company-description clear">
                     <div class="company-text">
                         <? // keep the content of fullpage_desc_text in one line. ?>
-                        <div id="fullpage_desc" class="break-word" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                        <div id="fullpage_desc" class="break-word" itemprop="summary"><?= nl2br( Helpers::urls_to_links(HTML::entities($company->description)) ); ?></div>
                     </div>
                     <div class="send-button" widgetkey="<?=$company->widgetkey?>">
                         <a href="javascript:;">
