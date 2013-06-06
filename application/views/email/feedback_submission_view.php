@@ -31,9 +31,11 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                 	<td align="left"><?=HTML::image('img/36storieslogo.jpg')?></td>
+                    <!--
                     <td align="right">
                     	<a href="<?=$login_url?>" style="font-family:Arial, Helvetica, sans-serif;text-decoration:none;background:#e0f4ff;border:1px solid #76bfe8;border-radius:5px;padding:10px;color:#005983;font-size:14px;"><?=HTML::image('img/manage-icon.jpg')?> Manage Feedback</a>
                     </td>
+                    -->
                 </tr>
             </table>    
     	</td>
@@ -298,6 +300,9 @@
                     <?=HTML::image('img/email-'.$autopost.'.png', 'Icon Check')?>
                 </a> 
             <?endif?> 
+            <a href="<?=$login_url?>">
+                <?=HTML::image('img/email-manage.png')?>
+            </a>
         </td>
     </tr>
     <tr>
