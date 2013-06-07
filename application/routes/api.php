@@ -117,6 +117,7 @@ return array(
         Helpers::dump($feedback_id);
         Helpers::dump($company_id);
         Helpers::dump($status);
+        Helpers::dump($params);
     }),  
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
