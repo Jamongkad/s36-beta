@@ -20,7 +20,9 @@
 
     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
     $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
-    $autopost = ($hosted_data->autopost_enable == 1 and ($feedback_data->rating == $hosted_data->autopost_rating)) ? "unpublish" : "publish";
+
+    $autopost_check = ($hosted_data->autopost_enable == 1 and ($feedback_data->rating == $hosted_data->autopost_rating));
+    $autopost = ($autopost_check) ? "unpublish" : "publish";
     Helpers::dump($feedback_data->rating);
     Helpers::dump($hosted_data->autopost_rating);
 ?>
@@ -293,7 +295,7 @@
             </table>    
     	</td>
     </tr>
-    <?if($hosted_data->autopost_enable == 1 and ($feedback_data->rating == $hosted_data->autopost_rating)):?>
+    <?if($autopost_check):?>
         <tr>
             <td style="padding:10px 50px 10px;">
                 <span style="font-size:12px;color:#333;">
