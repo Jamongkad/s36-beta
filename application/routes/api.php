@@ -119,7 +119,43 @@ return array(
             $publish_success = $feedbackstate->change_state();
             $feedbackstate->write_summary();
 
-            Helpers::dump($publish_success);
+            if($publish_success)  { 
+                //since we're already logged in...we just need one property here...the publisher's email
+                $publisher = S36Auth::user();
+                
+                //Record action on activity log
+                $fba = new Feedback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
+                $activity_check = $fba->log_activity();
+                
+                //if no record of activity
+                if(!is_object($activity_check)) { 
+                    $published_data = new Email\Entities\PublishedFeedbackData;
+                    $published_data->set_publisher_email($publisher->email)
+                                   ->set_feedback($feedback->pull_feedback_by_id($feedback_id))
+                                   ->set_sendtoaddresses($user->pull_user_emails_by_company_id($company_id));
+                
+                    $emailservice = new Email\Services\EmailService($published_data);
+                    $emailservice->send_email(); 
+                }
+                //After publishing feedback logout...
+                S36Auth::logout();
+                $contact = DB::Table('Contact', 'master')
+                              ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
+                              ->where('Feedback.feedbackId', '=', $feedback_id)
+                              ->first(Array('firstName'));
+
+                $hostname = Config::get('application.hostname');
+
+                return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
+                    'company' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
+                  , 'contact_name' => $contact->firstname
+                  , 'activity_check' => $activity_check
+                  , 'hostname' => $hostname
+                ));       
+            } else {
+                S36Auth::logout();
+                throw new Exception("Feedback $feedback_id was not published!");
+            }
         }
     }),  
 
