@@ -1,6 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
-
+body, #mainWrapper, #fadedContainer{
+    height: 100%;
+}
 #theDashboard{
     margin-bottom:30px;
     font-family: 'Open Sans', sans-serif, Arial, Helvetica;
