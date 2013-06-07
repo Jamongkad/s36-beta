@@ -6,12 +6,16 @@
         <div id="login">
             <div id="login-box" style="text-align:center">
             <?if(is_object($activity_check)):?>
-                <h2>This feedback has already been published by <?=ucfirst($activity_check->username)?>.</h2>
+                <?if($status == "publish"):?>
+                    <h2>This feedback has already been published by <?=ucfirst($activity_check->username)?>.</h2>
+                <?else?>
+                    <h2>This feedback has been previously unpublished by <?=ucfirst($activity_check->username)?>.</h2>
+                <?endif?>
             <?else:?>
                 <?if($status == "publish"):?>
                     <h2>Sweet! You have just published <?=$contact_name?>'s feedback onto your website!</h2>
                 <?else:?>
-                    <h2>Sweet! You have just unpublished <?=$contact_name?>'s feedback onto your website! </h2>
+                    <h2>You have just unpublished <?=$contact_name?>'s feedback. </h2>
 
                     <span style="font-size:12px;color:#333;">
                         Based on your auto-posting settings, we have automatically published this feedback. (<a href="<?=$settings_url?>">Change</a>)
