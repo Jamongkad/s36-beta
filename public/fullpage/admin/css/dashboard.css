@@ -1,6 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
-
+body, #mainWrapper, #fadedContainer{
+    height: 100%;
+}
 #theDashboard{
     margin-bottom:30px;
     font-family: 'Open Sans', sans-serif, Arial, Helvetica;
@@ -174,13 +176,17 @@
 /* sorter filter in the inbox */
 #theInboxSorter{
     background:#FAFAFA;
-    padding:10px 10px 10px 5%;
+    padding:10px 10px 10px 0px;
 }
 .sorter-block{
     float:left;
     margin-right:20px;
     font-size:10px;
     color:#666;
+}
+.sorter-block.sorter-checkbox{
+    text-align: center;
+    width:5%;
 }
 .sorter-block-box select{
     border:1px solid #EEE;
@@ -531,4 +537,16 @@
         padding:15px 23px;
     }
     
+}
+@-moz-document url-prefix() {
+    #theDashboardMenu ul li a {
+        padding: 15px 22px;
+    }
+
+    .action-gray-menu .reply{
+        width:31px;
+    }
+    .action-gray-menu .flag-action{
+        width:31px;
+    }
 }
