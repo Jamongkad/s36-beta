@@ -48,9 +48,7 @@ class Fullpage {
         // therefore causing bg url problem in single page.
 
         $css = '<style type"text/css">';
-        $css .= ( $background_image ? 'body{background-image:url("' .$background_image. '"); }' : '' );
-        $css .= ( $background_image ? 'body{background-position:'.$hs->page_bg_position.'; }' : '' );
-        $css .= ( $background_image ? 'body{background-repeat:'.$hs->page_bg_repeat.'; }' : '' );
+        $css .= ( $background_image ? '#body_image_overlay{background: url("' .$background_image. '") ' . $hs->page_bg_position . ' ' . $hs->page_bg_repeat . '; }' : '' );
         $css .= ( $hs->page_bg_color ? ' #bodyColorOverlay{ background: ' . $hs->page_bg_color . '; opacity: ' . $hs->page_bg_color_opacity . '}' : '' );
         $css .= ( ! $hs->show_rating ? '.stars, .star_rating{display:none}' : '' );
         $css .= ( ! $hs->show_votes ? '.rating-stat{display:none}.vote-action{display:none}' : '' );

@@ -74,129 +74,6 @@ a:hover{
 
 /* end of universal CSS */
 
-#socialLinkIcons{
-	position:absolute;
-	right:15px;
-	bottom:12px;
-}
-#socialLinkIcons .social-icon{
-	margin-left:8px;
-	float:left;
-}
-#theBar{
-	background:#e6eaed url(/fullpage/common/img/topBarBg.jpg) repeat-x;
-	height:40px;
-	display:none;
-	width:100%;
-	box-shadow:#999 0px 0px 3px;
-	z-index:100000;
-	position:fixed;
-
-}
-#theBarTab{
-	width:26px;
-	height:23px;
-	background:url(/fullpage/common/img/admin-tab.png);
-	background-repeat:no-repeat;
-	background-position:left top;
-	position:absolute;
-	right:-30px;
-	top:0px;
-	cursor:pointer;
-}
-#theBarTab:hover{
-	background-position:bottom left;
-}
-#theBarTab.dropped{
-	background-position:top right;
-}
-#theBarTab.dropped:hover{
-	background-position:bottom right;
-}
-#theBarInner{
-	width: 876px;
-	margin:0 auto;
-	position:relative;
-	height:40px;
-}
-#barLeftContent{
-	float:left;
-}
-#barRightContent{
-	float:right;
-}
-.barLinks ul{
-	list-style:none;
-	padding:14px 0px;
-}
-.barLinks ul li{
-	display:inline;
-	padding:14px 0px;
-	margin-left:0px;
-	position:relative;
-}
-.barLinks ul li a{
- 	padding:12px 20px 13px;
-	background:none;
-	font-weight:bold;
-	color:#656e77;
-
-}
-.barLinks ul li a:hover{
-	 background:#8fa9c0;
-	 color:#FFF;
-}
-.barLinks ul li ul{
-	display:none; 
-	position:absolute;
-	top:41px;
-	left:0px;
-	padding:0px;
-	width:160px;
-	box-shadow:#999 0px 2px 3px;
-
-}
-#barImageLogo{
-	float:left;
-	width:113px;
-	height:39px;
-	padding:0px 10px;
-	background:#FFF;
-
-}
-#barImageLogo:hover{
-	background:#e6eaed;
-
-}
-.barLinks .left-links{
-	float:left;
-	/*border-left:#172936 1px solid;*/
-}
-.barLinks ul li ul li{
-	display:block;
-	padding:0px;
-}
-.barLinks ul li ul li a{
-	display:block;
-	font-size:11px;
-	padding:10px 20px;
-}
-.barLinks ul li:hover ul{
-	display:block;
- 	background:#e6eaed;
-}
-#coverPhoto{
-	width:850px;
-	height:240px;
-	overflow:hidden;
-}
-#bodyColorOverlay{
-	/*background:#FFF;*/
-	position:fixed;
-	width:100%;
-	height:100%;
-	/*opacity:0.66;*/
-}
 #mainWrapper{
 	display:block;
 }
@@ -208,20 +85,6 @@ a:hover{
 #mainContainer{
 	margin:0 auto;
 	width:850px;
-}
-#avatarContainer{
-	position:absolute;
-	/*width:210px;
-	max-height:175px;*/
-	max-width: 210px;
-	max-height: 175px;
-	border:3px solid #FFF;
-	box-shadow:#CCC 0px 1px 2px;
-	bottom:0px;
-	left:20px;
-	background:#FEFEFE;
-	overflow: hidden;
-	bottom: -20px;
 }
 #facepile{
 	margin-top:2px;
@@ -301,12 +164,18 @@ a:hover{
 	margin-top:15px;
 }
 .stars{
-	width:100px;
-	float:right;
+	width:90px;
+    display:inline-block;
+    text-align:left;
 }
 .review-count{
-	float:right;
-	margin-top:3px;
+	display:inline-block;
+    top:-2px;
+    text-align:right;
+}
+.rating-stars-container{
+    float:right;
+    width:255px;
 }
 .regular-featured .feedback-timestamp{
 	float:right;
@@ -572,7 +441,7 @@ a:hover{
 }
 /* end of blank hosted page styles */
 
- /* NEW!!! icon list  */
+/* NEW!!! icon list  */
 .feedback-icon-list{
 	margin:0px 0px 10px;
 	position:relative;
