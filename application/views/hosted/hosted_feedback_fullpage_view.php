@@ -1,6 +1,3 @@
-<? // another new friend Fullpage Bar. ?>
-<?= View::make('hosted/partials/fullpage_bar_view'); ?>
-
 <?php if( ! is_null($user) ): ?>
     <div id="notification">
         <div id="notification-design">
@@ -20,14 +17,13 @@
     </div>
 </div>
 
-<? // meet our new friend Fullpage Background. ?>
+<?= View::make('hosted/partials/fullpage_bar_view'); ?>
 <?= View::make('hosted/partials/fullpage_background_view'); ?>
 
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">
             
-            <? // hey, here's our new friend Fullpage Cover. ?>
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>
             
             <?php if( $feed_count->published_feed_count == 0 ): ?>

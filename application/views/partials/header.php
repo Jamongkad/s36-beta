@@ -16,12 +16,6 @@
         <?=HTML::script('/js/jquery.fileupload.js'); ?>
 
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
-
-        <?//=HTML::style('css/grid.css')?> 
-        <?//=HTML::style('css/romanticc.css')?>
-        <?//=HTML::style('css/admin.css')?>
-        <?//=HTML::style('css/zebra_pagination.css')?>
-        <?//=HTML::style('css/jquery.formbuilder.css')?>
         
         <?=HTML::style('fullpage/common/css/S36FullpageCommon.css')?> 
         <?=HTML::style('fullpage/admin/css/S36FullpageAdmin.css')?> 
@@ -68,8 +62,8 @@
     });
 </script>
 
-<?= View::make('hosted/partials/fullpage_background_view'); ?>
 <?= View::make('hosted/partials/fullpage_bar_view'); ?>
+<?= View::make('hosted/partials/fullpage_background_view'); ?>
 
 <div id="mainWrapper">
     <div id="fadedContainer">
