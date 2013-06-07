@@ -21,7 +21,7 @@
     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
     $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
 
-    $autopost_check = ($hosted_data->autopost_enable == 1 and ($feedback_data->int_rating >= $hosted_data->autopost_rating));
+    $autopost_check = ($hosted_data->autopost_enable == 1 and ($feedback_data->int_rating == $hosted_data->autopost_rating));
     $autopost = ($autopost_check) ? "unpublish" : "publish";
 ?>
 
