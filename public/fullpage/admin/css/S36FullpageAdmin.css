@@ -889,14 +889,13 @@ ul.patternList li div.active{
     border-radius:2px;  
     color:#333;
 }
-
 .small-button.publish{
     background:#45b398;
     color:#0f4c3d;
     text-shadow:#58c8ac 0px 1px;
 }
 .small-button.publish:hover{
-     background:#58c8ac;
+    background:#58c8ac;
 }
 .small-button.feature{
     background:#ffe076;
@@ -904,7 +903,7 @@ ul.patternList li div.active{
     text-shadow:#ffeaa2 0px 1px;
 }
 .small-button.feature:hover{
-     background:#ffeaa2;
+    background:#ffeaa2;
 }
 .widget-undo {
     padding-top: 20px;

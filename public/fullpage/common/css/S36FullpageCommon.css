@@ -164,12 +164,18 @@ a:hover{
 	margin-top:15px;
 }
 .stars{
-	width:100px;
-	float:right;
+	width:90px;
+    display:inline-block;
+    text-align:left;
 }
 .review-count{
-	float:right;
-	margin-top:3px;
+	display:inline-block;
+    top:-2px;
+    text-align:right;
+}
+.rating-stars-container{
+    float:right;
+    width:255px;
 }
 .regular-featured .feedback-timestamp{
 	float:right;
@@ -435,7 +441,7 @@ a:hover{
 }
 /* end of blank hosted page styles */
 
- /* NEW!!! icon list  */
+/* NEW!!! icon list  */
 .feedback-icon-list{
 	margin:0px 0px 10px;
 	position:relative;
