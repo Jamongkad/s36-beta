@@ -35,6 +35,11 @@
         $('#theDashboardMenu ul li').click(function(){
             $('#theDashboardMenu ul li').toggle();
         });
+        $('.save').hover(function(){
+            $(this).find('.the-categories-menu').fadeIn('fast');
+        },function(){
+            $(this).find('.the-categories-menu').fadeOut('fast');
+        });
     });
     $(window).scroll(function() {
         

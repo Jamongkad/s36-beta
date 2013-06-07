@@ -126,6 +126,35 @@
                                     <span>Categorize Feedback</span>
                                     <div class="action-tooltip-arrow"></div>
                                 </div>
+                                <div class="the-categories-menu">
+                                    <div class="the-category-arrow"></div>
+                                    <div class="the-categories-menu-content">
+                                        <div class="the-categories">
+                                            <h3>File this feedback as : </h3>
+                                            <ul class="grids">
+                                                <li><a href="#">General</a></li>
+                                                <li><a href="#">Miscelleanous</a></li>
+                                                <li><a href="#">Price</a></li>
+                                                <li><a href="#">Problems/Bugs</a></li>
+                                                <li><a href="#">Suggestions</a></li>
+                                            </ul>
+                                            <a class="manage-categories-link" href="#">Manage Categories</a>
+                                        </div>
+                                        <div class="false-border"></div>
+                                        <div class="the-categories-options">
+                                            <div class="categories-combo">
+                                                <span class="category-combo-name">Status </span><span><select><option>New</option></select></span>
+                                            </div>
+                                            <div class="categories-combo">
+                                                <span class="category-combo-name">Priority </span><span><select><option>New</option></select></span>
+                                            </div>
+                                        </div>
+                                        <div class="false-border"></div>
+                                        <div class="the-categories-delete">
+                                            <a href="#" class="delete-button"></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="action-sprite flag-action">
                                 <div class="action-tooltip">
