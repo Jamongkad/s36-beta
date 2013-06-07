@@ -534,3 +534,15 @@ body, #mainWrapper, #fadedContainer{
     }
     
 }
+@-moz-document url-prefix() {
+    #theDashboardMenu ul li a {
+        padding: 15px 22px;
+    }
+
+    .action-gray-menu .reply{
+        width:31px;
+    }
+    .action-gray-menu .flag-action{
+        width:31px;
+    }
+}
