@@ -111,13 +111,14 @@ return array(
             $status = "restore";
         } 
 
-        Helpers::dump($key);
-        Helpers::dump($decrypt_string);
-        Helpers::dump($string_params);
-        Helpers::dump($feedback_id);
-        Helpers::dump($company_id);
-        Helpers::dump($status);
-        Helpers::dump($params);
+        if($key != null && S36Auth::login($params[0], $params[1])) {   
+            $user = new DBUser; 
+            //publish feedback this bitch
+            $feed_obj = Array('feedid' => $feedback_id);
+            $feedbackstate = new Feedback\Services\FeedbackState($status, Array($feed_obj), $company_id);
+            $publish_success = $feedbackstate->change_state();
+            $feedbackstate->write_summary();
+        }
     }),  
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
