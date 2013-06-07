@@ -23,8 +23,6 @@
 
     $autopost_check = ($hosted_data->autopost_enable == 1 and ($feedback_data->int_rating == $hosted_data->autopost_rating));
     $autopost = ($autopost_check) ? "unpublish" : "publish";
-    Helpers::dump($feedback_data);
-    Helpers::dump($hosted_data);
 ?>
 
 <body style="background:#e8e9ec;padding:0;margin:0;">
