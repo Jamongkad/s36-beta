@@ -91,22 +91,28 @@ return array(
     */
 
     //TODO: REFACTOR THIS BITCH
-    'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
-
-        $encrypt = new Encryption\Encryption;
+    'GET /api/email' => Array('needs' => 'S36ValueObjects', 'do'  => function() use ($feedback) {
+        
+        $encrypt        = new Encryption\Encryption;
         $string_params  = Input::get('params');
-        $feedback_id = Input::get('feedback_id');
-        $company_id  = Input::get('company_id');
+        $feedback_id    = Input::get('feedback_id');
+        $company_id     = Input::get('company_id');
+        $action         = Input::get('action');
 
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
- 
-        //decrypt string use username and password to authenticate into application. 
-        if($key != null && S36Auth::login($params[0], $params[1])) {  
+        
+        if($action == "publish") {
+            $status = "publish";
+        } 
+       
+        if($action == "unpublish") {
+            $status = "restore";
+        } 
 
+        if($key != null && S36Auth::login($params[0], $params[1])) {   
             $user = new DBUser; 
-            $status = 'publish'; 
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedbackstate = new Feedback\Services\FeedbackState($status, Array($feed_obj), $company_id);
@@ -122,7 +128,7 @@ return array(
                 $activity_check = $fba->log_activity();
                 
                 //if no record of activity
-                if(!is_object($activity_check)) { 
+                if(!is_object($activity_check) and $status == "publish") { 
                     $published_data = new Email\Entities\PublishedFeedbackData;
                     $published_data->set_publisher_email($publisher->email)
                                    ->set_feedback($feedback->pull_feedback_by_id($feedback_id))
@@ -131,10 +137,8 @@ return array(
                     $emailservice = new Email\Services\EmailService($published_data);
                     $emailservice->send_email(); 
                 }
-
                 //After publishing feedback logout...
                 S36Auth::logout();
-
                 $contact = DB::Table('Contact', 'master')
                               ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
                               ->where('Feedback.feedbackId', '=', $feedback_id)
@@ -142,21 +146,22 @@ return array(
 
                 $hostname = Config::get('application.hostname');
 
+                $settings_url = Helpers::make_forward_url($company_id, '/settings');
+
                 return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                     'company' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
                   , 'contact_name' => $contact->firstname
                   , 'activity_check' => $activity_check
+                  , 'status' => $status 
+                  , 'settings_url' => $settings_url
                   , 'hostname' => $hostname
                 ));       
             } else {
                 S36Auth::logout();
                 throw new Exception("Feedback $feedback_id was not published!");
             }
-        } else {
-            print_r("Something went wrong");
         }
-
-    }),
+    }),  
 
     'GET /api/create_user' => Array('do' => function() {     
 

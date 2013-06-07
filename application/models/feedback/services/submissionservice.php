@@ -2,6 +2,8 @@
 
 use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackAttachments, Feedback\Entities\FeedbackDetails;
 use Feedback\Services\FeedbackService;
+use Hosted\Repositories\DBHostedSettings;
+
 use Feedback\Repositories\DBFeedback;
 use Contact\Repositories\DBContact;
 
@@ -29,6 +31,7 @@ class SubmissionService {
         $this->dbfeedback       = new DBFeedback;
         $this->dbuser           = new DBUser; 
         $this->dbcontact        = new DBContact;
+        $this->hosted           = new DBHostedSettings;
         $this->dbh              = DB::connection('master')->pdo;
     }
 
@@ -43,7 +46,9 @@ class SubmissionService {
 
             //this creates metadata tag relationship between metadata and feedback 
             $this->_create_metadata($feedback_id);    
-            $this->_send_feedbacksubmission_email($feedback, $this->dbuser->pull_user_emails_by_company_id($company_id));
+            $this->_send_feedbacksubmission_email(  $feedback
+                                                  , $this->dbuser->pull_user_emails_by_company_id($company_id)
+                                                  , $this->hosted->fetch_hosted_settings($company_id) );
             $this->_calculate_dashboard_analytics($company_id);
              
             $redis = new Redis;
@@ -130,11 +135,13 @@ class SubmissionService {
         }   
     }
 
-    public function _send_feedbacksubmission_email($feedback_obj, $account_obj) { 
+    public function _send_feedbacksubmission_email($feedback_obj, $account_obj, $hosted_obj) { 
         //upon successful feedback submission let's send an email to all parties concern
         $submission_data = new NewFeedbackSubmissionData; 
         $submission_data->set_feedback($feedback_obj)
-                        ->set_sendtoaddresses($account_obj);
+                        ->set_sendtoaddresses($account_obj)
+                        ->set_hosteddata($hosted_obj);
+ 
 
         $emailservice = new EmailService($submission_data);
         $emailservice->send_email();

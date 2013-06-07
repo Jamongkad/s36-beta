@@ -20,6 +20,9 @@
 
     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
     $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
+
+    $autopost_check = ($hosted_data->autopost_enable == 1 and ($feedback_data->int_rating >= $hosted_data->autopost_rating));
+    $autopost = ($autopost_check) ? "unpublish" : "publish";
 ?>
 
 <body style="background:#e8e9ec;padding:0;margin:0;">
@@ -29,9 +32,9 @@
     	<td style="padding:20px 30px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                	<td align="left"><?=HTML::image('img/36storieslogo.jpg')?></td>
-                    <td align="right">
-                    	<a href="<?=$login_url?>" style="font-family:Arial, Helvetica, sans-serif;text-decoration:none;background:#e0f4ff;border:1px solid #76bfe8;border-radius:5px;padding:10px;color:#005983;font-size:14px;"><?=HTML::image('img/manage-icon.jpg')?> Manage Feedback</a>
+                	<td align="left"><span style="color:#666;font-size:24px;font-weight:bold;">You got new feedback!</span></td>
+                    <td align="right">	
+                        <?=HTML::image('img/36storieslogo.jpg')?>
                     </td>
                 </tr>
             </table>    
@@ -164,14 +167,8 @@
     	<td style="padding:10px 50px 10px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr><td><span style="color:#15528c;font-size:20px;"><?=$feedback_data->title?></span></td><td align="right">
-
                 <!--publish feedback section -->
-                <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                    <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
-                        <?=HTML::image('img/email-publish.jpg', 'Icon Check')?>
-                    </a> 
-                <?endif?> 
-
+                <?//print_r($hosted_data)?>
                 </td></tr>
                 <tr height="25"></tr>
                 <tr><td colspan="2"><p style="line-height:1.6em;font-size:14px;color:#484747;"><?=$feedback_data->text?></p></td></tr>
@@ -295,6 +292,27 @@
                 </td></tr>
             </table>    
     	</td>
+    </tr>
+    <?if($autopost_check):?>
+        <tr>
+            <td style="padding:10px 50px 10px;">
+                <span style="font-size:12px;color:#333;">
+                    Based on your auto-posting settings, we have automatically published this feedback. (<a href="<?=$settings_url?>">Change</a>)
+                </span>
+            </td>
+        </tr>
+    <?endif?>
+    <tr>
+        <td style="padding:10px 50px 10px;">
+            <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
+                <a href="<?=URL::to("api/email?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}&action=$autopost")?>">
+                    <?=HTML::image('img/email-'.$autopost.'.png', 'Icon Check')?>
+                </a> 
+            <?endif?> 
+            <a href="<?=$login_url?>">
+                <?=HTML::image('img/email-manage.png')?>
+            </a>
+        </td>
     </tr>
     <tr>
     	<td style="padding:10px 50px 20px;">

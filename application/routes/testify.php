@@ -85,21 +85,40 @@ return array(
 
         $tf->beforeEach(function($tf) use ($id) {
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
-            $tf->data->dbuser    = new DBUser;
+            $tf->data->dbuser   = new DBUser;
+            $tf->data->hosted   = new Hosted\Repositories\DBHostedSettings;
             $tf->data->id = $id;
         });
 
         $tf->test('Email Test', function($tf) {  
             $feedback = $tf->data->feedback->pull_feedback_by_id($tf->data->id);
             $accounts = $tf->data->dbuser->pull_user_emails_by_company_id(6);
+            $hosted   = $tf->data->hosted->fetch_hosted_settings(6);
 
             $submission_data = new Email\Entities\NewFeedbackSubmissionData; 
             $submission_data->set_feedback($feedback)
-                            ->set_sendtoaddresses($accounts);
-
-     
+                            ->set_sendtoaddresses($accounts)
+                            ->set_hosteddata($hosted);
+ 
             $emailservice = new Email\Services\EmailService($submission_data);
             $emailservice->send_email();
+
+            /*
+            $replydata = new Email\Entities\ReplyData; 
+            $replydata->subject("and wanted you to know that we posted it on our website.")
+                      ->sendto("wrm932@gmail.com")
+                      ->from( 
+                          (object) Array(
+                            "replyto" => "me"
+                          , "username"  => ucfirst("Mathew")
+                          ) 
+                        )
+                      ->message("Hello we featured and replied to your feedback check it out <a href='".URL::to('/single/')."'>on our website</a>.")
+                      ->feedbackdata($feedback);            
+     
+            $emailservice = new Email\Services\EmailService($replydata);  
+            $emailservice->send_email(); 
+            */
         });
 
         $tf->run();  

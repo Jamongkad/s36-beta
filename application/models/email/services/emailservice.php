@@ -8,6 +8,7 @@ use Email\Entities\Invitation;
 use Email\Entities\FastForward;
 use Email\Entities\Reply;
 use Email\Entities\ResendPassword;
+use Email\Entities\Autopublish;
 
 class EmailService { 
 

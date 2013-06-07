@@ -41,9 +41,8 @@ class DBAdminReply extends S36DataObject {
     				->where('Feedback.feedbackId', '=', $feedback_id)
     				->first(array('Contact.email'));
             
-    		if(!empty($contact->email)) {
-                // enabled admin reply email again.
-                $this->email_admin_reply($contact->email, $feedback_id);
+    		if(!empty($contact->email)) { 
+                $this->email_admin_reply($contact->email, $data['adminReply'], $feedback_id);
             }
         }
 	}
@@ -65,8 +64,13 @@ class DBAdminReply extends S36DataObject {
 		}
 	}
 
-	public function email_admin_reply($to, $feedback_id) {
+	public function email_admin_reply($to, $message, $feedback_id) {
 		if($this->send_mail==true) {
+
+            if($message == "") {
+                $message = "Hello we featured and replied to your feedback check it out <a href='".URL::to('/single/'.$feedback_id)."'>on our website</a>.";     
+            }
+           
             $replydata = new ReplyData; 
             $replydata->subject("and wanted you to know that we posted it on our website.")
                       ->sendto($to)
@@ -76,7 +80,7 @@ class DBAdminReply extends S36DataObject {
                           , "username"  => ucfirst($this->username)
                           ) 
                         )
-                      ->message("Hello we featured and replied to your feedback check it out <a href='".URL::to('/single/'.$feedback_id)."'>on our website</a>.")
+                      ->message($message)
                       ->feedbackdata($this->dbfeedback->pull_feedback_by_id($feedback_id));            
      
             $emailservice = new EmailService($replydata);  

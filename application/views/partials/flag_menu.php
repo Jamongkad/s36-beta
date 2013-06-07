@@ -102,8 +102,8 @@
                     <?
                         $settings = Array(
                              'settings' => 'APPLICATION'
-                           , 'settings/company' => 'COMPANY'
-                           , 'settings/social'  => 'SOCIAL'
+                           //, 'settings/company' => 'COMPANY'
+                           //, 'settings/social'  => 'SOCIAL'
                            , 'settings/upgrade' => 'UPGRADE'
                            //, 'settings/change_card' => 'UPDATE CREDIT CARD'
                            //, 'settings/cancel_account' => 'CANCEL ACCOUNT'
