@@ -176,13 +176,17 @@ body, #mainWrapper, #fadedContainer{
 /* sorter filter in the inbox */
 #theInboxSorter{
     background:#FAFAFA;
-    padding:10px 10px 10px 5%;
+    padding:10px 10px 10px 0px;
 }
 .sorter-block{
     float:left;
     margin-right:20px;
     font-size:10px;
     color:#666;
+}
+.sorter-block.sorter-checkbox{
+    text-align: center;
+    width:5%;
 }
 .sorter-block-box select{
     border:1px solid #EEE;

@@ -1,6 +1,9 @@
 <div id="theInbox">
     <div id="theInboxSorter">
         <div class="grids">
+            <div class="sorter-block sorter-checkbox">
+                <div class="sorter-block-box"><input type="checkbox" /></div>
+            </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Selected</span>
                 <span class="sorter-block-box"><select><option>-</option><option>Publish</option></select></span>
