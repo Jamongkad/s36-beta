@@ -303,7 +303,7 @@
     <tr>
         <td style="padding:10px 50px 10px;">
             <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                <a href="<?=URL::to("api/".$autopost."?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>">
+                <a href="<?=URL::to("api/email?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}&action=$autopost")?>">
                     <?=HTML::image('img/email-'.$autopost.'.png', 'Icon Check')?>
                 </a> 
             <?endif?> 
