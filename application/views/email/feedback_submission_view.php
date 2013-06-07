@@ -20,7 +20,7 @@
 
     $metadata = (!empty($feedback_data->metadata)) ? json_decode($feedback_data->metadata) : false; 
     $attachments = (!empty($feedback_data->attachments)) ? json_decode($feedback_data->attachments) : false; 
-    $autopost = ($hosted_data->autopost_enable == 1) ? "unpublish" : "publish";
+    $autopost = ($hosted_data->autopost_enable == 1 and $feedback_data->rating == $hosted_data->autopost_rating) ? "unpublish" : "publish";
 ?>
 
 <body style="background:#e8e9ec;padding:0;margin:0;">
