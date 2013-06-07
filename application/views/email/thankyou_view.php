@@ -8,7 +8,7 @@
             <?if(is_object($activity_check)):?>
                 <?if($status == "publish"):?>
                     <h2>This feedback has already been published by <?=ucfirst($activity_check->username)?>.</h2>
-                <?else?>
+                <?else:?>
                     <h2>This feedback has been previously unpublished by <?=ucfirst($activity_check->username)?>.</h2>
                 <?endif?>
             <?else:?>
