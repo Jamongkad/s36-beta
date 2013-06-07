@@ -9,7 +9,7 @@
                             <?if($admin->avatar):?> 
                                 <?//=HTML::image('uploaded_cropped/48x48/'.$admin->avatar)?>
                                 <div class="admin-avatar-container">
-                                    <img src="/uploaded_images/admin_avatar/<?php echo $admin->avatar . '?' . str_shuffle(md5('get rid of cache')); ?>" width="48px" height="48px" />
+                                    <img src="/uploaded_images/admin_avatar/<?php echo $admin->avatar . '?' . str_shuffle('GetRidOfCache'); ?>" width="48px" height="48px" />
                                 </div>
                             <?else:?>
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>

@@ -18,6 +18,14 @@ var Helpers = new function() {
         return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');       
     };
     
+    this.links_to_urls = function(s){
+        return s.replace(/<a.+?>/g, '').replace(/<\/a>/g, '');
+    }
+    
+    this.urls_to_links = function(s){
+        return s.replace(/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/gi, '<a href="http://$1" target="_blank">$1</a>');
+    }
+    
     this.fb_comment_str = function(s){
         return me.nl2br(me.html2entities( s.replace(/^\s+|\s+$/g, '').replace(/[\n]{3,}/g, '\n\n') ));
     };
@@ -71,4 +79,25 @@ var Helpers = new function() {
     this.add_ellipse = function(str, len){
         return ( str.length > len ? str.substr(0, len) + '...' : str );
     }
+    
+    /* ========================================
+    || Display an awesome notification, mes = messages in array, delay = integer in millisecond
+    ==========================================*/
+    this.show_notification = function(mes, delay){
+        var delay = delay;
+        $('#notification-message').empty().html(mes);
+        $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
+            if(delay){
+                setTimeout(this.hide_notification,delay);       
+            }
+        });
+    }
+    
+    /* ========================================
+    || Hide the Notification
+    ==========================================*/
+    this.hide_notification = function(){
+        $("#notification").animate({ height: 0, opacity: 0 }, 'fast');
+    }
+    
 }

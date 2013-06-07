@@ -148,58 +148,16 @@
         ref.parentNode.insertBefore(js, ref);
     }(document, /*debug*/ false))
 </script>
-<div id="bodyColorOverlay"></div>
+
+<?= View::make('hosted/partials/fullpage_bar_view'); ?>
+<?= View::make('hosted/partials/fullpage_background_view'); ?>
+
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">
-
-            <div id="coverPhotoContainer">
-                <div id="coverPhoto">
-                    <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( is_null($company->coverphoto_src) ? '/img/sample-cover.jpg' : '/uploaded_images/coverphoto/' . $company->coverphoto_src ); ?>
-                        <input type="hidden" id="hidden_cover_photo" src="<?php echo $src; ?>" style="top: <?php echo (int)$company->coverphoto_top; ?>px; position: relative;" />
-                    <?php endif; ?>
-                    
-                    <?php if( ! is_null($company->coverphoto_src) ): ?>
-                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
-                    <?php else: ?>
-                        <?php if( ! is_null($user) ): ?>
-                            <img dir="/uploaded_images/coverphoto/" basename="" src="/img/sample-cover.jpg" />
-                        <?php else: ?>
-                            <img width="850px" src="/img/public-coverphoto.jpg" />
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
-                <div id="socialLinkIcons" class="clear">
-                    <div class="social-icon fb" style="display: <?= (trim($panel->facebook_url) == '' ? 'none' : ''); ?>;">
-                        <a id="fb_url" href="<?= $panel->facebook_url; ?>" target="_blank">
-                            <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
-                        </a>
-                    </div>
-                    <div class="social-icon tw" style="display: <?= (trim($panel->twitter_url) == '' ? 'none' : ''); ?>;">
-                        <a href="<?= $panel->twitter_url; ?>" target="_blank">
-                            <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- profile pic -->
-                <div id="avatarContainer">
-                    <?php if( ! is_null($user) ): ?>
-                        <?php $src = ( empty($company->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $company->logo ); ?>
-                        <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
-                        <input type="hidden" id="company_id" value="<?php echo $user->companyid; ?>" />
-                    <?php endif; ?>
-                    
-                    <?php if( ! empty($company->logo) ): ?>
-                        <img basename="" src="/uploaded_images/company_logos/main/<?php echo $company->logo; ?>" />
-                    <?php else: ?>
-                        <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
-                    <?php endif; ?>
-                </div>
-            </div>
-
-
+            
+            <?= View::make('hosted/partials/fullpage_cover_view'); ?>
+            
             <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
             <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
             
@@ -207,7 +165,7 @@
                 <div class="company-description clear">
                     <div class="company-text">
                         <? // keep the content of fullpage_desc_text in one line. ?>
-                        <div id="fullpage_desc" class="break-word" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                        <div id="fullpage_desc" class="break-word" itemprop="summary"><?= nl2br( Helpers::urls_to_links(HTML::entities($company->description)) ); ?></div>
                     </div>
                     <div class="send-button" widgetkey="<?=$company->widgetkey?>">
                         <a href="javascript:;">

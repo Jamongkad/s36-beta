@@ -72,7 +72,8 @@ return array(
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
                                                   , 'reportTypes'       => $feedbackReports->get_reportTypes()
                                                   , 'panel'             => $panel 
-                                                  , 'feed_advance_count' => $feed_advance_count));
+                                                  , 'feed_advance_count'=> $feed_advance_count
+                                                ));
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);
