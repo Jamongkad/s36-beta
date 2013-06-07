@@ -91,12 +91,13 @@ return array(
     */
 
     //TODO: REFACTOR THIS BITCH
-    'GET /api/unpublish' => Array('needs' => 'S36ValueObjects', 'do'  => function() use ($feedback) {
+    'GET /api/email' => Array('needs' => 'S36ValueObjects', 'do'  => function() use ($feedback) {
         
-        $encrypt = new Encryption\Encryption;
+        $encrypt        = new Encryption\Encryption;
         $string_params  = Input::get('params');
-        $feedback_id = Input::get('feedback_id');
-        $company_id  = Input::get('company_id');
+        $feedback_id    = Input::get('feedback_id');
+        $company_id     = Input::get('company_id');
+        $action         = Input::get('action');
 
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
@@ -109,6 +110,7 @@ return array(
         Helpers::dump($string_params);
         Helpers::dump($feedback_id);
         Helpers::dump($company_id);
+        Helpers::dump($action);
     }),  
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
