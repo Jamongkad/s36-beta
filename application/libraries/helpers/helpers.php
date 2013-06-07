@@ -219,7 +219,7 @@ class Helpers {
     public static function make_forward_url($company_id, $forward_url) { 
         $company = DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'));
         $host_url = strtolower($company->name).'.'.Config::get('application.hostname').'.com';
-        $login_url = trim("http://".$host_url."/login?forward_to=".$forward_url);
+        $login_url = trim("https://".$host_url."/login?forward_to=".$forward_url);
         return $login_url;
     }
 
