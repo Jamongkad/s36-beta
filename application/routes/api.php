@@ -128,7 +128,7 @@ return array(
                 $activity_check = $fba->log_activity();
                 
                 //if no record of activity
-                if(!is_object($activity_check)) { 
+                if(!is_object($activity_check) and $status == "publish") { 
                     $published_data = new Email\Entities\PublishedFeedbackData;
                     $published_data->set_publisher_email($publisher->email)
                                    ->set_feedback($feedback->pull_feedback_by_id($feedback_id))
@@ -146,10 +146,14 @@ return array(
 
                 $hostname = Config::get('application.hostname');
 
+                $settings_url = Helpers::make_forward_url($company_id, '/settings');
+
                 return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                     'company' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
                   , 'contact_name' => $contact->firstname
                   , 'activity_check' => $activity_check
+                  , 'status' => $status 
+                  , 'settings_url' => $settings_url
                   , 'hostname' => $hostname
                 ));       
             } else {
