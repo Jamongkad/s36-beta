@@ -326,6 +326,107 @@
     white-space:nowrap;
     color:#636363;
 }
+/* categories menu */
+.manage-categories-link{
+    font-size:11px;
+}
+.the-categories-menu{
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;      
+    background:#FFF url(../img/category-menu-bottom-line-effect.jpg) bottom no-repeat;
+    width:203px;
+    position:absolute;
+    right:31px;
+    border:1px solid #bfbfbf;
+    text-align:left;
+    box-shadow:#CCC 0px 2px 5px;
+    z-index:1;
+    display:none;
+}
+.the-category-arrow{
+    width:8px;
+    height:13px;
+    background:url(../img/category-menu-right-arrow.png) no-repeat;
+    position:absolute;
+    right:-8px;
+    top:10px;
+}
+.the-categories-menu-content{
+    margin:17px 18px;
+}
+.the-categories-menu .the-categories{
+    padding-bottom:6px;
+    margin-bottom:6px;
+}
+.the-categories-menu .the-categories-options{
+    font-size:11px;
+}
+.categories-combo{
+    margin:8px 0px;
+}
+.categories-combo select{
+    font-size:10px;
+    padding:2px 4px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;      
+    border:#CCC 1px solid;
+    width:100px;
+}
+.category-combo-name{
+    width:60px;
+    display:inline-block;
+    font-weight:bold;
+    color:#333;
+}
+.the-categories-menu .the-categories h3{
+    color:#19262c;
+    font-size:14px;
+    padding-bottom:10px;
+}
+.false-border{
+    border-top:1px solid #CCC;
+    margin-left:-18px;
+    margin-right:-18px;
+}
+.the-categories-delete{
+    margin-top:10px;
+    text-align:center;
+}
+.delete-button{
+    width:87px;
+    height:21px;
+    display:inline-block;
+    background:url(../img/delete-button.png) top;
+}
+.delete-button:hover{
+    background-position:bottom;
+}
+.the-categories-menu .the-categories ul{
+    margin-bottom:5px;
+}
+.the-categories-menu .the-categories ul li{
+    width:50%;
+    float:left;
+    border:none;
+    text-align:left;
+    padding:0px;
+    margin:8px 0px;
+    height:auto;
+    font-size:10px;
+}
+.the-categories-menu .the-categories ul li a{
+    color:#FFF;
+    padding:1px 6px 2px;
+    background:#598499; 
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    border-radius:15px;     
+}
+.the-categories-menu .the-categories ul li a:hover{
+    background:#97adb8;
+}
 /* Tablet Landscape */
 @media screen and (max-width: 480px) {
     .feedback-author span,.feedback-details span{
