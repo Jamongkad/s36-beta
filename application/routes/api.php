@@ -118,6 +118,8 @@ return array(
             $feedbackstate = new Feedback\Services\FeedbackState($status, Array($feed_obj), $company_id);
             $publish_success = $feedbackstate->change_state();
             $feedbackstate->write_summary();
+
+            Helpers::dump($publish_success);
         }
     }),  
 
