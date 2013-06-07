@@ -102,15 +102,21 @@ return array(
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
-
-        $status = 'restore';
+        
+        if($action == "publish") {
+            $status = "publish";
+        } 
+       
+        if($action == "unpublish") {
+            $status = "restore";
+        } 
 
         Helpers::dump($key);
         Helpers::dump($decrypt_string);
         Helpers::dump($string_params);
         Helpers::dump($feedback_id);
         Helpers::dump($company_id);
-        Helpers::dump($action);
+        Helpers::dump($status);
     }),  
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
