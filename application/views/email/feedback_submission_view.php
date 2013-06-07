@@ -291,7 +291,7 @@
             </table>    
     	</td>
     </tr>
-    <?if($hosted_data->autopost_enable == 1):?>
+    <?if($hosted_data->autopost_enable == 1 and $feedback_data->rating == $hosted_data->autopost_rating):?>
         <tr>
             <td style="padding:10px 50px 10px;">
                 <span style="font-size:12px;color:#333;">
