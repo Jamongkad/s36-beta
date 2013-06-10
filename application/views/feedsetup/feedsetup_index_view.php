@@ -1,71 +1,18 @@
-<div class="block">
-    <?if($hosted_full_page):?>
-        <div id="widget-setup-block">
-            <div class="widget-options">
-                <h2 class="ico-widget widget">
-                    <?=HTML::link('feedsetup/hosted_editor/'.$hosted_full_page->companyid
-                                  , 'Fullpage Feedback Display', Array('class' => 'widget-overview-btn'))?> 
-                    <small style="font-weight:normal;">(configure your fullpage feedback display)</small>
-                </h2>
-                <div class="widget-types">
-                    <div class="widget-info">
-                        <div class="grids">
-                            <div class="g2of3">
-                                <div class="widget-title">Fullpage Display</div>
-                                <table width="100%" cellpadding="0" cellspacing="0">
-                                    <tr><td width="90"><strong>Widget Type :</strong></td>
-                                        <td>Fullpage</td>
-                                    </tr>
-                                    <tr><td width="90"><strong>Theme :</strong></td>
-                                        <td><?=ucwords($hosted_full_page->theme_name)?></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="g1of3">
-                                <div class="right-align">
-                                    <ul class="widget-button-list">
-                                        <li>
-                                            <?=HTML::link('feedsetup/hosted_editor/'.$hosted_full_page->companyid, 'Edit'
-                                                          , array('class' => 'button-gray'))?>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                <div style="padding:15px"></div>
+<div id="theFormSetup" class="dashboard-page">
+	<h1>Form Setup</h1>
+    
+    <div class="dashboard-box">
+    	<div class="dashboard-head">
+          <span class="dashboard-title">Submission Forms</span> <span class="dashboard-subtitle">for accepting feedback from your customers/visitors</span>
+        </div>
+        <div class="dashboard-body">
+        	<div class="dashboard-content">
+            	<div class="form-setup-block">
+                	<div class="dashboard-text-large">The Fitness Center</div>
+                    <a href="#" class="dashboard-button gray">Edit</a><a href="#" class="dashboard-button blue">Integrate</a>
+                </div>
             </div>
         </div>
-    <?endif?>
-
-    <div id="widget-setup-block">
-        <div class="widget-options">
-            <h2 class="ico-widget form">
-                <?//=HTML::link('feedsetup/overview/submit', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> 
-                Submission Forms
-                <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors)</small>
-            </h2>
-            <?//=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
-
-            <?if($widgets->form_widgets->widget->widgets != null):?>
-                <span id="form-overview-target">
-                    <?=View::make('feedsetup/ajax_views/ajax_overview_view', Array(
-                        'widgets' => $widgets->form_widgets->widget
-                      , 'pagination' => $widgets->form_widgets->pagination
-                    ))->get();?>
-                </span>
-            <?else:?>
-                <div class="woops">
-                    <h2 class="woops-header">  
-                         <?=HTML::link('feedsetup/submission_widgets', 'Create your feedback submission form', Array('class' => 'woops-header'))?> 
-                    </h2>
-                    <p class="woops-content">
-                    <?=HTML::link('feedsetup/submission_widgets', 'Start receiving feedback from your customers/visitors', Array('class' => 'woops-a'))?> 
-                    </p>
-                </div>
-            <?endif?>
-        </div>
+        <div class="dashboard-foot"></div>
     </div>
-    <div style="height:200px"></div>
 </div>
