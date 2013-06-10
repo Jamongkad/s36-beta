@@ -104,6 +104,7 @@
                                             <span class="custom-meta-value">Henry Castor</span>
                                         </div>
                                     </div>
+                                    <!--
                                     <div class="feedback-custom-attachments">
                                         <div class="feedback-custom-att-container">
                                             <div class="grids">
@@ -122,6 +123,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    -->
                                 </div>
                                 <div class="feedback-details">
                                     <span class="feedback-details-rating <?=strtolower($feed->rating)?>">
