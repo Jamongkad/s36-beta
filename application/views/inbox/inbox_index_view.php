@@ -58,7 +58,7 @@
                                 <div class="feedback-title"><?=$feed->title?></div>
                                 <div class="feedback-text">
                                     <?=$feed->text?>
-                                    <?=($feed->origin == 'tw') ? ' via '.'<a style="color:#567aa7" href="'.$feed->profilelink.'/status/'.$feed->socialid.'">Twitter</a>a>': null?>
+                                    <?=($feed->origin == 'tw') ? ' via '.'<a style="color:#567aa7" href="'.$feed->profilelink.'/status/'.$feed->socialid.'">Twitter</a>': null?>
                                 </div>
                                 <div class="feedback-author">
                                     <span class="feedback-author-name"><?=$feed->firstname?> <?=$feed->lastname?></span>
