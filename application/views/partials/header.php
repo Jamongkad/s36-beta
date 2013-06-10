@@ -15,9 +15,8 @@
         <?=HTML::script('/js/jquery.iframe-transport.js'); ?>
         <?=HTML::script('/js/jquery.fileupload.js'); ?>
 
-        <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" /> 
 
-       
         <?=HTML::style('fullpage/common/css/S36FullpageCommon.css')?> 
         <?=HTML::style('fullpage/admin/css/S36FullpageAdmin.css')?> 
         <?=HTML::style('css/respond.css')?>       
@@ -41,6 +40,7 @@
             $(this).find('.the-categories-menu').fadeOut('fast');
         });
     });
+
     $(window).scroll(function() {
         
         var currentScroll = $('html').scrollTop() || $('body').scrollTop();
@@ -49,13 +49,13 @@
         }else{
             top_margin = 200;
         }
+
         $('.dashboard-feedback').each(function(){
             var top_offset = $(this).offset().top;
-            var bot_offset = $(this).height() + top_offset - currentScroll;
-            
-            //console.log('element : ' + $(this).index() + ' | current :' +currentScroll + ' | top offset :' + top_offset + ' | bot_offset :' + bot_offset);
-                
+            var bot_offset = $(this).height() + top_offset - currentScroll; 
             var add_margin = 40 + currentScroll - top_offset;
+            //console.log('element : ' + $(this).index() + ' | current :' +currentScroll + ' | top offset :' + top_offset + ' | bot_offset :' + bot_offset);        
+
             if((currentScroll >= top_offset) && (bot_offset >= top_margin)){
                 console.log('boom!' + $(this).index());
                 $(this).find('.feedback-action-menu').css('top',add_margin);
