@@ -211,7 +211,14 @@
                                         </div>
                                     <?endif?>
                                     <?if($reports):?>
-
+                                        <div style="color:#6499CD; font-size:11px; font-weight:bold">Feedback has been flagged:</div>
+                                        <div class="custom-meta-list grids">
+                                            <?foreach($reports as $report):?>
+                                                <div style="color: #a2a2a2; font-weight: normal">
+                                                    <?=$report['reporttype'];?>: <?=$report['reportcount']?>
+                                                </div>
+                                            <?endforeach?>
+                                        </div>
                                     <?endif?>
                                     <!--
                                     <div class="feedback-custom-attachments">
