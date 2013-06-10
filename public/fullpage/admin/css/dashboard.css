@@ -55,6 +55,7 @@ body, #mainWrapper, #fadedContainer{
     width:10%;
     float:left;
     padding-top:12px;
+    text-align:center;
 }
 
 .dashboard-feedback .feedback-contents{
