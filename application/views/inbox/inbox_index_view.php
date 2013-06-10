@@ -100,6 +100,31 @@
                                 ?>
                                 <?if($metadata || $attachments || $reports):?>
                                 <div class="feedback-custom-block">
+                                    <?if($metadata):?>
+                                        <div class="feedback-custom-metas grids">
+                                            <?foreach($metadata as $key => $val):?>
+                                                <?foreach($val as $k => $v):?>
+                                                    <div class="feedback-custom-meta">
+                                                        <?if($key == 'select'):?>
+                                                            <span class="custom-meta-name"><?=ucwords($k)?>:</span>
+                                                        <?endif?>
+                                                        <?if($key == 'checkbox' || $key == 'radio' || $key == 'text'):?>
+                                                            <span class="custom-meta-name"><?=ucwords(str_replace("_", " ", $k));?>:</span>
+                                                        <?endif?>
+                                                        <?
+                                                        $prefix = "";
+                                                        $value_list = "";
+                                                        foreach($v as $d) {
+                                                            $value_list .= "<span class='custom-meta-value'>" . $prefix . $d->value . "</span>";
+                                                            $prefix = ", ";
+                                                        }
+                                                        echo $value_list;
+                                                        ?>
+                                                    </div>
+                                                <?endforeach?>
+                                            <?endforeach?>
+                                        </div>
+                                    <?endif?>
                                     <!--
                                     <div class="feedback-custom-metas grids">
                                         <div class="feedback-custom-meta">
