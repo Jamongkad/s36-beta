@@ -97,7 +97,7 @@
                                 $metadata = (!empty($feed->metadata)) ? $feed->metadata : false;
                                 $attachments = (!empty($feed->attachments)) ? $feed->attachments : false;
                                 $reports = (!empty($feed->reports)) ? $feed->reports : false;
-                                Helpers::dump($metadata);
+                                Helpers::dump($feed->metadata);
                                 ?>
                                 <?if($metadata || $attachments || $reports):?>
                                 <div class="feedback-custom-block">
