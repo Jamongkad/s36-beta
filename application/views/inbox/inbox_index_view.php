@@ -43,8 +43,7 @@
                         <div class="feedback-avatar">
                             <?if($feed->origin == 's36'):?>
                                 <?if($feed->avatar):?>
-                                    <?=HTML::image('uploaded_images/avatar/medium/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
-                                    
+                                    <?=HTML::image('uploaded_images/avatar/medium/'.$feed->avatar, false, array('class' => 'small-avatar'))?> 
                                 <?else:?>
                                     <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                                 <?endif?>
