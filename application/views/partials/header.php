@@ -20,6 +20,7 @@
         <?=HTML::style('fullpage/common/css/S36FullpageCommon.css')?> 
         <?=HTML::style('fullpage/admin/css/S36FullpageAdmin.css')?> 
         <?=HTML::style('fullpage/admin/css/dashboard.css')?>
+        <?=HTML::style('css/zebra_pagination.css')?>
         
     </meta>    
 </head>
