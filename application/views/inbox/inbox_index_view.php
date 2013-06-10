@@ -55,15 +55,40 @@
                         </div>
                         <div class="feedback-contents">
                             <div class="responsive-padding">
-                                <div class="feedback-title">Stay fit and healthy. This is so cool! </div>
-                                <div class="feedback-text">I've been to a few gyms before</div>
+                                <div class="feedback-title"><?=$feed->title?></div>
+                                <div class="feedback-text"><?=$feed->text?></div>
                                 <div class="feedback-author">
-                                    <span class="feedback-author-name">Kc Cayamanda</span>
-                                    <span class="feedback-author-location">Philippines, PH</span>
+                                    <span class="feedback-author-name"><?=$feed->firstname?> <?=$feed->lastname?></span>
+                                    <span class="feedback-author-location"> 
+                                        <?if($feed->origin == 's36'):?>
+                                            <?if($feed->rating != "POOR"):?>
+                                               <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
+                                            <?endif?>
+                                        <?endif?>
+                                    </span>
                                     <span class="splitter">|</span>
-                                    <span class="feedback-author-date">March 29, 2013</span>
-                                    <span class="feedback-author-time">04:31:03 pm</span>
-                                    <span class="feedback-author-src">Facebook Verified</span>
+                                    <? $date = $feed->date; $unix = strtotime($date); ?>
+                                    <span class="feedback-author-date"><?=date('F j, Y', $unix);?></span>
+                                    <span class="feedback-author-time"><?=date('h:i:m a', $unix);?></span>
+                                    <span class="feedback-author-src"> 
+                                        <?if($feed->logintype == 'fb'):?>
+                                            <span class="author-social fb">
+                                                <a <?=(($feed->profilelink) ? "href='{$feed->profilelink}' target=_" : "href='#'")?>>
+                                                    <?=HTML::image('img/small-fb-icon.png')?>
+                                                    Facebook Verified
+                                                </a>
+                                            </span>
+                                        <?endif?>
+
+                                        <?if($feed->logintype == 'ln'):?>
+                                            <span class="author-social in">
+                                                <a <?=(($feed->profilelink) ? "href='{$feed->profilelink}' target=_" : "href='#'")?>>
+                                                    <?=HTML::image('img/small-in-icon.png')?>
+                                                    LinkedIn Verified
+                                                </a>
+                                            </span>
+                                        <?endif?>
+                                    </span>
                                 </div>
                                 <div class="feedback-custom-block">
                                     <div class="feedback-custom-metas grids">
