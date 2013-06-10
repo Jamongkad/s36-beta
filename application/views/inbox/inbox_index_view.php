@@ -178,36 +178,43 @@
                                             if(isset($attachments->uploaded_images)):
                                             ?>
                                             <?php
-                                                if(count($attachments->uploaded_images) == 1) $width='100%';
-                                                if(count($attachments->uploaded_images) == 2) $width='50%';
-                                                if(count($attachments->uploaded_images) == 3) $width='33%';
+                                                if(count($attachments->uploaded_images) == 1) $width='';
+                                                if(count($attachments->uploaded_images) == 2) $width='g1of2';
+                                                if(count($attachments->uploaded_images) == 3) $width='g1of3';
                                                 ?>
-                                                    <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                        <div class="image-block uploaded_image" style="width:<?=$width;?>">
-                                                            <div class="delete-block">x</div>
-                                                            <div class="the-thumb">
-                                                                <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
+                                                <div class="feedback-custom-attachments">
+                                                    <div class="feedback-custom-att-container">
+                                                        <div class="grids">
+                                                            <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                                <div class="custom-att <?=$width;?>">
+                                                                    <div class="delete-block">x</div>
+                                                                    <div class="the-thumb">
+                                                                        <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
 
-                                                                <?if(count($attachments->uploaded_images) == 1):?>
-                                                                    <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
-                                                                <?else:?>
-                                                                    <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
-                                                                <?endif?>
+                                                                        <?if(count($attachments->uploaded_images) == 1):?>
+                                                                            <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
+                                                                        <?else:?>
+                                                                            <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                                        <?endif?>
 
-                                                                </a>
-                                                                <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
-                                                                <input type="hidden" class="small-image-url" value="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>"/>
-                                                                <input type="hidden" class="medium-image-url" value="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"/>
-                                                                <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
-                                                            </div>
+                                                                        </a>
+                                                                        <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                                                        <input type="hidden" class="small-image-url" value="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>"/>
+                                                                        <input type="hidden" class="medium-image-url" value="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"/>
+                                                                        <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
+                                                                    </div>
+                                                                </div>
+                                                            <?php endforeach; ?>
                                                         </div>
-                                                    <?php endforeach; ?>
+                                                    </div>
+                                                </div>
                                             <?php
                                             /*
                                             | End Image Attachments
                                             */
                                             endif;
                                             ?>
+                                            </div>
                                         </div>
                                     <?endif?>
                                     <?if($reports):?>
