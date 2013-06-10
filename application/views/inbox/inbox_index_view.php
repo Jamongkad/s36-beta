@@ -323,5 +323,11 @@ I'd be looking forward to my next visit. </p></div>
             </div>
         </div>
         -->
+        <div class="c"></div> 
+        <?if($pagination):?>
+            <div style="padding:10px 28px 30px">
+                <?=$pagination?>
+            </div>
+        <?endif?>
     </div>
 </div>
