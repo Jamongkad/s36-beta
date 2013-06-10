@@ -63,6 +63,8 @@ return array(
           , 'company_id' => $company_id
           , 'reply_message' => json_encode($sm->jsonify())
         );
+
+        Helpers::dump($feedback->grouped_feeds);
         
         if(!Input::get('_pjax')) { 
             echo View::of_layout()->partial('contents', 'inbox/inbox_index_view', $view_data);
