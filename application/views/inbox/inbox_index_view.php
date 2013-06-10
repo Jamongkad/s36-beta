@@ -30,7 +30,15 @@
             </div>
         </div>
     </div>
+
     <div id="theInboxFeeds">
+        <?foreach($feedback as $feeds):?>
+            <div class="feedback-group">
+                <div class="feedback-date-header">
+                    <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
+                </div>
+            </div>
+        <?endforeach?>
         <div class="dashboard-feedback grids">
             <div class="custom-checkbox"><input type="checkbox" /></div>
             <div class="feedback-avatar"><img src="/fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>
@@ -170,6 +178,7 @@
                 </div>
             </div>
         </div>
+
         <div class="dashboard-feedback grids">
             <div class="custom-checkbox"><input type="checkbox" /></div>
             <div class="feedback-avatar"><img src="/fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>
