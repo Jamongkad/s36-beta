@@ -32,9 +32,6 @@
         },function(){
             $(this).next().fadeOut('fast');
         });
-        $('#theDashboardMenu ul li').click(function(){
-            $('#theDashboardMenu ul li').toggle();
-        });
         $('.save').hover(function(){
             $(this).find('.the-categories-menu').fadeIn('fast');
         },function(){
