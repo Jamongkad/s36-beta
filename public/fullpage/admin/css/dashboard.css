@@ -135,6 +135,22 @@ body, #mainWrapper, #fadedContainer{
     color:#FFF;
     text-shadow:#677a0c 0px -1px;
 }
+.feedback-details-rating.average{
+    background:#c1661c;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#8f4c15 0px -1px;
+}
+.feedback-details-rating.poor{
+    background:#c1431c;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#8f3215 0px -1px;
+}
 .feedback-title{
     color:#2c2c2c;
     font-size:20px;
