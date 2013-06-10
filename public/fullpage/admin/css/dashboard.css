@@ -119,6 +119,14 @@ body, #mainWrapper, #fadedContainer{
     border-radius:15px;     
     margin-right:6px;
 }
+.feedback-details-rating.excellent{
+    background:#109ca5;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#0c747a  0px -1px;
+}
 .feedback-details-rating.good{
     background:#8ba510;
     display:inline-block;
