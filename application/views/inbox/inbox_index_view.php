@@ -93,7 +93,14 @@
                                         <?endif?>
                                     </span>
                                 </div>
+                                <?
+                                $metadata = (!empty($feed->metadata)) ? $feed->metadata : false;
+                                $attachments = (!empty($feed->attachments)) ? $feed->attachments : false;
+                                $reports = (!empty($feed->reports)) ? $feed->reports : false;
+                                ?>
+                                <?if($metadata || $attachments || $reports):?>
                                 <div class="feedback-custom-block">
+                                    <!--
                                     <div class="feedback-custom-metas grids">
                                         <div class="feedback-custom-meta">
                                             <span class="custom-meta-name">Favorite Exercise : </span>
@@ -104,7 +111,6 @@
                                             <span class="custom-meta-value">Henry Castor</span>
                                         </div>
                                     </div>
-                                    <!--
                                     <div class="feedback-custom-attachments">
                                         <div class="feedback-custom-att-container">
                                             <div class="grids">
@@ -125,6 +131,7 @@
                                     </div>
                                     -->
                                 </div>
+                                <?endif?>
                                 <div class="feedback-details">
                                     <span class="feedback-details-rating <?=strtolower($feed->rating)?>">
                                         <?=$feed->rating?>
