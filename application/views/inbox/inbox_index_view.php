@@ -121,17 +121,19 @@
                                     </div>
                                 </div>
                                 <div class="feedback-details">
-                                    <span class="feedback-details-rating good">
-                                        GOOD
+                                    <span class="feedback-details-rating <?=strtolower($feed->rating)?>">
+                                        <?=$feed->rating?>
                                     </span>
-                                    <span class="feedback-details-privacy">PRIVATE</span>
+                                    <span class="feedback-details-privacy"><?=$feed->permission?></span>
                                     <span class="feedback-details-status">
-                                        Status : <small>New</small>
+                                        Status : <small><?=$feed->status?></small>
                                     </span>
                                     <span class="feedback-details-status">
-                                        Priority : <small>High</small>
+                                        Priority : <small><?=ucfirst($feed->priority)?></small>
                                     </span>
-                                    <span class="feedback-details-modify"><a href="#">Modify Additional Info</a></span>
+                                    <span class="feedback-details-modify">
+                                        <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
