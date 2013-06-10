@@ -16,9 +16,11 @@
         <?=HTML::script('/js/jquery.fileupload.js'); ?>
 
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
-        
+
+       
         <?=HTML::style('fullpage/common/css/S36FullpageCommon.css')?> 
         <?=HTML::style('fullpage/admin/css/S36FullpageAdmin.css')?> 
+        <?=HTML::style('css/respond.css')?>       
         <?=HTML::style('fullpage/admin/css/dashboard.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
         
