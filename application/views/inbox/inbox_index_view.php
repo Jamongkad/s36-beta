@@ -127,7 +127,7 @@
                                     <?endif?>
                                     <?if($attachments):?>
                                         <div class="feedback-custom-attachments">
-                                            
+                                            <input type="hidden" class="attachment_feedback_id" value="<?=$feed->id?>"/>
                                         </div>
                                     <?endif?>
                                     <?if($reports):?>
