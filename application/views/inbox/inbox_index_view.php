@@ -277,7 +277,7 @@
                                 <div class="action-gap"></div>
                                 <div class="grids">
                                     <script>
-                                        window.card = <?=json_encode($feed->reports)?>;
+                                        window.card = <?=json_encode($feed)?>;
                                     </script>
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu" ng-controller="FeedbackControl">
