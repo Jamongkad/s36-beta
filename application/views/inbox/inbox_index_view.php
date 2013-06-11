@@ -144,15 +144,17 @@
                                                     <?php 
                                                     //video attachments
                                                     if($attachments->attached_link->video=='yes'){?>
-                                                        <a class="inbox-fancybox-video" href="<?=str_replace('http','https',$attachments->attached_link->url)?>" rel="inbox-videos-<?=$id?>" style="display:block">
-                                                        <div class="video-circle"></div>
-                                                        <div class="the-thumb">
-                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                        </div>
+                                                        <a class="inbox-fancybox-video" 
+                                                           href="<?=str_replace('http','https',$attachments->attached_link->url)?>" 
+                                                           rel="inbox-videos-<?=$id?>" 
+                                                           style="display:block">
+                                                            <div class="video-circle"></div>
+                                                            <div class="the-thumb">
+                                                                <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                            </div>
                                                         </a>
                                                     <?php
-                                                    } 
-                                                    else{
+                                                    } else {
                                                     //web link
                                                     ?>
                                                         <div class="attached-link-thumb">
