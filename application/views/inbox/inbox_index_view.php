@@ -268,7 +268,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dashboard-feedback-actions grids" ng-init=<?=json_encode($feed)?>>
+                        <div class="dashboard-feedback-actions grids" ng-init="feedid=<?=$feed->id?>; catid=<?=$feed->categoryid?>">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
                                     <div class="action-sprite action-delete"></div>
