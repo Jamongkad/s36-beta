@@ -25,7 +25,7 @@ $(window).scroll(function() {
         var top_offset = $(this).offset().top;
         var bot_offset = $(this).height() + top_offset - currentScroll;
         
-        console.log('element : ' + $(this).index() + ' | current :' +currentScroll + ' | top offset :' + top_offset + ' | bot_offset :' + bot_offset);
+        //console.log('element : ' + $(this).index() + ' | current :' +currentScroll + ' | top offset :' + top_offset + ' | bot_offset :' + bot_offset);
             
         var add_margin = 40 + currentScroll - top_offset;
 
