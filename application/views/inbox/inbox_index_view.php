@@ -268,19 +268,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dashboard-feedback-actions grids">
-                            <div class="feedback-action-menu">
+                        <div class="dashboard-feedback-actions grids" params="<?=json_encode($feed)?>">
+                            <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
                                     <div class="action-sprite action-delete"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
                                 <div class="grids">
-                                    <script>
-                                        window.card = <?=json_encode($feed)?>;
-                                    </script>
                                     <!--beginning of feedback controls -->
-                                    <ul class="action-gray-menu" ng-controller="FeedbackControl">
+                                    <ul class="action-gray-menu">
                                         <li class="action-sprite publish">
                                             <div class="action-tooltip">
                                                 <span>Publish Feedback</span>
