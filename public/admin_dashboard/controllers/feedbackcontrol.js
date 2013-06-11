@@ -1,9 +1,10 @@
 function FeedbackControl($scope) { 
-    console.log($scope.feedid);
+
+    var feedid = $scope.feedid;
     console.log($scope.catid);
     
     $scope.delete_feedback = function() {
-        console.log("delete id:" + $scope.feedid);
+        console.log("delete id:" + this.feedid);
     }
 
 }
