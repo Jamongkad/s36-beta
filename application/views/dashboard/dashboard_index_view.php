@@ -1,4 +1,7 @@
-<?if ($dashboard_summary->dashscores != null): ?>
+<? if ($dashboard_summary->dashscores != null): ?>
+    <?= HTML::script('/js/jquery.flot.js'); ?>
+    <?= HTML::script('/js/jquery.flot.pie.js'); ?>
+    
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load('visualization', '1', {'packages': ['geochart']});
@@ -69,72 +72,70 @@
             });
         });
     </script>
-
-    <div class="block noborder">
-        <!--<h3>News from 36Stories: <span style="font-weight:normal">We've reached a new milestone today!</span></h3>-->
-    </div> 
-    <div class="block noborder grids">
-        <div class="dashboard-updates">
-            <!--<div class="dashboard-updates-title">Since your last visit... <?//=date("F", time())?></div>-->
-            <div class="dashboard-updates-title">Total Feedback Statistics<!--received for the month of <?=date("F", time())?>.--></div>
-            <div class="dashboard-updates-list pending">
-                <strong><?=HTML::link('inbox/all', $dashboard_summary->dashscores->newfeed." new entries")?></strong> are pending your review 
+    
+    <div id="theReports" class="dashboard-page">
+        <h1>Feedback received for the month of June</h1>
+        
+        <div class="reports-stats grids">
+            <div class="reports-stats-left">
+                <div class="reports-border">
+                    <div class="reports-block">
+                        <span class="report-text new"><strong><?=HTML::link('inbox/all', $dashboard_summary->dashscores->newfeed." new entries")?></strong> are pending for your review</span>
+                    </div>
+                    <div class="reports-block">
+                        <span class="report-text positive"><strong><?=HTML::link('inbox/positive', $dashboard_summary->dashscores->positivefeed." entries")?></strong> are rated positively</span>
+                    </div>
+                    <div class="reports-block">
+                        <span class="report-text neutral"><strong><?=HTML::link('inbox/neutral', $dashboard_summary->dashscores->neutralfeed." entries")?></strong> are rated neutral</span>
+                    </div>
+                    <div class="reports-block">
+                        <span class="report-text negative"><strong><?=HTML::link('inbox/negative', $dashboard_summary->dashscores->negativefeed." entries")?></strong> are rated negatively</span>
+                    </div>
+                </div>
             </div>
-            <div class="dashboard-updates-list positive">
-                <strong><?=HTML::link('inbox/positive', $dashboard_summary->dashscores->positivefeed." entries")?></strong> are rated positively 
-            </div>
-            <div class="dashboard-updates-list neutral">
-                <strong><?=HTML::link('inbox/neutral', $dashboard_summary->dashscores->neutralfeed." entries")?></strong> are rated neutral 
-            </div>
-            <div class="dashboard-updates-list negative">
-                <strong><?=HTML::link('inbox/negative', $dashboard_summary->dashscores->negativefeed." entries")?></strong> are rated negatively 
-            </div>
-        </div>
-        <div class="dashboard-pie-chart">
-            <h3 style="text-align:center">Feedback Rating Distribution</h3>
-            <div id="chart_div" style="width:200px;height:200px"></div>
-        </div>
-    </div>
-    <div class="block grids">
-        <div class="dashboard-graybox">
-            <div class="g1of3">
-                <h3>Contacts</h3>
-                <p><strong><?=$dashboard_summary->dashscores->newfeed?> incoming</strong> entries from contacts </p>
-            </div>
-            <div class="g1of3">
-                <h3>Feedback Statistics</h3>
-                <p><strong><?=$dashboard_summary->dashscores->feedfeatured?></strong> featured entries </p>
-                <p><strong><?=$dashboard_summary->dashscores->feedpublished?></strong> published entries </p>
-            </div>
-            <div class="g1of3">
-                <h3>Feedback Submitters</h3>
-                <p>Top country:<strong><?=$dashboard_summary->dashscores->topcountry?></strong> </p>
-                <p>Unique submitters: <strong> <?=$dashboard_summary->dashscores->contacttotal?></strong> </p>
+            <div class="reports-stats-right">
+                <div class="reports-chart">
+                    <br/><br/><p align="center">Feedback Rating Distribution</p><br/>
+                    <div id="chart_div" style="width: 200px; height: 200px; margin: 0 auto;"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="block">
-        <h3>GEO-DISTRIBUTION OF FEEDBACK</h3>
-        <div id="map_canvas">
+        <div class="dashboard-splitter"></div>
+        <div class="reports-blue-box">
+            <div class="grids">
+                <div class="report-box-left">
+                    <div class="reports-pad">
+                        <h4>Contacts</h4>
+                        <p><strong><?=$dashboard_summary->dashscores->newfeed?> incoming</strong> entries from contacts</p>
+                    </div>
+                </div>
+                <div class="report-box-center">
+                    <div class="reports-pad">
+                        <h4>Feedback Statistics</h4>
+                        <p><strong><?=$dashboard_summary->dashscores->feedfeatured?></strong> featured entries</p>
+                        <p><strong><?=$dashboard_summary->dashscores->feedpublished?></strong> published entries</p>
+                    </div>
+                </div>
+                <div class="report-box-right">
+                    <div class="reports-pad">                                
+                        <h4>Feedback Submitters</h4>
+                        <p>Top Country: <strong><?=$dashboard_summary->dashscores->topcountry?></strong></p>
+                        <p>Unique submitters: <strong><?=$dashboard_summary->dashscores->contacttotal?></strong></p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="dashboard-splitter"></div>
+        <strong>GEO-DISTRIBUTION of Feedback</strong><br />
+        <div class="reports-geo-heatmap">
+            <div class="reports-geo-pad">
+                <!-- insert map here -->
+                <div id="map_canvas"></div>
+            </div>
         </div>
     </div>
-    <!--
-    <div class="block">
-        <table width="100%" class="regular-table" cellpadding="0" cellspacing="0">
-            <thead>                        
-                <tr><td class="align-left">#</td><td>Category</td><td>% of total feedback</td><td>Entry page</td></tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>Usability<td>12%</td><td>http://36stories.com/featuredcustomers/?q=best%20books%20fo…eurs</td></tr>
-                <tr><td>2</td><td>Usability<td>12%</td><td>http://36stories.com/featuredcustomers/?q=best%20books%20fo…eurs</td></tr>
-                <tr><td>3</td><td>Usability<td>12%</td><td>http://36stories.com/featuredcustomers/?q=best%20books%20fo…eurs</td></tr>
-            </tbody>
-            <tfoot>
-                <tr><td colspan="4"></td></tr>
-            </tfoot>
-        </table>
-    </div>
-    -->
+    
 <?else:?> 
     <div class="woops">
         <h2>Woops. Since there's no feedback. We are unable to return any meaningful data.</h2><br/><br/>
