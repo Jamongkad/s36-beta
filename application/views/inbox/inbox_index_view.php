@@ -275,7 +275,10 @@
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
-                                <div class="grids" ng-init='feed=<?=json_encode($feed->reports)?>'>
+                                <div class="grids">
+                                    <script>
+                                        window.card = <?=json_encode($feed->reports)?>;
+                                    </script>
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu" ng-controller="FeedbackControl">
                                         <li class="action-sprite publish">

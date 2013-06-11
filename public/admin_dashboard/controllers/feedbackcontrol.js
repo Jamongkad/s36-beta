@@ -1,3 +1,4 @@
 function FeedbackControl($scope) { 
-    console.log($scope.param);
+    $scope.params = $window.card; 
+    console.log($scope.params);
 }
