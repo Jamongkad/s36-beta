@@ -275,8 +275,9 @@
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
-                                <div class="grids">
-                                    <ul class="action-gray-menu">
+                                <div class="grids" ng-init="param='<?=$feed->id?>';">
+                                    <!--beginning of feedback controls -->
+                                    <ul class="action-gray-menu" ng-controller="FeedbackControl">
                                         <li class="action-sprite publish">
                                             <div class="action-tooltip">
                                                 <span>Publish Feedback</span>
@@ -343,6 +344,7 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    <!--end of feedback controls -->
                                 </div>
                             </div>
                         </div>
