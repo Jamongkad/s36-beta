@@ -271,7 +271,7 @@
                         <div class="dashboard-feedback-actions grids" ng-init="feedid=<?=$feed->id?>; catid=<?=$feed->categoryid?>">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete"></div>
+                                    <div class="action-sprite action-delete" ng-click="delete()"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
