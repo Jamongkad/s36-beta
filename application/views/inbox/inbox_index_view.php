@@ -248,7 +248,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dashboard-feedback-actions grids" ng-init="feedid=<?=$feed->id?>; catid=<?=$feed->categoryid?>">
+                        <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
                                     <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)"></div>
@@ -258,25 +258,25 @@
                                 <div class="grids">
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu">
-                                        <li class="action-sprite publish">
+                                        <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Publish Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite feature">
+                                        <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Feature Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite reply">
+                                        <li class="action-sprite reply" ng-click="reply_feedback(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Reply to User</span>
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite contact">
+                                        <li class="action-sprite contact" ng-click="fast_forward(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Fast Forward</span>
                                                 <div class="action-tooltip-arrow"></div>
@@ -317,7 +317,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite flag-action">
+                                        <li class="action-sprite flag-action" ng-click="flag_feedback(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Flag Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
