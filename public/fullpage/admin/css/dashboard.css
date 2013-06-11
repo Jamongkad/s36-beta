@@ -67,6 +67,7 @@ body, #mainWrapper, #fadedContainer{
     width:10%;
     float:left;
     padding-top:12px;
+    text-align:center;
 }
 
 .dashboard-feedback .feedback-contents{
@@ -130,6 +131,14 @@ body, #mainWrapper, #fadedContainer{
     border-radius:15px;     
     margin-right:6px;
 }
+.feedback-details-rating.excellent{
+    background:#109ca5;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#0c747a  0px -1px;
+}
 .feedback-details-rating.good{
     background:#8ba510;
     display:inline-block;
@@ -137,6 +146,22 @@ body, #mainWrapper, #fadedContainer{
     font-size:10px;
     color:#FFF;
     text-shadow:#677a0c 0px -1px;
+}
+.feedback-details-rating.average{
+    background:#c1661c;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#8f4c15 0px -1px;
+}
+.feedback-details-rating.poor{
+    background:#c1431c;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#8f3215 0px -1px;
 }
 .feedback-title{
     color:#2c2c2c;
