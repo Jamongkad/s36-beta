@@ -1,3 +1,3 @@
 function FeedbackControl($scope) { 
-    console.log($scope.params);
+    console.log($scope.param);
 }
