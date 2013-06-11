@@ -229,26 +229,6 @@
                                             <?endforeach?>
                                         </div>
                                     <?endif?>
-                                    <!--
-                                    <div class="feedback-custom-attachments">
-                                        <div class="feedback-custom-att-container">
-                                            <div class="grids">
-                                                <div class="custom-att">
-                                                    <img src="/fullpage/admin/img/budoc.jpg" width="100%"/>
-                                                </div>
-                                                <div class="custom-att g1of3">
-                                                    <img src="/fullpage/admin/img/gels.jpg" width="100%"/>
-                                                </div>
-                                                <div class="custom-att g1of3">
-                                                    <img src="/fullpage/admin/img/yassi.jpg" width="100%"/>
-                                                </div>
-                                                <div class="custom-att g1of3">
-                                                    <img src="/fullpage/admin/img/jasmin.jpg" width="100%"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    -->
                                 </div>
                                 <?endif?>
                                 <div class="feedback-details">
@@ -271,7 +251,7 @@
                         <div class="dashboard-feedback-actions grids" ng-init="feedid=<?=$feed->id?>; catid=<?=$feed->categoryid?>">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete" ng-click="delete_feedback()"></div>
+                                    <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
