@@ -264,7 +264,7 @@
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)" feature feedid="<?=$feed->id?>">
+                                        <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)" feature>
                                             <div class="action-tooltip">
                                                 <span>Feature Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
