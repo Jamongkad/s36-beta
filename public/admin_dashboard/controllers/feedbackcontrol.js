@@ -1,6 +1,7 @@
-function FeedbackControl($scope) { 
+function FeedbackControl($scope, FeedbackControlService) { 
 
     $scope.feature_feedback = function(id) {
+        FeedbackControlService.feedid = id;
         console.log("feature id:" + id);
     }
     
