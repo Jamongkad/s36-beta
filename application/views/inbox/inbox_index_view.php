@@ -258,7 +258,7 @@
                                 <div class="grids">
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu">
-                                        <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)">
+                                        <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)" feature>
                                             <div class="action-tooltip">
                                                 <span>Publish Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>

@@ -34,6 +34,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('/admin_dashboard/directives/myrequest.js')?>
 <?=HTML::script('/admin_dashboard/directives/myfeedbackcount.js')?>
 <?=HTML::script('/admin_dashboard/directives/myformbuilder.js')?>
+<?=HTML::script('/admin_dashboard/directives/myfeedbackcontrol.js')?>
 
 <?=HTML::script('/admin_dashboard/controllers/feedbackcontrol.js')?>
 <?=HTML::script('/admin_dashboard/controllers/mainreplyctrl.js')?>
