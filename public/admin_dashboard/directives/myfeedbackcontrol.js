@@ -3,9 +3,8 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function($scope, element, attrs) {
-            var id = FeedbackControlService.get_id();
             $(element).bind('click', function(e) { 
-                console.log(id);
+                console.log(FeedbackControlService.get_id());
                 console.log("Feature Directive");
             });
         }
