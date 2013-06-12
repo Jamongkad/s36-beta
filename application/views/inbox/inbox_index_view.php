@@ -251,14 +251,14 @@
                         <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)"></div>
+                                    <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)" feature></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
                                 <div class="grids">
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu">
-                                        <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)" feature>
+                                        <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Publish Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>

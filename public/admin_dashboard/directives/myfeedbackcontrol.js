@@ -3,8 +3,8 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {
-                console.log("Feature Directive!");
+            $(element).bind('click', function(e) { 
+                console.log("Feature Directive: " + scope.featured_id);
             });
         }
     } 
