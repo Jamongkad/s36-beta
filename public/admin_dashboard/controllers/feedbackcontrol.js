@@ -1,4 +1,9 @@
 function FeedbackControl($scope) { 
+
+    $scope.feature_feedback = function(id) {
+        $scope.feature_id = id;
+        console.log("feature id:" + id);
+    }
     
     $scope.delete_feedback = function(id) {
         console.log("delete id:" + id);
@@ -6,10 +11,6 @@ function FeedbackControl($scope) {
 
     $scope.publish_feedback = function(id) {
         console.log("publish id:" + id);
-    }
-
-    $scope.feature_feedback = function(id) {
-        console.log("feature id:" + id);
     }
 
     $scope.reply_feedback = function(id) {
