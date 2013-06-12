@@ -16,4 +16,8 @@ function FeedbackControl($scope) {
         console.log("reply id:" + id);
     }
 
+    $scope.flag_feedback = function(id) { 
+        console.log("flag id:" + id);
+    }
+
 }
