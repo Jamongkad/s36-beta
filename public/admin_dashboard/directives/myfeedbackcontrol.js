@@ -4,7 +4,6 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function($scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                console.log(FeedbackControlService.feedid);
                 console.log($scope.feedid);
                 console.log("Feature Directive");
             });
