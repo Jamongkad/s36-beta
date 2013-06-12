@@ -251,7 +251,7 @@
                         <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)" feature></div>
+                                    <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
@@ -264,7 +264,7 @@
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)">
+                                        <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)" feature>
                                             <div class="action-tooltip">
                                                 <span>Feature Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
