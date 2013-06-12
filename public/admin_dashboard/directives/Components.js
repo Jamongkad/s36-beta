@@ -1,4 +1,4 @@
-angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
+angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback', 'feedbackcontrol'])
 .directive('openform', function() {
     return {
         restrict: 'A'     
