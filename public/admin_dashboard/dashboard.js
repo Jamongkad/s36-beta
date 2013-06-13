@@ -11,7 +11,7 @@ $(document).ready(function(){
         $(this).find('.the-categories-menu').fadeOut('fast');
     });
 });
-
+/*
 $(window).scroll(function() {
     
     var currentScroll = $('html').scrollTop() || $('body').scrollTop();
@@ -38,3 +38,4 @@ $(window).scroll(function() {
     });
     
 });
+*/
