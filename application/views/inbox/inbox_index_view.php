@@ -279,7 +279,6 @@
                                 <div class="grids">
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu">
-                                    
                                         <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
                                             <?if($admin_check->inbox_approve == 0) :?>
                                                 <li class="action-sprite publish">
@@ -413,78 +412,10 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 <?php endforeach ?>
             </div>
         <?endforeach?>
-        <!--
-        <div class="dashboard-feedback grids">
-            <div class="custom-checkbox"><input type="checkbox" /></div>
-            <div class="feedback-avatar"><img src="/fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>
-            <div class="feedback-contents">
-                <div class="responsive-padding">
-                    <div class="feedback-title">Stay fit and healthy. This is so cool! </div>
-                    <div class="feedback-text"><p>I've been to a few gyms before and I can confidently say that The Fitness Center 
-stands tall among others. It has a wide range of fitness equipment; from free 
-weights to machines, gym balls to thread mills, and skipping ropes to exercise 
-mats. Staff are friendly and accommodating, too. It was a fun experience and 
-I'd be looking forward to my next visit. </p><p>I've been to a few gyms before and I can confidently say that The Fitness Center 
-stands tall among others. It has a wide range of fitness equipment; from free 
-weights to machines, gym balls to thread mills, and skipping ropes to exercise 
-mats. Staff are friendly and accommodating, too. It was a fun experience and 
-I'd be looking forward to my next visit. </p><p>I've been to a few gyms before and I can confidently say that The Fitness Center 
-stands tall among others. It has a wide range of fitness equipment; from free 
-weights to machines, gym balls to thread mills, and skipping ropes to exercise 
-mats. Staff are friendly and accommodating, too. It was a fun experience and 
-I'd be looking forward to my next visit. </p><p>I've been to a few gyms before and I can confidently say that The Fitness Center 
-stands tall among others. It has a wide range of fitness equipment; from free 
-weights to machines, gym balls to thread mills, and skipping ropes to exercise 
-mats. Staff are friendly and accommodating, too. It was a fun experience and 
-I'd be looking forward to my next visit. </p></div>
-                    <div class="feedback-author">
-                        <span class="feedback-author-name">Kc Cayamanda</span>
-                        <span class="feedback-author-location">Philippines, PH</span>
-                        <span class="splitter">|</span>
-                        <span class="feedback-author-date">March 29, 2013</span>
-                        <span class="feedback-author-time">04:31:03 pm</span>
-                        <span class="feedback-author-src">Facebook Verified</span>
-                    </div>
-                    
-                    <div class="feedback-details">
-                        <span class="feedback-details-rating good">
-                            GOOD
-                        </span>
-                        <span class="feedback-details-privacy">PRIVATE</span>
-                        <span class="feedback-details-status">
-                            Status : <small>New</small>
-                        </span>
-                        <span class="feedback-details-status">
-                            Priority : <small>High</small>
-                        </span>
-                        <span class="feedback-details-modify"><a href="#">Modify Additional Info</a></span>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-feedback-actions grids">
-                <div class="feedback-action-menu">
-                    <div class="grids">
-                        <div class="action-sprite action-delete"></div>
-                        <div class="action-delete-tooltip"></div>
-                    </div>
-                    <div class="action-gap"></div>
-                    <div class="grids">
-                        <ul class="action-gray-menu">
-                            <li class="action-sprite publish"></li>
-                            <li class="action-sprite feature"></li>
-                            <li class="action-sprite reply"></li>
-                            <li class="action-sprite contact"></li>
-                            <li class="action-sprite save"></li>
-                            <li class="action-sprite flag-action"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
         <div class="c"></div> 
         <?if($pagination):?>
             <div style="padding:10px 2px 30px">
