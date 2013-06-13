@@ -279,7 +279,20 @@
                                 <div class="grids">
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu">
+                                        <li class="action-sprite publish">
+                                            <div class="action-tooltip">
+                                                <span>Disabled</span>
+                                                <div class="action-tooltip-arrow"></div>
+                                            </div>
+                                        </li>
 
+                                        <li class="action-sprite feature">
+                                            <div class="action-tooltip">
+                                                <span>Disabled</span>
+                                                <div class="action-tooltip-arrow"></div>
+                                            </div>
+                                        </li>
+                                        <!-- 
                                         <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
                                             <?if($admin_check->inbox_approve == 0) :?>
                                                 <li class="action-sprite publish">
@@ -343,6 +356,7 @@
                                                 </div>
                                             </li>
                                         <?endif?>
+                                        -->
                                         
                                         <?if($feed->email):?>
                                             <li class="action-sprite reply" ng-click="reply_feedback(<?=$feed->id?>)">
