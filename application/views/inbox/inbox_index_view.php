@@ -279,12 +279,38 @@
                                 <div class="grids">
                                     <!--beginning of feedback controls -->
                                     <ul class="action-gray-menu">
-                                        <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)">
-                                            <div class="action-tooltip">
-                                                <span>Publish Feedback</span>
-                                                <div class="action-tooltip-arrow"></div>
-                                            </div>
-                                        </li>
+
+                                        <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
+                                            <?if($admin_check->inbox_approve == 0) :?>
+                                                <li class="action-sprite publish">
+                                                    <div class="action-tooltip">
+                                                        <span>Disabled</span>
+                                                        <div class="action-tooltip-arrow"></div>
+                                                    </div>
+                                                </li>
+                                            <?else:?>
+                                                <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)" publish
+                                                    <?=($feed->ispublshed) ? "style='background-position: -32 -31px'" : null?>> 
+                                                    <div class="action-tooltip">
+                                                        <span>
+                                                            <?if($feed->ispublshed):?>
+                                                                Return to Inbox
+                                                            <?else:?>
+                                                                Publish Feedback 
+                                                            <?endif?>
+                                                        </span>
+                                                        <div class="action-tooltip-arrow"></div>
+                                                    </div>
+                                                </li>
+                                            <?endif?>
+                                        <?else:?>
+                                            <li class="action-sprite publish">
+                                                <div class="action-tooltip">
+                                                    <span>This feedback cannot be published.</span>
+                                                    <div class="action-tooltip-arrow"></div>
+                                                </div>
+                                            </li>
+                                        <?endif?>
 
                                         <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
                                             <?if($admin_check->inbox_feature == 0) :?>
@@ -317,13 +343,23 @@
                                                 </div>
                                             </li>
                                         <?endif?>
+                                        
+                                        <?if($feed->email):?>
+                                            <li class="action-sprite reply" ng-click="reply_feedback(<?=$feed->id?>)">
+                                                <div class="action-tooltip">
+                                                    <span>Reply to User</span>
+                                                    <div class="action-tooltip-arrow"></div>
+                                                </div>
+                                            </li>
+                                        <?else:?>
+                                            <li class="action-sprite reply">
+                                                <div class="action-tooltip">
+                                                    <span>No email available</span>
+                                                    <div class="action-tooltip-arrow"></div>
+                                                </div>
+                                            </li>
+                                        <?endif?>
 
-                                        <li class="action-sprite reply" ng-click="reply_feedback(<?=$feed->id?>)">
-                                            <div class="action-tooltip">
-                                                <span>Reply to User</span>
-                                                <div class="action-tooltip-arrow"></div>
-                                            </div>
-                                        </li>
                                         <li class="action-sprite contact" ng-click="fast_forward(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Fast Forward</span>
