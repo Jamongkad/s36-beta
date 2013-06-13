@@ -285,12 +285,39 @@
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)" feature>
-                                            <div class="action-tooltip">
-                                                <span>Feature Feedback</span>
-                                                <div class="action-tooltip-arrow"></div>
-                                            </div>
-                                        </li>
+
+                                        <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
+                                            <?if($admin_check->inbox_feature == 0) :?>
+                                                <li class="action-sprite feature">
+                                                    <div class="action-tooltip">
+                                                        <span>Disabled</span>
+                                                        <div class="action-tooltip-arrow"></div>
+                                                    </div>
+                                                </li>
+                                            <?else:?>
+                                                <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)" feature
+                                                    <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>>
+                                                    <div class="action-tooltip">
+                                                        <span>
+                                                            <?if($feed->isfeatured):?>
+                                                                Return to Inbox
+                                                            <?else:?>
+                                                                Feature Feedback
+                                                            <?endif?>
+                                                        </span>
+                                                        <div class="action-tooltip-arrow"></div>
+                                                    </div>
+                                                </li>
+                                            <?endif?>
+                                        <?else:?>
+                                            <li class="action-sprite feature">
+                                                <div class="action-tooltip">
+                                                    <span>This feedback cannot be featured.</span>
+                                                    <div class="action-tooltip-arrow"></div>
+                                                </div>
+                                            </li>
+                                        <?endif?>
+
                                         <li class="action-sprite reply" ng-click="reply_feedback(<?=$feed->id?>)">
                                             <div class="action-tooltip">
                                                 <span>Reply to User</span>
