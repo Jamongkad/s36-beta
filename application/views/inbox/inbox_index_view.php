@@ -290,10 +290,10 @@
                                                 </li>
                                             <?else:?>
                                                 <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)" publish
-                                                    <?=($feed->ispublshed) ? "style='background-position: -32 -31px'" : null?>> 
+                                                    <?=($feed->ispublished) ? "style='background-position: -32 -31px'" : null?>> 
                                                     <div class="action-tooltip">
                                                         <span>
-                                                            <?if($feed->ispublshed):?>
+                                                            <?if($feed->ispublished):?>
                                                                 Return to Inbox
                                                             <?else:?>
                                                                 Publish Feedback 
