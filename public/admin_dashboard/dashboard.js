@@ -11,7 +11,7 @@ $(document).ready(function(){
         $(this).find('.the-categories-menu').fadeOut('fast');
     });
 });
-/*
+/* removed for the mean time. buggy as hell
 $(window).scroll(function() {
     
     var currentScroll = $('html').scrollTop() || $('body').scrollTop();
