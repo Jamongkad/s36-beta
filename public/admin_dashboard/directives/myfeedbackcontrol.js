@@ -2,9 +2,9 @@ angular.module('feedbackcontrol', [])
 .directive('feature', function(FeedbackControlService) {
     return {
         restrict: 'A'     
-      , link: function($scope, element, attrs) {
+      , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                console.log(FeedbackControlService.get_id());
+                console.log(element);
                 console.log("Feature Directive");
             });
         }
