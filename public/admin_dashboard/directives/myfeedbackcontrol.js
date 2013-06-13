@@ -4,7 +4,10 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                $(element).parents('.dashboard-feedback').fadeOut(500);
+                var me = $(element);
+                me.parents('.dashboard-feedback').fadeOut(500, function() {
+                    console.log($(me).parents('.feedback-group'));
+                });
                 console.log("Feature Directive");
             });
         }
