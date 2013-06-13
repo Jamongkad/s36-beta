@@ -6,7 +6,32 @@
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Selected</span>
-                <span class="sorter-block-box"><select><option>-</option><option>Publish</option></select></span>
+                <span class="sorter-block-box">
+                    <?//show this when looking at inbox except when in deleted
+                    if(!preg_match('~inbox/deleted/all~', Request::uri(), $matches)):?>
+
+                        <?
+                         $links = Array(
+                             'none' => '-'
+                           , 'publish' => 'Publish'
+                           , 'feature' => 'Feature'
+                           , 'delete' => 'Delete'
+                         );
+
+                         if(preg_match_all('~inbox/published~', Request::uri(), $matches)) {
+                             unset($links['publish']);     
+                             unset($links['feature']);     
+                         }
+
+                         echo Form::select('feed_selection', $links, 'none');?> 
+                    <?else:?>
+                        <?=Form::select('feed_selection', Array(
+                            'none' => '-'
+                          , 'restore' => 'Restore'
+                          , 'remove' => 'Permanently Delete'
+                         ), 'none');?>
+                    <?endif?>
+                </span>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Date</span>
@@ -23,10 +48,6 @@
             <div class="sorter-block">
                 <span class="sorter-block-name">Rating</span>
                 <span class="sorter-block-box"><select><option>-</option><option>5</option></select></span>
-            </div>
-            <div class="sorter-block">
-                <span class="sorter-block-name">Display</span>
-                <span class="sorter-block-box"><select><option>-</option><option>10</option></select></span>
             </div>
         </div>
     </div>
