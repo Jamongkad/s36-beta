@@ -7,7 +7,10 @@ angular.module('feedbackcontrol', [])
                 var me = $(element);
                 me.parents('.dashboard-feedback').fadeOut(500, function() {
                     var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
-                    console.log(child_count);
+                    if(child_count.length == 0) {
+                        console.log("hide the group");
+                    }
+                    console.log(child_count.length);
                 });
                 console.log("Feature Directive");
             });
