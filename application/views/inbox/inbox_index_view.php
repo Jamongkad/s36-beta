@@ -8,7 +8,7 @@ $(window).scroll(function(){
 
 <div class="checky-box-container">
     <div class="j-j5-ji">
-        <div class="checky-bar"></div>
+        <div class="checky-bar" action="undo"></div>
     </div>
 </div>
 <div id="theInbox">
