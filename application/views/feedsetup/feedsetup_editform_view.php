@@ -19,14 +19,14 @@
 <h1>Form Setup</h1>
 
 <div class="dashboard-box">
-	<div class="dashboard-head">
+    <div class="dashboard-head">
       <span class="dashboard-title">Step 1 :</span> <span class="dashboard-subtitle">Choose a name for your form</span>
     </div>
     <div class="dashboard-body">
-    	<div class="dashboard-content">
-        	<div class="form-setup-block">
-            	<div class="form-setup-fields grids">
-                	<div class="form-setup-label">Form Name : </div>
+        <div class="dashboard-content">
+            <div class="form-setup-block">
+                <div class="form-setup-fields grids">
+                    <div class="form-setup-label">Form Name : </div>
                     <div class="form-setup-elem">
                         <input name="theme_name" type="text" class="dashboard-text" title="<?=$widget->widgetattr->theme_name?>" value="<?=$widget->widgetattr->theme_name?>" /></div>
                 </div>
@@ -35,28 +35,28 @@
     </div>
 </div>
 <div class="dashboard-box">
-	<div class="dashboard-head">
+    <div class="dashboard-head">
       <span class="dashboard-title">Step 2 :</span> <span class="dashboard-subtitle">Choose a question to encourage your users</span>
     </div>
     <div class="dashboard-body">
-    	<div class="dashboard-content">
-        	<div class="form-setup-block">
-            	<div class="form-setup-fields grids">
-                	<div class="form-setup-label">Form Header Text : </div>
+        <div class="dashboard-content">
+            <div class="form-setup-block">
+                <div class="form-setup-fields grids">
+                    <div class="form-setup-label">Form Header Text : </div>
                     <div class="form-setup-elem grids">
-                    	<div class="g2of3">
-                        	<input name="submit_form_text" type="text" class="dashboard-text" title="<?=$widget->widgetattr->submit_form_text?>" value="<?=$widget->widgetattr->submit_form_text?>" />
+                        <div class="g2of3">
+                            <input name="submit_form_text" type="text" class="dashboard-text" title="<?=$widget->widgetattr->submit_form_text?>" value="<?=$widget->widgetattr->submit_form_text?>" />
                         </div>
                     </div>
                 </div>
                 <div class="form-setup-fields grids">
-                	<div class="form-setup-label">What to write? </div>
+                    <div class="form-setup-label">What to write? </div>
                     <div class="form-setup-elem grids">
-                    	<div class="g2of3">
+                        <div class="g2of3">
                             <textarea name="submit_form_question" class="dashboard-textarea" title="<?=$widget->widgetattr->submit_form_question?>"><?=$widget->widgetattr->submit_form_question?></textarea>
                         </div>
                         <div class="g1of3">
-                        	<p class="dashboard-your-question">Questions to help your 
+                            <p class="dashboard-your-question">Questions to help your 
                                 customers/visitors respond 
                                 to your form in a certain way. 
                                 This text will appear if they 
@@ -69,18 +69,20 @@
     </div>
 </div>
 <div class="dashboard-box">
-	<div class="dashboard-head">
+    <div class="dashboard-head">
       <span class="dashboard-title">Step 3 :</span> <span class="dashboard-subtitle">Create custom fields for your form (optional)</span>
     </div>
     <div class="dashboard-body">
-    	<div class="dashboard-content">
-        	<div class="form-setup-block">
+        <div class="dashboard-content">
+            <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
+               Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
+               collect information in addition to your customer's feedback.</p>
+            <div class="form-setup-block">
+                <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" style="padding: 25px" id="form-builder"></div>
             </div>
         </div>
     </div>
 </div>
 <p><input type="submit" class="dashboard-button blue large" value="Update" my-createform/></p>
 </div>
-
-
 <?=Form::close()?>
