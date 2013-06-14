@@ -1,6 +1,6 @@
 <script>
 $(window).scroll(function(){
-    $(".checky-bar").css({"position": "fixed"})
+    $(".checky-bar").css({"position": "fixed", "margin-left": "-165px"});
 });
 </script>
 
