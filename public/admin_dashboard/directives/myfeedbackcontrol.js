@@ -4,7 +4,7 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , compile: function(tElement, tAttrs) {
 
-            var str = "<a undo class='undo'>Undo</a>"; 
+            var str = "This feedback has been featured. <a undo class='undo'>Undo</a>"; 
         
             return function(scope, element, attrs) {
                 $(element).bind('click', function(e) { 
