@@ -14,6 +14,7 @@ angular.module('feedbackcontrol', [])
                     }
                     
                     var str = "<a undo class='undo'>Undo</a>";
+                    $compile(str)(scope);
                     $(".checky-bar").html("Undo this shit mah nigguh? " + str);
 
                 });
