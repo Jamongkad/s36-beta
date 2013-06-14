@@ -12,7 +12,7 @@ angular.module('feedbackcontrol', [])
                     }
                     
                     var str = "<a undo class='undo'>Undo</a>";
-                    $(".checky-bar span").html("Undo this shit mah nigguh?");
+                    $(".checky-bar").html("Undo this shit mah nigguh?");
                 });
                 console.log("Feature Directive");
             });
