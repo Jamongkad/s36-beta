@@ -272,7 +272,7 @@
                         <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete" ng-click="delete_feedback(<?=$feed->id?>)"></div>
+                                    <div class="action-sprite action-delete" ng-click="feedback_status(<?=$feed->id?>, 'delete')"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
@@ -288,7 +288,7 @@
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite publish" ng-click="publish_feedback(<?=$feed->id?>)" publish
+                                                <li class="action-sprite publish" ng-click="feedback_status(<?=$feed->id?>, 'publish')" publish
                                                     <?=($feed->ispublished) ? "style='background-position: -32 -31px'" : null?>> 
                                                     <div class="action-tooltip">
                                                         <span>
@@ -400,7 +400,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite flag-action" ng-click="flag_feedback(<?=$feed->id?>)">
+                                        <li class="action-sprite flag-action" ng-click="feedback_status(<?=$feed->id?>, 'flag')">
                                             <div class="action-tooltip">
                                                 <span>Flag Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
