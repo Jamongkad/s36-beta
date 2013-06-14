@@ -13,7 +13,7 @@ angular.module('feedbackcontrol', [])
 
                     var html_str = "<a undo class='undo'>Undo</a>";
 
-                    $(".checky-bar").html("Undo this shit mah nigguh? " + html_str);
+                    $(".checky-bar span").html("Undo this shit mah nigguh? " + html_str);
                 });
                 console.log("Feature Directive");
             });
@@ -30,8 +30,4 @@ angular.module('feedbackcontrol', [])
         }
 
     }    
-})
-
-$(document).on("click", "a.undo", function() {
-    console.log("CLICKED ME");
 })
