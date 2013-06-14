@@ -602,4 +602,5 @@ a.undo, a.close-checky, a.hide-checkybar {
     color: #222222;
     font-size: 12px;
     font-weight: bold;
+    cursor: pointer;
 }
