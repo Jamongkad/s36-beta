@@ -572,7 +572,7 @@ body, #mainWrapper, #fadedContainer{
     padding:6px 6px;
     font-size:14px;
 }
-.form-setup-fields .form-setup-elem .dashboard-textarea{
+.dashboard-textarea{
     width:90%;
     margin:0px;
     -webkit-border-radius:2px;
@@ -604,7 +604,7 @@ body, #mainWrapper, #fadedContainer{
     margin-bottom:20px;
     position:relative;
 }
-.widget-setup-border{display:block;height:2px;background:url(../../../images/false-border.png);}
+.widget-setup-border{display:block;height:2px;background:url(/img/false-border.png);}
 .widget-options{
     padding-bottom:10px;
 }
@@ -626,7 +626,7 @@ body, #mainWrapper, #fadedContainer{
         display:block;
         padding-bottom:10px;
         margin:0px ;
-        background:url(../../../images/false-border.png) repeat-x bottom;
+        background:url(/img/false-border.png) repeat-x bottom;
     }
     .widget-types h3 label{cursor:pointer;}
     .widget-opts{
@@ -636,7 +636,7 @@ body, #mainWrapper, #fadedContainer{
     .templates ul li{width:84px;}
     
     a.button{
-        background:#d1e2f1 url(../../../images/button-highlight.png) top repeat-x;
+        background:#d1e2f1 url(/img/button-highlight.png) top repeat-x;
         color:#6b8194;
         padding:4px 11px;
         -webkit-border-radius:12px;
@@ -649,7 +649,7 @@ body, #mainWrapper, #fadedContainer{
     a.button:hover{background:#dce9f5;}
     
     a.button-gray{
-        background:#eceff1 url(../../../images/button-highlight.png) top repeat-x;
+        background:#eceff1 url(/img/button-highlight.png) top repeat-x;
         color:#6b8194;
         padding:4px 11px;
         text-decoration:none ;
@@ -691,7 +691,7 @@ body, #mainWrapper, #fadedContainer{
         .widget-block .html-code textarea{display:block;width:338px;height:133px;border:none;padding:10px;font-size:11px;}
         
         .widget-options .widget-title{color:#7093b2;font-size:20px;margin-bottom:10px;}
-        .widget-info{padding:10px 0px;background:url(../../../images/false-border.png) repeat-x bottom;}
+        .widget-info{padding:10px 0px;background:url(/img/false-border.png) repeat-x bottom;}
         .widget-info table{font-size:11px;}
         .widget-button-list{list-style:none;padding:0px;margin:0px;}
         .widget-button-list li{margin-bottom:12px ;}
@@ -700,8 +700,8 @@ body, #mainWrapper, #fadedContainer{
         .activePage{color:#7e7e7e;text-decoration:underline;}
         .widget-create{position:absolute;top:5px;right:15px;font-size:12px;color:#3f4a53;text-shadow:#EEE 0px 1px;font-weight:bold}
         .widget-create:hover{color:#FFF;text-shadow:#3f4a53 0px 1px;}
-        .widget-options h2.ico-widget{background:#6b7984 url(../../../images/ico-widgets.png) no-repeat top left;padding-left:24px;}
-        .widget-options h2.ico-widget.form{background:#6b7984 url(../../../images/ico-widgets.png) no-repeat bottom left;padding-left:23px;}
+        .widget-options h2.ico-widget{background:#6b7984 url(/img/ico-widgets.png) no-repeat top left;padding-left:24px;}
+        .widget-options h2.ico-widget.form{background:#6b7984 url(/img/ico-widgets.png) no-repeat bottom left;padding-left:23px;}
         
         
         /* submission widget */
@@ -720,14 +720,14 @@ body, #mainWrapper, #fadedContainer{
             width:25px;
             height:80px;
             cursor:pointer;
-            background:url(../../../images/btn-prev.png) no-repeat center center;
+            background:url(/img/btn-prev.png) no-repeat center center;
         }
         
         .form-design-next{
             float:right;
             width:25px;
             height:80px;
-            background:url(../../../images/btn-next.png) no-repeat center center;
+            background:url(/img/btn-next.png) no-repeat center center;
             cursor:pointer;
         }
         .l-design-prev,.r-design-prev,.br-design-prev,.bl-design-prev,.tr-design-prev,.tl-design-prev{
@@ -735,13 +735,13 @@ body, #mainWrapper, #fadedContainer{
             width:25px;
             height:80px;
             cursor:pointer;
-            background:url(../../../images/btn-prev.png) no-repeat center center;
+            background:url(/img/btn-prev.png) no-repeat center center;
         }
         .l-design-next,.r-design-next,.br-design-next,.bl-design-next,.tr-design-next,.tl-design-next{
             float:right;
             width:25px;
             height:80px;
-            background:url(../../../images/btn-next.png) no-repeat center center;
+            background:url(/img/btn-next.png) no-repeat center center;
             cursor:pointer; 
         }
         .form-designs,.l-designs,.r-designs,.br-designs,.bl-designs,.tr-designs,.tl-designs{
@@ -818,7 +818,7 @@ body, #mainWrapper, #fadedContainer{
                  visibility: hidden; }
         #formcodebox ul{list-style:none;margin:0;padding:0;width:180px;float:left;margin-top:0px;background:#FFF;height:400px;}
         #formcodebox ul li{padding:15px 20px 15px 50px;cursor:pointer;margin:0px ;
-            background:#FFF url(../../../images/formcodelinkicons.png) no-repeat;color:#627382;margin-top:-2px;
+            background:#FFF url(/img/formcodelinkicons.png) no-repeat;color:#627382;margin-top:-2px;
             border-bottom:1px solid #f0f2f3;position:relative;
         }
         #formcodebox ul li:hover{
@@ -834,7 +834,7 @@ body, #mainWrapper, #fadedContainer{
         #formcodebox ul li.formcodelink3{background-position:-157px -100px;}
         #formcodebox ul li.formcodelink4{background-position:-157px -151px;}
         #formcodebox ul li.active{background-color:#5e7790;color:#FFF;border-bottom:1px solid #f4f4f4;}
-        #formcodebox ul li div.formcodearrow{width:11px;height:41px;background:url(../../../images/formcodearrow.png) no-repeat;position:absolute;right:-11px;top:0px;display:none;}
+        #formcodebox ul li div.formcodearrow{width:11px;height:41px;background:url(/img/formcodearrow.png) no-repeat;position:absolute;right:-11px;top:0px;display:none;}
         #formcodeboxcontent{margin-left:180px;background:#f4f4f4;}
         
         
@@ -921,7 +921,90 @@ body, #mainWrapper, #fadedContainer{
         .reports-blue-box strong{
             font-weight:bold;
         }
-        
+/* skin for the custom field plugin */
+ #form-builder{
+  padding-top:10px;
+ }
+ .form-builder-field-selector{
+  display:block;
+  float:left;
+  width:20%;
+ }
+ #form-builder .form-builder-select{
+  margin-right:10px; 
+ }
+ #form-builder .form-builder-select select{
+  width:95%;
+ }
+ .form-builder-field-setup{
+  width:80%;
+  float:left;
+ }
+ .form-builder-field-setup li{
+  border:1px dashed #DDD;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;  
+  border-radius:2px;
+  padding:10px;
+  margin-bottom:10px;
+ }
+ .form-builder-field-selector select{
+  padding:4px;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  border-radius:2px;    
+  border:1px solid #dadada;
+ }
+ .form-builder-field-setup .legend{
+  margin-bottom:5px;
+  background:#F2F2F2;
+  padding:8px;
+  color:#444;
+ }
+ .form-builder-field-setup .legend:after{
+  clear:both;
+  content: '.';
+  visibility:hidden;
+  height:0px;
+  display:block;
+ }
+ .form-builder-field-setup .legend strong{
+  float:left;
+ }
+ .form-builder-field-setup .legend a{
+  float:right;
+  margin-left:10px;
+ }
+ .form-builder-field-setup .frm-fld{
+  margin-bottom:5px;
+ }
+ .form-builder-field-setup .frm-fld label{
+  width:10%;
+  display:inline-block;
+ }
+ .form-builder-field-setup input[type=text]{
+  padding:4px;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  border-radius:2px;    
+  border:1px solid #dadada;
+  width:75%;
+ }
+ .form-builder-field-setup .false-label{
+  margin-bottom:5px;
+ }
+ #form-builder ul{
+  list-style:none; 
+ }
+ #form-build .frmb{
+
+ }
+ /* end of skin */
+ .form-setup-elem .error{
+      color:#900;
+      display:block;
+      margin-top:7px;
+     }
 /* Tablet Landscape */
 @media screen and (max-width: 480px) {
     .feedback-author span,.feedback-details span{
@@ -1038,8 +1121,22 @@ body, #mainWrapper, #fadedContainer{
         margin-left:0px;
         margin-right:0px;       
     }
+     /* 6-14-2013 skin for custom field plugin */
+     .form-builder-field-selector{
+      display:block;
+      float:none;
+      width:100%;
+     }
+     .form-builder-field-setup{
+      display:block;
+      float:none;
+      width:100%;
+      margin-top:10px;
+     }
+     /* end of skin */
     
 }
+
 @media screen and (max-width: 875px) {
     #changeCoverButtonIcon{
         display:none;
