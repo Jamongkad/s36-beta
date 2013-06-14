@@ -1,5 +1,5 @@
 angular.module('feedbackcontrol', [])
-.directive('feature', function(FeedbackControlService) {
+.directive('feature', function(FeedbackControlService, $compile) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
@@ -11,7 +11,9 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
 
-                    $(".checky-bar").html("Undo this shit mah nigguh? <span undo></span> <a class='close-checky' href='#'>Close</a>");
+                    var html_str = $compile("Undo this shit mah nigguh? <span undo></span> <a class='close-checky' href='#'>Close</a>")(scope);
+
+                    $(".checky-bar").html(html_str);
                 });
                 console.log("Feature Directive");
             });
