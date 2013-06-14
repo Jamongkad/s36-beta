@@ -18,6 +18,7 @@ angular.module('feedbackcontrol', [])
                         }
                           
                         $(".checky-bar").html($compile(str)(scope));
+                        scope.$apply();
                     }); 
                 });
             } 
