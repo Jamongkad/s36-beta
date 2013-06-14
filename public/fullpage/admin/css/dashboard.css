@@ -580,6 +580,8 @@ body, #mainWrapper, #fadedContainer{
     text-align: center;    
     position: fixed;
     padding: 0;
+    margin-left:16px;
+    margin-right:16px;
 }
 
 .checky-bar {
