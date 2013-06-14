@@ -11,7 +11,7 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
 
-                    $(".checky-bar").html("Undo this shit mah nigguh?");
+                    $(".checky-bar").html("Undo this shit mah nigguh? <a href='#'>Undo</a> <a href='#'>Close</a>");
                 });
                 console.log("Feature Directive");
             });
