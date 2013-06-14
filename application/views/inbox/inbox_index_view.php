@@ -1,3 +1,9 @@
+<script>
+$(window).scroll(function(){
+    $(".checky-bar").stop().animate({"marginTop": ($(window).scrollTop()) + "px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+});
+</script>
+
 <div class="checky-box-container">
     <div class="j-j5-ji">
         <div class="checky-bar"></div>
