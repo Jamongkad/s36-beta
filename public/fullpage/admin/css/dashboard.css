@@ -599,8 +599,7 @@ body, #mainWrapper, #fadedContainer{
 }
 
 a.undo, a.close-checky, a.hide-checkybar {
-    color: #8e7676;
+    color: #222222;
     font-size: 12px;
     font-weight: bold;
-    padding-left: 20px;
 }
