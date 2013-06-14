@@ -1,6 +1,10 @@
 <script>
 $(window).scroll(function(){
-    $(".checky-bar").stop().animate({"marginTop": ($(window).scrollTop()) + "px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+    $(".checky-bar").css({
+                        "marginTop": ($(window).scrollTop()) + "px"
+                      , "marginLeft":($(window).scrollLeft()) + "px"
+                      , "position": "fixed"
+                     })
 });
 </script>
 
