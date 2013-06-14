@@ -10,10 +10,8 @@ angular.module('feedbackcontrol', [])
                     if(child_count.length == 0) {
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
-
-                    var html_str = "<a undo class='undo'>Undo</a>";
-
-                    $(".checky-bar span").html("Undo this shit mah nigguh? " + html_str);
+                    $(".checky-bar").show();
+                    $(".checky-bar span").html("Undo this shit mah nigguh?");
                 });
                 console.log("Feature Directive");
             });
