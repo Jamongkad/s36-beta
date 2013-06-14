@@ -27,8 +27,9 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            scope.template = "Mathew"
+            $(element).bind("click", function() {
+                console.log("Mathew is Kewl");
+            });
         }
-      , template: '<span compile-html="template"></span>'
     }    
 })
