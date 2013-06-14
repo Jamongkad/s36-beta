@@ -597,3 +597,10 @@ body, #mainWrapper, #fadedContainer{
     display: inline-block;    
     position: relative;
 }
+
+a.undo, a.close-checky, a.hide-checkybar {
+    color: #8e7676;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 20px;
+}
