@@ -578,6 +578,8 @@ body, #mainWrapper, #fadedContainer{
 
 .checky-box-container { 
     text-align: center;    
+    position: static;
+    padding: 0;
 }
 
 .checky-bar {
