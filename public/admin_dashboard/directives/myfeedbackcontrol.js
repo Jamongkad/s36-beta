@@ -1,5 +1,5 @@
 angular.module('feedbackcontrol', [])
-.directive('feature', function(FeedbackControlService, $compile) {
+.directive('feature', function(FeedbackControlService, $compile, $parse) {
     return {
         restrict: 'A'     
       , compile: function(element, attrs) {
@@ -14,7 +14,7 @@ angular.module('feedbackcontrol', [])
                             $(me).parents('.feedback-group').fadeOut(500);
                         }
                         
-                        var str = "Mathew is kewl <a undo class='undo'>Undo</a>"; 
+                        var str = $parse("<a undo class='undo'>Undo</a>");
                         $(".checky-bar").html( str );
 
                     });
