@@ -2,24 +2,26 @@ angular.module('feedbackcontrol', [])
 .directive('feature', function(FeedbackControlService, $compile) {
     return {
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) { 
-                var me = $(element)
-                me.parents('.dashboard-feedback').fadeOut(500, function() {
+      , compile: function(element, attrs) {
+            return function(scope, element, attrs) {
+                $(element).bind('click', function(e) { 
+                    var me = $(element)
+                    me.parents('.dashboard-feedback').fadeOut(500, function() {
 
-                    var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
+                        var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
 
-                    if(child_count.length == 0) {
-                        $(me).parents('.feedback-group').fadeOut(500);
-                    }
-                    
-                    var str = "Mathew is kewl <a undo class='undo'>Undo</a>"; 
-                    $(".checky-bar").html( str );
+                        if(child_count.length == 0) {
+                            $(me).parents('.feedback-group').fadeOut(500);
+                        }
+                        
+                        var str = "Mathew is kewl <a undo class='undo'>Undo</a>"; 
+                        $(".checky-bar").html( str );
 
+                    });
+                    console.log("Feature Directive");
                 });
-                console.log("Feature Directive");
-            });
-        }
+            }      
+        }    
     } 
 })
 .directive('undo', function() {
