@@ -1,5 +1,9 @@
 function FeedbackControl($scope, FeedbackControlService) { 
 
+    $scope.feedback_status = function(id, feed_status) { 
+        console.log(feed_status + " id:" + id);
+    }
+
     $scope.feature_feedback = function(id) {
         FeedbackControlService.change_status(id);
         console.log("feature id:" + id);

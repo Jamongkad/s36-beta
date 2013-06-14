@@ -320,7 +320,7 @@
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite feature" ng-click="feature_feedback(<?=$feed->id?>)" feature
+                                                <li class="action-sprite feature" ng-click="feedback_status(<?=$feed->id?>, 'feature')" feature
                                                     <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>>
                                                     <div class="action-tooltip">
                                                         <span>
