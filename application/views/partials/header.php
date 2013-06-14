@@ -14,7 +14,6 @@
         <?=HTML::script('/js/helpers.js'); ?>
         <?=HTML::script('/js/jquery.iframe-transport.js'); ?>
         <?=HTML::script('/js/jquery.fileupload.js'); ?>
-        <?=HTML::script('/js/angular.compilehtml.js'); ?>
         <?=HTML::script('/admin_dashboard/dashboard.js'); ?>
 
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" /> 

@@ -27,6 +27,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
+<?=HTML::script('/js/angular.compilehtml.js'); ?>
 <?=HTML::script('/admin_dashboard/services/SettingsService.js')?>
 <?=HTML::script('/admin_dashboard/services/feedbackcontrolservice.js')?>
 
