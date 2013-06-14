@@ -11,7 +11,7 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
 
-                    var html_str = "<a undo>Undo</a>";
+                    var html_str = "<a undo class='undo'>Undo</a>";
 
                     $(".checky-bar").html("Undo this shit mah nigguh? " + html_str);
                 });
@@ -25,9 +25,13 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function() {
-                console.log("CLICKED");
+                console.log("CLICKED")     
             })
         }
 
     }    
+})
+
+$(document).on("click", "a.undo", function() {
+    console.log("CLICKED");
 })
