@@ -11,7 +11,7 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
 
-                    var html_str = $compile("<span undo></span>")(scope);
+                    var html_str = "<a undo>Undo</a>";
 
                     $(".checky-bar").html("Undo this shit mah nigguh? " + html_str);
                 });
@@ -24,8 +24,10 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            scope.template = "Mathew";
+            $(element).bind("click", function() {
+                console.log("CLICKED");
+            })
         }
-      , template: '<span compile-html="template"></span>'
+
     }    
 })
