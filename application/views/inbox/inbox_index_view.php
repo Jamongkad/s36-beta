@@ -4,7 +4,7 @@ $(window).scroll(function(){
     $(".checky-bar").css({"position": "fixed", "margin-left": "-179px"});
 });
 
-$(".check-bar").hide();
+$(".checky-bar").hide();
 </script>
 
 <div class="checky-box-container">
