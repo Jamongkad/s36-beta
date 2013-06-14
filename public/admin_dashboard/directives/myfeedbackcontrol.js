@@ -14,7 +14,7 @@ angular.module('feedbackcontrol', [])
                     }
                     
                     var str = "<a undo class='undo'>Undo</a>"; 
-                    $(".checky-bar").html( $compile(str)(scope) );
+                    $(".checky-bar").html("Mathew"  + $compile(str)(scope) );
 
                 });
                 console.log("Feature Directive");
