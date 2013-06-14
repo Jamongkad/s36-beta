@@ -1,5 +1,7 @@
 <div class="checky-box-container">
-    <div class="checky-bar">This is a message</div>
+    <div class="j-j5-ji">
+        <div class="checky-bar">This is a message</div>
+    </div>
 </div>
 <div id="theInbox">
     <div id="theInboxSorter">
