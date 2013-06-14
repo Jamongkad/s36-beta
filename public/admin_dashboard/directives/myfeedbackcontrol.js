@@ -10,7 +10,8 @@ angular.module('feedbackcontrol', [])
                     if(child_count.length == 0) {
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
-                    $(".checky-bar").show();
+                    
+                    var str = "<a undo class='undo'>Undo</a>";
                     $(".checky-bar span").html("Undo this shit mah nigguh?");
                 });
                 console.log("Feature Directive");
@@ -22,10 +23,8 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).bind("click", function() {
-                console.log("CLICKED")     
-            })
+            scope.template = "Mathew"
         }
-
+      , template: '<span compile-html="template"></span>'
     }    
 })

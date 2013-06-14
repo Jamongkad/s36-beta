@@ -4,12 +4,11 @@ $(window).scroll(function(){
     $(".checky-bar").css({"position": "fixed", "margin-left": "-179px"});
 });
 
-$(".checky-bar").hide();
 </script>
 
 <div class="checky-box-container">
     <div class="j-j5-ji">
-        <div class="checky-bar"><span></span> <a undo class='undo'>Undo 2</a></div>
+        <div class="checky-bar"><span undo></span></div>
     </div>
 </div>
 <div id="theInbox">
