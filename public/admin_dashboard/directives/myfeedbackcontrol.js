@@ -11,10 +11,19 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
 
-                    $(".checky-bar").html("Undo this shit mah nigguh? <a class='undo' href='#'>Undo</a> <a class='close-checky' href='#'>Close</a>");
+                    $(".checky-bar").html("Undo this shit mah nigguh? <span undo></span> <a class='close-checky' href='#'>Close</a>");
                 });
                 console.log("Feature Directive");
             });
         }
     } 
-});
+})
+.directive('undo', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            scope.template = "Mathew";
+        }
+      , template: '<span compile-html="template"></span>'
+    }    
+})
