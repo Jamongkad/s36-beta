@@ -579,3 +579,16 @@ body, #mainWrapper, #fadedContainer{
 .checky-box-container { 
     text-align: center;    
 }
+
+.checky-bar {
+    background-color: #f9edbe;    
+    border-color: #f0c36D;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0 10px;
+    color: #222222;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    z-index: 990; 
+}
