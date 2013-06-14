@@ -10,6 +10,8 @@ angular.module('feedbackcontrol', [])
                     if(child_count.length == 0) {
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
+
+                    $(".checky-bar").html("Undo this shit mah nigguh?");
                 });
                 console.log("Feature Directive");
             });
