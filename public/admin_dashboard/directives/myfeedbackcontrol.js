@@ -13,8 +13,8 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
                     
-                    var str = "<a undo class='undo'>Undo</a>"; 
-                    $(".checky-bar").html("Mathew"  + $compile(str)(scope) );
+                    var str = "Mathew is kewl <a undo class='undo'>Undo</a>"; 
+                    $(".checky-bar").html( $compile(str)(scope) );
 
                 });
                 console.log("Feature Directive");
