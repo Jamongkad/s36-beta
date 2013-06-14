@@ -1,8 +1,6 @@
 <script>
 $(window).scroll(function(){
     $(".checky-bar").css({
-                        "marginTop": ($(window).scrollTop()) + "px"
-                      , "marginLeft":($(window).scrollLeft()) + "px"
                       , "position": "fixed"
                      })
 });
