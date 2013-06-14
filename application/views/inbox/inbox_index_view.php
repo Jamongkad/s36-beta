@@ -1,4 +1,5 @@
 <script>
+//this enables the checky-bar to be a fixture
 $(window).scroll(function(){
     $(".checky-bar").css({"position": "fixed", "margin-left": "-165px", "margin-top": "-100px"});
 });
