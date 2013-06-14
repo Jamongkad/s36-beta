@@ -578,11 +578,11 @@ body, #mainWrapper, #fadedContainer{
 
 .checky-box-container { 
     text-align: center;    
-    position: static;
     padding: 0;
 }
 
 .checky-bar {
+    position: static;
     background-color: #f9edbe;    
     border-color: #f0c36D;
     border-radius: 2px 2px 2px 2px;
