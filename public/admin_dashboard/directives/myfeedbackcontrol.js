@@ -11,7 +11,7 @@ angular.module('feedbackcontrol', [])
                         $(me).parents('.feedback-group').fadeOut(500);
                     }
 
-                    var html_str = $compile("Undo this shit mah nigguh? <span undo></span> <a class='close-checky' href='#'>Close</a>")(scope);
+                    var html_str = "Undo this shit mah nigguh? <span undo></span> <a class='close-checky' href='#'>Close</a>";
 
                     $(".checky-bar").html(html_str);
                 });
