@@ -33,5 +33,5 @@ angular.module('feedbackcontrol', [])
 })
 
 $(document).on("click", "a.undo", function() {
-    console.log("CLICKED");
+    console.log("CLICKED ME");
 })
