@@ -575,3 +575,7 @@ body, #mainWrapper, #fadedContainer{
         width:31px;
     }
 }
+
+.checky-box-container { 
+    text-align: center;    
+}
