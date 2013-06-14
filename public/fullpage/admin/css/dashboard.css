@@ -592,3 +592,8 @@ body, #mainWrapper, #fadedContainer{
     text-align: center;
     z-index: 990; 
 }
+
+.j-j5-ji {
+    display: inline-block;    
+    position: relative;
+}
