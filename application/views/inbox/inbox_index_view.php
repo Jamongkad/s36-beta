@@ -3,13 +3,13 @@
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
                 <div ng-switch-when="feature">
-                    Feedback has been featured on your page. <a class="undo" href="#">Undo</a> <a class="close-checky" href="#">Close</a>
+                    Feedback has been featured on your page. <a class="undo" href="#">Undo</a> <a close-checky class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="publish">
-                    Feedback has been published on your page. <a class="undo" href="#">Undo</a> <a class="close-checky" href="#">Close</a>
+                    Feedback has been published on your page. <a class="undo" href="#">Undo</a> <a close-checky class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="delete">
-                    Feedback has been deleted. <a class="undo" href="#">Undo</a> <a class="close-checky" href="#">Close</a>
+                    Feedback has been deleted. <a class="undo" href="#">Undo</a> <a close-checky class="close-checky" href="#">Close</a>
                 </div> 
             </span>
         </div>
