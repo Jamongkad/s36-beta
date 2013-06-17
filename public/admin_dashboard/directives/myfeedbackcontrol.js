@@ -15,10 +15,7 @@ angular.module('feedbackcontrol', [])
 
                         if(child_count.length == 0) {
                             $(me).parents('.feedback-group').fadeOut(500);
-                        }
-                          
-                        $(".checky-bar").html($compile(str)(scope));
-                        scope.$apply();
+                        }      
                     }); 
                 });
             } 
