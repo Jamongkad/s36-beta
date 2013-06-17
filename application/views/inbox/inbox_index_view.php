@@ -3,10 +3,9 @@
 $(window).scroll(function(){
     $(".checky-bar").css({"position": "fixed", "margin-left": "-179px"});
 });
-
 </script>
 
-<div class="checky-box-container">
+<div class="checky-box-container" ng-controller="CheckyBox">
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
