@@ -13,6 +13,29 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         console.log("reply id:" + id);
     }
 
+    $scope.is_selected = function(id) {
+        return $scope.selected.indexOf(id) >= 0;   
+    }
+
+    $scope.update_selected = function(action, id) {
+        if (action == 'add' & $scope.selected.indexOf(id) == -1)
+            $scope.selected.push(id);
+        if (action == 'remove' && $scope.selected.indexOf(id) != -1)
+            $scope.selected.splice($scope.selected.indexOf(id), 1);
+    }
+
+    $scope.update_selection = function($event, feed) {
+        var checkbox = $event.target;
+        var action = (checkbox.checked ? 'add' : 'remove');
+        $scope.update_selected(action, feed);
+        
+        if(checkbox.checked) { 
+            $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FAFAFA'});     
+        } else {
+            $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FFF'});     
+        }
+       
+    }
 }
 
 function CheckyBox($scope, FeedbackSignal) { 
