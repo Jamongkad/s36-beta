@@ -1,5 +1,5 @@
 angular.module('feedbackcontrol', [])
-.directive('unit_transform', function(FeedbackControlService, $compile) {
+.directive('transform', function(FeedbackControlService, $compile) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
