@@ -1,6 +1,7 @@
 function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) { 
 
     $scope.selected = [];
+    $scope.ids = [];
 
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
@@ -31,13 +32,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
-        $scope.selected.push( $(checkbox).val() );
+        console.log($scope.ids);
         /*
+        $scope.selected.push( $(checkbox).val() );
         console.log(checkbox.checked);
         console.log($(checkbox).val());
         */
 
-        console.log($scope.selected);
+        //console.log($scope.selected);
 
         //$scope.update_selected(action, feed);
         //console.log($scope.selected);
