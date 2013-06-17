@@ -3,13 +3,19 @@
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
                 <div ng-switch-when="feature">
-                    Feedback has been featured on your page. <a undo class="undo" href="#">Undo</a> <a close-checky class="close-checky" href="#">Close</a>
+                    Feedback has been featured on your page. 
+                    <a undo class="undo" href="#">Undo</a> 
+                    <a close-checky class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="publish">
-                    Feedback has been published on your page. <a undo class="undo" href="#">Undo</a> <a close-checky class="close-checky" href="#">Close</a>
+                    Feedback has been published on your page. 
+                    <a undo class="undo" href="#">Undo</a> 
+                    <a close-checky class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="delete">
-                    Feedback has been deleted. <a undo class="undo" href="#">Undo</a> <a close-checky class="close-checky" href="#">Close</a>
+                    Feedback has been deleted. 
+                    <a undo class="undo" href="#">Undo</a> 
+                    <a close-checky class="close-checky" href="#">Close</a>
                 </div> 
             </span>
         </div>
@@ -72,13 +78,19 @@
 
     <div id="theInboxFeeds">
         <?foreach($feedback as $feeds):?>
-            <div class="feedback-group">
+            <div class="feedback-group" ng-controller="FeedbackControl">
                 <div class="feedback-date-header">
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
                 </div>
                 <?php foreach($feeds->children as $feed):?>
                     <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
-                        <div class="custom-checkbox"><input type="checkbox" /></div>
+                        <div class="custom-checkbox">
+                            <input type="checkbox" 
+                                   value="<?=$feed->id?>"
+                                   name="feedid" 
+                                   ng-checked="is_selected(<?=$feed->id?>)" 
+                                   ng-click="update_selection($event, <?=$feed->id?>)"/>
+                        </div>
                         <div class="feedback-avatar">
                             <?if($feed->origin == 's36'):?>
                                 <?if($feed->avatar):?>
@@ -288,7 +300,7 @@
                             </div>
                         </div>
                         <div class="dashboard-feedback-actions grids">
-                            <div class="feedback-action-menu" ng-controller="FeedbackControl">
+                            <div class="feedback-action-menu">
                                 <div class="grids">
                                     <div class="action-sprite action-delete" transform ng-click="feedback_status(<?=$feed->id?>, 'delete')"></div>
                                     <div class="action-delete-tooltip"></div>
