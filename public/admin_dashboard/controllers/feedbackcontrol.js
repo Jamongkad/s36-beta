@@ -3,21 +3,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     $scope.selected = [];
     $scope.checkboxes = $("input[type=checkbox][name=feedid]");
 
-    $scope.feedback_status = function(id, feed_status) { 
-        console.log(feed_status + " id: " + id);
-        FeedbackSignal.prep_status_message(feed_status)
-        FeedbackControlService.change_status(id, feed_status);
-    }
-
-    $scope.reply_feedback = function(id) {
-        console.log("reply id:" + id);
-    }
-
-    $scope.is_selected = function(id) {
-        console.log($scope.selected.indexOf(id));
-        return $scope.selected.indexOf(id) >= 0;   
-    }
-
     var update_selected = function(action, id) {
 
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
@@ -28,6 +13,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);     
         } 
 
+    }
+
+    $scope.feedback_status = function(id, feed_status) { 
+        console.log(feed_status + " id: " + id);
+        FeedbackSignal.prep_status_message(feed_status)
+        FeedbackControlService.change_status(id, feed_status);
+    }
+
+    $scope.reply_feedback = function(id) {
+        console.log("reply id:" + id);
     }
 
     $scope.update_selection = function($event, feed) {
@@ -54,6 +49,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             var entity = $($scope.checkboxes[i]);
             update_selected(action, entity.val()); 
         }
+    }
+
+    $scope.is_selected = function(id) {
+        console.log($scope.selected.indexOf(id));
+        return $scope.selected.indexOf(id) >= 0;   
     }
 }
 
