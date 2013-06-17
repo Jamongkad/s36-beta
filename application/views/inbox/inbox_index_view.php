@@ -11,6 +11,7 @@ $(window).scroll(function(){
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
                 <div ng-switch-when="feature">Mathew is awesome!</div> 
+                <div ng-switch-default>Default</div> 
             </span>
         </div>
     </div>
