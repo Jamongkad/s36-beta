@@ -52,8 +52,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     }
 
     $scope.is_selected = function(id) {
-        console.log($scope.selected.indexOf(id) >= 0);
         return $scope.selected.indexOf(id) >= 0;   
+    }
+
+    $scope.is_selected_all = function() {
+        return $scope.selected.length === $scope.checkboxes.length;
     }
 }
 

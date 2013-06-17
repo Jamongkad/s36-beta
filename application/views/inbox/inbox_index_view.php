@@ -27,7 +27,7 @@
         <div class="grids">
             <div class="sorter-block sorter-checkbox">
                 <div class="sorter-block-box">
-                    <input type="checkbox" ng-click="select_all($event)"/>
+                    <input type="checkbox" ng-click="select_all($event)" ng-checked="is_selected_all()"/>
                 </div>
             </div>
             <div class="sorter-block">
