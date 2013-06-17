@@ -291,7 +291,7 @@ $(window).scroll(function(){
                         <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu" ng-controller="FeedbackControl">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete unit_transform" ng-click="feedback_status(<?=$feed->id?>, 'delete')"></div>
+                                    <div class="action-sprite action-delete" unit_transform ng-click="feedback_status(<?=$feed->id?>, 'delete')"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
@@ -307,7 +307,7 @@ $(window).scroll(function(){
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite publish unit_transform" ng-click="feedback_status(<?=$feed->id?>, 'publish')" publish
+                                                <li class="action-sprite publish" unit_transform ng-click="feedback_status(<?=$feed->id?>, 'publish')" publish
                                                     <?=($feed->ispublished) ? "style='background-position: -32 -31px'" : null?>> 
                                                     <div class="action-tooltip">
                                                         <span>
@@ -339,7 +339,7 @@ $(window).scroll(function(){
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite feature unit_transform" ng-click="feedback_status(<?=$feed->id?>, 'feature')" feature
+                                                <li class="action-sprite feature" unit_transform ng-click="feedback_status(<?=$feed->id?>, 'feature')" feature
                                                     <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>>
                                                     <div class="action-tooltip">
                                                         <span>
