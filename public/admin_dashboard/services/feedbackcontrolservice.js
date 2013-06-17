@@ -10,7 +10,19 @@ angular.module('Services', [])
     return shared_service;
 })
 .service('FeedbackSignal', function($rootScope) {     
+
     var shared_service = {};
-    shared_service.feed_status;
+ 
+    shared_service.feed_status = '';
+
+    shared_service.prep_status_message = function(msg) {
+        this.feed_status = msg;     
+        this.broadcast_now();
+    }
+
+    shared_service.broadcast_now = function() {
+        $rootScope.$broadcast('checkFeedbackStatus');
+    }
+
     return shared_service;
 })
