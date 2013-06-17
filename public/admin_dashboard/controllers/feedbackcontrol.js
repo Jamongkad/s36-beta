@@ -37,7 +37,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         */
         //$scope.update_selected(action, feed);
         //console.log($scope.selected);
-        $(".custom-checkbox").delegate("input[type=checkbox]", 'change', function() { 
+        $("input[type=checkbox][name=feedid]").unbind('change.select').bind('change.select', function() { 
             var $this = $(this); 
             console.log($this.val());
         });
