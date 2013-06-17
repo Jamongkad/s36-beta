@@ -28,6 +28,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
         $scope.update_selected(action, feed);
+
+        console.log("Pwet");
         
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FAFAFA'});     
