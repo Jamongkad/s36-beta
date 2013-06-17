@@ -9,3 +9,8 @@ angular.module('Services', [])
 
     return shared_service;
 })
+.service('FeedbackSignal', function($rootScope) {     
+    var shared_service = {};
+    shared_service.feed_status;
+    return shared_service;
+})
