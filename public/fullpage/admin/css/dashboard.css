@@ -1008,7 +1008,7 @@ body, #mainWrapper, #fadedContainer{
         line-height:1.2em;
         font-style:normal;
         margin-left:40px;
-        padding-top:7px;
+        /*padding-top:7px;*/
     }
     .display-feedback-block .admin-comment-block{
         margin-left: 0px;

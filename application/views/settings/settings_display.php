@@ -91,28 +91,28 @@
                                     <span class="vote_count">98</span> people found this useful
                                 </div>
                                 <div class="feedback-text">
-                                    It was a fun experience and looking forward on my next visit.
+                                    I would like to give you a two thumbs up for the services that you have provided to me and my dog BunBun
                                 </div>
                                 <div class="additional-contents">
                                     <div class="uploaded-images clear">
                                         <div class="uploaded-image">
                                             <div class="padded-5">
                                                 <div class="the-thumb">
-                                                    <img src="/img/48x48-blank-avatar.jpg" width="100%" />
+                                                    <img src="https://petopia.fdback.com/uploaded_images/form_upload/small/bd74f13dd21cd41996d64a50f3800281.jpg" width="100%" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="uploaded-image">
                                             <div class="padded-5">
                                                 <div class="the-thumb">
-                                                    <img src="/img/48x48-blank-avatar.jpg" width="100%" />
+                                                    <img src="https://petopia.fdback.com/uploaded_images/form_upload/small/59ddf568895a4269733e65f73b5105aa.jpg" width="100%" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="uploaded-image">
                                             <div class="padded-5">
                                                 <div class="the-thumb">
-                                                    <img src="/img/48x48-blank-avatar.jpg" width="100%" />
+                                                    <img src="https://petopia.fdback.com/uploaded_images/form_upload/small/77658ef90dd2a92ddb4eae24303a22ea.jpg" width="100%" />
                                                 </div>
                                             </div>
                                         </div>
@@ -123,12 +123,12 @@
                                                 <div class="video-thumb">
                                                     <div class="video-circle"></div>
                                                     <div class="the-thumb">
-                                                        <img src="https://i2.ytimg.com/vi/hLp4xx-mp1k/hqdefault.jpg" width="100%" />
+                                                        <img src="http://i2.ytimg.com/vi/hzNmbzhQ6Wc/hqdefault.jpg" width="100%" />
                                                     </div>
                                                 </div>
                                                 <div class="video-details">
-                                                    <h3>Tesla Electricity documentary part 4/4</h3>
-                                                    <p>Nikola Tesla was beyond a doubt the greatest genius of the 20th century. Our way...</p>
+                                                    <h3>Black Pug Puppy</h3>
+                                                    <p>My Black Pug loves carrots! But he is not very good at catchin...</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,8 +148,8 @@
                             <div class="feedback-options clear">
                                 <div class="feedback-icon-list clear">
                                     <div class="feedback-recommendation">
-                                                                <div class="green-thumb">Recommended by Beatrice to friends</div>
-                                                            <div class="vote-block">
+                                        <div class="green-thumb">Recommended by John to friends</div>
+                                        <div class="vote-block">
                                             <span class="vote-action ">
                                                 Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                                             </span>
