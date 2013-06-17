@@ -34,6 +34,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         $("input[type=checkbox][name=feedid]:checked").each(function() {
             $scope.selected.push( $(this).val() );
         });
+
+        console.log($scope.selected);
         /*
         $scope.selected.push( $(checkbox).val() );
         console.log(checkbox.checked);
