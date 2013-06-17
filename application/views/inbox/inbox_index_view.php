@@ -22,11 +22,13 @@
     </div>
 </div>
 
-<div id="theInbox">
+<div id="theInbox" ng-controller="FeedbackControl">
     <div id="theInboxSorter">
         <div class="grids">
             <div class="sorter-block sorter-checkbox">
-                <div class="sorter-block-box"><input type="checkbox" /></div>
+                <div class="sorter-block-box">
+                    <input type="checkbox" />
+                </div>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Selected</span>
@@ -76,7 +78,7 @@
         </div>
     </div>
 
-    <div id="theInboxFeeds" ng-controller="FeedbackControl">
+    <div id="theInboxFeeds">
         <?foreach($feedback as $feeds):?>
             <div class="feedback-group">
                 <div class="feedback-date-header">

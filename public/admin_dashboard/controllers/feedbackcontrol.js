@@ -32,19 +32,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-        /*
-        $("input[type=checkbox][name=feedid]").unbind('change.select').bind('change.select', function() { 
-            console.log($(this).val());
-            console.log(action);
-            $scope.update_selected(action, $(this).val()); 
-            $scope.selected.push($(this).val());     
-            console.log($scope.selected);
-        });
-        */
 
         $scope.update_selected(action, feed); 
-
-        console.log($scope.selected);
 
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
@@ -52,6 +41,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FFF'});     
         } 
 
+    }
+
+    $scope.select_all = function($event) { 
+        console.log("Mathew selects all!");
     }
 }
 
