@@ -8,9 +8,14 @@ $(window).scroll(function(){
 
 <div class="checky-box-container">
     <div class="j-j5-ji">
-        <div class="checky-bar" action="undo"></div>
+        <div class="checky-bar">
+            <span ng-switch on="status_selection"> 
+                <div ng-switch-on="feature">Mathew is awesome!</div> 
+            </span>
+        </div>
     </div>
 </div>
+
 <div id="theInbox">
     <div id="theInboxSorter">
         <div class="grids">
