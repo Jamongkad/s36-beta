@@ -30,22 +30,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-
-        $("input[type=checkbox][name=feedid]:checked").each(function() {
-            $scope.selected.push( $(this).val() );
-        });
-
-        console.log($scope.selected);
         /*
         $scope.selected.push( $(checkbox).val() );
         console.log(checkbox.checked);
         console.log($(checkbox).val());
         */
-
-        //console.log($scope.selected);
-
         //$scope.update_selected(action, feed);
         //console.log($scope.selected);
+        $(".custom-checkbox").delegate("input[type=checkbox]", 'change', function() { 
+            var $this = $(this); 
+            console.log($this.val());
+        });
 
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
