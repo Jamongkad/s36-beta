@@ -56,7 +56,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
                 entity.prop("checked", false);     
             }
            
-            update_selected(action, entity.val()); 
+            update_selected(action, parseInt(entity.val(), 10)); 
         }
     }
 
