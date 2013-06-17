@@ -10,7 +10,7 @@ $(window).scroll(function(){
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
-                <div ng-switch-on="feature">Mathew is awesome!</div> 
+                <div ng-switch-when="feature">Mathew is awesome!</div> 
                 <div ng-switch-default>Default</div> 
             </span>
         </div>
