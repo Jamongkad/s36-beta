@@ -35,6 +35,7 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind("click", function() {
                 console.log("Mathew is Awesome");
+                $(".checky-box-container").hide();
             }); 
         }
     }    
