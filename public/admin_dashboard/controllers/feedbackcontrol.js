@@ -17,6 +17,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     }
 
     $scope.update_selected = function(action, id) {
+        /*
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
             $scope.selected.push(id);     
         }
@@ -24,6 +25,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);     
         } 
+        */
+
+        if (action == 'add') {
+            $scope.selected.push(id);     
+        }
+       
     }
 
     $scope.update_selection = function($event, feed) {
@@ -35,13 +42,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         console.log(checkbox.checked);
         console.log($(checkbox).val());
         */ 
-        //console.log($scope.selected);
         $("input[type=checkbox][name=feedid]").unbind('change.select').bind('change.select', function() { 
-            var $this = $(this); 
-            $scope.update_selected(action, $this.val());
+            console.log($(this).val());
+            console.log(action);
+            $scope.update_selected(action, $(this).val());
+            console.log($scope.selected);
         });
-
-        console.log($scope.selected);
 
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
