@@ -589,8 +589,11 @@ body, #mainWrapper, #fadedContainer{
     color: #222222;
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
     z-index: 990; 
+
+    position: fixed; 
+    margin-left: -250px;
+    left: 50%;
 }
 
 .j-j5-ji {
