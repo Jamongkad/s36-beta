@@ -13,6 +13,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);     
         } 
 
+        console.log($scope.selected);
+
     }
 
     $scope.feedback_status = function(id, feed_status) { 
