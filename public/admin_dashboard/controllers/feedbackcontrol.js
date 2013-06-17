@@ -30,6 +30,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
+
+        console.log(checkbox.checked);
         console.log($(checkbox).val());
         //$scope.update_selected(action, feed);
         //console.log($scope.selected);
