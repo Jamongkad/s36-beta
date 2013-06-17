@@ -14,6 +14,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     }
 
     $scope.is_selected = function(id) {
+        console.log($scope.selected.indexOf(id));
         return $scope.selected.indexOf(id) >= 0;   
     }
 
@@ -51,8 +52,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
         for(var i=0; i < $scope.checkboxes.length; i++) {
             var entity = $($scope.checkboxes[i]);
-            console.log(entity.id);
-            console.log(entity.val());
             update_selected(action, entity.val()); 
         }
     }
