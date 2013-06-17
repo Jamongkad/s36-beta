@@ -30,6 +30,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         $scope.update_selected(action, feed);
 
         console.log(checkbox.checked); 
+        console.log(checkbox); 
         
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FAFAFA'});     
