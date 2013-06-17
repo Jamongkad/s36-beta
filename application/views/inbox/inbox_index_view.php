@@ -2,9 +2,15 @@
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
-                <div ng-switch-when="feature">Feedback has been featured on your page. <a class="undo" href="#">Undo</a> <a class="close" href="#">Close</a></div> 
-                <div ng-switch-when="publish">Feedback has been published on your page. <a class="undo" href="#">Undo</a> <a class="close" href="#">Close</a></div> 
-                <div ng-switch-when="delete">Feedback has been deleted. <a class="undo" href="#">Undo</a> <a class="close" href="#">Close</a></div> 
+                <div ng-switch-when="feature">
+                    Feedback has been featured on your page. <a class="undo" href="#">Undo</a> <a class="close-checky" href="#">Close</a>
+                </div> 
+                <div ng-switch-when="publish">
+                    Feedback has been published on your page. <a class="undo" href="#">Undo</a> <a class="close-checky" href="#">Close</a>
+                </div> 
+                <div ng-switch-when="delete">
+                    Feedback has been deleted. <a class="undo" href="#">Undo</a> <a class="close-checky" href="#">Close</a>
+                </div> 
             </span>
         </div>
     </div>
