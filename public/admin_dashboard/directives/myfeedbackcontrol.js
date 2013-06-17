@@ -13,6 +13,7 @@ angular.module('feedbackcontrol', [])
                     }      
 
                 }); 
+                console.log("Mathew clicked");
                 $(".checky-box-container").show();
             });
         } 
