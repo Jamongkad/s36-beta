@@ -1,7 +1,8 @@
-function FeedbackControl($scope, FeedbackControlService) { 
+function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) { 
 
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
+        FeedbackSignal.feed_status = feed_status;
         FeedbackControlService.change_status(id, feed_status);
     }
 
@@ -11,6 +12,6 @@ function FeedbackControl($scope, FeedbackControlService) {
 
 }
 
-function CheckyBox($scope) {
-    $scope.status_selection;
+function CheckyBox($scope, FeedbackSignal) {
+    $scope.status_selection = FeedbackSignal.feed_status;
 }
