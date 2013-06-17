@@ -9,7 +9,9 @@ $(window).scroll(function(){
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
-                <div ng-switch-when="feature">Mathew is awesome!</div> 
+                <div ng-switch-when="feature">Feedback has been featured on your page.</div> 
+                <div ng-switch-when="publish">Feedback has been publish on your page.</div> 
+                <div ng-switch-when="delete">Feedback has been deleted.</div> 
             </span>
         </div>
     </div>
