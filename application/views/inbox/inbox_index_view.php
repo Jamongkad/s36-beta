@@ -90,7 +90,6 @@
                                    name="feedid" 
                                    ng-checked="is_selected(<?=$feed->id?>)" 
                                    ng-click="update_selection($event, <?=$feed->id?>)"
-                                   ng-model="ids[<?=$feed->id?>]"
                                    />
                         </div>
                         <div class="feedback-avatar">
