@@ -1,6 +1,7 @@
 function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) { 
 
     $scope.selected = [];
+    $scope.checkboxes = $("input[type=checkbox][name=feedid]");
 
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
@@ -16,7 +17,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         return $scope.selected.indexOf(id) >= 0;   
     }
 
-    $scope.update_selected = function(action, id) {
+    var update_selected = function(action, id) {
 
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
             $scope.selected.push(id);     
@@ -33,7 +34,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
-        $scope.update_selected(action, feed); 
+        update_selected(action, feed); 
 
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
@@ -44,7 +45,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     }
 
     $scope.select_all = function($event) { 
-        console.log("Mathew selects all!");
+        
+        var checkbox = $event.target;
+        var action = (checkbox.checked ? 'add' : 'remove');
+
+        for(var i=0; i < $scope.checkboxes.length; i++) {
+            var entity = $scope.checkboxes[i];
+            console.log(entity);
+        }
     }
 }
 
