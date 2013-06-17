@@ -1,7 +1,7 @@
 function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) { 
 
     $scope.selected = [];
-    var stuff = [];
+    this.stuff = [];
 
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
