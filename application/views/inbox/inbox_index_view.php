@@ -76,9 +76,9 @@
         </div>
     </div>
 
-    <div id="theInboxFeeds">
+    <div id="theInboxFeeds" ng-controller="FeedbackControl">
         <?foreach($feedback as $feeds):?>
-            <div class="feedback-group" ng-controller="FeedbackControl">
+            <div class="feedback-group">
                 <div class="feedback-date-header">
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
                 </div>
