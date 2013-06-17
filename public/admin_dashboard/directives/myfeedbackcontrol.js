@@ -29,3 +29,13 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
+.directive('close-checky', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind("click", function() {
+                console.log("Mathew is Awesome");
+            }); 
+        }
+    }    
+})
