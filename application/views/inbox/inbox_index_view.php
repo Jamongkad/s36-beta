@@ -5,12 +5,12 @@ $(window).scroll(function(){
 });
 </script>
 
-<div class="checky-box-container" ng-controller="CheckyBox">
+<div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
                 <div ng-switch-when="feature">Feedback has been featured on your page.</div> 
-                <div ng-switch-when="publish">Feedback has been publish on your page.</div> 
+                <div ng-switch-when="publish">Feedback has been published on your page.</div> 
                 <div ng-switch-when="delete">Feedback has been deleted.</div> 
             </span>
         </div>

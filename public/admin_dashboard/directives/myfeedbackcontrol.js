@@ -17,6 +17,7 @@ angular.module('feedbackcontrol', [])
                             $(me).parents('.feedback-group').fadeOut(500);
                         }      
                     }); 
+                    $(".checky-box-container").show();
                 });
             } 
         }    
