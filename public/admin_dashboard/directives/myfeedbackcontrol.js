@@ -1,10 +1,8 @@
 angular.module('feedbackcontrol', [])
-.directive('feature', function(FeedbackControlService, $compile) {
+.directive('unit_transform', function(FeedbackControlService, $compile) {
     return {
         restrict: 'A'     
       , compile: function(tElement, tAttrs) {
-
-            var str = "This feedback has been featured. <a undo class='undo'>Undo</a>"; 
         
             return function(scope, element, attrs) {
                 $(element).bind('click', function(e) { 
