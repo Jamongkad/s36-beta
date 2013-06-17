@@ -34,13 +34,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         $scope.selected.push( $(checkbox).val() );
         console.log(checkbox.checked);
         console.log($(checkbox).val());
-        */
-        //$scope.update_selected(action, feed);
+        */ 
         //console.log($scope.selected);
         $("input[type=checkbox][name=feedid]").unbind('change.select').bind('change.select', function() { 
             var $this = $(this); 
-            console.log($this.val());
+            $scope.update_selected(action, $this.val());
         });
+
+        console.log($scope.selected);
 
         if(checkbox.checked) { 
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
