@@ -52,7 +52,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     }
 
     $scope.is_selected = function(id) {
-        console.log($scope.selected.indexOf(id));
+        console.log($scope.selected.indexOf(id) >= 0);
         return $scope.selected.indexOf(id) >= 0;   
     }
 }
