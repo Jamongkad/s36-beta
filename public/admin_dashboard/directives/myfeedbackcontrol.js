@@ -10,10 +10,10 @@ angular.module('feedbackcontrol', [])
                     me.parents('.dashboard-feedback').fadeOut(500, function() {
 
                         var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
-
                         if(child_count.length == 0) {
                             $(me).parents('.feedback-group').fadeOut(500);
                         }      
+
                     }); 
                     $(".checky-box-container").show();
                 });
