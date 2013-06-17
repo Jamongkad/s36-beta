@@ -140,9 +140,25 @@ class DBHostedSettings extends S36DataObject {
     
     
     // get admin panel settings.
-    public function get_panel_settings($company_id, $type = null){ 
-        $result = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first( $this->admin_panel_fields );
+    public function get_panel_settings($query_value, $type = null){
+        
+        // set the value of $query_field depending on the value of $query_value
+        $query_field = ( (int)$query_value == 0 ? 'Company.name' : 'Company.companyId' );
+        
+        // because we joined Company and HostedSettings below, we need to be specific with "description" field.
+        // a bit of trick here to replace the "description" with "HostedSettings.description" in $this->admin_panel_fields.
+        unset( $this->admin_panel_fields[ array_search('description', $this->admin_panel_fields) ] );
+        $this->admin_panel_fields[] = 'HostedSettings.description';
+        
+        
+        $result = Db::table('Company')
+                    ->join('HostedSettings', 'Company.companyId', '=', 'HostedSettings.companyId')
+                    ->where($query_field, '=', $query_value)
+                    ->first( $this->admin_panel_fields );
+        
+        
         return ( $type == 'json' ? json_encode($result) : $result ) ;
+        
     }
     
     

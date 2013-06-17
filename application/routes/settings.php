@@ -9,6 +9,7 @@ $redis_twitter_key = Config::get('application.subdomain').':twitter:feedback';
 $category 			= new DBCategory;
 $company 			= new Company\Repositories\DBCompany;
 $hosted_settings 	= new Hosted\Repositories\DBHostedSettings;
+$fullpage           = new Hosted\Services\Fullpage;
 
 return array (
 
@@ -26,6 +27,17 @@ return array (
           , 'hosted_settings' => $hosted_settings->hosted_settings()
         ));
     }),
+    
+    'GET /settings/display' => function() use($hosted_settings, $fullpage){
+        
+        return View::of_layout()->partial('contents', 'settings/settings_display', 
+            array(
+                'settings' => $hosted_settings->get_panel_settings( Config::get('application.subdomain') ),
+                'fullpage_css' => $fullpage->get_fullpage_css(6)
+            )
+        );
+        
+    },
 
     'POST /settings/rename_ctgy/([0-9]+)' => function($id) use($category) { 
         $ctgy_nm = Input::get('ctgy_nm');

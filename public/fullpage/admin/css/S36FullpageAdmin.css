@@ -839,17 +839,7 @@ ul.patternList li div.active{
  right:auto;
 }
 #adminDisplayOptionAuthorItems{
- position:absolute;
- top:340px;
- right:0px;
- width:240px;
- padding:6px;
- background:#f0f0f0;
- -webkit-border-radius:3px;
- -moz-border-radius:3px;
- border-radius:3px;  
- border:1px solid #bad3eb;
- box-shadow:#CCC 0px 2px 2px;
+
 }
 #adminDisplayOptionAuthorItems .display-author .author-avatar{
  float:left;
