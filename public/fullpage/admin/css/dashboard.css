@@ -592,7 +592,7 @@ body, #mainWrapper, #fadedContainer{
     z-index: 990; 
 
     position: fixed; 
-    /*margin-left: -250px;*/
+    margin-left: -250px;
     top: 20%;
     left: 50%;
 }
