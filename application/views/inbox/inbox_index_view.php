@@ -1,10 +1,3 @@
-<script>
-//this enables the checky-bar to be a fixture
-$(window).scroll(function(){
-    $(".checky-bar").css({"position": "fixed", "margin-left": "-250px", "left": "50%"});
-});
-</script>
-
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
     <div class="j-j5-ji">
         <div class="checky-bar">
