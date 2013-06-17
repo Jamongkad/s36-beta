@@ -28,13 +28,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
         $scope.update_selected(action, feed);
-
-        console.log(checkbox.checked); 
-        console.log($(checkbox).parents('.dashboard-feedback')); 
-        
+ 
         if(checkbox.checked) { 
+            console.log("Yes");
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FAFAFA'});     
         } else {
+            console.log("No");
             $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FFF'});     
         }
        
