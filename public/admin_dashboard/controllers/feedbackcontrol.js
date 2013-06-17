@@ -41,7 +41,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         $("input[type=checkbox][name=feedid]").unbind('change.select').bind('change.select', function() { 
             console.log($(this).val());
             console.log(action);
-            $scope.update_selected(action, $(this).val());
+            //$scope.update_selected(action, $(this).val()); 
+            $scope.selected.push($(this).val());     
             console.log($scope.selected);
         });
 
