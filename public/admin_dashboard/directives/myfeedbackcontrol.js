@@ -34,7 +34,6 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
-                console.log("Mathew is Awesome");
                 $(".checky-box-container").hide();
                 e.preventDefault();
             }); 
