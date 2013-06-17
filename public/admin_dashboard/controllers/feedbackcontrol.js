@@ -51,7 +51,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
         for(var i=0; i < $scope.checkboxes.length; i++) {
             var entity = $scope.checkboxes[i];
-            console.log(entity);
+            update_selected(action, entity.id); 
         }
     }
 }
