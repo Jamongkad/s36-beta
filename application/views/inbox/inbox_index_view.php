@@ -1,7 +1,7 @@
 <script>
 //this enables the checky-bar to be a fixture
 $(window).scroll(function(){
-    $(".checky-bar").css({"position": "fixed", "margin-left": "-179px"});
+    $(".checky-bar").css({"position": "fixed", "margin-left": "-188px"});
 });
 </script>
 
@@ -9,9 +9,9 @@ $(window).scroll(function(){
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
-                <div ng-switch-when="feature">Feedback has been featured on your page.</div> 
-                <div ng-switch-when="publish">Feedback has been published on your page.</div> 
-                <div ng-switch-when="delete">Feedback has been deleted.</div> 
+                <div ng-switch-when="feature">Feedback has been featured on your page. <a href="#">Undo</a> <a href="#">Close</a></div> 
+                <div ng-switch-when="publish">Feedback has been published on your page. <a href="#">Undo</a> <a href="#">Close</a></div> 
+                <div ng-switch-when="delete">Feedback has been deleted. <a href="#">Undo</a> <a href="#">Close</a></div> 
             </span>
         </div>
     </div>
