@@ -451,10 +451,29 @@
                                                     <div class="false-border"></div>
                                                     <div class="the-categories-options">
                                                         <div class="categories-combo">
-                                                            <span class="category-combo-name">Status </span><span><select><option>New</option></select></span>
+                                                            <span class="category-combo-name">Status </span>
+                                                            <span>
+                                                                <select>
+                                                                    <?foreach($status as $option):?>
+                                                                        <?$option_match = str_replace(" ", "", strtolower($option->name));?>
+                                                                        <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>">
+                                                                            <?=$option->name?>
+                                                                        </option>
+                                                                    <?endforeach?>
+                                                                </select> 
+                                                            </span>
                                                         </div>
                                                         <div class="categories-combo">
-                                                            <span class="category-combo-name">Priority </span><span><select><option>New</option></select></span>
+                                                            <span class="category-combo-name">Priority </span>
+                                                            <span>
+                                                                <select>
+                                                                    <?foreach($priority_obj as $key => $val):?>
+                                                                        <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>">
+                                                                            <?=ucfirst($val)?>
+                                                                        </option>
+                                                                    <?endforeach?>
+                                                                </select> 
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div class="false-border"></div>
