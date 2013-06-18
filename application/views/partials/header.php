@@ -28,15 +28,17 @@
 </head>
 <body>
 
-<?= View::make('hosted/partials/fullpage_bar_view'); ?>
-<?= View::make('hosted/partials/fullpage_background_view'); ?>
 <div id="notification">
     <div id="notification-design">
-        <div id="notification-message" style="display:none">
+        <div id="notification-message">
             Loading... Please Wait...
         </div>
     </div>
 </div>
+
+<?= View::make('hosted/partials/fullpage_bar_view'); ?>
+<?= View::make('hosted/partials/fullpage_background_view'); ?>
+
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">

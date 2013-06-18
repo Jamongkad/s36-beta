@@ -78,7 +78,7 @@
                Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
                collect information in addition to your customer's feedback.</p>
             <div class="form-setup-block">
-                <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" style="padding: 25px" id="form-builder"></div>
+                <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" id="form-builder"></div>
             </div>
         </div>
     </div>

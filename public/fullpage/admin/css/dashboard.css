@@ -921,6 +921,7 @@ body, #mainWrapper, #fadedContainer{
         .reports-blue-box strong{
             font-weight:bold;
         }
+
 /* skin for the custom field plugin */
  #form-builder{
   padding-top:10px;
@@ -1005,6 +1006,218 @@ body, #mainWrapper, #fadedContainer{
       display:block;
       margin-top:7px;
      }
+
+        /* display options css */
+    .display-options-list{
+        width:50%;
+        float:left;
+    }
+    .display-options-view{
+        width:50%;
+        float:left;
+    }
+    .display-option-box p span{
+        display:block;
+    }
+    .display-option-box p span.label{
+        margin-top: -2px;
+        margin-left: 20px;
+        float:none;
+        line-height:normal;
+    }
+    .display-feedback-block{
+        border:1px solid #c2c2c2;
+        -webkit-border-radius:2px;
+        -moz-border-radius:2px;
+        border-radius:2px;
+        padding:20px;
+        background:#f0f0f0;
+        box-shadow:#CCC 0px 2px 8px;
+    }
+    .display-author .rating-stars-container{
+        position:absolute;
+        top:0px;
+        right:0px;
+        width:120px;
+        text-align:right;
+    }
+    .display-author .display-author-date{
+        font-size:10px;
+        color:#999999;
+        text-shadow:#FFF 0px 1px;
+        padding-right:5px;
+        padding-bottom:3px;
+    }
+    .display-feedback-block .feedback-text-bubble{
+        margin-top:20px;
+        padding:20px;
+        background:#FFF;
+        border:1px solid #dbdbdb;
+    }
+    .display-feedback-block .feedback-tail{
+        background:url(/img/bubble-tail.png) no-repeat;
+        width:13px;
+        height:17px;
+        position:absolute;
+        top:-17px;
+        left:25px;
+    }
+    .display-feedback-block .feedback-text{
+        color:#363636;
+        font-size:14px;
+        line-height:1.4em;
+    }
+    .display-feedback-block .admin-comment-block{
+        margin-top:15px;
+        padding:0px;
+        background:#FFF;
+    }
+    .display-feedback-block .admin-name{
+        font-size:12px;
+        font-weight:bold;
+        color:#11769c;
+    }
+    .display-feedback-block .admin-message{
+        background:#FFF;
+        border:1px solid #d5d5d5;   
+        margin-top:5px;
+        padding:6px;
+        box-shadow:inset 0 0 4px #DDD;
+    }
+    .display-feedback-block .admin-avatar{
+        float:left;
+        width:36px;
+    }
+    .display-feedback-block .admin-message .message{
+        font-size:12px;
+        color:#4f4f4f;
+        line-height:1.2em;
+        font-style:normal;
+        margin-left:40px;
+        /*padding-top:7px;*/
+    }
+    .display-feedback-block .admin-comment-block{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .display-feedback-block .feedback-options{
+        margin-top: 5px;
+        margin-left:0px;
+        margin-right:0px;
+        background:none;
+        border-bottom:none;
+    }
+    .display-feedback-block .feedback-recommendation{
+        width:80%;
+        float:left;
+    }
+    .display-feedback-block .feedback-recommendation .green-thumb{
+        color:#419322;
+        font-size:11px;
+        margin-bottom:3px;
+        background-position: top left;
+        padding-top:2px;
+        padding-bottom:6px;
+    }
+    .display-feedback-block .feedback-actions{
+        width:20%;
+        float:left;
+    }
+    .display-feedback-block .feedback-actions{
+        text-align:right;
+        font-size:11px;
+    }
+    .display-feedback-block .feedback-actions span{
+        margin-left:10px;
+    }
+    .display-feedback-block .vote-action{
+        color:#4ea6c6;
+        font-size:11px;
+    }
+    .display-feedback-block .flag-as{
+        color:#455b61;
+        background:url(../../../common/img/ico-flag.png) no-repeat;
+        background-position:center left;
+        padding-left:17px;
+        margin-bottom:3px;
+        display:inline-block;
+        padding-top:2px;
+    }
+    .display-feedback-block .share-button{
+        display:inline-block;
+        color:#455b61;
+        background:url(../../../common/img/ico-share.png) no-repeat;
+        background-position:center left;
+        padding-left:17px;
+        padding-top:2px;
+    }
+    .display-feedback-block .rating-stat{
+        color: #4ea6c6;
+        font-size: 11px;
+        position: absolute;
+        top: -15px;
+        right: 0px;
+    }
+    .display-feedback-block .custom-meta-data .meta-data{float:left;margin-right:10px;}
+    .display-feedback-block .custom-meta-data .meta-name{color:#838383;font-weight:bold;}
+    .display-feedback-block .custom-meta-data .meta-value{color:#d74700;font-weight:bold;}
+    .display-feedback-block .author-location{
+        font-weight: bold;
+        float:left;
+    }
+    .display-feedback-block .flag {
+        width: 16px;
+        height: 11px;
+        background:url(/img/flags.jpg) no-repeat;
+        float: left;
+        /*margin-left:5px;*/
+    }
+    .display-feedback-block .flag-ph {background-position: -160px -110px}
+    .display-feedback-block .additional-contents{
+        margin-top:10px;
+    }
+    .display-feedback-block .uploaded-images{
+        height:65px;
+    }
+    .display-feedback-block .uploaded-image{
+        width:33%;
+        float:left;
+        overflow:hidden;
+        height:60px;
+    }
+    .display-feedback-block .padded-5{
+        padding:5px;
+    }
+    .display-feedback-block .form-video-meta{
+        overflow:hidden;
+    }
+    .display-feedback-block .video-thumb{
+        float:left;
+        width:100px;
+    }
+    .display-feedback-block .video-circle{
+        background:url(/fullpage/common/img/video-play-circle.png) no-repeat;
+        width:25px;
+        height:25px;
+        position:absolute;
+        z-index:100;
+        top:50%;
+        margin-top:-12px;
+        left:50%;
+        margin-left:-12px;
+        cursor:pointer;
+    }
+    .display-feedback-block .video-details{
+        margin-left:110px;
+    }
+    .display-feedback-block .video-details h3{
+        font-weight:bold;
+        margin-bottom:5px;
+    }
+    .display-feedback-block .video-details p{
+        font-size:11px;
+    }
+        
 /* Tablet Landscape */
 @media screen and (max-width: 480px) {
     .feedback-author span,.feedback-details span{
@@ -1121,6 +1334,7 @@ body, #mainWrapper, #fadedContainer{
         margin-left:0px;
         margin-right:0px;       
     }
+
      /* 6-14-2013 skin for custom field plugin */
      .form-builder-field-selector{
       display:block;
@@ -1135,6 +1349,20 @@ body, #mainWrapper, #fadedContainer{
      }
      /* end of skin */
     
+
+    /* added 6-13-2013 */
+    .dashboard-content{
+        margin:10px 15px;
+    }
+    .display-options-list{
+        width:100%;
+        float:none;
+    }
+    .display-options-view{
+        margin-top:15px;
+        width:100%;
+        float:none;
+    }
 }
 
 @media screen and (max-width: 875px) {
