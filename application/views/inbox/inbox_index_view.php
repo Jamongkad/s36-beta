@@ -5,17 +5,17 @@
                 <div ng-switch-when="feature">
                     Feedback has been featured on your page. 
                     <a undo class="undo" href="#">Undo</a> 
-                    <a close-checky class="close-checky" href="#">Close</a>
+                    <a close class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="publish">
                     Feedback has been published on your page. 
                     <a undo class="undo" href="#">Undo</a> 
-                    <a close-checky class="close-checky" href="#">Close</a>
+                    <a close class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="delete">
                     Feedback has been deleted. 
                     <a undo class="undo" href="#">Undo</a> 
-                    <a close-checky class="close-checky" href="#">Close</a>
+                    <a close class="close-checky" href="#">Close</a>
                 </div> 
             </span>
         </div>
@@ -61,11 +61,24 @@
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Date</span>
-                <span class="sorter-block-box"><select><option>-</option><option>Newest</option></select></span>
+                <span class="sorter-block-box">
+                    <select>
+                        <option>-</option>
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                    </select>
+                </span>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Priority</span>
-                <span class="sorter-block-box"><select><option>-</option><option>Low</option></select></span>
+                <span class="sorter-block-box">
+                    <select>
+                        <option>-</option>
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                    </select>
+                </span>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Status</span>

@@ -29,7 +29,7 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
-.directive('closeChecky', function() {
+.directive('close', function() {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
