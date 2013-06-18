@@ -112,7 +112,7 @@
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
                 </div>
                 <?php foreach($feeds->children as $feed):?>
-                    <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
+                    <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?> feedback="<?=$feed->id?>">
                         <div class="custom-checkbox">
                             <input type="checkbox" 
                                    value="<?=$feed->id?>"
