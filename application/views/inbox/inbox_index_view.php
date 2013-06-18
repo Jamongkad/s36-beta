@@ -13,7 +13,7 @@
                 </span> 
             </span>
 
-            <a undo class="undo" href="#">Undo {{feed_id}}</a> 
+            <a undo class="undo" href="#" ng-click="undo()">Undo {{feed_id}}</a> 
             <a close class="close-checky" href="#">Close</a>
         </div>
     </div>
