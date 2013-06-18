@@ -439,6 +439,7 @@
                                                                         , 'feedid'     => $feed->id
                                                                         , 'catid'      => $cat->id
                                                                         , 'ng-click'   => "change_category($feed->id, $cat->id)"
+                                                                        , 'category'   => null
                                                                     ))?>
                                                                 </li>
                                                             <?endforeach?>
