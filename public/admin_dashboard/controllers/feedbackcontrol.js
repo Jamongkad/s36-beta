@@ -39,6 +39,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         console.log("reply id:" + id);
     }
 
+    $scope.change_category = function(feedid, catid) {
+        console.log("Feedback: " + feedid + " CatID: " + catid);
+    }
+
     $scope.update_selection = function($event, feed) {
 
         var checkbox = $event.target;
