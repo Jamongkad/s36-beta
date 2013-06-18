@@ -71,8 +71,15 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 }
 
 function CheckyBox($scope, FeedbackSignal) { 
+
+    $scope.status_selection;
+    $scope.feed_id;
+
+    $scope.undo = function() {
+        console.log("Undo id: " + $scope.feed_id);
+    }
+
     $scope.$on('checkFeedbackStatus', function() {
-        console.log(FeedbackSignal.feed_status);
         $scope.status_selection = FeedbackSignal.feed_status;
         $scope.feed_id = FeedbackSignal.feed_id;
     });
