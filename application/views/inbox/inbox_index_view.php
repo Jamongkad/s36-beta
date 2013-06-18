@@ -2,13 +2,14 @@
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
+
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 
                 </span> 
                 <span ng-switch-when="publish">
                     Feedback has been published on your page. 
                 </span> 
-                <div ng-switch-when="delete">
+                <span ng-switch-when="delete">
                     Feedback has been deleted. 
                 </span> 
 
