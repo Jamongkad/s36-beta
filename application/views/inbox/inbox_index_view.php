@@ -4,17 +4,17 @@
             <span ng-switch on="status_selection"> 
                 <div ng-switch-when="feature">
                     Feedback has been featured on your page. 
-                    <a undo class="undo" href="#">Undo</a> 
+                    <a undo class="undo" href="#">Undo {{feed_id}}</a> 
                     <a close class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="publish">
                     Feedback has been published on your page. 
-                    <a undo class="undo" href="#">Undo</a> 
+                    <a undo class="undo" href="#">Undo {{feed_id}}</a> 
                     <a close class="close-checky" href="#">Close</a>
                 </div> 
                 <div ng-switch-when="delete">
                     Feedback has been deleted. 
-                    <a undo class="undo" href="#">Undo</a> 
+                    <a undo class="undo" href="#">Undo {{feed_id}}</a> 
                     <a close class="close-checky" href="#">Close</a>
                 </div> 
             </span>

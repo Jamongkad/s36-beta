@@ -18,7 +18,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
 
-        FeedbackSignal.prep_status_message(feed_status)
+        FeedbackSignal.set_status_message(feed_status)
+        FeedbackSignal.set_feed_id(id);
 
         FeedbackControlService.change_status(id, feed_status);
     }
@@ -73,5 +74,6 @@ function CheckyBox($scope, FeedbackSignal) {
     $scope.$on('checkFeedbackStatus', function() {
         console.log(FeedbackSignal.feed_status);
         $scope.status_selection = FeedbackSignal.feed_status;
+        $scope.feed_id = FeedbackSignal.feed_id;
     });
 }
