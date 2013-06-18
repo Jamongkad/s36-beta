@@ -24,7 +24,9 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
                 $(".checky-box-container").hide();
-                console.log("From Directive: " + FeedbackSignal.feed_id);
+                var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id + "]");
+                feedback.fadeIn(500);
+                $(feedback).parents('.feedback-group').fadeIn(500);
                 e.preventDefault();
             });
         }
