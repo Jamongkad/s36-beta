@@ -163,9 +163,6 @@ return array(
         $form = new Widget\Entities\FormWidget;
         $form->set_widgetdata($form_data->data()); 
         $form->save();
-        echo "<pre>";
-        print_r($form->emit());
-        exit();
         echo json_encode(Array(
             'submit' => $form->emit()
         ));   
