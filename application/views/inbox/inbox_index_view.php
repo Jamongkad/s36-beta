@@ -438,7 +438,7 @@
                                                                           'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
                                                                         , 'feedid'     => $feed->id
                                                                         , 'catid'      => $cat->id
-                                                                        , 'ng-click'   => "change_category(<?=$feed->id?>, <?=$cat->id?>)"
+                                                                        , 'ng-click'   => "change_category($feed->id, $cat->id)"
                                                                     ))?>
                                                                 </li>
                                                             <?endforeach?>
