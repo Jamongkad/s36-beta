@@ -1,5 +1,5 @@
 angular.module('feedbackcontrol', [])
-.directive('transform', function(FeedbackControlService, $compile) {
+.directive('transform', function(FeedbackControlService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
@@ -18,12 +18,13 @@ angular.module('feedbackcontrol', [])
         } 
     }    
 })
-.directive('undo', function() {
+.directive('undo', function(FeedbackSignal) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
                 $(".checky-box-container").hide();
+                console.log("From Directive: " + FeedbackSignal.feed_id);
                 e.preventDefault();
             });
         }
