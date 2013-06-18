@@ -475,7 +475,7 @@
                                                     </div>
                                                     <div class="false-border"></div>
                                                     <div class="the-categories-delete">
-                                                        <a href="#" class="delete-button"></a>
+                                                        <a href="#" class="delete-button" transform ng-click="feedback_status(<?=$feed->id?>, 'delete')"></a>
                                                     </div>
                                                 </div>
                                             </div>
