@@ -16,10 +16,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
     }
 
     var highlight = function(entity) {
-        if(entity.checked) { 
-            $(entity).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
+        
+        var checkbox = $(entity);
+
+        if(checkbox.attr('checked')) { 
+            checkbox.parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
         } else {
-            $(entity).parents('.dashboard-feedback').css({'background-color': '#FFF'});     
+            checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
         }  
     }
 
@@ -43,13 +46,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
         update_selected(action, feed); 
         highlight(checkbox);
-        /*
-        if(checkbox.checked) { 
-            $(checkbox).parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
-        } else {
-            $(checkbox).parents('.dashboard-feedback').css({'background-color': '#FFF'});     
-        } 
-        */
     }
 
     $scope.select_all = function($event) { 
@@ -58,17 +54,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         var action = (checkbox.checked ? 'add' : 'remove');
 
         for(var i=0; i < $scope.checkboxes.length; i++) {
-            var entity = $($scope.checkboxes[i]);
+             
+            var entity = $scope.checkboxes[i];
 
             if(action == "add") {
-                entity.prop("checked", true);     
+                $(entity).prop("checked", true);     
             } else { 
-                entity.prop("checked", false);     
+                $(entity).prop("checked", false);     
             }
            
             update_selected(action, parseInt(entity.val(), 10)); 
-            //highlight(checkbox);
-            console.log(entity);
+            highlight(entity); 
         }
     }
 }
