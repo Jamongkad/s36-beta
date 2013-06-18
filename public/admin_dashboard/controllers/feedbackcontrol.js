@@ -67,7 +67,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             }
            
             update_selected(action, parseInt(entity.val(), 10)); 
-            highlight(entity);
+            //highlight(checkbox);
+            console.log(entity);
         }
     }
 }
