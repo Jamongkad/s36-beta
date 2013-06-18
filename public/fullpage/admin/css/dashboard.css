@@ -594,7 +594,7 @@ body, #mainWrapper, #fadedContainer{
     position: fixed;  
     left: 10%;
     right: 10%;
-    top: 20%;
+    top: 5%;
     max-height: 50%;
     overflow: auto;
 }
