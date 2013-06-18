@@ -24,7 +24,7 @@
         <div class="grids">
             <div class="sorter-block sorter-checkbox">
                 <div class="sorter-block-box">
-                    <input type="checkbox" ng-click="select_all($event)" ng-checked="is_selected_all()"/>
+                    <input type="checkbox" ng-click="select_all($event)"/>
                 </div>
             </div>
             <div class="sorter-block">
@@ -114,9 +114,8 @@
                             <input type="checkbox" 
                                    value="<?=$feed->id?>"
                                    name="feedid" 
-                                   ng-checked="is_selected(<?=$feed->id?>)" 
                                    ng-click="update_selection($event, <?=$feed->id?>)"
-                                   />
+                            />
                         </div>
                         <div class="feedback-avatar">
                             <?if($feed->origin == 's36'):?>
@@ -435,14 +434,12 @@
                                                         <ul class="grids">
                                                             <?foreach($categories as $cat):?>
                                                                 <li>
-                                                                    <?=HTML::link('feedback/changecat/', $cat->name, Array(
-                                                                    'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                                                    , 'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
-                                                                    , 'feedid'     => $feed->id
-                                                                    , 'catid'      => $cat->id
-                                                                    , 'cat-state'  => $cat->intname
-                                                                    , 'state'      => 0
+                                                                    <?=HTML::link('#', $cat->name, Array(
+                                                                          'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
+                                                                        , 'feedid'     => $feed->id
+                                                                        , 'catid'      => $cat->id
                                                                     ))?>
+                                                                    <a href="#" ng-click=""><?=$cat->name?></a>
                                                                 </li>
                                                             <?endforeach?>
                                                         </ul>
