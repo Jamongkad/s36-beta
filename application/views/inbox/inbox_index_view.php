@@ -438,7 +438,7 @@
                                                                     <?=HTML::link('feedback/changecat/', $cat->name, Array(
                                                                     'hrefaction' => URL::to('/feedback/change_feedback_state')
                                                                     , 'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
-                                                                    , 'feedid'     => $id
+                                                                    , 'feedid'     => $feed->id
                                                                     , 'catid'      => $cat->id
                                                                     , 'cat-state'  => $cat->intname
                                                                     , 'state'      => 0
