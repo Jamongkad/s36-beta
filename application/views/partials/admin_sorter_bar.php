@@ -59,18 +59,6 @@ if(!preg_match_all($regex, Request::uri(), $matches) and S36Auth::check()):?>
                 </select>
             </div>
             <?endif?>
-            <!--
-            <div class="select-options">
-                <label>Display</label>
-                <?$limit = Input::get('limit')?>
-                <select name="feedback-limit">
-                    <option value="default">-</option>
-                    <option value="10" <?=($limit == 10) ? "selected" : null?>>10</option>
-                    <option value="20" <?=($limit == 20) ? "selected" : null?>>20</option>
-                    <option value="50" <?=($limit == 50) ? "selected" : null?>>50</option>
-                </select>
-            </div>
-            -->
         </div>
         <div class="c"></div>
     </div>
