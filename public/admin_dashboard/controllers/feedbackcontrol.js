@@ -17,7 +17,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
+
         FeedbackSignal.prep_status_message(feed_status)
+
         FeedbackControlService.change_status(id, feed_status);
     }
 
