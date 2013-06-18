@@ -60,14 +60,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             update_selected(action, parseInt(entity.val(), 10)); 
         }
     }
-
-    $scope.is_selected = function(id) {
-        return $scope.selected.indexOf(id) >= 0;   
-    }
-
-    $scope.is_selected_all = function() {
-        return $scope.selected.length === $scope.checkboxes.length;
-    }
 }
 
 function CheckyBox($scope, FeedbackSignal) { 
