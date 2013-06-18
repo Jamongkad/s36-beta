@@ -14,6 +14,7 @@ angular.module('feedbackcontrol', [])
 
                 }); 
                 $(".checky-box-container").show();
+                e.preventDefault();
             });
         } 
     }    
