@@ -72,7 +72,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
 function CheckyBox($scope, FeedbackSignal) { 
 
-    var status_selection;
+    $scope.status_selection;
     var feed_id;
 
     $scope.undo = function() {
@@ -80,7 +80,7 @@ function CheckyBox($scope, FeedbackSignal) {
     }
 
     $scope.$on('checkFeedbackStatus', function() {
-        status_selection = FeedbackSignal.feed_status;
+        $scope.status_selection = FeedbackSignal.feed_status;
         feed_id = FeedbackSignal.feed_id;
     });
 }
