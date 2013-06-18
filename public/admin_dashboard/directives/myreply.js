@@ -19,7 +19,6 @@ angular.module('reply', [])
                 $('div#reply-to-user').draggable();
                 $('div#reply-to-user.lightbox').show();
                 $(".dialog-form[feedid="+feedid+"]").show();
-                console.log("pwet");
                 e.preventDefault();
 
             });
