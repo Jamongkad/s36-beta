@@ -20,7 +20,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
         var checkbox = $(entity);
 
         if(checkbox.attr('checked')) { 
-            checkbox.parents('.dashboard-feedback').css({'background-color': '#F1F1f1'});     
+            checkbox.parents('.dashboard-feedback').css({'background-color': '#F7F7F7'});     
         } else {
             checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
         }  
