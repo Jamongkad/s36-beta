@@ -2,7 +2,6 @@
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
-
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 
                 </span> 
@@ -12,11 +11,10 @@
                 <span ng-switch-when="delete">
                     Feedback has been deleted. 
                 </span> 
-
-                <a undo class="undo" href="#">Undo {{feed_id}}</a> 
-                <a close class="close-checky" href="#">Close</a>
-
             </span>
+
+            <a undo class="undo" href="#">Undo {{feed_id}}</a> 
+            <a close class="close-checky" href="#">Close</a>
         </div>
     </div>
 </div>
