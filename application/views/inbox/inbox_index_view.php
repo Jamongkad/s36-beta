@@ -434,13 +434,12 @@
                                                         <ul class="grids">
                                                             <?foreach($categories as $cat):?>
                                                                 <li>
-                                                                    <?=HTML::link('#', $cat->name, Array(
-                                                                          'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
-                                                                        , 'feedid'     => $feed->id
-                                                                        , 'catid'      => $cat->id
-                                                                        , 'ng-click'   => "change_category($feed->id, $cat->id)"
-                                                                        , 'category'   => ""
-                                                                    ))?>
+                                                                    <a href="#" 
+                                                                       class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
+                                                                       ng-click="change_category(<?=$feed->id?>, <?=$cat->id?>)"
+                                                                       category>
+                                                                        <?=$cat->name?>
+                                                                    </a>
                                                                 </li>
                                                             <?endforeach?>
                                                         </ul>
