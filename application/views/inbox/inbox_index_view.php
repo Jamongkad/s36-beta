@@ -64,29 +64,43 @@
                 <span class="sorter-block-box">
                     <select>
                         <option>-</option>
-                        <option>Newest</option>
-                        <option>Oldest</option>
+                        <option value="date_new" <?=(Input::get('date') == "date_new") ? "selected" : null?>>Newest</option>
+                        <option value="date_old" <?=(Input::get('date') == "date_old") ? "selected" : null?>>Oldest</option>
                     </select>
                 </span>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Priority</span>
                 <span class="sorter-block-box">
-                    <select>
-                        <option>-</option>
-                        <option>High</option>
-                        <option>Medium</option>
-                        <option>Low</option>
+                    <select name="priority-filter">
+                        <option value="default">-</option>
+                        <option value="low" <?=(Input::get('priority') == "low") ? "selected" : null?>>Low</option>
+                        <option value="medium" <?=(Input::get('priority') == "medium") ? "selected" : null?>>Medium</option>
+                        <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>High</option>
                     </select>
                 </span>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Status</span>
-                <span class="sorter-block-box"><select><option>-</option><option>In Progress</option></select></span>
+                <span class="sorter-block-box">
+                    <select name="status-filter">
+                        <option value="default">-</option>
+                        <option value="new" <?=(Input::get('status') == "new") ? "new" : null?>>New</option>
+                        <option value="inprogress" <?=(Input::get('status') == "inprogress") ? "selected" : null?>>In progress</option>
+                        <option value="closed" <?=(Input::get('status') == "closed") ? "selected" : null?>>Closed</option>
+                    </select> 
+                </span>
             </div>
             <div class="sorter-block">
                 <span class="sorter-block-name">Rating</span>
-                <span class="sorter-block-box"><select><option>-</option><option>5</option></select></span>
+                <span class="sorter-block-box"> 
+                    <select name="rating-limit">
+                        <option value="default">-</option>
+                        <?foreach(array_reverse(range(1, 5)) as $rating):?>
+                            <option value="<?=$rating?>" <?=((Input::get('rating') == $rating) ? 'selected' : null)?>><?=$rating?></option>
+                        <?endforeach?> 
+                    </select>
+                </span>
             </div>
         </div>
     </div>
