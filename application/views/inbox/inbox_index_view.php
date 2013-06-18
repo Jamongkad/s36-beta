@@ -433,11 +433,18 @@
                                                     <div class="the-categories">
                                                         <h3>File this feedback as : </h3>
                                                         <ul class="grids">
-                                                            <li><a href="#">General</a></li>
-                                                            <li><a href="#">Miscelleanous</a></li>
-                                                            <li><a href="#">Price</a></li>
-                                                            <li><a href="#">Problems/Bugs</a></li>
-                                                            <li><a href="#">Suggestions</a></li>
+                                                            <?foreach($categories as $cat):?>
+                                                                <li>
+                                                                    <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                                                    'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                                                    , 'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
+                                                                    , 'feedid'     => $id
+                                                                    , 'catid'      => $cat->id
+                                                                    , 'cat-state'  => $cat->intname
+                                                                    , 'state'      => 0
+                                                                    ))?>
+                                                                </li>
+                                                            <?endforeach?>
                                                         </ul>
                                                         <a class="manage-categories-link" href="#">Manage Categories</a>
                                                     </div>
