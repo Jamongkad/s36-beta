@@ -13,8 +13,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);     
         } 
 
-        console.log($scope.selected);
-
     }
 
     $scope.feedback_status = function(id, feed_status) { 
@@ -71,6 +69,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) {
 
 function CheckyBox($scope, FeedbackSignal) { 
     $scope.$on('checkFeedbackStatus', function() {
+        console.log(FeedbackSignal.feed_status);
         $scope.status_selection = FeedbackSignal.feed_status;
     });
 }
