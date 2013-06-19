@@ -517,6 +517,7 @@
                     have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
                 <?endif?>
             </p>
+        <br/><br/>
         <?endif?>
     </div>
 <?endif?>
