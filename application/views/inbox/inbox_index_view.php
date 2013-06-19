@@ -1,5 +1,7 @@
 <script>
-FeedbackData.current_feedback_state = "Mathew";
+    var backend_vars = {
+        current_inbox_state: "Mathew";
+    }
 </script>
 
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
