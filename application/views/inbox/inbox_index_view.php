@@ -120,11 +120,7 @@
                 <?php foreach($feeds->children as $feed):?>
                     <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?> feedback="<?=$feed->id?>">
                         <div class="custom-checkbox">
-                            <input type="checkbox" 
-                                   value="<?=$feed->id?>"
-                                   name="feedid" 
-                                   ng-click="update_selection($event, <?=$feed->id?>)"
-                            />
+                            <input type="checkbox" ng-click="update_selection($event, <?=$feed->id?>)"/>
                         </div>
                         <div class="feedback-avatar">
                             <?if($feed->origin == 's36'):?>
@@ -337,7 +333,8 @@
                         <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete" transform ng-click="feedback_status(<?=$feed->id?>, 'delete')"></div>
+                                    <div class="action-sprite action-delete" transform 
+                                         ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'delete'})"></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
                                 <div class="action-gap"></div>
@@ -353,7 +350,8 @@
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite publish" transform ng-click="feedback_status(<?=$feed->id?>, 'publish')" publish
+                                                <li class="action-sprite publish" transform 
+                                                    ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'publish'})" publish
                                                     <?=($feed->ispublished) ? "style='background-position: -32 -31px'" : null?>> 
                                                     <div class="action-tooltip">
                                                         <span>
@@ -385,7 +383,8 @@
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite feature" transform ng-click="feedback_status(<?=$feed->id?>, 'feature')" feature
+                                                <li class="action-sprite feature" transform 
+                                                    ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'feature'})" feature
                                                     <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>>
                                                     <div class="action-tooltip">
                                                         <span>
@@ -445,7 +444,7 @@
                                                                 <li>
                                                                     <a href="#" 
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
-                                                                       ng-click="change_category(<?=$feed->id?>, <?=$cat->id?>)"
+                                                                       ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$cat->id?>, status: 'fileas'})"
                                                                        category>
                                                                         <?=$cat->name?>
                                                                     </a>
