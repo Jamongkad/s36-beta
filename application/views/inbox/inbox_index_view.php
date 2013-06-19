@@ -57,7 +57,7 @@
                              unset($links['feature']);     
                          }
 
-                         echo Form::select('feed_selection', $links, 'none', Array('ng-model' => 'select_value'));?> 
+                         echo Form::select('feed_selection', $links, 'none', Array('ng-model' => 'select_value', 'ng-change' => 'change_value_status()'));?> 
                     <?else:?>
                         <?=Form::select('feed_selection', Array(
                             'none' => '-'
