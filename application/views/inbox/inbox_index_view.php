@@ -16,6 +16,9 @@
                 <span ng-switch-when="publish">
                     Feedback has been published on your page. 
                 </span> 
+                <span ng-switch-when="fileas">
+                    Feedback has been filed.
+                </span> 
                 <span ng-switch-when="delete">
                     Feedback has been deleted. 
                 </span> 
