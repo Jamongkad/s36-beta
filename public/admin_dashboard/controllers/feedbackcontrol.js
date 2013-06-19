@@ -1,4 +1,4 @@
-function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) { 
+function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, backend_vars) { 
 
     $scope.selected = [];
     $scope.checkboxes = $("input[type=checkbox][name=feedid]");
