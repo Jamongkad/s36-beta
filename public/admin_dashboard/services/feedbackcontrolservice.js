@@ -5,6 +5,7 @@ angular.module('Services', [])
     shared_service.change_status = function(id, feed_status) {
         console.log("Changing DB id: " + id);
         console.log("Changing DB status: " + feed_status);
+
     }
 
     return shared_service;
