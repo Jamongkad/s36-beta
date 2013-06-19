@@ -16,6 +16,11 @@
         <?=HTML::script('/js/jquery.fileupload.js'); ?>
         <?=HTML::script('/admin_dashboard/dashboard.js'); ?>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+
+        <?=HTML::script('/js/angular.compilehtml.js'); ?>
+
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" /> 
 
         <?=HTML::style('/fullpage/common/css/S36FullpageCommon.css')?> 
