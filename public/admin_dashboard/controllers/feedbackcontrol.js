@@ -53,6 +53,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         highlight(checkbox);
     }
 
+    $scope.change_value_status = function() {
+        console.log($scope.status_select_value); 
+    }
+
     $scope.select_all = function($event) { 
         
         var checkbox = $event.target;
@@ -74,7 +78,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             highlight(entity); 
         }
     }
-
 }
 
 function CheckyBox($scope, FeedbackSignal) { 
