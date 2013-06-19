@@ -2,10 +2,8 @@ angular.module('Services', [])
 .service('FeedbackControlService', function($rootScope) { 
     var shared_service = {};
 
-    shared_service.change_status = function(id, feed_status) {
-        console.log("Changing DB id: " + id);
-        console.log("Changing DB status: " + feed_status);
-
+    shared_service.change_status = function(status_change) {
+        console.log(status_change);
     }
 
     return shared_service;
