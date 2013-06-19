@@ -1,7 +1,7 @@
 <script>
     //admittedly a much clear|insane means of seperating serverside variables.
     var backend_vars = {
-        current_inbox_state: <?=$inbox_state?>
+        current_inbox_state: "<?=$inbox_state?>"
     }
 </script>
 
