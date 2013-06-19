@@ -1,6 +1,6 @@
 <script>
     var backend_vars = {
-        current_inbox_state: "Mathew";
+        current_inbox_state: "Mathew"
     }
 </script>
 
