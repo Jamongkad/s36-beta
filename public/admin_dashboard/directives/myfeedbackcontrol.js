@@ -44,13 +44,3 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
-.directive('category', function() { 
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind("click", function(e) {
-                e.preventDefault();
-            }); 
-        }
-    }    
-})
