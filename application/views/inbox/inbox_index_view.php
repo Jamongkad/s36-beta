@@ -1,3 +1,11 @@
+<script>
+angular.service('FeedbackData', function() { 
+    return {
+        current_inbox_state: <?=$inbox_state?>
+    } 
+});
+</script>
+
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
     <div class="j-j5-ji">
         <div class="checky-bar">
@@ -505,7 +513,7 @@
     </div>
 <?else:?>
     <div class="woops">
-        <h2 class="woops-header">Woops. There's no feedback here.</h2>
+        <h2 class="woops-header">Woops. There is no feedback here.</h2>
         <?if(!$feedback_present):?>
         <br/><br/>
             <p class="woops-content">
