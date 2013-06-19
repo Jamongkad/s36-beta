@@ -72,8 +72,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else { 
                 $(entity).prop("checked", false);     
             }
-
-            console.log($(entity).val());
            
             update_selected(action, parseInt($(entity).val(), 10)); 
             highlight(entity); 
