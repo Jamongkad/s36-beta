@@ -518,7 +518,7 @@
                 <?endif?>
             </p>
         <?endif?>
-        <br/><br/>
     </div>
+    <br/><br/>
 <?endif?>
 </div>
