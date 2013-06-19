@@ -26,18 +26,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }  
     }
 
-    $scope.feedback_status = function(id, feed_status) { 
-        console.log(feed_status + " id: " + id);
-        
+    $scope.feedback_status = function(feed) {         
         //this sends a signal to CheckyBox
-        FeedbackSignal.set_status_message(feed_status)
-        FeedbackSignal.set_feed_id(id);
+        FeedbackSignal.set_status_message(feed.status)
+        FeedbackSignal.set_feed_id(feed.id);
 
-        var status_change = {
-            'id': id, 'status': feed_status, 'origin': Template.current_inbox_state
-        } 
+        feed.origin = Template.current_inbox_state;
 
-        FeedbackControlService.change_status(status_change);
+        FeedbackControlService.change_status(feed);
     }
 
     $scope.reply_feedback = function(id) {
@@ -48,12 +44,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log("Feedback: " + feedid + " CatID: " + catid);
     }
 
-    $scope.update_selection = function($event, feed) {
+    $scope.update_selection = function($event, id) {
 
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
-        update_selected(action, feed); 
+        update_selected(action, id); 
         highlight(checkbox);
     }
 
