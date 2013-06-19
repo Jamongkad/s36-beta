@@ -62,11 +62,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
-        console.log("Mathew");
+        console.log($scope.checkboxes);
 
         for(var i=0; i < $scope.checkboxes.length; i++) {
              
             var entity = $scope.checkboxes[i];
+
+            console.log(entity);
 
             if(action == "add") {
                 $(entity).prop("checked", true);     
