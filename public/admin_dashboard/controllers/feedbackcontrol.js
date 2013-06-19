@@ -1,7 +1,7 @@
 function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Template) { 
 
     $scope.selected = [];
-    $scope.checkboxes = $("input[type=checkbox][name=feedid]");
+    $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
 
     var update_selected = function(action, id) {

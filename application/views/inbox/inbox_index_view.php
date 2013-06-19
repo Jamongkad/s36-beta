@@ -35,7 +35,7 @@
         <div class="grids">
             <div class="sorter-block sorter-checkbox">
                 <div class="sorter-block-box">
-                    <input type="checkbox" ng-click="select_all($event)"/>
+                    <input class="feed-checkbox" type="checkbox" ng-click="select_all($event)"/>
                 </div>
             </div>
             <div class="sorter-block">
