@@ -448,7 +448,7 @@
                                                                     <a href="#" 
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
                                                                        ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$cat->id?>, status: 'file'})"
-                                                                       category>
+                                                                       transform>
                                                                         <?=$cat->name?>
                                                                     </a>
                                                                 </li>
