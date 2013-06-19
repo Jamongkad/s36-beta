@@ -31,6 +31,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackSignal.set_status_message(feed.status)
         FeedbackSignal.set_feed_id(feed.id);
 
+        console.log(feed.status);
+
         feed.origin = Template.current_inbox_state;
 
         FeedbackControlService.change_status(feed);
