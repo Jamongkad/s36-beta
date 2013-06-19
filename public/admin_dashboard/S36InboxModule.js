@@ -1,2 +1,2 @@
 //S36Module Angular JS
-angular.module('S36Module', ['Services', 'Components', 'Public']);
+angular.module('S36Module', ['Services', 'Components']);
