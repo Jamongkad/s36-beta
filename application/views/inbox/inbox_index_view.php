@@ -35,7 +35,7 @@
         <div class="grids">
             <div class="sorter-block sorter-checkbox">
                 <div class="sorter-block-box">
-                    <input class="feed-checkbox" type="checkbox" ng-click="select_all($event)"/>
+                    <input type="checkbox" ng-click="select_all($event)"/>
                 </div>
             </div>
             <div class="sorter-block">
@@ -123,7 +123,7 @@
                 <?php foreach($feeds->children as $feed):?>
                     <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?> feedback="<?=$feed->id?>">
                         <div class="custom-checkbox">
-                            <input type="checkbox" ng-click="update_selection($event, <?=$feed->id?>)"/>
+                            <input class="feed-checkbox" type="checkbox" ng-click="update_selection($event, <?=$feed->id?>)"/>
                         </div>
                         <div class="feedback-avatar">
                             <?if($feed->origin == 's36'):?>
