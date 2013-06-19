@@ -83,7 +83,6 @@ function CheckyBox($scope, FeedbackSignal) {
     }
 
     $scope.$on('checkFeedbackStatus', function() {
-        console.log(FeedbackSignal.feed_status);
         $scope.status_selection = FeedbackSignal.feed_status;
         feed_id = FeedbackSignal.feed_id;
     });
