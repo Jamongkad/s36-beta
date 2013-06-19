@@ -1,5 +1,6 @@
 <script>
-angular.service('FeedbackData', function() { 
+angular.module('Public')
+.service('FeedbackData', function() { 
     return {
         current_inbox_state: <?=$inbox_state?>
     } 
