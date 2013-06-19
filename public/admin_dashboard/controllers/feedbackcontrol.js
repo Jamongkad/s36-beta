@@ -75,6 +75,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.change_value_status = function() {
         console.log($scope.status_select_value);
+        console.log($scope.selected);
     }
 }
 
