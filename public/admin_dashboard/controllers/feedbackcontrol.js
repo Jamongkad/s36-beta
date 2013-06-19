@@ -1,9 +1,9 @@
-function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, FeedbackData) { 
+function FeedbackControl($scope, FeedbackControlService, FeedbackSignal) { 
 
     $scope.selected = [];
     $scope.checkboxes = $("input[type=checkbox][name=feedid]");
 
-    console.log(FeedbackData.current_inbox_state);
+    console.log(backend_vars.current_inbox_state);
 
     var update_selected = function(action, id) {
 
