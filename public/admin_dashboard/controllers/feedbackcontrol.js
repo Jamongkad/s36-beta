@@ -2,6 +2,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.selected = [];
     $scope.checkboxes = $("input[type=checkbox][name=feedid]");
+    $scope.status_select_value = 'none';
 
     var update_selected = function(action, id) {
 
@@ -73,7 +74,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.change_value_status = function() {
-        console.log($scope.select_value);
+        console.log($scope.status_select_value);
     }
 }
 
