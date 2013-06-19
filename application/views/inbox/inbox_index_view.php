@@ -16,7 +16,7 @@
                 <span ng-switch-when="publish">
                     Feedback has been published on your page. 
                 </span> 
-                <span ng-switch-when="fileas">
+                <span ng-switch-when="file">
                     Feedback has been filed.
                 </span> 
                 <span ng-switch-when="delete">
@@ -447,7 +447,7 @@
                                                                 <li>
                                                                     <a href="#" 
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
-                                                                       ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$cat->id?>, status: 'fileas'})"
+                                                                       ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$cat->id?>, status: 'file'})"
                                                                        category>
                                                                         <?=$cat->name?>
                                                                     </a>
