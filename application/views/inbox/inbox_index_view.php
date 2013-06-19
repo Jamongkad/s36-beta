@@ -19,6 +19,8 @@
     </div>
 </div>
 
+<?=$inbox_state?>
+
 <div id="theInbox" ng-controller="FeedbackControl">
     <div id="theInboxSorter">
         <div class="grids">
