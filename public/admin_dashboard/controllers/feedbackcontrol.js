@@ -3,8 +3,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.selected = [];
     $scope.checkboxes = $("input[type=checkbox][name=feedid]");
 
-    console.log(Template);
-
     var update_selected = function(action, id) {
 
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
@@ -30,11 +28,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.feedback_status = function(id, feed_status) { 
         console.log(feed_status + " id: " + id);
-
+        
+        //this sends a signal to CheckyBox
         FeedbackSignal.set_status_message(feed_status)
         FeedbackSignal.set_feed_id(id);
 
-        FeedbackControlService.change_status(id, feed_status);
+        var status_change = {
+            'id': id, 'status': feed_status, 'origin': Template.current_inbox_state
+        } 
+
+        FeedbackControlService.change_status(status_change);
     }
 
     $scope.reply_feedback = function(id) {
