@@ -186,3 +186,10 @@ angular.module('Services', [])
 
     return shared_service;
 });
+.service('FeedbackData', function() { 
+    var shared_service = {}
+
+    shared_service.current_feedback_state;
+
+    return shared_service;
+});

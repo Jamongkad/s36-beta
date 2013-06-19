@@ -1,10 +1,5 @@
 <script>
-angular.module('Public')
-.service('FeedbackData', function() { 
-    return {
-        current_inbox_state: <?=$inbox_state?>
-    } 
-});
+FeedbackData.current_feedback_state = "Mathew";
 </script>
 
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
