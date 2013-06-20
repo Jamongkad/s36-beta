@@ -3,6 +3,7 @@
     //acts as global data object to be access by angularjs objects
     var backend_vars = {
         current_inbox_state: "<?=$inbox_state?>"
+      , default_category_id: "<?=$admin_check->categoryid?>"
     }
 </script>
 
