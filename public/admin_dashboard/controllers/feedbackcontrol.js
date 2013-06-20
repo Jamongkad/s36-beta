@@ -21,6 +21,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         feed.origin = Template.current_inbox_state;
         FeedbackControlService.change_status(feed);
+        $scope.selected = [];
     }
 
     $scope.reply_feedback = function(id) {
