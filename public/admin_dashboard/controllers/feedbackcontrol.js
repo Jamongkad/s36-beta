@@ -53,8 +53,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             entity.fadeOut(500, function() { 
                 var child_count = entity_parent.children('.dashboard-feedback:visible');
                 if(child_count.length == 0) { 
+                    console.log(entity_parent);
                     entity_parent.fadeOut(500); 
-                    console.log("Disappear");
                 }      
             });
         }
