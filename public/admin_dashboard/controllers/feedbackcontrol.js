@@ -5,7 +5,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.status_select_value = 'none';
 
     var update_selected = function(action, id) {
-
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
             $scope.selected.push(id);     
         }
@@ -13,7 +12,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);     
         } 
-
     }
 
     var highlight = function(entity) {
