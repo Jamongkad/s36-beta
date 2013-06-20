@@ -32,10 +32,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.update_selection = function($event, id) {
-
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-
         update_selected(action, id); 
     }
 
@@ -45,6 +43,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log(Template.current_inbox_state);
         console.log(Template.default_category_id);
 
+        for(var i=0; i < $scope.selected.length; i++) {
+            var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
+            console.log(entity);
+        }
     }
 
     $scope.select_all = function($event) { 
