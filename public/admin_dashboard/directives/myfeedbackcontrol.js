@@ -50,14 +50,12 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             var checkbox = $(element);
 
-            if(checkbox.attr('checked')) { 
-                checkbox.parents('.dashboard-feedback').css({'background-color': '#F7F7F7'});     
-            } else {
-                checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
-            }  
-
             checkbox.bind('change', function() {
-                console.log("Changed");
+                if(checkbox.is(":checked")) { 
+                    checkbox.parents('.dashboard-feedback').css({'background-color': '#F7F7F7'});     
+                } else {
+                    checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
+                }  
             });
             
         }
