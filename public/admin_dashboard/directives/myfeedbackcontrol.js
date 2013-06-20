@@ -5,11 +5,11 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var me = $(element)
-                me.parents('.dashboard-feedback').fadeOut(500, function() {
+                me.parents('.dashboard-feedback').hide(100, 'linear',  function() {
 
                     var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
                     if(child_count.length == 0) {
-                        $(me).parents('.feedback-group').fadeOut(500);
+                        $(me).parents('.feedback-group').hide();
                     }      
 
                 }); 
@@ -29,13 +29,13 @@ angular.module('feedbackcontrol', [])
                 if (FeedbackSignal.feed_id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.feed_id.length ; i++)     { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id[i] + "]");
-                        feedback.fadeIn(500);
-                        $(feedback).parents('.feedback-group').fadeIn(500);
+                        feedback.show();
+                        $(feedback).parents('.feedback-group').show();
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id + "]");
-                    feedback.fadeIn(500);
-                    $(feedback).parents('.feedback-group').fadeIn(500);
+                    feedback.show();
+                    $(feedback).parents('.feedback-group').show();
                 }
                 e.preventDefault();
             });
