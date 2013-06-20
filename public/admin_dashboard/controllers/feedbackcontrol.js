@@ -49,7 +49,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
             var entity_parent = $(entity).parents('.feedback-group');
-
+            
+            /*
             entity.hide(400, function() { 
                 var child_count = entity_parent.children('.dashboard-feedback:visible');
                 console.log(child_count);
@@ -58,6 +59,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     entity_parent.hide(); 
                 }      
             });
+            */
+            entity.hide();
         }
     }
 
