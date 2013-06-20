@@ -56,7 +56,7 @@ angular.module('feedbackcontrol', [])
                 checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
             }  
 
-            console.log(attrs);
+            console.log(checkbox.is(':checked'));
 
         }
     }    
