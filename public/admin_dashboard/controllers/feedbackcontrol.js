@@ -62,7 +62,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             */
             entity.hide();
             var child_count = entity_parent.children('.dashboard-feedback:visible');
-            console.log(child_count.length);
+
+            if(child_count.length == 0) { 
+                console.log(entity_parent);
+                entity_parent.hide(); 
+            }      
         }
     }
 
