@@ -25,9 +25,18 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
                 $(".checky-box-container").hide();
-                var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id + "]");
-                feedback.fadeIn(500);
-                $(feedback).parents('.feedback-group').fadeIn(500);
+
+                if (FeedbackSignal.feed_id instanceof Array) {
+                    for(var i=0; i < FeedbackSignal.feed_id.length ; i++)     { 
+                        var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id[i] + "]");
+                        feedback.fadeIn(500);
+                        $(feedback).parents('.feedback-group').fadeIn(500);
+                    }
+                } else { 
+                    var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id + "]");
+                    feedback.fadeIn(500);
+                    $(feedback).parents('.feedback-group').fadeIn(500);
+                }
                 e.preventDefault();
             });
         }
