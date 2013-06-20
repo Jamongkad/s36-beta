@@ -58,7 +58,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     $(entity).click();     
                 } 
             } else { 
-                $(entity).prop("checked", false);     
+                $(entity).click();     
             }
            
             update_selected(action, parseInt($(entity).val(), 10)); 
