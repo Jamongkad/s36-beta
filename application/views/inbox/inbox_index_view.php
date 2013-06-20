@@ -123,7 +123,13 @@
                 <?php foreach($feeds->children as $feed):?>
                     <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?> feedback="<?=$feed->id?>">
                         <div class="custom-checkbox">
-                            <input class="feed-checkbox" type="checkbox" value="<?=$feed->id?>" ng-click="update_selection($event, <?=$feed->id?>)"/>
+                            <input 
+                             class="feed-checkbox" 
+                             type="checkbox" 
+                             value="<?=$feed->id?>" 
+                             ng-click="update_selection($event, <?=$feed->id?>)"
+                             feedcheckbox 
+                             />
                         </div>
                         <div class="feedback-avatar">
                             <?if($feed->origin == 's36'):?>
