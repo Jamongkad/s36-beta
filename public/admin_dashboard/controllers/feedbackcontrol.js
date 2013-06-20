@@ -71,6 +71,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackSignal.set_status_message(feed.status)
         FeedbackSignal.set_feed_id(feed.id);
         FeedbackControlService.change_status(feed);
+        $(".checky-box-container").show();
     }
 
     $scope.select_all = function($event) { 
