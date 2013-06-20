@@ -55,6 +55,10 @@ angular.module('feedbackcontrol', [])
             } else {
                 checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
             }  
+
+            scope.$watch(element, function(new_val) {
+                console.log(new_val);
+            });
         }
     }    
     
