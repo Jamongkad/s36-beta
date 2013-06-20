@@ -51,6 +51,7 @@ angular.module('feedbackcontrol', [])
             var checkbox = $(element);
 
             checkbox.bind('change', function() {
+                console.log(checkbox.is(":checked"));
                 if(checkbox.is(":checked")) { 
                     checkbox.parents('.dashboard-feedback').css({'background-color': '#F7F7F7'});     
                 } else {
