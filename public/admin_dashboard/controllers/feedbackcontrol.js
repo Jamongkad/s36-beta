@@ -14,17 +14,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
     }
 
-    var highlight = function(entity) {
-        
-        var checkbox = $(entity);
-
-        if(checkbox.attr('checked')) { 
-            checkbox.parents('.dashboard-feedback').css({'background-color': '#F7F7F7'});     
-        } else {
-            checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
-        }  
-    }
-
     $scope.feedback_status = function(feed) {         
         //this sends a signal to CheckyBox
         FeedbackSignal.set_status_message(feed.status)
@@ -48,7 +37,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var action = (checkbox.checked ? 'add' : 'remove');
 
         update_selected(action, id); 
-        highlight(checkbox);
     }
 
     $scope.change_value_status = function() {
@@ -72,7 +60,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
            
             update_selected(action, parseInt($(entity).val(), 10)); 
-            highlight(entity); 
         }
     }
 }
