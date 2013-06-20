@@ -52,7 +52,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         for(var i=0; i < $scope.checkboxes.length; i++) {
              
             var entity = $scope.checkboxes[i];
-
+            //if action is add then click on checkboxes if not click again to deselect
             if(action == "add") {
                 if(!$(entity).is(":checked")) {
                     $(entity).click();     
