@@ -84,7 +84,6 @@ Checky.prototype.init = function() {
                                 //console.log("poor rated feeds can pass");  
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
-
                             exam_collection.push(data);
                         } 
                     }

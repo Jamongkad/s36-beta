@@ -20,6 +20,8 @@ class FireMultiple {
     public function execute() {
         //emits json for jquery ui manipulation
         $this->_group_ui_cluster($this->feed_ids);
+
+        //talks to db
         $feedbackstate = new FeedbackState($this->mode, $this->feed_ids, $this->company_id);
 
         if($this->mode == "remove") {
