@@ -55,12 +55,11 @@ angular.module('feedbackcontrol', [])
             } else {
                 checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
             }  
-            
-            scope.$watch('check_value', function() {
-                console.log("Change");
-            }, true);
 
-            console.log(checkbox.is(':checked'));
+            checkbox.bind('change', function() {
+                console.log("Changed");
+            });
+            
         }
     }    
     
