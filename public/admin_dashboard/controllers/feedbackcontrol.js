@@ -44,6 +44,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log($scope.selected); 
         console.log(Template.current_inbox_state);
         console.log(Template.default_category_id);
+
     }
 
     $scope.select_all = function($event) { 
