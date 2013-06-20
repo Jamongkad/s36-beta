@@ -45,7 +45,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         for(var i=0; i < $scope.selected.length; i++) {
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
-            console.log(entity);
+            entity.fadeOut(500, function() { 
+                var child_count = $(entity).parents('.feedback-group').children('.dashboard-feedback:visible');
+                console.log(child_count.length);
+            });
         }
     }
 
