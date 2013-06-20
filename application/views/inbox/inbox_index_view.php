@@ -128,7 +128,6 @@
                              type="checkbox" 
                              value="<?=$feed->id?>" 
                              ng-click="update_selection($event, <?=$feed->id?>)"
-                             ng-model="check_value"
                              feedcheckbox 
                              />
                         </div>
