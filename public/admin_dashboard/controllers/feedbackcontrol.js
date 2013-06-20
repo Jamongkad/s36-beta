@@ -66,6 +66,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             FeedbackControlService.change_status(feed);
+            $scope.selected = [];
         }
     }
 
