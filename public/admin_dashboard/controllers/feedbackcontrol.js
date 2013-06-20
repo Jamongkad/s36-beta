@@ -56,8 +56,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             if(child_count.length == 0) {  
                 entity_parent.hide(); 
             }      
-
         }
+
+        var feed = {
+            id: $scope.selected      
+          , status: $scope.status_select_value 
+          , catid: Template.default_category_id
+          , origin: Template.current_inbox_state
+        }
+
+        FeedbackControlService.change_status(feed);
     }
 
     $scope.select_all = function($event) { 
