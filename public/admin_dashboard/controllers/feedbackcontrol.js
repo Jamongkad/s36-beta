@@ -57,7 +57,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 entity_parent.hide(); 
             }      
         }
-
+        /*
         var feed = {
             id: $scope.selected      
           , status: $scope.status_select_value 
@@ -66,6 +66,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
 
         FeedbackControlService.change_status(feed);
+        */
     }
 
     $scope.select_all = function($event) { 
