@@ -50,21 +50,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
             var entity_parent = $(entity).parents('.feedback-group');
             
-            /*
-            entity.hide(400, function() { 
-                var child_count = entity_parent.children('.dashboard-feedback:visible');
-                console.log(child_count);
-                if(child_count.length == 0) { 
-                    console.log(entity_parent);
-                    entity_parent.hide(); 
-                }      
-            });
-            */
             entity.hide();
+
             var child_count = entity_parent.children('.dashboard-feedback:visible');
 
-            if(child_count.length == 0) { 
-                console.log(entity_parent);
+            if(child_count.length == 0) {  
                 entity_parent.hide(); 
             }      
         }
