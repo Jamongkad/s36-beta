@@ -49,24 +49,15 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
             var entity_parent = $(entity).parents('.feedback-group');
-            var child_count = entity_parent.children('.dashboard-feedback:visible');
-
+            
             entity.hide();
+
+            var child_count = entity_parent.children('.dashboard-feedback:visible');
 
             if(child_count.length == 0) {  
                 entity_parent.hide(); 
             }      
         }
-        /*
-        var feed = {
-            id: $scope.selected      
-          , status: $scope.status_select_value 
-          , catid: Template.default_category_id
-          , origin: Template.current_inbox_state
-        }
-
-        FeedbackControlService.change_status(feed);
-        */
     }
 
     $scope.select_all = function($event) { 
