@@ -48,7 +48,13 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            console.log(element);
+            var checkbox = $(element);
+
+            if(checkbox.attr('checked')) { 
+                checkbox.parents('.dashboard-feedback').css({'background-color': '#F7F7F7'});     
+            } else {
+                checkbox.parents('.dashboard-feedback').css({'background-color': '#FFF'});     
+            }  
         }
     }    
     
