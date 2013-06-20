@@ -54,7 +54,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var entity = $scope.checkboxes[i];
 
             if(action == "add") {
-                $(entity).prop("checked", true);     
+                //$(entity).prop("checked", true);     
+                $(entity).click();
             } else { 
                 $(entity).prop("checked", false);     
             }
