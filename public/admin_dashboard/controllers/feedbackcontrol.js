@@ -61,6 +61,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             });
             */
             entity.hide();
+            var child_count = entity_parent.children('.dashboard-feedback:visible');
+            console.log(child_count.length);
         }
     }
 
