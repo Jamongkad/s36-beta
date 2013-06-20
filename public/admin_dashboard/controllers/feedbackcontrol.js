@@ -49,14 +49,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
             var entity_parent = $(entity).parents('.feedback-group');
-            
-            entity.hide();
-
             var child_count = entity_parent.children('.dashboard-feedback:visible');
+
+            entity.hide();
 
             if(child_count.length == 0) {  
                 entity_parent.hide(); 
             }      
+
         }
     }
 
