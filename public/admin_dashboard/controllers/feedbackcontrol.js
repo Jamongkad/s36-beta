@@ -44,10 +44,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log(Template.default_category_id);
 
         for(var i=0; i < $scope.selected.length; i++) {
+
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
+            var entity_parent = $(entity).parents('.feedback-group');
+
             entity.fadeOut(500, function() { 
-                var child_count = $(entity).parents('.feedback-group').children('.dashboard-feedback:visible');
-                console.log(child_count.length);
+                var child_count = entity_parent.children('.dashboard-feedback:visible');
+                if(child_count.length == 0) { entity_parent.fadeOut(500); }      
             });
         }
     }
