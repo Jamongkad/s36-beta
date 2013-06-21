@@ -45,13 +45,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.change_value_status = function() {
-        /*
-        console.log($scope.status_select_value); 
-        console.log($scope.selected); 
-        console.log(Template.current_inbox_state);
-        console.log(Template.default_category_id);
-        */
-
         for(var i=0; i < $scope.selected.length; i++) {
 
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
@@ -76,6 +69,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         FeedbackSignal.current_state(feed);
         FeedbackControlService.change_status(feed);
+        $scope.selected = [];
         $(".checky-box-container").show();
     }
 
