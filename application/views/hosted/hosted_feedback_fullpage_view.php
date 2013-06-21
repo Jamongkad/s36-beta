@@ -26,6 +26,57 @@
             
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>
             
+            <div id="companySummaryContainer">
+                
+                <div class="hosted-block">
+                    <div class="company-description clear">
+                        <div class="company-rating">
+                            <div class="dynamic-stars-container">
+                                <div class="dynamic-stars">
+                                    <div class="star-ratings clear">
+                                        <div class="star-container clear">
+                                            <div id="1" class="star <?= ($company->avg_rating >= 1 ? 'full' : ''); ?>"></div>
+                                            <div id="2" class="star <?= ($company->avg_rating >= 2 ? 'full' : ''); ?>"></div>
+                                            <div id="3" class="star <?= ($company->avg_rating >= 3 ? 'full' : ''); ?>"></div>
+                                            <div id="4" class="star <?= ($company->avg_rating >= 4 ? 'full' : ''); ?>"></div>
+                                            <div id="5" class="star <?= ($company->avg_rating >= 5 ? 'full' : ''); ?>"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-count"><strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong> Rate us!</div>
+                        </div>
+                        <div class="company-text">
+                            <div class="company-text-content">
+                                <? // keep the content of #fullpage_desc in one line. ?>
+                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( Helpers::urls_to_links(HTML::entities($company->description)) ); ?></div>
+                                <?php if( ! is_null($user) ): ?>
+                                    <textarea id="fullpage_desc_textbox" rows="3"></textarea>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end of .hosted-block (ratings and description) -->
+                
+                
+                
+                <div class="hosted-block">
+                    <div class="company-reviews clear">
+                        <div class="company-recommendation">
+                            <?php if( $company->total_feedback != 0 ): ?>
+                                <div class="green-thumb">
+                                    <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
+                                    of our customers recommend us to their friends.
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div> <!-- end of .hosted-block (recommendation) -->
+                
+                
+            </div><!-- end of #companySummaryContainer -->
+            
+            
             <?php if( $feed_count->published_feed_count == 0 ): ?>
                 <div class="hosted-block">
                     <div class="company-description clear">
@@ -49,7 +100,7 @@
             <?php if( $feed_count->published_feed_count > 0 ): ?>
                 <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
                     <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
-                    <div class="hosted-block">
+                    <? /*<div class="hosted-block">
                         <div class="company-description clear">
                             <div class="company-text">
                                 <? // keep the content of fullpage_desc_text in one line. ?>
@@ -67,24 +118,24 @@
                     </div>
                     
                     <div class="hosted-block">
-                            <div class="company-reviews clear">
-                                <div class="company-recommendation">
-                                    <?php if( $company->total_feedback != 0 ): ?>
-                                        <div class="green-thumb">
-                                            <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
-                                            of our customers recommend us to their friends.
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="company-rating">
-                                    <?php if( $company->total_feedback != 0 ): ?>
-                                        <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
-                                        <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
-                                        <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
-                                    <?php endif; ?>
-                                </div>
+                        <div class="company-reviews clear">
+                            <div class="company-recommendation">
+                                <?php if( $company->total_feedback != 0 ): ?>
+                                    <div class="green-thumb">
+                                        <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
+                                        of our customers recommend us to their friends.
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                    </div>
+                            <div class="company-rating">
+                                <?php if( $company->total_feedback != 0 ): ?>
+                                    <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
+                                    <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
+                                    <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>*/ ?>
                 </div>
 
                 <!-- lightbox notification -->

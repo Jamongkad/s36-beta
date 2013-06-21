@@ -72,6 +72,37 @@ a:hover{
 	overflow: hidden;
 }
 
+#theHostedFormContainer{
+	background:#e9f1f9;
+}
+.dynamic-stars-container{
+	
+}
+.dynamic-stars{
+	width:120px;
+	margin-left:-60px;
+	left:50%;
+}
+/* star ratings styles! yeah baby! */
+.star-ratings{
+	display:block;
+	margin-top:5px;
+	margin-bottom:10px;
+}
+.star-ratings .star-container{
+	width:120px;
+	float:left;
+}
+.star-ratings .star-container .star{
+	float:left;
+	width:24px;
+	height:24px;
+	background: url(/img/star-ratings.png);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	cursor:pointer;
+}
+
 /* end of universal CSS */
 
 #mainWrapper{
@@ -98,10 +129,15 @@ a:hover{
 	overflow:hidden;
 }
 .company-description{
-	margin-top:35px;
-	margin-bottom:25px;
+	/*margin-top:35px;
+	margin-bottom:25px;*/
+	margin-top:25px;
+	margin-bottom:10px;
 }
 .company-text{
+	/*line-height:1.6em;
+	width:675px;
+	float:left;*/
 	line-height:1.6em;
 	width:675px;
 	float:left;
@@ -135,8 +171,11 @@ a:hover{
 	color:#419322;
 }
 .company-rating{
-	width:425px;
+	/*width:425px;
 	float:right;
+	text-align:right;
+	color:#3780c7;*/
+	float:left;
 	text-align:right;
 	color:#3780c7;
 }
@@ -168,7 +207,7 @@ a:hover{
     display:inline-block;
     text-align:left;
 }
-.review-count{
+/*.review-count{
 	display:inline-block;
     top:-2px;
     text-align:right;
@@ -176,22 +215,41 @@ a:hover{
 .rating-stars-container{
     float:right;
     width:255px;
+}*/
+.review-count{
+	/*display:block;
+	top:-2px;
+	text-align:center;
+	margin-top:5px;
+	font-size:12px;
+	color:#333;*/
+	display:block;
+	top:-2px;
+	text-align:center;
+	margin-top:5px;
+	font-size:12px;
+	color:#333;
+}
+.review-count strong{
+	/*font-weight:bold;*/
+	font-weight:bold;
 }
 .regular-featured .feedback-timestamp{
 	float:right;
 	margin-top:3px;
 }
-.stars .star{
-	width:16px;margin-right:2px;
+.star-ratings .star{
+	width:16px;
+	/*margin-right:2px;*/
 	background:url(/fullpage/common/img/star-sprites.png) bottom center;
 	background-repeat:no-repeat;
 	height:15px;
 	float:left;
 }
-.stars .star.full{
-	background-position:top;
+.star-ratings .star.full{
+	background-position: top;
 }
-.stars .star.half{
+.star-ratings .star.half{
 	background-position:center center;
 }
 /* end of common header css */

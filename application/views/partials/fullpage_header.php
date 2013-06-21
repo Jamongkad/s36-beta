@@ -60,6 +60,7 @@ echo HTML::script('/minified/Global.js');
 */
 echo HTML::script('/minified/FullpageCommon.js');
 echo HTML::style('/minified/FullpageCommon.css');
+echo HTML::style('/css/respond.css');  // has a bug when minified.
 
 /*
 |--------------------------------------------------------------------------
