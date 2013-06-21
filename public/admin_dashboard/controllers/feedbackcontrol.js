@@ -45,6 +45,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.change_value_status = function() {
+        console.log("changed");
         for(var i=0; i < $scope.selected.length; i++) {
 
             var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
