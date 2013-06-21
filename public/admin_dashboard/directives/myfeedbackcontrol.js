@@ -16,9 +16,9 @@ angular.module('feedbackcontrol', [])
                 }); 
                 */
                 me.parents('.dashboard-feedback').hide();
-                var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
+                var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
                 if(child_count.length == 0) {
-                    $(me).parents('.feedback-group').hide();
+                    me.parents('.feedback-group').hide();
                 }      
 
                 $(".checky-box-container").show();
