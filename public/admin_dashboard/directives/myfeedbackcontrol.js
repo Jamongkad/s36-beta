@@ -24,7 +24,8 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
                 $(".checky-box-container").hide();
-
+                console.log(FeedbackSignal.data);
+                /*
                 if (FeedbackSignal.data.id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.feed_id.length ; i++)     { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.feed_id[i] + "]");
@@ -36,6 +37,7 @@ angular.module('feedbackcontrol', [])
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();
                 }
+                */
                 e.preventDefault();
             });
         }
