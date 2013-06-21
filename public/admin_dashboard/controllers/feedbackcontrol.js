@@ -44,34 +44,37 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.change_value_status = function() {
-        console.log("changed");
-        for(var i=0; i < $scope.selected.length; i++) {
+        if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
 
-            var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
-            var entity_parent = $(entity).parents('.feedback-group');
-            
-            entity.hide();
+            console.log("changed");
+            for(var i=0; i < $scope.selected.length; i++) {
 
-            var child_count = entity_parent.children('.dashboard-feedback:visible');
+                var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
+                var entity_parent = $(entity).parents('.feedback-group');
+                
+                entity.hide();
 
-            if(child_count.length == 0) {  
-                entity_parent.hide(); 
-            }      
+                var child_count = entity_parent.children('.dashboard-feedback:visible');
 
+                if(child_count.length == 0) {  
+                    entity_parent.hide(); 
+                }      
+
+            }
+
+            var feed = {
+                id: $scope.selected     
+              , status: $scope.status_select_value
+              , catid: Template.default_category_id
+              , origin: Template.current_inbox_state
+            }
+
+            FeedbackSignal.current_state(feed);
+            FeedbackControlService.change_status(feed);
+
+            $(".checky-box-container").show(); 
+            $("select[name=feed_selection]").val("none"); 
         }
-
-        var feed = {
-            id: $scope.selected     
-          , status: $scope.status_select_value
-          , catid: Template.default_category_id
-          , origin: Template.current_inbox_state
-        }
-
-        FeedbackSignal.current_state(feed);
-        FeedbackControlService.change_status(feed);
-
-        $(".checky-box-container").show(); 
-        $("select[name=feed_selection]").val("none");
     }
 
     $scope.select_all = function($event) { 
