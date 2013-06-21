@@ -37,8 +37,6 @@ angular.module('feedbackcontrol', [])
                     $(feedback).parents('.feedback-group').show();
                 }
 
-                $(".checky-box-container").show(); 
-                $("select[name=feed_selection]").val("none");
                 e.preventDefault();
             });
         }

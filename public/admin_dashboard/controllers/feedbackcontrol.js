@@ -70,6 +70,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackSignal.current_state(feed);
         FeedbackControlService.change_status(feed);
         $scope.selected = [];
+
+        $(".checky-box-container").show(); 
+        $("select[name=feed_selection]").val("none");
     }
 
     $scope.select_all = function($event) { 
