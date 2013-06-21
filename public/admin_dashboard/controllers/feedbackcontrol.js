@@ -16,8 +16,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.feedback_status = function(feed) {         
         //this sends a signal to CheckyBox
-        FeedbackSignal.set_status_message(feed.status)
-        FeedbackSignal.set_feed_id(feed.id);
+        var current = {
+            id: feed.id
+          , catid: Template.default_category_id
+          , status: feed.status
+          , origin: Template.current_inbox_state
+        }
+
+        FeedbackSignal.current_state(current);
 
         feed.origin = Template.current_inbox_state;
         FeedbackControlService.change_status(feed);
@@ -61,6 +67,15 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         }
 
+        var current = {
+            id: feed.id
+          , catid: Template.default_category_id
+          , status: feed.status
+          , origin: Template.current_inbox_state
+        }
+
+        FeedbackSignal.current_state(current);
+
         var feed = {
             id: $scope.selected     
           , status: $scope.status_select_value
@@ -68,8 +83,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
           , origin: Template.current_inbox_state
         }
 
-        FeedbackSignal.set_status_message(feed.status)
-        FeedbackSignal.set_feed_id(feed.id);
         FeedbackControlService.change_status(feed);
         $(".checky-box-container").show();
     }
@@ -106,7 +119,7 @@ function CheckyBox($scope, FeedbackSignal) {
     }
 
     $scope.$on('checkFeedbackStatus', function() {
-        $scope.status_selection = FeedbackSignal.feed_status;
-        feed_id = FeedbackSignal.feed_id;
+        $scope.status_selection = FeedbackSignal.data.status;
+        feed_id = FeedbackSignal.data.id;
     });
 }
