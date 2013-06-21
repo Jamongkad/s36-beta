@@ -25,7 +25,7 @@ angular.module('feedbackcontrol', [])
             $(element).bind("click", function(e) {
                 $(".checky-box-container").hide();
                 if (FeedbackSignal.data.id instanceof Array) {
-                    for(var i=0; i < FeedbackSignal.data.id.length ; i++)     { 
+                    for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();
