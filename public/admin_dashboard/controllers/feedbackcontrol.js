@@ -94,6 +94,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             update_selected(action, parseInt($(entity).val(), 10)); 
         }
     }
+
+    $scope.$on('expungeFeedId', function() {
+        console.log("EXPUNGED");
+    })
 }
 
 function CheckyBox($scope, FeedbackSignal) { 
@@ -102,6 +106,7 @@ function CheckyBox($scope, FeedbackSignal) {
 
     $scope.undo = function() {
         console.log(FeedbackSignal.data);
+        FeedbackControlService.expunge();
     }
 
     $scope.$on('checkFeedbackStatus', function() {
