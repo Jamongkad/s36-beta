@@ -29,12 +29,17 @@ angular.module('feedbackcontrol', [])
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();
+                        $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]");
+                    $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]").click();
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();
                 }
+
+                $(".checky-box-container").show(); 
+                $("select[name=feed_selection]").val("none");
                 e.preventDefault();
             });
         }
