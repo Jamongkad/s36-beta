@@ -27,7 +27,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         feed.origin = Template.current_inbox_state;
         FeedbackControlService.change_status(feed);
-        $scope.selected = [];
     }
 
     $scope.reply_feedback = function(id) {
@@ -70,7 +69,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         FeedbackSignal.current_state(feed);
         FeedbackControlService.change_status(feed);
-        $scope.selected = [];
 
         $(".checky-box-container").show(); 
         $("select[name=feed_selection]").val("none");
