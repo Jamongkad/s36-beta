@@ -67,15 +67,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         }
 
-        var current = {
-            id: feed.id
-          , catid: Template.default_category_id
-          , status: feed.status
-          , origin: Template.current_inbox_state
-        }
-
-        FeedbackSignal.current_state(current);
-
         var feed = {
             id: $scope.selected     
           , status: $scope.status_select_value
@@ -83,6 +74,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
           , origin: Template.current_inbox_state
         }
 
+        FeedbackSignal.current_state(feed);
         FeedbackControlService.change_status(feed);
         $(".checky-box-container").show();
     }
