@@ -14,7 +14,7 @@ body, #mainWrapper, #fadedContainer{
 }
 #theDashboardMenu ul{
     display:block;
-    background:url(../img/dashboard-menu-bg.jpg) repeat-x;
+    background:url(/fullpage/admin/img/dashboard-menu-bg.jpg) repeat-x;
     background-color:#f6f6f6;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
@@ -31,7 +31,7 @@ body, #mainWrapper, #fadedContainer{
     display:inline-block;
     padding:15px 0px;
     margin-left:-3px;
-    background:url(../img/dashboard-menu-splitter.jpg) no-repeat left;
+    background:url(/fullpage/admin/img/dashboard-menu-splitter.jpg) no-repeat left;
 }
 #theDashboardMenu ul li:hover{
     background-color:#f4f4f4;
@@ -267,7 +267,7 @@ body, #mainWrapper, #fadedContainer{
     border-bottom:none;
 }
 .action-sprite{
-    background:url(../img/v2-sprites.png) no-repeat;
+    background:url(/fullpage/admin/img/v2-sprites.png) no-repeat;
 }
 .action-delete{
     width:32px;
@@ -281,7 +281,7 @@ body, #mainWrapper, #fadedContainer{
     height:40px;
 }
 .action-delete-tooltip{
-    background:url(../img/tooltip-delete.png) no-repeat;
+    background:url(/fullpage/admin/img/tooltip-delete.png) no-repeat;
     position:absolute;
     width:72px;
     height:24px;
@@ -361,7 +361,7 @@ body, #mainWrapper, #fadedContainer{
 .action-tooltip-arrow{
     width:5px;
     height:3px;
-    background:url(../img/tooltip-tail.png) no-repeat;
+    background:url(/fullpage/admin/img/tooltip-tail.png) no-repeat;
     position:absolute;
     bottom:-3px;
     right:15px;
@@ -378,7 +378,7 @@ body, #mainWrapper, #fadedContainer{
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius:4px;      
-    background:#FFF url(../img/category-menu-bottom-line-effect.jpg) bottom no-repeat;
+    background:#FFF url(/fullpage/admin/img/category-menu-bottom-line-effect.jpg) bottom no-repeat;
     width:203px;
     position:absolute;
     right:31px;
@@ -391,7 +391,7 @@ body, #mainWrapper, #fadedContainer{
 .the-category-arrow{
     width:8px;
     height:13px;
-    background:url(../img/category-menu-right-arrow.png) no-repeat;
+    background:url(/fullpage/admin/img/category-menu-right-arrow.png) no-repeat;
     position:absolute;
     right:-8px;
     top:10px;
@@ -442,7 +442,7 @@ body, #mainWrapper, #fadedContainer{
     width:87px;
     height:21px;
     display:inline-block;
-    background:url(../img/delete-button.png) top;
+    background:url(/fullpage/admin/img/delete-button.png) top;
 }
 .delete-button:hover{
     background-position:bottom;
@@ -489,7 +489,7 @@ body, #mainWrapper, #fadedContainer{
 }
 .dashboard-head{
     padding:12px;
-    background:#f2f2f2 url(../img/dashboard-box-header-bg.jpg) repeat-x;
+    background:#f2f2f2 url(/fullpage/admin/img/dashboard-box-header-bg.jpg) repeat-x;
     border-bottom:1px solid #d6d6d6;
 }
 .dashboard-title{
@@ -880,7 +880,7 @@ body, #mainWrapper, #fadedContainer{
             color:#386c99;
         }
         .report-text{
-            background:url(../img/ico-dashboard-updates.png) no-repeat;
+            background:url(/fullpage/admin/img/ico-dashboard-updates.png) no-repeat;
             padding:5px 0px 5px 45px;
         }
         .report-text.new{
@@ -1137,7 +1137,7 @@ body, #mainWrapper, #fadedContainer{
     }
     .display-feedback-block .flag-as{
         color:#455b61;
-        background:url(../../../common/img/ico-flag.png) no-repeat;
+        background:url(/fullpage/common/img/ico-flag.png) no-repeat;
         background-position:center left;
         padding-left:17px;
         margin-bottom:3px;
@@ -1147,7 +1147,7 @@ body, #mainWrapper, #fadedContainer{
     .display-feedback-block .share-button{
         display:inline-block;
         color:#455b61;
-        background:url(../../../common/img/ico-share.png) no-repeat;
+        background:url(/fullpage/common/img/ico-share.png) no-repeat;
         background-position:center left;
         padding-left:17px;
         padding-top:2px;
@@ -1218,7 +1218,40 @@ body, #mainWrapper, #fadedContainer{
     .display-feedback-block .video-details p{
         font-size:11px;
     }
-        
+.noborder{
+  border:none;
+ }
+ /* end of skin */
+ 
+ /* added menus */
+ #theDashboardMenu ul li:hover ul.submenu{
+  display:block;
+ }
+ #theDashboardMenu ul.submenu{
+  position:absolute;
+  width:140px;
+  right:0px;
+  z-index:1;
+  top:40px;
+  display:none;
+ }
+ #theDashboardMenu ul.submenu li{
+  margin-left:0px;
+  display:block;
+  padding:0px;
+  border:none;
+  background:none;
+ }
+ #theDashboardMenu ul.submenu li a{
+  display:block;
+  
+ }
+ #theDashboardMenu ul.submenu li a:hover{
+  background:#FFF;
+ }
+
+
+
 /* Tablet Landscape */
 @media screen and (max-width: 480px) {
     .feedback-author span,.feedback-details span{
@@ -1295,7 +1328,7 @@ body, #mainWrapper, #fadedContainer{
     .action-tooltip-arrow{
         width:3px;
         height:5px;
-        background:url(../img/tooltip-tail-right.png) no-repeat;
+        background:url(/fullpage/admin/img/tooltip-tail-right.png) no-repeat;
         top:6px;
         right:-3px;
     }
@@ -1378,7 +1411,7 @@ body, #mainWrapper, #fadedContainer{
     }
     #theDashboardMenu ul li:first-child{
         display:block;
-        background-image:url(../img/mobile-menu-dropdown.jpg);
+        background-image:url(/fullpage/admin/img/mobile-menu-dropdown.jpg);
         background-position:right center;
         background-repeat:no-repeat;
     }   
