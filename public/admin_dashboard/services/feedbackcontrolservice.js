@@ -6,6 +6,14 @@ angular.module('Services', [])
         console.log(status_change);
     }
 
+    shared_service.expunge = function() {
+        this.broadcast_now(); 
+    }
+
+    shared_service.broadcast_now() { 
+        $rootScope.$broadcast('expungeFeedId');
+    }
+
     return shared_service;
 })
 .service('FeedbackSignal', function($rootScope) {     
