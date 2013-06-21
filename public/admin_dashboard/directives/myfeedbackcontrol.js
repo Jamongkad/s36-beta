@@ -32,8 +32,7 @@ angular.module('feedbackcontrol', [])
                         $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();
                     }
                 } else { 
-                    var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]");
-                    $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]").click();
+                    var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();
                 }
