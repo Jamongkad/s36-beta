@@ -10,7 +10,7 @@ angular.module('Services', [])
         this.broadcast_now(); 
     }
 
-    shared_service.broadcast_now() { 
+    shared_service.broadcast_now = function() { 
         $rootScope.$broadcast('expungeFeedId');
     }
 
