@@ -5,6 +5,7 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var me = $(element)
+                /*
                 me.parents('.dashboard-feedback').hide(100, 'linear',  function() {
 
                     var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
@@ -13,6 +14,13 @@ angular.module('feedbackcontrol', [])
                     }      
 
                 }); 
+                */
+                me.parents('.dashboard-feedback').hide();
+                var child_count = $(me).parents('.feedback-group').children('.dashboard-feedback:visible');
+                if(child_count.length == 0) {
+                    $(me).parents('.feedback-group').hide();
+                }      
+
                 $(".checky-box-container").show();
                 e.preventDefault();
             });
