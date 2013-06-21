@@ -100,7 +100,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     })
 }
 
-function CheckyBox($scope, FeedbackSignal) { 
+function CheckyBox($scope, FeedbackSignal, FeedbackControlService) { 
 
     $scope.status_selection;
 
