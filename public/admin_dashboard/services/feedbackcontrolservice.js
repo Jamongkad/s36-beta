@@ -12,16 +12,10 @@ angular.module('Services', [])
 
     var shared_service = {};
  
-    shared_service.feed_status;
-    shared_service.feed_id;
+    shared_service.data;
 
-    shared_service.set_status_message = function(msg) {
-        this.feed_status = msg;     
-        this.broadcast_now();
-    }
-
-    shared_service.set_feed_id = function(id) { 
-        this.feed_id = id;     
+    shared_service.current_state = function(data) {
+        this.data = data; 
         this.broadcast_now();
     }
 
