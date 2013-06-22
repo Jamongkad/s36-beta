@@ -100,6 +100,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.$on('expungeFeedId', function() {
         $scope.selected = [];
+        FeedbackSignal.data.id = [];
         console.log("EXPUNGED");
     })
 }
