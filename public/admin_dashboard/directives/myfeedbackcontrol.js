@@ -18,7 +18,7 @@ angular.module('feedbackcontrol', [])
         } 
     }    
 })
-.directive('undo', function(FeedbackSignal) {
+.directive('undo', function(FeedbackSignal, FeedbackControlService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
@@ -41,8 +41,7 @@ angular.module('feedbackcontrol', [])
                     $(feedback).parents('.feedback-group').show();
                 }
 
-                FeedbackSignal.data.id = [];
-
+                FeedbackControlService.expunge();
                 e.preventDefault();
             });
         }
