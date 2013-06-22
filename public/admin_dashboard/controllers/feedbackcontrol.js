@@ -44,6 +44,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.change_value_status = function() {
+        console.log("this has been changed");
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
 
             console.log("changed");
@@ -109,8 +110,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
 
     $scope.status_selection;
 
-    $scope.undo = function() {
-        //FeedbackControlService.expunge();
+    $scope.undo = function() { 
         console.log(FeedbackSignal.data);
     }
 
