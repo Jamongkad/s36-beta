@@ -41,6 +41,8 @@ angular.module('feedbackcontrol', [])
                     $(feedback).parents('.feedback-group').show();
                 }
 
+                FeedbackSignal.data.id = [];
+
                 e.preventDefault();
             });
         }

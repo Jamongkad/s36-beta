@@ -110,8 +110,8 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.status_selection;
 
     $scope.undo = function() {
-        FeedbackControlService.expunge();
-        console.log(FeedbackSignal.data);
+        //FeedbackControlService.expunge();
+        //console.log(FeedbackSignal.data);
     }
 
     $scope.$on('checkFeedbackStatus', function() {
