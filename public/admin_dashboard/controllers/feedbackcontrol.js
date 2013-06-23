@@ -80,7 +80,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             console.log(selected);
             
-            if(selected) { 
+            if(selected.length > 0) { 
                 var feed = {
                     id: selected
                   , status: $scope.status_select_value
