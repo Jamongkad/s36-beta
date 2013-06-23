@@ -53,6 +53,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 var mode = $scope.status_select_value;
                 var score = entity_parent.attr('score');
                 var permission = entity_parent.attr('permission');
+
+                console.log(mode)
+                console.log(score)
+                console.log(permission)
                 
                 if(   (score >= 3 && permission == 1)
                    || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
