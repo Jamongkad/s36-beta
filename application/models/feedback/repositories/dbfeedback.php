@@ -59,6 +59,7 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.rating = 5 THEN "EXCELLENT"
                   END AS rating
                 , Feedback.rating AS int_rating
+                , Feedback.permission AS int_perm
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "full-permission"
                     WHEN Feedback.permission = 0 THEN "private-permission"
