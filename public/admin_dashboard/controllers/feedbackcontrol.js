@@ -45,7 +45,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
-            var selected = [];
 
             for(var i=0; i < $scope.selected.length; i++) {
 
@@ -54,11 +53,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
-
-                console.log(mode)
-                console.log(score)
-                console.log(permission)
-                
+ 
                 if(   (score >= 3 && permission == 1)
                    || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
                    || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
@@ -70,7 +65,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     if(child_count.length == 0) {  
                         entity_parent.hide(); 
                     }      
-                    selected.push($scope.selected[i]);
                 }
 
                 if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
@@ -78,22 +72,18 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } 
             }
 
-            console.log(selected);  
-            if(selected.length > 0) { 
-                var feed = {
-                    id: selected
-                  , status: $scope.status_select_value
-                  , catid: Template.default_category_id
-                  , origin: Template.current_inbox_state
-                }
-
-                FeedbackSignal.current_state(feed);
-                FeedbackControlService.change_status(feed, true);
+            var feed = {
+                id: $scope.selected
+              , status: $scope.status_select_value
+              , catid: Template.default_category_id
+              , origin: Template.current_inbox_state
             }
 
-            $scope.selected = [];
-            selected = [];
+            FeedbackSignal.current_state(feed);
+            FeedbackControlService.change_status(feed, true);
 
+            $scope.selected = [];
+            
             $(".checky-box-container").show();  
             $scope.status_select_value = 'none';
         }
