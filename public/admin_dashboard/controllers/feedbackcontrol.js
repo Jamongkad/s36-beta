@@ -50,17 +50,25 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
                 var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
                 var entity_parent = $(entity).parents('.feedback-group');
+                var mode = $scope.status_select_value;
+                var score = entity_parent.attr('score');
+                var permission = entity_parent.attr('permission');
                 
-                entity.hide();
+                if(   (score >= 3 && permission == 1)
+                   || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
+                   || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
+                  )  {
+                    entity.hide();
 
-                var child_count = entity_parent.children('.dashboard-feedback:visible');
+                    var child_count = entity_parent.children('.dashboard-feedback:visible');
 
-                if(child_count.length == 0) {  
-                    entity_parent.hide(); 
-                }      
+                    if(child_count.length == 0) {  
+                        entity_parent.hide(); 
+                    }      
 
-                if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
-                    $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
+                    if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
+                        $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
+                    } 
                 }
             }
 
@@ -89,9 +97,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
              
             var entity = $scope.checkboxes[i];
             var myparent = $(entity).parents('.dashboard-feedback');
-            var score = myparent.attr('score');
-            var permission = myparent.attr('permission');
-            var mode = $scope.status_select_value;
 
             //if action is add then click on checkboxes if not click again to deselect
             if(action == "add") {
@@ -102,11 +107,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $(entity).click();     
             }
 
-            console.log(mode);
- 
-            if(score >= 3 && permission == 1) {
-                update_selected(action, parseInt($(entity).val(), 10));      
-            }           
+            update_selected(action, parseInt($(entity).val(), 10));      
         }
     }
 
