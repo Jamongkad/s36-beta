@@ -34,6 +34,7 @@ class FeedbackNode {
         $node->permission = $this->data->permission;
         $node->rating = $this->data->rating;
         $node->int_rating = $this->data->int_rating;
+        $node->int_perm = $this->data->int_perm;
         $node->permission_css = $this->data->permission_css;
         $node->perm_val = $this->data->perm_val;
         $node->isfeatured = $this->data->isfeatured;
