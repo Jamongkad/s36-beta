@@ -101,7 +101,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $(entity).click();     
             }
  
-            if(score >= 3 and permission == 1) {
+            if(score >= 3 && permission == 1) {
                 update_selected(action, parseInt($(entity).val(), 10));      
             }
            
