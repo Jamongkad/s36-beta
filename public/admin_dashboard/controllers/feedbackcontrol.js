@@ -70,10 +70,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         entity_parent.hide(); 
                     }      
 
-                    if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
-                        $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
-                    } 
                 }
+
+                if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
+                    $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
+                } 
             }
 
             var feed = {
