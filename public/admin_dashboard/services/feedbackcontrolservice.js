@@ -23,7 +23,12 @@ angular.module('Services', [])
     shared_service.data;
 
     shared_service.current_state = function(data) {
-        this.data = data; 
+        if(this.data) {
+            this.data = [];
+        } else {
+            this.data = data; 
+        }
+
         this.broadcast_now();
     }
 
