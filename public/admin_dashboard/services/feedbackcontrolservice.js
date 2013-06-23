@@ -4,6 +4,7 @@ angular.module('Services', [])
 
     shared_service.change_status = function(status_change) {
         console.log(status_change);
+        this.broadcast_now();
     }
 
     shared_service.expunge = function() {
