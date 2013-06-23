@@ -124,7 +124,8 @@
                 <?php foreach($feeds->children as $feed):?>
                     <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?> 
                          feedback="<?=$feed->id?>" 
-                         score="<?=$feed->int_rating?>">
+                         score="<?=$feed->int_rating?>"
+                         permission="<?=$feed->int_perm?>">
                         <div class="custom-checkbox">
                             <input 
                              class="feed-checkbox" 
