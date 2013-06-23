@@ -101,7 +101,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.$on('expungeFeedId', function() {
         $scope.selected = [];
         FeedbackSignal.data.id = [];
-        console.log("EXPUNGED");
     })
 }
 
@@ -110,7 +109,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.status_selection;
 
     $scope.undo = function() { 
-        console.log(FeedbackSignal.data);
+        FeedbackControlService.change_status(FeedbackSignal.data);
     }
 
     $scope.$on('checkFeedbackStatus', function() {
