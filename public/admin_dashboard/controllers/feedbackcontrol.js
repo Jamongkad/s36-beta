@@ -89,6 +89,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
              
             var entity = $scope.checkboxes[i];
             var myparent = $(entity).parents('.dashboard-feedback');
+            var score = myparent.attr('score');
+            var permission = myparent.attr('permission');
 
             //if action is add then click on checkboxes if not click again to deselect
             if(action == "add") {
@@ -98,11 +100,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else { 
                 $(entity).click();     
             }
-
-            console.log(myparent.attr('score'));
-            console.log(myparent.attr('permission'));
-             
-            update_selected(action, parseInt($(entity).val(), 10)); 
+ 
+            if(score >= 3 and permission == 1) {
+                update_selected(action, parseInt($(entity).val(), 10));      
+            }
+           
         }
     }
 
