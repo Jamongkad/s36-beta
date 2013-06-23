@@ -99,8 +99,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $(entity).click();     
             }
 
-            console.log(myparent.prop('score'));
-            console.log(myparent.prop('permission'));
+            console.log(myparent);
+            
              
             update_selected(action, parseInt($(entity).val(), 10)); 
         }
