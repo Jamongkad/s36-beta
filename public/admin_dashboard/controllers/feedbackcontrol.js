@@ -19,8 +19,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var current = {
             id: feed.id
           , catid: Template.default_category_id
-          , status: Template.current_inbox_state
-          , origin: feed.status
+          , status: feed.status
+          , origin: Template.current_inbox_state
         }
 
         FeedbackSignal.current_state(current);
@@ -62,20 +62,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             }
 
-            var return_feed = {
-                id: $scope.selected     
-              , status: Template.current_inbox_state
-              , catid: Template.default_category_id
-              , origin: $scope.status_select_value
-            }
-            FeedbackSignal.current_state(return_feed);
-
             var feed = {
                 id: $scope.selected     
               , status: $scope.status_select_value
               , catid: Template.default_category_id
               , origin: Template.current_inbox_state
             }
+
+            FeedbackSignal.current_state(feed);
             FeedbackControlService.change_status(feed);
             $scope.selected = [];
 
