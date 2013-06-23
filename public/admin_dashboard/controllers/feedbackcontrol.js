@@ -45,7 +45,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
-
+            var selected = [];
             for(var i=0; i < $scope.selected.length; i++) {
 
                 var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
@@ -69,7 +69,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     if(child_count.length == 0) {  
                         entity_parent.hide(); 
                     }      
-
+                    selected.push($scope.selected[i]);
                 }
 
                 if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
@@ -78,7 +78,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             var feed = {
-                id: $scope.selected     
+                id: selected
               , status: $scope.status_select_value
               , catid: Template.default_category_id
               , origin: Template.current_inbox_state
@@ -87,6 +87,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             FeedbackSignal.current_state(feed);
             FeedbackControlService.change_status(feed, true);
             $scope.selected = [];
+            selected = [];
 
             $(".checky-box-container").show();  
             $scope.status_select_value = 'none';
