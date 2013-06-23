@@ -78,8 +78,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } 
             }
 
-            console.log(selected);
-            
+            console.log(selected);  
             if(selected.length > 0) { 
                 var feed = {
                     id: selected
