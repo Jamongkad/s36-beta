@@ -59,6 +59,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     entity_parent.hide(); 
                 }      
 
+                if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
+                    $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
+                }
             }
 
             var feed = {
@@ -75,7 +78,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             console.log("Mathew");
 
             $(".checky-box-container").show();  
-            //$('select[name=feed_selection]>option:eq(0)').prop('selected', true);
+            $('select[name=feed_selection]>option:eq(0)').prop('selected', true);
         }
     }
 
