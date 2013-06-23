@@ -41,6 +41,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
         update_selected(action, id); 
+        FeedbackSignal.data.id = [];
     }
 
     $scope.change_value_status = function() {
@@ -73,8 +74,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             FeedbackSignal.current_state(feed);
             FeedbackControlService.change_status(feed);
 
-            $(".checky-box-container").show(); 
-            
+            $(".checky-box-container").show();  
         }
     }
 
