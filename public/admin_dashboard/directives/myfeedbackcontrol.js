@@ -28,13 +28,7 @@ angular.module('feedbackcontrol', [])
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
-                        $(feedback).parents('.feedback-group').show();
-                        /*
-                        if( $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked") ) {
-                            $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();     
-                        }
-                        */
-                       
+                        $(feedback).parents('.feedback-group').show(); 
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 

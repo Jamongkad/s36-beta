@@ -169,6 +169,7 @@ return array(
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
+        /*
         $feed_ids   = Input::get('feed_ids');
         $cat_id     = Input::get('cat_id');
         $mode       = Input::get('mode');         
@@ -177,6 +178,8 @@ return array(
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
         $feedbackstate->write_summary();
+        */
+        Helpers::dump(Input::get());
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {

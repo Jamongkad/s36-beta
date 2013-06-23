@@ -26,7 +26,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackSignal.current_state(current);
 
         feed.origin = Template.current_inbox_state;
-        FeedbackControlService.change_status(feed);
+        FeedbackControlService.change_status(feed, true);
     }
 
     $scope.reply_feedback = function(id) {
@@ -72,10 +72,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             FeedbackSignal.current_state(feed);
-            FeedbackControlService.change_status(feed);
+            FeedbackControlService.change_status(feed, true);
             $scope.selected = [];
-
-            console.log("Mathew");
 
             $(".checky-box-container").show();  
             $('select[name=feed_selection]>option:eq(0)').prop('selected', true);
@@ -114,7 +112,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.status_selection;
 
     $scope.undo = function() { 
-        FeedbackControlService.change_status(FeedbackSignal.data);
+        FeedbackControlService.change_status(FeedbackSignal.data, false);
     }
 
     $scope.$on('checkFeedbackStatus', function() {
