@@ -2,8 +2,25 @@ angular.module('Services', [])
 .service('FeedbackControlService', function($rootScope) { 
     var shared_service = {};
 
-    shared_service.change_status = function(status_change) {
-        console.log(status_change);
+    shared_service.change_status = function(status_change, flag) {
+        if(flag == true) {
+            console.log("process data");
+        } else { 
+            console.log("undo process data");
+        }
+
+        $.ajax({
+            type: 'post'    
+          , dataType: 'json'
+          , data: {feed_data: status_change}
+          , async: false
+          , url: '/feedback/change_feedback_state'
+          /*
+          , success: function(data) {
+                shared_service.replybody = data;
+            }
+          */
+        }); 
     }
 
     shared_service.expunge = function() {
@@ -23,13 +40,6 @@ angular.module('Services', [])
     shared_service.data;
 
     shared_service.current_state = function(data) {
-        /*
-        if(this.data) {
-            this.data = [];
-        } else {
-            this.data = data; 
-        }
-        */
         this.data = data; 
         this.broadcast_now();
     }
