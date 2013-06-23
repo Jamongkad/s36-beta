@@ -76,7 +76,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             $scope.selected = [];
 
             $(".checky-box-container").show();  
-            //$('select[name=feed_selection]>option:eq(0)').prop('selected', true);
             $scope.status_select_value = 'none';
         }
     }
