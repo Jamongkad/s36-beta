@@ -76,16 +76,19 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
                 } 
             }
+            
+            if(selected) { 
+                var feed = {
+                    id: selected
+                  , status: $scope.status_select_value
+                  , catid: Template.default_category_id
+                  , origin: Template.current_inbox_state
+                }
 
-            var feed = {
-                id: selected
-              , status: $scope.status_select_value
-              , catid: Template.default_category_id
-              , origin: Template.current_inbox_state
+                FeedbackSignal.current_state(feed);
+                FeedbackControlService.change_status(feed, true);
             }
 
-            FeedbackSignal.current_state(feed);
-            FeedbackControlService.change_status(feed, true);
             $scope.selected = [];
             selected = [];
 
