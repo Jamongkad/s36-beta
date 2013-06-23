@@ -46,6 +46,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
             var selected = [];
+
             for(var i=0; i < $scope.selected.length; i++) {
 
                 var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
@@ -76,6 +77,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
                 } 
             }
+
+            console.log(selected);
             
             if(selected) { 
                 var feed = {
