@@ -27,7 +27,7 @@ angular.module('feedbackcontrol', [])
                         console.log(me.attr('return-policy'));
                     }
                 } 
-                
+                 
                 /*
                 me.parents('.dashboard-feedback').hide();
                 var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
