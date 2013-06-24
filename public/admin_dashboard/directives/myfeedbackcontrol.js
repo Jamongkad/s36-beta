@@ -2,20 +2,12 @@ angular.module('feedbackcontrol', [])
 .directive('transform', function(FeedbackSignal) {
     return {
         restrict: 'A'     
-      , scope: {
-            policy: "=returnPolicy"   
-          , data: FeedbackSignal
-        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var currentUrl = window.location.pathname;
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
-                console.log(scope.policy);
-                console.log(scope.data);
-                console.log(me);
-                /*
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
                         me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
@@ -35,7 +27,6 @@ angular.module('feedbackcontrol', [])
                         console.log(me.attr('return-policy'));
                     }
                 } 
-                */
                  
                 /*
                 me.parents('.dashboard-feedback').hide();
