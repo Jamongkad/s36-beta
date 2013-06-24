@@ -6,9 +6,9 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) { 
                 var currentUrl = window.location.pathname;
                 var me = $(element); 
+                var data = FeedbackSignal.data;
 
                 if(currentUrl.match(/published|contacts/g)) { 
-                    var data = FeedbackSignal.data;
                     if(data.status == "feature") {
                         me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
                         me.css({'background-position': '-64px -31px'});
@@ -24,18 +24,15 @@ angular.module('feedbackcontrol', [])
                         me.children('.action-tooltip').children('span').html("Return to Inbox");
                         me.siblings('.feature').children('.action-tooltip').children('span').html("Feature Feedack");
                     }
-                    
+                } 
 
-                } else { 
-                    me.parents('.dashboard-feedback').hide();
-                    var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
-                    if(child_count.length == 0) {
-                        me.parents('.feedback-group').hide();
-                    }      
+                me.parents('.dashboard-feedback').hide();
+                var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
+                if(child_count.length == 0) {
+                    me.parents('.feedback-group').hide();
+                }      
 
-                    $(".checky-box-container").show();
-                }
-
+                $(".checky-box-container").show();
                 e.preventDefault();
             });
         } 

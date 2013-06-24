@@ -398,7 +398,9 @@
                                             <?else:?>
                                                 <li class="action-sprite feature" transform 
                                                     ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'feature'})" feature
-                                                    <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>>
+                                                    <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>
+                                                    <?=($feed->isfeatured) ? "return-policy=1" : "return-policy=0"?> 
+                                                    >
                                                     <div class="action-tooltip">
                                                         <span>
                                                             <?if($feed->isfeatured):?>
