@@ -6,7 +6,7 @@
       , default_category_id: "<?=$admin_check->categoryid?>"
     }
     $(document).mouseup(function (e) {
-        var container = $("YOUR CONTAINER SELECTOR");
+        var container = $(".checky-box-container");
         
         if (container.has(e.target).length === 0) {
             container.hide();
