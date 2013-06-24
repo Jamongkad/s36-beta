@@ -1,5 +1,5 @@
 angular.module('feedbackcontrol', [])
-.directive('transform', function(FeedbackSignal {
+.directive('transform', function(FeedbackSignal) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
