@@ -16,6 +16,7 @@ angular.module('feedbackcontrol', [])
 
                         me.css({'background-position': '-64px -31px'});
                         me.siblings('.publish').css({'background-position': '-32px 0px'})
+                        me.children('.action-tooltip').html("Return to Inbox");
                     }
 
                     if(data.status == "publish") {
@@ -23,7 +24,8 @@ angular.module('feedbackcontrol', [])
                             'background-color': '#FFF'
                         }) 
                         me.css({'background-position': '-32px -31px'});
-                        me.siblings('.feature').css({'background-position': '-64px 0px'})
+                        me.siblings('.feature').css({'background-position': '-64px 0px'});
+                        me.children('.action-tooltip').html("Return to Inbox");
                     }
                     
 
