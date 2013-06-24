@@ -50,7 +50,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
                 var me = $scope.selected[i];
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
-                var entity_parent = $(entity).parents('.feedback-group');
+                var entity_parent = entity.parents('.feedback-group');
                 var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
