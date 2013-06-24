@@ -1,11 +1,12 @@
 angular.module('feedbackcontrol', [])
-.directive('transform', function(FeedbackControlService) {
+.directive('transform', function(FeedbackSignal {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var me = $(element)
-
+                console.log(FeedbackSignal);
+                /*
                 me.parents('.dashboard-feedback').hide();
                 var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
                 if(child_count.length == 0) {
@@ -13,6 +14,7 @@ angular.module('feedbackcontrol', [])
                 }      
 
                 $(".checky-box-container").show();
+                */
                 e.preventDefault();
             });
         } 
