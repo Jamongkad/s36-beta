@@ -80,8 +80,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     checkbox.click();     
                 } 
             }
-
-            console.log(selected);
             
             if(selected.length > 0) { 
                 var feed = {
@@ -95,6 +93,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 FeedbackControlService.change_status(feed, true); 
             }
 
+            selected = [];
             $scope.selected = [];
             
             $(".checky-box-container").show();  
@@ -126,6 +125,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.$on('expungeFeedId', function() {
+        console.log("expunged");
         FeedbackSignal.data.id = [];
         $scope.selected = [];
     })
