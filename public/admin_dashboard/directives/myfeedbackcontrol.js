@@ -4,25 +4,33 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                var me = $(element)
-
-                console.log(FeedbackSignal);
                 var currentUrl = window.location.pathname;
-                if(currentUrl.match(/published|contacts/g)) {
-                    console.log("You are at Published Section");
+                var me = $(element); 
+
+                if(currentUrl.match(/published|contacts/g)) { 
+                    var data = FeedbackSignal.data;
+                    if(data.status == "feature") {
+                        me.parents('.dashboard-feedback').css({
+                            'background-color': '#FFFFE0'
+                        })
+                    }
+
+                    if(data.status == "publish") {
+                        me.parents('.dashboard-feedback').css({
+                            'background-color': '#FFF'
+                        }) 
+                    }
+
                 } else { 
-                    console.log("You are not at Published Section");
+                    me.parents('.dashboard-feedback').hide();
+                    var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
+                    if(child_count.length == 0) {
+                        me.parents('.feedback-group').hide();
+                    }      
+
+                    $(".checky-box-container").show();
                 }
 
-                /*
-                me.parents('.dashboard-feedback').hide();
-                var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
-                if(child_count.length == 0) {
-                    me.parents('.feedback-group').hide();
-                }      
-
-                $(".checky-box-container").show();
-                */
                 e.preventDefault();
             });
         } 
