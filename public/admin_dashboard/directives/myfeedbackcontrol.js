@@ -2,11 +2,16 @@ angular.module('feedbackcontrol', [])
 .directive('transform', function(FeedbackSignal) {
     return {
         restrict: 'A'     
+      , scope: {
+            policy: "=returnPolicy"   
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var currentUrl = window.location.pathname;
                 var me = $(element); 
                 var data = FeedbackSignal.data;
+
+                console.log(scope.policy);
 
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
