@@ -92,7 +92,8 @@ var S36FullpageCommon = function(){
         }).click(function(){
             // send the rating value to the rating plugin
             var index = $(this).index() + 1;
-            //console.log('you sent a '+index+' star rating');
+            $('.rate-title .rating_num').text( index );
+            $('.rate-title .rating_text').text( self.convert_rating_to_text(index - 1) );
             $('#rating').val(index);
             $('#theHostedFormContainer').slideDown();
         });
