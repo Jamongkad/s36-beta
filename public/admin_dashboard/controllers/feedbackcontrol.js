@@ -82,16 +82,18 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             console.log(selected);
+            
+            if(selected.length > 0) { 
+                var feed = {
+                    id: selected
+                  , status: $scope.status_select_value
+                  , catid: Template.default_category_id
+                  , origin: Template.current_inbox_state
+                }
 
-            var feed = {
-                id: selected//$scope.selected
-              , status: $scope.status_select_value
-              , catid: Template.default_category_id
-              , origin: Template.current_inbox_state
+                FeedbackSignal.current_state(feed);
+                FeedbackControlService.change_status(feed, true);
             }
-
-            FeedbackSignal.current_state(feed);
-            FeedbackControlService.change_status(feed, true);
 
             $scope.selected = [];
             
