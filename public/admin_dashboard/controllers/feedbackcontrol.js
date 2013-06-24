@@ -92,8 +92,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
 
                 FeedbackSignal.current_state(feed);
-                FeedbackControlService.change_status(feed, true);
-                selected = [];
+                FeedbackControlService.change_status(feed, true); 
             }
 
             $scope.selected = [];
