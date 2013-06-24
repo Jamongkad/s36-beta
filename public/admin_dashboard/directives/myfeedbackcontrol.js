@@ -13,15 +13,6 @@ angular.module('feedbackcontrol', [])
                 }      
 
                 $(".checky-box-container").show();
-
-                $(document).mouseup(function(e) {
-                    var container = $(".checky-box-container");
-
-                    if(container.has(e.target).length === 0) {
-                        container.hide();
-                    }
-                });
-
                 e.preventDefault();
             });
         } 

@@ -5,6 +5,13 @@
         current_inbox_state: "<?=$inbox_state?>"
       , default_category_id: "<?=$admin_check->categoryid?>"
     }
+    $(document).mouseup(function (e) {
+        var container = $("YOUR CONTAINER SELECTOR");
+        
+        if (container.has(e.target).length === 0) {
+            container.hide();
+        }
+    });
 </script>
 
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
