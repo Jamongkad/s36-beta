@@ -48,13 +48,15 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             for(var i=0; i < $scope.selected.length; i++) {
 
-                var entity = $(".dashboard-feedback[feedback=" + $scope.selected[i] + "]");
+                var me = $scope.selected[i];
+                var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = $(entity).parents('.feedback-group');
                 var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
  
-                if(   (score >= 3 && permission == 1)
+                if(
+                      (score >= 3 && permission == 1)
                    || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
                    || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
                   )  {
@@ -67,6 +69,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }      
                 }
 
+                console.log(me);
+                
                 if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
                     $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
                 } 
