@@ -20,8 +20,8 @@ angular.module('feedbackcontrol', [])
                             'background-color': '#FFF'
                         }) 
                     }
-
-
+                    
+                    console.log(me);
 
                 } else { 
                     me.parents('.dashboard-feedback').hide();
