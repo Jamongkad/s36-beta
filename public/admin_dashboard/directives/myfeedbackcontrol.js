@@ -13,15 +13,19 @@ angular.module('feedbackcontrol', [])
                         me.parents('.dashboard-feedback').css({
                             'background-color': '#FFFFE0'
                         })
+
+                        me.css({'background-position': '-64px -31px'});
+                        me.siblings('.publish').removeAttr('style');
                     }
 
                     if(data.status == "publish") {
                         me.parents('.dashboard-feedback').css({
                             'background-color': '#FFF'
                         }) 
+                        me.css({'background-position': '-32px -31px'});
+                        me.siblings('.feature').removeAttr('style');
                     }
                     
-                    console.log(me);
 
                 } else { 
                     me.parents('.dashboard-feedback').hide();
