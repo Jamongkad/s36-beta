@@ -48,7 +48,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var selected = [];
 
-            for(var i=0; i<$scope.selected.length; i++) {
+            for(var i=0; i < $scope.selected.length; i++) {
 
                 var me = $scope.selected[i];
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
@@ -138,6 +138,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
 
     $scope.undo = function() { 
         FeedbackControlService.change_status(FeedbackSignal.data, false);
+        FeedbackSignal.data = [];
     }
 
     $scope.$on('checkFeedbackStatus', function() {
