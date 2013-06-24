@@ -15,7 +15,7 @@ angular.module('feedbackcontrol', [])
                         me.siblings('.publish').css({'background-position': '-32px 0px'})
                         me.children('.action-tooltip').children('span').html("Return to Inbox");
                         me.siblings('.publish').children('.action-tooltip').children('span').html("Publish Feedback");
-                        me.siblings('.publish').attr('return-policy', 1):
+                        me.siblings('.publish').attr('return-policy', 1);
                         me.attr('return-policy', 0);
                     }
 
