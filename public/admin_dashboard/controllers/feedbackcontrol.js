@@ -91,12 +91,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true); 
+                $(".checky-box-container").show();  
             }
 
             selected = [];
-            $scope.selected = [];
-             
-            $(".checky-box-container").show();  
+            $scope.selected = []; 
             $scope.status_select_value = 'none';
         }
     }
