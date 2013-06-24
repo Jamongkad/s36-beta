@@ -4,6 +4,7 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , scope: {
             policy: "=returnPolicy"   
+          , data: FeedbackSignal
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
@@ -12,7 +13,7 @@ angular.module('feedbackcontrol', [])
                 var data = FeedbackSignal.data;
 
                 console.log(scope.policy);
-                console.log(data);
+                console.log(scope.data);
                 /*
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
