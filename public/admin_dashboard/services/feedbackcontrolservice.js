@@ -3,16 +3,20 @@ angular.module('Services', [])
     var shared_service = {};
 
     shared_service.change_status = function(status_change, flag) {
+
+        var pointer; 
         if(flag == true) {
             console.log("process data");
+            pointer = false;
         } else { 
             console.log("undo process data");
+            pointer = true;
         }
 
         $.ajax({
             type: 'post'    
           , dataType: 'json'
-          , data: {feed_data: status_change}
+          , data: {feed_data: status_change, undo: pointer}
           , async: false
           , url: '/feedback/change_feedback_state'
           /*
