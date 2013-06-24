@@ -8,6 +8,8 @@ angular.module('feedbackcontrol', [])
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
+                console.log(me.attr('return-policy'));
+
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
                         me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
@@ -29,8 +31,6 @@ angular.module('feedbackcontrol', [])
                         me.attr('return-policy', 1);
                     }
                 } 
-
-                console.log(me.attr('return-policy'))
                  
                 /*
                 me.parents('.dashboard-feedback').hide();
