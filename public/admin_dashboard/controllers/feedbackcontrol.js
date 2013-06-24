@@ -137,7 +137,6 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
 
     $scope.undo = function() { 
         FeedbackControlService.change_status(FeedbackSignal.data, false);
-        FeedbackSignal.data = [];
     }
 
     $scope.$on('checkFeedbackStatus', function() {
