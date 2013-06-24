@@ -19,11 +19,6 @@ angular.module('Services', [])
           , data: {feed_data: status_change, undo: pointer}
           , async: false
           , url: '/feedback/change_feedback_state'
-          /*
-          , success: function(data) {
-                shared_service.replybody = data;
-            }
-          */
         }); 
     }
 

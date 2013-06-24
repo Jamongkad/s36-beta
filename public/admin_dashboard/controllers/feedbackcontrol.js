@@ -92,6 +92,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true); 
                 $(".checky-box-container").show();  
+            } else {
+                alert("This action is not allowed!");
             }
 
             selected = [];
