@@ -60,6 +60,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                    || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
                    || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
                   )  {
+
                     entity.hide();
 
                     var child_count = entity_parent.children('.dashboard-feedback:visible');
@@ -67,12 +68,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     if(child_count.length == 0) {  
                         entity_parent.hide(); 
                     }      
+
                 }
 
-                console.log(me);
+                var checkbox = $(".feed-checkbox[value=" + me + "]");
                 
-                if( $(".feed-checkbox[value=" + $scope.selected[i] + "]").is(":checked") ) {
-                    $(".feed-checkbox[value=" + $scope.selected[i] + "]").click();     
+                if( checkbox.is(":checked") ) {
+                    checkbox.click();     
                 } 
             }
 
