@@ -5,13 +5,22 @@
         current_inbox_state: "<?=$inbox_state?>"
       , default_category_id: "<?=$admin_check->categoryid?>"
     }
-    $(document).mouseup(function (e) {
-        var container = $(".checky-box-container");
-        
-        if (container.has(e.target).length === 0) {
-            container.hide();
-        }
+
+    var mouse_is_inside = false;
+    $(document).ready(function() {
+        $(".checky-box-container").hover(function() {
+            mouse_is_inside = true;     
+        }, function() { 
+            mouse_is_inside = false;     
+        });
+
+        $("body").mouseup(function() {
+            if(!mouse_is_inside) {  
+                $(".checky-box-container").hide();
+            } 
+        });
     });
+
 </script>
 
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
