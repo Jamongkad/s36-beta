@@ -14,6 +14,7 @@ angular.module('feedbackcontrol', [])
 
                 console.log(scope.policy);
                 console.log(scope.data);
+                console.log(me);
                 /*
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
