@@ -12,7 +12,8 @@ angular.module('feedbackcontrol', [])
                 var data = FeedbackSignal.data;
 
                 console.log(scope.policy);
-
+                console.log(data);
+                /*
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
                         me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
@@ -32,6 +33,7 @@ angular.module('feedbackcontrol', [])
                         console.log(me.attr('return-policy'));
                     }
                 } 
+                */
                  
                 /*
                 me.parents('.dashboard-feedback').hide();
