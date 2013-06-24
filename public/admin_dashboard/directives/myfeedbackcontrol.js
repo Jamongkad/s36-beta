@@ -15,7 +15,7 @@ angular.module('feedbackcontrol', [])
                         })
 
                         me.css({'background-position': '-64px -31px'});
-                        me.siblings('.publish').removeAttr('style');
+                        me.siblings('.publish').css({'background-position': '-32px 0px'})
                     }
 
                     if(data.status == "publish") {
@@ -23,7 +23,7 @@ angular.module('feedbackcontrol', [])
                             'background-color': '#FFF'
                         }) 
                         me.css({'background-position': '-32px -31px'});
-                        me.siblings('.feature').removeAttr('style');
+                        me.siblings('.feature').css({'background-position': '-64px 0px'})
                     }
                     
 
