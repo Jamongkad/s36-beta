@@ -95,6 +95,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             selected = [];
             $scope.selected = [];
+            FeedbackSignal.data.id = [];
             
             $(".checky-box-container").show();  
             $scope.status_select_value = 'none';
