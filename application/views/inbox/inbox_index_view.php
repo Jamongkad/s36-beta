@@ -365,7 +365,7 @@
                                             <?else:?>
                                                 <li class="action-sprite publish" transform 
                                                     ng-click="feedback_status({id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'publish'})" publish
-                                                    <?=($feed->ispublished) ? "style='background-position: -32 -31px'" : null?>> 
+                                                    <?=($feed->ispublished) ? "style='background-position: -32px -31px'" : null?>> 
                                                     <div class="action-tooltip">
                                                         <span>
                                                             <?if($feed->ispublished):?>

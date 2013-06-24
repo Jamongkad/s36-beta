@@ -21,6 +21,8 @@ angular.module('feedbackcontrol', [])
                         }) 
                     }
 
+
+
                 } else { 
                     me.parents('.dashboard-feedback').hide();
                     var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
