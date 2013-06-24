@@ -15,6 +15,7 @@ angular.module('feedbackcontrol', [])
                         me.siblings('.publish').css({'background-position': '-32px 0px'})
                         me.children('.action-tooltip').children('span').html("Return to Inbox");
                         me.siblings('.publish').children('.action-tooltip').children('span').html("Publish Feedack");
+                        console.log(me.attr('return-policy'));
                     }
 
                     if(data.status == "publish") {
@@ -23,6 +24,7 @@ angular.module('feedbackcontrol', [])
                         me.siblings('.feature').css({'background-position': '-64px 0px'});
                         me.children('.action-tooltip').children('span').html("Return to Inbox");
                         me.siblings('.feature').children('.action-tooltip').children('span').html("Feature Feedack");
+                        console.log(me.attr('return-policy'));
                     }
                 } 
 
