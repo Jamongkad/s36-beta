@@ -8,7 +8,15 @@ angular.module('feedbackcontrol', [])
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
-                console.log(me.attr('return-policy'));
+                if(me.attr('return-policy') == 1) { 
+                    me.parents('.dashboard-feedback').hide();
+                    var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
+                    if(child_count.length == 0) {
+                        me.parents('.feedback-group').hide();
+                    }      
+
+                    $(".checky-box-container").show();
+                }
 
                 if(currentUrl.match(/published|contacts/g)) { 
                     if(data.status == "feature") {
@@ -33,13 +41,6 @@ angular.module('feedbackcontrol', [])
                 } 
                  
                 /*
-                me.parents('.dashboard-feedback').hide();
-                var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
-                if(child_count.length == 0) {
-                    me.parents('.feedback-group').hide();
-                }      
-
-                $(".checky-box-container").show();
                 */
                 e.preventDefault();
             });
