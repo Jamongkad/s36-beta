@@ -18,7 +18,7 @@ angular.module('feedbackcontrol', [])
         } 
     }    
 })
-.directive('undo', function(FeedbackControlService) {
+.directive('undo', function(FeedbackSignal, FeedbackControlService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
@@ -48,7 +48,6 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
                 $(".checky-box-container").hide();
-
                 FeedbackControlService.expunge();
                 e.preventDefault();
             }); 
