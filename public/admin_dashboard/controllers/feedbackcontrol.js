@@ -84,7 +84,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             console.log(selected);
 
             var feed = {
-                id: $scope.selected
+                id: selected//$scope.selected
               , status: $scope.status_select_value
               , catid: Template.default_category_id
               , origin: Template.current_inbox_state
