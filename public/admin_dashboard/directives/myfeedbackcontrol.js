@@ -5,7 +5,15 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var me = $(element)
+
                 console.log(FeedbackSignal);
+                var currentUrl = window.location.pathname;
+                if(currentUrl.match(/published|contacts/g)) {
+                    console.log("You are at Published Section");
+                } else { 
+                    console.log("You are not at Published Section");
+                }
+
                 /*
                 me.parents('.dashboard-feedback').hide();
                 var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
