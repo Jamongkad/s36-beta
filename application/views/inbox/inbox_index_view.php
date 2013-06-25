@@ -351,7 +351,7 @@
                                 <div class="grids">
                                     <div class="action-sprite action-delete" transform 
                                          ng-click="feedback_status($event)"
-                                         data-feed="{'id': '<?=$feed->id?>', 'catid': <?=$feed->categoryid?>, 'status': 'delete'}"
+                                         data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "delete"}'
                                          ></div>
                                     <div class="action-delete-tooltip"></div>
                                 </div>
