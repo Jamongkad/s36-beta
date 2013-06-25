@@ -21,6 +21,7 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(data.status == "feature") {
+                        /*
                         me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
                         me.css({'background-position': '-64px -31px'});
                         me.siblings('.publish').css({'background-position': '-32px 0px'})
@@ -28,9 +29,13 @@ angular.module('feedbackcontrol', [])
                         me.siblings('.publish').children('.action-tooltip').children('span').html("Publish Feedback");
                         me.siblings('.publish').attr('return-policy', 0);
                         me.attr('return-policy', 1);
+                        */
+                        published_state(me, '.publish', 'Publish Feedback', {  activate: {'background-position': '-64px -31px'}
+                                                                             , deactivate_sibling: {'background-position': '-32px 0px'} });
                     }
 
                     if(data.status == "publish") {
+                        /*
                         me.parents('.dashboard-feedback').css({'background-color': '#FFF'});
                         me.css({'background-position': '-32px -31px'});
                         me.siblings('.feature').css({'background-position': '-64px 0px'});
@@ -38,6 +43,9 @@ angular.module('feedbackcontrol', [])
                         me.siblings('.feature').children('.action-tooltip').children('span').html("Feature Feedback");
                         me.siblings('.feature').attr('return-policy', 0);
                         me.attr('return-policy', 1);
+                        */
+                        published_state(me, '.feature', 'Feature Feedback', {  activate: {'background-position': '-32px -31px'}
+                                                                             , deactivate_sibling: {'background-position': '-64px 0px'} });
                     }
                 } else { 
                     me.parents('.dashboard-feedback').hide();
@@ -108,3 +116,13 @@ angular.module('feedbackcontrol', [])
     }    
     
 })
+
+function published_state(obj, identifier, msg, state) { 
+    me.parents('.dashboard-feedback').css({'background-color': '#FFF'});
+    me.css(state.activate);
+    me.siblings(identifier).css(state.deactivate_sibling);
+    me.children('.action-tooltip').children('span').html("Return to Inbox");
+    me.siblings(identifier).children('.action-tooltip').children('span').html(msg);
+    me.siblings(identifier).attr('return-policy', 0);
+    me.attr('return-policy', 1);
+}
