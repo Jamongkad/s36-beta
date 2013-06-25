@@ -25,6 +25,8 @@ angular.module('feedbackcontrol', [])
                                                                              , deactivate_sibling: {'background-position': '-64px 0px'}
                                                                              , activation_color: {'background-color': '#FFF'} });
                     }
+
+                    console.log(me);
                 } else { 
                     hide_the_children(me);
                 }
