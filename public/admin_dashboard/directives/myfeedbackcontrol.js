@@ -18,16 +18,16 @@ angular.module('feedbackcontrol', [])
                         published_state(me, '.publish', 'Publish Feedback', {  activate: {'background-position': '-64px -31px'}
                                                                              , deactivate_sibling: {'background-position': '-32px 0px'}
                                                                              , activation_color: {'background-color': '#FFFFE0'} });
-                        me.attr('data-feed', '{"status": "inbox"}');
-                        me.siblings('.publish').attr('data-feed', '{"status": "publish"}');
+                        me.attr('data-feed', '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}');
+                        me.siblings('.publish').attr('data-feed', '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}');
                     }
 
                     if(data.status == "publish") {
                         published_state(me, '.feature', 'Feature Feedback', {  activate: {'background-position': '-32px -31px'}
                                                                              , deactivate_sibling: {'background-position': '-64px 0px'}
                                                                              , activation_color: {'background-color': '#FFF'} });
-                        me.attr('data-feed', '{"status": "inbox"}');
-                        me.siblings('.feature').attr('data-feed', '{"status": "feature"}');
+                        me.attr('data-feed', '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}');
+                        me.siblings('.feature').attr('data-feed', '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}');
                     }
 
                 } else { 
