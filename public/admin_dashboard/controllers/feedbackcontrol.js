@@ -20,9 +20,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.status_select_value = 'none';
 
     $scope.date_filter     = (!is_empty(qs)) ? qs['date'] : 'none';
-    $scope.priority_filter = 'none';
-    $scope.status_filter   = 'none';
-    $scope.rating_filter   = 'none';
+    $scope.priority_filter = (!is_empty(qs)) ? qs['priority'] : 'none';
+    $scope.status_filter   = (!is_empty(qs)) ? qs['status'] : 'none';
+    $scope.rating_filter   = (!is_empty(qs)) ? qs['rating'] : 'none';
 
     var update_selected = function(action, id) {
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
