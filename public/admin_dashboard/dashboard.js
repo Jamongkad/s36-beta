@@ -5,11 +5,6 @@ $(document).ready(function(){
         $(this).next().fadeOut('fast');
     });
 
-    $('.save').hover(function(){
-        $(this).find('.the-categories-menu').fadeIn('fast');
-    },function(){
-        $(this).find('.the-categories-menu').fadeOut('fast');
-    });
 });
 /* removed for the mean time. buggy as hell
 $(window).scroll(function() {
