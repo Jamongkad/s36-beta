@@ -1,5 +1,20 @@
 function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Template) { 
 
+    var qs = (function(a) {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i) {
+            var p=a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+        }
+        return b;
+    })(window.location.search.substr(1).split('&'));
+
+    var is_empty = function(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
     $scope.selected = [];
     $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
@@ -45,21 +60,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             //this will reload the page, it's likely better to store this until finished
             document.location.search = kvp.join('&'); 
         }
-    }
-
-    var qs = (function(a) {
-        if (a == "") return {};
-        var b = {};
-        for (var i = 0; i < a.length; ++i) {
-            var p=a[i].split('=');
-            if (p.length != 2) continue;
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-        }
-        return b;
-    })(window.location.search.substr(1).split('&'));
-
-    var is_empty = function(obj) {
-        return Object.keys(obj).length === 0;
     }
 
     console.log(qs);
