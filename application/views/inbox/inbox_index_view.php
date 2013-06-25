@@ -370,7 +370,8 @@
                                             <?else:?>
                                                 <li class="action-sprite publish" transform 
                                                     ng-click="feedback_status($event)" publish
-                                                    data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "publish"}'
+                                                    data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>"
+                                                              , "status": <?=($feed->ispublished) ? '"inbox"' : '"publish"'?>}'
                                                     <?=($feed->ispublished) ? "style='background-position: -32px -31px'" : null?> 
                                                     <?=($feed->ispublished) ? "return-policy=1" : "return-policy=0"?> 
                                                     > 
