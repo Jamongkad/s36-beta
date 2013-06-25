@@ -58,7 +58,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         return b;
     })(window.location.search.substr(1).split('&'));
 
+    var is_empty = function(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
     console.log(qs);
+    console.log(is_empty(qs));
 
     $scope.feedback_status = function($event) {         
 
