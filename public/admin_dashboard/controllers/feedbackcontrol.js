@@ -22,9 +22,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     var insert_param = function(key, value) {
 
         var key = escape(key); value = escape(value);
-
-        $scope.date_filter = value;
-
         var kvp = document.location.search.substr(1).split('&');
         if (kvp == '') {
             document.location.search = '?' + key + '=' + value;
@@ -46,6 +43,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
             //this will reload the page, it's likely better to store this until finished
             document.location.search = kvp.join('&'); 
+            $scope.date_filter = value;
         }
     }
 
