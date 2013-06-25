@@ -11,52 +11,22 @@ angular.module('feedbackcontrol', [])
                 if(currentUrl.match(/published|contacts/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
-                        me.parents('.dashboard-feedback').hide();
-                        var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
-                        if(child_count.length == 0) {
-                            me.parents('.feedback-group').hide();
-                        }      
-
-                        $(".checky-box-container").show();
+                        hide_the_children(me);
                     }
 
                     if(data.status == "feature") {
-                        /*
-                        me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
-                        me.css({'background-position': '-64px -31px'});
-                        me.siblings('.publish').css({'background-position': '-32px 0px'})
-                        me.children('.action-tooltip').children('span').html("Return to Inbox");
-                        me.siblings('.publish').children('.action-tooltip').children('span').html("Publish Feedback");
-                        me.siblings('.publish').attr('return-policy', 0);
-                        me.attr('return-policy', 1);
-                        */
                         published_state(me, '.publish', 'Publish Feedback', {  activate: {'background-position': '-64px -31px'}
                                                                              , deactivate_sibling: {'background-position': '-32px 0px'}
                                                                              , activation_color: {'background-color': '#FFFFE0'} });
                     }
 
                     if(data.status == "publish") {
-                        /*
-                        me.parents('.dashboard-feedback').css({'background-color': '#FFF'});
-                        me.css({'background-position': '-32px -31px'});
-                        me.siblings('.feature').css({'background-position': '-64px 0px'});
-                        me.children('.action-tooltip').children('span').html("Return to Inbox");
-                        me.siblings('.feature').children('.action-tooltip').children('span').html("Feature Feedback");
-                        me.siblings('.feature').attr('return-policy', 0);
-                        me.attr('return-policy', 1);
-                        */
                         published_state(me, '.feature', 'Feature Feedback', {  activate: {'background-position': '-32px -31px'}
                                                                              , deactivate_sibling: {'background-position': '-64px 0px'}
                                                                              , activation_color: {'background-color': '#FFF'} });
                     }
                 } else { 
-                    me.parents('.dashboard-feedback').hide();
-                    var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
-                    if(child_count.length == 0) {
-                        me.parents('.feedback-group').hide();
-                    }      
-
-                    $(".checky-box-container").show();
+                    hide_the_children(me);
                 }
                  
                 e.preventDefault();
@@ -127,4 +97,14 @@ function published_state(obj, sibling_id, msg, state) {
     obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg);
     obj.siblings(sibling_id).attr('return-policy', 0);
     obj.attr('return-policy', 1);
+}
+
+function hide_the_children(obj) { 
+    obj.parents('.dashboard-feedback').hide();
+    var child_count = obj.parents('.feedback-group').children('.dashboard-feedback:visible');
+    if(child_count.length == 0) {
+        obj.parents('.feedback-group').hide();
+    }      
+
+    $(".checky-box-container").show();
 }
