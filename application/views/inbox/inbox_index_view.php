@@ -86,9 +86,9 @@
                 <span class="sorter-block-box">
                     <select ng-model="priority_filter" ng-change="filter('priority')">
                         <option value="none">-</option>
-                        <option value="low" <?=(Input::get('priority') == "low") ? "selected" : null?>>Low</option>
-                        <option value="medium" <?=(Input::get('priority') == "medium") ? "selected" : null?>>Medium</option>
-                        <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>High</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
                     </select>
                 </span>
             </div>
@@ -97,9 +97,9 @@
                 <span class="sorter-block-box">
                     <select ng-model="status_filter" ng-change="filter('status')">
                         <option value="none">-</option>
-                        <option value="new" <?=(Input::get('status') == "new") ? "new" : null?>>New</option>
-                        <option value="inprogress" <?=(Input::get('status') == "inprogress") ? "selected" : null?>>In progress</option>
-                        <option value="closed" <?=(Input::get('status') == "closed") ? "selected" : null?>>Closed</option>
+                        <option value="new">New</option>
+                        <option value="inprogress">In progress</option>
+                        <option value="closed">Closed</option>
                     </select> 
                 </span>
             </div>
@@ -109,7 +109,7 @@
                     <select ng-model="rating_filter" ng-change="filter('rating')">
                         <option value="none">-</option>
                         <?foreach(array_reverse(range(1, 5)) as $rating):?>
-                            <option value="<?=$rating?>" <?=((Input::get('rating') == $rating) ? 'selected' : null)?>><?=$rating?></option>
+                            <option value="<?=$rating?>"><?=$rating?></option>
                         <?endforeach?> 
                     </select>
                 </span>
