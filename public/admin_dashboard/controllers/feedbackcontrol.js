@@ -57,10 +57,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
 
-    $scope.date_filter     = (!is_empty(qs)) ? qs['date'] : 'none';
-    $scope.priority_filter = (!is_empty(qs)) ? qs['priority'] : 'none';
-    $scope.status_filter   = (!is_empty(qs)) ? qs['status'] : 'none';
-    $scope.rating_filter   = (!is_empty(qs)) ? qs['rating'] : 'none';
+    $scope.date_filter     = (!is_empty(qs) && qs['date']) ? qs['date'] : 'none';
+    $scope.priority_filter = (!is_empty(qs) && qs['priority']) ? qs['priority'] : 'none';
+    $scope.status_filter   = (!is_empty(qs) && qs['status']) ? qs['status'] : 'none';
+    $scope.rating_filter   = (!is_empty(qs) && qs['rating']) ? qs['rating'] : 'none';
 
     $scope.feedback_status = function($event) {         
 
