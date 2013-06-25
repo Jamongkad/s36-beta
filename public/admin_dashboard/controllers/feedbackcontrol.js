@@ -20,7 +20,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     var insert_param = function(key, value) {
-        key = escape(key); value = escape(value);
+        var key = escape(key); value = escape(value);
 
         var kvp = document.location.search.substr(1).split('&');
         if (kvp == '') {
@@ -44,7 +44,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             //this will reload the page, it's likely better to store this until finished
             document.location.search = kvp.join('&'); 
         }
-
     }
 
     $scope.feedback_status = function($event) {         
@@ -163,7 +162,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.filter = function(filter_type) {
         if(filter_type == 'date') {
-            if($scope.date_filter == 'none')) {
+            if($scope.date_filter == 'none') {
                 window.location = window.location.pathname;
             } else { 
                 insert_param('date', $scope.date_filter);     
@@ -171,7 +170,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
         
         if(filter_type == 'priority') {
-            if($scope.priority_filter == 'none')) {
+            if($scope.priority_filter == 'none') {
                 window.location = window.location.pathname;
             } else { 
                 insert_param('priority', $scope.priority_filter);     
@@ -179,7 +178,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
 
         if(filter_type == 'status') {
-            if($scope.status_filter == 'none')) {
+            if($scope.status_filter == 'none') {
                 window.location = window.location.pathname;
             } else { 
                 insert_param('status', $scope.status_filter);     
@@ -187,7 +186,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
 
         if(filter_type == 'rating') {
-            if($scope.rating_filter == 'none')) {
+            if($scope.rating_filter == 'none') {
                 window.location = window.location.pathname;
             } else { 
                 insert_param('rating', $scope.rating_filter);     
