@@ -472,7 +472,7 @@
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
                                                                        ng-click="feedback_status($event)"                                                                       
                                                                        data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$cat->id?>", "status": "fileas"}'
-                                                                       transform>
+                                                                       >
                                                                         <?=$cat->name?>
                                                                     </a>
                                                                 </li>

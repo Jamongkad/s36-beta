@@ -39,6 +39,7 @@ angular.module('feedbackcontrol', [])
                     } else { 
                         hide_the_children(me);
                     }
+
                 } else { 
                     hide_the_children(me);
                 }
