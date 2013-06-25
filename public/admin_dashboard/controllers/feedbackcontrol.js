@@ -17,8 +17,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.feedback_status = function($event) {         
         //this sends a signal to CheckyBox
         var target = $($event.target);
-        var json = $.parseJSON(target.attr('data-feed'));
-        console.log(json);
+        var json_data = $.parseJSON(target.attr('data-feed'));
+        console.log(json_data);
 
         /*
         var current = {
