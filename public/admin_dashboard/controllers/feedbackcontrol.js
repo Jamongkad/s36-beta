@@ -44,6 +44,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             //this will reload the page, it's likely better to store this until finished
             document.location.search = kvp.join('&'); 
             $scope.date_filter = value;
+            console.log(value);
         }
     }
 
