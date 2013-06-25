@@ -518,7 +518,9 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite flag-action" ng-click="feedback_status(<?=$feed->id?>, 'flag')">
+                                        <li class="action-sprite flag-action" 
+                                            ng-click="feedback_status($event)" 
+                                            data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "flag"}'>
                                             <div class="action-tooltip">
                                                 <span>Flag Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
