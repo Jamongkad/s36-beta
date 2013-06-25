@@ -370,7 +370,7 @@
                                             <?else:?>
                                                 <li class="action-sprite publish" transform 
                                                     ng-click="feedback_status($event)" publish
-                                                    data-feed="{id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'publish'}"
+                                                    data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "publish"}'
                                                     <?=($feed->ispublished) ? "style='background-position: -32px -31px'" : null?> 
                                                     <?=($feed->ispublished) ? "return-policy=1" : "return-policy=0"?> 
                                                     > 
@@ -406,7 +406,7 @@
                                             <?else:?>
                                                 <li class="action-sprite feature" transform 
                                                     ng-click="feedback_status($event)" feature
-                                                    data-feed="{id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'feature'}"
+                                                    data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "feature"}'
                                                     <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>
                                                     <?=($feed->isfeatured) ? "return-policy=1" : "return-policy=0"?> 
                                                     >
@@ -468,8 +468,8 @@
                                                                 <li>
                                                                     <a href="#" 
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
-                                                                       ng-click="feedback_status($event)"
-                                                                       data-feed="{id: <?=$feed->id?>, catid: <?=$cat->id?>, status: 'fileas'}"
+                                                                       ng-click="feedback_status($event)"                                                                       
+                                                                       data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$cat->id?>", "status": "fileas"}'
                                                                        transform>
                                                                         <?=$cat->name?>
                                                                     </a>
@@ -510,7 +510,7 @@
                                                     <div class="the-categories-delete">
                                                         <a href="#" class="delete-button" transform 
                                                            ng-click="feedback_status($event)"
-                                                           data-feed="{id: <?=$feed->id?>, catid: <?=$feed->categoryid?>, status: 'delete'}"
+                                                           data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "delete"}'
                                                         ></a>
                                                     </div>
                                                 </div>
