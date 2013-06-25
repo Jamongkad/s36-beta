@@ -118,11 +118,11 @@ angular.module('feedbackcontrol', [])
 })
 
 function published_state(obj, identifier, msg, state) { 
-    me.parents('.dashboard-feedback').css({'background-color': '#FFF'});
-    me.css(state.activate);
-    me.siblings(identifier).css(state.deactivate_sibling);
-    me.children('.action-tooltip').children('span').html("Return to Inbox");
-    me.siblings(identifier).children('.action-tooltip').children('span').html(msg);
-    me.siblings(identifier).attr('return-policy', 0);
-    me.attr('return-policy', 1);
+    obj.parents('.dashboard-feedback').css({'background-color': '#FFF'});
+    obj.css(state.activate);
+    obj.siblings(identifier).css(state.deactivate_sibling);
+    obj.children('.action-tooltip').children('span').html("Return to Inbox");
+    obj.siblings(identifier).children('.action-tooltip').children('span').html(msg);
+    obj.siblings(identifier).attr('return-policy', 0);
+    obj.attr('return-policy', 1);
 }
