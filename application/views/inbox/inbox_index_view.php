@@ -23,6 +23,9 @@
                 <span ng-switch-when="delete">
                     Feedback has been deleted. 
                 </span> 
+                <span ng-switch-when="inbox">
+                    Feedback has been returned to the inbox.
+                </span> 
             </span>
 
             <a undo class="undo" href="#" ng-click="undo()">Undo {{feed_id}}</a> 
