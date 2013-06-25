@@ -130,9 +130,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
 
-    $scope.filter = function() {
-        console.log($scope.date_filter);
-        console.log($scope.priority_filter);
+    $scope.filter = function(filter_type) {
+        if(filter_type == 'date') {
+            console.log($scope.date_filter);     
+        }
+        
+        if(filter_type == 'priority') {
+            console.log($scope.priority_filter);
+        }
     }
 
     $scope.$on('expungeFeedId', function() {
