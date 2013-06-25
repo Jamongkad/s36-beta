@@ -31,7 +31,8 @@ angular.module('feedbackcontrol', [])
                         me.attr('return-policy', 1);
                         */
                         published_state(me, '.publish', 'Publish Feedback', {  activate: {'background-position': '-64px -31px'}
-                                                                             , deactivate_sibling: {'background-position': '-32px 0px'} });
+                                                                             , deactivate_sibling: {'background-position': '-32px 0px'}
+                                                                             , activation_color: {'background-color': '#FFFFE0'} });
                     }
 
                     if(data.status == "publish") {
@@ -45,7 +46,8 @@ angular.module('feedbackcontrol', [])
                         me.attr('return-policy', 1);
                         */
                         published_state(me, '.feature', 'Feature Feedback', {  activate: {'background-position': '-32px -31px'}
-                                                                             , deactivate_sibling: {'background-position': '-64px 0px'} });
+                                                                             , deactivate_sibling: {'background-position': '-64px 0px'}
+                                                                             , activation_color: {'background-color': '#FFF'} });
                     }
                 } else { 
                     me.parents('.dashboard-feedback').hide();
@@ -117,12 +119,12 @@ angular.module('feedbackcontrol', [])
     
 })
 
-function published_state(obj, identifier, msg, state) { 
-    obj.parents('.dashboard-feedback').css({'background-color': '#FFF'});
+function published_state(obj, sibling_id, msg, state) { 
+    obj.parents('.dashboard-feedback').css(state.activation_color);
     obj.css(state.activate);
-    obj.siblings(identifier).css(state.deactivate_sibling);
+    obj.siblings(sibling_id).css(state.deactivate_sibling);
     obj.children('.action-tooltip').children('span').html("Return to Inbox");
-    obj.siblings(identifier).children('.action-tooltip').children('span').html(msg);
-    obj.siblings(identifier).attr('return-policy', 0);
+    obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg);
+    obj.siblings(sibling_id).attr('return-policy', 0);
     obj.attr('return-policy', 1);
 }
