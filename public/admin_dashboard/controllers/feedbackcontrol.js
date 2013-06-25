@@ -3,6 +3,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.selected = [];
     $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
+    $scope.date_filter = 'none';
 
     var update_selected = function(action, id) {
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
