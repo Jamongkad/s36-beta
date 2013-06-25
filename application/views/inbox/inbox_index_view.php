@@ -349,7 +349,7 @@
                         <div class="dashboard-feedback-actions grids">
                             <div class="feedback-action-menu">
                                 <div class="grids">
-                                    <div class="action-sprite action-delete" transform 
+                                    <div class="action-sprite action-delete" 
                                          ng-click="feedback_status($event)"
                                          data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "delete"}'
                                          ></div>
