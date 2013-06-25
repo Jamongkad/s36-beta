@@ -8,6 +8,8 @@ angular.module('feedbackcontrol', [])
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
+                console.log(data);
+                /*
                 if(currentUrl.match(/published|contacts/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
@@ -43,6 +45,7 @@ angular.module('feedbackcontrol', [])
                 } else { 
                     hide_the_children(me);
                 }
+                */
 
                 e.preventDefault();
             });
