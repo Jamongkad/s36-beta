@@ -74,7 +74,7 @@
             <div class="sorter-block">
                 <span class="sorter-block-name">Date</span>
                 <span class="sorter-block-box">
-                    <select ng-model="date_filter" ng-change="filter_date()">
+                    <select ng-model="date_filter" ng-change="filter()">
                         <option value="none">-</option>
                         <option value="date_new" <?=(Input::get('date') == "date_new") ? "selected" : null?>>Newest</option>
                         <option value="date_old" <?=(Input::get('date') == "date_old") ? "selected" : null?>>Oldest</option>
@@ -84,8 +84,8 @@
             <div class="sorter-block">
                 <span class="sorter-block-name">Priority</span>
                 <span class="sorter-block-box">
-                    <select name="priority-filter">
-                        <option value="default">-</option>
+                    <select ng-model="priority_filter" ng-change="filter()">
+                        <option value="none">-</option>
                         <option value="low" <?=(Input::get('priority') == "low") ? "selected" : null?>>Low</option>
                         <option value="medium" <?=(Input::get('priority') == "medium") ? "selected" : null?>>Medium</option>
                         <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>High</option>

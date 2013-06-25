@@ -4,6 +4,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
     $scope.date_filter = 'none';
+    $scope.priority_filter = 'none';
 
     var update_selected = function(action, id) {
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
@@ -129,8 +130,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
 
-    $scope.filter_date = function() {
+    $scope.filter = function() {
         console.log($scope.date_filter);
+        console.log($scope.priority_filter);
     }
 
     $scope.$on('expungeFeedId', function() {
