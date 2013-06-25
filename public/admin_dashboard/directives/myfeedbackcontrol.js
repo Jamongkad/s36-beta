@@ -7,7 +7,7 @@ angular.module('feedbackcontrol', [])
                 var currentUrl = window.location.pathname;
                 var me = $(element); 
                 var data = FeedbackSignal.data;
-                /*
+
                 if(currentUrl.match(/published|contacts/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
@@ -30,7 +30,7 @@ angular.module('feedbackcontrol', [])
                 } else { 
                     hide_the_children(me);
                 }
-                */ 
+
                 e.preventDefault();
             });
         } 
