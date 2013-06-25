@@ -4,13 +4,11 @@ angular.module('Services', [])
 
     shared_service.change_status = function(status_change, flag) {
 
-        var pointer; 
+        var undo_flag; 
         if(flag == true) {
-            console.log("process data");
-            pointer = false;
+            undo_flag = false;
         } else { 
-            console.log("undo process data");
-            pointer = true;
+            undo_flag = true;
         }
 
         $.ajax({

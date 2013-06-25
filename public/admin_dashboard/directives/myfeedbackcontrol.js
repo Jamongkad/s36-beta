@@ -110,8 +110,6 @@ function published_state(obj, sibling_id, msg, state) {
     obj.siblings(sibling_id).attr('data-feed', state.state_change);
     obj.attr('return-policy', 1);
     obj.attr('data-feed', state.state_change_inbox);
-
-
 }
 
 function hide_the_children(obj) { 
