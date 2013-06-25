@@ -4,7 +4,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
 
-    $scope.date_filter     = 'none';
+    $scope.date_filter     = (!is_empty(qs)) ? qs['date'] : 'none';
     $scope.priority_filter = 'none';
     $scope.status_filter   = 'none';
     $scope.rating_filter   = 'none';
