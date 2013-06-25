@@ -14,28 +14,31 @@ angular.module('feedbackcontrol', [])
                         hide_the_children(me);
                     }
 
-                    if(data.status == "feature") {
-                        var state = { 
-                            activate: {'background-position': '-64px -31px'}
-                          , deactivate_sibling: {'background-position': '-32px 0px'}
-                          , activation_color: {'background-color': '#FFFFE0'} 
-                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                          , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                    if(data.status != "fileas") { 
+                        if(data.status == "feature") {
+                            var state = { 
+                                activate: {'background-position': '-64px -31px'}
+                              , deactivate_sibling: {'background-position': '-32px 0px'}
+                              , activation_color: {'background-color': '#FFFFE0'} 
+                              , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                              , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                            }
+                            published_state(me, '.publish', 'Publish Feedback', state);
                         }
-                        published_state(me, '.publish', 'Publish Feedback', state);
-                    }
 
-                    if(data.status == "publish") {
-                        var state = {
-                            activate: {'background-position': '-32px -31px'}
-                          , deactivate_sibling: {'background-position': '-64px 0px'}
-                          , activation_color: {'background-color': '#FFF'} 
-                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
-                          , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                        } 
-                        published_state(me, '.feature', 'Feature Feedback', state);
+                        if(data.status == "publish") {
+                            var state = {
+                                activate: {'background-position': '-32px -31px'}
+                              , deactivate_sibling: {'background-position': '-64px 0px'}
+                              , activation_color: {'background-color': '#FFF'} 
+                              , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
+                              , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                            } 
+                            published_state(me, '.feature', 'Feature Feedback', state);
+                        }
+                    } else { 
+                        hide_the_children(me);
                     }
-
                 } else { 
                     hide_the_children(me);
                 }
