@@ -18,7 +18,6 @@ angular.module('feedbackcontrol', [])
                         published_state(me, '.publish', 'Publish Feedback', {  activate: {'background-position': '-64px -31px'}
                                                                              , deactivate_sibling: {'background-position': '-32px 0px'}
                                                                              , activation_color: {'background-color': '#FFFFE0'} });
-                        console.log(me);
                     }
 
                     if(data.status == "publish") {
