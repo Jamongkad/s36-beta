@@ -17,44 +17,36 @@ jQuery(function($) {
     });
 
     $('select[name="status-filter"]').bind('change', function(e) {
-
         if(($(this).val() == 'default')) {
             window.location = window.location.pathname;
         } else { 
             insertParam('status', $(this).val());
         } 
-
     });
 
     $('select[name="rating-limit"]').bind('change', function(e) {
-
         if(($(this).val() == 'default')) {
             window.location = window.location.pathname;
         } else { 
             insertParam('rating', $(this).val());
         } 
-
     });
 
     $('select[name="feedback-limit"]').bind('change', function(e) {
-
         if(($(this).val() == 'default')) {
             window.location = window.location.pathname;
         } else { 
             insertParam('limit', $(this).val());
         } 
-
     });
 
 
     $('select[name="category-filter"]').bind('change', function(e) {
-
         if(($(this).val() == 'default')) {
             window.location = window.location.pathname;
         } else {
             insertParam('category', $(this).val());
-        } 
-        
+        }  
     });
 
     $('select[name="site_choice"]').bind('change', function(e) {
