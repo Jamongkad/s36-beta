@@ -12,8 +12,6 @@ angular.module('feedbackcontrol', [])
 
                     if(me.attr('return-policy') == 1) { 
                         hide_the_children(me);
-                        data.status = "inbox";
-                        FeedbackSignal.current_state(data);
                     }
 
                     if(data.status == "feature") {
