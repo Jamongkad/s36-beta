@@ -3,8 +3,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.selected = [];
     $scope.checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
-    $scope.date_filter = 'none';
+
+    $scope.date_filter     = 'none';
     $scope.priority_filter = 'none';
+    $scope.status_filter   = 'none';
+    $scope.rating_filter   = 'none';
 
     var update_selected = function(action, id) {
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
@@ -137,6 +140,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         
         if(filter_type == 'priority') {
             console.log($scope.priority_filter);
+        }
+
+        if(filter_type == 'status') {
+            console.log($scope.status_filter);
+        }
+
+        if(filter_type == 'rating') {
+            console.log($scope.rating_filter);
         }
     }
 

@@ -95,8 +95,8 @@
             <div class="sorter-block">
                 <span class="sorter-block-name">Status</span>
                 <span class="sorter-block-box">
-                    <select name="status-filter">
-                        <option value="default">-</option>
+                    <select ng-model="status_filter" ng-change="filter('status')">
+                        <option value="none">-</option>
                         <option value="new" <?=(Input::get('status') == "new") ? "new" : null?>>New</option>
                         <option value="inprogress" <?=(Input::get('status') == "inprogress") ? "selected" : null?>>In progress</option>
                         <option value="closed" <?=(Input::get('status') == "closed") ? "selected" : null?>>Closed</option>
@@ -106,8 +106,8 @@
             <div class="sorter-block">
                 <span class="sorter-block-name">Rating</span>
                 <span class="sorter-block-box"> 
-                    <select name="rating-limit">
-                        <option value="default">-</option>
+                    <select ng-model="rating_filter" ng-change="filter('rating')">
+                        <option value="none">-</option>
                         <?foreach(array_reverse(range(1, 5)) as $rating):?>
                             <option value="<?=$rating?>" <?=((Input::get('rating') == $rating) ? 'selected' : null)?>><?=$rating?></option>
                         <?endforeach?> 
