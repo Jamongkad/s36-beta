@@ -128,6 +128,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
 
+    $scope.filter_date = function() {
+        console.log($scope.date_filter);
+    }
+
     $scope.$on('expungeFeedId', function() {
         console.log("expunged");
         FeedbackSignal.data.id = [];
