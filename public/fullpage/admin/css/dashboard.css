@@ -311,6 +311,9 @@ body, #mainWrapper, #fadedContainer{
     margin-left:-3px;   
     border-bottom:none; 
 }
+.action-gray-menu .save:hover .the-categories-menu{
+    display:block;
+}
 .action-gray-menu .publish:hover{
     background-position:-32px -31px;
 }
