@@ -75,7 +75,7 @@
                 <span class="sorter-block-name">Date</span>
                 <span class="sorter-block-box">
                     <select ng-model="date_filter" ng-change="filter_date()">
-                        <option>-</option>
+                        <option value="none">-</option>
                         <option value="date_new" <?=(Input::get('date') == "date_new") ? "selected" : null?>>Newest</option>
                         <option value="date_old" <?=(Input::get('date') == "date_old") ? "selected" : null?>>Oldest</option>
                     </select>
