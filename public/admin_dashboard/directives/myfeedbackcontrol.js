@@ -8,17 +8,18 @@ angular.module('feedbackcontrol', [])
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
-                if(me.attr('return-policy') == 1) { 
-                    me.parents('.dashboard-feedback').hide();
-                    var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
-                    if(child_count.length == 0) {
-                        me.parents('.feedback-group').hide();
-                    }      
-
-                    $(".checky-box-container").show();
-                }
-
                 if(currentUrl.match(/published|contacts/g)) { 
+
+                    if(me.attr('return-policy') == 1) { 
+                        me.parents('.dashboard-feedback').hide();
+                        var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
+                        if(child_count.length == 0) {
+                            me.parents('.feedback-group').hide();
+                        }      
+
+                        $(".checky-box-container").show();
+                    }
+
                     if(data.status == "feature") {
                         me.parents('.dashboard-feedback').css({'background-color': '#FFFFE0'});
                         me.css({'background-position': '-64px -31px'});
@@ -38,10 +39,16 @@ angular.module('feedbackcontrol', [])
                         me.siblings('.feature').attr('return-policy', 0);
                         me.attr('return-policy', 1);
                     }
-                } 
+                } else { 
+                    me.parents('.dashboard-feedback').hide();
+                    var child_count = me.parents('.feedback-group').children('.dashboard-feedback:visible');
+                    if(child_count.length == 0) {
+                        me.parents('.feedback-group').hide();
+                    }      
+
+                    $(".checky-box-container").show();
+                }
                  
-                /*
-                */
                 e.preventDefault();
             });
         } 
