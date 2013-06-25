@@ -15,15 +15,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         return Object.keys(obj).length === 0;
     }
 
-    $scope.selected = [];
-    $scope.checkboxes = $(".feed-checkbox");
-    $scope.status_select_value = 'none';
-
-    $scope.date_filter     = (!is_empty(qs)) ? qs['date'] : 'none';
-    $scope.priority_filter = (!is_empty(qs)) ? qs['priority'] : 'none';
-    $scope.status_filter   = (!is_empty(qs)) ? qs['status'] : 'none';
-    $scope.rating_filter   = (!is_empty(qs)) ? qs['rating'] : 'none';
-
     var update_selected = function(action, id) {
         if (action == 'add' && $scope.selected.indexOf(id) == -1) {
             $scope.selected.push(id);     
@@ -62,8 +53,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
 
-    console.log(qs);
-    console.log(is_empty(qs));
+    $scope.selected = [];
+    $scope.checkboxes = $(".feed-checkbox");
+    $scope.status_select_value = 'none';
+
+    $scope.date_filter     = (!is_empty(qs)) ? qs['date'] : 'none';
+    $scope.priority_filter = (!is_empty(qs)) ? qs['priority'] : 'none';
+    $scope.status_filter   = (!is_empty(qs)) ? qs['status'] : 'none';
+    $scope.rating_filter   = (!is_empty(qs)) ? qs['rating'] : 'none';
 
     $scope.feedback_status = function($event) {         
 
