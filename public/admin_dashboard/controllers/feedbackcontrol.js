@@ -19,6 +19,34 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
     }
 
+    var insert_param = function(key, value) {
+        key = escape(key); value = escape(value);
+
+        var kvp = document.location.search.substr(1).split('&');
+        if (kvp == '') {
+            document.location.search = '?' + key + '=' + value;
+        } else { 
+            var i=kvp.length; 
+            var x; 
+            while(i--) {
+                x = kvp[i].split('=');
+
+                if (x[0]==key) {
+                    x[1] = value;
+                    kvp[i] = x.join('=');
+                    break;
+                }
+            }
+
+            if (i<0) {
+                kvp[kvp.length] = [key,value].join('=');
+            }
+            //this will reload the page, it's likely better to store this until finished
+            document.location.search = kvp.join('&'); 
+        }
+
+    }
+
     $scope.feedback_status = function($event) {         
 
         var target = $($event.target);
@@ -135,19 +163,35 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.filter = function(filter_type) {
         if(filter_type == 'date') {
-            console.log($scope.date_filter);     
+            if($scope.date_filter == 'none')) {
+                window.location = window.location.pathname;
+            } else { 
+                insert_param('date', $scope.date_filter);     
+            }
         }
         
         if(filter_type == 'priority') {
-            console.log($scope.priority_filter);
+            if($scope.priority_filter == 'none')) {
+                window.location = window.location.pathname;
+            } else { 
+                insert_param('priority', $scope.priority_filter);     
+            }
         }
 
         if(filter_type == 'status') {
-            console.log($scope.status_filter);
+            if($scope.status_filter == 'none')) {
+                window.location = window.location.pathname;
+            } else { 
+                insert_param('status', $scope.status_filter);     
+            }
         }
 
         if(filter_type == 'rating') {
-            console.log($scope.rating_filter);
+            if($scope.rating_filter == 'none')) {
+                window.location = window.location.pathname;
+            } else { 
+                insert_param('rating', $scope.rating_filter);     
+            }
         }
     }
 
