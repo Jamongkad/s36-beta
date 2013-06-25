@@ -370,8 +370,8 @@
                                             <?else:?>
                                                 <li class="action-sprite publish" transform 
                                                     ng-click="feedback_status($event)" publish
-                                                    data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>"
-                                                              , "status": <?=($feed->ispublished) ? '"inbox"' : '"publish"'?>}'
+                                                    data-feed='{  "id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>"
+                                                                , "status": <?=($feed->ispublished) ? '"inbox"' : '"publish"'?> }'
                                                     <?=($feed->ispublished) ? "style='background-position: -32px -31px'" : null?> 
                                                     <?=($feed->ispublished) ? "return-policy=1" : "return-policy=0"?> 
                                                     > 
@@ -407,7 +407,8 @@
                                             <?else:?>
                                                 <li class="action-sprite feature" transform 
                                                     ng-click="feedback_status($event)" feature
-                                                    data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "feature"}'
+                                                    data-feed='{  "id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>"
+                                                                , "status": <?=($feed->isfeatured) ? '"inbox"' : '"feature"'?> }'
                                                     <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>
                                                     <?=($feed->isfeatured) ? "return-policy=1" : "return-policy=0"?> 
                                                     >
