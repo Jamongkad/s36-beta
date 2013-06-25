@@ -26,7 +26,6 @@ angular.module('feedbackcontrol', [])
                                                                              , activation_color: {'background-color': '#FFF'} });
                     }
 
-                    console.log(me);
                 } else { 
                     hide_the_children(me);
                 }
