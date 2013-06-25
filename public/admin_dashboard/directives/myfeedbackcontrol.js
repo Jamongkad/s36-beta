@@ -7,21 +7,13 @@ angular.module('feedbackcontrol', [])
                 var currentUrl = window.location.pathname;
                 var me = $(element); 
                 var data = FeedbackSignal.data;
-
+                /*
                 if(currentUrl.match(/published|contacts/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
                         hide_the_children(me);
                         data.status = "inbox";
                         FeedbackSignal.current_state(data);
-                        /*
-                        var current = {
-                            id: feed.id
-                          , catid: Template.default_category_id
-                          , status: feed.status
-                          , origin: Template.current_inbox_state
-                        }
-                        */
                     }
 
                     if(data.status == "feature") {
@@ -38,7 +30,7 @@ angular.module('feedbackcontrol', [])
                 } else { 
                     hide_the_children(me);
                 }
-                 
+                */ 
                 e.preventDefault();
             });
         } 
