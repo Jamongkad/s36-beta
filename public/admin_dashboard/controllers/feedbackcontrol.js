@@ -14,8 +14,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
     }
 
-    $scope.feedback_status = function(feed) {         
+    $scope.feedback_status = function($event) {         
         //this sends a signal to CheckyBox
+        console.log($event.target);
+        /*
         var current = {
             id: feed.id
           , catid: Template.default_category_id
@@ -27,6 +29,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         feed.origin = Template.current_inbox_state;
         FeedbackControlService.change_status(feed, true);
+        */
     }
 
     $scope.reply_feedback = function(id) {
