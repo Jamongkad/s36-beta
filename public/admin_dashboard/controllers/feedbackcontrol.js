@@ -41,12 +41,24 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             if (i<0) {
                 kvp[kvp.length] = [key,value].join('=');
             }
+
             //this will reload the page, it's likely better to store this until finished
             document.location.search = kvp.join('&'); 
-            $scope.date_filter = value;
-            console.log(value);
         }
     }
+
+    var qs = (function(a) {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i) {
+            var p=a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+        }
+        return b;
+    })(window.location.search.substr(1).split('&'));
+
+    console.log(qs);
 
     $scope.feedback_status = function($event) {         
 
