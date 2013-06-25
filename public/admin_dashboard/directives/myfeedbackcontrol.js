@@ -12,6 +12,17 @@ angular.module('feedbackcontrol', [])
 
                     if(me.attr('return-policy') == 1) { 
                         hide_the_children(me);
+                        console.log(data);
+                        /*
+                        var current = {
+                            id: feed.id
+                          , catid: Template.default_category_id
+                          , status: feed.status
+                          , origin: Template.current_inbox_state
+                        }
+
+                        FeedbackSignal.current_state(current);
+                        */
                     }
 
                     if(data.status == "feature") {
