@@ -12,7 +12,8 @@ angular.module('feedbackcontrol', [])
 
                     if(me.attr('return-policy') == 1) { 
                         hide_the_children(me);
-                        console.log(data);
+                        data.status = "inbox";
+                        FeedbackSignal.current_state(data);
                         /*
                         var current = {
                             id: feed.id
@@ -20,8 +21,6 @@ angular.module('feedbackcontrol', [])
                           , status: feed.status
                           , origin: Template.current_inbox_state
                         }
-
-                        FeedbackSignal.current_state(current);
                         */
                     }
 
