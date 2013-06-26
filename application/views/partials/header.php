@@ -14,6 +14,9 @@
         <?=HTML::script('/js/helpers.js'); ?>
         <?=HTML::script('/admin_dashboard/dashboard.js'); ?>
 
+        <?=HTML::script('/js/jquery.iframe-transport.js'); ?>
+        <?=HTML::script('/js/jquery.fileupload.js'); ?>
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
