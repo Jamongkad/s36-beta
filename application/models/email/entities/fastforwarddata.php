@@ -8,7 +8,6 @@ class FastForwardData extends EmailData {
     public $sendto;
     public $email_comment;
     public $from; 
-    public $receiver_details;
     public $feedback;
     public $companyid;
  
