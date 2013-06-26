@@ -276,8 +276,11 @@ return array(
         $fastdata->receiver_details();
         $fastdata->make_forward_url();
 
+        Helpers::dump($fastdata);
+        /*
         $emailservice = new Email\Services\EmailService($fastdata);
         return $emailservice->send_email();
+        */
     }),
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox, $redis, $company_name) {  
