@@ -526,7 +526,7 @@
                                                                 </li>
                                                             <?endforeach?>
                                                         </ul>
-                                                        <a class="manage-categories-link" href="#">Manage Categories</a>
+                                                        <a class="manage-categories-link" href="/settings">Manage Categories</a>
                                                     </div>
                                                     <div class="false-border"></div>
                                                     <div class="the-categories-options">

@@ -40,8 +40,10 @@ angular.module('feedbackcontrol', [])
                         hide_the_children(me);
                     }
 
-                } else { 
-                    hide_the_children(me);
+                } else if(currentUrl.match(/filed/g)) { 
+                    console.log(me);
+                } else {
+                    hide_the_children(me);     
                 }
 
                 e.preventDefault();
