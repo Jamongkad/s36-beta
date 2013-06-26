@@ -30,10 +30,6 @@ return array(
         ));
     }),
 
-    'GET /feedback/load_request_form' => function() {
-        return View::make('feedback/partials/requestform_index');
-    },
-
     'GET /feedback/load_reply_form' => function() {
         return View::make('feedback/partials/replyform_index');
     },

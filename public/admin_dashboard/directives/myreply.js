@@ -15,14 +15,12 @@ angular.module('reply', [])
                 MessageService.get_replybody(feedid);
                 MessageService.register_replybody();
                 
-
-                $('div#reply-to-user').draggable();
-                $('div#reply-to-user.lightbox').show();
+                $('div#reply-to-user[feedid=1594]').draggable();
+                $('div#reply-to-user.lightbox[feedid=1594]').show();
 
                 $(".dialog-form[feedid="+feedid+"]").show();
 
                 e.preventDefault();
-
             });
         }
     } 
