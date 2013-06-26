@@ -743,3 +743,7 @@ ul.add-bcc {
 ul.custom-message {padding:0;list-style:none;line-height:1.3em;margin-top:-30px}
 ul.custom-message li a{color:#6e7e8e;text-decoration:underline}
 ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
+
+.valign-fix tr td {
+   vertical-align: top; 
+}
