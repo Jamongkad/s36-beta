@@ -457,6 +457,7 @@
                                                 <span>Fast Forward</span>
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
+                                            <!--
                                             <div class="the-categories-menu">
                                              <div class="the-category-arrow"></div>
                                              <div class="the-categories-menu-content">
@@ -469,6 +470,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            -->
                                         </li>
                                         <li class="action-sprite save">
                                             <div class="action-tooltip">
