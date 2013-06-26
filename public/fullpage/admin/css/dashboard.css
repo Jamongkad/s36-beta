@@ -746,4 +746,9 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
 
 .valign-fix tr td {
    vertical-align: top; 
+   padding: 5px;
+}
+
+.valign-fix tr td input, .valign-fix tr td textarea  {
+    margin: 0px;
 }
