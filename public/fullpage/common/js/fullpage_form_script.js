@@ -138,10 +138,7 @@ $(document).keypress(function(event){
             var uploaded_images = new Array;
             $('#review-images .e_img_check').each(function(){
                 uploaded_images.push({
-                    'url'          :$(this).find('.img-url').val(),
-                    'small_url'    :$(this).find('.img-small-url').val(),
-                    'medium_url'   :$(this).find('.img-medium-url').val(),
-                    'large_url'    :$(this).find('.img-large-url').val()
+                    'name'         :$(this).find('.image-name').val()
                 });
             });
             //get attached link data
@@ -164,29 +161,29 @@ $(document).keypress(function(event){
 
             //collect  all data plus attachment data
             var form_data = {
-                site_id     : $('#siteId').val(),
-                company_id  : $('#companyId').val(),
-                title       : $('#feedbackTitle').val(),
-                feedback    : $('#feedbackText').val(),
-                rating      : $('#rating').val(),
-                recommend   : $('#recommend').val(),
-                first_name  : $('#your_fname').val(),
-                last_name   : $('#your_lname').val(),
-                email       : $('#your_email').val(),
-                city        : $('#your_city').val(),
-                country     : $('#your_country').val(),
-                login_type  : $('#loginType').val(),
+                site_id         : $('#siteId').val(),
+                company_id      : $('#companyId').val(),
+                title           : $('#feedbackTitle').val(),
+                feedback        : $('#feedbackText').val(),
+                rating          : $('#rating').val(),
+                recommend       : $('#recommend').val(),
+                first_name      : $('#your_fname').val(),
+                last_name       : $('#your_lname').val(),
+                email           : $('#your_email').val(),
+                city            : $('#your_city').val(),
+                country         : $('#your_country').val(),
+                login_type      : $('#loginType').val(),
                 profile_link    : $('#profileLink').val(),
-                avatar      : $('#preview_photo').attr('src'),
+                avatar          : $('#preview_photo').attr('src'),
                 avatar_filename : $('#avatar_filename').val(),
-                permission  : $('#your_permission').val(),
-                company     : company,
-                position    : position,
-                website     : website,
+                permission      : $('#your_permission').val(),
+                company         : company,
+                position        : position,
+                website         : website,
                 attachments     : attachments,
                 metadata        : $.makeArray(form_metadata)
-            }            
-
+            }
+            
             /*submit all data for server side scripting*/
             $.ajax({
                 type: "POST",
@@ -194,14 +191,19 @@ $(document).keypress(function(event){
                 dataType: "json",
                 data: form_data, 
                 success: function(q) {
+                    // here we should return error msg from server-side validation.
+                    
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
-              }
-            }); 
-        }
+                    FB.XFBML.parse();
+                    twttr.widgets.load();
+                }
+            });
+            
+            // here we should return boolean if submission is successful or has error.
+    }
 
          function fb_connect_success(obj){
-   
               if(obj.location != undefined) {
                   if(obj.location.name != undefined) {
                       var loc = obj.location.name;
@@ -252,15 +254,17 @@ $(document).keypress(function(event){
               $('#preview_photo').attr('src',photo);
               $('#fb_flag').val("1");
         }
+    
+        //initialize the link preview script! 
+        $('#feedbackText').linkPreview();
+        $('#textEditor').linkPreview();
 
-        
-        //initialize the link preview script!
-        // $('#feedbackText').linkPreview();
-        // $('#textEditor').linkPreview();
         //initialize the file upload script! 
         $('#file_uploader').fileupload({
             dropZone: $('#drag-and-drop-area'),
             dataType: 'json',
+            sequentialUploads: true,
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
             add: function(e, data){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
@@ -280,51 +284,61 @@ $(document).keypress(function(event){
                     return false
                 }
                 data.submit();
-            },progress: function(e, data){
+            }, progress: function(e, data){
+                $('.button-disabler').show();
                 $('.upload-preview').show('fast');
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
-            },done: function(e, data){
+            }, done: function(e, data){
                 $('.upload-preview').hide('fast');
                 // append the new images to the html sync it with the review page::
-                console.log(data);
+
                 $('#uploaded_images_preview')
                     .append(
                         $('<div />')
                             .addClass('image-thumb e_img_check')
                             .append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-                            .append($('<img />').attr({'src':data.result[0].thumbnail_url,'width':'100%'}))
-                            .append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
-                            .append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].thumbnail_url))
-                            .append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].thumbnail_url))
-                            .append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].thumbnail_url))
-                            ); 
+                            .append(
+                                $('<div class="thumb-container" />')
+                                    .append(
+                                        $('<img />').attr({'src':data.result[0].medium_url,'width':'100%'})
+                                )
+                            )
+                            .append($('<div class="thumb-name" />').html(data.result[0].original_file_name))
+                            .append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
+                    );
                 $('#review-images')
                     .append(
                         $('<div />')
                             .addClass('image-thumb e_img_check')
                             .append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-                            .append($('<img />').attr({'src':data.result[0].small_url,'width':'100%'}).addClass('attachment'))
-                            .append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
-                            .append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
-                            .append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
-                            .append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].small_url))
-                            );
+                            .append(
+                                $('<div class="thumb-container" />')
+                                    .append(
+                                        $('<img />').attr({'src':data.result[0].medium_url,'width':'100%'})
+                                )
+                            )
+                            .append($('<div class="thumb-name" />').html(data.result[0].original_file_name))
+                            .append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
+                    );
                 
                 //resize the textbox when done
                 //scale_feedback_textbox();
+                assign_class();
                 
                 //assign close function for each thumbnails
                 init_thumbnail_close_btn();
                 
                 //close the file upload window
-                close_file_upload();            }
+                close_file_upload();
+                $('.button-disabler').hide();
+            }
         });
         // initialize the photo upload script
         $('#your_photo').fileupload({
+            dropZone: false,
             dataType: 'json',
             add: function(e, data){
-                console.log('in add');
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
                     var error = ['Please select an image file'];
@@ -338,6 +352,7 @@ $(document).keypress(function(event){
                 }
                 data.submit();
             },progress: function(e, data){
+                $('.button-disabler').show();
                 $('.loading-box').fadeIn('fast');
                 // delete old photo if the user decides to upload a new one.
                 var delete_url = $('#preview_photo').attr('data-url');
@@ -345,10 +360,8 @@ $(document).keypress(function(event){
                     $.post(delete_url);
                 }
             },done: function(e, data){
-                console.log(e);
-                console.log(data);
                 $('<img />')
-                    .attr('src', data.result[0].url)
+                    .attr('src', data.result[0].medium_url)
                     .load(function(e){
                         var max_ht = 105;
                         var img_ht = e.currentTarget.height;
@@ -357,78 +370,43 @@ $(document).keypress(function(event){
                             margin = 10;
                         }
                         $('.loading-box').fadeOut('fast');
-                        $('#preview_photo').attr({'src':data.result[0].url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
+                        $('#preview_photo').attr({'src':data.result[0].medium_url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
                         $('#avatar_filename').val(data.result[0].name);
                 });
+                $('.button-disabler').hide();
             }
         });
         
         // initiate the cycle script for the #steps div
-        var $steps = $('#formBody').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assign_class });   
-        //$('#theHostedFormContainer').hide();
+        var $steps = $('#formBody').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assign_class });
+        // checkout the $('#theHostedFormContainer').hide();  below.
+        
         /* clicking back and next buttons */
         $('#next').click(function(){
             var cur_page = $('.current').attr('id');
             if(cur_page == 'step1'){
-                /*
-                if(validate_feedback()) {
-                    $steps.cycle('next');
-                }
-                */
                 if(FormValidatePageOne.validate()) {
                     $steps.cycle('next');
                 }
             }else if(cur_page == 'step2'){
                 if(validate_form()) {
-                    //scale_review_textbox();
+                    scale_review_textbox();
                     synchronize_inputs();
                     $steps.cycle('next');
                 }
             }else if(cur_page == 'step3'){
                 if(push_to_last_window()){
-                    $steps.cycle('next');
                     submit_feedback();
+                    // you shall not pass if submit_feedback() returned false;
+                    $steps.cycle('next');
                 }
             }
         });
         $('#back').click(function(){
             $steps.cycle('prev');
         });
-        /* ========================
-           
-           Below is Rating Function found on the form page.
-           
-           -Pass a variable to the hidden input when a star is clicked.
-           -Check console.log for details.
-           
-           ========================*/
         
-        // $('.dynamic-stars .star-container .star').hover(function(){
-        //     var index = $(this).index();
-        //     var rating = "";
-        //     $('.star-container .star').css('background-position','bottom');
-        //     $(this).css('background-position','top');
-        //     rating = convert_rating_to_text(index);
-        //     $('.star-text span').html(rating);
-        //     for(var i = 0;i<index;i++){
-        //         $(this).parent().find('.star:eq('+i+')').css('background-position','top');
-        //     }
-            
-        // },function(){
-        //     var current_rating = $('#rating').val();
-        //     var rating = convert_rating_to_text(current_rating - 1);
-        //     $('.star-text span').html(rating);
-        //     $('.star-container .star').css('background-position','bottom');
-        //     for(var i = 0;i<current_rating;i++){
-        //         $('.star-container').find('.star:eq('+i+')').css('background-position','top');
-        //     }
-        // }).click(function(){
-        //     // send the rating value to the rating plugin
-        //     var index = $(this).index() + 1;
-        //     console.log('you sent a '+index+' star rating');
-        //     $('#rating').val(index);
-        //     $('#theHostedFormContainer').slideDown();
-        // });
+        
         
         /* assign default text on the input fields */
         default_text('.feedback-textarea');
@@ -454,13 +432,18 @@ $(document).keypress(function(event){
         
         /* check email if valid on blur */
         $('#your_email').blur(function(){
-            if(!validate_field( $(this).attr('id')   , $(this).val()   , $(this).attr('title')   , "email")){
-                display_error_mes(['Please Enter A Valid Email']);
-                }
+            if(!validate_field( $(this).attr('id'),$(this).val(),$(this).attr('title'),"email")){
+                display_error_mes(['Please enter a valid email']);
+            }
         });
+        
         
         $('.fullscreen-icon,#edit_text_link').click(function(){
             display_text_editor();
+        });
+        
+        $('#edit_feedback_title').click(function(){
+            display_text_editor('feedback_title');
         });
         
         /* add image click to upload */
@@ -470,23 +453,34 @@ $(document).keypress(function(event){
         });
         
         init_thumbnail_close_btn();
-        //scale_feedback_textbox();
+        scale_feedback_textbox();
+        
+        
+        $('#theHostedFormContainer').hide();  // if you can read this, this is what your looking for. well, nothing.
+        
     });
     // end of document ready function
     
     function adjust_feedback_textbox_height(val){
-        $('#feedbackText').animate({'height':val,'width':357},100);
+        // no adjustments this time.
+        // $('#feedbackText').animate({ 'height':val, 'width':357 }, 100);
+        // $('#feedbackText').animate({ 'min-height':val, 'width':357 }, 100);
     }
     function adjust_review_textbox_height(val){
         $('#review-feedback-text').animate({'height':val},100);
     }
-    function assign_class(){                        
+    function assign_class(){
         $(this).parent().find('div.current').removeClass('current'); //find all div that has a current class and remove it
         $(this).addClass('current');                                 //add the current class to the active div  
         display_prev_btn($(this).attr('id'));
-        var $ht = $(this).height();
+        
+        var $ht = 340;
+        if( $('.e_img_check').length > 0 && $('.e_vid_check').length == 0 ) $ht = 380;
+        else if( $('.e_img_check').length == 0 && $('.e_vid_check').length > 0 ) $ht = 418;
+        else if( $('.e_img_check').length > 0 && $('.e_vid_check').length > 0 ) $ht = 458;
+        
         //set the container's height to that of the current slide
-        $(this).parent().animate({height: $ht});
+        $('.current').parent().animate({height: $ht});
     }
     function close_file_upload(){
         $('#lightbox-upload-s').fadeOut('fast');
@@ -497,33 +491,51 @@ $(document).keypress(function(event){
         $('#lightbox').fadeOut('fast');
         return 0;
     }
-    function close_text_editor(){
-        if(validate_feedback($('#textEditor'))){
-            $('#lightbox-text-editor-container').fadeOut();
-            $('#lightbox-editor-s').fadeOut();
+    function close_text_editor(item){
+        item = ( typeof(item) == 'undefined' ? 'feedback_text' : item );
+        
+        if( item == 'feedback_text' ){
+            if( ! validate_feedback($('#textEditor')) ) return;
             $('#feedbackText').val($('#textEditor').val());
-            $('#review-feedback-text p').html($('#textEditor').val());
-            return 0;
+            var review_feedback_text = $('#textEditor').val();
+            review_feedback_text = Helpers.html2entities( review_feedback_text );
+            review_feedback_text = Helpers.nl2br( review_feedback_text );
+            $('#review-feedback-text p').html( review_feedback_text );
+            //$('#review-feedback-text p').html($('#textEditor').val().replace(/\n\r?/g, '<br />'));
         }
+        
+        if( item == 'feedback_title' ){
+            if( ! validate_feedback($('#feedback_title_editor')) ) return;
+            $('#feedbackTitle').val( $('#feedback_title_editor').val() );
+            $('#review-feedback-title').text( $('#feedback_title_editor').val() );
+        }
+        
+        $('#lightbox-text-editor-container').fadeOut();
+        $('#lightbox-editor-s').fadeOut();
+        $('#feedback_text_stuff').hide();
+        $('#feedback_title_stuff').hide();
+        
+        return 0;
     }
-    // function convert_rating_to_text(val){
-    //     var rating;
-    //     switch(val){
-    //         case 4: rating = "Excellent!";
-    //         break;
-    //         case 3: rating = "Good";
-    //         break;
-    //         case 2: rating = "Average";
-    //         break;
-    //         case 1: rating = "Poor";
-    //         break;
-    //         case 0: rating = "Bad";
-    //         break;
-    //         default: rating = "";
-    //         break;
-    //     }
-    //     return rating;
-    // }
+
+    function convert_rating_to_text(val){
+        var rating;
+        switch(val){
+            case 4: rating = "Excellent!";
+            break;
+            case 3: rating = "Good";
+            break;
+            case 2: rating = "Average";
+            break;
+            case 1: rating = "Poor";
+            break;
+            case 0: rating = "Bad";
+            break;
+            default: rating = "";
+            break;
+        }
+        return rating;
+    }
 
     function default_text(elem){
         $(elem).focus(function(e){
@@ -552,6 +564,7 @@ $(document).keypress(function(event){
         });
         display_lightbox();
     }
+
     function display_loading(bool){
         if(bool)
         $('.loading-box').fadeIn('fast');
@@ -565,11 +578,24 @@ $(document).keypress(function(event){
         return false;
     }
 
-    function display_text_editor(){
+    function display_text_editor(item){
+        item = ( typeof(item) == 'undefined' ? 'feedback_text' : item );
+        
         $('#lightbox-text-editor-container').fadeIn('fast');
         $('#lightbox-editor-s').fadeIn('fast');
-        $('#textEditor').focus();
-        $('#textEditor').val($('#feedbackText').val());
+        
+        if( item == 'feedback_text' ){
+            $('#feedback_text_stuff').show();
+            $('#textEditor').focus();
+            $('#textEditor').val($('#feedbackText').val());
+        }
+        
+        if( item == 'feedback_title' ){
+            $('#feedback_title_stuff').show();
+            $('#feedback_title_editor').focus();
+            $('#feedback_title_editor').val( $('#feedbackTitle').val() );
+        }
+        
         return false;
     }
     function display_prev_btn(elem){
@@ -604,22 +630,22 @@ $(document).keypress(function(event){
             var review_image_container = $('#review-images');
             var upload_image_container = $('#uploaded_images_preview');
             var delete_url = $(this).attr('data-url');
-            console.log(delete_url);
             $.post(delete_url);
             $(this).parent().fadeOut('fast',function(){
                 review_image_container.children().eq(index).remove();
                 upload_image_container.children().eq(index).remove();
-                //scale_feedback_textbox();
-                //scale_review_textbox();
+                scale_feedback_textbox();
+                scale_review_textbox();
             });
         });
     }   
     function init_thumbnail_vid_close_btn(){
         $('.thumb-vid-close').click(function(){
-            $('.thumb-vid-close').parent().parent().fadeOut('fast',function(){
+            $('#hasLink').val(0);
+            $('.thumb-vid-close').parent().fadeOut('fast',function(){
                 $(this).remove();
-                //scale_feedback_textbox();
-                //scale_review_textbox();
+                scale_feedback_textbox();
+                scale_review_textbox();
             });
         });
     }   
@@ -642,6 +668,10 @@ $(document).keypress(function(event){
             text2 = elem2.val();
         }
         
+        // use ellipses to text1 and text2 if more than 40 chars.
+        if( text1.length > 40 ) text1 = text1.substr(0, 39) + '...';
+        if( text2.length > 40 ) text2 = text2.substr(0, 39) + '...';
+        
         if(text1.length > 0 && text2.length > 0){
             return text1+', '+text2;
         }else if(text1.length == 0 && text2.length > 0){
@@ -652,10 +682,22 @@ $(document).keypress(function(event){
     }
 
     function push_to_last_window(){
-        $('#all-done-textbox').html($('#feedbackText').val());
-        $('#back').fadeOut('fast');
-        $('#next').fadeOut('fast');
-        return true;
+        //var review_feedback_text = $.trim($('#review-feedback-text').text().replace(/(<([^>]+)>)/ig,""));
+        var review_feedback_text = $('#review-feedback-text').html().replace(/\n/g,'');
+        review_feedback_text = Helpers.br2nl( review_feedback_text );
+        review_feedback_text = Helpers.entities2html( review_feedback_text );
+        
+        if(review_feedback_text.length > 0){
+            $('#all-done-feedback-title').text( $('#review-feedback-title').text() );
+            $('#all-done-textbox p').html($('#review-feedback-text').html());
+            $('#back').fadeOut('fast');
+            $('#next').fadeOut('fast');
+            return true;
+        }else{
+            error_mes = ['Please provide your feedback.'];
+            display_error_mes(error_mes);     
+            return false;
+        }
     }
 
     var FormValidatePageOne = new function() {
@@ -668,27 +710,27 @@ $(document).keypress(function(event){
             var feedback_rating = $("#rating");
 
             var error_mes = [];
-
+            
             if(feedback_rating.val() == "0") { 
                 error_mes = ['Please provide a rating for your feedback.'];
-                display_error_mes(error_mes);
-                return false;
-            }
-            
-            //if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
-            if( $.trim(feedback_title.val()) == '' ){
-                error_mes = ['Please provide a title for your feedback.'];
                 display_error_mes(error_mes);     
                 return false;
             }
             
+            //if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('placeholder'))) {
+            if( $.trim(feedback_title.val()) == '' ){
+                error_mes = ['Please provide a title for your feedback.'];
+                display_error_mes(error_mes);     
+                return false;
+            } 
+
             //if((feedback_text.length <= 0) || (feedback_text.val() == feedback_text.attr('title'))) {
             if( $.trim(feedback_text.val()) == '' ){
                 error_mes = ['Please provide your feedback.']; 
-                display_error_mes(error_mes);
+                display_error_mes(error_mes);     
                 return false;
             }
-             
+            
             return true;
         }
     }
@@ -705,7 +747,8 @@ $(document).keypress(function(event){
         var feedback_text = $.trim(feedback_elem.val());
         var error_mes = [];
         if((feedback_text.length <= 0) || (feedback_text == feedback_elem.attr('title'))) {
-            error_mes = ['Please Enter A Feedback'];
+            error_mes = ['Please enter a feedback'];
+            error_mes = ( feedback_elem.is('#feedback_title_editor') ? ['Please enter a feedback title'] : error_mes );
             display_error_mes(error_mes);
             return false;
         } else {
@@ -728,7 +771,18 @@ $(document).keypress(function(event){
             }else{
                 return true;
             }
-        }else if(type == "email"){ //if type is email
+        }
+        else if(type == "url"){
+            if((value.length <= 0) || (value == default_val)){
+                return false;
+            }else{
+                var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+                var url = new RegExp(expression);
+                if(!value.match(url)) {return false;}
+                else {return true;}
+            }
+        }
+        else if(type == "email"){ //if type is email
             if((value.length <= 0) || (value == default_val)){
                 return false;
             }else if(!validate_email(value)){
@@ -759,45 +813,59 @@ $(document).keypress(function(event){
         }
     }
 
-    function validate_form(){       
+    function validate_form(){
         if($('#formBody').find('.current').attr('id') == "step2"){
             var fname       = $('#your_fname'); 
             var lname       = $('#your_lname'); 
             var email       = $('#your_email');
             var city        = $('#your_city');
             var country     = $('#your_country');
+            var website     = $('#your_website');
+
             if(!validate_field(fname.attr('id'),fname.val(),fname.attr('title'), "regular")){
                 fname.focus();
-                display_error_mes(['Please Enter Your First Name']);
+                display_error_mes(['Please enter your first Name']);
                 return false;
             }else if(!validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
                 lname.focus();
-                display_error_mes(['Please Enter Your Last Name']);
+                display_error_mes(['Please enter your last Name']);
                 return false;
             }else if(!validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
                 email.focus();
-                display_error_mes(['Please Enter A Valid Email']);
+                display_error_mes(['Please enter a valid email']);
                 return false;
             }else if(!validate_field( city.attr('id')    , city.val()    , city.attr('title')    , "regular")){
                 city.focus();
-                display_error_mes(['Please Enter Your City']);
+                display_error_mes(['Please enter your city']);
                 return false;
             }else if(!validate_field( country.attr('id') , country.val() , country.attr('title') , "regular")){
                 country.focus();
-                display_error_mes(['Please Select Your Country']);
+                display_error_mes(['Please select your country']);
                 return false;
-            }else{
+            }else if(!website.hasClass('default-text') && !validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
+                website.focus();
+                display_error_mes(['Please enter a valid website address']);
+                return false;
+                }
+            else{
                 return true;
-            }
+            }           
         }
     }
 
     function scale_feedback_textbox(){
+        
+        var $ht = $('.current').height();
+        //set the container's height to that of the current slide
+        $('.current').parent().animate({height: $ht});
+        return;
+        
+        
         /* set the default textbox height px */
         var default_ht = 270;
         /* set heights of the elements by px */
-        var im = 40; // image container
-        var vd = 68; // video container
+        var im = 35; // image container
+        var vd = 78; // video container
         var cf_box_ht = $('.form-custom-fields').height();
 
 
@@ -809,7 +877,7 @@ $(document).keypress(function(event){
         if(active_im && !active_vd){
             adjust_feedback_textbox_height(default_ht - (cf_box_ht + im));
         }else if(active_im && active_vd){
-            adjust_feedback_textbox_height(default_ht - (cf_box_ht + im + vd));
+            adjust_feedback_textbox_height(default_ht - (cf_box_ht + im + vd - 10));
         }else if(!active_im && active_vd){
             adjust_feedback_textbox_height(default_ht - (cf_box_ht + vd));
         }else{
@@ -818,11 +886,19 @@ $(document).keypress(function(event){
     }
 
     function scale_review_textbox(){
-
+        
+        var $ht = $('.current').height();
+        //set the container's height to that of the current slide
+        $('.current').parent().animate({height: $ht});
+        
+        return;
+        
+        
         /* set the default textbox height px */
-        var default_ht = 180;
-        var im = 40; // image container
-        var vd = 75; // video container
+        //var default_ht = 180;
+        var default_ht = 140;
+        var im = 35; // image container
+        var vd = 78; // video container
         /* check if containers are active */
         var active_im = $('#review-images .e_img_check').length;
         var active_vd = $('#review-videos .e_vid_check').length;
@@ -830,7 +906,7 @@ $(document).keypress(function(event){
         if(active_im && !active_vd){
             adjust_review_textbox_height(default_ht - im);
         }else if(active_im && active_vd){
-            adjust_review_textbox_height(default_ht - (im + vd));
+            adjust_review_textbox_height(default_ht - (im + vd - 10));
         }else if(!active_im && active_vd){
             adjust_review_textbox_height(default_ht - vd);
         }else{
@@ -841,28 +917,35 @@ $(document).keypress(function(event){
     }
     function synchronize_inputs(){
         
-        var feedback_text = $('#feedbackText').val();
-        var recommend = $('#recommend').val();
-        var fname = $('#your_fname').val();
-        var lname = $('#your_lname').val();
-        var email = $('#your_email').val();
-        var city = $('#your_city');
-        var country = $('#your_country');
-        var company = $('#your_company');
-        var occupation = $('#your_occupation');
-        var website = $('#your_website').val();
-        var profile_img = $('#preview_photo').attr('src');
-        var permission = $('#your_permission').val();
+        var feedback_title  = $('#feedbackTitle').val();
+        feedback_title      = Helpers.add_ellipse(feedback_title, 35);
+        var feedback_text   = $('#feedbackText').val();
+        // feedback_text       = feedback_text.replace(/\n\r?/g, '<br />');
+        // feedback_text       = feedback_text.replace(/(<([^>]+)>)/ig,"");
+        feedback_text       = Helpers.html2entities(feedback_text);
+        feedback_text       = Helpers.nl2br(feedback_text);
+        var recommend       = $('#recommend').val();
+        var fname           = $('#your_fname').val();
+        var lname           = $('#your_lname').val();
+        var email           = $('#your_email').val();
+        var city            = $('#your_city');
+        var country         = $('#your_country');
+        var company         = $('#your_company');
+        var occupation      = $('#your_occupation');
+        var website         = $('#your_website').val();
+        var profile_img     = $('#preview_photo').attr('src');
+        var permission      = $('#your_permission').val();
         
         var company_position = get_proper_string(occupation,company);
         var city_country = get_proper_string(city,country);
         var flag = $('#flag');
-        flag.removeClass().addClass('flag flag-'+country.val());
+        flag.removeClass().addClass('flag flag-'+country.val().toLowerCase());
         
         $('#review_photo').attr('src',profile_img);
         $('#review-name').html(fname+" "+lname);
         $('#review-company').html(company_position);
         $('#review-location').html(city_country);
+        $('#review-feedback-title').text(feedback_title);
         $('#review-feedback-text').html('<p>'+feedback_text+'</p>');
         
         if(permission == 1){
@@ -871,5 +954,5 @@ $(document).keypress(function(event){
             $('#review-permission').hide();
         }
         init_thumbnail_close_btn();
-        //scale_review_textbox();
+        scale_review_textbox();
     }

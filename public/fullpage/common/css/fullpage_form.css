@@ -329,9 +329,10 @@ select.regular-custom-field{
 }
 .form-video-thumbs .video-container{
     margin-top:0px;
+    height:78px;
 }
 .video-container{
-    max-height:54px;
+    max-height:78px;
     background:#efefef;
     padding:4px 6px;
     -webkit-border-radius:2px;
@@ -565,7 +566,11 @@ h2.h2-fix{
     margin-bottom:10px;
     border:1px solid #e0e0e0;
     background:#fbfbfb;
-
+    /* from dashbaord.css */
+    color:#3e3e3e;
+    font-size:13px;
+    margin:5px 0px 10px;
+    line-height:1.4em;
 }
 .feedback-edit{
     padding:0px 10px 10px;
@@ -833,11 +838,11 @@ h2.h2-fix{
     margin-top:10px;
 }
 .facebook-share-bar{
-    float:left;
-    width:190px;
+    /*float:left;
+    width:190px;*/
 }
 .twitter-share-bar{
-    margin-left:200px;
+    /*margin-left:200px;*/
 }
 #like-boxes{
     margin-top:10px;

@@ -4,28 +4,28 @@
 ||
 ||=========================================*/
 var S36FullpageCommon = function(){
-	
-	var self = this;
-	
-	/* ========================================
-	|| Function needed to run by document ready
-	==========================================*/
-	this.init_fullpage_common = function(){
+    var self = this;
+    
+    /* ========================================
+    || Function needed to run by document ready
+    ==========================================*/
+    this.init_fullpage_common = function(){
 		$('.feedback-icon').hover(function(){
 			$(this).find('.icon-tooltip').fadeIn('fast');
 		},function(){
 			$(this).find('.icon-tooltip').fadeOut('fast');
 		});
-		$('#fullpage_desc.editable').click(function(){
+        //$('#fullpage_desc.editable').click(function(){
+		$('#desc_edit_icon').click(function(){
 			$('#desc_hint').hide();
 			$('#fullpage_desc_textbox').show().focus();
 			
-			text = $(this).html().replace(/\n/g,'');
+			text = $('#fullpage_desc').html().replace(/\n/g,'');
 			text = Helpers.br2nl( text );
 			text = Helpers.entities2html( text );
 			text = Helpers.links_to_urls( text );
 			$('#fullpage_desc_textbox').val( text );
-			$(this).hide();
+			$('#fullpage_desc').hide();
 		});
 		$('#fullpage_desc_textbox').blur(function(){
 			$('#fullpage_desc_textbox').attr('disabled', 'disabled');
@@ -91,7 +91,7 @@ var S36FullpageCommon = function(){
             }
         }).click(function(){
             // send the rating value to the rating plugin
-            var index = $(this).index() + 1;
+            var index = $(this).index();
             $('.rate-title .rating_num').text( index );
             $('.rate-title .rating_text').text( self.convert_rating_to_text(index - 1) );
             $('#rating').val(index);
