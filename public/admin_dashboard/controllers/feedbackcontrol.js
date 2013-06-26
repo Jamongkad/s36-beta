@@ -61,9 +61,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.priority_filter = (!is_empty(qs) && qs['priority']) ? qs['priority'] : 'none';
     $scope.status_filter   = (!is_empty(qs) && qs['status']) ? qs['status'] : 'none';
     $scope.rating_filter   = (!is_empty(qs) && qs['rating']) ? qs['rating'] : 'none';
-
+    
+    /*
     $scope.inline_status   = 'new';
     $scope.priority_status = 'high';
+    */
 
     $scope.feedback_status = function($event) {         
 
@@ -217,7 +219,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackService.send_fastforward(email, feedid);
     }
 
-    $scope.set_status = function(feed_status) {
+    $scope.set_status = function() {
         console.log($scope.inline_status);
     }
 
