@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div id="theInbox" ng-controller="FeedbackControl">
+<div id="theInbox" ng-controller="FeedbackControl" >
     <div id="theInboxSorter">
         <div class="grids">
             <div class="sorter-block sorter-checkbox">
@@ -534,7 +534,7 @@
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
                                                                 <select ng-model="inline_status" ng-init="inline_status='<?=strtolower($feed->status)?>'" 
-                                                                        ng-change="set_status()">
+                                                                        ng-change="set_status(<?=$feed->id?>)">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
                                                                         <option value="<?=$option_match?>">
@@ -548,7 +548,7 @@
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
                                                                 <select ng-model="inline_priority" ng-init="inline_priority='<?=$feed->priority?>'" 
-                                                                        ng-change="set_priority()">
+                                                                        ng-change="set_priority(<?=$feed->id?>)">
                                                                     <?foreach($priority_obj as $key => $val):?>
                                                                         <option value="<?=$val?>">
                                                                             <?=ucfirst($val)?>
