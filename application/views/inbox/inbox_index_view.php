@@ -482,6 +482,7 @@
                                                             <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
                                                         </div>
                                                     </div>
+                                                    <!--
                                                     <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
                                                         <?=Form::hidden('email')?>
                                                         <?=form::hidden('feed_id', $feed->id)?>
@@ -493,6 +494,7 @@
                                                             <input type="submit" class="button" value="SEND" />
                                                         </div>
                                                     <?=Form::close()?>
+                                                    -->
                                                 </div>
                                             <?else:?>
                                                 <div class="the-categories-menu">
