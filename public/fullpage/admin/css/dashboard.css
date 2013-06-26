@@ -729,3 +729,7 @@ div.lightbox-styles{
     /* change display to block when error is not shown to preserve the height */
     padding:20px 30px;display:none;
 }
+
+div.dialog-form, .ui-dialog-titlebar {
+    display: none;
+}
