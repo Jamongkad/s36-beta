@@ -6,7 +6,7 @@
     <input type="hidden" name="feedbackid" value="{{replybody.feedid}}" />
 
 
-    <table cellpadding="1" width="100%">
+    <table cellpadding="1" width="100%" class="valign-fix">
         <tr>
             <td width="15%"><strong>Reply To : </strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span>{{replybody.user.email}}</td>
