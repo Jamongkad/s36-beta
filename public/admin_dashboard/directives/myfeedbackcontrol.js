@@ -42,6 +42,7 @@ angular.module('feedbackcontrol', [])
 
                 } else if(currentUrl.match(/filed/g)) { 
                     console.log(me);
+                    console.log(data);
                 } else {
                     hide_the_children(me);     
                 }
