@@ -126,7 +126,7 @@
                 </div>
                 <?php foreach($feeds->children as $feed):?>
 
-                    <div class="dialog-form" feedid="<?=$id?>">
+                    <div class="dialog-form" feedid="<?=$feed->id?>">
                         <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message))?>
                     </div>
 
