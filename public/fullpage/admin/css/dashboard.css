@@ -733,3 +733,5 @@ div.lightbox-styles{
 div.dialog-form, .ui-dialog-titlebar {
     display: none;
 }
+
+.regular-text{width:90%;display:block;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;border:1px solid #cccccc;margin:5px 5px;padding:4px;font-size:11px;color:#777;}
