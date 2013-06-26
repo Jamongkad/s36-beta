@@ -21,7 +21,7 @@
 
         <?=HTML::script('/js/angular.compilehtml.js'); ?>
 
-        <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" /> 
+        <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/jquery-ui.css" /> 
 
         <?=HTML::style('/fullpage/common/css/S36FullpageCommon.css')?> 
         <?=HTML::style('/fullpage/admin/css/S36FullpageAdmin.css')?> 
