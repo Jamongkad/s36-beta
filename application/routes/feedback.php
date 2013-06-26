@@ -273,7 +273,7 @@ return array(
         $fastdata->from = ucfirst($auth->username);
         $fastdata->email_comment = "Feedback has been fast-forwarded to you for your review.";//$data->email_comment;
         $fastdata->feedback = $feedback->pull_feedback_by_id($data->feedid);
-        $fastdata->receiver_details();
+        $fastdata->companyid = $auth->companyid;
         $fastdata->make_forward_url();
 
         Helpers::dump($fastdata);

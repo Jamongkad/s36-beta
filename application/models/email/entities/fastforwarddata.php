@@ -10,17 +10,9 @@ class FastForwardData extends EmailData {
     public $from; 
     public $receiver_details;
     public $feedback;
+    public $companyid;
  
-    public function receiver_details() {
-        if($this->sendto) { 
-            $dbadmin = new DBAdmin; 
-            $opts = new StdClass;
-            $opts->username = $this->sendto;
-            $this->receiver_details = $dbadmin->fetch_admin_details($opts);
-        }
-    }
-
     public function make_forward_url() { 
-        return Helpers::make_forward_url($this->receiver_details->companyid, '/feedback/modifyfeedback/'.$this->feedback->id);
+        return Helpers::make_forward_url($this->companyid, '/feedback/modifyfeedback/'.$this->feedback->id);
     }
 }
