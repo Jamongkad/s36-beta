@@ -487,7 +487,7 @@
                                                     </div>
                                                     <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
                                                         <?=Form::hidden('email')?>
-                                                        <?=form::hidden('feed_id', $id)?>
+                                                        <?=form::hidden('feed_id', $feed->id)?>
                                                         <div class="ff-forward-to"></div>
                                                         <div class="popup-border"></div>
                                                         <?=Form::textarea('email_comment', "(Optional message)", array('class' => 'small popup-textarea'))?>
