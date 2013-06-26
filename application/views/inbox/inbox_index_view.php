@@ -457,20 +457,53 @@
                                                 <span>Fast Forward</span>
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
-                                            <!--
-                                            <div class="the-categories-menu">
-                                             <div class="the-category-arrow"></div>
-                                             <div class="the-categories-menu-content">
-                                                    <div class="the-categories small-text">
-                                                       <ul class="grids block-style">
-                                                            <li><span>dan: danoliver@webmumu.com</span></li>
-                                                            <li><span>danoliver@webmumu.com</span></li>
-                                                       </ul>
-                                                        <p><a class="manage-categories-link" href="#">Configure Fast Forward Settings</a></p>
+                                            <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
+                                                <div class="the-categories-menu">
+                                                    <div class="the-category-arrow"></div>
+                                                    <div class="the-categories-menu-content">
+                                                        <div class="the-categories small-text">
+                                                           <ul class="grids block-style">
+                                                               <?if($admin_check->ffemail1):?>
+                                                                    <li id="email1">
+                                                                        <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : 
+                                                                        <span><a href="javascript:;"><?=$admin_check->ffemail1?></a></span>
+                                                                    </li>
+                                                               <?endif?>
+                                                               <?if($admin_check->ffemail2):?>
+                                                                    <li id="email1">
+                                                                        <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : 
+                                                                        <span><a href="javascript:;"><?=$admin_check->ffemail2?></a></span>
+                                                                    </li>
+                                                               <?endif?>
+                                                               <?if($admin_check->ffemail3):?>
+                                                                    <li id="email1">
+                                                                        <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : 
+                                                                        <span><a href="javascript:;"><?=$admin_check->ffemail3?></a></span>
+                                                                    </li>
+                                                               <?endif?> 
+                                                           </ul>
+                                                            <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
+                                                        </div>
                                                     </div>
+                                                    <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
+                                                        <?=Form::hidden('email')?>
+                                                        <?=form::hidden('feed_id', $id)?>
+                                                        <div class="ff-forward-to"></div>
+                                                        <div class="popup-border"></div>
+                                                        <?=Form::textarea('email_comment', "(Optional message)", array('class' => 'small popup-textarea'))?>
+                                                        <div class="popup-border"></div>
+                                                        <div class="popup-button">
+                                                            <input type="submit" class="button" value="SEND" />
+                                                        </div>
+                                                    <?=Form::close()?>
                                                 </div>
-                                            </div>
-                                            -->
+                                            <?else:?>
+                                                <div class="the-categories-menu">
+                                                    <div class="the-category-arrow"></div>
+                                                    <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
+                                                </div>
+                                            <?endif?>
+
                                         </li>
                                         <li class="action-sprite save">
                                             <div class="action-tooltip">
