@@ -439,7 +439,7 @@
                                         <?endif?>
                                         
                                         <?if($feed->email):?>
-                                            <li class="action-sprite reply" my-reply feedid=<?=$feed->id?>>
+                                            <li class="action-sprite reply" feedid="<?=$feed->id?>" my-reply>
                                                 <div class="action-tooltip">
                                                     <span>Reply to User</span>
                                                     <div class="action-tooltip-arrow"></div>
