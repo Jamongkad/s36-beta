@@ -655,3 +655,53 @@ border:1px solid #2a70b3;
  border:1px solid #2c4d9f;
  color:#2c4d9f;
 }
+
+/*used for other settings start*/
+#panel_desc_container {
+height: 100px;
+width: 455px;
+cursor: text;
+background-color: #f4f4f4;
+border: #e7e7e7 1px solid;
+}
+#panel_desc_textbox{
+	height:88px;
+}
+#desc_hint {
+position: absolute;
+z-index: 10;
+top: 5px;
+left: 7px;
+font-size: 14px;
+color: #bbb;
+}
+
+p.companyDescription {
+color: #465868;
+font-size: 14px;
+line-height: 19px;
+}
+.companyDescription {
+margin: 2px 6px;
+min-height: 100px
+}
+.break-word {
+word-wrap: break-word;
+}
+
+.social_url_msg.success_msg {
+background-color: #E0F8AE;
+color: #698B22;
+border: 1px solid #B8DC6F;
+margin-top: 3px;
+padding: 4px;
+}
+.social_url_msg.error_msg {
+background-color: #fee;
+color: #800;
+border: 1px solid #fdd;
+margin-top: 3px;
+padding: 4px;
+}
+
+/*used for other settings end*/
