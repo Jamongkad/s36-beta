@@ -268,7 +268,8 @@ return array(
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback, $auth) {
         $data = (object)Input::get();
         $fastdata = new Email\Entities\FastForwardData;
-
+        Helpers::dump($auth);
+        /*
         $fastdata->sendto = $data->email;
         $fastdata->from = ucfirst($auth->user()->username);
         $fastdata->email_comment = "Feedback has been fast-forwarded to you for your review.";//$data->email_comment;
@@ -278,6 +279,7 @@ return array(
 
         $emailservice = new Email\Services\EmailService($fastdata);
         return $emailservice->send_email();
+        */
     }),
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox, $redis, $company_name) {  
