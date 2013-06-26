@@ -457,6 +457,18 @@
                                                 <span>Fast Forward</span>
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
+                                            <div class="the-categories-menu">
+                                             <div class="the-category-arrow"></div>
+                                             <div class="the-categories-menu-content">
+                                                    <div class="the-categories small-text">
+                                                       <ul class="grids block-style">
+                                                            <li><span>dan: danoliver@webmumu.com</span></li>
+                                                            <li><span>danoliver@webmumu.com</span></li>
+                                                       </ul>
+                                                        <p><a class="manage-categories-link" href="#">Configure Fast Forward Settings</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="action-sprite save">
                                             <div class="action-tooltip">

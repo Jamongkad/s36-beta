@@ -314,6 +314,11 @@ body, #mainWrapper, #fadedContainer{
 .action-gray-menu .save:hover .the-categories-menu{
     display:block;
 }
+
+.action-gray-menu .contact:hover .the-categories-menu{
+     display:block;
+}
+
 .action-gray-menu .publish:hover{
     background-position:-32px -31px;
 }
@@ -450,6 +455,18 @@ body, #mainWrapper, #fadedContainer{
     height:auto;
     font-size:10px;
 }
+.the-categories-menu .the-categories ul.block-style li{
+     width:100%;
+      float:none;
+       margin:3px 0px;
+}
+.the-categories-menu .the-categories ul.block-style li span{
+     padding:2px;
+}
+.the-categories-menu .the-categories ul.block-style li span:hover{
+     border-bottom:1px dotted #069;
+}
+
 .the-categories-menu .the-categories ul li a{
     color:#FFF;
     padding:1px 6px 2px;
