@@ -211,8 +211,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.fast_forward = function(email, feedid) {
-        console.log(email);
-        console.log(feedid);
+        FeedbackService.send_fastforward(email, feedid);
     }
 
     $scope.$on('expungeFeedId', function() {
