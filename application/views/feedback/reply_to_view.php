@@ -1,6 +1,6 @@
 <?if($user->replyto):?>
 <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
-<div id="reply-to-user" class="lightbox">
+<div id="reply-to-user" feedid="1594" class="lightbox">
     <div class="lightbox-styles" ng-controller="MainReplyCtrl">
     <div class="lightbox-close" reply-cancel value="Cancel" ng-click="cancel_reply()"></div>
         <h2>Reply To User</h2>
