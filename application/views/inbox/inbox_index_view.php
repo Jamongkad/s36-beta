@@ -533,7 +533,8 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select ng-model="inline_status" ng-init="inline_status='<?=$feed->status?>'" ng-change="set_status()">
+                                                                <select ng-model="inline_status" ng-init="inline_status='<?=strtolower($feed->status)?>'" 
+                                                                        ng-change="set_status()">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
                                                                         <option value="<?=$option_match?>">
@@ -546,7 +547,8 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select ng-model="inline_priority" ng-init="inline_priority='<?=$feed->priority?>'" ng-change="set_priority()">
+                                                                <select ng-model="inline_priority" ng-init="inline_priority='<?=$feed->priority?>'" 
+                                                                        ng-change="set_priority()">
                                                                     <?foreach($priority_obj as $key => $val):?>
                                                                         <option value="<?=$val?>">
                                                                             <?=ucfirst($val)?>
