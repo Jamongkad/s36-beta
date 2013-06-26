@@ -199,7 +199,6 @@ angular.module('Services', [])
     }
 
     shared_service.send_fastforward = function(email, feedid) { 
-
         $.ajax({
             type: 'POST'    
           , data: {email: email, feedid: feedid}

@@ -533,10 +533,10 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select>
+                                                                <select ng-model="inline_status" ng-init="inline_status='<?=$feed->status?>'" ng-change="set_status()">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
-                                                                        <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>">
+                                                                        <option value="<?=$option_match?>">
                                                                             <?=$option->name?>
                                                                         </option>
                                                                     <?endforeach?>
@@ -546,7 +546,7 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select>
+                                                                <select ng-model="inline_priority" ng-init="inline_priority='<?=$feed->priority?>'" ng-change="set_priority()">
                                                                     <?foreach($priority_obj as $key => $val):?>
                                                                         <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>">
                                                                             <?=ucfirst($val)?>
