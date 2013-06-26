@@ -16,10 +16,10 @@ angular.module('reply', [])
                 MessageService.get_replybody(feedid);
                 MessageService.register_replybody();
                 
-                /*
+
                 $('div#reply-to-user').draggable();
                 $('div#reply-to-user.lightbox').show();
-                */
+
                 $(".dialog-form[feedid="+feedid+"]").show();
 
                 e.preventDefault();
