@@ -218,6 +218,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log($scope.inline_status);
     }
 
+    $scope.set_priority = function() {
+        console.log($scope.inline_priority);
+    }
+
     $scope.$on('expungeFeedId', function() {
         console.log("expunged");
         FeedbackSignal.data.id = [];
