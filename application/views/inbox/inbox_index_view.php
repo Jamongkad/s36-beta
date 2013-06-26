@@ -338,7 +338,7 @@
                                     </span>
                                     <span class="feedback-details-privacy"><?=$feed->permission?></span>
                                     <span class="feedback-details-status">
-                                        Status : <small><?=$feed->status?></small>
+                                        Status : <small>{{ inline_status }}</small>
                                     </span>
                                     <span class="feedback-details-status">
                                         Priority : <small><?=ucfirst($feed->priority)?></small>
