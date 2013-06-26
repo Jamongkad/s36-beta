@@ -22,32 +22,6 @@ var SettingsAutoSaver = new function(){
         // start the autosave.
         setInterval('SettingsAutoSaver.save()', this.interval);
         
-        
-        // background section events.
-        $('#bg_image').change(function(){
-            // SettingsAutoSaver.set_data() of this element is in fileupload().
-        });
-        
-        $('.bgPos').click(function(){
-            SettingsAutoSaver.set_data('page_bg_position', $(this).attr('val'));
-        });
-        
-        $('.bgRepeat').click(function(){
-            SettingsAutoSaver.set_data('page_bg_repeat', $(this).attr('val'));
-        });
-        
-        $('.patternItem').click(function(){
-            $('#background_pattern').val($(this).attr('id'));
-            SettingsAutoSaver.set_data('background_pattern', $(this).attr('id'));
-            SettingsAutoSaver.set_data('page_bg_position', 'left');
-            SettingsAutoSaver.set_data('page_bg_repeat', 'repeat');
-        });
-        
-        $('.backgroundColorPicker').on('change', function(){
-            SettingsAutoSaver.set_data('page_bg_color', $(this).val());
-            SettingsAutoSaver.set_data('page_bg_color_opacity', $(this).attr('data-opacity'));
-        });
-        
         // display section events.
         $('.tickerbox').click(function(){
             // i'm on the right track, baby i was born this way!

@@ -27,13 +27,28 @@ return array (
           , 'hosted_settings' => $hosted_settings->hosted_settings()
         ));
     }),
-    
-    'GET /settings/display' => function() use($hosted_settings, $fullpage){
+
+    'GET /settings/background' => function() use($company, $hosted_settings, $fullpage){
         
+        $company_name	= Config::get('application.subdomain');
+        $company_info 	= $company->get_company_info($company_name); 
+
+        return View::of_layout()->partial('contents', 'settings/settings_background_view', Array(
+            'display_patterns' => $fullpage->get_fullpage_pattern()
+            ,'panel'=>$hosted_settings->get_panel_settings($company_info->companyid)
+            ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
+        ));
+        
+    },
+    
+    'GET /settings/display' => function() use($hosted_settings, $fullpage, $company){
+        $company_name	= Config::get('application.subdomain');
+        $company_info 	= $company->get_company_info($company_name); 
+
         return View::of_layout()->partial('contents', 'settings/settings_display', 
             array(
                 'settings' => $hosted_settings->get_panel_settings( Config::get('application.subdomain') ),
-                'fullpage_css' => $fullpage->get_fullpage_css(6)
+                'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
             )
         );
         
