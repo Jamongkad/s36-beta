@@ -659,7 +659,7 @@ div.lightbox-styles{
     margin-left:-390px;
     color:#626262;
     overflow:none;
-    background: url("../img/faded-bg.png") repeat;
+    background: url("/img/faded-bg.png") repeat;
     border:none;
     font-size:11px;
     -webkit-border-radius:5px;
@@ -669,7 +669,7 @@ div.lightbox-styles{
 }
 
 .lightbox-close{
-    background:url("../img/lightbox-close.png") no-repeat;
+    background:url("/img/lightbox-close.png") no-repeat;
     width:21px;
     height:21px;
     position:absolute;

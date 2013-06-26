@@ -9,7 +9,6 @@ angular.module('reply', [])
             $(element).bind('click', function(e) { 
 
                 var feedid = scope.feedid;
-
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
 
