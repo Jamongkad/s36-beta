@@ -41,8 +41,13 @@ angular.module('feedbackcontrol', [])
                     }
 
                 } else if(currentUrl.match(/filed/g)) { 
-                    console.log(me);
-                    console.log(data);
+
+                    var data_status = data.status;
+
+                    if(data_status == "publish" || data_status == "feature" || data_status == "delete") { 
+                        hide_the_children(me);     
+                    }
+
                 } else {
                     hide_the_children(me);     
                 }
