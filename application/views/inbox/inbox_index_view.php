@@ -452,7 +452,7 @@
                                             </li>
                                         <?endif?>
 
-                                        <li class="action-sprite contact" ng-click="fast_forward(<?=$feed->id?>)">
+                                        <li class="action-sprite contact">
                                             <div class="action-tooltip">
                                                 <span>Fast Forward</span>
                                                 <div class="action-tooltip-arrow"></div>
