@@ -12,8 +12,6 @@
         <?=HTML::script('/js/jquery.cycle.all.min.js')?>
         
         <?=HTML::script('/js/helpers.js'); ?>
-        <?=HTML::script('/js/jquery.iframe-transport.js'); ?>
-        <?=HTML::script('/js/jquery.fileupload.js'); ?>
         <?=HTML::script('/admin_dashboard/dashboard.js'); ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>

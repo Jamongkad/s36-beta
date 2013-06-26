@@ -24,7 +24,6 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 ?>
 <?=HTML::script('/admin_dashboard/services/feedbackcontrolservice.js')?>
-
 <?=HTML::script('/admin_dashboard/directives/Components.js')?>
 <?=HTML::script('/admin_dashboard/directives/myreply.js')?>
 <?=HTML::script('/admin_dashboard/directives/myfeedbackcount.js')?>
@@ -36,4 +35,12 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('/admin_dashboard/controllers/SettingReplyCtrl.js')?>
 
 <?=HTML::script('/admin_dashboard/S36InboxModule.js')?>
-<?=HTML::script('js/head.min.js')?>
+
+<?=HTML::script('/js/jquery.validate.js'); ?>
+<?=HTML::script('/js/jquery.serializeform.js'); ?>
+
+<?=HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?=HTML::script('/js/jquery.fileupload.js'); ?>
+
+<?=HTML::script('/js/jquery.form.js'); ?>
+<?=HTML::script('/js/jquery.tmpl.js'); ?>
