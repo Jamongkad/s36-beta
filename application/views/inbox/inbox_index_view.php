@@ -466,21 +466,27 @@
                                                                <?if($admin_check->ffemail1):?>
                                                                     <li id="email1">
                                                                         <span>
-                                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail1?>')"><?=$admin_check->ffemail1?></a>
+                                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail1?>', <?=$feed->id?>)">
+                                                                                <?=$admin_check->ffemail1?>
+                                                                            </a>
                                                                         </span>
                                                                     </li>
                                                                <?endif?>
                                                                <?if($admin_check->ffemail2):?>
                                                                     <li id="email1">
                                                                         <span>
-                                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail2?>')"><?=$admin_check->ffemail2?></a>     
+                                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail2?>', <?=$feed->id?>)">
+                                                                                <?=$admin_check->ffemail2?>
+                                                                            </a>     
                                                                         </span>
                                                                     </li>
                                                                <?endif?>
                                                                <?if($admin_check->ffemail3):?>
                                                                     <li id="email1">
                                                                         <span>
-                                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>')"><?=$admin_check->ffemail3?></a>
+                                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>', <?=$feed->id?>)">
+                                                                              <?=$admin_check->ffemail3?>
+                                                                           </a>
                                                                         </span>
                                                                     </li>
                                                                <?endif?> 
