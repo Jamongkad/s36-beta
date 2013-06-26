@@ -198,14 +198,21 @@ angular.module('Services', [])
         });
     }
 
-    shared_service.send_fastforward = function(email, feedid) {
+    shared_service.send_fastforward = function(email, feedid) { 
         $.ajax({
-            type: 'POST'     
+            type: 'POST'    
           , dataType: 'json'
+          , data: {email: email, feedid: feedid}
           , url: '/feedback/fastforward'
-          , data: {email: email, feedid: feedid} 
-        })
+        });
     }
 
     return shared_service;
 })
+.service('Template', function() { 
+
+    //all data coming from serverside html templates
+    var shared_service = {} 
+    shared_service = backend_vars;
+    return shared_service;
+});
