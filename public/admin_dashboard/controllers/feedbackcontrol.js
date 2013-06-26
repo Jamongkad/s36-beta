@@ -1,4 +1,4 @@
-function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Template) { 
+function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Template, FeedbackService) { 
 
     var qs = (function(a) {
         if (a == "") return {};
