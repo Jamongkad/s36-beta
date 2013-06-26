@@ -10,7 +10,7 @@ angular.module('reply', [])
 
                 var feedid = scope.feedid;
                 console.log(feedid);
-                /*
+
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
 
@@ -20,7 +20,7 @@ angular.module('reply', [])
                 $('div#reply-to-user').draggable();
                 $('div#reply-to-user.lightbox').show();
                 $(".dialog-form[feedid="+feedid+"]").show();
-                */
+
                 e.preventDefault();
 
             });
