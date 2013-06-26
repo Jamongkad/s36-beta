@@ -465,36 +465,29 @@
                                                            <ul class="grids block-style">
                                                                <?if($admin_check->ffemail1):?>
                                                                     <li id="email1">
-                                                                        <span><a href="javascript:;"><?=$admin_check->ffemail1?></a></span>
+                                                                        <span>
+                                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail1?>')"><?=$admin_check->ffemail1?></a>
+                                                                        </span>
                                                                     </li>
                                                                <?endif?>
                                                                <?if($admin_check->ffemail2):?>
                                                                     <li id="email1">
-                                                                        <span><a href="javascript:;"><?=$admin_check->ffemail2?></a></span>
+                                                                        <span>
+                                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail2?>')"><?=$admin_check->ffemail2?></a>     
+                                                                        </span>
                                                                     </li>
                                                                <?endif?>
                                                                <?if($admin_check->ffemail3):?>
                                                                     <li id="email1">
-                                                                        <span><a href="javascript:;"><?=$admin_check->ffemail3?></a></span>
+                                                                        <span>
+                                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>')"><?=$admin_check->ffemail3?></a>
+                                                                        </span>
                                                                     </li>
                                                                <?endif?> 
                                                            </ul>
                                                             <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
                                                         </div>
                                                     </div>
-                                                    <!--
-                                                    <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
-                                                        <?=Form::hidden('email')?>
-                                                        <?=form::hidden('feed_id', $feed->id)?>
-                                                        <div class="ff-forward-to"></div>
-                                                        <div class="popup-border"></div>
-                                                        <?=Form::textarea('email_comment', "(Optional message)", array('class' => 'small popup-textarea'))?>
-                                                        <div class="popup-border"></div>
-                                                        <div class="popup-button">
-                                                            <input type="submit" class="button" value="SEND" />
-                                                        </div>
-                                                    <?=Form::close()?>
-                                                    -->
                                                 </div>
                                             <?else:?>
                                                 <div class="the-categories-menu">

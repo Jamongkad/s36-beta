@@ -210,6 +210,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
 
+    $scope.fast_forward = function(email) {
+        console.log(email);
+    }
+
     $scope.$on('expungeFeedId', function() {
         console.log("expunged");
         FeedbackSignal.data.id = [];
