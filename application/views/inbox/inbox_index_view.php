@@ -465,19 +465,16 @@
                                                            <ul class="grids block-style">
                                                                <?if($admin_check->ffemail1):?>
                                                                     <li id="email1">
-                                                                        <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : 
                                                                         <span><a href="javascript:;"><?=$admin_check->ffemail1?></a></span>
                                                                     </li>
                                                                <?endif?>
                                                                <?if($admin_check->ffemail2):?>
                                                                     <li id="email1">
-                                                                        <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : 
                                                                         <span><a href="javascript:;"><?=$admin_check->ffemail2?></a></span>
                                                                     </li>
                                                                <?endif?>
                                                                <?if($admin_check->ffemail3):?>
                                                                     <li id="email1">
-                                                                        <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : 
                                                                         <span><a href="javascript:;"><?=$admin_check->ffemail3?></a></span>
                                                                     </li>
                                                                <?endif?> 
