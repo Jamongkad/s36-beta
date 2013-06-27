@@ -24,6 +24,7 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
                   END AS priority
+                , Feedback.priority AS int_priority
                 , Feedback.title
                 , Feedback.text AS text
                 , Feedback.dtAdded AS date
