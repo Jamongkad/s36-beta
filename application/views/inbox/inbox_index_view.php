@@ -274,7 +274,7 @@ $(document).ready(function() {
                                                     if($attachments->attached_link->video=='yes'){?>
                                                         <a class="inbox-fancybox-video" 
                                                            href="<?=str_replace('http','https',$attachments->attached_link->url)?>" 
-                                                           rel="inbox-videos-<?=$id?>" 
+                                                           rel="inbox-videos-<?=$feed->id?>" 
                                                            style="display:block">
                                                             <div class="video-circle"></div>
                                                             <div class="the-thumb">
@@ -316,10 +316,10 @@ $(document).ready(function() {
                                                     <div class="feedback-custom-att-container">
                                                         <div class="grids">
                                                             <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                                <div class="custom-att <?=$width;?>">
+                                                                <div class="custom-att uploaded_image <?=$width;?>">
                                                                     <div class="delete-block" delete-block>x</div>
                                                                     <div class="the-thumb">
-                                                                        <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
+                                                                        <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$feed->id?>">
 
                                                                         <?if(count($attachments->uploaded_images) == 1):?>
                                                                             <img src="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" width="100%" />
