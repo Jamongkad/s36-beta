@@ -194,11 +194,10 @@ angular.module('feedbackcontrol', [])
                       , url: "/inbox/update_feedback_attachment"
                       , dataType: "json"
                       , data: attachment_data                
-                    });
-
-                e.preventDefault();
+                    });                
             });
-        }
+            e.preventDefault();
+        })
     }    
 })
 
