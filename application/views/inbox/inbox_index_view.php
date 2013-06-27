@@ -262,7 +262,7 @@ $(document).ready(function() {
                                             */
                                             if(isset($attachments->attached_link)):
                                             ?>
-                                            <div class="image-block attached_link" style="width:100%;margin-bottom:15px">
+                                            <div class="image-block attached_link custom-att" style="width:100%;margin-bottom:15px">
                                                 <input type="hidden" class="link-title" value="<?=$attachments->attached_link->title?>"/>
                                                 <input type="hidden" class="link-description" value="<?=$attachments->attached_link->description?>"/>
                                                 <input type="hidden" class="link-image" value="<?=$attachments->attached_link->image?>"/>
