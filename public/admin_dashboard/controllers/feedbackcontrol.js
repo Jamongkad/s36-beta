@@ -80,14 +80,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackControlService.change_status(feed, true);
     }
 
-    $scope.reply_feedback = function(id) {
-        console.log("reply id:" + id);
-    }
-
-    $scope.change_category = function(feedid, catid) {
-        console.log("Feedback: " + feedid + " CatID: " + catid);
-    }
-
     $scope.update_selection = function($event, id) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
