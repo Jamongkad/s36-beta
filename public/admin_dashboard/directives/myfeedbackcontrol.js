@@ -159,7 +159,7 @@ angular.module('feedbackcontrol', [])
                         var new_uploaded_images = new Array;
                         var us = images.not(":hidden");
                         for(var i=0; i < us.length; i++) {
-                            console.log(us[i].find('.image-name').val());
+                            console.log($(us[i]).find('.image-name').val());
                         }
                         /*
                         images.find('.the-thumb').each(function(){
