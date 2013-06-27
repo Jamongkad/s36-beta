@@ -218,7 +218,7 @@ angular.module('Services', [])
         }
         $.ajax({
               type: "POST"
-            , url: "/feedback/changestatus"
+            , url: url
             , data: {"select_val": feed_status, "feed_id": feedid}
         });  
     }
