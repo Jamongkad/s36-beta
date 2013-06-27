@@ -552,7 +552,7 @@
                                                                         ng-model="inline_priority" 
                                                                         ng-change="set_priority(<?=$feed->id?>)">
                                                                     <?foreach($priority_obj as $key => $val):?>
-                                                                        <option value="<?=$val?>">
+                                                                        <option value="<?=$key?>">
                                                                             <?=ucfirst($val)?>
                                                                         </option>
                                                                     <?endforeach?>
