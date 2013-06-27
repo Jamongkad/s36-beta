@@ -143,6 +143,9 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) {
                 $(this).parents('.custom-att').fadeOut(400, function() {
                      var div = $(this).parents('.uploaded-images-and-links');
+                     var images = div.find('.uploaded_image');
+                     var media_attachment = div.find('.attached_link');
+
                      $(this).remove();
 
                      var remove_images = {
@@ -152,23 +155,26 @@ angular.module('feedbackcontrol', [])
                      }
 
                     var attachments = new Array;
-                    if(div.find('.uploaded_image').length>0){
+                    if(images.length>0){
                         var new_uploaded_images = new Array;
-                        console.log(div.find('.the-thumb')); 
-                        div.find('.the-thumb').each(function(){
+                        console.log(images.children('.custom-att'));
+                        /*
+                        images.find('.the-thumb').each(function(){
                             new_uploaded_images.push({
                                 'name'    :$(this).find('.image-name').val(),
                             });
                         });
+                        */
                     }
 
-                    if(div.find('.attached_link').length > 0){
+                    if(media_attachment.length > 0){
+                         
                         var new_attached_link = {
-                            title           : div.find('.link-title').val(),
-                            description     : div.find('.link-description').val(),
-                            image           : div.find('.link-image').val(),
-                            url             : div.find('.link-url').val(),
-                            video           : div.find('.link-video').val(),
+                            title           : media_attachment.find('.link-title').val(),
+                            description     : media_attachment.find('.link-description').val(),
+                            image           : media_attachment.find('.link-image').val(),
+                            url             : media_attachment.find('.link-url').val(),
+                            video           : media_attachment.find('.link-video').val(),
                         }
                     };
 
