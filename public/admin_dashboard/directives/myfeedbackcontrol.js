@@ -155,23 +155,18 @@ angular.module('feedbackcontrol', [])
                      }
 
                     var attachments = new Array;
-                    if(images.length>0){
+                    if(images.length > 0){
                         var new_uploaded_images = new Array;
                         var us = images.not(":hidden");
+
                         for(var i=0; i < us.length; i++) {
-                            console.log($(us[i]).find('.image-name').val());
-                        }
-                        /*
-                        images.find('.the-thumb').each(function(){
                             new_uploaded_images.push({
-                                'name'    :$(this).find('.image-name').val(),
+                                'name': $(us[i]).find('.image-name').val() 
                             });
-                        });
-                        */
+                        }
                     }
 
-                    if(media_attachment.length > 0){
-                         
+                    if(media_attachment.length > 0){  
                         var new_attached_link = {
                             title           : media_attachment.find('.link-title').val(),
                             description     : media_attachment.find('.link-description').val(),
