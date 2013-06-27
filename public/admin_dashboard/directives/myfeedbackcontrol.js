@@ -114,7 +114,7 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).bind('onchange', function() {
+            $(element).bind('change', function() {
                 console.log(scope.feedid);
                 console.log($(this).val());
             })
