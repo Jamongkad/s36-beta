@@ -9,7 +9,7 @@ var backend_vars = {
 $(document).ready(function() {
 
     $(".delete-block").click(function() {
-         $(this).parent().fadeout(400, function() {
+         $(this).parent().fadeOut(400, function() {
              var div = $(this).parent('.uploaded-images-and-links');            
              //$(this).remove();
              var remove_images = {
