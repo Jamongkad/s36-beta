@@ -209,7 +209,13 @@ angular.module('Services', [])
         });
     }
 
-    shared_service.inline_change = function(feed_status, feedid) {
+    shared_service.inline_change = function(feed_status, feedid, status_type) {
+        var url;
+        if(status_type == 'status') {
+            url = "/feedback/changestatus";
+        } else {
+            url = "/feedback/changepriority";
+        }
         $.ajax({
               type: "POST"
             , url: "/feedback/changestatus"
