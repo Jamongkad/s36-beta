@@ -131,9 +131,7 @@ angular.module('feedbackcontrol', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {
-                console.log($(this).val());
-                console.log(scope.feedid);
-                //FeedbackService.inline_change($(this).val(), scope.feedid);
+                FeedbackService.inline_change($(this).val(), scope.feedid);
             })
         }
     }    

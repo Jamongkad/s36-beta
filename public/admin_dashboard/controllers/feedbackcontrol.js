@@ -206,14 +206,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackService.send_fastforward(email, feedid);
     }
 
-    $scope.set_status = function(feedid) {
-
-    }
-
-    $scope.set_priority = function(feedid) {
-        FeedbackService.inline_change($scope.inline_priority, feedid);
-    }
-
     $scope.$on('expungeFeedId', function() {
         console.log("expunged");
         FeedbackSignal.data.id = [];
