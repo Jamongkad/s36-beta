@@ -141,7 +141,10 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log(this);
+                $(this).parents('.custom-att').fadeOut(400, function() {
+                    var div = $(this).parents('.uploaded-images-and-links');
+                    console.log(div);
+                });
                 /*
                  $(this).parent().fadeOut(400, function() {
                      var div = $(this).parent('.uploaded-images-and-links');            
