@@ -117,13 +117,27 @@ angular.module('feedbackcontrol', [])
             feedid: "=feedid"   
         }
       , link: function(scope, element, attrs) {
-            console.log(element);
             $(element).bind('change', function() {
-                console.log(scope.feedid);
-                console.log($(this).val());
+                FeedbackService.inline_change($(this).val(), scope.feedid);
             })
         }
     }    
+})
+.directive('prioritychange', function(FeedbackService) {
+    return {
+        restrict: 'A'     
+      , scope: {
+            feedid: "=feedid"   
+        }
+      , link: function(scope, element, attrs) {
+            $(element).bind('change', function() {
+                console.log($(this).val());
+                console.log(scope.feedid);
+                //FeedbackService.inline_change($(this).val(), scope.feedid);
+            })
+        }
+    }    
+    
 })
 
 function published_state(obj, sibling_id, msg, state) { 
