@@ -159,13 +159,12 @@ angular.module('feedbackcontrol', [])
                         var new_uploaded_images = new Array;
                         var us = images.not(":hidden");
                         
-                        if(us.length > 0) { 
+                        console.log(us.length);
                             for(var i=0; i < us.length; i++) {
                                 new_uploaded_images.push({
                                     'name': $(us[i]).find('.image-name').val() 
                                 });
                             }
-                        }
                     }
 
                     if(media_attachment.length > 0){  
