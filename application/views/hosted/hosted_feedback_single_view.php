@@ -317,7 +317,7 @@
                                 <? if($feedback->admin_reply && $feedback->admin_username): ?>
                                     <div class="admin-comment-block">
                                         <div class="admin-comment">
-                                            <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
+                                            <div class="admin-name break-word"><!-- <?=$admin_companyname?> says.. --></div>
                                             <div class="admin-message clear">
                                                 <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
                                                 <div class="message break-word"><?= Helpers::fb_comment_str($feedback->admin_reply); ?></div>

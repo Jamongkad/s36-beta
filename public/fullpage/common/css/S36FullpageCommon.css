@@ -275,7 +275,7 @@ a:hover{
 	padding:5px;
 }
 .admin-comment-textbox-container{
-	margin: -3px 0px 5px -3px;
+	/*margin: -3px 0px 5px -3px;*/
 }
 .admin-comment-textbox-container textarea{
 	padding: 4px 6px;
@@ -292,7 +292,8 @@ a:hover{
 	margin-left: 3px;
 }
 .regular .admin-comment-textbox-container textarea{
-	width: 227px;
+	/*width: 227px;*/
+	width: 220px;
 	/*height: 15px;*/
 	height: 30px;
 	font-size:12px;

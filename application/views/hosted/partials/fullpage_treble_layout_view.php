@@ -159,7 +159,7 @@
                 <div class="admin-comment-block">
                     <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                         <div class="admin-name break-word">
-                            <?=$admin_companyname?> says.. 
+                            <!-- <?=$admin_companyname?> says.. -->
                             <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                         </div>
                         <div class="admin-message clear">
