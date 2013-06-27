@@ -113,9 +113,6 @@ angular.module('feedbackcontrol', [])
 .directive('status_change', function(FeedbackService) {
     return {
         restrict: 'A'     
-      , scope: {
-            feedid: "=feedid"   
-        }
       , link: function(scope, element, attrs) {
             $(element).bind('onchange', function() {
                 console.log(scope.feedid);
