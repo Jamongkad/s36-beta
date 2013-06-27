@@ -5,6 +5,31 @@
         current_inbox_state: "<?=$inbox_state?>"
       , default_category_id: "<?=$admin_check->categoryid?>"
     }
+
+$(document).ready(function() {
+    $(".inbox-fancybox-image").fancybox({
+        openEffect : 'none',
+        closeEffect : 'none'
+    });
+    $(".inbox-fancybox-video").click(function(e) {
+        $.fancybox({
+            'padding'       : 0,
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'title'         : this.title,
+            'width'         : 640,
+            'height'        : 385,
+            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+            'type'          : 'swf',
+            'swf'           : {
+            'wmode'             : 'transparent',
+            'allowfullscreen'   : 'true'
+        }
+        });
+        e.preventDefault();
+    });
+});
 </script>
 
 <div class="checky-box-container" ng-controller="CheckyBox" style="display:none">
