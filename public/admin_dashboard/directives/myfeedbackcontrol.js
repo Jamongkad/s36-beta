@@ -168,6 +168,7 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(media_attachment.length > 0){  
+                        console.log(media_attachment.not(":hidden"));
                         new_attached_link = {
                             title           : media_attachment.find('.link-title').val(),
                             description     : media_attachment.find('.link-description').val(),
@@ -176,8 +177,6 @@ angular.module('feedbackcontrol', [])
                             video           : media_attachment.find('.link-video').val(),
                         }
                     };
-
-                    console.log(media_attachment);
 
                     var remaining = {
                         uploaded_images : new_uploaded_images
