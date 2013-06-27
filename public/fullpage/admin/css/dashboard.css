@@ -468,8 +468,8 @@ body, #mainWrapper, #fadedContainer{
      text-decoration:none;
 }
 
-.the-categories-menu .the-categories ul.block-style li span a {
-    background: none;    
+.the-categories-menu .the-categories ul.block-style li span a:hover { 
+     text-decoration:none;
 }
 
 .the-categories-menu .the-categories ul li a{
