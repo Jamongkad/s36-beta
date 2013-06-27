@@ -158,11 +158,13 @@ angular.module('feedbackcontrol', [])
                     if(images.length > 0){
                         var new_uploaded_images = new Array;
                         var us = images.not(":hidden");
-
-                        for(var i=0; i < us.length; i++) {
-                            new_uploaded_images.push({
-                                'name': $(us[i]).find('.image-name').val() 
-                            });
+                        
+                        if(us.length > 0) { 
+                            for(var i=0; i < us.length; i++) {
+                                new_uploaded_images.push({
+                                    'name': $(us[i]).find('.image-name').val() 
+                                });
+                            }
                         }
                     }
 
