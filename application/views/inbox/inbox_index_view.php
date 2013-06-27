@@ -1,12 +1,29 @@
 <script>
-    //admittedly a much clean|insane means of seperating serverside variables.
-    //acts as global data object to be access by angularjs objects
-    var backend_vars = {
-        current_inbox_state: "<?=$inbox_state?>"
-      , default_category_id: "<?=$admin_check->categoryid?>"
-    }
+//admittedly a much clean|insane means of seperating serverside variables.
+//acts as global data object to be access by angularjs objects
+var backend_vars = {
+    current_inbox_state: "<?=$inbox_state?>"
+  , default_category_id: "<?=$admin_check->categoryid?>"
+}
 
 $(document).ready(function() {
+    $('.uploaded-images-close').click(function(){
+        $(this).parent().fadeOut();
+    });
+    $('.the-thumb,.video-circle').click(function(){
+        var scroll_offset = $(document).scrollTop();
+        var top_offset = scroll_offset + 100;
+        $('.lightbox').fadeIn().css('top',top_offset);
+    });
+    $('.image-block').click(function(){
+        var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
+        $('.uploaded-images-content').html(html);
+    });
+    $('.image-block.video').click(function(){
+        var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
+        var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>iframe>';
+        $('.uploaded-images-content').html(html);
+    });
     $(".inbox-fancybox-image").fancybox({
         openEffect : 'none',
         closeEffect : 'none'
