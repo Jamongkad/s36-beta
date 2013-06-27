@@ -779,8 +779,7 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     padding: 2px 4px;
     font-family: Arial;
     cursor: pointer;
-    border-bottom:1px solid #dee7ea;
 }
 .delete-block:hover{
-     background:#253439;
+     background:#666;
 }
