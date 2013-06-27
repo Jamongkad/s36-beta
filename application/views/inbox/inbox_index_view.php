@@ -533,7 +533,7 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select status_change feedid="<?=$feed->id?>">
+                                                                <select statuschange feedid="<?=$feed->id?>">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
                                                                         <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>">

@@ -110,13 +110,14 @@ angular.module('feedbackcontrol', [])
         }
     }        
 })
-.directive('status_change', function(FeedbackService) {
+.directive('statuschange', function(FeedbackService) {
     return {
         restrict: 'A'     
       , scope: {
             feedid: "=feedid"   
         }
       , link: function(scope, element, attrs) {
+            console.log(element);
             $(element).bind('change', function() {
                 console.log(scope.feedid);
                 console.log($(this).val());
