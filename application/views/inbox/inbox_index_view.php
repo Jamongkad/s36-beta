@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     $(".delete-block").click(function() {
          $(this).parent().fadeOut(400, function() {
-             var div = $(this).parent('.feedback-custom-attachments');            
+             var div = $(this).parent('.uploaded-images-and-links');            
              //$(this).remove();
              var remove_images = {
                 'small_url'    :$(this).find('.small-image-url').val(),
@@ -296,7 +296,7 @@ $(document).ready(function() {
                                         </div>
                                     <?endif?>
                                     <?if($attachments):?>
-                                        <div class="feedback-custom-attachments">
+                                        <div class="feedback-custom-attachments uploaded-images-and-links">
                                             <input type="hidden" class="attachment_feedback_id" value="<?=$feed->id?>"/>
                                             <?php 
                                             /*
