@@ -142,6 +142,10 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 $(this).parents('.custom-att').fadeOut(400, function() {
+                     
+                     var new_uploaded_images = new Array;
+                     var new_attached_link;
+
                      var div = $(this).parents('.uploaded-images-and-links');
                      var images = div.find('.uploaded_image');
                      var media_attachment = div.find('.attached_link');
@@ -154,21 +158,18 @@ angular.module('feedbackcontrol', [])
                         'large_url'    :$(this).find('.large-image-url').val()
                      }
 
-                    var attachments = new Array;
                     if(images.length > 0){
-                        var new_uploaded_images = new Array;
-                        var us = images.not(":hidden");
-                        
-                        console.log(us.length);
-                            for(var i=0; i < us.length; i++) {
-                                new_uploaded_images.push({
-                                    'name': $(us[i]).find('.image-name').val() 
-                                });
-                            }
+                     
+                        var us = images.not(":hidden"); 
+                        for(var i=0; i < us.length; i++) {
+                            new_uploaded_images.push({
+                                'name': $(us[i]).find('.image-name').val() 
+                            });
+                        }
                     }
 
                     if(media_attachment.length > 0){  
-                        var new_attached_link = {
+                        new_attached_link = {
                             title           : media_attachment.find('.link-title').val(),
                             description     : media_attachment.find('.link-description').val(),
                             image           : media_attachment.find('.link-image').val(),
