@@ -182,7 +182,8 @@ angular.module('feedbackcontrol', [])
                       , remove_images   : remove_images
                     }
 
-                    console.log(data);
+                    console.log(div.find('.attached_link'));
+                    console.log(div.find('.uploaded_image'));
                 });
                 /*
                  $(this).parent().fadeOut(400, function() {
