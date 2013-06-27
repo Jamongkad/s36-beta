@@ -142,7 +142,8 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 $(this).parents('.custom-att').fadeOut(400, function() {
-                    var div = $(this).parents('.uploaded-images-and-links');
+                     var div = $(this).parents('.uploaded-images-and-links');
+                     $(this).remove();
 
                      var remove_images = {
                         'small_url'    :$(this).find('.small-image-url').val(),
@@ -175,8 +176,13 @@ angular.module('feedbackcontrol', [])
                       , attached_link   : new_attached_link
                     }
 
-                    console.log(remaining);
-                    console.log(remove_images);
+                    var data: {
+                        feedbackId      : div.find('.attachment_feedback_id').val()
+                      , attachments     : remaining
+                      , remove_images   : remove_images
+                    }
+
+                    console.log(data);
                 });
                 /*
                  $(this).parent().fadeOut(400, function() {
