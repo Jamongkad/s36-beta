@@ -168,13 +168,14 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(media_attachment.length > 0){  
-                        console.log(media_attachment.not(":hidden"));
-                        new_attached_link = {
-                            title           : media_attachment.find('.link-title').val(),
-                            description     : media_attachment.find('.link-description').val(),
-                            image           : media_attachment.find('.link-image').val(),
-                            url             : media_attachment.find('.link-url').val(),
-                            video           : media_attachment.find('.link-video').val(),
+                        if(media_attachment.not(":hidden")) {
+                            new_attached_link = {
+                                title           : media_attachment.find('.link-title').val(),
+                                description     : media_attachment.find('.link-description').val(),
+                                image           : media_attachment.find('.link-image').val(),
+                                url             : media_attachment.find('.link-url').val(),
+                                video           : media_attachment.find('.link-video').val(),
+                            } 
                         }
                     };
 
