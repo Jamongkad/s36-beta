@@ -184,6 +184,7 @@ angular.module('feedbackcontrol', [])
 
                     console.log(div.find('.attached_link'));
                     console.log(div.find('.uploaded_image'));
+                    console.log(data);
                 });
                 /*
                  $(this).parent().fadeOut(400, function() {
