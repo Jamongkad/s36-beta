@@ -150,7 +150,6 @@ angular.module('feedbackcontrol', [])
                      var images = div.find('.uploaded_image');
                      var media_attachment = div.find('.attached_link');
                      
-
                      $(this).remove();                    
 
                      var remove_images = {
@@ -177,6 +176,8 @@ angular.module('feedbackcontrol', [])
                             video           : media_attachment.find('.link-video').val(),
                         }
                     };
+
+                    console.log(media_attachment);
 
                     var remaining = {
                         uploaded_images : new_uploaded_images
