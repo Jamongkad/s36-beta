@@ -865,3 +865,9 @@ h2.h2-fix{
     font-weight:bold;
     color:#4f4f4f;
 }
+
+#review-feedback-title-container,
+#review-feedback-text-container{
+    border: 1px solid #e0e0e0;
+    background: #fbfbfb;
+}

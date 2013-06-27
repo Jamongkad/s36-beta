@@ -204,7 +204,7 @@
             <div class="feedback-icon-list clear">
                 <div class="feedback-recommendation">
                     <?php if( $is_recommended ): ?>
-                        <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                        <div class="green-thumb break-word">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                     <?php endif; ?>
                     <div class="vote-block" <?=(!$is_recommended) ? 'style="padding-top:5px"' : null?>>
                         <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">

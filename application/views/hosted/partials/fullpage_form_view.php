@@ -241,11 +241,11 @@
                                     <div class="form-left-side">
                                         <div class="pad-right">
                                             <div class="feedback-details">
-                                                <div id="review-feedback-title-container" class="feedback-text">
+                                                <div id="review-feedback-title-container" class="feedback-text break-word">
                                                     <p id="review-feedback-title" class="break-word feedback-title-box"></p>
                                                     <div class="feedback-edit clear"><a href="javascript:;" id="edit_feedback_title" class="edit-text">edit</a></div>
                                                 </div>
-                                                <div id="review-feedback-text-container" class="feedback-text">
+                                                <div id="review-feedback-text-container" class="feedback-text break-word">
                                                     <!-- <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div> -->
                                                     <div id="review-feedback-text" class="feedback-box">
                                                         <p></p>
@@ -267,9 +267,9 @@
                                                 <img src="img/facebook-blank-avatar.jpg" width="100" id="review_photo" />
                                             </div>
                                             <div class="user-details">
-                                                <div id="review-name" class="user-name">Leica Chang</div>
-                                                <div class="user-position" id="review-company"></div>
-                                                <div class="user-location clear"><span id="review-location"></span><span id="flag" class="flag flag-ph"></span></div>
+                                                <div id="review-name" class="user-name break-word">Leica Chang</div>
+                                                <div class="user-position break-word" id="review-company"></div>
+                                                <div class="user-location clear break-word"><span id="review-location"></span><span id="flag" class="flag flag-ph"></span></div>
                                                 <div class="user-date">
                                                     <?php echo date("F d, Y") ?>
                                                 </div>
