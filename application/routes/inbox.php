@@ -73,8 +73,7 @@ return array(
 
     'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() use ($dbfeedback) { 
         $input = Input::get();
-
-        echo "<pre>";print_r($input);echo "</pre>";
+ 
         /*update feedback attachments in database*/
         $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
         $dbfeedback->update_feedback($input['feedbackId'], array('attachments'=>$attachments));

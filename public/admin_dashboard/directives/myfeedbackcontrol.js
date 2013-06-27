@@ -183,14 +183,19 @@ angular.module('feedbackcontrol', [])
                       , attached_link   : new_attached_link
                     }
 
-                    var data = {
+                    var attachment_data = {
                         feedbackId      : div.find('.attachment_feedback_id').val()
                       , attachments     : remaining
                       , remove_images   : remove_images
                     }
+                   
+                    $.ajax({
+                        type: "POST"
+                      , url: "/inbox/update_feedback_attachment"
+                      , dataType: "json"
+                      , data: attachment_data                
+                    });
 
-                    console.log(data);
-                });
                 e.preventDefault();
             });
         }
