@@ -214,14 +214,6 @@ angular.module('Services', [])
               type: "POST"
             , url: "/feedback/changestatus"
             , data: {"select_val": feed_status, "feed_id": feedid}
-            , success: function() { 
-                /*
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
-                select.hide();
-                $(that).children('span').show();
-                */
-            }
         });  
     }
 
