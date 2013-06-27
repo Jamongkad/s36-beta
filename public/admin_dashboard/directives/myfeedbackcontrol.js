@@ -108,8 +108,21 @@ angular.module('feedbackcontrol', [])
             });
             
         }
+    }        
+})
+.directive('status_change', function() {
+    return {
+        restrict: 'A'     
+      , scope: {
+            feedid: "=feedid"   
+        }
+      , link: function(scope, element, attrs) {
+            $(element).bind('onchange', function() {
+                console.log(scope.feedid);
+                console.log($(this).val());
+            })
+        }
     }    
-    
 })
 
 function published_state(obj, sibling_id, msg, state) { 
