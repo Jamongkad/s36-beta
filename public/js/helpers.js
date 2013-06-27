@@ -23,7 +23,10 @@ var Helpers = new function() {
     }
     
     this.urls_to_links = function(s){
-        return s.replace(/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/gi, '<a href="http://$1" target="_blank">$1</a>');
+        var link = '<a href="http://$1" target="_blank">$1</a>';
+        s = s.replace(/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/gi, link);
+        s = s.replace(/http\:\/\/http/gi, 'http');
+        return s;
     }
     
     this.fb_comment_str = function(s){

@@ -1,3 +1,4 @@
+
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
@@ -12,68 +13,74 @@
 <span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
 
-<div class="block">
-    <div id="widget-setup-block">
-        <div class="widget-options">
-            <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users</h2>
-            <div class="widget-types">
-                <table width="100%" cellpadding="5" cellspacing="0">
-                    <tr>
-                        <td width="120">
-                            <strong style="font-size:14px;">Form Name :</strong>
-                        </td>
-                        <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->widgetattr->theme_name?>" title="<?=$widget->widgetattr->theme_name?>" /></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="widget-options">
-            <h2><span>Step 2 :</span> Choose a name for your form and a question to encourage your users</h2>
-            <div class="widget-types">
-            <table width="100%" cellpadding="5" cellspacing="0">
-                <tbody><tr>
-                    <td width="140">
-                        <strong style="font-size:14px;">Form Header Text :</strong>
-                    </td>
-                    <td><input type="text" class="large-text" name="submit_form_text" value="<?=$widget->widgetattr->submit_form_text?>" 
-                                                                                      title="<?=$widget->widgetattr->submit_form_text?>" /></td>
-                    <td rowspan="2" width="150" align="center" valign="top">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        What to write?
-                        <br />
-                        <small style="line-height:normal">
-                        Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
-                    </td>
-                    <td valign="top">
-                        <textarea name="submit_form_question" class="large-textarea" 
-                                  style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
-                                  title="<?=$widget->widgetattr->submit_form_question?>">
-<?=$widget->widgetattr->submit_form_question?>
-                        </textarea>
-                    </td>
-                </tr>
-            </tbody></table>
-            </div>
 
-        </div>
-        <div class="widget-options">
-            <h2><span>Step 3 :</span> Create custom fields for your form (optional)</h2>
-            <p style="padding: 25px; font-size:12px; margin-bottom:-35px">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
-               Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
-               collect information in addition to your customer's feedback.</p>
-            <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" style="padding: 25px" id="form-builder"></div>
-        </div>
-        <div class="widget-options">
-            <div class="block noborder" style="margin-left:-10px;">
-                <input type="submit" class="large-btn create-widget-button" value="Update" my-createform/>
+
+<div id="theFormSetup" class="dashboard-page">
+<h1>Form Setup</h1>
+
+<div class="dashboard-box">
+    <div class="dashboard-head">
+      <span class="dashboard-title">Step 1 :</span> <span class="dashboard-subtitle">Choose a name for your form</span>
+    </div>
+    <div class="dashboard-body">
+        <div class="dashboard-content">
+            <div class="form-setup-block">
+                <div class="form-setup-fields grids">
+                    <div class="form-setup-label">Form Name : </div>
+                    <div class="form-setup-elem">
+                        <input name="theme_name" type="text" class="dashboard-text" title="<?=$widget->widgetattr->theme_name?>" value="<?=$widget->widgetattr->theme_name?>" /></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="dashboard-box">
+    <div class="dashboard-head">
+      <span class="dashboard-title">Step 2 :</span> <span class="dashboard-subtitle">Choose a question to encourage your users</span>
+    </div>
+    <div class="dashboard-body">
+        <div class="dashboard-content">
+            <div class="form-setup-block">
+                <div class="form-setup-fields grids">
+                    <div class="form-setup-label">Form Header Text : </div>
+                    <div class="form-setup-elem grids">
+                        <div class="g2of3">
+                            <input name="submit_form_text" type="text" class="dashboard-text" title="<?=$widget->widgetattr->submit_form_text?>" value="<?=$widget->widgetattr->submit_form_text?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-setup-fields grids">
+                    <div class="form-setup-label">What to write? </div>
+                    <div class="form-setup-elem grids">
+                        <div class="g2of3">
+                            <textarea name="submit_form_question" class="dashboard-textarea" title="<?=$widget->widgetattr->submit_form_question?>"><?=$widget->widgetattr->submit_form_question?></textarea>
+                        </div>
+                        <div class="g1of3">
+                            <p class="dashboard-your-question">Questions to help your 
+                                customers/visitors respond 
+                                to your form in a certain way. 
+                                This text will appear if they 
+                                click "What to write?".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dashboard-box">
+    <div class="dashboard-head">
+      <span class="dashboard-title">Step 3 :</span> <span class="dashboard-subtitle">Create custom fields for your form (optional)</span>
+    </div>
+    <div class="dashboard-body">
+        <div class="dashboard-content">
+            <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
+               Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
+               collect information in addition to your customer's feedback.</p>
+            <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" id="form-builder" class="grids"></div>
+        </div>
+    </div>
+</div>
+<p><input type="submit" class="dashboard-button blue large" value="Update" my-createform/></p>
+</div>
 <?=Form::close()?>
-</div>
-<div class="c"></div>
-</div>

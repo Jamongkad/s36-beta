@@ -11,9 +11,7 @@
         
         function __construct($query_value){
             
-            if( is_int($query_value) ) $this->query_field = 'Company.companyId';
-            if( is_string($query_value) ) $this->query_field = 'Company.name';
-            
+            $this->query_field = ( (int)$query_value == 0 ? 'Company.name' : 'Company.companyId' );
             $this->query_value = $query_value;
             
         }

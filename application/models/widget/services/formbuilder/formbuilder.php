@@ -545,7 +545,8 @@ class Formbuilder {
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
-			$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
+            //$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
+			$html .= sprintf('<div class="title">%s</div><br/>' . "\n", $this->elemId($field['title']), $field['title']);
 		}
 
 		$field['values'] = (array)$field['values'];
