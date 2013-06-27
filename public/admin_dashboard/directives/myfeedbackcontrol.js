@@ -144,6 +144,12 @@ angular.module('feedbackcontrol', [])
                 $(this).parents('.custom-att').fadeOut(400, function() {
                     var div = $(this).parents('.uploaded-images-and-links');
 
+                     var remove_images = {
+                        'small_url'    :$(this).find('.small-image-url').val(),
+                        'medium_url'   :$(this).find('.medium-image-url').val(),
+                        'large_url'    :$(this).find('.large-image-url').val()
+                     }
+
                     var attachments = new Array;
                     if(div.find('.uploaded_image').length>0){
                         var new_uploaded_images = new Array;
@@ -165,11 +171,12 @@ angular.module('feedbackcontrol', [])
                     };
 
                     var remaining = {
-                        uploaded_images : new_uploaded_images,
-                        attached_link   : new_attached_link
+                        uploaded_images : new_uploaded_images
+                      , attached_link   : new_attached_link
                     }
 
                     console.log(remaining);
+                    console.log(remove_images);
                 });
                 /*
                  $(this).parent().fadeOut(400, function() {
