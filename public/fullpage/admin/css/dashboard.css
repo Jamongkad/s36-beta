@@ -464,7 +464,6 @@ body, #mainWrapper, #fadedContainer{
      padding:2px;
 }
 .the-categories-menu .the-categories ul.block-style li span:hover{
-     border-bottom:1px dotted #069;
      text-decoration:none;
 }
 
