@@ -35,7 +35,8 @@
 }
 .spine-spacer{
 	height:60px;
-	display:block;
+	/*display:block;*/
+	display: none;
 }
 .feedback-date{
 	width:139px;
@@ -45,6 +46,7 @@
 	left:50%;
 	margin-left:-70px;
 	z-index:1;
+	top: -20px;
 }
 .feedback-date h2{
 	font-size:29px;

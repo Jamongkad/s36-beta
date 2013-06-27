@@ -48,6 +48,11 @@
                         <div id="feedback-infinitescroll-landing"></div>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    <? // hack to hide the first .feedback-date and show the first .spine-spacer. ?>
+                    $('.feedback-date:first').css('display', 'none');
+                    $('.spine-spacer:first').css({'display' : 'block', 'height' : '20px'});
+                </script>
             <?php endif ?>
         </div>
     </div>
