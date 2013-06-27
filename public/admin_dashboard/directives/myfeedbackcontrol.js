@@ -187,6 +187,9 @@ angular.module('feedbackcontrol', [])
                       , attachments     : remaining
                       , remove_images   : remove_images
                     } 
+
+                    console.log(attachment_data);
+
                     $.ajax({
                         type: "POST"
                       , url: "/inbox/update_feedback_attachment"
