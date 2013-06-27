@@ -207,7 +207,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.set_status = function(feedid) {
-        FeedbackService.inline_change($scope.inline_status, feedid);
+
     }
 
     $scope.set_priority = function(feedid) {

@@ -546,7 +546,7 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select priority_change feedid="<?=$feed->id?>">
+                                                                <select prioritychange feedid="<?=$feed->id?>">
                                                                     <?foreach($priority_obj as $key => $val):?>
                                                                         <option <?=($feed->priority == $val) ? 'selected' : null?>  value="<?=$key?>">
                                                                             <?=ucfirst($val)?>
