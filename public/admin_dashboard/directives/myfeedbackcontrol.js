@@ -154,6 +154,7 @@ angular.module('feedbackcontrol', [])
                     var attachments = new Array;
                     if(div.find('.uploaded_image').length>0){
                         var new_uploaded_images = new Array;
+                        console.log(div.find('.the-thumb')); 
                         div.find('.the-thumb').each(function(){
                             new_uploaded_images.push({
                                 'name'    :$(this).find('.image-name').val(),
@@ -182,51 +183,8 @@ angular.module('feedbackcontrol', [])
                       , remove_images   : remove_images
                     }
 
-                    console.log(div.find('.attached_link'));
-                    console.log(div.find('.uploaded_image'));
                     console.log(data);
                 });
-                /*
-                 $(this).parent().fadeOut(400, function() {
-                     var div = $(this).parent('.uploaded-images-and-links');            
-                     //$(this).remove();
-
-                     var remove_images = {
-                        'small_url'    :$(this).find('.small-image-url').val(),
-                        'medium_url'   :$(this).find('.medium-image-url').val(),
-                        'large_url'    :$(this).find('.large-image-url').val()
-                     }
-                     
-                    var attachments = new Array;
-                    if(div.find('.uploaded_image').length>0){
-                        var new_uploaded_images = new Array;
-                        div.find('.the-thumb').each(function(){
-                            new_uploaded_images.push({
-                                'name'    :$(this).find('.image-name').val(),
-                            });
-                        });
-                    }
-
-                    if(div.find('.attached_link').length > 0){
-                        var new_attached_link = {
-                            title           : div.find('.link-title').val(),
-                            description     : div.find('.link-description').val(),
-                            image           : div.find('.link-image').val(),
-                            url             : div.find('.link-url').val(),
-                            video           : div.find('.link-video').val(),
-                        }
-                    };
-
-                    var remaining = {
-                        uploaded_images : new_uploaded_images,
-                        attached_link   : new_attached_link
-                    }
-
-                    console.log(remaining);
-                    console.log(remove_images);
-                    console.log(div.find('.attachment_feedback_id').val()); 
-                });
-                */
                 e.preventDefault();
             });
         }
