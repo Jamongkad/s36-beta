@@ -110,7 +110,7 @@ angular.module('feedbackcontrol', [])
         }
     }        
 })
-.directive('status_change', function() {
+.directive('status_change', function(FeedbackService) {
     return {
         restrict: 'A'     
       , scope: {
