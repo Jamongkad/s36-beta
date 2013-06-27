@@ -770,3 +770,17 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
 .valign-fix tr td input, .valign-fix tr td textarea  {
     margin: 0px;
 }
+
+.delete-block{
+    position: absolute;
+    z-index: 1;
+    background: #1c2427;
+    color: #FFF;
+    padding: 2px 4px;
+    font-family: Arial;
+    cursor: pointer;
+    border-bottom:1px solid #dee7ea;
+}
+.delete-block:hover{
+     background:#253439;
+}
