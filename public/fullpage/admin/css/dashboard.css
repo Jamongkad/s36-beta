@@ -478,6 +478,7 @@ body, #mainWrapper, #fadedContainer{
 }
 .the-categories-menu .the-categories ul li a:hover{
     background:#97adb8;
+    text-decoration:none;
 }
 /* Tablet Landscape */
 @media screen and (max-width: 480px) {
