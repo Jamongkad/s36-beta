@@ -176,7 +176,7 @@ angular.module('feedbackcontrol', [])
                       , attached_link   : new_attached_link
                     }
 
-                    var data: {
+                    var data = {
                         feedbackId      : div.find('.attachment_feedback_id').val()
                       , attachments     : remaining
                       , remove_images   : remove_images
