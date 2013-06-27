@@ -135,8 +135,9 @@
     bottom:0px;
     left:20px;
     background:#FEFEFE;
-    overflow: hidden;
+    /*overflow: hidden;*/
     bottom: -20px;
+    z-index:200;
 }
 #avatarContainer:hover #avatarButtonIcon{
     display: block;
@@ -205,4 +206,24 @@
 #socialLinkIcons .social-icon{
     margin-left:8px;
     float:left;
+}
+.company-rating{
+    left: 250px;
+    bottom: 10px;
+    position: absolute;
+    z-index:200;
+}
+.company-cover-name{
+    color:#FFF;
+    text-shadow: #000 0 0 4px;
+    font-size:22px;
+    font-weight:bold;
+}
+.cover-shadow{
+    background:url(/fullpage/common/img/cover-shadow.png) repeat-x;
+    width:100%;
+    position:absolute;
+    height:102px;
+    bottom:0px;
+    z-index:100;
 }
