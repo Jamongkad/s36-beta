@@ -76,12 +76,7 @@ return array(
     },
 
     'POST /feedback/changepriority' => function() use ($feedback) { 
-        $rating_table = Array(
-            'low' => 0
-          , 'medium' => 60
-          , 'high' => 100
-        ); 
-        $feedback->_change_feedback('priority', Input::get('feed_id'), $rating_table[Input::get('select_val')]);
+        $feedback->_change_feedback('priority', Input::get('feed_id'), Input::get('select_val'));
     },
 
     'POST /feedback/flagfeedback' => function() use ($feedback) {  
