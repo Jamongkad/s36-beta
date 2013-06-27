@@ -159,8 +159,7 @@ angular.module('feedbackcontrol', [])
                         'large_url'    :$(this).find('.large-image-url').val()
                      }
 
-                    if(images.length > 0){
-                     
+                    if(images.length > 0){   
                         var us = images.not(":hidden"); 
                         for(var i=0; i < us.length; i++) {
                             new_uploaded_images.push({
@@ -188,17 +187,17 @@ angular.module('feedbackcontrol', [])
                         feedbackId      : div.find('.attachment_feedback_id').val()
                       , attachments     : remaining
                       , remove_images   : remove_images
-                    }
-                   
+                    } 
                     $.ajax({
                         type: "POST"
                       , url: "/inbox/update_feedback_attachment"
                       , dataType: "json"
                       , data: attachment_data                
                     });                
-            });
-            e.preventDefault();
-        })
+                });
+                e.preventDefault();
+            })
+        }
     }    
 })
 
