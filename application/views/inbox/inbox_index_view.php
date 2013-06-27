@@ -533,8 +533,7 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select 
-                                                                        ng-init="inline_status='<?=strtolower($feed->status)?>'" 
+                                                                <select ng-init="inline_status='<?=strtolower($feed->status)?>'" 
                                                                         ng-model="inline_status" 
                                                                         ng-change="set_status(<?=$feed->id?>)">
                                                                     <?foreach($status as $option):?>
@@ -549,7 +548,8 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select ng-model="inline_priority" ng-init="inline_priority='<?=$feed->priority?>'" 
+                                                                <select ng-init="inline_priority='<?=$feed->priority?>'" 
+                                                                        ng-model="inline_priority" 
                                                                         ng-change="set_priority(<?=$feed->id?>)">
                                                                     <?foreach($priority_obj as $key => $val):?>
                                                                         <option value="<?=$val?>">
