@@ -11,6 +11,7 @@ $(document).ready(function() {
     $(".delete-block").click(function() {
          $(this).parent().fadeOut(400, function() {
              var div = $(this).parent('.uploaded-images-and-links');            
+             console.log(div);
              //$(this).remove();
              var remove_images = {
                 'small_url'    :$(this).find('.small-image-url').val(),
