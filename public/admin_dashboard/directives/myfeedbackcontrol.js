@@ -141,17 +141,16 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log("mathew");
                 $(this).parents('.custom-att').fadeOut(400, function() {
-                     
+
+                     $(this).remove();                    
+
                      var new_uploaded_images = new Array;
                      var new_attached_link;
 
                      var div = $(this).parents('.uploaded-images-and-links');
                      var images = div.find('.uploaded_image');
                      var media_attachment = div.find('.attached_link');
-
-                     $(this).remove();
 
                      var remove_images = {
                         'small_url'    :$(this).find('.small-image-url').val(),
