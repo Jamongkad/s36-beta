@@ -143,7 +143,33 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) {
                 $(this).parents('.custom-att').fadeOut(400, function() {
                     var div = $(this).parents('.uploaded-images-and-links');
-                    console.log(div);
+
+                    var attachments = new Array;
+                    if(div.find('.uploaded_image').length>0){
+                        var new_uploaded_images = new Array;
+                        div.find('.the-thumb').each(function(){
+                            new_uploaded_images.push({
+                                'name'    :$(this).find('.image-name').val(),
+                            });
+                        });
+                    }
+
+                    if(div.find('.attached_link').length > 0){
+                        var new_attached_link = {
+                            title           : div.find('.link-title').val(),
+                            description     : div.find('.link-description').val(),
+                            image           : div.find('.link-image').val(),
+                            url             : div.find('.link-url').val(),
+                            video           : div.find('.link-video').val(),
+                        }
+                    };
+
+                    var remaining = {
+                        uploaded_images : new_uploaded_images,
+                        attached_link   : new_attached_link
+                    }
+
+                    console.log(remaining);
                 });
                 /*
                  $(this).parent().fadeOut(400, function() {
