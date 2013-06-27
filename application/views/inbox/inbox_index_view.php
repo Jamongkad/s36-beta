@@ -8,49 +8,6 @@ var backend_vars = {
 
 $(document).ready(function() {
 
-    $(".delete-block").click(function() {
-         $(this).parent().fadeOut(400, function() {
-             var div = $(this).parent('.uploaded-images-and-links');            
-             console.log(div);
-             //$(this).remove();
-             var remove_images = {
-                'small_url'    :$(this).find('.small-image-url').val(),
-                'medium_url'   :$(this).find('.medium-image-url').val(),
-                'large_url'    :$(this).find('.large-image-url').val()
-             }
-             
-            var attachments = new Array;
-            if(div.find('.uploaded_image').length>0){
-                var new_uploaded_images = new Array;
-                div.find('.the-thumb').each(function(){
-                    new_uploaded_images.push({
-                        'name'    :$(this).find('.image-name').val(),
-                    });
-                });
-            }
-
-            if(div.find('.attached_link').length > 0){
-                var new_attached_link = {
-                    title           : div.find('.link-title').val(),
-                    description     : div.find('.link-description').val(),
-                    image           : div.find('.link-image').val(),
-                    url             : div.find('.link-url').val(),
-                    video           : div.find('.link-video').val(),
-                }
-            };
-
-            var attachments = {
-                uploaded_images : new_uploaded_images,
-                attached_link   : new_attached_link
-            }
-
-            console.log(attachments);
-            console.log(remove_images);
-            console.log(div.find('.attachment_feedback_id').val());
-
-         });
-    });
-
     $(".inbox-fancybox-image").fancybox({
         openEffect : 'none',
         closeEffect : 'none'
@@ -311,7 +268,7 @@ $(document).ready(function() {
                                                 <input type="hidden" class="link-image" value="<?=$attachments->attached_link->image?>"/>
                                                 <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
                                                 <input type="hidden" class="link-video" value="<?=$attachments->attached_link->video?>"/>
-                                                <div class="delete-block">x</div>
+                                                <div class="delete-block" delete-block>x</div>
                                                     <?php 
                                                     //video attachments
                                                     if($attachments->attached_link->video=='yes'){?>
@@ -360,7 +317,7 @@ $(document).ready(function() {
                                                         <div class="grids">
                                                             <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                                 <div class="custom-att <?=$width;?>">
-                                                                    <div class="delete-block">x</div>
+                                                                    <div class="delete-block" delete-block>x</div>
                                                                     <div class="the-thumb">
                                                                         <a class="inbox-fancybox-image" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="inbox-images-<?=$id?>">
 
