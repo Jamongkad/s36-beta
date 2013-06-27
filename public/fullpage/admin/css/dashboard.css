@@ -1249,7 +1249,34 @@ body, #mainWrapper, #fadedContainer{
  #theDashboardMenu ul.submenu li a:hover{
   background:#FFF;
  }
-
+ 
+/* layout overrides */
+ .layout-chooser-buttons{
+  text-align:center;
+ }
+ .layout-chooser-buttons a{
+  display:inline-block;
+  background:#e3540f;
+  border:1px solid #c84100;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;    
+  color:#FFF;
+  font-size:14px;
+  padding:8px 35px;
+  margin:5px 3px;
+  font-weight:bold;
+ }
+ .layout-chooser-buttons a:hover{
+  background:#f2601a;
+ }
+ .layout-chooser-buttons a.dark-blue{
+  background:#50709a;
+  border:#3a679f 1px solid;
+ }
+ .layout-chooser-buttons a.dark-blue:hover{
+  background:#6486b2;
+ }
 
 
 /* Tablet Landscape */
@@ -1436,3 +1463,4 @@ body, #mainWrapper, #fadedContainer{
         width:31px;
     }
 }
+
