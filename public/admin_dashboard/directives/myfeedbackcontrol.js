@@ -141,6 +141,7 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
+                console.log("mathew");
                 $(this).parents('.custom-att').fadeOut(400, function() {
                      
                      var new_uploaded_images = new Array;
