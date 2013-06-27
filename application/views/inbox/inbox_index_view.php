@@ -533,12 +533,10 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select ng-init="inline_status='<?=strtolower($feed->status)?>'" 
-                                                                        ng-model="inline_status" 
-                                                                        ng-change="set_status(<?=$feed->id?>)">
+                                                                <select status_change feedid="<?=$feed->id?>">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
-                                                                        <option value="<?=$option_match?>">
+                                                                        <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>">
                                                                             <?=$option->name?>
                                                                         </option>
                                                                     <?endforeach?>
@@ -548,12 +546,9 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select ng-init="inline_priority=<?=$feed->int_priority?>" 
-                                                                        ng-model="inline_priority" 
-                                                                        ng-change="set_priority(<?=$feed->id?>)">
-
+                                                                <select priority_change feedid="<?=$feed->id?>">
                                                                     <?foreach($priority_obj as $key => $val):?>
-                                                                        <option value="<?=$key?>">
+                                                                        <option <?=($feed->priority == $val) ? 'selected' : null?>  value="<?=$key?>">
                                                                             <?=ucfirst($val)?>
                                                                         </option>
                                                                     <?endforeach?>
