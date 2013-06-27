@@ -463,11 +463,7 @@ body, #mainWrapper, #fadedContainer{
 .the-categories-menu .the-categories ul.block-style li span{
      padding:2px;
 }
-.the-categories-menu .the-categories ul.block-style li span:hover{
-     text-decoration:none;
-}
-
-.the-categories-menu .the-categories ul.block-style li span a:hover { 
+.the-categories-menu .the-categories ul.block-style li span:hover {
      text-decoration:none;
 }
 
