@@ -548,7 +548,7 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select ng-init="inline_priority='<?=$feed->priority?>'" 
+                                                                <select ng-init="inline_priority=<?=$feed->int_priority?>" 
                                                                         ng-model="inline_priority" 
                                                                         ng-change="set_priority(<?=$feed->id?>)">
 
