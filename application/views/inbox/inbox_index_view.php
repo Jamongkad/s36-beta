@@ -7,27 +7,54 @@ var backend_vars = {
 }
 
 $(document).ready(function() {
-    $('.uploaded-images-close').click(function(){
-        $(this).parent().fadeOut();
+
+    $(".delete-block").click(function() {
+         $(this).parent().fadeout(400, function() {
+             var div = $(this).parent('.uploaded-images-and-links');            
+             //$(this).remove();
+             var remove_images = {
+                'small_url'    :$(this).find('.small-image-url').val(),
+                'medium_url'   :$(this).find('.medium-image-url').val(),
+                'large_url'    :$(this).find('.large-image-url').val()
+             }
+             
+            var attachments = new Array;
+            if(div.find('.uploaded_image').length>0){
+                var new_uploaded_images = new Array;
+                div.find('.the-thumb').each(function(){
+                    new_uploaded_images.push({
+                        'name'    :$(this).find('.image-name').val(),
+                    });
+                });
+            }
+
+            if(div.find('.attached_link').length > 0){
+                var new_attached_link = {
+                    title           : div.find('.link-title').val(),
+                    description     : div.find('.link-description').val(),
+                    image           : div.find('.link-image').val(),
+                    url             : div.find('.link-url').val(),
+                    video           : div.find('.link-video').val(),
+                }
+            };
+
+            var attachments = {
+                uploaded_images : new_uploaded_images,
+                attached_link   : new_attached_link
+            }
+
+            console.log(attachments);
+            console.log(remove_images);
+            console.log(div.find('.attachment_feedback_id').val());
+
+         });
     });
-    $('.the-thumb,.video-circle').click(function(){
-        var scroll_offset = $(document).scrollTop();
-        var top_offset = scroll_offset + 100;
-        $('.lightbox').fadeIn().css('top',top_offset);
-    });
-    $('.image-block').click(function(){
-        var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
-        $('.uploaded-images-content').html(html);
-    });
-    $('.image-block.video').click(function(){
-        var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
-        var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>iframe>';
-        $('.uploaded-images-content').html(html);
-    });
+
     $(".inbox-fancybox-image").fancybox({
         openEffect : 'none',
         closeEffect : 'none'
     });
+
     $(".inbox-fancybox-video").click(function(e) {
         $.fancybox({
             'padding'       : 0,
