@@ -533,7 +533,9 @@
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select ng-model="inline_status" ng-init="inline_status='<?=strtolower($feed->status)?>'" 
+                                                                <select 
+                                                                        ng-init="inline_status='<?=strtolower($feed->status)?>'" 
+                                                                        ng-model="inline_status" 
                                                                         ng-change="set_status(<?=$feed->id?>)">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
