@@ -73,12 +73,14 @@ return array(
 
     'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() use ($dbfeedback) { 
         $input = Input::get();
- 
-        /*update feedback attachments in database*/
+
+    
+        Helpers::dump($input);
+
+        /*
         $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
         $dbfeedback->update_feedback($input['feedbackId'], array('attachments'=>$attachments));
 
-        /*start to remove images from the file system*/
         if(isset($input['remove_images'])){
             foreach($input['remove_images'] as $url){ 
                 $url = explode('uploaded_images',$url); //separate the application url from the image path
@@ -86,6 +88,7 @@ return array(
                 @unlink($url);
             }
         }
+        */
     })
 );
 
