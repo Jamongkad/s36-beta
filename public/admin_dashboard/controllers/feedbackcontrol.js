@@ -102,9 +102,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var selected = [];
             var catids = [];
 
-            $scope.selected.forEach(function(item) {
+            for(var i=0; i < $scope.selected.length; ++i) {
 
-                var me = $scope.selected[item];
+                var me = $scope.selected[i];
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
                 var mode = $scope.status_select_value;
@@ -135,8 +135,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 if( checkbox.is(":checked") ) {  
                     checkbox.click();     
                 } 
-            });
-             
+            }
+            
             if(selected.length > 0) { 
 
                 if(currentUrl.match(/filed/g)) {
@@ -161,7 +161,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else {
                 alert("Action is not allowed!");
             }
-
 
             selected = [];
             $scope.selected = []; 
