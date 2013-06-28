@@ -192,7 +192,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 entity.click();     
             }
 
-            console.log(entity.val());
+            console.log(parseInt(entity.val(), 10));
 
             update_selected(action, parseInt(entity.val(), 10));      
         }
