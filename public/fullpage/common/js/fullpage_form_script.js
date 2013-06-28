@@ -556,7 +556,7 @@ $(document).keypress(function(event){
 
     function display_error_mes(mes){
         $('.lightbox-message').addClass('error');
-        $('.lightbox-message ul').html('').each(function(){
+        $('#lightbox .lightbox-message ul').html('').each(function(){
             $.each(mes,function(e,str){
                 $('.lightbox-message ul').append('<li>'+str+'</li>');   
             });

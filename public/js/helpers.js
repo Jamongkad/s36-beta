@@ -44,7 +44,7 @@ var Helpers = new function() {
 
     this.display_error_mes = function(mes) { 
         $('.lightbox-message').addClass('error');
-        $('.lightbox-message ul').html('').each(function(){
+        $('#lightboxNotification .lightbox-message ul').html('').each(function(){
             $.each(mes,function(e,str){
                 $('.lightbox-message ul').append('<li>'+str+'</li>'); 
             });
@@ -55,11 +55,7 @@ var Helpers = new function() {
 
     this.display_lightbox = function() { 
         $('#lightboxNotification').fadeIn();
-        $('#lightbox').fadeIn();
-        $('.lightbox-s').fadeIn();
         $('#lightboxNotification .lightbox-button').click(function(e){
-            $('.lightbox-s').fadeOut('fast');
-            $('#lightbox').fadeOut('fast');
             $('#lightboxNotification').fadeOut('fast');
             e.preventDefault();
         });

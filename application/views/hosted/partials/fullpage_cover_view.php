@@ -2,6 +2,23 @@
     $db_fullpage_cover = new \Hosted\Repositories\DBFullpageCover(Config::get('application.subdomain'));
     $fullpage_cover = $db_fullpage_cover->get_data();
 ?>
+<!-- lightbox notification -->
+<div id="lightboxNotification">
+    <div class="lightbox-pandora">
+        <div class="lightbox-header">Oops! Something went wrong..</div>
+        <div class="lightbox-body">
+            <div class="lightbox-message error">
+                <ul>
+                    <li>Error Message</li><li>Error Message</li>
+                </ul>
+            </div>
+            <div class="lightbox-buttons">
+                <a href="#" class="lightbox-button">CLOSE</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of lightbox notification -->
 <div id="coverPhotoContainer">
     <?php if( ! is_null($fullpage_cover->user) ): ?>
         <div id="changeCoverButtonIcon">
