@@ -102,11 +102,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var selected = [];
             var catids = [];
 
-            console.log($scope.selected.length)
-
             for(var i=0; i < $scope.selected.length; i++) {
 
                 var me = $scope.selected[i];
+                console.log(i);
+                console.log(me);
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
                 var mode = $scope.status_select_value;
