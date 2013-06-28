@@ -169,19 +169,20 @@ angular.module('feedbackcontrol', [])
 
                     }
 
+                    console.log(media_attachment.length); 
+                    console.log(media_attachment.not(":hidden"));
+                    console.log(media_attachment);
+
                     if(media_attachment.length > 0){  
                         var link = media_attachment.not(":hidden");
-
-                        if(link) {
-                            console.log("Place attached in remaining");                           
-                            new_attached_link = {
-                                title           : media_attachment.find('.link-title').val(),
-                                description     : media_attachment.find('.link-description').val(),
-                                image           : media_attachment.find('.link-image').val(),
-                                url             : media_attachment.find('.link-url').val(),
-                                video           : media_attachment.find('.link-video').val(),
-                            } 
-                        }
+                        console.log("Place attached in remaining");                           
+                        new_attached_link = {
+                            title           : media_attachment.find('.link-title').val(),
+                            description     : media_attachment.find('.link-description').val(),
+                            image           : media_attachment.find('.link-image').val(),
+                            url             : media_attachment.find('.link-url').val(),
+                            video           : media_attachment.find('.link-video').val(),
+                        } 
                     };
 
                     var remaining = {
