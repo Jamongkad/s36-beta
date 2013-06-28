@@ -29,14 +29,21 @@
                 <div class="review-count"><strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong> Rate us!</div>
             </div>
             <div class="company-text">
-                <div class="company-text-content">
-                    <? // keep the content of #fullpage_desc in one line. ?>
-                    <div id="fullpage_desc" class="break-word"><?= nl2br( Helpers::urls_to_links(HTML::entities( substr($company->description, 0, 500) )) ); ?></div>
-                    <?php if( ! is_null($user) ): ?>
-                        <textarea id="fullpage_desc_textbox" rows="3" maxlength="500"></textarea>
-                        <div id="desc_edit_icon"></div>
-                    <?php endif; ?>
-                </div>
+                <?php if( ! is_null($user) || trim($company->description) != '' ): ?>
+                    <div class="company-text-content">
+                        <? // keep the content of #fullpage_desc in one line. ?>
+                        <div id="fullpage_desc" class="break-word"><?= nl2br( Helpers::urls_to_links(HTML::entities( substr($company->description, 0, 500) )) ); ?></div>
+                        
+                        <div id="desc_hint" style="<?= ( trim($company->description) == '' ? 'display: block;' : '' ); ?>">
+                            Add your company description
+                        </div>
+                        
+                        <?php if( ! is_null($user) ): ?>
+                            <textarea id="fullpage_desc_textbox" rows="3" maxlength="500"></textarea>
+                            <div id="desc_edit_icon"></div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div> <!-- end of .hosted-block (ratings and description) -->
