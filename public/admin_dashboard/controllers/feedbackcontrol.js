@@ -106,8 +106,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
-                console.log(me);
-
+            
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
                 var score = entity.attr('score');
@@ -140,7 +139,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } 
                 */
             }
-            /* 
+
             if(selected.length > 0) { 
 
                 if(currentUrl.match(/filed/g)) {
@@ -164,7 +163,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else {
                 alert("Action is not allowed!");
             }
-            */
 
             selected = [];
             $scope.selected = []; 
