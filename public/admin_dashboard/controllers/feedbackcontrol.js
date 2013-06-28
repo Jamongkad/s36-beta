@@ -158,6 +158,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var myparent = $(entity).parents('.dashboard-feedback');
 
             //if action is add then click on checkboxes if not click again to deselect
+            console.log(action);
             if(action == "add") {
                 if(!$(entity).is(":checked")) {
                     $(entity).click();     
@@ -209,7 +210,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.$on('expungeFeedId', function() {
-        console.log("expunged");
+        //console.log("expunged");
         FeedbackSignal.data.id = [];
         $scope.selected = [];
     })
