@@ -98,6 +98,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
 
+            var currentUrl = window.location.pathname;
             var selected = [];
 
             for(var i=0; i < $scope.selected.length; i++) {
@@ -123,6 +124,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         entity_parent.hide(); 
                     }      
 
+                    console.log(me);
+
                     selected.push(me);
                 }
 
@@ -134,11 +137,21 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
             
             if(selected.length > 0) { 
-                var feed = {
-                    id: selected
-                  , status: $scope.status_select_value
-                  , catid: Template.default_category_id
-                  , origin: Template.current_inbox_state
+
+                if(currentUrl.match(/filed/g)) {
+                    var feed = {
+                        id: selected
+                      , status: $scope.status_select_value
+                      , catid:  catids 
+                      , origin: Template.current_inbox_state
+                    }
+                } else { 
+                    var feed = {
+                        id: selected
+                      , status: $scope.status_select_value
+                      , catid: Template.default_category_id
+                      , origin: Template.current_inbox_state
+                    }
                 }
 
                 FeedbackSignal.current_state(feed);
