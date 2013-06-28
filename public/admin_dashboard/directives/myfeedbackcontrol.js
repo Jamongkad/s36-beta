@@ -68,11 +68,9 @@ angular.module('feedbackcontrol', [])
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
-
-                        console.log( $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked") );
-                        
+ 
                         if($(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked")) {
-                            $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();     
+                            console.log( $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click() );
                         }
                     }
                 } else { 
