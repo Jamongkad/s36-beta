@@ -158,27 +158,30 @@ angular.module('feedbackcontrol', [])
                     if(images.length > 0){   
                         var us = images.not(":hidden"); 
 
-                        console.log(us);
-
-                        for(var i=0; i < us.length; i++) {
-                            new_uploaded_images.push({
-                                'name': $(us[i]).find('.image-name').val() 
-                            });
+                        if(us) {
+                            console.log("Place in remaining");    
+                            for(var i=0; i < us.length; i++) {
+                                new_uploaded_images.push({
+                                    'name': $(us[i]).find('.image-name').val() 
+                                });
+                            }
                         }
+
                     }
 
                     if(media_attachment.length > 0){  
                         var link = media_attachment.not(":hidden");
 
-                        console.log(link);
-
-                        new_attached_link = {
-                            title           : media_attachment.find('.link-title').val(),
-                            description     : media_attachment.find('.link-description').val(),
-                            image           : media_attachment.find('.link-image').val(),
-                            url             : media_attachment.find('.link-url').val(),
-                            video           : media_attachment.find('.link-video').val(),
-                        } 
+                        if(link) {
+                            console.log("Place in remaining");                           
+                            new_attached_link = {
+                                title           : media_attachment.find('.link-title').val(),
+                                description     : media_attachment.find('.link-description').val(),
+                                image           : media_attachment.find('.link-image').val(),
+                                url             : media_attachment.find('.link-url').val(),
+                                video           : media_attachment.find('.link-video').val(),
+                            } 
+                        }
                     };
 
                     var remaining = {
