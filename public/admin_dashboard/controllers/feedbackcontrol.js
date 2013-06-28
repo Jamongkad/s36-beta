@@ -111,6 +111,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
                 var catid = entity.attr('catid');
+
+                console.log(me)
+                console.log(score)
+                console.log(permission)
+                console.log(mode)
  
                 if(
                       (score >= 3 && permission == 1)
