@@ -29,7 +29,6 @@ class FeedbackState {
 
     public function change_state() {        
         $feed_obj = $this->feedback_state_obj();
-        Helpers::dump($this->category_id);
         Helpers::dump($feed_obj);
         //return $this->feedback->_toggle_multiple($feed_obj);
     }
@@ -46,9 +45,11 @@ class FeedbackState {
         $result = new StdClass;
 
         if($this->mode == 'fileas') { 
+            Helpers::dump("Domp");
             $selected_category = $this->selected_category();
             $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
+            Helpers::dump("Deep");
             $default_category = $this->default_category();
             $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
