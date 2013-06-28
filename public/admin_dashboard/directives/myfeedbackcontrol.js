@@ -149,7 +149,7 @@ angular.module('feedbackcontrol', [])
                      var images = div.find('.uploaded_image');
                      var media_attachment = div.find('.attached_link');
                       
-                     var remove_images = {
+                     var remove_image = {
                         'small_url'    :$(this).find('.small-image-url').val(),
                         'medium_url'   :$(this).find('.medium-image-url').val(),
                         'large_url'    :$(this).find('.large-image-url').val()
@@ -164,10 +164,9 @@ angular.module('feedbackcontrol', [])
                         }
                     }
 
-                    console.log(media_attachment.length); 
-
                     if(media_attachment.not(":hidden")) {
                         console.log("Boo");
+                        console.log(media_attachment.length); 
                         console.log(media_attachment);                       
                     }
 
@@ -190,7 +189,7 @@ angular.module('feedbackcontrol', [])
                     var attachment_data = {
                         feedbackId      : div.find('.attachment_feedback_id').val()
                       , attachments     : remaining
-                      , remove_images   : remove_images
+                      , remove_image    : remove_image
                     } 
 
                     /*
