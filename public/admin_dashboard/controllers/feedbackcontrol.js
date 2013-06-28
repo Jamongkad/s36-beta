@@ -100,6 +100,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var currentUrl = window.location.pathname;
             var selected = [];
+            var catids = [];
 
             for(var i=0; i < $scope.selected.length; i++) {
 
@@ -109,6 +110,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
+                var catids = entity.attr('catid');
  
                 if(
                       (score >= 3 && permission == 1)
@@ -124,9 +126,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         entity_parent.hide(); 
                     }      
 
-                    console.log(me);
-
                     selected.push(me);
+                    catids.push(catid);
                 }
 
                 var checkbox = $(".feed-checkbox[value=" + me + "]");
