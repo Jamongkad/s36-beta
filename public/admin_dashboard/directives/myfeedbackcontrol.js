@@ -79,7 +79,12 @@ angular.module('feedbackcontrol', [])
                     $(".sorter-checkbox").click(); 
                 }
 
-                $(".feed-checkbox").click();
+                if($(".feed-checkbox").is(":checked")) {
+                    console.log("CLICKED");
+                    $(".feed-checkbox").click();     
+                }
+
+               
                 FeedbackControlService.expunge();
                 e.preventDefault();
             });
