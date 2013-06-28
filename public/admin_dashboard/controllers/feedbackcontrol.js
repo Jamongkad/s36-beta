@@ -101,9 +101,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var currentUrl = window.location.pathname;
             var selected = [];
             var catids = [];
-            var ids = $scope.selected.length;
+            var ids = $scope.selected;
 
-            for(var i=0; i < ids; ++i) {
+            for(var i=0; i < ids.length; ++i) {
 
                 var me = ids[i];
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
