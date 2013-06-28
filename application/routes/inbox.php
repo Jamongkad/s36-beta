@@ -74,12 +74,11 @@ return array(
     'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() use ($dbfeedback) { 
         $input = Input::get(); 
 
-        $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
-        $image = (isset($input['remove_image']))  ? $input['remove_image'] : '';
+        $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : null;
+        $image = (isset($input['remove_image']))  ? $input['remove_image'] : null;
         Helpers::dump($attachments);
         Helpers::dump($image);
         /*
-        $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
         $dbfeedback->update_feedback($input['feedbackId'], array('attachments'=>$attachments));
 
         if(isset($input['remove_image'])){
