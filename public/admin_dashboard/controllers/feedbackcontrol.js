@@ -178,11 +178,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
+        console.log($scope.checkboxes);
+
         for(var i=0; i < $scope.checkboxes.length; i++) {
              
             var entity = $scope.checkboxes[i];
             var myparent = $(entity).parents('.dashboard-feedback');
-            console.log(entity);
 
             //if action is add then click on checkboxes if not click again to deselect
             if(action == "add") {
