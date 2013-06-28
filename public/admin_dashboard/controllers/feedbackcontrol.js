@@ -108,6 +108,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
+                /*
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
                 var score = entity.attr('score');
@@ -137,8 +138,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 if( checkbox.is(":checked") ) {  
                     checkbox.click();     
                 } 
+                */
             }
-            
+            /* 
             if(selected.length > 0) { 
 
                 if(currentUrl.match(/filed/g)) {
@@ -156,13 +158,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                       , origin: Template.current_inbox_state
                     }
                 }
-
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true); 
                 $(".checky-box-container").show();  
             } else {
                 alert("Action is not allowed!");
             }
+            */
 
             selected = [];
             $scope.selected = []; 
