@@ -783,3 +783,6 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
 .delete-block:hover{
      background:#666;
 }
+.feedback-date-header {
+    padding: 10px;    
+}
