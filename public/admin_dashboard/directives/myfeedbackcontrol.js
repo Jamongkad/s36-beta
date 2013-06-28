@@ -185,16 +185,12 @@ angular.module('feedbackcontrol', [])
                       , remove_image    : remove_image
                     } 
 
-                    console.log(attachment_data);
-
-                    /*
                     $.ajax({
                         type: "POST"
                       , url: "/inbox/update_feedback_attachment"
                       , dataType: "json"
                       , data: attachment_data                
                     });                
-                    */
                 });
                 e.preventDefault();
             })
