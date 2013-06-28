@@ -102,13 +102,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var selected = [];
             var catids = [];
             var ids = $scope.selected;
+            var mode = $scope.status_select_value;
 
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
                 console.log(i);
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
-                var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
                 var catid = entity.attr('catid');
