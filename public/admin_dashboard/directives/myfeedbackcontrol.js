@@ -62,36 +62,18 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
+                console.log("I have nothing");
                 $(".checky-box-container").hide();
                 if (FeedbackSignal.data.id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
-                        $(feedback).parents('.feedback-group').show(); 
-
-                        /*j
-                        var feed_checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
-        
-                        if(feed_checkbox.is(":checked")) {
-                            console.log("Clicked for UNDO");
-                            feed_checkbox.click();
-                        }
-
-                        console.log(feed_checkbox);
-                        console.log(feed_checkbox.is(":checked"));
-                        */
+                        $(feedback).parents('.feedback-group').show();  
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
-                    $(feedback).parents('.feedback-group').show();
-                    
-                    /*
-                    var feed_checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]")
-                    if(feed_checkbox.is(":checked")) {
-                        feed_checkbox.click();
-                    }
-                    */
+                    $(feedback).parents('.feedback-group').show();    
                 }
 
                 if($(".sorter-checkbox").is(":checked")) {
