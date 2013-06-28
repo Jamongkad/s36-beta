@@ -178,9 +178,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
-        console.log($scope.checkboxes);
-
         for(var i=0; i < $scope.checkboxes.length; i++) {
+            
+            console.log(i);
              
             var entity = $scope.checkboxes[i];
             var myparent = $(entity).parents('.dashboard-feedback');
