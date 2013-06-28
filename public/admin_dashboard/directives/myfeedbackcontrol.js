@@ -69,7 +69,7 @@ angular.module('feedbackcontrol', [])
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
 
-                        var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
+                        var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();
  
                         if(checkbox.is(":checked")) {
                             console.log(checkbox);
