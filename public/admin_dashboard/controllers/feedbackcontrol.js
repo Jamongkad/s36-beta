@@ -54,7 +54,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.selected = [];
-    $scope.checkboxes = $(".feed-checkbox");
+    var checkboxes = $(".feed-checkbox");
     $scope.status_select_value = 'none';
 
     $scope.date_filter     = (!is_empty(qs) && qs['date']) ? qs['date'] : 'none';
@@ -178,11 +178,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
 
-        for(var i=0; i < $scope.checkboxes.length; i++) {
+        for(var i=0; i < this.checkboxes.length; i++) {
             
             console.log(i);
              
-            var entity = $scope.checkboxes[i];
+            var entity = this.checkboxes[i];
             var myparent = $(entity).parents('.dashboard-feedback');
 
             //if action is add then click on checkboxes if not click again to deselect
