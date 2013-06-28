@@ -166,7 +166,10 @@ angular.module('feedbackcontrol', [])
 
                     console.log(media_attachment.length); 
                     console.log(media_attachment.not(":hidden"));
-                    console.log(media_attachment);
+
+                    if(media_attachment.not(":hidden")) {
+                        console.log(media_attachment);                       
+                    }
 
                     if(media_attachment.length > 0){  
                         var link = media_attachment.not(":hidden");
