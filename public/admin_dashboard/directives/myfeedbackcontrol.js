@@ -72,7 +72,7 @@ angular.module('feedbackcontrol', [])
                         var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
  
                         if(checkbox.is(":checked")) {
-                            console.log('mahew');
+                            console.log(checkbox);
                             checkbox.click();
                             checkbox.prop("checked", false) ;
                             checkbox.removeAttr('checked');
