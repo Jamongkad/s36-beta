@@ -110,7 +110,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
-                var catids = entity.attr('catid');
+                var catid = entity.attr('catid');
  
                 if(
                       (score >= 3 && permission == 1)
