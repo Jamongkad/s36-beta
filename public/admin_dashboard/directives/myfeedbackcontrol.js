@@ -68,12 +68,6 @@ angular.module('feedbackcontrol', [])
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
-
-                        var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
- 
-                        if(checkbox.is(":checked")) {
-                            checkbox.click();
-                        }
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
