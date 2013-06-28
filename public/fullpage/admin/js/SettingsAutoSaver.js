@@ -166,9 +166,6 @@ var SettingsAutoSaver = new function(){
                 }
                 
                 result = $.parseJSON(result);
-                if(undefined != result.theme_name){
-                    layoutChanged = true;
-                }
             }
         });
         
@@ -182,10 +179,5 @@ var SettingsAutoSaver = new function(){
         
         // hide notif.
         setTimeout('Helpers.hide_notification()', 1000);
-        if(layoutChanged==true){
-            window.location.hash    = "#3";
-            window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
-        }
-        
     }
 }

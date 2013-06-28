@@ -42,7 +42,12 @@ return array (
     },
     'GET /settings/layout' => function() use($company, $hosted_settings, $fullpage){
 
-        return View::of_layout()->partial('contents', 'settings/settings_layout_view');
+        $company_name   = Config::get('application.subdomain');
+        $company_info   = $company->get_company_info($company_name); 
+        return View::of_layout()->partial('contents', 'settings/settings_layout_view', Array(
+             'panel'=>$hosted_settings->get_panel_settings($company_info->companyid)
+            ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
+        ));
         
     },
      'GET /settings/others' => function() use($company, $hosted_settings, $fullpage){

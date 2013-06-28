@@ -17,69 +17,9 @@ var Settings = new function(){
             $(this).toggleClass('off');
         });
 
+       
         /* ========================================
-        || Other Settings
-        ==========================================*/
-
-        $('#panel_desc_container').jScrollPane();
-        $('.companyDescription').click(function(){
-            $('#desc_hint').hide();
-            $('#panel_desc_container').hide();
-            $('#panel_desc_textbox').show().focus();
-            $('#panel_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
-        });
-        
-        $('#panel_desc_textbox').blur(function(){
-            $(this).hide();
-            if( $.trim($(this).val()) == '' ) $('#desc_hint').show();
-            $('#panel_desc_container').fadeIn();
-            $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
-            $('#panel_desc_container').jScrollPane();
-        });
-
-        $('.social_url').blur(function(){
-            
-            var url = $(this).val();
-            var fb_regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w\.-]+\/?$/;
-            var tw_regex = /^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?@?[\w\.-]+\/?$/;
-            
-            $(this).parent().find('.social_url_msg').hide();
-            
-            if( $(this).is('#fb_url') && url != SettingsAutoSaver.def_data.facebook_url ){
-                if( url == '' ){
-                    SettingsAutoSaver.set_data('facebook_url', url);
-                    $('.social-icon.fb a').attr('href', '');
-                    $('.social-icon.fb').hide();
-                }else if( url.match(fb_regex) != null ){
-                    SettingsAutoSaver.set_data('facebook_url', url);
-                    $('.social-icon.fb a').attr('href', url);
-                    $('.social-icon.fb').show();
-                    $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
-                }else if( url.match(fb_regex) == null ){
-                    $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
-                }
-            }
-            
-            if( $(this).is('#tw_url') && url != SettingsAutoSaver.def_data.twitter_url ){
-                if( url == '' ){
-                    SettingsAutoSaver.set_data('twitter_url', url);
-                    $('.social-icon.tw a').attr('href', '');
-                    $('.social-icon.tw').hide();
-                }else if( url.match(tw_regex) != null ){
-                    SettingsAutoSaver.set_data('twitter_url', url);
-                    $('.social-icon.tw a').attr('href', url);
-                    $('.social-icon.tw').show();
-                    $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
-                }else if( url.match(tw_regex) == null ){
-                    $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
-                }
-            }
-            
-        });
-        
-
-        /* ========================================
-        || Background image or pattern toggler
+        || Background and Patterns
         ==========================================*/
         $('#selectedBackground').change(function(){
             var bg          = $(this).val();
@@ -268,6 +208,79 @@ var Settings = new function(){
         $('#bg_repeat_rv').click(function(){
             self.change_background_repeat('repeat-y');
         });
+     /* ========================================
+    || Layout Settings
+    ==========================================*/
+    $('.layout-list li').click(function(){
+        $('.layout-list li').each(function(){
+            $(this).removeClass('selected');
+        });
+        $(this).addClass('selected');
+        $('#selectedLayout').val(this.id);
+    });
+    $('#chooseLayout').click(function(){
+        SettingsAutoSaver.set_data('theme_name', $('#selectedLayout').val());
+    });
+
+    /* ========================================
+    || Other Settings
+    ==========================================*/
+
+    $('#panel_desc_container').jScrollPane();
+    $('.companyDescription').click(function(){
+        $('#desc_hint').hide();
+        $('#panel_desc_container').hide();
+        $('#panel_desc_textbox').show().focus();
+        $('#panel_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
+    });
+    
+    $('#panel_desc_textbox').blur(function(){
+        $(this).hide();
+        if( $.trim($(this).val()) == '' ) $('#desc_hint').show();
+        $('#panel_desc_container').fadeIn();
+        $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
+        $('#panel_desc_container').jScrollPane();
+    });
+
+    $('.social_url').blur(function(){
+        
+        var url = $(this).val();
+        var fb_regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w\.-]+\/?$/;
+        var tw_regex = /^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?@?[\w\.-]+\/?$/;
+        
+        $(this).parent().find('.social_url_msg').hide();
+        
+        if( $(this).is('#fb_url') && url != SettingsAutoSaver.def_data.facebook_url ){
+            if( url == '' ){
+                SettingsAutoSaver.set_data('facebook_url', url);
+                $('.social-icon.fb a').attr('href', '');
+                $('.social-icon.fb').hide();
+            }else if( url.match(fb_regex) != null ){
+                SettingsAutoSaver.set_data('facebook_url', url);
+                $('.social-icon.fb a').attr('href', url);
+                $('.social-icon.fb').show();
+                $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+            }else if( url.match(fb_regex) == null ){
+                $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
+            }
+        }
+        
+        if( $(this).is('#tw_url') && url != SettingsAutoSaver.def_data.twitter_url ){
+            if( url == '' ){
+                SettingsAutoSaver.set_data('twitter_url', url);
+                $('.social-icon.tw a').attr('href', '');
+                $('.social-icon.tw').hide();
+            }else if( url.match(tw_regex) != null ){
+                SettingsAutoSaver.set_data('twitter_url', url);
+                $('.social-icon.tw a').attr('href', url);
+                $('.social-icon.tw').show();
+                $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+            }else if( url.match(tw_regex) == null ){
+                $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
+            }
+        }
+        
+    });
     }
      /* ========================================
     || Pattern change function
