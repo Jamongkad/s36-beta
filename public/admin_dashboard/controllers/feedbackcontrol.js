@@ -179,22 +179,22 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var action = (checkbox.checked ? 'add' : 'remove');
 
         for(var i=0; i < checkboxes.length; i++) {
-            
-            console.log(i);
              
-            var entity = checkboxes[i];
-            var myparent = $(entity).parents('.dashboard-feedback');
+            var entity = $(checkboxes[i]);
+            var myparent = entity.parents('.dashboard-feedback');
 
             //if action is add then click on checkboxes if not click again to deselect
             if(action == "add") {
-                if(!$(entity).is(":checked")) {
-                    $(entity).click();     
+                if(!entity.is(":checked")) {
+                    entity.click();     
                 } 
             } else { 
-                $(entity).click();     
+                entity.click();     
             }
 
-            update_selected(action, parseInt($(entity).val(), 10));      
+            console.log(entity.val());
+
+            update_selected(action, parseInt(entity.val(), 10));      
         }
     }
 
