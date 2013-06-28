@@ -57,10 +57,13 @@
     | Single Page
     |--------------------------------------------------------------------------
     */
+    echo HTML::style('/fullpage/common/css/S36FullpageCommon.css');
     echo HTML::style('/fullpage/common/css/s36_client_style.css'); 
     echo HTML::style('/fullpage/common/css/S36SinglePage.css'); 
     echo HTML::style('/fullpage/common/css/S36SingleCommon.css'); 
-    echo HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php.
+    echo HTML::style('/fullpage/common/css/override.css');
+    echo HTML::style('/fullpage/common/css/fullpage_form.css');
+    echo HTML::style('/css/respond.css');
     /*
     |--------------------------------------------------------------------------
     | FancyBox
@@ -121,7 +124,11 @@
         S36FeedbackActions.vote();
         S36FeedbackActions.share();
         S36FeedbackActions.feedback_report_fancy();
-        S36FeedbackActions.open_submission_form();
+        //S36FeedbackActions.open_submission_form();
+        
+        
+        var fullpageCommon = new S36FullpageCommon;
+        fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         
     });
     </script>
@@ -158,54 +165,9 @@
             
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>
             
-            <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
-            <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
+            <?= View::make('hosted/partials/fullpage_company_summary_view', array('company' => $company, 'widget_loader' => $widget_loader, 'user' => $user)); ?>
             
-            <div class="hosted-block">
-                <div class="company-description clear">
-                    <div class="company-text">
-                        <? // keep the content of fullpage_desc_text in one line. ?>
-                        <div id="fullpage_desc" class="break-word" itemprop="summary"><?= nl2br( Helpers::urls_to_links(HTML::entities($company->description)) ); ?></div>
-                    </div>
-                    <div class="send-button" widgetkey="<?=$company->widgetkey?>">
-                        <a href="javascript:;">
-                            Send in feedback
-                        </a>
-                    </div>
-                </div>
-            </div>
             
-            <div class="hosted-block">
-                <div class="company-reviews clear">
-                    <div class="company-recommendation">
-                        <div class="green-thumb"> 
-                            <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
-                            of our customers recommend us to their friends.
-                        </div>
-                    </div>
-                    <div class="company-rating"> 
-                        <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
-                        <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
-                        <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
-                    </div>
-                </div>
-            </div>
-            <!-- lightbox notification -->
-            <div id="lightboxNotification">
-                <div class="lightbox-pandora">
-                    <div class="lightbox-header">Oops! Something went wrong..</div>
-                    <div class="lightbox-body">
-                        <div class="lightbox-message error">
-                            <ul>
-                                <li>Error Message</li><li>Error Message</li>
-                            </ul>
-                        </div>
-                        <div class="lightbox-buttons">
-                            <a href="#" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <?php
             $feedback_id                = $feedback->id;
             $tw_marker                  = ($feedback->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
@@ -355,7 +317,7 @@
                                 <? if($feedback->admin_reply && $feedback->admin_username): ?>
                                     <div class="admin-comment-block">
                                         <div class="admin-comment">
-                                            <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
+                                            <div class="admin-name break-word"><!-- <?=$admin_companyname?> says.. --></div>
                                             <div class="admin-message clear">
                                                 <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
                                                 <div class="message break-word"><?= Helpers::fb_comment_str($feedback->admin_reply); ?></div>

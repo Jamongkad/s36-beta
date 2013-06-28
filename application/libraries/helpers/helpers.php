@@ -53,13 +53,17 @@ class Helpers {
     
     public static function urls_to_links($str){
         
+        // solution 1.
         // that extra "http" in $link will be removed in link if "http" or "https" already exists.
         $url_regex = '/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/i';
         $link = '<a href="http://$1" target="_blank">$1</a>';
-        return preg_replace($url_regex, $link, $str);
+        $str = preg_replace($url_regex, $link, $str);
+        $str = str_replace('http://http', 'http', $str);
+        return $str;
         
         
-        // don't wanna remove the codes below. just a remembrance. if i'll ever remember this.
+        // solution 2.
+        // don't wanna remove this code as a remembrance. if i'll ever remember this.
         // preg_match_all($url_regex, $str, $urls);
         // $offset = 0;
         

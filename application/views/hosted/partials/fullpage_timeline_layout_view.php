@@ -183,7 +183,7 @@
                 <div class="admin-comment-block">
                     <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                         <div class="admin-name break-word">
-                            <?=$admin_companyname?> says.. 
+                            <!-- <?=$admin_companyname?> says.. -->
                             <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                         </div>
                         <div class="admin-message clear">
@@ -229,7 +229,7 @@
             <div class="feedback-icon-list clear">
                 <div class="feedback-recommendation">
                     <?php if( $is_recommended ): ?>
-                        <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                        <div class="green-thumb break-word">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                     <?php endif; ?>
                     <div class="vote-block" <?=(!$is_recommended) ? 'style="padding-top:5px"' : null?>>
                         <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">

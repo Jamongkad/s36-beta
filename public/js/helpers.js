@@ -23,7 +23,10 @@ var Helpers = new function() {
     }
     
     this.urls_to_links = function(s){
-        return s.replace(/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/gi, '<a href="http://$1" target="_blank">$1</a>');
+        var link = '<a href="http://$1" target="_blank">$1</a>';
+        s = s.replace(/((https?\:\/\/)?(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*)/gi, link);
+        s = s.replace(/http\:\/\/http/gi, 'http');
+        return s;
     }
     
     this.fb_comment_str = function(s){
@@ -41,7 +44,7 @@ var Helpers = new function() {
 
     this.display_error_mes = function(mes) { 
         $('.lightbox-message').addClass('error');
-        $('.lightbox-message ul').html('').each(function(){
+        $('#lightboxNotification .lightbox-message ul').html('').each(function(){
             $.each(mes,function(e,str){
                 $('.lightbox-message ul').append('<li>'+str+'</li>'); 
             });
@@ -52,11 +55,7 @@ var Helpers = new function() {
 
     this.display_lightbox = function() { 
         $('#lightboxNotification').fadeIn();
-        $('#lightbox').fadeIn();
-        $('.lightbox-s').fadeIn();
         $('#lightboxNotification .lightbox-button').click(function(e){
-            $('.lightbox-s').fadeOut('fast');
-            $('#lightbox').fadeOut('fast');
             $('#lightboxNotification').fadeOut('fast');
             e.preventDefault();
         });

@@ -10,9 +10,6 @@
     width: 185px;
 }
 .company-rating .stars{ width: 110px; }
-#fullpage_desc{ width: 98%; min-height: 50px; }
-#fullpage_desc.editable:hover{ background-color: #f4f4f4; cursor: pointer; }
-#fullpage_desc_textbox{ display: none; width: 97%; font-size: 12px; }
 /*.last_name{ display: none; }*/
 .undo_flag{
     color:#455b61;
@@ -47,6 +44,6 @@
 
 #adminWindowBox input[type="text"]{ width: 250px !important; }
 #panel_desc_container{ height: 100px; cursor: text; background-color: #f4f4f4; border: #e7e7e7 1px solid; }
-#desc_hint{ position: absolute; z-index: 10; top: 5px; left: 7px; font-size: 14px; color: #bbb; }
+#desc_hint{ position: absolute; z-index: 10; top: 5px; left: 7px; font-size: 14px; color: #bbb; font-style: italic; display: none; }
 .companyDescription{ margin: 2px 6px; min-height: 100px; }
 #panel_desc_textbox{ display: none; width: 99%; height: 94px; }
