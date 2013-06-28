@@ -28,9 +28,13 @@ class FeedbackState {
     } 
 
     public function change_state() {        
-        $feed_obj = $this->feedback_state_obj();
-        Helpers::dump($feed_obj);
-        //return $this->feedback->_toggle_multiple($feed_obj);
+        if(is_array($this->category_id)) {
+            Helpers::dump($this->category_id);
+        } else { 
+            $feed_obj = $this->feedback_state_obj();
+            Helpers::dump($feed_obj);
+            //return $this->feedback->_toggle_multiple($feed_obj);
+        }
     }
 
     public function write_summary() {
