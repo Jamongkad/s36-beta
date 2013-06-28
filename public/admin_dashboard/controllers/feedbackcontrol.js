@@ -131,12 +131,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     selected.push(me);
                     catids.push(catid);
                 }
-
+                
+                /*
                 var checkbox = $(".feed-checkbox[value=" + me + "]");
       
                 if( checkbox.is(":checked") ) {  
                     checkbox.click();     
                 } 
+                */
             }
             /* 
             if(selected.length > 0) { 
