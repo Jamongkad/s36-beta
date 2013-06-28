@@ -80,6 +80,8 @@ angular.module('feedbackcontrol', [])
                     $(".sorter-checkbox").click();
                 }
 
+                console.log($(".feed-checkbox"));
+
                 FeedbackControlService.expunge();
                 e.preventDefault();
             });
