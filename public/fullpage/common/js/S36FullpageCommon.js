@@ -112,6 +112,9 @@ var S36FullpageCommon = function(){
 		$('.share-box').hover(function(){},function(){
 			//$(this).fadeOut('fast');
 		});
+
+		//reposition the company name and title
+		self.reposition_company_name_and_rating();
 	}
 	
 	this.convert_rating_to_text = function(val){
@@ -147,6 +150,15 @@ var S36FullpageCommon = function(){
 				easing: 'linear',
 				queue: false
 			  }
+		});
+	}
+	/* ========================================
+	|| This function will adjust the company name according to the width of the avatar
+	==========================================*/
+	this.reposition_company_name_and_rating = function(){
+		$('#avatarContainer').find('img').load(function(){
+			var $wd = $(this).width() + 40;
+			$('#coverPhotoContainer').find('.company-rating').css('left',$wd+'px');
 		});
 	}
 	/* ========================================

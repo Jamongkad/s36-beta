@@ -115,6 +115,25 @@
             </div>
         <?php endif; ?>
     </div>
+    <div class="company-rating">
+        <div class="company-cover-name"><h1><?=ucfirst($company->name)?></h1></div>
+        <div class="dynamic-stars-container">
+            <div class="dynamic-stars">
+                <div class="star-ratings clear">
+                    <div class="star-container clear">
+                        <input type="hidden" id="rating" name="rating" value="<?php echo round($company->avg_rating); ?>" />
+                        <div id="1" class="star <?= ($company->avg_rating >= 1 ? 'full' : ''); ?>"></div>
+                        <div id="2" class="star <?= ($company->avg_rating >= 2 ? 'full' : ''); ?>"></div>
+                        <div id="3" class="star <?= ($company->avg_rating >= 3 ? 'full' : ''); ?>"></div>
+                        <div id="4" class="star <?= ($company->avg_rating >= 4 ? 'full' : ''); ?>"></div>
+                        <div id="5" class="star <?= ($company->avg_rating >= 5 ? 'full' : ''); ?>"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-count"><strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong> Rate us!</div>
+    </div>
+    <div class="cover-shadow"></div>
 </div>
 <?= HTML::style('/fullpage/admin/css/FullpageCover.css'); ?>
 <?= HTML::script('/fullpage/admin/js/FullpageCover.js'); ?>

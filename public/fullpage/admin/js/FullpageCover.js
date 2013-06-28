@@ -14,6 +14,7 @@ var FullpageCover = function(){
         ==========================================*/
         $('#cv_image').fileupload({
             dataType: 'json',
+            dropZone: null,
             add: function(e, data){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
@@ -31,12 +32,14 @@ var FullpageCover = function(){
                 Helpers.show_notification('Changing Cover Photo',0);
                 $('#coverPhoto img').css('opacity', '0.2');
             },done: function(e, data){
+                console.log('the cover photo was initiated!! what kind of sorcery is this!!');
                 self.change_cover_image(data.result[0]);
                 self.turn_on_cp_edit_mode(true);
                 self.make_cover_undraggable(false);
                 self.cover_photo_action = 'change';
                 Helpers.hide_notification();
                 $('#coverPhoto img').animate({'opacity': '1'});
+                
             }, error: function(jqXHR){
                 Helpers.display_error_mes([jqXHR.responseText]);
                 Helpers.hide_notification();
@@ -114,6 +117,7 @@ var FullpageCover = function(){
         ==========================================*/
         $('#company_logo').fileupload({
             dataType: 'json',
+            dropZone: null,
             add: function(e, data){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){

@@ -375,35 +375,67 @@ $(document).keypress(function(event){
                 });
                 $('.button-disabler').hide();
             }
+
         });
         
         // initiate the cycle script for the #steps div
-        var $steps = $('#formBody').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assign_class });
+        /*
+        var $steps = $('#formBody').cycle({
+             fx: 'fade'
+            ,timeout: 0
+            ,slides: '> div'
+        });
+        */
         // checkout the $('#theHostedFormContainer').hide();  below.
-        
+        //call this everytime you want an awesome adjustment
+        adjust_form_body_container();
+
         /* clicking back and next buttons */
         $('#next').click(function(){
             var cur_page = $('.current').attr('id');
+            //adjust the height of the form container based on the height of the current page class
             if(cur_page == 'step1'){
                 if(FormValidatePageOne.validate()) {
-                    $steps.cycle('next');
+                    $('.current').removeClass('current');
+                    $('#step1').fadeOut('fast');
+                    $('#step2').fadeIn('fast').addClass('current');
+                    $('#back').fadeIn('fast');
+                    adjust_form_body_container();
                 }
             }else if(cur_page == 'step2'){
                 if(validate_form()) {
-                    scale_review_textbox();
                     synchronize_inputs();
-                    $steps.cycle('next');
+                    $('.current').removeClass('current');
+                    $('#step2').fadeOut('fast');
+                    $('#step3').fadeIn('fast').addClass('current');
+                    adjust_form_body_container();
                 }
             }else if(cur_page == 'step3'){
                 if(push_to_last_window()){
                     submit_feedback();
                     // you shall not pass if submit_feedback() returned false;
-                    $steps.cycle('next');
+                    $('.current').removeClass('current');
+                    $('#step3').fadeOut('fast');
+                    $('#step4').fadeIn('fast').addClass('current');
+                    adjust_form_body_container();
                 }
             }
         });
         $('#back').click(function(){
-            $steps.cycle('prev');
+            var cur_page = $('.current').attr('id');
+            if(cur_page == 'step2'){
+                $('.current').removeClass('current');
+                $('#step2').fadeOut('fast');
+                $('#step1').fadeIn('fast').addClass('current');
+                $('#back').fadeOut('fast');
+                adjust_form_body_container();
+            }else if(cur_page == 'step3'){
+                // you shall not pass if submit_feedback() returned false;
+                $('.current').removeClass('current');
+                $('#step3').fadeOut('fast');
+                $('#step2').fadeIn('fast').addClass('current');
+                adjust_form_body_container();
+            }
         });
         
         
@@ -468,6 +500,21 @@ $(document).keypress(function(event){
     }
     function adjust_review_textbox_height(val){
         $('#review-feedback-text').animate({'height':val},100);
+    }
+    function adjust_form_body_container(){
+        var cur_page_height = $('.current').height();
+        var cur_page = $('.current').attr('id');
+        if(cur_page == 'step1'){
+            if($('.e_vid_check').length > 0 && $('.e_img_check').length > 0){
+                cur_page_height = cur_page_height + 120;
+            }else if($('.e_vid_check').length <= 0 && $('.e_img_check').length > 0){
+                cur_page_height = cur_page_height + 40;
+            }else if($('.e_vid_check').length > 0 && $('.e_img_check').length <= 0){
+                cur_page_height = cur_page_height + 78;    
+            }
+        }
+        $('#formBody').animate({height:cur_page_height});
+        console.log('current page height adjusting to : '+cur_page_height);
     }
     function assign_class(){
         $(this).parent().find('div.current').removeClass('current'); //find all div that has a current class and remove it
