@@ -46,10 +46,12 @@ class FeedbackState {
 
         if($this->mode == 'fileas') { 
             $selected_category = $this->selected_category();
+            Helpers::dump("Dont walk away from me.");
             Helpers::dump($selected_category);
             $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
             $default_category = $this->default_category();
+            Helpers::dump("I have nothing.");
             Helpers::dump($default_category);
             $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
@@ -70,6 +72,7 @@ class FeedbackState {
     }
 
     public function selected_category() { 
+        Helpers::dump($this->category_id);
         $category = DB::Table('Category')->where('categoryId', '=', $this->category_id)
                                          ->first($this->category_vars);
         return $category;
