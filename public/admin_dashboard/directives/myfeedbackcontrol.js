@@ -148,9 +148,7 @@ angular.module('feedbackcontrol', [])
                      var div = $(this).parents('.uploaded-images-and-links');
                      var images = div.find('.uploaded_image');
                      var media_attachment = div.find('.attached_link');
-                     
-                     //$(this).remove();                    
-
+                      
                      var remove_images = {
                         'small_url'    :$(this).find('.small-image-url').val(),
                         'medium_url'   :$(this).find('.medium-image-url').val(),
@@ -187,7 +185,7 @@ angular.module('feedbackcontrol', [])
                       , remove_images   : remove_images
                     } 
 
-                    console.log(media_attachment.length);
+                    console.log(images);
                     console.log(media_attachment);
                     /*
                     $.ajax({
