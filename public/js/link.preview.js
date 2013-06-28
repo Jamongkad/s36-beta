@@ -78,7 +78,7 @@
 						init_thumbnail_vid_close_btn();
 						//scale_review_textbox();
 						//scale_feedback_textbox();
-						assign_class();
+						adjust_form_body_container();
 						$('.loading-box').fadeOut('fast');
 					}, "json");
 				}

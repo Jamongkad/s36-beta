@@ -21,7 +21,7 @@ var S36FullpageAdmin = function(layoutObj){
         // layoutObj is used as param because we use S36FullpageAdmin.show_notification() 
         // inside PanelAutoSaver.
         PanelAutoSaver.init(layoutObj);
-
+        
         /* ========================================
         || Add a custom scrollbar on the quickinbox container
         ==========================================*/

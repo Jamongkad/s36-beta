@@ -14,7 +14,7 @@ body{
 }
 .company-text{
 	/*width:77%;*/
-	margin-left:195px;
+	/*margin-left:195px;*/
 	width:auto;
 	float:none;
 	/*top:-15px;*/
@@ -38,8 +38,8 @@ body{
 .company-text-content{
 	/*padding:5px;
 	background:#f1f1f1;*/
-	padding:5px;
-	background:#f1f1f1;
+	padding:10px 15px;
+	background:#f6f6f6;
 }
 /* Tablet Landscape */
 @media screen and (max-width: 600px) {

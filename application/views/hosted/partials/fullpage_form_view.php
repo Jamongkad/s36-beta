@@ -1,4 +1,5 @@
-<div id="theHostedFormContainer">
+<script type="text/javascript" src="/fullpage/common/js/fullpage_form_script.js"></script>
+<div id="theHostedFormContainer" style="display:none">
     <!-- added for form -->
     <div class="padded-10">
         <div id="formBox">
@@ -84,7 +85,7 @@
                     <!-- end of lightbox -->
                     <div id="formBody">
                         <!-- form window 1 -->
-                        <div id="step1" class="form-page" style="display:none">
+                        <div id="step1" class="form-page current" style="display:block;height:341px">
                             <div class="form-page-body">
                                 <!-- star ratings -->
                                 <div class="grids">
@@ -142,7 +143,7 @@
                             </div>
                             <!-- end of form page body window 1 -->
                         </div>
-                        <div id="step2" class="form-page" style="height:350px">
+                        <div id="step2" class="form-page" style="display:none">
                             
                             <div class="form-page-body">
                                 <!-- start of social buttons -->
@@ -298,7 +299,7 @@
                             <!-- end of form page body window 1 -->
                             
                         </div>
-                        <div id="step4" class="form-page" style="display:none" >
+                        <div id="step4" class="form-page" style="display:none">
                             <div class="form-page-body">
                                 <h2>Thank you for sending in your feedback!</h2>
                                 <br />

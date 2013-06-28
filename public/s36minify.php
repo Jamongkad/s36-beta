@@ -21,7 +21,8 @@ $groups = array(
             ,'/js/inbox/Status.js'
             ,'/js/jquery-autogrow-textarea.js'
             ,'/js/link.preview.js'
-            ,'/fullpage/admin/js/jcycle.js'
+            ,'/fullpage/common/js/jquery.jcycle2.js'
+            
         )
      ),
      'FullpageCommon.js' => array(
@@ -32,7 +33,8 @@ $groups = array(
             ,'/fullpage/common/js/modernizr.js'
             ,'/fullpage/common/js/feedbackactions.js'
             ,'/fullpage/common/js/s36_client_script.js'
-            ,'/fullpage/common/js/fullpage_form_script.js'
+            /*,'/fullpage/common/js/fullpage_form_script.js'*/
+            
         )
      ),
      'FullpageCommon.css' => array(
