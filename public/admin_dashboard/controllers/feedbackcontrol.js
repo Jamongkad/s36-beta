@@ -102,26 +102,19 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var selected = [];
             var catids = [];
 
+            $scope.selected.map(function(item) {
+                console.log(item);
+            });
+            /*
             for(var i=0; i < $scope.selected.length; i++) {
 
-                console.log($scope.selected);
-
                 var me = $scope.selected[i];
-                console.log(i);
-                console.log(me);
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
                 var mode = $scope.status_select_value;
                 var score = entity.attr('score');
                 var permission = entity.attr('permission');
                 var catid = entity.attr('catid');
-                
-                /*
-                console.log(me)
-                console.log(score)
-                console.log(permission)
-                console.log(mode)
-                */
  
                 if(
                       (score >= 3 && permission == 1)
@@ -172,6 +165,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else {
                 alert("Action is not allowed!");
             }
+            */
 
             selected = [];
             $scope.selected = []; 
