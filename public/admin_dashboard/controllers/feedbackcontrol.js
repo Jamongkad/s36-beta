@@ -104,6 +104,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             for(var i=0; i < $scope.selected.length; i++) {
 
+                console.log($scope.selected);
+
                 var me = $scope.selected[i];
                 console.log(i);
                 console.log(me);
