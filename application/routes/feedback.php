@@ -88,6 +88,16 @@ return array(
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed = Input::get('feed_data');
         $undo_flag = Input::get('undo');
+
+        $feed_ids   = (is_array($feed['id'])) ? $feed['id'] : Array($feed['id']);
+        $cat_id     = $feed['catid'];
+        $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
+        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
+
+        Helpers::dump($feed_ids);
+        Helpers::dump($cat_id);
+        Helpers::dump($mode);
+        Helpers::dump($company_id);
         /*
         $feed_ids   = Input::get('feed_ids');
         $cat_id     = Input::get('cat_id');
@@ -98,8 +108,6 @@ return array(
         $feedbackstate->change_state();
         $feedbackstate->write_summary();
         */
-        Helpers::dump($feed);
-        Helpers::dump($undo_flag);
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
