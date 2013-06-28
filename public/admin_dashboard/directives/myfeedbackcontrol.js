@@ -70,13 +70,14 @@ angular.module('feedbackcontrol', [])
                         $(feedback).parents('.feedback-group').show();  
 
                         var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();
- 
+                        /* 
                         if(checkbox.is(":checked")) {
                             console.log(checkbox);
                             checkbox.click();
                             checkbox.prop("checked", false) ;
                             checkbox.removeAttr('checked');
                         }
+                        */
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
