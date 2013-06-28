@@ -108,6 +108,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
+                console.log(me);
                 /*
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
                 var entity_parent = entity.parents('.feedback-group');
