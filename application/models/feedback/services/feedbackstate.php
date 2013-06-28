@@ -29,7 +29,7 @@ class FeedbackState {
 
     public function change_state() {        
         $feed_obj = $this->feedback_state_obj();
-        Helpers::dump($this->mode);
+        Helpers::dump($this->category_id);
         Helpers::dump($feed_obj);
         //return $this->feedback->_toggle_multiple($feed_obj);
     }
