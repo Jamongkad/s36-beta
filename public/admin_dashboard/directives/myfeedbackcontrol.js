@@ -88,6 +88,8 @@ angular.module('feedbackcontrol', [])
                 if($('.feed-checkbox').is(":checked")) {
                     $('.feed-checkbox').prop("checked", false);
                 }
+
+                $(".dashboard-feedback").css({'background-color': '#FFF'});
                
                 FeedbackControlService.expunge();
                 e.preventDefault();
