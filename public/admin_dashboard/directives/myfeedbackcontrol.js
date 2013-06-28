@@ -80,7 +80,7 @@ angular.module('feedbackcontrol', [])
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
 
-                    var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
+                    var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]");
 
                     if(checkbox.is(":checked")) {
                         checkbox.click();     
@@ -89,6 +89,10 @@ angular.module('feedbackcontrol', [])
 
                 if($(".sorter-checkbox").is(":checked")) {
                     $(".sorter-checkbox").click(); 
+                }
+
+                if($('.feed-checkbox').is(":checked")) {
+                    $('.feed-checkbox').prop("checked", false);
                 }
                
                 FeedbackControlService.expunge();
