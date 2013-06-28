@@ -45,12 +45,12 @@ class FeedbackState {
         $result = new StdClass;
 
         if($this->mode == 'fileas') { 
-            Helpers::dump("Domp");
             $selected_category = $this->selected_category();
+            Helpers::dump($selected_category);
             $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
-            Helpers::dump("Deep");
             $default_category = $this->default_category();
+            Helpers::dump($default_category);
             $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
 
