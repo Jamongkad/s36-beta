@@ -118,9 +118,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
 
                 var checkbox = $(".feed-checkbox[value=" + me + "]");
+
+                console.log(checkbox);
                 
-                if( checkbox.is(":checked") ) {
-                    console.log("unchecked");
+                if( checkbox.is(":checked") ) {  
                     checkbox.click();     
                 } 
             }
