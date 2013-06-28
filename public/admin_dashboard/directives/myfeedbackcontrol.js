@@ -75,6 +75,10 @@ angular.module('feedbackcontrol', [])
                     $(feedback).parents('.feedback-group').show();
                 }
 
+                if($(".sorter-checkbox").is(":checked")) {
+                    $(".sorter-checkbox").click();
+                }
+
                 FeedbackControlService.expunge();
                 e.preventDefault();
             });
