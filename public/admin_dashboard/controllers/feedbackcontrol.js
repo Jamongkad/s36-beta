@@ -102,7 +102,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var selected = [];
             var catids = [];
 
-            $scope.selected.map(function(item) {
+            $scope.selected.forEach(function(item) {
 
                 var me = $scope.selected[item];
                 var entity = $(".dashboard-feedback[feedback=" + me + "]");
