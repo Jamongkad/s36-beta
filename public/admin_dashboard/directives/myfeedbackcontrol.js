@@ -159,7 +159,7 @@ angular.module('feedbackcontrol', [])
                         var us = images.not(":hidden"); 
 
                         if(us) {
-                            console.log("Place in remaining");    
+                            console.log("Place image in remaining");    
                             for(var i=0; i < us.length; i++) {
                                 new_uploaded_images.push({
                                     'name': $(us[i]).find('.image-name').val() 
@@ -173,7 +173,7 @@ angular.module('feedbackcontrol', [])
                         var link = media_attachment.not(":hidden");
 
                         if(link) {
-                            console.log("Place in remaining");                           
+                            console.log("Place attached in remaining");                           
                             new_attached_link = {
                                 title           : media_attachment.find('.link-title').val(),
                                 description     : media_attachment.find('.link-description').val(),
