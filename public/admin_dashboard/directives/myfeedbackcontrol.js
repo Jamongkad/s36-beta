@@ -62,7 +62,6 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
-                console.log("I have nothing");
                 $(".checky-box-container").hide();
                 if (FeedbackSignal.data.id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
@@ -80,7 +79,7 @@ angular.module('feedbackcontrol', [])
                     $(".sorter-checkbox").click();
                 }
 
-                console.log($(".feed-checkbox"));
+                console.log($(".feed-checkbox").click());
 
                 FeedbackControlService.expunge();
                 e.preventDefault();
