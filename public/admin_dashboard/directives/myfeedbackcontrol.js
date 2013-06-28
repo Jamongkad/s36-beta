@@ -77,9 +77,8 @@ angular.module('feedbackcontrol', [])
 
                 if($(".sorter-checkbox").is(":checked")) {
                     $(".sorter-checkbox").click();
+                    $(".feed-checkbox").click();
                 }
-
-                console.log($(".feed-checkbox").click());
 
                 FeedbackControlService.expunge();
                 e.preventDefault();
