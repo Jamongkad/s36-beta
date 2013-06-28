@@ -76,19 +76,17 @@ return array(
 
         $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : null;
         $image = (isset($input['remove_image']))  ? $input['remove_image'] : null;
-        Helpers::dump($attachments);
-        Helpers::dump($image);
-        /*
+
         $dbfeedback->update_feedback($input['feedbackId'], array('attachments'=>$attachments));
 
-        if(isset($input['remove_image'])){
-            foreach($input['remove_image'] as $url){ 
+        if($image){
+            foreach($image as $url){ 
                 $url = explode('uploaded_images',$url); //separate the application url from the image path
                 $url = Config::get('application.upload_dir')."/uploaded_images{$url[1]}"; //get the correct image path for removal
                 @unlink($url);
             }
         }
-        */
+
     })
 );
 
