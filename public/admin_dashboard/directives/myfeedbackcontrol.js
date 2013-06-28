@@ -70,7 +70,7 @@ angular.module('feedbackcontrol', [])
                         $(feedback).parents('.feedback-group').show();  
  
                         if($(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked")) {
-                            console.log( $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click() );
+                            console.log( $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").prop("checked", false) );
                         }
                     }
                 } else { 
