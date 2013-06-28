@@ -164,7 +164,7 @@ angular.module('feedbackcontrol', [])
                         }
                     }
 
-                    if(media_attachment.is(":hidden")) {
+                    if(!media_attachment.is(":hidden")) {
                         console.log("Boo");
                         console.log(media_attachment.length); 
                         console.log(media_attachment);                       
