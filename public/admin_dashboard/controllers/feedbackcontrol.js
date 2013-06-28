@@ -64,18 +64,27 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     
     $scope.feedback_status = function($event) {         
 
+        var currentUrl = window.location.pathname;
         var target = $($event.target);
         var feed = $.parseJSON(target.attr('data-feed'));
-
-        var current = {
-            id: feed.id
-          , catid: Template.default_category_id
-          , status: feed.status
-          , origin: Template.current_inbox_state
+        
+        if(currentUrl.match(/filed/g)) {
+            var current = {
+                id: feed.id
+              , catid: feed.catid
+              , status: feed.status
+              , origin: Template.current_inbox_state
+            } 
+        } else { 
+            var current = {
+                id: feed.id
+              , catid: Template.default_category_id
+              , status: feed.status
+              , origin: Template.current_inbox_state
+            }
         }
 
         FeedbackSignal.current_state(current);
-
         feed.origin = Template.current_inbox_state;
         FeedbackControlService.change_status(feed, true);
     }
