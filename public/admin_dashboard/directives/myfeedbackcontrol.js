@@ -189,7 +189,7 @@ angular.module('feedbackcontrol', [])
                       , remove_images   : remove_images
                     } 
 
-                    console.log(attachment_data);
+                    console.log(media_attachment);
                     /*
                     $.ajax({
                         type: "POST"
