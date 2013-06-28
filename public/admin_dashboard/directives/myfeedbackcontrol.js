@@ -72,6 +72,8 @@ angular.module('feedbackcontrol', [])
                          if($(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked")) {
                              $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();
                          }
+                        
+                         console.log( $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]") );
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
