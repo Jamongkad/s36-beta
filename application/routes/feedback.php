@@ -86,6 +86,8 @@ return array(
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
+        $feed = Input::get('feed_data');
+        $undo_flag = Input::get('undo');
         /*
         $feed_ids   = Input::get('feed_ids');
         $cat_id     = Input::get('cat_id');
@@ -96,7 +98,8 @@ return array(
         $feedbackstate->change_state();
         $feedbackstate->write_summary();
         */
-        Helpers::dump(Input::get());
+        Helpers::dump($feed);
+        Helpers::dump($undo_flag);
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
