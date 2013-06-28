@@ -6,7 +6,6 @@
         <link rel="stylesheet" type="text/css" media="all "href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
         <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
         <?=HTML::script('/minified/Global.js')?>
         <?=HTML::style('/minified/Global.css')?>

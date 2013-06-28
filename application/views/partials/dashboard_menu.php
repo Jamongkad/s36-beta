@@ -9,9 +9,9 @@
         <li><a href="/settings/display">Display Setup</a></li>
         <li><a href="javascript:;">Settings</a>
             <ul class="submenu">
-                <li class="first-menu-subchild"><a href="#">Background</a></li>
-                <li><a href="#">Layout</a></li>                                
-                <li class="last-menu-subchild"><a href="#">Other Settings</a></li>                                
+                <li class="first-menu-subchild"><a href="/settings/background">Background</a></li>
+                <li><a href="/settings/layout">Layout</a></li>                                
+                <li class="last-menu-subchild"><a href="/settings/others">Other Settings</a></li>                                
             </ul>
         </li>
     </ul>
