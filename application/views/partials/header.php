@@ -42,7 +42,6 @@
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer">
-            
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>
 
             <div id="theDashboard">

@@ -32,7 +32,6 @@ var FullpageCover = function(){
                 Helpers.show_notification('Changing Cover Photo',0);
                 $('#coverPhoto img').css('opacity', '0.2');
             },done: function(e, data){
-                console.log('the cover photo was initiated!! what kind of sorcery is this!!');
                 self.change_cover_image(data.result[0]);
                 self.turn_on_cp_edit_mode(true);
                 self.make_cover_undraggable(false);
@@ -213,6 +212,10 @@ var FullpageCover = function(){
             
         });
         
+        
+        //reposition the company name and title
+        self.reposition_company_name_and_rating();
+        
     }
     
     
@@ -319,6 +322,18 @@ var FullpageCover = function(){
             $('#avatarButtonIcon').show();
             $('#logoActionButtons').hide();
         }
+    }
+    
+    
+    
+    /* ========================================
+    || This function will adjust the company name according to the width of the avatar
+    ==========================================*/
+    this.reposition_company_name_and_rating = function(){
+        $('#avatarContainer').find('img').load(function(){
+            var $wd = $(this).width() + 40;
+            $('#coverPhotoContainer').find('.company-rating').css('left',$wd+'px');
+        });
     }
     
 }

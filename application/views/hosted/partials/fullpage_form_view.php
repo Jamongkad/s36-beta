@@ -1,4 +1,3 @@
-<script type="text/javascript" src="/fullpage/common/js/fullpage_form_script.js"></script>
 <div id="theHostedFormContainer" style="display:none">
     <!-- added for form -->
     <div class="padded-10">
@@ -287,7 +286,7 @@
                                                         <div class="star full"></div>
                                                     </div>
                                                     <div class="star-text">
-                                                        <span class="">Excellent!</span>
+                                                        <span>Excellent!</span>
                                                     </div>
                                                 </div>
                                             </div>

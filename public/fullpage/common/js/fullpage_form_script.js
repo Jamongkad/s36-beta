@@ -6,7 +6,7 @@ $(document).keypress(function(event){
 });
 
     $(document).ready(function(){
-        
+        //console.log( FB.getLoginStatus() );
         $('#fb-login').click(function(){
             FB.login(function(response) {
                if (response.authResponse) {
@@ -514,7 +514,6 @@ $(document).keypress(function(event){
             }
         }
         $('#formBody').animate({height:cur_page_height});
-        console.log('current page height adjusting to : '+cur_page_height);
     }
     function assign_class(){
         $(this).parent().find('div.current').removeClass('current'); //find all div that has a current class and remove it

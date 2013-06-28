@@ -72,30 +72,51 @@ var S36FullpageCommon = function(){
         ========================*/
         
         $('.dynamic-stars .star-container .star').hover(function(){
-            var index = $(this).index();
-            var rating = "";
-            $('.star-container .star').css('background-position','bottom');
-            $(this).css('background-position','top');
-            rating = self.convert_rating_to_text(index);
-            $('.star-text span').html(rating);
-            for(var i = 0;i<index;i++){
-                $(this).parent().find('.star:eq('+i+')').css('background-position','top');
-            }
+            
+            if( $('.current').is('#step4') ) return;
+            
+            var rating = $(this).parent().find('.star').index( this ) + 1;
+            $('.star-text span').text( self.convert_rating_to_text(rating) );
+            $('.star-container .star').removeClass('full');
+            $('.star-container').each(function(){
+                for(a = 0; a < rating; a++){
+                    $(this).find('.star').eq(a).addClass('full');
+                }
+            });
+            
+            
         },function(){
+            
+            if( $('.current').is('#step4') ) return;
+            
             var current_rating = $('#rating').val();
-            var rating = self.convert_rating_to_text(current_rating - 1);
-            $('.star-text span').html(rating);
-            $('.star-container .star').css('background-position','bottom');
-            for(var i = 0;i<current_rating;i++){
-                $('.star-container').find('.star:eq('+i+')').css('background-position','top');
-            }
+            $('.star-text span').text( $('.rate-title .rating_text').text() );            // i don't have idea why but this line works.
+            //$('.star-text span').text( self.convert_rating_to_text(current_rating) );   // and this one doesn't
+            $('.star-container .star').removeClass('full');
+            $('.star-container').each(function(){
+                for(a = 0; a < current_rating; a++){
+                    $(this).find('.star').eq(a).addClass('full');
+                }
+            });
+            
         }).click(function(){
-            // send the rating value to the rating plugin
-            var index = $(this).index();
-            $('.rate-title .rating_num').text( index );
-            $('.rate-title .rating_text').text( self.convert_rating_to_text(index - 1) );
-            $('#rating').val(index);
+            
+            if( $('.current').is('#step4') ) return;
+            
+            var rating = $(this).parent().find('.star').index( this ) + 1;
+            $('#rating').val(rating);
+            $('.rate-title .rating_num').text( rating );
+            $('.rate-title .rating_text').text( self.convert_rating_to_text(rating) );
             $('#theHostedFormContainer').slideDown();
+            
+            $('.star-text span').text( self.convert_rating_to_text(rating) );
+            $('.star-container .star').removeClass('full');
+            $('.star-container').each(function(){
+                for(a = 0; a < rating; a++){
+                    $(this).find('.star').eq(a).addClass('full');
+                }
+            });
+            
         });
 		
 		
@@ -112,23 +133,21 @@ var S36FullpageCommon = function(){
 		$('.share-box').hover(function(){},function(){
 			//$(this).fadeOut('fast');
 		});
-
-		//reposition the company name and title
-		self.reposition_company_name_and_rating();
+        
 	}
 	
 	this.convert_rating_to_text = function(val){
         var rating;
         switch(val){
-            case 4: rating = "Excellent";
+            case 5: rating = "Excellent";
             break;
-            case 3: rating = "Good";
+            case 4: rating = "Good";
             break;
-            case 2: rating = "Average";
+            case 3: rating = "Average";
             break;
-            case 1: rating = "Poor";
+            case 2: rating = "Poor";
             break;
-            case 0: rating = "Bad";
+            case 1: rating = "Bad";
             break;
             default: rating = "";
             break;
@@ -152,15 +171,7 @@ var S36FullpageCommon = function(){
 			  }
 		});
 	}
-	/* ========================================
-	|| This function will adjust the company name according to the width of the avatar
-	==========================================*/
-	this.reposition_company_name_and_rating = function(){
-		$('#avatarContainer').find('img').load(function(){
-			var $wd = $(this).width() + 40;
-			$('#coverPhotoContainer').find('.company-rating').css('left',$wd+'px');
-		});
-	}
+	
 	/* ========================================
 	|| Function needed to close the lightbox
 	==========================================*/

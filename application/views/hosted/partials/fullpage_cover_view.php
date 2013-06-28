@@ -1,6 +1,9 @@
 <?php
     $db_fullpage_cover = new \Hosted\Repositories\DBFullpageCover(Config::get('application.subdomain'));
     $fullpage_cover = $db_fullpage_cover->get_data();
+    
+    $company = new Company\Repositories\DBCompany;
+    $company = $company->get_company_info( Config::get('application.subdomain') ); 
 ?>
 <!-- lightbox notification -->
 <div id="lightboxNotification">
@@ -116,7 +119,7 @@
         <?php endif; ?>
     </div>
     <div class="company-rating">
-        <div class="company-cover-name"><h1><?=ucfirst($company->name)?></h1></div>
+        <div class="company-cover-name"><h1><?=ucfirst($company->company_name)?></h1></div>
         <div class="dynamic-stars-container">
             <div class="dynamic-stars">
                 <div class="star-ratings clear">

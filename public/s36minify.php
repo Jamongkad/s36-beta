@@ -21,19 +21,18 @@ $groups = array(
             ,'/js/inbox/Status.js'
             ,'/js/jquery-autogrow-textarea.js'
             ,'/js/link.preview.js'
-            ,'/fullpage/common/js/jquery.jcycle2.js'
             
         )
      ),
      'FullpageCommon.js' => array(
         'type' =>'js',
         'files'=>array(
-             '/fullpage/common/js/S36FullpageCommon.js'
-            ,'/fullpage/common/js/masonry.js'
+            '/fullpage/common/js/masonry.js'
             ,'/fullpage/common/js/modernizr.js'
             ,'/fullpage/common/js/feedbackactions.js'
             ,'/fullpage/common/js/s36_client_script.js'
-            /*,'/fullpage/common/js/fullpage_form_script.js'*/
+            ,'/fullpage/common/js/S36FullpageCommon.js'
+            ,'/fullpage/common/js/fullpage_form_script.js'
             
         )
      ),
@@ -51,8 +50,8 @@ $groups = array(
      'FullpageAdmin.js' => array(
         'type' =>'js',
         'files'=>array(
-            //'/fullpage/admin/js/jcycle.js'
-            '/fullpage/admin/js/jquery.jcarousel.min.js'
+            '/fullpage/admin/js/jcycle.js'
+            ,'/fullpage/admin/js/jquery.jcarousel.min.js'
             ,'/fullpage/admin/js/minicolors.js'
             ,'/fullpage/admin/js/colors.min.js'
             ,'/fullpage/admin/js/jquery.mousewheel.min.js'
