@@ -94,20 +94,9 @@ return array(
         $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
-        Helpers::dump($feed_ids);
-        Helpers::dump($cat_id);
-        Helpers::dump($mode);
-        Helpers::dump($company_id);
-        /*
-        $feed_ids   = Input::get('feed_ids');
-        $cat_id     = Input::get('cat_id');
-        $mode       = Input::get('mode');         
-        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
-
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
-        $feedbackstate->write_summary();
-        */
+        //$feedbackstate->write_summary();
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
