@@ -15,7 +15,7 @@
 }
 .form-page{
     width:100%;
-    display:none;
+    position:absolute;
 }
 .form-page-head{
     background:url(../img/form-page-head-bg.jpg) repeat-x;
@@ -276,19 +276,19 @@ select.regular-custom-field{
     max-height:78px;
 }
 .form-image-thumbs{
-    padding-bottom:10px;
+    padding-bottom:5px;
     padding-top:8px;
 }
 .form-image-thumbs .image-thumb{
     float:left;
     width:124px;
     margin-right:5px;
-    background:#efefef;
+    background:#fbfbfb;
     padding:4px 6px;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px;  
-    border:1px solid #e4e1e1;   
+    border:1px solid #e0e0e0;   
 }
 .image-thumb .thumb-container{
     width:22px;
@@ -322,23 +322,22 @@ select.regular-custom-field{
     float:left;
     width:80px;
     overflow:hidden;
-    height:54px;    
+    height:54px; 
 }
 .form-video-thumbs .video-thumb img{
     margin-top:-4px;
 }
 .form-video-thumbs .video-container{
     margin-top:0px;
-    height:78px;
 }
 .video-container{
     max-height:78px;
-    background:#efefef;
+    background:#fbfbfb;
     padding:4px 6px;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px;  
-    border:1px solid #e4e1e1;
+    border:1px solid #e0e0e0;
 }
 .form-video-thumbs .video-thumb img,.form-image-thumbs .image-thumb img{
     
@@ -535,16 +534,16 @@ h2.h2-fix{
 }
 
 .user-name{
-    color:#1e1e1e;
+    color:#1d3854;
     font-size:18px;
     font-weight:bold;
     margin-bottom:6px;
 }
 .user-position{
-    color:#7e7e7e;
+    color:#262626;
     font-weight:bold;
-    font-size:12px;
-    margin-bottom:4px;
+    font-size:14px;
+    margin-bottom:6px;
 }
 .user-website{
     color:#5e5e6e;
@@ -553,8 +552,12 @@ h2.h2-fix{
 }
 .user-location,.user-date{
     color:#3e3e3e;
-    font-size:10px;
+    font-size:12px;
     margin-bottom:4px;
+}
+.user-date{
+    color:#808080;
+
 }
 .review-page-spacer{
     margin-top:20px;
@@ -676,15 +679,15 @@ h2.h2-fix{
 }
 #lightbox-upload-photo-container{
     position:absolute;
-    width:390px;
+    width:100%;
     background:url(../img/faded-black.png);
     z-index:990;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
-    top:120px;
+    top:0px;
     left:50%;
-    margin-left:-195px;     
+    margin-left:-50%;     
     display:none;
 }
 #lightbox-upload-photo-container input{
