@@ -102,7 +102,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var selected = [];
             var catids = [];
 
-            console.log($scope.selected):
+            console.log($scope.selected)
 
             for(var i=0; i < $scope.selected.length; i++) {
 
