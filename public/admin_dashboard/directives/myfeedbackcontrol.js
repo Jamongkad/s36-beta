@@ -69,6 +69,7 @@ angular.module('feedbackcontrol', [])
                         feedback.show();
                         $(feedback).parents('.feedback-group').show(); 
 
+                        /*j
                         var feed_checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
         
                         if(feed_checkbox.is(":checked")) {
@@ -78,23 +79,24 @@ angular.module('feedbackcontrol', [])
 
                         console.log(feed_checkbox);
                         console.log(feed_checkbox.is(":checked"));
+                        */
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();
-
+                    
+                    /*
                     var feed_checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]")
                     if(feed_checkbox.is(":checked")) {
                         feed_checkbox.click();
                     }
+                    */
                 }
 
                 if($(".sorter-checkbox").is(":checked")) {
                     $(".sorter-checkbox").click();
                 }
-
-
 
                 FeedbackControlService.expunge();
                 e.preventDefault();
