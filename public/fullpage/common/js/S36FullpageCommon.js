@@ -117,7 +117,7 @@ var S36FullpageCommon = function(){
 	this.convert_rating_to_text = function(val){
         var rating;
         switch(val){
-            case 4: rating = "Excellent!";
+            case 4: rating = "Excellent";
             break;
             case 3: rating = "Good";
             break;

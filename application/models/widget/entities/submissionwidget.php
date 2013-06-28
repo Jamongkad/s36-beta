@@ -52,9 +52,10 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_hosted() {
-        //$hosted_view = 'widget/widget_hostedform_view';
         $hosted_view = 'hosted/partials/fullpage_form_view';
+        return View::make($hosted_view, $this->form_vars)->get();
         
+        /*$hosted_view = 'widget/widget_hostedform_view';
         return View::make($hosted_view, Array(
             'fb_app_id'      => $this->fb_id  
           , 'env'            => $this->env
@@ -69,7 +70,7 @@ class SubmissionWidget extends FormWidgets {
           , 'theme_name'     => $this->widget_options->widgetattr->theme_type
           , 'response'       => 0
           , 'form_render'    => $this->form_render
-        ))->get();
+        ))->get();*/
     }
 
     public function get_tab_type() { 
