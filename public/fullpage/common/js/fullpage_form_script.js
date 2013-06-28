@@ -6,7 +6,6 @@ $(document).keypress(function(event){
 });
 
     $(document).ready(function(){
-        //console.log( FB.getLoginStatus() );
         $('#fb-login').click(function(){
             FB.login(function(response) {
                if (response.authResponse) {

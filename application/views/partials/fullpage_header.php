@@ -24,27 +24,7 @@
 <!--[if lt IE 9]>
 <script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 <![endif]-->
-<script src="https://connect.facebook.net/en_US/all.js"></script>
-<div id="fb-root"></div>
-<script type="text/javascript">
-    window.fbAsyncInit = function() {
-            // init the FB JS SDK
-        FB.init({
-            appId      : '<?=Config::get('application.fb_id');?>', // App ID from the App Dashboard
-            status     : true, // check the login status upon init?
-            cookie     : true, // set sessions cookies to allow your server to access the session?
-            xfbml      : true  // parse XFBML tags on this page?
-        });
-    };
 
-    (function(d, debug){
-        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement('script'); js.id = id; js.async = true;
-        js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-        ref.parentNode.insertBefore(js, ref);
-    }(document, /*debug*/ false))
-</script>
 <?php
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +41,6 @@ echo HTML::script('/minified/Global.js');
 echo HTML::script('/minified/FullpageCommon.js');
 echo HTML::style('/minified/FullpageCommon.css');
 echo HTML::style('/css/respond.css');  // has a bug when minified.
-//echo HTML::script('/fullpage/common/js/fullpage_form_script.js');
 
 /*
 |--------------------------------------------------------------------------
@@ -110,3 +89,24 @@ $logo           = ( empty($company->logo) ? $url.'/img/public-profile-pic.jpg' :
 <meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>">
 </head>
 <body>
+<script src="https://connect.facebook.net/en_US/all.js"></script>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    window.fbAsyncInit = function() {
+            // init the FB JS SDK
+        FB.init({
+            appId      : '<?=Config::get('application.fb_id');?>', // App ID from the App Dashboard
+            status     : true, // check the login status upon init?
+            cookie     : true, // set sessions cookies to allow your server to access the session?
+            xfbml      : true  // parse XFBML tags on this page?
+        });
+    };
+
+    (function(d, debug){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document, /*debug*/ false))
+</script>
