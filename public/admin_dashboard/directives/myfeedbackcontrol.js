@@ -157,16 +157,11 @@ angular.module('feedbackcontrol', [])
 
                     if(images.length > 0){   
                         var us = images.not(":hidden"); 
-
-                        if(us) {
-                            console.log("Place image in remaining");    
-                            for(var i=0; i < us.length; i++) {
-                                new_uploaded_images.push({
-                                    'name': $(us[i]).find('.image-name').val() 
-                                });
-                            }
+                        for(var i=0; i < us.length; i++) {
+                            new_uploaded_images.push({
+                                'name': $(us[i]).find('.image-name').val() 
+                            });
                         }
-
                     }
 
                     console.log(media_attachment.length); 
@@ -175,7 +170,6 @@ angular.module('feedbackcontrol', [])
 
                     if(media_attachment.length > 0){  
                         var link = media_attachment.not(":hidden");
-                        console.log("Place attached in remaining");                           
                         new_attached_link = {
                             title           : media_attachment.find('.link-title').val(),
                             description     : media_attachment.find('.link-description').val(),
