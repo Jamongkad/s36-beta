@@ -142,7 +142,6 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 $(this).parents('.custom-att').fadeOut(400, function() {
-
                      var new_uploaded_images = new Array;
                      var new_attached_link;
 
@@ -191,13 +190,14 @@ angular.module('feedbackcontrol', [])
                     } 
 
                     console.log(attachment_data);
-
+                    /*
                     $.ajax({
                         type: "POST"
                       , url: "/inbox/update_feedback_attachment"
                       , dataType: "json"
                       , data: attachment_data                
                     });                
+                    */
                 });
                 e.preventDefault();
             })
