@@ -28,7 +28,7 @@ return array (
         ));
     }),
 
-    'GET /settings/background' => function() use($company, $hosted_settings, $fullpage){
+    'GET /settings/background' => Array('name' => 'background_settings', 'before' => 's36_auth', 'do' => function() use($company, $hosted_settings, $fullpage){
         
         $company_name	= Config::get('application.subdomain');
         $company_info 	= $company->get_company_info($company_name); 
@@ -39,8 +39,8 @@ return array (
             ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
-    },
-    'GET /settings/layout' => function() use($company, $hosted_settings, $fullpage){
+    }),
+    'GET /settings/layout' => Array('name' => 'layout_settings', 'before' => 's36_auth', 'do' =>function() use($company, $hosted_settings, $fullpage){
 
         $company_name   = Config::get('application.subdomain');
         $company_info   = $company->get_company_info($company_name); 
@@ -49,8 +49,8 @@ return array (
             ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
-    },
-     'GET /settings/others' => function() use($company, $hosted_settings, $fullpage){
+    }),
+     'GET /settings/others' => Array('name' => 'other_settings', 'before' => 's36_auth', 'do' =>function() use($company, $hosted_settings, $fullpage){
 
         $company_name   = Config::get('application.subdomain');
         $company_info   = $company->get_company_info($company_name); 
@@ -60,7 +60,7 @@ return array (
             ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
-    },
+    }),
     
     'GET /settings/display' => function() use($hosted_settings, $fullpage, $company){
         $company_name	= Config::get('application.subdomain');
