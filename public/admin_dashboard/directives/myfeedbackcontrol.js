@@ -157,6 +157,9 @@ angular.module('feedbackcontrol', [])
 
                     if(images.length > 0){   
                         var us = images.not(":hidden"); 
+
+                        console.log(us);
+
                         for(var i=0; i < us.length; i++) {
                             new_uploaded_images.push({
                                 'name': $(us[i]).find('.image-name').val() 
@@ -165,6 +168,10 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(media_attachment.length > 0){  
+                        var link = media_attachment.not(":hidden");
+
+                        console.log(link);
+
                         new_attached_link = {
                             title           : media_attachment.find('.link-title').val(),
                             description     : media_attachment.find('.link-description').val(),
@@ -185,8 +192,6 @@ angular.module('feedbackcontrol', [])
                       , remove_images   : remove_images
                     } 
 
-                    console.log(images);
-                    console.log(media_attachment);
                     /*
                     $.ajax({
                         type: "POST"
