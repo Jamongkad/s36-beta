@@ -165,13 +165,6 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(!media_attachment.is(":hidden")) {
-                        console.log("Boo");
-                        console.log(media_attachment.length); 
-                        console.log(media_attachment);                       
-                    }
-
-                    if(media_attachment.length > 0){  
-                        var link = media_attachment.not(":hidden");
                         new_attached_link = {
                             title           : media_attachment.find('.link-title').val(),
                             description     : media_attachment.find('.link-description').val(),
@@ -179,7 +172,7 @@ angular.module('feedbackcontrol', [])
                             url             : media_attachment.find('.link-url').val(),
                             video           : media_attachment.find('.link-video').val(),
                         } 
-                    };
+                    }
 
                     var remaining = {
                         uploaded_images : new_uploaded_images
@@ -191,6 +184,8 @@ angular.module('feedbackcontrol', [])
                       , attachments     : remaining
                       , remove_image    : remove_image
                     } 
+
+                    console.log(attachment_data);
 
                     /*
                     $.ajax({
