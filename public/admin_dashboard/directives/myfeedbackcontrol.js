@@ -68,22 +68,25 @@ angular.module('feedbackcontrol', [])
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
+                        
+                        if($(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked")) {
+                            $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();     
+                        }
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
+
+                    if($(".feed-checkbox").is(":checked")) {
+                        console.log("CLICKED");
+                        $(".feed-checkbox").click();     
+                    }
                 }
 
                 if($(".sorter-checkbox").is(":checked")) {
                     $(".sorter-checkbox").click(); 
                 }
-
-                if($(".feed-checkbox").is(":checked")) {
-                    console.log("CLICKED");
-                    $(".feed-checkbox").click();     
-                }
-
                
                 FeedbackControlService.expunge();
                 e.preventDefault();
