@@ -68,20 +68,26 @@ angular.module('feedbackcontrol', [])
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show(); 
+
+                        var feed_checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]");
         
-                         if($(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").is(":checked")) {
-                             console.log("Clicked for UNDO");
-                             $(".feed-checkbox[value=" + FeedbackSignal.data.id[i] + "]").click();
-                         }
+                        if(feed_checkbox.is(":checked")) {
+                            console.log("Clicked for UNDO");
+                            feed_checkbox.click();
+                        }
+
+                        console.log(feed_checkbox);
+                        console.log(feed_checkbox.is(":checked"));
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();
 
-                     if($(".feed-checkbox[value=" + FeedbackSignal.data.id + "]").is(":checked")) {
-                         $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]").click();
-                     }
+                    var feed_checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]")
+                    if(feed_checkbox.is(":checked")) {
+                        feed_checkbox.click();
+                    }
                 }
 
                 if($(".sorter-checkbox").is(":checked")) {
