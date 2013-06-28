@@ -158,7 +158,8 @@ $(document).ready(function() {
                     <div class="dashboard-feedback grids" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?> 
                          feedback="<?=$feed->id?>" 
                          score="<?=$feed->int_rating?>"
-                         permission="<?=$feed->int_perm?>">
+                         permission="<?=$feed->int_perm?>"
+                         catid="<?=$feed->categoryid?>">
                         <div class="custom-checkbox">
                             <input 
                              class="feed-checkbox" 
