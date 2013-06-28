@@ -75,8 +75,9 @@ return array(
         $input = Input::get(); 
 
         $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
+        $image = (isset($input['remove_image']))  ? $input['remove_image'] : '';
         Helpers::dump($attachments);
-        Helpers::dump($input['remove_image']);
+        Helpers::dump($image);
         /*
         $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
         $dbfeedback->update_feedback($input['feedbackId'], array('attachments'=>$attachments));
