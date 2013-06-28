@@ -785,4 +785,6 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
 }
 .feedback-date-header {
     padding: 10px;    
+    font-weight: bold;
+    font-size: 15px;
 }
