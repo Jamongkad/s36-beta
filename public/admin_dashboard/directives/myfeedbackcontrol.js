@@ -149,7 +149,7 @@ angular.module('feedbackcontrol', [])
                      var images = div.find('.uploaded_image');
                      var media_attachment = div.find('.attached_link');
                      
-                     $(this).remove();                    
+                     //$(this).remove();                    
 
                      var remove_images = {
                         'small_url'    :$(this).find('.small-image-url').val(),
