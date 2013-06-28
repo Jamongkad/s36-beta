@@ -35,9 +35,9 @@ angular.module('formbuilder', [])
                         }
                       , success: function(responseText, statusText, xhr, $form) {     
 
-                            var widget_key      = responseText.submit.widget.widgetkey;
-                            var widget_store_id = responseText.submit.widget.widgetstoreid;
-                            var company_id      = responseText.submit.widget.company_id;
+                            var widget_key      = responseText.widgetkey;
+                            var widget_store_id = responseText.widgetstoreid;
+                            var company_id      = responseText.company_id;
 
                             var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
@@ -47,13 +47,14 @@ angular.module('formbuilder', [])
                               , url: "/feedsetup/buildmetadata_options"
                               , data: $("ul[id^=frmb-]").serializeFormList({ prepend: "frmb" }) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                               , success: function(msg) {
+                                
                                     if(msg.status == 'invalid' && msg.validation.length > 0) {
                                         for(var i=0; i<msg.validation.length; i++) {
                                             var elm = $("#" + msg.validation[i]);
                                             elm.css({'border': '2px solid red'});
                                         }
                                     } else {
-                                        window.location = formcode_url;                             
+                                        //window.location = formcode_url;                             
                                         //console.log("All good to go");
                                     }                             
                                 }
