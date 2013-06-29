@@ -32,7 +32,10 @@ class FeedbackState {
             foreach($this->category_id as $catid) {
                 $category = DB::Table('Category')->where('categoryId', '=', $catid)
                                                  ->first($this->category_vars);
-                Helpers::dump($category);
+
+                $rules = $this->state_change_rules();
+                $column = $rules.$this->_sql_statement_attach($category->categoryid);
+                Helpers::dump($column);
             }
         } else { 
             $feed_obj = $this->feedback_state_obj();
