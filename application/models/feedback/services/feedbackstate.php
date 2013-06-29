@@ -28,8 +28,10 @@ class FeedbackState {
     } 
 
     public function change_state() {        
-        if(is_array($this->category_id)) {
-            Helpers::dump($this->category_id);
+        if(is_array($this->category_id)) { 
+            foreach($this->categoryid as $catid) {
+                 Helpers::dump($catid);
+            }
         } else { 
             $feed_obj = $this->feedback_state_obj();
             Helpers::dump($feed_obj);
