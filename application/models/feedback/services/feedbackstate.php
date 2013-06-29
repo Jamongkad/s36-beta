@@ -30,11 +30,14 @@ class FeedbackState {
     public function change_state() {        
         if(is_array($this->category_id)) { 
             $counter = 0;
-            Helpers::dump($this->mode);
             foreach($this->category_id as $catid) {
-                $category = DB::Table('Category')->where('categoryId', '=', $catid)
-                                                 ->first($this->category_vars);
-
+                if($this->mode != "fileas") { 
+                    $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
+                                                     ->where('intName', '=', 'default')->first($this->category_vars);
+                } else { 
+                    $category = DB::Table('Category')->where('categoryId', '=', $catid)
+                                                     ->first($this->category_vars);
+                }
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++];
