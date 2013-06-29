@@ -29,7 +29,7 @@ class FeedbackState {
 
     public function change_state() {        
         if(is_array($this->category_id)) { 
-            foreach($this->categoryid as $catid) {
+            foreach($this->category_id as $catid) {
                 $category = DB::Table('Category')->where('categoryId', '=', $catid)
                                                  ->first($this->category_vars);
                 Helpers::dump($category);
