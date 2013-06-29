@@ -29,13 +29,16 @@ class FeedbackState {
 
     public function change_state() {        
         if(is_array($this->category_id)) { 
+            $counter = 0;
             foreach($this->category_id as $catid) {
                 $category = DB::Table('Category')->where('categoryId', '=', $catid)
                                                  ->first($this->category_vars);
 
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
+                $feedid = $this->block_id[$counter++];
                 Helpers::dump($column);
+                Helpers::dump($feedid);
             }
         } else { 
             $feed_obj = $this->feedback_state_obj();
