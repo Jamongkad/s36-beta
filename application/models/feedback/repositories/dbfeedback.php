@@ -756,14 +756,10 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _toggle_single($column, $feedid) { 
-        Helpers::dump($column);
-        Helpers::dump($feedid);
-        /*
         $sql = "UPDATE Feedback $column WHERE 1=1 AND Feedback.feedbackId = :feedid";
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':feedid', $feedid);
         return $sth->execute();       
-        */
     }
 
     public function _permanent_delete($opts) { 

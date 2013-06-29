@@ -45,8 +45,7 @@ class FeedbackState {
             }
         } else { 
             $feed_obj = $this->feedback_state_obj();
-            Helpers::dump($feed_obj);
-            //return $this->feedback->_toggle_multiple($feed_obj);
+            return $this->feedback->_toggle_multiple($feed_obj);
         }
     }
 
