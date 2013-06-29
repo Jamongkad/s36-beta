@@ -37,8 +37,7 @@ class FeedbackState {
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++];
-                Helpers::dump($column);
-                Helpers::dump($feedid);
+                $this->feedback->_toggle_single($column, $feedid);
             }
         } else { 
             $feed_obj = $this->feedback_state_obj();
