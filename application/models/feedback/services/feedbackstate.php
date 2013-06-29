@@ -29,6 +29,7 @@ class FeedbackState {
 
     public function change_state() {        
         if(is_array($this->category_id)) { 
+            Helpers::dump("ok");
             $counter = 0;
             foreach($this->category_id as $catid) {
                 if($this->mode != "fileas") { 
@@ -44,6 +45,7 @@ class FeedbackState {
                 $this->feedback->_toggle_single($column, $feedid);
             }
         } else { 
+            Helpers::dump("babe");
             $feed_obj = $this->feedback_state_obj();
             return $this->feedback->_toggle_multiple($feed_obj);
         }
