@@ -790,3 +790,12 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     font-weight: bold;
     font-size: 12px;
 }
+
+.cat-picks li a {   
+    color:#FFF;
+    padding:1px 6px 2px;
+    background:#598499; 
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    border-radius:15px;     
+}
