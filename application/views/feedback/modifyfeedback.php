@@ -149,14 +149,14 @@ $(function() {
                                     <div class="g1of5">
                                         <br />                         
                                         <?if($feedback->origin == 's36'):?>
-                                        <?if($feedback->avatar):?> 
-                                        <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
-                                        <?else:?>
-                                        <?=HTML::image('img/48x48-blank-avatar.jpg')?>
-                                        <?endif?>
+                                            <?if($feedback->avatar):?> 
+                                                <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
+                                            <?else:?>
+                                                <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                                            <?endif?>
                                         <?endif?>
                                         <?if($feedback->origin == 'tw'):?>
-                                        <img src="<?=$feedback->avatar?>" />
+                                            <img src="<?=$feedback->avatar?>" />
                                         <?endif?> 
                                      <br/ >
                                     </div>
