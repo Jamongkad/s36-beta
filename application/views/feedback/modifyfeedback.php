@@ -32,192 +32,151 @@ $(function() {
     <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feedback, 'reply_message' => $reply_message))?>
 </div>
 
-<div class="block noborder">
-    <div class="grids">
-        <div class="g3of4">
-            <div class="permissions <?=$feedback->permission_css?>">
+<div id="theFormSetup" class="dashboard-page">
+      <div class="permission grids">
+            <div class="permission-icon"><img src="fullpage/admin/img/icon-full-permission.jpg" /></div>
+            <div class="permission-text">
                 <h3><?=$feedback->permission?></h3>
+
                 <p>
                     <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?> to post his/her feedback
                     on your website.
                 </p>
             </div>
-            <div class="feedback-info">
-                <div class="feedback-text">
-                    <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
-                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
-                </div>
-                
-                <div class="feedback-status">
+      </div>
+</div>
+
+    <div class="dashboard-box">
+              <div class="dashboard-body">
+                <div class="dashboard-content">
+                  <div class="modify-box">
+                  
                     <div class="grids">
-                        <div class="g3of4">
-                            <span class="status-change status"> Status: <span class="status-target"><?=$feedback->status?></span>
-                                <select style="display:none" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
-                                    <?foreach($status as $option):?>
-                                        <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
-                                        <option <?=($feedback->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
-                                    <?endforeach?>
-                                </select> 
-                            </span>
-
-                            <span class="priority-change priority">
-                                Priority: <span class="priority-target"><?=$feedback->priority?></span>
-                                <select style="display:none" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
-                                    <?foreach($priority_obj as $key => $val):?>
-                                        <option <?=($feedback->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
-                                    <?endforeach?>
-                                </select>
-                            </span> 
-                        </div>
-                        <div class="g1of4" style="text-align:right;">
-                             <?=HTML::link('/', 'Save feedback', Array('class' => 'save-feedback-text'))?>
-                        </div>
-                    </div>
-                </div>
-                <div class="feedback-data">
-                    <span id="indlock_url" hrefaction="<?=URL::to('/feedback/lock_feedback_display')?>"></span>
-                    <table cellpadding="0">
-                        <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td></tr>
-                        <tr><td>DEFAULT DISPLAY RULES:</td><td><?=Form::checkbox('resetIndLock', 1, 
-                                                                      ($feedback->indlock ? True : Null))?></td></tr>
-                        <tr><td>Submission Date (dd-mm-yyyy):</td><td>
-                            <input type="text" name="date_change" 
-                                   value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
-                                   class="regular-text datepicker" id="date" /> 
-                        </td>
-                    </table>
-                </div>
-            </div>                            
-        </div>
-        <div class="g1of4">
-            <h3>Save this item as feedback</h3>
-            <p style="font-size:11px;border-bottom:1px solid #efefef;padding-bottom:12px;">
-                Selecting other categories will move this item into the 'Filed Feedback' tab. 
-            </p>
-            <div class="category-box">
-                <ul class="category-box category-picker" id="<?=$feedback->categoryid?>"> 
-                  <?foreach($categories as $cat):?>  
-                         <li>
-                              <?=HTML::link('feedback/changecat/', $cat->name, Array(
-                                   'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                 , 'class'      => 'cat-picks'.(($feedback->category === $cat->name) ? ' Matched' : Null)
-                                 , 'feedid'     => $id
-                                 , 'catid'      => $cat->id
-                                 , 'cat-state'  => $cat->intname
-                                 , 'state'      => 0
-                              ))?>
-                          </li>
-                  <?endforeach?>
-                </ul>
-                <div>
-                    <?=HTML::link('settings', 'Manage categories →') ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br />
-<!-- end of feedback list -->
-<div class="admin-sorter-bar">
-        <div class="grids">
-            <div class="g4of5">
-                <!-- email picker block-->            
-                <div class="base-popup fast-forward-holder modify-page" style="display:none" id="<?=$id?>">
-                    <div class="popup-arrow"></div>
-                    <div class="email-list">
-                        <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
-                        <ul class="email-picker">
-                            <?if($admin_check->ffemail1):?>
-                                <li id="email1"> 
-                                    <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : 
-                                    <a href="javascript:;"><?=$admin_check->ffemail1?></a> 
-                                </li>
-                            <?endif?>
-                            <?if($admin_check->ffemail2):?>
-                                <li id="email2"> 
-                                    <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : 
-                                    <a href="javascript:;"><?=$admin_check->ffemail2?></a> 
-                                </li>
-                            <?endif?>
-                            <?if($admin_check->ffemail3):?>
-                                <li id="email3"> 
-                                    <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : 
-                                    <a href="javascript:;"><?=$admin_check->ffemail3?></a> 
-                                </li>
-                            <?endif?>
-                        </ul>
-                        <?else:?>
-                            <?=HTML::link('settings', 'Configure your fast forward settings')?> 
-                        <?endif?>
-
-                        <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
-                            <?=Form::hidden('email')?>
-                            <?=form::hidden('feed_id', $id)?>
-                            <div class="ff-forward-to"></div>
-                            <div class="popup-border"></div>
-                            <?=Form::textarea('email_comment', "(Optional message)", array('class' => 'small popup-textarea'))?>
-                            <div class="popup-border"></div>
-                            <div class="popup-button">
-                                <input type="submit" class="button" value="SEND" />
+                        <div class="modify-box-left">
+                            <div class="modify-textbox">  
+                                <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
+                                <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
                             </div>
-                        <?=Form::close()?>
-                    </div>
-                </div> 
-                <!-- email picker block-->            
-                <div class="feedback-info-menu">
-                    <?if($feedback->email):?>
-                        <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto', 'my-reply' => '', 'feedid' => $id))?>  
-                    <?endif?>
+                            <div class="modify-status">
+                                <span class="save-feedback"><a href="#">Save Feedback</a></span>
+                                <span>Status : </span><span class="blue">New</span>
+                                <span>Priority : </span><span class="blue">High</span>
+                            </div>
+                            <div class="modify-other-info">
+                                <div class="modify-other-info-block grids">
+                                    <span class="left-label">Site URL : </span><span class="right-label">
+                                        <?=$feedback->sitedomain?>
+                                    </span>    
+                                </div>
+                                <div class="modify-other-info-block grids">
+                                    <span class="left-label">Default Display Rules : </span>
+                                    <span class="right-label">
+                                        <?=Form::checkbox('resetIndLock', 1, 
+                                                          ($feedback->indlock ? True : Null))?>
+                                    </span>  
+                                </div>
+                                <div class="modify-other-info-block grids">
+                                    <span class="left-label padtext-fix">Submission Date (dd-mm-yyyy) : </span>
+                                    <span class="right-label">
+                                        <input type="text" name="date_change" 
+                                               value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
+                                               class="regular-text datepicker" id="date" /> 
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modify-box-right">
+                            <h4>Save this item as feedback</h4>
+                            <p><small>Selecting other categories will move this item into the 'Filed Feedback' tab.</small></p>
 
-                    <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
-                    <?if($feedback->rating != "POOR" and $feedback->permission_css != 'private-permission'):?>
-                        <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', 
-                           Array('class' => 'menubtn publish'.(($feedback->ispublished) ? " matched" : null)))?> 
-                        <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', 
-                           Array('class' => 'menubtn featured'.(($feedback->isfeatured) ? " matched" : null)))?> 
-                    <?endif?> 
-                    <?=HTML::link('feedback/change_state/flag/'.$id, 'FLAG', 
-                       Array('class' => 'flagged'.(($feedback->isflagged) ? " matched" : null), 'state' => $feedback->isflagged))?>
+                            <ul class="category-box category-picker grids" id="<?=$feedback->categoryid?>"> 
+                              <?foreach($categories as $cat):?>  
+                                     <li>
+                                          <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                               'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                             , 'class'      => 'cat-picks'.(($feedback->category === $cat->name) ? ' Matched' : Null)
+                                             , 'feedid'     => $id
+                                             , 'catid'      => $cat->id
+                                             , 'cat-state'  => $cat->intname
+                                             , 'state'      => 0
+                                          ))?>
+                                      </li>
+                              <?endforeach?>
+                            </ul>
+                            <p>
+                                <?=HTML::link('settings', 'Manage categories →') ?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modify-blue-bar">
+                        <div class="grids">
+                            <div class="blue-bar-left">
+                                <div class="grids">
+                                    <div class="g1of5 align-center">
+                                        <a href="#" class="blue-bar-reply-to-user">REPLY TO USER</a>
+                                    </div>
+                                    <div class="g1of5 align-center">
+                                        <a href="#" class="blue-bar-forward">FORWARD</a>
+                                    </div>
+                                    <div class="g1of5 align-center">
+                                        <a href="#" class="blue-bar-publish">PUBLISH</a>
+                                    </div>
+                                    <div class="g1of5 align-center">
+                                        <a href="#" class="blue-bar-feature">FEATURE</a>
+                                    </div>
+                                    <div class="g1of5 align-center">
+                                        <a href="#" class="blue-bar-flag">FLAG</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blue-bar-right align-right">
+                                <a href="#" class="blue-bar-delete">DELETE</a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="g1of5">
-                <div class="feedback-info-menu">
-                    <?=HTML::link('/feedback/deletefeedback/'.$id, 'DELETE', Array('class' => 'delete'))?> 
-                </div>
-            </div>
-        </div>
-</div>
-<div class="block">
-    <div class="grids">
-        <div class="g1of3">
-            <div class="grids">
-                <div class="g1of5" style="margin-top:-4px">
-                    <?if($feedback->origin == 's36'):?>
-                        <?if($feedback->avatar):?> 
-                            <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
-                        <?else:?>
-                            <?=HTML::image('img/48x48-blank-avatar.jpg')?>
-                        <?endif?>
-                    <?endif?>
-                    <?if($feedback->origin == 'tw'):?>
-                        <img src="<?=$feedback->avatar?>" />
-                    <?endif?>
-                </div>
-                <div class="g4of5">
-                    <table cellpadding="2" class="feedback-data-table">
-                        <tr><td colspan="2" class="header">User Information</td><td></td></tr>
-                        <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
-                        <tr><td class="title">Email:</td><td><?=$feedback->email?></td></tr>
-                        <tr><td class="title">City:</td><td><?=$feedback->city?></td></tr>
-                        <tr>
-                            <td class="title">Country:</td>
-                            <td><?=($feedback->countryname != 'Nil') ? $feedback->countryname : null?></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="g1of3">
+            
+            <div class="dashboard-box">
+              <div class="dashboard-body">
+                <div class="dashboard-content">
+                    <div class="margin-adjust-fix">
+                        <div class="grids">
+                            <div class="g2of5">
+                                <div class="grids">
+                                    <div class="g1of5">
+                                        <br />                         
+                                        <?if($feedback->origin == 's36'):?>
+                                        <?if($feedback->avatar):?> 
+                                        <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
+                                        <?else:?>
+                                        <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                                        <?endif?>
+                                        <?endif?>
+                                        <?if($feedback->origin == 'tw'):?>
+                                        <img src="<?=$feedback->avatar?>" />
+                                        <?endif?> 
+                                     <br/ >
+                                    </div>
+                                </div>
+
+                                <div class="g4of5">
+                                    <table cellpadding="2" class="feedback-data-table">
+                                        <tr><td colspan="2" class="header">User Information</td><td></td></tr>
+                                        <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
+                                        <tr><td class="title">Email:</td><td><?=$feedback->email?></td></tr>
+                                        <tr><td class="title">City:</td><td><?=$feedback->city?></td></tr>
+                                        <tr>
+                                            <td class="title">Country:</td>
+                                            <td><?=($feedback->countryname != 'Nil') ? $feedback->countryname : null?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+        <div class="g2of3">
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <tr><td colspan="2" class="header">Display Information
                  </td><td>Display?</td></tr>
@@ -297,6 +256,7 @@ $(function() {
                  </tr>
                 </table>
         </div>
+
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table">
                     <tr><td colspan="2" class="header">User System Information </td></tr>
@@ -304,13 +264,8 @@ $(function() {
                     <tr><td class="title">Browser:</td><td><?=($feedback->browser != True) ? "N/A" : $feedback->browser?></td></tr>
                 </table>
         </div>
-    </div>
-</div>
-<!-- spacer -->
-</div>
-
-<!-- end of the main panel -->
-
-<!-- div need to clear floated divs -->
-<div class="c"></div>
-</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+</div>              
