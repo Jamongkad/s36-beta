@@ -799,3 +799,216 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     -moz-border-radius:15px;
     border-radius:15px;     
 }
+
+/* modify feedback styles */
+ .permission-icon{
+  width:26px;
+  height:26px;
+  float:left;
+  padding-top:3px;
+ }
+ .permission-text{
+  margin-left:36px;
+ }
+ .permission-text h2{
+  font-size:18px;
+  font-weight:bold;
+  color:#403f3f;
+  margin-bottom:4px;
+ }
+ .permission-text p{
+  font-size:11px;
+  margin-bottom:7px;
+ }
+ .permission{
+  margin-bottom:10px;
+ }
+ .modify-box-left{
+  float:left;
+  width:65%;
+ }
+ .modify-box-right{
+  float:left;
+  width:35%;
+ }
+ .modify-textbox textarea{
+  width:90%;
+  height:150px;
+  border:1px solid #cccccc;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  border-radius:2px;    
+  padding:10px;
+  font-family:Open Sans, Arial;
+ }
+ .modify-textbox{
+  margin-bottom:15px;
+ }
+ .modify-status{
+  margin-bottom:5px;
+  color:#666; 
+ }
+ .modify-status span{
+  padding-right:5px;
+ }
+ .modify-status span.blue{
+  color:#598499;
+ }
+ .modify-status a{
+  color:#598499;
+ }
+ .modify-status .save-feedback{
+  float:right;
+  padding-right:10%;
+ }
+ .modify-other-info{
+  margin-top:15px;
+  color:#666;
+ }
+ .modify-other-info .modify-other-info-block{
+  margin-bottom:10px;
+ }
+ .modify-other-info .left-label{
+  width:50%;
+  float:left;
+ }
+ .modify-other-info .right-label{
+  width:50%;
+  float:left;
+ }
+ .modify-other-info input{
+  margin:0px;
+ }
+ .modify-other-info .padtext-fix{
+  padding-top:3px;
+ }
+ .modify-other-info .modify-textbox{
+  width:77%;
+  padding:1% 2%;
+  border:solid #ccc 1px;
+ }
+ .modify-box-right h4{
+  color:#403f3f;
+  font-weight:bold;
+  font-size:14px;
+  margin-bottom:10px;
+ }
+ .modify-box-right p{
+  margin-bottom:10px;
+  font-size:11px;
+  color:#939393;
+  line-height:1.4em;
+ } 
+ .modify-box-right ul{
+  list-style:none;
+  font-size:10px;
+  margin-bottom:10px;
+ }
+ .modify-box-right ul li{
+  width:50%;
+  float:left;
+  margin:9px 0px;
+ }
+ .modify-box-right ul li a{
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;    
+  background:#598499;
+  color:#FFF;
+  padding:1px 8px 3px;
+ }
+ .modify-box-right ul li a:hover{
+  background:#97adb8;
+ }
+ .modify-blue-bar{
+  border:1px solid #aabdce;
+  background:#cfdbe5;
+  margin-top:15px;
+  margin-left:-31px;
+  margin-right:-31px;
+  margin-bottom:-26px;
+  padding:15px 31px;
+ }
+ .blue-bar-left{
+  float:left;
+  width:75%;
+  font-size:10px;
+ }
+ .blue-bar-right{
+  float:left;
+  width:25%;
+ }
+ .align-left{
+  text-align:left;
+ }
+ .align-center{
+  text-align:center;
+ }
+ .align-right{
+  text-align:right;
+ }
+ .modify-blue-bar a{
+  color:#4e6c82;
+  padding:2px 6px 2px 26px;
+  background:url(/img/ico-feedback-info-menu.png);
+  background-repeat:no-repeat;
+ }
+ .modify-blue-bar a:hover{
+  background-color:#e7edf2;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+ }
+ .blue-bar-left .blue-bar-reply-to-user{
+  
+ }
+ .blue-bar-left .blue-bar-forward{
+  background-position:0px -18px;
+ }
+ .blue-bar-left .blue-bar-publish{
+  background-position:0px -35px;
+ }
+ .blue-bar-left .blue-bar-feature{
+  background-position:0px -35px;
+ }
+ .blue-bar-left .blue-bar-flag{
+  background-position:0px -54px;
+ }
+ .blue-bar-right .blue-bar-delete{
+  background-position:0px -71px;
+  background-color:#6a7882;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;    
+  color:#FFF;
+  font-size:11px;
+  padding:3px 10px 4px 28px;
+ }
+ .blue-bar-right .blue-bar-delete:hover{
+  background-color:#808e97; 
+ }
+ .feedback-data-table{
+  font-size:11px;
+  color:#939393;
+ }
+ .feedback-data-table .header{
+  font-size:14px;
+  color:#333;
+ }
+ .feedback-data-table td{
+  padding:8px 2px;
+ }
+ .feedback-data-table input{
+  margin:0px;
+ }
+ .newbtn-small{
+  font-size:10px;
+  padding:2px 6px;
+  background:#333;
+  color:#FFF;
+  border:0px;
+  margin-top:5px;
+ }
+ .margin-adjust-fix{
+  margin:0px -10px;
+ }
