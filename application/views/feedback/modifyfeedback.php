@@ -34,7 +34,7 @@ $(function() {
 
 <div id="theFormSetup" class="dashboard-page">
   <div class="permission grids">
-        <div class="permission-icon"><img src="/img/icon-full-permission.png" /></div>
+        <div class="permission-icon"><img src="/img/ico-full-permission.png" /></div>
         <div class="permission-text">
             <h3><?=$feedback->permission?></h3>
 
