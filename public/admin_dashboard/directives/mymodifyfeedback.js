@@ -26,9 +26,20 @@ angular.module('modifyfeedback', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
-                console.log("I love ANGULARJS")
+                var class_name = $(this).attr('class');
+                console.log(class_name);
                 e.preventDefault();
             });
         }
     }     
+})
+.directive('delete', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) { 
+            $(element).bind('click', function(e) { 
+                e.preventDefault();
+            });
+        }
+    }      
 })
