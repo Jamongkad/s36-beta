@@ -47,4 +47,8 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
     $scope.toggle_lock = function() {
         console.log("Toggle lock");
     }
+
+    $scope.toggle_display = function() { 
+        console.log("Toggle display");
+    }
 }

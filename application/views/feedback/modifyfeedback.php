@@ -245,7 +245,9 @@ $(function() {
                  <tr>
                      <td class="title">Image:</td>
                      <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
-                     <?$null_avatar = ($feedback->avatar == false || $feedback->origin == 'tw') ? Array('disabled' => 'disabled') : Array();?>
+                     <?
+                     $null_avatar = ($feedback->avatar == false || $feedback->origin == 'tw') ? 
+                                    Array('disabled' => 'disabled', 'ng-click' => 'toggle_display()') : Array('ng-click' => 'toggle_display()');?>
                      <td align="center"><?=Form::checkbox(
                                                'displayImg'
                                              , $feedback->displayimg
