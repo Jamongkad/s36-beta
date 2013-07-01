@@ -89,16 +89,16 @@ $(function() {
                 <ul class="category-box category-picker grids" id="<?=$feedback->categoryid?>"> 
                   <?foreach($categories as $cat):?>  
                          <li>
-                              <?=HTML::link('feedback/changecat/', $cat->name, Array(
-                                   'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                 , 'class'      => 'cat-picks'
-                                 , 'style'      => (($feedback->category === $cat->name) ? ' background:#97adb8;' : Null)  
-                                 , 'feedid'     => $id
-                                 , 'catid'      => $cat->id
-                                 , 'cat-state'  => $cat->intname
-                                 , 'state'      => 0
-                              ))?>
-                          </li>
+                          <a href="#" 
+                               class="cat-picks"
+                               style="<?=(($feedback->category === $cat->name) ? ' background:#97adb8;' : Null)?>"
+                               category-pick  
+                               ng-click="feedback_status($event)"                                                                       
+                               state=0
+                               data-feed='{"id": "<?=$feedback->id?>", "catid": "<?=$cat->id?>", "status": "fileas"}'>
+                                <?=$cat->name?>
+                           </a>
+                        </li>
                   <?endforeach?>
                 </ul>
                 <p>

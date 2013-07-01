@@ -1,5 +1,6 @@
 function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal) {
 
+    var current_url = window.location.pathname;
 
     $scope.fast_forward = function(email, feedid) {
         FeedbackService.send_fastforward(email, feedid);
@@ -28,5 +29,11 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
                
             }
         });
+    }
+
+    $scope.feedback_status = function($event) {
+        var target = $($event.target);
+        var feed = $.parseJSON(target.attr('data-feed')); 
+        console.log(feed);
     }
 }
