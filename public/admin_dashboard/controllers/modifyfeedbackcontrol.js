@@ -5,6 +5,6 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
     $scope.save_feedback = function() {
         console.log($scope.feedid);     
-        console.log($scope.feedback_text);     
+        console.log($scope.text);     
     }
 }
