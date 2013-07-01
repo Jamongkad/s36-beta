@@ -64,18 +64,12 @@ angular.module('modifyfeedback', [])
                         $(this).attr('state', 1);
                     }
                 }
+
+                if(class_name == "blue-bar-delete") { 
+                    console.log("Big Deal");
+                }
                 e.preventDefault();
             });
         }
     }     
-})
-.directive('delete', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) { 
-            $(element).bind('click', function(e) { 
-                e.preventDefault();
-            });
-        }
-    }      
 })
