@@ -320,6 +320,10 @@ body, #mainWrapper, #fadedContainer{
      display:block;
 }
 
+.blue-bar-forward:hover .the-categories-menu {  
+     display:block;
+}
+
 .action-gray-menu .publish:hover{
     background-position:-32px -31px;
 }
@@ -457,9 +461,9 @@ body, #mainWrapper, #fadedContainer{
     font-size:10px;
 }
 .the-categories-menu .the-categories ul.block-style li{
-     width:100%;
-      float:none;
-       margin:3px 0px;
+    width:100%;
+    float:none;
+    margin:3px 0px;
 }
 .the-categories-menu .the-categories ul.block-style li span{
      padding:2px;
