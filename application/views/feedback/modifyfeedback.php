@@ -24,6 +24,7 @@ $(function() {
 </script>
 <? $id = $feedback->id ?>
 
+<span ng-controller="ModifyFeedbackControl">
 <div class="dialog-form" feedid="<?=$id?>"> 
     <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feedback, 'reply_message' => $reply_message))?>
 </div>
@@ -266,3 +267,4 @@ $(function() {
     </div>
   </div>
 </div>
+</span>
