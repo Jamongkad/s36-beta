@@ -320,10 +320,6 @@ body, #mainWrapper, #fadedContainer{
      display:block;
 }
 
-.blue-bar-forward:hover .the-categories-menu {  
-     display:block;
-}
-
 .action-gray-menu .publish:hover{
     background-position:-32px -31px;
 }
@@ -964,6 +960,11 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
   -moz-border-radius:10px;
   border-radius:10px;
  }
+
+.blue-bar-forward a:hover .the-categories-menu {  
+     display:block;
+}
+
  .blue-bar-left .blue-bar-reply-to-user{
   
  }
