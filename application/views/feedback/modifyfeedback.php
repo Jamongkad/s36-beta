@@ -113,7 +113,7 @@ $(function() {
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-forward" forward>FORWARD</a>
                             <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
-                                <div class="the-categories-menu">
+                                <div class="the-modify-categories-menu">
                                     <div class="the-categories-menu-content">
                                         <div class="the-categories small-text">
                                            <ul class="grids block-style">

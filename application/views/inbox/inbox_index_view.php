@@ -486,7 +486,7 @@ $(document).ready(function() {
                                                 <div class="action-tooltip-arrow"></div>
                                             </div>
                                             <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
-                                                <div class="the-modify-categories-menu">
+                                                <div class="the-categories-menu">
                                                     <div class="the-category-arrow"></div>
                                                     <div class="the-categories-menu-content">
                                                         <div class="the-categories small-text">
