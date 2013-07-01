@@ -120,7 +120,7 @@ $(function() {
                                                <?if($admin_check->ffemail1):?>
                                                     <li id="email1">
                                                         <span>
-                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail1?>', <?=$feed->id?>)">
+                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail1?>', <?=$feedback->id?>)">
                                                                 <?=$admin_check->ffemail1?>
                                                             </a>
                                                         </span>
@@ -129,7 +129,7 @@ $(function() {
                                                <?if($admin_check->ffemail2):?>
                                                     <li id="email1">
                                                         <span>
-                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail2?>', <?=$feed->id?>)">
+                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail2?>', <?=$feedback->id?>)">
                                                                 <?=$admin_check->ffemail2?>
                                                             </a>     
                                                         </span>
@@ -138,7 +138,7 @@ $(function() {
                                                <?if($admin_check->ffemail3):?>
                                                     <li id="email1">
                                                         <span>
-                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>', <?=$feed->id?>)">
+                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>', <?=$feedack->id?>)">
                                                               <?=$admin_check->ffemail3?>
                                                            </a>
                                                         </span>
