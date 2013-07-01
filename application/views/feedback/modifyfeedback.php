@@ -181,7 +181,7 @@ $(function() {
                     </div>
                 </div>
                 <div class="blue-bar-right align-right">
-                    <a href="#" class="blue-bar-delete" delete ng-click="change_status(<?=$id?>, 'delete')">DELETE</a>
+                    <a href="#" class="blue-bar-delete" toggle ng-click="change_status(<?=$id?>, 'delete')">DELETE</a>
                 </div>
             </div>
         </div>
