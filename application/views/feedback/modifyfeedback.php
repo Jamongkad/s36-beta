@@ -144,7 +144,7 @@ $(function() {
                 <div class="dashboard-content">
                     <div class="margin-adjust-fix">
                         <div class="grids">
-                            <div class="g2of5">
+                            <div class="g1of3">
                                 <div class="grids">
                                     <div class="g1of5">
                                         <br />                         
@@ -162,7 +162,7 @@ $(function() {
                                     </div>
                                 </div>
 
-                                <div class="g1of3">
+                                <div class="g4of3">
                                     <table cellpadding="2" class="feedback-data-table">
                                         <tr><td colspan="2" class="header">User Information</td><td></td></tr>
                                         <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
