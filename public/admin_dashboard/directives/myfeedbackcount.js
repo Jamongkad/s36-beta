@@ -30,6 +30,5 @@ angular.module('feedback', [])
            $(element).children().click(process);
            $(element).click(process);
         }
-    }    
-    
+    }        
 })
