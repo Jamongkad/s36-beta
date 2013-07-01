@@ -117,7 +117,7 @@
     <!-- footer -->
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
-            This message was intended for <?=$feedback_data->email?>.  <br />
+            This message was intended for <?=$receiver?>.  <br />
             <p style="">
                 <b>36Stories Inc</b> 340 Lemon Ave #6168 Walnut CA, 91789 United States
             </p>
