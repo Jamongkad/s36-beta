@@ -99,7 +99,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var modfeed = {
             id: feed.id      
-          , catid: (current_url.match(/filed/g)) ? feed.catId : Template.default_category_id
+          , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
           , status: (return_policy == true) ? feed.status : 'unflag'
           , origin: Template.current_inbox_state 
         }
