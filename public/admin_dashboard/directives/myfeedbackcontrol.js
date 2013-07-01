@@ -200,7 +200,8 @@ angular.module('feedbackcontrol', [])
                       , attachments     : remaining
                       , remove_image    : remove_image
                     } 
-
+                     
+                    //place this in service you lazy bastard!
                     $.ajax({
                         type: "POST"
                       , url: "/inbox/update_feedback_attachment"
@@ -210,6 +211,17 @@ angular.module('feedbackcontrol', [])
                 });
                 e.preventDefault();
             })
+        }
+    }    
+})
+.directive('flag', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log("Flag");
+                e.preventDefault();
+            });
         }
     }    
 })
