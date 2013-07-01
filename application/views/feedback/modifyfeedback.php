@@ -50,7 +50,7 @@ $(function() {
             <div class="modify-box-left">
                 <div class="modify-textbox">    
                     <input type="hidden" value="<?=$id?>" ng-model="feedid"/>
-                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 'ng-model' => 'feedback_text'))?>
+                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
                 </div>
                 <div class="modify-status">
                     <span class="save-feedback"><a href="#" ng-click="save_feedback()">Save Feedback</a></span>
