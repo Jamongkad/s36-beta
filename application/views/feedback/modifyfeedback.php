@@ -46,7 +46,7 @@ $(function() {
   </div>
 </div>
 
-<div class="dashboard-box" style="padding: 31px;">
+<div class="dashboard-box" style="padding: 15px 31px;">
   <div class="dashboard-body">
     <div class="dashboard-content">
       <div class="modify-box">                  
@@ -138,7 +138,7 @@ $(function() {
   </div>
 </div>
             
-<div class="dashboard-box" style="padding: 15px 31px; margin: 15px -31px -26px">
+<div class="dashboard-box" style="padding: 15px 31px;">
   <div class="dashboard-body">
     <div class="dashboard-content">
         <div class="margin-adjust-fix">
