@@ -162,7 +162,7 @@ $(function() {
                                     </div>
                                 </div>
 
-                                <div class="g4of5">
+                                <div class="g1of3">
                                     <table cellpadding="2" class="feedback-data-table">
                                         <tr><td colspan="2" class="header">User Information</td><td></td></tr>
                                         <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
@@ -176,7 +176,7 @@ $(function() {
                                 </div>
                             </div>
 
-        <div class="g2of3">
+        <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <tr><td colspan="2" class="header">Display Information
                  </td><td>Display?</td></tr>
