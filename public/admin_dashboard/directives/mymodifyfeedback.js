@@ -67,7 +67,8 @@ angular.module('modifyfeedback', [])
                 }
 
                 if(class_name == "blue-bar-delete") { 
-                    console.log("Big Deal");
+                    $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style');
+                    alert("This feedback has been deleted.");
                 }
                 e.preventDefault();
             });
