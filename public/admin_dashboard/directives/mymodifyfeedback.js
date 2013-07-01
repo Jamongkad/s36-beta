@@ -27,7 +27,6 @@ angular.module('modifyfeedback', [])
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
                 var class_name = $(this).attr('class');
-                console.log(class_name);
 
                 if(class_name == "blue-bar-feature") { 
                     $(this).css({
@@ -37,6 +36,7 @@ angular.module('modifyfeedback', [])
                      , 'border-radius': '10px'
                     });
                     $(".blue-bar-publish").removeAttr('style');
+                    $(".cat-picks").removeAttr('style');
                 }
 
                 if(class_name == "blue-bar-publish") { 
@@ -47,6 +47,7 @@ angular.module('modifyfeedback', [])
                      , 'border-radius': '10px'
                     });
                     $(".blue-bar-feature").removeAttr('style');
+                    $(".cat-picks").removeAttr('style');
                 }
 
                 if(class_name == "blue-bar-flag") { 
