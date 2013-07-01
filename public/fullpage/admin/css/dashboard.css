@@ -410,11 +410,11 @@ body, #mainWrapper, #fadedContainer{
 .the-categories-menu-content{
     margin:17px 18px;
 }
-.the-categories-menu .the-categories{
+.the-categories{
     padding-bottom:6px;
     margin-bottom:6px;
 }
-.the-categories-menu .the-categories-options{
+.the-categories-options{
     font-size:11px;
 }
 .categories-combo{
@@ -458,10 +458,10 @@ body, #mainWrapper, #fadedContainer{
 .delete-button:hover{
     background-position:bottom;
 }
-.the-categories-menu .the-categories ul{
+.the-categories ul{
     margin-bottom:5px;
 }
-.the-categories-menu .the-categories ul li{
+.the-categories ul li{
     width:50%;
     float:left;
     border:none;
@@ -471,19 +471,19 @@ body, #mainWrapper, #fadedContainer{
     height:auto;
     font-size:10px;
 }
-.the-categories-menu .the-categories ul.block-style li{
+.the-categories ul.block-style li{
     width:100%;
     float:none;
     margin:3px 0px;
 }
-.the-categories-menu .the-categories ul.block-style li span{
+.the-categories ul.block-style li span{
      padding:2px;
 }
-.the-categories-menu .the-categories ul.block-style li span:hover {
+.the-categories ul.block-style li span:hover {
      text-decoration:none;
 }
 
-.the-categories-menu .the-categories ul li a{
+.the-categories ul li a{
     color:#FFF;
     padding:1px 6px 2px;
     background:#598499; 
@@ -491,7 +491,7 @@ body, #mainWrapper, #fadedContainer{
     -moz-border-radius:15px;
     border-radius:15px;     
 }
-.the-categories-menu .the-categories ul li a:hover{
+.the-categories ul li a:hover{
     background:#97adb8;
     text-decoration:none;
 }
