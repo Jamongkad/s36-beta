@@ -82,11 +82,11 @@ angular.module('modifyfeedback', [])
                 var deselect_this = false;
 
                 $(this).parent().siblings().children('a').each(function() {
-                    $(this).removeClass("Matched");     
+                    $(this).removeAttr("style");     
                 });
 
                 if(!deselect_this) {
-                    $(this).addClass('Matched');
+                    $(this).attr('style', "background: #97adb8");
                 }
                 e.preventDefault();
             });
