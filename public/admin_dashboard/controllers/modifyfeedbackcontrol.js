@@ -16,6 +16,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , dataType: 'json'
           , data: { feed_id: feedid, feedback_text: text } 
           , success: function(msg) { 
+                console.log(msg);
                 alert("Feedback text successfully edited!");
             }
         });
