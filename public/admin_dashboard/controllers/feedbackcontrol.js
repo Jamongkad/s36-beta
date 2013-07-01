@@ -91,12 +91,19 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.flag_feedback = function($event) {
         var flag = $($event.target);
-        var feed = $.parseJSON(flag.attr('data-feed'));
-        console.log(flag.attr('return-policy'));
- 
-        console.log(flag.attr('return-policy') == true);
-        console.log(feed);
-        //FeedbackControlService.change_status(feed, true);
+        var feed = $.parseJSON(flag.attr('data-feed')); 
+
+        var return_policy = flag.attr('return-policy') == true;
+
+        var modfeed = {
+            id: feed.id      
+          , catid: (currentUrl.match(/filed/g)) ? feed.catId : Template.default_category_id
+          , status: (return_policy == true) ? feed.status : 'unflag'
+          , origin: Template.current_inbox_state 
+        }
+
+        console.log(modfeed); 
+        //FeedbackControlService.change_status(feed, return_policy);
     }
 
     $scope.update_selection = function($event, id) {

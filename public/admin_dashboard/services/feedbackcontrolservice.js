@@ -14,8 +14,7 @@ angular.module('Services', [])
         $.ajax({
             type: 'post'    
           , dataType: 'json'
-          , data: {feed_data: status_change, undo: undo_flag}
-          , async: false
+          , data: { feed_data: status_change, undo: undo_flag }
           , url: '/feedback/change_feedback_state'
         }); 
     }

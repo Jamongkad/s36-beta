@@ -14,12 +14,13 @@ class FeedbackState {
       , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0, isNew = 0'
       , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isArchived = 1, isNew = 0'
       , 'flag'    => 'SET isFlagged = 1'
+      , 'unflag'    => 'SET isFlagged = 0'
     );
 
     private $category_vars = Array('categoryId', 'intName', 'name');
 
     public function __construct($mode, $block_id, $company_id, $category_id=False) {
-        $this->mode = $mode;     
+        $this->mode        = $mode;     
         $this->block_id    = $block_id;
         $this->company_id  = $company_id;
         $this->category_id = $category_id;
