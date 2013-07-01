@@ -4,9 +4,9 @@ angular.module('modifyfeedback', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
             $(element).hover(function(e) {
-                console.log("Hover in");
+                $(this).siblings('.the-categories-menu').show();
             }, function(e) {
-                console.log("Hover out");
+                $(this).siblings('.the-categories-menu').hide();
             });
         }
     }    
