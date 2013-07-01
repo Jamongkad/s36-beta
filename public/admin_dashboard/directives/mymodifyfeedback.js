@@ -3,11 +3,6 @@ angular.module('modifyfeedback', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
-            $(element).hover(function(e) {
-                $(this).siblings('.the-categories-menu').show();
-            }, function(e) {
-                $(this).siblings('.the-categories-menu').hide();
-            });
         }
     }    
 })
