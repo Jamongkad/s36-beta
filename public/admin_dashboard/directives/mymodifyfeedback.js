@@ -88,6 +88,9 @@ angular.module('modifyfeedback', [])
                 if(!deselect_this) {
                     $(this).attr('style', "background: #97adb8");
                 }
+
+                $(".blue-bar-feature").removeAttr('style');
+                $(".blue-bar-publish").removeAttr('style');
                 e.preventDefault();
             });
         }
