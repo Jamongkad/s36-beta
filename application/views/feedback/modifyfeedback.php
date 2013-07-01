@@ -111,10 +111,9 @@ $(function() {
                             <a href="#" class="blue-bar-reply-to-user" feedid="<?=$feedback->id?>" my-reply>REPLY TO USER</a>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-forward">FORWARD</a>
+                            <a href="#" class="blue-bar-forward" forward>FORWARD</a>
                             <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
                                 <div class="the-categories-menu">
-                                    <div class="the-category-arrow"></div>
                                     <div class="the-categories-menu-content">
                                         <div class="the-categories small-text">
                                            <ul class="grids block-style">
