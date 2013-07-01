@@ -1,14 +1,21 @@
 function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal) {
 
     var current_url = window.location.pathname;
+    var current_cat_id = $(".category-box").attr('id');
 
     $scope.fast_forward = function(email, feedid) {
         FeedbackService.send_fastforward(email, feedid);
     }
 
     $scope.change_status = function(feedid, status_change) {
-        console.log(feedid)
-        console.log(status_change)
+
+        var status_change = {
+            id: feedid     
+          , status: status_change
+          , catid: current_cat_id
+        }
+
+        FeedbackControlService.change_status(feed, true);
     }
 
     $scope.save_feedback = function() {
