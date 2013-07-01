@@ -19,6 +19,10 @@ angular.module('Services', [])
         }); 
     }
 
+    shared_service.flag_feedback = function(status_change) {
+        console.log(status_change);
+    }
+
     shared_service.expunge = function() {
         this.broadcast_now(); 
     }

@@ -104,8 +104,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
           , origin: Template.current_inbox_state 
         }
 
-        console.log(modfeed); 
-        //FeedbackControlService.change_status(feed, return_policy);
+        FeedbackControlService.flag_feedback(feed);
     }
 
     $scope.update_selection = function($event, id) {
