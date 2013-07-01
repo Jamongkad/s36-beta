@@ -33,150 +33,149 @@ $(function() {
 </div>
 
 <div id="theFormSetup" class="dashboard-page">
-      <div class="permission grids">
-            <div class="permission-icon"><img src="/img/icon-full-permission.jpg" /></div>
-            <div class="permission-text">
-                <h3><?=$feedback->permission?></h3>
+  <div class="permission grids">
+        <div class="permission-icon"><img src="/img/icon-full-permission.jpg" /></div>
+        <div class="permission-text">
+            <h3><?=$feedback->permission?></h3>
 
-                <p>
-                    <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?> to post his/her feedback
-                    on your website.
-                </p>
-            </div>
-      </div>
+            <p>
+                <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?> to post his/her feedback
+                on your website.
+            </p>
+        </div>
+  </div>
 </div>
 
-    <div class="dashboard-box">
-              <div class="dashboard-body">
-                <div class="dashboard-content">
-                  <div class="modify-box">
-                  
-                    <div class="grids">
-                        <div class="modify-box-left">
-                            <div class="modify-textbox">  
-                                <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
-                                <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
-                            </div>
-                            <div class="modify-status">
-                                <span class="save-feedback"><a href="#">Save Feedback</a></span>
-                                <span>Status : </span><span class="blue">New</span>
-                                <span>Priority : </span><span class="blue">High</span>
-                            </div>
-                            <div class="modify-other-info">
-                                <div class="modify-other-info-block grids">
-                                    <span class="left-label">Site URL : </span><span class="right-label">
-                                        <?=$feedback->sitedomain?>
-                                    </span>    
-                                </div>
-                                <div class="modify-other-info-block grids">
-                                    <span class="left-label">Default Display Rules : </span>
-                                    <span class="right-label">
-                                        <?=Form::checkbox('resetIndLock', 1, 
-                                                          ($feedback->indlock ? True : Null))?>
-                                    </span>  
-                                </div>
-                                <div class="modify-other-info-block grids">
-                                    <span class="left-label padtext-fix">Submission Date (dd-mm-yyyy) : </span>
-                                    <span class="right-label">
-                                        <input type="text" name="date_change" 
-                                               value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
-                                               class="regular-text datepicker" id="date" /> 
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modify-box-right">
-                            <h4>Save this item as feedback</h4>
-                            <p><small>Selecting other categories will move this item into the 'Filed Feedback' tab.</small></p>
-
-                            <ul class="category-box category-picker grids" id="<?=$feedback->categoryid?>"> 
-                              <?foreach($categories as $cat):?>  
-                                     <li>
-                                          <?=HTML::link('feedback/changecat/', $cat->name, Array(
-                                               'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                             , 'class'      => 'cat-picks'.(($feedback->category === $cat->name) ? ' Matched' : Null)
-                                             , 'feedid'     => $id
-                                             , 'catid'      => $cat->id
-                                             , 'cat-state'  => $cat->intname
-                                             , 'state'      => 0
-                                          ))?>
-                                      </li>
-                              <?endforeach?>
-                            </ul>
-                            <p>
-                                <?=HTML::link('settings', 'Manage categories →') ?>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="modify-blue-bar">
-                        <div class="grids">
-                            <div class="blue-bar-left">
-                                <div class="grids">
-                                    <div class="g1of5 align-center">
-                                        <a href="#" class="blue-bar-reply-to-user">REPLY TO USER</a>
-                                    </div>
-                                    <div class="g1of5 align-center">
-                                        <a href="#" class="blue-bar-forward">FORWARD</a>
-                                    </div>
-                                    <div class="g1of5 align-center">
-                                        <a href="#" class="blue-bar-publish">PUBLISH</a>
-                                    </div>
-                                    <div class="g1of5 align-center">
-                                        <a href="#" class="blue-bar-feature">FEATURE</a>
-                                    </div>
-                                    <div class="g1of5 align-center">
-                                        <a href="#" class="blue-bar-flag">FLAG</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blue-bar-right align-right">
-                                <a href="#" class="blue-bar-delete">DELETE</a>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
+<div class="dashboard-box">
+  <div class="dashboard-body">
+    <div class="dashboard-content">
+      <div class="modify-box">                  
+        <div class="grids">
+            <div class="modify-box-left">
+                <div class="modify-textbox">  
+                    <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
+                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
                 </div>
-              </div>
+                <div class="modify-status">
+                    <span class="save-feedback"><a href="#">Save Feedback</a></span>
+                    <span>Status : </span><span class="blue">New</span>
+                    <span>Priority : </span><span class="blue">High</span>
+                </div>
+                <div class="modify-other-info">
+                    <div class="modify-other-info-block grids">
+                        <span class="left-label">Site URL : </span><span class="right-label">
+                            <?=$feedback->sitedomain?>
+                        </span>    
+                    </div>
+                    <div class="modify-other-info-block grids">
+                        <span class="left-label">Default Display Rules : </span>
+                        <span class="right-label">
+                            <?=Form::checkbox('resetIndLock', 1, 
+                                              ($feedback->indlock ? True : Null))?>
+                        </span>  
+                    </div>
+                    <div class="modify-other-info-block grids">
+                        <span class="left-label padtext-fix">Submission Date (dd-mm-yyyy) : </span>
+                        <span class="right-label">
+                            <input type="text" name="date_change" 
+                                   value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
+                                   class="regular-text datepicker" id="date" /> 
+                        </span>
+                    </div>
+                </div>
             </div>
+            <div class="modify-box-right">
+                <h4>Save this item as feedback</h4>
+                <p><small>Selecting other categories will move this item into the 'Filed Feedback' tab.</small></p>
+
+                <ul class="category-box category-picker grids" id="<?=$feedback->categoryid?>"> 
+                  <?foreach($categories as $cat):?>  
+                         <li>
+                              <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                   'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                 , 'class'      => 'cat-picks'.(($feedback->category === $cat->name) ? ' Matched' : Null)
+                                 , 'feedid'     => $id
+                                 , 'catid'      => $cat->id
+                                 , 'cat-state'  => $cat->intname
+                                 , 'state'      => 0
+                              ))?>
+                          </li>
+                  <?endforeach?>
+                </ul>
+                <p>
+                    <?=HTML::link('settings', 'Manage categories →') ?>
+                </p>
+            </div>
+        </div>
+        <div class="modify-blue-bar">
+            <div class="grids">
+                <div class="blue-bar-left">
+                    <div class="grids">
+                        <div class="g1of5 align-center">
+                            <a href="#" class="blue-bar-reply-to-user">REPLY TO USER</a>
+                        </div>
+                        <div class="g1of5 align-center">
+                            <a href="#" class="blue-bar-forward">FORWARD</a>
+                        </div>
+                        <div class="g1of5 align-center">
+                            <a href="#" class="blue-bar-publish">PUBLISH</a>
+                        </div>
+                        <div class="g1of5 align-center">
+                            <a href="#" class="blue-bar-feature">FEATURE</a>
+                        </div>
+                        <div class="g1of5 align-center">
+                            <a href="#" class="blue-bar-flag">FLAG</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="blue-bar-right align-right">
+                    <a href="#" class="blue-bar-delete">DELETE</a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
             
-            <div class="dashboard-box">
-              <div class="dashboard-body">
-                <div class="dashboard-content">
-                    <div class="margin-adjust-fix">
-                        <div class="grids">
-                            <div class="g1of3">
-                                <div class="grids">
-                                    <div class="g1of5">
-                                        <br />                         
-                                        <?if($feedback->origin == 's36'):?>
-                                            <?if($feedback->avatar):?> 
-                                                <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
-                                            <?else:?>
-                                                <?=HTML::image('img/48x48-blank-avatar.jpg')?>
-                                            <?endif?>
-                                        <?endif?>
-                                        <?if($feedback->origin == 'tw'):?>
-                                            <img src="<?=$feedback->avatar?>" />
-                                        <?endif?> 
-                                     <br/ >
-                                    </div>
-                                </div>
+<div class="dashboard-box">
+  <div class="dashboard-body">
+    <div class="dashboard-content">
+        <div class="margin-adjust-fix">
+            <div class="grids">
+                <div class="g1of3">
+                    <div class="grids">
+                        <div class="g1of5">
+                            <br />                         
+                            <?if($feedback->origin == 's36'):?>
+                                <?if($feedback->avatar):?> 
+                                    <?=HTML::image('/uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
+                                <?else:?>
+                                    <?=HTML::image('/img/48x48-blank-avatar.jpg')?>
+                                <?endif?>
+                            <?endif?>
+                            <?if($feedback->origin == 'tw'):?>
+                                <img src="<?=$feedback->avatar?>" />
+                            <?endif?> 
+                         <br/ >
+                        </div>
+                    </div>
 
-                                <div class="g4of3">
-                                    <table cellpadding="2" class="feedback-data-table">
-                                        <tr><td colspan="2" class="header">User Information</td><td></td></tr>
-                                        <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
-                                        <tr><td class="title">Email:</td><td><?=$feedback->email?></td></tr>
-                                        <tr><td class="title">City:</td><td><?=$feedback->city?></td></tr>
-                                        <tr>
-                                            <td class="title">Country:</td>
-                                            <td><?=($feedback->countryname != 'Nil') ? $feedback->countryname : null?></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="g4of3">
+                        <table cellpadding="2" class="feedback-data-table">
+                            <tr><td colspan="2" class="header">User Information</td><td></td></tr>
+                            <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
+                            <tr><td class="title">Email:</td><td><?=$feedback->email?></td></tr>
+                            <tr><td class="title">City:</td><td><?=$feedback->city?></td></tr>
+                            <tr>
+                                <td class="title">Country:</td>
+                                <td><?=($feedback->countryname != 'Nil') ? $feedback->countryname : null?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-        <div class="g1of3">
+               <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <tr><td colspan="2" class="header">Display Information
                  </td><td>Display?</td></tr>
@@ -255,17 +254,17 @@ $(function() {
                      <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null))?></td>
                  </tr>
                 </table>
-        </div>
+               </div>
 
-        <div class="g1of3">
-                <table cellpadding="2" class="feedback-data-table">
-                    <tr><td colspan="2" class="header">User System Information </td></tr>
-                    <tr><td class="title">IP Address:</td><td><?=($feedback->ipaddress == 0) ? "N/A" : long2ip($feedback->ipaddress)?></td></tr> 
-                    <tr><td class="title">Browser:</td><td><?=($feedback->browser != True) ? "N/A" : $feedback->browser?></td></tr>
-                </table>
-        </div>
-                        </div>
-                    </div>
+                <div class="g1of3">
+                        <table cellpadding="2" class="feedback-data-table">
+                            <tr><td colspan="2" class="header">User System Information </td></tr>
+                            <tr><td class="title">IP Address:</td><td><?=($feedback->ipaddress == 0) ? "N/A" : long2ip($feedback->ipaddress)?></td></tr> 
+                            <tr><td class="title">Browser:</td><td><?=($feedback->browser != True) ? "N/A" : $feedback->browser?></td></tr>
+                        </table>
                 </div>
-              </div>
-</div>              
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
