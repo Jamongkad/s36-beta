@@ -11,7 +11,6 @@
         <?=HTML::script('/js/jquery.tinymce.js')?>
         <?=HTML::script('/js/jquery.cycle.all.min.js')?>
         
-        <?=HTML::script('/admin_dashboard/Status.js'); ?>
         <?=HTML::script('/js/helpers.js'); ?>
         <?=HTML::script('/admin_dashboard/dashboard.js'); ?>
 
