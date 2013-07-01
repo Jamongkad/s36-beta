@@ -16,6 +16,7 @@ class FastForward extends EmailFixture {
 
         $email_html = View::make('email/fastforward_view', Array(
             'message' => $this->email_data->email_comment
+          , 'receiver' => $this->email_data->sendto
           , 'sender' => $this->email_data->from
           , 'feedback_data' => $this->email_data->feedback
           , 'login_url' => $this->email_data->make_forward_url()
