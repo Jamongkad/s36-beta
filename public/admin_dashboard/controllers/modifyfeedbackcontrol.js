@@ -7,10 +7,20 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
     $scope.save_feedback = function() {
 
-        $scope.feedid = $(".feedid").val();
-        $scope.text = $(".feedback-textarea").val();
+        var feedid = $(".feedid").val();
+        var text = $(".feedback-textarea").val();
 
-        console.log($scope.feedid);     
-        console.log($scope.text);     
+        console.log(feedid);     
+        console.log(text);     
+
+        $.ajax({
+            url: '/feedback/edit_feedback_text'              
+          , type: 'POST'
+          , dataType: 'json'
+          , data: { feed_id: feedid, feedback_text: text } 
+          , success: function(msg) { 
+                alert("Feedback text successfully edited!");
+            }
+        });
     }
 }
