@@ -17,7 +17,8 @@ class FeedbackService {
             $text = Helpers::html_cleaner($post->feedback_text);
             $feed_id = $post->feed_id;
             $profanity = $this->dbbadwords->profanity_detection($text);         
-            return $this->dbfeedback->update_feedback_text($feed_id, $text, $profanity);
+            $result = $this->dbfeedback->update_feedback_text($feed_id, $text, $profanity);
+            echo json_encode(Array('saved' => $result));
         }
     }
 

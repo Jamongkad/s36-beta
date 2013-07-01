@@ -10,9 +10,6 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         var feedid = $(".feedid").val();
         var text = $(".feedback-textarea").val();
 
-        console.log(feedid);     
-        console.log(text);     
-
         $.ajax({
             url: '/feedback/edit_feedback_text'              
           , type: 'POST'
