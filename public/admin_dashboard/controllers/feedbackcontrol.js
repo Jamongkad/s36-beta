@@ -93,6 +93,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var flag = $($event.target);
         var feed = $.parseJSON(flag.attr('data-feed'));
         console.log(flag.attr('return-policy'));
+ 
+        console.log(flag.attr('return-policy') == true);
+        //FeedbackControlService.change_status(feed, true);
     }
 
     $scope.update_selection = function($event, id) {
