@@ -51,7 +51,18 @@ angular.module('modifyfeedback', [])
 
                 if(class_name == "blue-bar-flag") { 
                     var state = $(this).attr('state');
-                    console.log(state);
+                    if(state == 1) {
+                        $(this).removeAttr('style');
+                        $(this).attr('state', 0);
+                    } else { 
+                        $(this).css({
+                           'background-color': '#e7edf2'
+                         , '-webkit-border-radius': '10px'
+                         , '-moz-border-radius': '10px'
+                         , 'border-radius': '10px'
+                        });
+                        $(this).attr('state', 1);
+                    }
                 }
                 e.preventDefault();
             });
