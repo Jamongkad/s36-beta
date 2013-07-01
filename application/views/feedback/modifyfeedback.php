@@ -50,7 +50,7 @@ $(function() {
             <div class="modify-box-left">
                 <div class="modify-textbox">    
                     <input type="hidden" value="<?=$id?>" ng-model="feedid" ng-init="feedid='<?=$id?>'"/>  
-                    <textarea class="feedback-textarea" rows=10 cols=83>
+                    <textarea class="feedback-textarea" rows=10 cols=83 ng-model="text" ng-init="text='<?=$feedback->text?>'">
 <?=$feedback->text?> 
                     </textarea>
                 </div>
