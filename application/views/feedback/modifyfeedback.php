@@ -49,8 +49,10 @@ $(function() {
         <div class="grids">
             <div class="modify-box-left">
                 <div class="modify-textbox">    
-                    <input type="hidden" value="<?=$id?>" ng-model="feedid" ng-init="feedid='<?=$id?>'"/>
-                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
+                    <input type="hidden" value="<?=$id?>" ng-model="feedid" ng-init="feedid='<?=$id?>'"/>  
+                    <textarea class="feedback-textarea" rows=10 cols=83>
+<?=$feedback->text?> 
+                    </textarea>
                 </div>
                 <div class="modify-status">
                     <span class="save-feedback"><a href="#" save-feedback ng-click="save_feedback()">Save Feedback</a></span>
