@@ -5,6 +5,10 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         FeedbackService.send_fastforward(email, feedid);
     }
 
+    $scope.change_status = function(feedid, status_change) {
+        
+    }
+
     $scope.save_feedback = function() {
 
         var feedid = $(".feedid").val();

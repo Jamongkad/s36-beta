@@ -91,7 +91,8 @@ $(function() {
                          <li>
                               <?=HTML::link('feedback/changecat/', $cat->name, Array(
                                    'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                 , 'class'      => 'cat-picks'.(($feedback->category === $cat->name) ? ' Matched' : Null)
+                                 , 'class'      => 'cat-picks'
+                                 , 'style'      => (($feedback->category === $cat->name) ? ' background:#97adb8;' : Null)  
                                  , 'feedid'     => $id
                                  , 'catid'      => $cat->id
                                  , 'cat-state'  => $cat->intname
@@ -154,18 +155,18 @@ $(function() {
                             <?endif?>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-publish">PUBLISH</a>
+                            <a href="#" class="blue-bar-publish" ng-click="change_status(<?=$id?>, 'publish')">PUBLISH</a>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-feature">FEATURE</a>
+                            <a href="#" class="blue-bar-feature" ng-click="change_status(<?=$id?>, 'feature')">FEATURE</a>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-flag">FLAG</a>
+                            <a href="#" class="blue-bar-flag" ng-click="change_status(<?=$id?>, 'flag')">FLAG</a>
                         </div>
                     </div>
                 </div>
                 <div class="blue-bar-right align-right">
-                    <a href="#" class="blue-bar-delete">DELETE</a>
+                    <a href="#" class="blue-bar-delete" ng-click="change_status(<?=$id?>, 'delete')">DELETE</a>
                 </div>
             </div>
         </div>
