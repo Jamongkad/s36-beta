@@ -138,7 +138,7 @@ $(function() {
                                                <?if($admin_check->ffemail3):?>
                                                     <li id="email1">
                                                         <span>
-                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>', <?=$feedack->id?>)">
+                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>', <?=$feedback->id?>)">
                                                               <?=$admin_check->ffemail3?>
                                                            </a>
                                                         </span>
