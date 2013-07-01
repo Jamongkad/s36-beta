@@ -954,6 +954,7 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
   background:url(/img/ico-feedback-info-menu.png);
   background-repeat:no-repeat;
  }
+
  .modify-blue-bar a:hover{
   background-color:#e7edf2;
   -webkit-border-radius:10px;
@@ -962,7 +963,7 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
  }
 
 .blue-bar-forward a:hover .the-categories-menu {  
-     display:block;
+    display:block;
 }
 
  .blue-bar-left .blue-bar-reply-to-user{
