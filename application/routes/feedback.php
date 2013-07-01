@@ -80,12 +80,16 @@ return array(
     },
 
     'POST /feedback/flagfeedback' => function() use ($feedback) {  
-        Helpers::dump(Input::get());
-        /*
-        $feed_id = Input::get('feed_ids'); 
-        $id = array_map(function($obj) { return $obj['feedid']; }, $feed_id);
-        $feedback->_change_feedback('isFlagged', $id[0], Input::get('state'));
-        */
+        $feed = Input::get('feed_data');
+
+        $feed_ids   = Array($feed['id']);
+        $cat_id     = $feed['catid'];
+        $mode       = $feed['status'];
+        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
+
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
+        $feedbackstate->change_state();
+        $feedbackstate->write_summary(); 
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
