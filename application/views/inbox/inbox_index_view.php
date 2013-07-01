@@ -596,7 +596,10 @@ $(document).ready(function() {
                                         </li>
                                         <li class="action-sprite flag-action" 
                                             ng-click="feedback_status($event)" 
-                                            data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "flag"}'>
+                                            data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "flag"}' 
+                                            <?=($feed->isflagged) ? "style='background-position: -194px -31px'" : null?> 
+                                            <?=($feed->isflagged) ? "return-policy=1" : "return-policy=0"?> 
+                                            >
                                             <div class="action-tooltip">
                                                 <span>Flag Feedback</span>
                                                 <div class="action-tooltip-arrow"></div>
