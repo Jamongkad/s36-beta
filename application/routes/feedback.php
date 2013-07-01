@@ -88,7 +88,7 @@ return array(
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed = Input::get('feed_data');
         $undo_flag = Input::get('undo');
-        
+         
         $feed_ids   = (is_array($feed['id'])) ? $feed['id'] : Array($feed['id']);
         $cat_id     = $feed['catid'];
         $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
