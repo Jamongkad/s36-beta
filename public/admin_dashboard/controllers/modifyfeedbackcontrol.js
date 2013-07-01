@@ -1,3 +1,3 @@
-function ModifyFeedbackControl($scope, FeedbackControl, FeedbackService, FeedbackSignal) {
+function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal) {
 
 }
