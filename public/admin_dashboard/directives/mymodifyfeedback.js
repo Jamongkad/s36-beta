@@ -21,3 +21,14 @@ angular.module('modifyfeedback', [])
         }
     }    
 })
+.directive('toggle', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) { 
+            $(element).bind('click', function(e) {
+                console.log("I love ANGULARJS")
+                e.preventDefault();
+            });
+        }
+    }     
+})

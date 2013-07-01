@@ -155,13 +155,28 @@ $(function() {
                             <?endif?>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-publish" ng-click="change_status(<?=$id?>, 'publish')">PUBLISH</a>
+                            <a href="#" class="blue-bar-publish" toggle
+                               <?=($feedback->ispublished) ? "style='background-color:#e7edf2;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;'" : null?>
+                               <?=($feedback->ispublished) ? "state=1" : "state=0"?> 
+                               ng-click="change_status(<?=$id?>, 'publish')">
+                                PUBLISH
+                            </a>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-feature" ng-click="change_status(<?=$id?>, 'feature')">FEATURE</a>
+                            <a href="#" class="blue-bar-feature" toggle 
+                            <?=($feedback->isfeatured) ? "style='background-color:#e7edf2;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;'" : null?>
+                            <?=($feedback->isfeatured) ? "state=1" : "state=0"?> 
+                            ng-click="change_status(<?=$id?>, 'feature')"> 
+                                FEATURE
+                            </a>
                         </div>
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-flag" ng-click="change_status(<?=$id?>, 'flag')">FLAG</a>
+                            <a href="#" class="blue-bar-flag" toggle
+                            <?=($feedback->isflagged) ? "style='background-color:#e7edf2;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;'" : null?>
+                            <?=($feedback->isflagged) ? "state=1" : "state=0"?> 
+                            ng-click="change_status(<?=$id?>, 'flag')">
+                               FLAG
+                            </a>
                         </div>
                     </div>
                 </div>
