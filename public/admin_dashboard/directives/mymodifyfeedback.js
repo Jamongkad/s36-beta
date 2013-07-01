@@ -11,6 +11,13 @@ angular.module('modifyfeedback', [])
         }
     }    
 })
-.directive('saveFeedback', function() {
-    
+.directive('saveFeedback', function() { 
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) { 
+            $(element).bind('click', function(e) {
+                e.preventDefault();
+            });
+        }
+    }    
 })
