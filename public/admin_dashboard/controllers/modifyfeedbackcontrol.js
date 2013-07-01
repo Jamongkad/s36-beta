@@ -6,7 +6,8 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
     }
 
     $scope.change_status = function(feedid, status_change) {
-        
+        console.log(feedid)
+        console.log(status_change)
     }
 
     $scope.save_feedback = function() {
