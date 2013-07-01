@@ -49,8 +49,8 @@ $(function() {
         <div class="grids">
             <div class="modify-box-left">
                 <div class="modify-textbox">    
-                    <input type="hidden" value="<?=$id?>" ng-model="feedid" ng-init="feedid='<?=$id?>'"/>  
-                    <textarea class="feedback-textarea" rows=10 cols=83 ng-model="text">
+                    <input type="hidden" class="feedid" value="<?=$id?>"/>  
+                    <textarea class="feedback-textarea" rows=10 cols=83>
 <?=$feedback->text?> 
                     </textarea>
                 </div>
