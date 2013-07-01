@@ -48,8 +48,8 @@ $(function() {
       <div class="modify-box">                  
         <div class="grids">
             <div class="modify-box-left">
-                <div class="modify-textbox">  
-                    <?=Form::hidden('feed_id', $id, array('id' => 'feed-id', 'ng-model' => 'feedid'))?> 
+                <div class="modify-textbox">    
+                    <input type="hidden" value="<?=$id?>" ng-model="feedid"/>
                     <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 'ng-model' => 'feedback_text'))?>
                 </div>
                 <div class="modify-status">
