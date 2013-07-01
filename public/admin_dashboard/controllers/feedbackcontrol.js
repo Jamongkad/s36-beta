@@ -25,6 +25,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
     }
 
+    var current_url = window.location.pathname;
+
     var insert_param = function(key, value) {
 
         var key = escape(key); value = escape(value);
@@ -97,7 +99,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var modfeed = {
             id: feed.id      
-          , catid: (currentUrl.match(/filed/g)) ? feed.catId : Template.default_category_id
+          , catid: (current_url.match(/filed/g)) ? feed.catId : Template.default_category_id
           , status: (return_policy == true) ? feed.status : 'unflag'
           , origin: Template.current_inbox_state 
         }
