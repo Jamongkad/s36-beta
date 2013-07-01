@@ -149,7 +149,7 @@ $(function() {
                             <br />                         
                             <?if($feedback->origin == 's36'):?>
                                 <?if($feedback->avatar):?> 
-                                    <?=HTML::image('/uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
+                                    <?=HTML::image('uploaded_images/avatar/small/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
                                 <?else:?>
                                     <?=HTML::image('/img/48x48-blank-avatar.jpg')?>
                                 <?endif?>
