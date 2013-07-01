@@ -34,6 +34,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
     $scope.feedback_status = function($event) {
         var target = $($event.target);
         var feed = $.parseJSON(target.attr('data-feed')); 
-        console.log(feed);
+        feed.origin = Template.current_inbox_state;
+        FeedbackControlService.change_status(feed, true);
     }
 }
