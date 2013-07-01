@@ -220,8 +220,13 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 var policy = $(this).attr("return-policy");
-                var style = $(this).attr("style");
-                console.log(policy);
+                if(policy == 1) {
+                    $(this).removeAttr("style");
+                    $(this).attr("return-policy", 0);
+                } else { 
+                    $(this).attr("style", "background-position: -194px -31px");
+                    $(this).attr("return-policy", 1);
+                }
                 e.preventDefault();
             });
         }
