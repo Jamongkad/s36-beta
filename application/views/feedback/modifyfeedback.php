@@ -68,8 +68,7 @@ $(function() {
                     <div class="modify-other-info-block grids">
                         <span class="left-label">Default Display Rules : </span>
                         <span class="right-label">
-                            <?=Form::checkbox('resetIndLock', 1, 
-                                              ($feedback->indlock ? True : Null))?>
+                            <?=Form::checkbox('resetIndLock', 1, ($feedback->indlock ? True : Null), Array('ng-click' => 'toggle_lock()'))?>
                         </span>  
                     </div>
                     <div class="modify-other-info-block grids">

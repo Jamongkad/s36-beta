@@ -43,4 +43,8 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         var feed = $.parseJSON(target.attr('data-feed')); 
         FeedbackControlService.change_status(feed, true);
     }
+
+    $scope.toggle_lock = function() {
+        console.log("Toggle lock");
+    }
 }
