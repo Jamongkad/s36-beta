@@ -1012,3 +1012,6 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
  .margin-adjust-fix{
   margin:0px -10px;
  }
+.modified {
+    padding: 15px 31px;
+}
