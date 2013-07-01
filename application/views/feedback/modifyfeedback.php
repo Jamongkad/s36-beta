@@ -33,7 +33,7 @@ $(function() {
 </div>
 
 <div id="theFormSetup" class="dashboard-page">
-  <div class="permission grids">
+  <div class="permission grids modified">
         <div class="permission-icon"><img src="/img/ico-full-permission.png" /></div>
         <div class="permission-text">
             <h3><?=$feedback->permission?></h3>
@@ -46,7 +46,7 @@ $(function() {
   </div>
 </div>
 
-<div class="dashboard-box" style="padding: 15px 31px;">
+<div class="dashboard-box modified">
   <div class="dashboard-body">
     <div class="dashboard-content">
       <div class="modify-box">                  
@@ -138,7 +138,7 @@ $(function() {
   </div>
 </div>
             
-<div class="dashboard-box" style="padding: 15px 31px;">
+<div class="dashboard-box modified">
   <div class="dashboard-body">
     <div class="dashboard-content">
         <div class="margin-adjust-fix">
