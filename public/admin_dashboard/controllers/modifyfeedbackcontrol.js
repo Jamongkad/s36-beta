@@ -1,4 +1,4 @@
-function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal) {
+function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal, Template) {
 
     var current_url = window.location.pathname;
 
