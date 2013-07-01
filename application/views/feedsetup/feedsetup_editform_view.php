@@ -80,9 +80,7 @@
     </div>
     <div class="dashboard-body">
         <div class="dashboard-content">
-            <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
-               Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
-               collect information in addition to your customer's feedback.</p>
+            <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer, or maybe you might want them to specify their gender. With custom fields, you have the flexibility to collect information in addition to your customer's feedback.</p>
             <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" id="form-builder" class="grids"></div>
         </div>
     </div>
