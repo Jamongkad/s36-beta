@@ -3,7 +3,11 @@ angular.module('modifyfeedback', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
-          console.log(element);
+            $(element).hover(function(e) {
+                console.log("Hover in");
+            }, function(e) {
+                console.log("Hover out");
+            });
         }
     }    
 })
