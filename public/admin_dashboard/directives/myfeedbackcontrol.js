@@ -219,7 +219,9 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log("Flag");
+                var policy = $(this).attr("return-policy");
+                var style = $(this).attr("style");
+                console.log(policy);
                 e.preventDefault();
             });
         }
