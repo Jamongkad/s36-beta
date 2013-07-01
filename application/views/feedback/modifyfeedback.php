@@ -34,7 +34,6 @@ $(function() {
         <div class="permission-icon"><img src="/img/ico-full-permission.png" /></div>
         <div class="permission-text">
             <h3><?=$feedback->permission?></h3>
-
             <p>
                 <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?> to post his/her feedback
                 on your website.
@@ -113,6 +112,45 @@ $(function() {
                         </div>
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-forward">FORWARD</a>
+                            <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
+                                <div class="the-categories-menu">
+                                    <div class="the-category-arrow"></div>
+                                    <div class="the-categories-menu-content">
+                                        <div class="the-categories small-text">
+                                           <ul class="grids block-style">
+                                               <?if($admin_check->ffemail1):?>
+                                                    <li id="email1">
+                                                        <span>
+                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail1?>', <?=$feed->id?>)">
+                                                                <?=$admin_check->ffemail1?>
+                                                            </a>
+                                                        </span>
+                                                    </li>
+                                               <?endif?>
+                                               <?if($admin_check->ffemail2):?>
+                                                    <li id="email1">
+                                                        <span>
+                                                            <a ng-click="fast_forward('<?=$admin_check->ffemail2?>', <?=$feed->id?>)">
+                                                                <?=$admin_check->ffemail2?>
+                                                            </a>     
+                                                        </span>
+                                                    </li>
+                                               <?endif?>
+                                               <?if($admin_check->ffemail3):?>
+                                                    <li id="email1">
+                                                        <span>
+                                                           <a ng-click="fast_forward('<?=$admin_check->ffemail3?>', <?=$feed->id?>)">
+                                                              <?=$admin_check->ffemail3?>
+                                                           </a>
+                                                        </span>
+                                                    </li>
+                                               <?endif?> 
+                                           </ul>
+                                            <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?endif?>
                         </div>
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-publish">PUBLISH</a>
