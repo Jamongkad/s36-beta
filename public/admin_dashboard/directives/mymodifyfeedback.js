@@ -78,6 +78,16 @@ angular.module('modifyfeedback', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) { 
+
+                var deselect_this = false;
+
+                $(this).parent().siblings().children('a').each(function() {
+                    $(this).removeClass("Matched");     
+                });
+
+                if(!deselect_this) {
+                    $(this).addClass('Matched');
+                }
                 e.preventDefault();
             });
         }
