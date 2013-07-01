@@ -89,6 +89,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         FeedbackControlService.change_status(feed, true);
     }
 
+    $scope.flag_feedback = function($event) {
+        var flag = $(event.target);
+        var feed = $.parseJSON(target.attr('data-feed'));
+        console.log(flag.attr('return-policy'));
+    }
+
     $scope.update_selection = function($event, id) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
