@@ -48,6 +48,11 @@ angular.module('modifyfeedback', [])
                     });
                     $(".blue-bar-feature").removeAttr('style');
                 }
+
+                if(class_name == "blue-bar-flag") { 
+                    var state = $(this).attr('state');
+                    console.log(state);
+                }
                 e.preventDefault();
             });
         }
