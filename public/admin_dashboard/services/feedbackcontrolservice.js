@@ -20,7 +20,12 @@ angular.module('Services', [])
     }
 
     shared_service.flag_feedback = function(status_change) {
-        console.log(status_change);
+        $.ajax({
+            type: 'post'    
+          , dataType: 'json'
+          , data: { feed_data: status_change }
+          , url: '/feedback/flagfeedback'
+        }); 
     }
 
     shared_service.expunge = function() {

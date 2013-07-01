@@ -80,9 +80,12 @@ return array(
     },
 
     'POST /feedback/flagfeedback' => function() use ($feedback) {  
+        Helpers::dump(Input::get());
+        /*
         $feed_id = Input::get('feed_ids'); 
         $id = array_map(function($obj) { return $obj['feedid']; }, $feed_id);
         $feedback->_change_feedback('isFlagged', $id[0], Input::get('state'));
+        */
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
