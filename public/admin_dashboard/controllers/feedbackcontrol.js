@@ -90,7 +90,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.flag_feedback = function($event) {
-        var flag = $(event.target);
+        var flag = $($event.target);
         var feed = $.parseJSON(flag.attr('data-feed'));
         console.log(flag.attr('return-policy'));
     }
