@@ -1,4 +1,4 @@
-function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal, Template) {
+function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal) {
 
     var current_url = window.location.pathname;
 
@@ -34,7 +34,6 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
     $scope.feedback_status = function($event) {
         var target = $($event.target);
         var feed = $.parseJSON(target.attr('data-feed')); 
-        feed.origin = Template.current_inbox_state;
         FeedbackControlService.change_status(feed, true);
     }
 }
