@@ -51,7 +51,7 @@
                                 	<tr>
 
                                         <?if($feedback_data->avatar):?>
-                                            <td><?=HTML::image('uploaded_cropped/150x150/'.$feedback_data->avatar, 'Avatar', array('width' => '91', 'height' => '91'))?></td>
+                                            <td><?=HTML::image('uploaded_images/avatar/medium/'.$feedback_data->avatar, 'Avatar')?></td>
                                             <td width="10"></td>
                                         <?endif?>
                                     	
