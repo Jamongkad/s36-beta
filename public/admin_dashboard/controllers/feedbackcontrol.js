@@ -95,6 +95,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log(flag.attr('return-policy'));
  
         console.log(flag.attr('return-policy') == true);
+        console.log(feed);
         //FeedbackControlService.change_status(feed, true);
     }
 
