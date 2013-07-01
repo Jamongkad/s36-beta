@@ -144,6 +144,7 @@ $(function() {
         <div class="margin-adjust-fix">
             <div class="grids">
                 <div class="g1of3">
+                <!--
                     <div class="grids">
                         <div class="g1of5">
                             <br />                         
@@ -160,6 +161,7 @@ $(function() {
                          <br/ >
                         </div>
                     </div>
+                -->
 
                     <div class="g4of3">
                         <table cellpadding="2" class="feedback-data-table">
