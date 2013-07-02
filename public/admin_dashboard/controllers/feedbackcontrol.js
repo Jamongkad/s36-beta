@@ -122,8 +122,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
             var feed = {};
-
-            var d = confirm("Are you sure want to permanently remove all this feedback? There is no undo.");
             
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
