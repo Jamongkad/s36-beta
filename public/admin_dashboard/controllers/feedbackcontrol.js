@@ -86,8 +86,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.selected = [];
     var checkboxes = $(".feed-checkbox");
-    $scope.status_select_value = 'none';
 
+    $scope.status_select_value = 'none';
     $scope.date_filter     = (!is_empty(qs) && qs['date']) ? qs['date'] : 'none';
     $scope.priority_filter = (!is_empty(qs) && qs['priority']) ? qs['priority'] : 'none';
     $scope.status_filter   = (!is_empty(qs) && qs['status']) ? qs['status'] : 'none';
@@ -203,6 +203,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             selected = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';
+            
+            if(checkboxes.length == selected.length) {
+                console.log("Well that is all of them");
+            }
+
         }
     }
 
