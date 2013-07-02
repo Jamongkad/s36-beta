@@ -31,9 +31,11 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         FeedbackControlService.change_status(feed, true);
     }
 
-    $scope.toggle_lock = function($event) {
+    $scope.toggle_feedback_display_lock = function($event) {
         var target = $($event.target);
         var checked = target.is(':checked'); 
+        var data = { feedid: feedid, status: checked };
+        ModifyFeedback.lock_feedback_display(data);
     }
 
     $scope.toggle_display = function($event) { 
