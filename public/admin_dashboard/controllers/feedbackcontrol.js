@@ -153,7 +153,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }
                 } else { 
                     if($('input[type=checkbox].feed-checkbox:checked').length > 0) {
-                        $('input[type=checkbox].feed-checkbox:checked').attr('checked', false);
+                        $('input[type=checkbox].feed-checkbox:checked').click();
                     }
                 }
             } else { 
