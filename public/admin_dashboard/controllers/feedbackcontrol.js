@@ -182,8 +182,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     */
  
                     for(var i=0; i < ids.length; ++i) {
-                        selected.push(feedback_collect(i, mode, 'feedid'));
-                        catids.push(feedback_collect(i, mode, 'catid'));
+                        selected.push(feedback_collect(ids[i], mode, 'feedid'));
+                        catids.push(feedback_collect(ids[i], mode, 'catid'));
                     }
                 } else { 
                     if($('input[type=checkbox].feed-checkbox:checked').length > 0) {
@@ -198,8 +198,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 for(var i=0; i < ids.length; ++i) {
                     console.log(feedback_collect(ids[i], mode, 'feedid'));
                     /*
-                    selected.push(feedback_collect(i, mode, 'feedid'));
-                    catids.push(feedback_collect(i, mode, 'catid'));
+                    selected.push(feedback_collect(ids[i], mode, 'feedid'));
+                    catids.push(feedback_collect(ids[i], mode, 'catid'));
                     */
                     /*
                     var me = ids[i];
