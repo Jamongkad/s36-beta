@@ -166,7 +166,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                       , origin: Template.current_inbox_state
                     }
                 }
-                console.log(Template);
+
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true); 
                 $(".checky-box-container").show();  
