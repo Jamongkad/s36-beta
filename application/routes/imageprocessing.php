@@ -240,6 +240,11 @@ return array(
             )
         );
         $result = new JqueryFileUploader($options);
+        
+        
+        // remove the uploaded image with original filename.
+        $orig_image = $options['upload_dir'] . $_FILES['files']['name'][0];
+        if( file_exists($orig_image) && is_file($orig_image) ) unlink($orig_image);
     }),
 
     //'GET /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {  // replaced with $_POST because $_GET has char limit.
