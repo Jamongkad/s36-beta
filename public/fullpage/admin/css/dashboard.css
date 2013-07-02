@@ -416,6 +416,7 @@
 }
 .the-modify-categories-menu .the-categories ul{
     margin-bottom:5px;
+    list-style-type: none;
 }
 .the-modify-categories-menu .the-categories ul li{
     width:50%;
