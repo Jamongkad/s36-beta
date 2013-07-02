@@ -125,11 +125,61 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             if(mode == "remove") {
                 if(confirm("Are you sure you want to permanently remove this feedback? There is no undo."))      {
-                    console.log("yes");
+                    for(var i=0; i < ids.length; ++i) {
+                        var me = ids[i];
+                    
+                        var entity = $(".dashboard-feedback[feedback=" + me + "]");
+                        var entity_parent = entity.parents('.feedback-group');
+                        var score = entity.attr('score');
+                        var permission = entity.attr('permission');
+                        var catid = entity.attr('catid');
+         
+                        if(
+                               (score >= 3 && permission == 1)
+                           || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
+                           || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
+                          )  {
+                            entity.hide();
+                            var child_count = entity_parent.children('.dashboard-feedback:visible');
+
+                            if(child_count.length == 0) {  
+                                entity_parent.hide(); 
+                            }      
+
+                            selected.push(me);
+                            catids.push(catid);
+                        }    
+                    }
                 }
             } else { 
-                console.log("yes");
+                for(var i=0; i < ids.length; ++i) {
+                    var me = ids[i];
+                
+                    var entity = $(".dashboard-feedback[feedback=" + me + "]");
+                    var entity_parent = entity.parents('.feedback-group');
+                    var score = entity.attr('score');
+                    var permission = entity.attr('permission');
+                    var catid = entity.attr('catid');
+     
+                    if(
+                           (score >= 3 && permission == 1)
+                       || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
+                       || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
+                      )  {
+                        entity.hide();
+                        var child_count = entity_parent.children('.dashboard-feedback:visible');
+
+                        if(child_count.length == 0) {  
+                            entity_parent.hide(); 
+                        }      
+
+                        selected.push(me);
+                        catids.push(catid);
+                    }    
+                }
             }
+
+            console.log(selected);
             /*             
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
