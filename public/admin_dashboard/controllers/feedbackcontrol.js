@@ -182,6 +182,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
             }
 
+            console.log(mode);
+            console.log(selected);
+
             if(selected.length > 0) { 
                 if(currentUrl.match(/filed/g)) {
                     var feed = {
