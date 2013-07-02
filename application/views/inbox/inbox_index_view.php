@@ -62,7 +62,7 @@ $(document).ready(function() {
             </span>
 
             <a undo class="undo" href="#" ng-click="undo()">undo</a> 
-            <a close class="close-checky" href="#">close</a>
+            <a close class="close-checky" href="#" ng-click="close()">close</a>
         </div>
     </div>
 </div>

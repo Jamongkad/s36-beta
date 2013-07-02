@@ -200,10 +200,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } 
             }
 
-            if(checkboxes.length == selected.length) {
-                console.log("Well that is all of them");
-            }
-
             selected = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';
@@ -280,10 +276,18 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
 function CheckyBox($scope, FeedbackSignal, FeedbackControlService) { 
 
-    $scope.status_selection;
+    $scope.status_selection; 
+    var checkboxes = $(".feed-checkbox");
 
     $scope.undo = function() { 
         FeedbackControlService.change_status(FeedbackSignal.data, false);
+    }
+
+    $scope.close = function() { 
+        console.log(FeedbackSignal.data);
+        if(checkboxes.length == selected.length) {
+            console.log("Well that is all of them");
+        }
     }
 
     $scope.$on('checkFeedbackStatus', function() {
