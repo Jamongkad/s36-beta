@@ -173,11 +173,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else {
                 alert("Action is not allowed!");
             }
-            */
 
             selected = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';
+            */
         }
     }
 
