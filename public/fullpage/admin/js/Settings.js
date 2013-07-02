@@ -259,7 +259,7 @@ var Settings = new function(){
                 SettingsAutoSaver.set_data('facebook_url', url);
                 $('.social-icon.fb a').attr('href', url);
                 $('.social-icon.fb').show();
-                $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                //$('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
             }else if( url.match(fb_regex) == null ){
                 $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
             }
@@ -274,7 +274,7 @@ var Settings = new function(){
                 SettingsAutoSaver.set_data('twitter_url', url);
                 $('.social-icon.tw a').attr('href', url);
                 $('.social-icon.tw').show();
-                $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                //$('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
             }else if( url.match(tw_regex) == null ){
                 $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
             }

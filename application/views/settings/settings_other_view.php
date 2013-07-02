@@ -17,7 +17,7 @@
                         <div id="panel_desc_container" class="rounded_corner">
                           <p class="companyDescription break-word"><?= nl2br(HTML::entities($panel->description)); ?></p>
                         </div>
-                        <textarea id="panel_desc_textbox" style="display:none" class="dashboard-textarea" title="The fitness center Default"></textarea>
+                        <textarea id="panel_desc_textbox" style="display:none" class="dashboard-textarea" title="The fitness center Default" maxlength="500"></textarea>
                       </div>
                     </div>
                 </div>
