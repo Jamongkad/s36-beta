@@ -210,7 +210,7 @@
 /* sorter filter in the inbox */
 #theInboxSorter{
 	background:#FAFAFA;
-	padding:10px 10px 10px 0px;
+	padding:10px 10px 10px 11px;
 }
 .sorter-block{
 	float:left;
