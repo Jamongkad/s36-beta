@@ -20,12 +20,19 @@ angular.module('ModifyFeedback', [])
         $.ajax({
             url: '/feedback/lock_feedback_display'              
           , type: 'POST'
-          , dataType: 'json'
           , data: data 
           , success: function(msg) { 
+                alert("Feedback Display locked.");
             }
-        }); 
-        
+        });         
+    }
+
+    shared_service.display_toggle = function(data) { 
+        $.ajax({
+            url: '/feedback/toggle_feedback_display'           
+          , type: 'POST'
+          , data: data 
+        });         
     }
 
     return shared_service;

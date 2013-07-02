@@ -35,6 +35,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         var target = $($event.target);
         var checked = target.is(':checked'); 
         var data = { feedid: feedid, status: checked };
+
         ModifyFeedback.lock_feedback_display(data);
     }
 
@@ -42,5 +43,8 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         var target = $($event.target); 
         var checked = target.is(':checked');
         var column = target.attr('name');
+        var data = {feedid: feedid, status: checked, column: column};
+
+        ModifyFeedback.display_toggle(data);
     }
 }
