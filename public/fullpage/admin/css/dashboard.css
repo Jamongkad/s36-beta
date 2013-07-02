@@ -1471,6 +1471,12 @@
 		-moz-border-radius:10px;
 		border-radius:10px;
 	}
+    
+    .modify-blue-bar a.manage-categories-link{
+        background:none;
+        padding:2px;
+    }
+
 	.blue-bar-left .blue-bar-reply-to-user{
 		
 	}
