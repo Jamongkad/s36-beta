@@ -285,6 +285,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
 
     $scope.close = function() { 
         console.log($scope.id);
+        console.log(checkboxes);
         if(checkboxes.length == $scope.id.length) {
             console.log("Well that is all of them");
         }
