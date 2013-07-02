@@ -152,7 +152,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         }    
                     }
                 } else {
-                    console.log("fuck");
+                    console.log( $('input[type=checkbox].feed-checkbox:checked') );
                 }
             } else { 
                 for(var i=0; i < ids.length; ++i) {
