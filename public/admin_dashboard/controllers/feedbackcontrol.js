@@ -121,6 +121,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var catids = [];
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
+            var feed = {};
 
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
@@ -151,6 +152,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             if(selected.length > 0) { 
+
                 if(currentUrl.match(/filed/g)) {
                     var feed = {
                         id: selected
@@ -167,9 +169,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }
                 }
 
-                FeedbackSignal.current_state(feed);
-                FeedbackControlService.change_status(feed, true); 
-                $(".checky-box-container").show();  
+                if(mode == "remove") {
+                    if(confirm("Are you sure want to permanently remove all this feedback? There is no undo.")) { 
+                        FeedbackSignal.current_state(feed);
+                        FeedbackControlService.change_status(feed, true); 
+                    }
+                } else { 
+                    FeedbackSignal.current_state(feed);
+                    FeedbackControlService.change_status(feed, true); 
+                    $(".checky-box-container").show();  
+                }
+
             } else {
                 alert("Action is not allowed!");
             }
@@ -177,7 +187,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             selected = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';
-
         }
     }
 
