@@ -46,7 +46,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
     $scope.toggle_lock = function($event) {
         var target = $($event.target);
-        console.log(target.attr('value'));
+        console.log(target.attr('checked'));
         console.log("Toggle lock");
     }
 

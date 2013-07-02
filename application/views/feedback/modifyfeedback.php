@@ -68,7 +68,7 @@ $(function() {
                     <div class="modify-other-info-block grids">
                         <span class="left-label">Default Display Rules : </span>
                         <span class="right-label">
-                            <?=Form::checkbox('resetIndLock', 1, ($feedback->indlock ? True : Null), Array('ng-click' => 'toggle_lock()'))?>
+                            <input type="checkbox" name="reset_indlock" value=1 <?=($feedback->indlock ? "checked" : Null)?> ng-click="toggle_lock()"/>
                         </span>  
                     </div>
                     <div class="modify-other-info-block grids">
@@ -232,6 +232,7 @@ $(function() {
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <tr><td colspan="2" class="header">Display Information
                  </td><td>Display?</td></tr>
+
                  <tr>
                      <td class="title">Name:</td>
                      <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
