@@ -115,13 +115,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
-            /*
+
             var currentUrl = window.location.pathname;
             var selected = [];
             var catids = [];
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
-
+            console.log(mode);
+            /*
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
             
