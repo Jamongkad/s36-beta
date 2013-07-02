@@ -196,7 +196,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
             } else { 
                 for(var i=0; i < ids.length; ++i) {
-                    console.log(feedback_collect(i, mode, 'feedid'));
+                    console.log(feedback_collect(ids[i], mode, 'feedid'));
                     /*
                     selected.push(feedback_collect(i, mode, 'feedid'));
                     catids.push(feedback_collect(i, mode, 'catid'));
