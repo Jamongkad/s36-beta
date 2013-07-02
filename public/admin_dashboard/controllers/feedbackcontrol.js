@@ -167,9 +167,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
             }
 
-            console.log(mode);
-            console.log(selected);
-
             if(selected.length > 0) { 
                 if(current_url.match(/filed/g)) {
                     var feed = {
@@ -190,6 +187,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 if(mode == "remove") { 
                     FeedbackSignal.current_state(feed);
                     FeedbackControlService.change_status(feed, true);  
+                    location.reload();
                 } else { 
                     FeedbackSignal.current_state(feed);
                     FeedbackControlService.change_status(feed, true); 
