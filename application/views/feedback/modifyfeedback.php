@@ -248,7 +248,7 @@ $(function() {
                      <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
                      <?
                      $null_avatar = ($feedback->avatar == false || $feedback->origin == 'tw') ? 
-                                    Array('disabled' => 'disabled', 'ng-click' => 'toggle_display()') : Array('ng-click' => 'toggle_display()');?>
+                                     Array('disabled' => 'disabled') : Array('ng-click' => 'toggle_display($event)');?>
                      <td align="center"><?=Form::checkbox(
                                                'displayImg'
                                              , $feedback->displayimg
@@ -259,7 +259,8 @@ $(function() {
                  <tr>
                      <td class="title">Company:</td>
                      <td><?=$feedback->companyname ?></td>
-                     <?$null_company = ($feedback->companyname == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <?$null_company = ($feedback->companyname == false) ? 
+                                       Array('disabled' => 'disabled') : Array('ng-click' => 'toggle_display($event)');?>
                      <td align="center"><?=Form::checkbox(
                                                'displayCompany'
                                              , $feedback->displaycompany
@@ -270,7 +271,7 @@ $(function() {
                  <tr>
                      <td class="title">Position:</td>
                      <td><?=$feedback->position?></td>
-                     <?$null_position = ($feedback->position == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <?$null_position = ($feedback->position == false) ? Array('disabled' => 'disabled') : Array('ng-click' => 'toggle_display($event)');?>
                      <td align="center"><?=Form::checkbox(
                                                'displayPosition'
                                              , $feedback->displayposition
@@ -281,7 +282,7 @@ $(function() {
                  <tr>
                      <td class="title">Website:</td>
                      <td><?=$feedback->url?></td> 
-                     <?$null_url = ($feedback->url == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <?$null_url = ($feedback->url == false) ? Array('disabled' => 'disabled') : Array('ng-click' => 'toggle_display($event)');?>
                      <td align="center"><?=Form::checkbox(
                                                'displayURL'
                                              , $feedback->displayurl
@@ -296,7 +297,8 @@ $(function() {
                               <?=$feedback->countryname?>
                          <?endif?>
                      </td> 
-                     <?$null_country = ($feedback->countryname == "Nil" && $feedback->countrycode == 0) ? Array('disabled' => 'disabled') : Array();?>
+                     <?$null_country = ($feedback->countryname == "Nil" && $feedback->countrycode == 0) ? 
+                                       Array('disabled' => 'disabled') : Array('ng-click' => 'toggle_display($event)');?>
                      <td align="center"><?=Form::checkbox(
                                                'displayCountry'
                                              , $feedback->displaycountry
@@ -307,7 +309,8 @@ $(function() {
                  <tr>
                      <td class="title">Date:</td>
                      <td><?=$feedback->date?></td> 
-                     <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null))?></td>
+                     <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null)
+                                                          , Array('ng-click' => 'toggle_display($event)'))?></td>
                  </tr>
                 </table>
                </div>
