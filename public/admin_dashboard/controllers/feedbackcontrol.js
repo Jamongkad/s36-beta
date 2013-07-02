@@ -128,7 +128,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             if(mode == "remove") {
                 if(confirm("Are you sure you want to permanently remove this feedback? There is no undo."))      {
-
+                    /*
                     for(var i=0; i < ids.length; ++i) {
                         var me = ids[i];
                     
@@ -154,6 +154,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                             catids.push(catid);
                         }    
                     }
+                    */
 
                     var arr = $.map(ids, function(n, i) {
                         var me = n;
@@ -178,7 +179,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                             
                             return me;
                         }    
-                    })
+                    });
                     console.log(arr);
                 } else { 
                     if($('input[type=checkbox].feed-checkbox:checked').length > 0) {
