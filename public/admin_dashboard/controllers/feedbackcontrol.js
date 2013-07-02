@@ -277,7 +277,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 function CheckyBox($scope, FeedbackSignal, FeedbackControlService) { 
 
     $scope.status_selection; 
-    var checkboxes = $(".feed-checkbox");
+    var checkboxes = $(".feed-checkbox:not(:hidden)");
 
     $scope.undo = function() { 
         FeedbackControlService.change_status(FeedbackSignal.data, false);
