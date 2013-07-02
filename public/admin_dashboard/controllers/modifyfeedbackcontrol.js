@@ -44,7 +44,9 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         FeedbackControlService.change_status(feed, true);
     }
 
-    $scope.toggle_lock = function() {
+    $scope.toggle_lock = function($event) {
+        var target = $($event.target);
+        console.log(target.attr('value'));
         console.log("Toggle lock");
     }
 
