@@ -55,7 +55,8 @@ $groups = array(
         'type' =>'js',
         'files'=>array(
             //'/fullpage/admin/js/jcycle.js'
-            '/fullpage/admin/js/jquery.jcarousel.min.js'
+            '/fullpage/admin/js/S36FullpageAdmin.js'
+            ,'/fullpage/admin/js/jquery.jcarousel.min.js'
             ,'/fullpage/admin/js/minicolors.js'
             ,'/fullpage/admin/js/colors.min.js'
             ,'/fullpage/admin/js/jquery.mousewheel.min.js'

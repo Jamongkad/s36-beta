@@ -9,7 +9,7 @@
 
         <?=HTML::script('/minified/Global.js')?>
         <?=HTML::style('/minified/Global.css')?>
-
+        <?=HTML::script('/minified/FullpageCommon.js')?>
         <?=HTML::script('/minified/FullpageAdmin.js')?>
         
         <?=HTML::style('/fullpage/admin/css/S36FullpageAdmin.css')?> 
