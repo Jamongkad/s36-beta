@@ -121,8 +121,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var catids = [];
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
-            console.log(mode);
-            /*
+
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
             
@@ -177,7 +176,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             selected = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';
-            */
+
         }
     }
 
