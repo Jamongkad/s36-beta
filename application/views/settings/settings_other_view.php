@@ -56,11 +56,4 @@
         <div class="dashboard-foot"></div>
     </div>
 </div>
-
-<?php echo $fullpage_css; ?>
-<?= HTML::script('/fullpage/admin/js/Settings.js'); ?>
-<?= HTML::script('/fullpage/admin/js/SettingsAutoSaver.js'); ?>
-<script type="text/javascript">
-    Settings.init();
-    SettingsAutoSaver.init();
-</script>
+<?=$fullpage_css?>

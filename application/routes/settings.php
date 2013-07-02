@@ -22,9 +22,9 @@ return array (
         $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
 
         return View::of_layout()->partial('contents', 'settings/settings_index_view', Array(
-            'user' => $user
-          , 'category' => $category->pull_site_categories()
-          , 'hosted_settings' => $hosted_settings->hosted_settings()
+            'user'              => $user
+          , 'category'          => $category->pull_site_categories()
+          , 'hosted_settings'   => $hosted_settings->hosted_settings()
         ));
     }),
 
@@ -34,9 +34,9 @@ return array (
         $company_info 	= $company->get_company_info($company_name); 
 
         return View::of_layout()->partial('contents', 'settings/settings_background_view', Array(
-            'display_patterns' => $fullpage->get_fullpage_pattern()
-            ,'panel'=>$hosted_settings->get_panel_settings($company_info->companyid)
-            ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
+            'display_patterns'  => $fullpage->get_fullpage_pattern()
+            ,'panel'            =>$hosted_settings->get_panel_settings($company_info->companyid)
+            ,'fullpage_css'     => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
     }),
@@ -44,9 +44,10 @@ return array (
 
         $company_name   = Config::get('application.subdomain');
         $company_info   = $company->get_company_info($company_name); 
+
         return View::of_layout()->partial('contents', 'settings/settings_layout_view', Array(
-             'panel'=>$hosted_settings->get_panel_settings($company_info->companyid)
-            ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
+             'panel'            =>$hosted_settings->get_panel_settings($company_info->companyid)
+            ,'fullpage_css'     => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
     }),
@@ -56,8 +57,8 @@ return array (
         $company_info   = $company->get_company_info($company_name); 
 
         return View::of_layout()->partial('contents', 'settings/settings_other_view', Array(
-             'panel'=>$hosted_settings->get_panel_settings($company_info->companyid)
-            ,'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
+             'panel'            =>$hosted_settings->get_panel_settings($company_info->companyid)
+            ,'fullpage_css'     => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
     }),
@@ -68,8 +69,8 @@ return array (
 
         return View::of_layout()->partial('contents', 'settings/settings_display', 
             array(
-                'settings' => $hosted_settings->get_panel_settings( Config::get('application.subdomain') ),
-                'fullpage_css' => $fullpage->get_fullpage_css($company_info->companyid)
+                'settings'      => $hosted_settings->get_panel_settings( Config::get('application.subdomain') ),
+                'fullpage_css'  => $fullpage->get_fullpage_css($company_info->companyid)
             )
         );
         

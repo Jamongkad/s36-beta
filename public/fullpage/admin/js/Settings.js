@@ -222,6 +222,15 @@ var Settings = new function(){
         SettingsAutoSaver.set_data('theme_name', $('#selectedLayout').val());
     });
 
+    $('.layout-item').click(function(){
+        $('#previewLayout').attr('href',$(this).parent().find('.preview-layout-img').val());
+        $('#previewLayout').attr('title',$(this).parent().find('.preview-layout-name').val()+' Layout Preview');
+    });
+    $('#previewLayout').fancybox({
+         autoScale:true
+        ,title: $('#previewLayout').attr('title')
+    });
+
     /* ========================================
     || Other Settings
     ==========================================*/
