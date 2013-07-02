@@ -13,7 +13,8 @@
                         <div class="layout">
                             <h3 class="layout-name">Traditional</h3>
                             <div class="layout-thumb">
-                                <a href="javascript:;"><img src="/fullpage/admin/img/layout-1.jpg" /></a>
+                                <input class="preview-layout-img" type="hidden" value="/fullpage/admin/img/traditional-preview.jpg" />
+                                <a class="layout-item" href="javascript:;"><img src="/fullpage/admin/img/traditional-layout-thumb.jpg" /></a>
                             </div>
                         </div>
                     </li>
@@ -21,7 +22,8 @@
                         <div class="layout">
                             <h3 class="layout-name">Timeline</h3>
                             <div class="layout-thumb">
-                                <a href="javascript:;"><img src="/fullpage/admin/img/layout-2.jpg" /></a>
+                                <input class="preview-layout-img" type="hidden" value="/fullpage/admin/img/timeline-preview.jpg" />
+                                <a class="layout-item" ref="javascript:;"><img src="/fullpage/admin/img/timeline-layout-thumb.jpg" /></a>
                             </div>
                         </div>
                     </li>
@@ -29,13 +31,14 @@
                         <div class="layout">
                             <h3 class="layout-name">Treble</h3>
                             <div class="layout-thumb">
-                                <a href="javascript:;"><img src="/fullpage/admin/img/layout-3.jpg" /></a>
+                                <input class="preview-layout-img" type="hidden" value="/fullpage/admin/img/treble-preview.jpg" />
+                                <a class="layout-item" href="javascript:;"><img src="/fullpage/admin/img/treble-layout-thumb.jpg" /></a>
                             </div>
                         </div>
                     </li>
                 </ul>
                 <div class="layout-chooser-buttons">
-                    <a id="previewLayout" href="javascript:;"  style="cursor: pointer;">Preview</a>
+                    <a id="previewLayout" href="/fullpage/admin/img/<?=strtolower($panel->theme_name)?>-preview.jpg"  style="cursor: pointer;">Preview</a>
                     <a id="chooseLayout" href="javascript:;" class="dark-blue" style="cursor: pointer;">Choose Layout</a>
                 </div>
             </div>
@@ -50,4 +53,16 @@
 <script type="text/javascript">
     Settings.init();
     SettingsAutoSaver.init();
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.layout-item').click(function(){
+        img_src = $(this).parent().find('.preview-layout-img').val();
+        console.log(img_src);
+        $('#previewLayout').attr('href',img_src)
+    });
+    $('#previewLayout').fancybox();
+});
+
 </script>
