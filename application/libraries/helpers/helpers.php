@@ -157,6 +157,10 @@ class Helpers {
             return "fileas";
         }
 
+        if($filter == "deleted") {
+            return "delete";
+        }
+
         if($filter == "all") {
            return "inbox";
         }
