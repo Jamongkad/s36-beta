@@ -9,7 +9,7 @@ angular.module('ModifyFeedback', [])
           , dataType: 'json'
           , data: data 
           , success: function(msg) { 
-                if(msg.save == 1) {
+                if(msg.saved == 1) {
                     alert("Feedback text successfully edited!");     
                 } 
             }
