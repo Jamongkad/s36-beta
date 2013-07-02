@@ -115,7 +115,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
-
+            /*
             var currentUrl = window.location.pathname;
             var selected = [];
             var catids = [];
@@ -151,7 +151,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             if(selected.length > 0) { 
-
                 if(currentUrl.match(/filed/g)) {
                     var feed = {
                         id: selected
@@ -173,6 +172,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } else {
                 alert("Action is not allowed!");
             }
+            */
 
             selected = [];
             $scope.selected = []; 
