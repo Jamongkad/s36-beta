@@ -156,7 +156,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }
 
                     var arr = $.map(ids, function(n, i) {
-                        return i;     
+                        return n;     
                     })
                     console.log(arr);
                 } else { 
