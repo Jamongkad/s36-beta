@@ -25,7 +25,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
     }
 
-    var feedback_collect = function(n, i) { 
+    var feedback_collect = function(n, mode, collect_type) { 
         var me = n;
 
         var entity = $(".dashboard-feedback[feedback=" + me + "]");
@@ -44,9 +44,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             if(child_count.length == 0) {  
                 entity_parent.hide(); 
-            }      
+            }           
             
-            return me;
+            if(collect_type == 'feedid') {
+                return me;     
+            } else {                
+                return catid;     
+            } 
         }    
     }
 
@@ -147,10 +151,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var mode = $scope.status_select_value;
             var feed = {};
 
-            var collect = function() {
-                
-            }
-
             if(mode == "remove") {
                 if(confirm("Are you sure you want to permanently remove this feedback? There is no undo."))      {
                     /*
@@ -180,9 +180,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         }    
                     }
                     */
-
-                    var arr = $.map(ids, feedback_collect);
-                    console.log(arr);
+ 
+                    for(var i=0; i < ids.length; ++i) {
+                        selected.push(feedback_collect(i, mode, 'feedid'));
+                        catids.push(feedback_collect(i, mode, 'catid'));
+                    }
                 } else { 
                     if($('input[type=checkbox].feed-checkbox:checked').length > 0) {
                         $('input[type=checkbox].feed-checkbox:checked').click();
@@ -194,6 +196,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
             } else { 
                 for(var i=0; i < ids.length; ++i) {
+                    selected.push(feedback_collect(i, mode, 'feedid'));
+                    catids.push(feedback_collect(i, mode, 'catid'));
+                    /*
                     var me = ids[i];
                 
                     var entity = $(".dashboard-feedback[feedback=" + me + "]");
@@ -217,6 +222,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         selected.push(me);
                         catids.push(catid);
                     }    
+                    */
                 }
             }
 
