@@ -107,16 +107,13 @@ return array(
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
-        Helpers::dump(Input::get());
-        /*
         $state = 0;
-        if(Input::get('check_val')) {
+        if(Input::get('status') == "true") {
             $state = 1;    
         }
-        $feedback->_change_feedback(  Input::get('column_name')
+        $feedback->_change_feedback(  Input::get('column')
                                     , Input::get('feedid')
                                     , $state );
-        */
     },
 
     'POST /feedback/lock_feedback_display' => function() use ($feedback) {
