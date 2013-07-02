@@ -107,6 +107,8 @@ return array(
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
+        Helpers::dump(Input::get());
+        /*
         $state = 0;
         if(Input::get('check_val')) {
             $state = 1;    
@@ -114,10 +116,15 @@ return array(
         $feedback->_change_feedback(  Input::get('column_name')
                                     , Input::get('feedid')
                                     , $state );
+        */
     },
 
     'POST /feedback/lock_feedback_display' => function() use ($feedback) {
-        $feedback->toggle_indlock(Input::get('feedid'), Input::get('status'));
+        $state = 0;
+        if(Input::get('status') == "true") {    
+            $state = 1;
+        }
+        $feedback->toggle_indlock(Input::get('feedid'), $state);
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
