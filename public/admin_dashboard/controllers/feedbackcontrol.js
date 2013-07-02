@@ -125,34 +125,32 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var d = confirm("Are you sure want to permanently remove all this feedback? There is no undo.");
             
-            if(d) { 
-                for(var i=0; i < ids.length; ++i) {
-                    var me = ids[i];
-                
-                    var entity = $(".dashboard-feedback[feedback=" + me + "]");
-                    var entity_parent = entity.parents('.feedback-group');
-                    var score = entity.attr('score');
-                    var permission = entity.attr('permission');
-                    var catid = entity.attr('catid');
-     
-                    if(
-                          (score >= 3 && permission == 1)
-                       || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
-                       || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
-                      )  {
+            for(var i=0; i < ids.length; ++i) {
+                var me = ids[i];
+            
+                var entity = $(".dashboard-feedback[feedback=" + me + "]");
+                var entity_parent = entity.parents('.feedback-group');
+                var score = entity.attr('score');
+                var permission = entity.attr('permission');
+                var catid = entity.attr('catid');
+ 
+                if(
+                      (score >= 3 && permission == 1)
+                   || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
+                   || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
+                  )  {
 
-                        entity.hide();
+                    entity.hide();
 
-                        var child_count = entity_parent.children('.dashboard-feedback:visible');
+                    var child_count = entity_parent.children('.dashboard-feedback:visible');
 
-                        if(child_count.length == 0) {  
-                            entity_parent.hide(); 
-                        }      
+                    if(child_count.length == 0) {  
+                        entity_parent.hide(); 
+                    }      
 
-                        selected.push(me);
-                        catids.push(catid);
-                    }    
-                }
+                    selected.push(me);
+                    catids.push(catid);
+                }    
             }
 
             if(selected.length > 0) { 
@@ -173,7 +171,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }
                 }
 
-                if(mode == "remove" && d == true) { 
+                if(mode == "remove") { 
                     FeedbackSignal.current_state(feed);
                     FeedbackControlService.change_status(feed, true);  
                 } else { 
