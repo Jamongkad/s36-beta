@@ -94,7 +94,7 @@ $(document).ready(function() {
                             'none' => '-'
                           , 'restore' => 'Restore'
                           , 'remove' => 'Permanently Delete'
-                         ), 'none');?>
+                         ), 'none', Array('ng-model' => 'status_select_value', 'ng-change' => 'change_value_status()'));?>
                     <?endif?>
                 </span>
             </div>
