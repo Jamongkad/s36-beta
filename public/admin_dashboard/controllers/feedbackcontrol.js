@@ -156,7 +156,28 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }
 
                     var arr = $.map(ids, function(n, i) {
-                        return n;     
+                        var me = n;
+
+                        var entity = $(".dashboard-feedback[feedback=" + me + "]");
+                        var entity_parent = entity.parents('.feedback-group');
+                        var score = entity.attr('score');
+                        var permission = entity.attr('permission');
+                        var catid = entity.attr('catid');
+         
+                        if(
+                               (score >= 3 && permission == 1)
+                           || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
+                           || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
+                          )  {
+                            entity.hide();
+                            var child_count = entity_parent.children('.dashboard-feedback:visible');
+
+                            if(child_count.length == 0) {  
+                                entity_parent.hide(); 
+                            }      
+                            
+                            return me;
+                        }    
                     })
                     console.log(arr);
                 } else { 
