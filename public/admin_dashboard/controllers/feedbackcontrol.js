@@ -177,7 +177,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                                 entity_parent.hide(); 
                             }      
                             
-                            return me;
+                            return [me, catid];
                         }    
                     });
                     console.log(arr);
