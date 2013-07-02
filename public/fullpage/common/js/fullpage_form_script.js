@@ -6,6 +6,13 @@ $(document).keypress(function(event){
 });
 
     $(document).ready(function(){
+        // close the fullpage form and reset the values.
+        $('#close_fullpage_form').click(function(){
+            close_fullpage_form();
+            reset_fullpage_form_data();
+        });
+        
+        
         $('#fb-login').click(function(){
             FB.login(function(response) {
                if (response.authResponse) {
@@ -200,9 +207,9 @@ $(document).keypress(function(event){
             });
             
             // here we should return boolean if submission is successful or has error.
-    }
+        }
 
-         function fb_connect_success(obj){
+        function fb_connect_success(obj){
               if(obj.location != undefined) {
                   if(obj.location.name != undefined) {
                       var loc = obj.location.name;
@@ -851,11 +858,11 @@ $(document).keypress(function(event){
 
             if(!validate_field(fname.attr('id'),fname.val(),fname.attr('title'), "regular")){
                 fname.focus();
-                display_error_mes(['Please enter your first Name']);
+                display_error_mes(['Please enter your first name']);
                 return false;
             }else if(!validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
                 lname.focus();
-                display_error_mes(['Please enter your last Name']);
+                display_error_mes(['Please enter your last name']);
                 return false;
             }else if(!validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
                 email.focus();
@@ -982,4 +989,92 @@ $(document).keypress(function(event){
         }
         init_thumbnail_close_btn();
         scale_review_textbox();
+    }
+    
+    
+    // close the fullpage form.
+    function close_fullpage_form(){
+        
+        $('#theHostedFormContainer').slideUp('fast');
+        $('#back').fadeOut();
+        $('#next').fadeIn();
+        $('.form-page').fadeOut().removeClass('current');
+        $('#step1').addClass('current').fadeIn();
+        $('#formBody').height( $('#step1').height() );
+        
+    }
+    
+    
+    // reset the fullpage form for new inputs.
+    function reset_fullpage_form_data(){
+        
+        // reset the step 1 data.
+        var fullpage_common = new S36FullpageCommon();
+        fullpage_common.highlight_stars( $('#company_rating').val() );
+        $('#feedbackTitle').val('');
+        $('#feedbackText').val('');
+        $('#recommend-checkbox').addClass('checked');
+        $('#uploaded_images_preview').html('');
+        $('#uploaded_video_preview').html('');
+        
+        // reset metadata.
+        $('.form-custom-fields input:text').each(function(){
+            $(this).val( $(this).attr('title') ).addClass('default-text');
+        });
+        
+        $('.form-custom-fields input:checkbox').removeAttr('checked');
+        $('.form-custom-fields input:checkbox.checked').attr('checked', 'checked');
+        
+        $('.form-custom-fields input:radio').removeAttr('checked');
+        $('.form-custom-fields input:radio.checked').attr('checked', 'checked');
+        
+        $('.form-custom-fields select').each(function(){
+            $(this).val( $(this).find('option.selected').val() );
+        });
+        
+        
+        // reset the step 2 data.
+        $('.registration-input').each(function(){
+            $(this).val( $(this).attr('title') ).addClass('default-text');
+        });
+        $('.registration-avatar img').attr('src', '/img/facebook-blank-avatar.jpg');
+        $('.registration-avatar img').removeAttr('data-url');
+        $('#permission-checkbox').addClass('checked');
+        
+        
+        // reset the step 3 data.
+        $('#review-feedback-title').text('');
+        $('#review-feedback-text').text('');
+        $('#feedback_title_editor').val('');
+        $('#textEditor').val('');
+        $('#review-images').html('');
+        $('#review-videos').html('');
+        $('.user-avatar img').attr('src', 'img/facebook-blank-avatar.jpg');
+        $('#review-name').text('');
+        $('#review-company').text('');
+        $('#review-location').text('');
+        $('#flag').removeClass().addClass('flag');
+        $('.user-date').text('');
+        
+        
+        // reset the step 4 data.
+        $('.facebook-share-bar').html('');
+        $('.twitter-share-bar').html('');
+        
+        
+        // reset the hidden data.
+        $('#rating').val( $('#company_rating').val() );
+        $('#loginType').val('36');
+        $('#profileLink').val('');
+        $('#avatar_filename').val('');
+        $('#recommend').val('1');
+        $('#your_permission').val('1');
+        $('#hasLink').val('0');
+        $('#link-title').val('');
+        $('#link-description').val('');
+        $('#link-image').val('');
+        $('#link-url').val('');
+        $('#link-video').val('');
+        $('#link-attachments').val('');
+        
     }

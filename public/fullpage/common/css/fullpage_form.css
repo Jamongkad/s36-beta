@@ -578,7 +578,7 @@ h2.h2-fix{
     line-height:1.4em;
 }
 .feedback-edit{
-    padding:0px 10px 10px;
+    /*padding:0px 10px 10px;*/
     position:absolute;
     top:10px;
     right:10px;
@@ -841,6 +841,7 @@ h2.h2-fix{
 }
 #share-boxes{
     margin-top:10px;
+    z-index: 10;
 }
 .facebook-share-bar{
     /*float:left;
@@ -863,6 +864,7 @@ h2.h2-fix{
     color:#545454;
     padding:15px 20px;
     box-shadow:#999 0px 0px 5px;
+    overflow-y: auto;
 }
 .all-done-feedback-box h1{
     margin-bottom:10px;
@@ -875,4 +877,10 @@ h2.h2-fix{
 #review-feedback-text-container{
     border: 1px solid #e0e0e0;
     background: #fbfbfb;
+}
+#review-feedback-text{
+    margin: 18px 15px;
+}
+#review-feedback-text-container .feedback-edit{
+    top: 1px;
 }

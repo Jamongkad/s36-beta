@@ -32,7 +32,7 @@ $groups = array(
             ,'/fullpage/common/js/feedbackactions.js'
             ,'/fullpage/common/js/s36_client_script.js'
             ,'/fullpage/common/js/S36FullpageCommon.js'
-            ,'/fullpage/common/js/fullpage_form_script.js'
+            //,'/fullpage/common/js/fullpage_form_script.js'
             
         )
      ),

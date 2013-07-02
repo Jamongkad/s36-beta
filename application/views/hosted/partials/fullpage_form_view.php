@@ -1,3 +1,4 @@
+<input type="button" value="Close" id="close_fullpage_form" />
 <div id="theHostedFormContainer" style="display:none">
     <!-- added for form -->
     <div class="padded-10">
@@ -68,7 +69,7 @@
                     <!-- the lightbox -->
                     <div id="lightbox">
                         <div class="lightbox-pandora">
-                            <div class="lightbox-header">Oops! Something went wrong..</div>
+                            <div class="lightbox-header">Oops! Something went wrong.</div>
                             <div class="lightbox-body">
                                 <div class="lightbox-message error">
                                     <ul>
@@ -161,7 +162,7 @@
                                                     <a id="fb-login" href="javascript:;"><img src="/img/fb-connect-btn.png" /></a>
                                                 </div>
                                             </div>
-                                            <span>or fill out your profile manually..</span>
+                                            <span>or fill out your profile manually.</span>
                                         </div>
                                         <div class="registration-form">
                                             <div class="two-clm-in clear">
@@ -276,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div class="review-rating-stars">
-                                            <div class="dynamic-stars">
+                                            <div class="static-stars">
                                                 <div class="star-ratings clear">
                                                     <div class="star-container clear">
                                                         <div class="star full"></div>
@@ -319,7 +320,7 @@
                                     </div>
                                 </div>
                                 <div id="all-done-box">
-                                    <div id="all-done-textbox" class="all-done-feedback-box">
+                                    <div id="all-done-textbox" class="all-done-feedback-box break-word">
                                         <h1 id="all-done-feedback-title" class="break-word">This is the feedback title</h1>
                                         <p>you don't say?</p>
                                     </div>

@@ -77,12 +77,7 @@ var S36FullpageCommon = function(){
             
             var rating = $(this).parent().find('.star').index( this ) + 1;
             $('.star-text span').text( self.convert_rating_to_text(rating) );
-            $('.star-container .star').removeClass('full');
-            $('.star-container').each(function(){
-                for(a = 0; a < rating; a++){
-                    $(this).find('.star').eq(a).addClass('full');
-                }
-            });
+            self.highlight_stars(rating);
             
             
         },function(){
@@ -90,14 +85,9 @@ var S36FullpageCommon = function(){
             if( $('.current').is('#step4') ) return;
             
             var current_rating = $('#rating').val();
-            $('.star-text span').text( $('.rate-title .rating_text').text() );            // i don't have idea why but this line works.
-            //$('.star-text span').text( self.convert_rating_to_text(current_rating) );   // and this one doesn't
-            $('.star-container .star').removeClass('full');
-            $('.star-container').each(function(){
-                for(a = 0; a < current_rating; a++){
-                    $(this).find('.star').eq(a).addClass('full');
-                }
-            });
+            $('.star-text span').text( $('.rate-title .rating_text').text() );
+            self.highlight_stars(current_rating);
+            
             
         }).click(function(){
             
@@ -110,12 +100,7 @@ var S36FullpageCommon = function(){
             $('#theHostedFormContainer').slideDown();
             
             $('.star-text span').text( self.convert_rating_to_text(rating) );
-            $('.star-container .star').removeClass('full');
-            $('.star-container').each(function(){
-                for(a = 0; a < rating; a++){
-                    $(this).find('.star').eq(a).addClass('full');
-                }
-            });
+            self.highlight_stars(rating);
             
         });
 		
@@ -135,6 +120,15 @@ var S36FullpageCommon = function(){
 		});
         
 	}
+    
+    this.highlight_stars = function(rating){
+        $('.star-container .star').removeClass('full');
+        $('.star-container').each(function(){
+            for(a = 0; a < rating; a++){
+                $(this).find('.star').eq(a).addClass('full');
+            }
+        });
+    }
 	
 	this.convert_rating_to_text = function(val){
         var rating;
