@@ -2,6 +2,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
     var current_url = window.location.pathname;
     var current_cat_id = $(".category-box").attr('id');
+    var feedid = $(".feedid").val();
 
     $scope.fast_forward = function(email, feedid) {
         FeedbackService.send_fastforward(email, feedid);
@@ -46,12 +47,18 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
     $scope.toggle_lock = function($event) {
         var target = $($event.target);
-        target.is(':checked');
-        console.log();
-        console.log("Toggle lock");
+        var checked = target.is(':checked'); 
+        console.log(checked);
+        console.log(feedid);
     }
 
-    $scope.toggle_display = function() { 
-        console.log("Toggle display");
+    $scope.toggle_display = function($event) { 
+        var target = $($event.target); 
+        var checked = target.is(':checked');
+        var column = target.attr('name');
+
+        console.log(checked);
+        console.log(feedid); 
+        console.log(column); 
     }
 }
