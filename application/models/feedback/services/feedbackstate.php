@@ -47,10 +47,12 @@ class FeedbackState {
         } else { 
             if($this->mode != 'remove') { 
                 $feed_obj = $this->feedback_state_obj();
-                return $this->feedback->_toggle_multiple($feed_obj);
+                Helpers::dump($feed_obj);
+                //return $this->feedback->_toggle_multiple($feed_obj);
             } else { 
                 foreach($this->block_id as $feed_id) {
-                    $this->feedback->permanently_remove_feedback($feed_id);    
+                    Helpers::dump($feed_id);
+                    //$this->feedback->permanently_remove_feedback($feed_id);    
                 } 
             }
         }
