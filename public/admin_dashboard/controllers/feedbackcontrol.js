@@ -206,7 +206,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
 
             } else {
-                alert("Action is not allowed!");
+                if(mode != "remove") {
+                    alert("Action is not allowed!");     
+                } 
             }
 
             selected = [];
