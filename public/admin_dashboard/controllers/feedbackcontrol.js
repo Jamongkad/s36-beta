@@ -200,14 +200,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } 
             }
 
-            selected = [];
-            $scope.selected = []; 
-            $scope.status_select_value = 'none';
-            
             if(checkboxes.length == selected.length) {
                 console.log("Well that is all of them");
             }
 
+            selected = [];
+            $scope.selected = []; 
+            $scope.status_select_value = 'none';
+        
         }
     }
 
