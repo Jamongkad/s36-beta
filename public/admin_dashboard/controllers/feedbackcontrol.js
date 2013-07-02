@@ -122,7 +122,15 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
             var feed = {};
-            
+
+            if(mode == "remove") {
+                if(confirm("Are you sure you want to permanently remove this feedback? There is no undo."))      {
+                    console.log("yes");
+                }
+            } else { 
+                console.log("yes");
+            }
+            /*             
             for(var i=0; i < ids.length; ++i) {
                 var me = ids[i];
             
@@ -133,13 +141,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 var catid = entity.attr('catid');
  
                 if(
-                      (score >= 3 && permission == 1)
+                       (score >= 3 && permission == 1)
                    || ((score >= 3 && permission == 0) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))
                    || ((score == 1 || score == 2) && (mode == 'delete' || mode == 'restore' || mode == 'remove'))  
                   )  {
-
                     entity.hide();
-
                     var child_count = entity_parent.children('.dashboard-feedback:visible');
 
                     if(child_count.length == 0) {  
@@ -185,6 +191,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             selected = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';
+            */
         }
     }
 
