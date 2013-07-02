@@ -33,14 +33,13 @@ $(function() {
   <div class="permission grids modified">
         <div class="permission-icon"><img src="/img/ico-full-permission.png" /></div>
         <div class="permission-text">
-            <h3><?=$feedback->permission?></h3>
+            <h2><?=$feedback->permission?></h2>
             <p>
                 <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?> to post his/her feedback
                 on your website.
             </p>
         </div>
   </div>
-</div>
 
 <div class="dashboard-box modified">
   <div class="dashboard-body">
@@ -327,4 +326,6 @@ $(function() {
     </div>
   </div>
 </div>
+</div>
+
 </span>
