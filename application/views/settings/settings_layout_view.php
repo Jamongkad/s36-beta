@@ -1,9 +1,9 @@
 <input type="hidden" id="selectedLayout" value="Traditional" />
 <div id="theFormSetup" class="dashboard-page">
-	<h1>Other Settings</h1>
+	<h1>Layout Settings</h1>
     <div class="dashboard-box">
     	<div class="dashboard-head">
-          <span class="dashboard-title">Social Media </span>
+          <span class="dashboard-title">Choose layout</span>
         </div>
         <div class="dashboard-body">
         	<div class="dashboard-content">
