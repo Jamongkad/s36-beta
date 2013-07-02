@@ -151,6 +151,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                             catids.push(catid);
                         }    
                     }
+                } else {
+                    console.log("fuck");
                 }
             } else { 
                 for(var i=0; i < ids.length; ++i) {
