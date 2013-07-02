@@ -158,8 +158,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         catids.push(feedback_collect(ids[i], mode, 'catid'));
                     }
                 } else { 
-                    $('input[type=checkbox].feed-checkbox:checked').click();
-                    $(".sorter-checkbox:checked").click();
+                    $('input[type=checkbox].feed-checkbox:checked, .sorter-checkbox:checked').click();
                 }
             } else { 
                 for(var i=0; i < ids.length; ++i) {
