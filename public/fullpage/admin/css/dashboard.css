@@ -417,6 +417,7 @@
 .the-modify-categories-menu .the-categories ul{
     margin-bottom:5px;
     list-style-type: none;
+    line-height: 10px;
 }
 .the-modify-categories-menu .the-categories ul li{
     width:50%;
