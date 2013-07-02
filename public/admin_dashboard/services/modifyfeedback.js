@@ -21,9 +21,6 @@ angular.module('ModifyFeedback', [])
             url: '/feedback/lock_feedback_display'              
           , type: 'POST'
           , data: data 
-          , success: function(msg) { 
-                alert("Feedback Display locked.");
-            }
         });         
     }
 
