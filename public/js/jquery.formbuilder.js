@@ -93,6 +93,7 @@
                             }, 500);
                             return false;
                         } else {
+                        	$(this).val(0).blur();
                             alert("You can only create 3 custom fields.");
                         }
 
