@@ -50,6 +50,12 @@ $(document).ready(function() {
                 <span ng-switch-when="delete">
                     Feedback has been deleted. 
                 </span> 
+                <span ng-switch-when="restore">
+                    Feedback has been restored. 
+                </span> 
+                <span ng-switch-when="remove">
+                    Feedback has been permanently remove. 
+                </span> 
                 <span ng-switch-when="inbox">
                     Feedback has been returned to the inbox.
                 </span> 
