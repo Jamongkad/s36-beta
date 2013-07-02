@@ -125,6 +125,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             if(mode == "remove") {
                 if(confirm("Are you sure you want to permanently remove this feedback? There is no undo."))      {
+                    console.log("confirmed");
                     for(var i=0; i < ids.length; ++i) {
                         var me = ids[i];
                     
