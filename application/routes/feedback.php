@@ -117,12 +117,14 @@ return array(
     },
 
     'POST /feedback/lock_feedback_display' => function() use ($feedback) {
+        /*
         $state = 0;
         if(Input::get('check_val')) {
             $state = 1;    
         }
         
         $feedback->toggle_indlock(Input::get('feedid'), $state);
+        */
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {

@@ -1,4 +1,4 @@
-function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal) {
+function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, FeedbackSignal, ModifyFeedback) {
 
     var current_url = window.location.pathname;
     var current_cat_id = $(".category-box").attr('id');
@@ -19,24 +19,10 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         FeedbackControlService.change_status(status_change, true);
     }
 
-    $scope.save_feedback = function() {
-
-        var feedid = $(".feedid").val();
+    $scope.save_feedback = function() { 
         var text = $(".feedback-textarea").val();
-
-        $.ajax({
-            url: '/feedback/edit_feedback_text'              
-          , type: 'POST'
-          , dataType: 'json'
-          , data: { feed_id: feedid, feedback_text: text } 
-          , success: function(msg) { 
-
-                if(msg.save == 1) {
-                    alert("Feedback text successfully edited!");     
-                }
-               
-            }
-        });
+        var data = { feed_id: feedid, feedback_text: text };
+        ModifyFeedback.edit_feedback_text(data);
     }
 
     $scope.feedback_status = function($event) {
@@ -48,17 +34,11 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
     $scope.toggle_lock = function($event) {
         var target = $($event.target);
         var checked = target.is(':checked'); 
-        console.log(checked);
-        console.log(feedid);
     }
 
     $scope.toggle_display = function($event) { 
         var target = $($event.target); 
         var checked = target.is(':checked');
         var column = target.attr('name');
-
-        console.log(checked);
-        console.log(feedid); 
-        console.log(column); 
     }
 }
