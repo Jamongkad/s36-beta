@@ -13,7 +13,7 @@
     <!--start feedback-list -->
     <div class="feedback-list">
         <?php
-
+        
         foreach ($feed_list as $feed) : 
             $admin_avatar               = ( ! is_null($user) ? '/uploaded_images/admin_avatar/' . $user->avatar : '/img/48x48-blank-avatar.jpg' );
             $admin_avatar               = ($feed->feed_data->admin_avatar) ? '/uploaded_images/admin_avatar/' . $feed->feed_data->admin_avatar : $admin_avatar;
@@ -273,10 +273,10 @@
                             <div class="icon-tooltip-tail"></div>
                         </div>
                     </div>
-                    <div class="feedback-icon">
+                    <div class="feedback-icon share-feedback">
                         <div class="feedback-icon-class share-icon"></div>
                         <div class="icon-tooltip">
-                         <div class="icon-tooltip-text">Share</div>
+                            <div class="icon-tooltip-text">Share</div>
                             <div class="icon-tooltip-tail"></div>
                         </div>
                         <div class="share-box">

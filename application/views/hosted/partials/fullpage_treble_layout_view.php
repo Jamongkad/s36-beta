@@ -248,7 +248,7 @@
                             <div class="icon-tooltip-tail"></div>
                         </div>
                     </div>
-                    <div class="feedback-icon">
+                    <div class="feedback-icon share-feedback">
                         <div class="feedback-icon-class share-icon"></div>
                         <div class="icon-tooltip">
                          <div class="icon-tooltip-text">Share</div>
