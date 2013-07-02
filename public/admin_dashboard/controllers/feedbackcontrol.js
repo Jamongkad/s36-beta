@@ -154,6 +154,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                             catids.push(catid);
                         }    
                     }
+
+                    var arr = $.map(ids, function(n, i) {
+                        return i;     
+                    })
+                    console.log(arr);
                 } else { 
                     if($('input[type=checkbox].feed-checkbox:checked').length > 0) {
                         $('input[type=checkbox].feed-checkbox:checked').click();
