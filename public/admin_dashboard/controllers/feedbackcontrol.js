@@ -116,7 +116,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
 
-            var currentUrl = window.location.pathname;
             var selected = [];
             var catids = [];
             var ids = $scope.selected;
@@ -186,7 +185,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             console.log(selected);
 
             if(selected.length > 0) { 
-                if(currentUrl.match(/filed/g)) {
+                if(current_url.match(/filed/g)) {
                     var feed = {
                         id: selected
                       , status: $scope.status_select_value
