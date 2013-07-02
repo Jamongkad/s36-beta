@@ -96,7 +96,7 @@ return array(
         $feed = Input::get('feed_data');
         $undo_flag = Input::get('undo');
         
-        Helpers::dump($flag);
+        Helpers::dump($feed);
         Helpers::dump($undo_flag);
 
         /* 
