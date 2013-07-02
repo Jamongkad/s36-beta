@@ -884,3 +884,17 @@ h2.h2-fix{
 #review-feedback-text-container .feedback-edit{
     top: 1px;
 }
+
+#hostedFormCloseBtn{
+    width:24px;
+    height:24px;
+    background:url(/img/form-close-btn.png);
+    position:absolute;
+    right:10px;
+    top:10px;
+    cursor:pointer;
+    z-index:1;
+}
+#hostedFormCloseBtn:hover{
+ background-position:bottom;
+} 

@@ -7,7 +7,7 @@ $(document).keypress(function(event){
 
     $(document).ready(function(){
         // close the fullpage form and reset the values.
-        $('#close_fullpage_form').click(function(){
+        $('#hostedFormCloseBtn').click(function(){
             close_fullpage_form();
             reset_fullpage_form_data();
         });

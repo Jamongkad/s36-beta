@@ -1,5 +1,5 @@
-<input type="button" value="Close" id="close_fullpage_form" />
 <div id="theHostedFormContainer" style="display:none">
+    <div id="hostedFormCloseBtn"></div>
     <!-- added for form -->
     <div class="padded-10">
         <div id="formBox">
