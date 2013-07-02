@@ -16,5 +16,17 @@ angular.module('ModifyFeedback', [])
         }); 
     }
 
+    shared_service.lock_feedback_display = function(data) {
+        $.ajax({
+            url: '/feedback/lock_feedback_display'              
+          , type: 'POST'
+          , dataType: 'json'
+          , data: data 
+          , success: function(msg) { 
+            }
+        }); 
+        
+    }
+
     return shared_service;
 })

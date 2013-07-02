@@ -117,6 +117,7 @@ return array(
     },
 
     'POST /feedback/lock_feedback_display' => function() use ($feedback) {
+        Helpers::dump(Input::get());
         /*
         $state = 0;
         if(Input::get('check_val')) {
