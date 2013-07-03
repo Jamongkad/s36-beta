@@ -75,12 +75,12 @@
                                 </div>
                                 <div class="rating-stars-container">
                                     <div class="display-author-date">3 Months Ago</div>
-                                    <div class="stars blue clear">
-                                        <div class="star full"></div>
-                                        <div class="star full"></div>
-                                        <div class="star full"></div>
-                                        <div class="star full"></div>
-                                        <div class="star half"></div>    
+                                    <div class="stars blue clear" style="text-align: right; width: 100px;">
+                                        <img src="/img/star-fill.png" title="GOOD">
+                                        <img src="/img/star-fill.png" title="GOOD">
+                                        <img src="/img/star-fill.png" title="GOOD">
+                                        <img src="/img/star-fill.png" title="GOOD">
+                                        <img src="/img/star-empty.png" title="GOOD">
                                     </div>
                                 </div>
                             </div>

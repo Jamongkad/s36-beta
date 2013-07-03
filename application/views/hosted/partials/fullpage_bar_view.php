@@ -15,7 +15,7 @@
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
                         <li><a href="javascript:;">Signed in as <span><?=\S36Auth::user()->username?></a></li>
-                        <li><a href="#" id="admin_panel" initquick>Admin Panel</a></li>
+                        <? //<li><a href="#" id="admin_panel" initquick>Admin Panel</a></li> ?>
                         <li><a href="/dashboard">My Dashboard</a></li>
                         <li><a href="/admin">My Account</a>
                             <ul>
@@ -28,7 +28,7 @@
                         </li>
                     <?php else: ?>
                         <li> 
-                            <a href="/login?forward_to=me">Login</a>
+                            <a href="/login">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>

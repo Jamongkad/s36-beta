@@ -7,6 +7,9 @@
 	font-family: 'Open Sans', sans-serif, Arial, Helvetica;
 	margin-top:10px;
 }
+#theDashboardMenu{
+    z-index: 300;
+}
 #theDashboardMenu ul{
 	display:block;
 	background:url(../img/dashboard-menu-bg.jpg) repeat-x;
