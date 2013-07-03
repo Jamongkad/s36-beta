@@ -81,17 +81,17 @@ angular.module('formbuilder', [])
                 }
                , messages: {
                     theme_name: { 
-                        required: "required"   
+                        required: "This field is required"   
                       , minlength: "Must be atleast 8 characters."
                       , maxlength: "50 character length reached."
                     }
                   , submit_form_text: {
-                        required: "required"   
+                        required: "This field is required"   
                       , minlength: "Must be atleast 8 characters."
                       , maxlength: "50 character length reached."
                     }
                   , submit_form_question: { 
-                        required: "required"   
+                        required: "This field is required"   
                       , minlength: "Must be atleast 8 characters."
                     }
                 }

@@ -1,7 +1,27 @@
 <?php
     $db_fullpage_cover = new \Hosted\Repositories\DBFullpageCover(Config::get('application.subdomain'));
     $fullpage_cover = $db_fullpage_cover->get_data();
+    
+    $company = new Company\Repositories\DBCompany;
+    $company = $company->get_company_info( Config::get('application.subdomain') ); 
 ?>
+<!-- lightbox notification -->
+<div id="lightboxNotification">
+    <div class="lightbox-pandora">
+        <div class="lightbox-header">Oops! Something went wrong.</div>
+        <div class="lightbox-body">
+            <div class="lightbox-message error">
+                <ul>
+                    <li>Error Message</li><li>Error Message</li>
+                </ul>
+            </div>
+            <div class="lightbox-buttons">
+                <a href="#" class="lightbox-button">CLOSE</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of lightbox notification -->
 <div id="coverPhotoContainer">
     <?php if( ! is_null($fullpage_cover->user) ): ?>
         <div id="changeCoverButtonIcon">
@@ -98,6 +118,29 @@
             </div>
         <?php endif; ?>
     </div>
+    <div class="company-rating">
+        <div class="company-cover-name break-word"><h1><?=ucfirst($company->company_name)?></h1></div>
+        <div class="dynamic-stars-container">
+            <div class="dynamic-stars">
+                <div class="star-ratings clear">
+                    <div class="star-container clear">
+                        <input type="hidden" id="company_rating" value="<?php echo round($company->avg_rating); ?>" /><? // used in reseting rating. ?>
+                        <input type="hidden" id="rating" name="rating" value="<?php echo round($company->avg_rating); ?>" />
+                        <div id="1" class="star <?= ($company->avg_rating >= 1 ? 'full' : ''); ?>"></div>
+                        <div id="2" class="star <?= ($company->avg_rating >= 2 ? 'full' : ''); ?>"></div>
+                        <div id="3" class="star <?= ($company->avg_rating >= 3 ? 'full' : ''); ?>"></div>
+                        <div id="4" class="star <?= ($company->avg_rating >= 4 ? 'full' : ''); ?>"></div>
+                        <div id="5" class="star <?= ($company->avg_rating >= 5 ? 'full' : ''); ?>"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-count">
+            <strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong>
+            Click the stars to rate us!
+        </div>
+    </div>
+    <div class="cover-shadow"></div>
 </div>
 <?= HTML::style('/fullpage/admin/css/FullpageCover.css'); ?>
 <?= HTML::script('/fullpage/admin/js/FullpageCover.js'); ?>

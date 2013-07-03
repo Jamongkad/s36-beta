@@ -76,6 +76,17 @@ class Determiner {
            $obj->fb_id = '201862876610477';
            $obj->fb_secret = 'abb9a2a6b21385ed820beaac8f332d9a';
        }
+       if($this->http_host == 'dan-staging.gearfish.com') { 
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+             , 'db' => 's36_dan'
+           );
+           $obj->env_name = 'development';
+           $obj->fb_id = '201862876610477';
+           $obj->fb_secret = 'abb9a2a6b21385ed820beaac8f332d9a';
+       }
 
       
        //Production

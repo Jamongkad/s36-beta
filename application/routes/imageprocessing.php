@@ -197,17 +197,25 @@ return array(
             )
         );
         $result = new JqueryFileUploader($options);
+        
         //we just need the versioned images. Remove the original uploaded image
-        unlink($options['upload_dir'].$options['file_name']);
+        // [no need to specify this. delete_url is doing the work already. image versions are included in deletion.]
+        //unlink($options['upload_dir'].$options['file_name']);
+        // [what we need to do is remove the uploaded image with original filename.]
+        $orig_image = $options['upload_dir'] . $_FILES['files']['name'][0];
+        if( file_exists($orig_image) && is_file($orig_image) ) unlink($orig_image);
+        
+        
         //remove previous upload for the current session
-        if(Session::get('uploaded_avatar')){
-            foreach($options['image_versions'] as $versions=>$value){
-                unlink($options['upload_dir'].$versions.'/'.Session::get('uploaded_avatar'));
-            }
-            Session::put('uploaded_avatar',$options['file_name']);
-        }else{
-            Session::put('uploaded_avatar',$options['file_name']);
-        }
+        // [no need to specify this. delete_url is doing the work already. image versions are included in deletion.]
+        // if(Session::get('uploaded_avatar')){
+        //     foreach($options['image_versions'] as $versions=>$value){
+        //         unlink($options['upload_dir'].$versions.'/'.Session::get('uploaded_avatar'));
+        //     }
+        //     Session::put('uploaded_avatar',$options['file_name']);
+        // }else{
+        //     Session::put('uploaded_avatar',$options['file_name']);
+        // }
     }),
     
     'POST /imageprocessing/FormImageUploader' => array('do'=> function() {
@@ -232,6 +240,11 @@ return array(
             )
         );
         $result = new JqueryFileUploader($options);
+        
+        
+        // remove the uploaded image with original filename.
+        $orig_image = $options['upload_dir'] . $_FILES['files']['name'][0];
+        if( file_exists($orig_image) && is_file($orig_image) ) unlink($orig_image);
     }),
 
     //'GET /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {  // replaced with $_POST because $_GET has char limit.

@@ -72,6 +72,37 @@ a:hover{
 	overflow: hidden;
 }
 
+#theHostedFormContainer{
+	background:#e9f1f9;
+}
+.dynamic-stars-container{
+	
+}
+.dynamic-stars{
+	width:120px;
+	/*margin-left:-60px;*/
+	/*left:50%;*/
+}
+/* star ratings styles! yeah baby! */
+.star-ratings{
+	display:block;
+	margin-top:5px;
+	margin-bottom:10px;
+}
+.star-ratings .star-container{
+	width:120px;
+	float:left;
+}
+.star-ratings .star-container .star{
+	float:left;
+	width:24px;
+	height:24px;
+	background: url(/img/star-ratings.png);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	cursor:pointer;
+}
+
 /* end of universal CSS */
 
 #mainWrapper{
@@ -98,14 +129,35 @@ a:hover{
 	overflow:hidden;
 }
 .company-description{
-	margin-top:35px;
-	margin-bottom:25px;
+	/*margin-top:35px;
+	margin-bottom:25px;*/
+	margin-top:25px;
+	margin-bottom: 20px;
 }
 .company-text{
+	/*line-height:1.6em;
+	width:675px;
+	float:left;*/
 	line-height:1.6em;
 	width:675px;
 	float:left;
 }
+.company-text-content:hover #desc_edit_icon{ display: block; }
+#fullpage_desc{ min-height: 50px; }
+#fullpage_desc.editable:hover{  }
+#fullpage_desc_textbox{ display: none; width: 97%; font-size: 12px; }
+#desc_edit_icon{
+	background: url(/fullpage/admin/img/changeCoverIcon.png) no-repeat;
+	width: 18px;
+	height: 17px;
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	z-index: 1;
+	cursor: pointer;
+	display: none;
+}
+#desc_edit_icon:hover{ background-position: bottom; }
 .send-button{
 	width:175px;
 	float:right;
@@ -135,9 +187,11 @@ a:hover{
 	color:#419322;
 }
 .company-rating{
-	width:425px;
+	/*width:425px;
 	float:right;
 	text-align:right;
+	color:#3780c7;*/
+	text-align:left;
 	color:#3780c7;
 }
 .green-thumb{
@@ -168,7 +222,7 @@ a:hover{
     display:inline-block;
     text-align:left;
 }
-.review-count{
+/*.review-count{
 	display:inline-block;
     top:-2px;
     text-align:right;
@@ -176,22 +230,42 @@ a:hover{
 .rating-stars-container{
     float:right;
     width:255px;
+}*/
+.review-count{
+	/*display:block;
+	top:-2px;
+	text-align:center;
+	margin-top:5px;
+	font-size:12px;
+	color:#333;*/
+	display:block;
+	top:-2px;
+	text-align:left;
+	margin-top:5px;
+	font-size:12px;
+	color:#FFF;
+	text-shadow:#000 0px 0px 4px;
+}
+.review-count strong{
+	/*font-weight:bold;*/
+	font-weight:bold;
 }
 .regular-featured .feedback-timestamp{
 	float:right;
 	margin-top:3px;
 }
-.stars .star{
-	width:16px;margin-right:2px;
+.star-ratings .star{
+	width:16px;
+	/*margin-right:2px;*/
 	background:url(/fullpage/common/img/star-sprites.png) bottom center;
 	background-repeat:no-repeat;
 	height:15px;
 	float:left;
 }
-.stars .star.full{
-	background-position:top;
+.star-ratings .star.full{
+	background-position: top;
 }
-.stars .star.half{
+.star-ratings .star.half{
 	background-position:center center;
 }
 /* end of common header css */
@@ -201,27 +275,29 @@ a:hover{
 	padding:5px;
 }
 .admin-comment-textbox-container{
-	margin: -3px 0px 5px -3px;
+	/*margin: -3px 0px 5px -3px;*/
 }
 .admin-comment-textbox-container textarea{
 	padding: 4px 6px;
 	margin:0px;
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:14px;
+	font-size: 11px;
 	/*height:80px;*/
 	height: 30px;
 	border:1px solid #EEE;
 	resize: none;
+	border: none;
 }
 .regular-featured .admin-comment-textbox-container textarea{	
 	width: 655px;
 	margin-left: 3px;
 }
 .regular .admin-comment-textbox-container textarea{
-	width: 227px;
+	/*width: 227px;*/
+	width: 220px;
 	/*height: 15px;*/
 	height: 30px;
-	font-size:12px;
+	font-size: 11px;
 	margin-top: -1px;
 	margin-left: 3px;
 }

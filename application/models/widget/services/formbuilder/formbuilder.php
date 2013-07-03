@@ -391,7 +391,10 @@ class Formbuilder {
 				$checked = !empty($val);
 
 				// if checked, set html
-				$checked = $checked_box ? ' checked="checked"' : '';
+                $checked = $checked_box ? ' checked="checked"' : '';
+                
+                // add "checked" class to the checked checkbox. to be used in reseting metadata in fullpage form.
+				$checked .= $checked_box ? ' class="checked"' : '';
 
                 if($metadata_render == False) {
             	    $checkbox = '<span class="row clearfix"><input type="checkbox" id="%s-%s" name="%s-%s" value="%s"%s /><label for="%s-%s">%s</label></span>' . "\n";        
@@ -490,7 +493,10 @@ class Formbuilder {
 				$checked = !empty($val);
 
 				// if checked, set html
-				$checked = $checked_radio ? ' checked="checked"' : '';
+                $checked = $checked_radio ? ' checked="checked"' : '';
+                
+                // add "checked" class to the checked radio. to be used in reseting metadata in fullpage form.
+				$checked .= $checked_radio ? ' class="checked"' : '';
 
                 if($metadata_render == False) {
                     $radio 		= '<span class="row clearfix"><input type="radio" id="%s-%s" name="%1$s" value="%s"%s /><label for="%1$s-%2$s">%3$s</label></span>' . "\n";
@@ -545,7 +551,9 @@ class Formbuilder {
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
-			$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
+            //$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
+            // added ucwords here. becuase title becomes lower case.
+			$html .= sprintf('<div class="title">%s</div><br/>' . "\n", ucwords($this->elemId($field['title'])), $field['title']);
 		}
 
 		$field['values'] = (array)$field['values'];
@@ -567,6 +575,9 @@ class Formbuilder {
 
 				// if checked, set html
 				$checked = $checked_multiple ? ' selected' : '';
+                
+                // add "selected" class to the selected option. to be used in reseting metadata in fullpage form.
+                $checked .= ( $checked_multiple ? ' class="selected"' : '' );
 
 				$option 	= '<option value="%s"%s>%s</option>' . "\n";
 				$html .= sprintf($option, $item['value'], $checked, $item['value']);

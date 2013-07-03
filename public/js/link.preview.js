@@ -17,6 +17,9 @@
 		var urlRegex = /(https?\:\/\/|\s)[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*/i;
 		
 		$(this).keyup(function(e){
+			
+			if( $('#link-data #hasLink').val() == '1' ) return;
+			
 			if((e.which == 13 || e.which == 32 || e.which == 17 || e.which == 224) && trim( $(this).val() ) != ""){
 				text = $(this).val();
 				if( urlRegex.test(text) ){
@@ -73,8 +76,9 @@
 								.append($('<div />').addClass('thumb-vid-close'))
 							);
 						init_thumbnail_vid_close_btn();
-						scale_review_textbox();
-						scale_feedback_textbox();
+						//scale_review_textbox();
+						//scale_feedback_textbox();
+						adjust_form_body_container();
 						$('.loading-box').fadeOut('fast');
 					}, "json");
 				}

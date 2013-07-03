@@ -14,6 +14,7 @@ var FullpageCover = function(){
         ==========================================*/
         $('#cv_image').fileupload({
             dataType: 'json',
+            dropZone: null,
             add: function(e, data){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
@@ -37,6 +38,7 @@ var FullpageCover = function(){
                 self.cover_photo_action = 'change';
                 Helpers.hide_notification();
                 $('#coverPhoto img').animate({'opacity': '1'});
+                
             }, error: function(jqXHR){
                 Helpers.display_error_mes([jqXHR.responseText]);
                 Helpers.hide_notification();
@@ -114,6 +116,7 @@ var FullpageCover = function(){
         ==========================================*/
         $('#company_logo').fileupload({
             dataType: 'json',
+            dropZone: null,
             add: function(e, data){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
@@ -208,6 +211,10 @@ var FullpageCover = function(){
             }
             
         });
+        
+        
+        //reposition the company name and title
+        self.reposition_company_name_and_rating();
         
     }
     
@@ -315,6 +322,18 @@ var FullpageCover = function(){
             $('#avatarButtonIcon').show();
             $('#logoActionButtons').hide();
         }
+    }
+    
+    
+    
+    /* ========================================
+    || This function will adjust the company name according to the width of the avatar
+    ==========================================*/
+    this.reposition_company_name_and_rating = function(){
+        $('#avatarContainer').find('img').load(function(){
+            var $wd = $(this).width() + 40;
+            $('#coverPhotoContainer').find('.company-rating').css('left',$wd+'px');
+        });
     }
     
 }

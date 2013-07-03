@@ -41,11 +41,10 @@
 		var frmb_id = 'frmb-' + $('ul[id^=frmb-]').length++;
 
 		return this.each(function () {
-			var ul_obj = $(this).append('<ul id="' + frmb_id + '" class="frmb"></ul>').find('ul');
+			var ul_box = $(this).append('<div class="form-builder-field-setup"></div>');
+			var ul_obj = $('.form-builder-field-setup').append($(this).append('<ul id="' + frmb_id + '" class="frmb ui-sortable '+frmb_id+'"></ul>').find('ul'));
 			var field = '', field_type = '', last_id = 1, help, form_db_id;
-
 			// Add a unique class to the current element
-			$(ul_obj).addClass(frmb_id);
 			// load existing form data
 			if (opts.load_url) {
 				$.getJSON(opts.load_url, function(json) {
@@ -68,7 +67,7 @@
 					select += '<option value="radio">' + opts.messages.radio + '</option>';
 					select += '<option value="select">' + opts.messages.select + '</option>';
 					// Build the control box and search button content
-					box_content = '<select id="' + box_id + '" class="frmb-control">' + select + '</select>';
+					box_content += '<div class="form-builder-field-selector"><div class="form-builder-select"><select id="' + box_id + '" class="frmb-control valid">' + select + '</select></div></div>';
 					//save_button = '<input type="submit" id="' + save_id + '" class="frmb-submit" value="' + opts.messages.save + '"/>';
 					// Insert the control box into page
 					if (!target) {
@@ -311,7 +310,7 @@
 					}
 					var li = '';
 					li += '<li id="frm-' + last_id + '-item" class="' + field_type + '">';
-					li += '<div class="legend">';
+					li += '<div class="legend grids">';
 					li += '<a id="frm-' + last_id + '" class="toggle-form" href="#">' + opts.messages.hide + '</a> ';
 					li += '<a id="del_' + last_id + '" class="del-button delete-confirm" href="#" title="' + opts.messages.remove_message + '"><span>' + opts.messages.remove + '</span></a>';
 					li += '<strong id="txt-title-' + last_id + '">' + title + '</strong></div>';
@@ -321,7 +320,7 @@
 					li += '</div>';
 					li += '</div>';
 					li += '</li>';
-					$(ul_obj).append(li);
+					$('.form-builder-field-setup ul').append(li);
 					$('#frm-' + last_id + '-item').hide();
 					$('#frm-' + last_id + '-item').animate({
 						opacity: 'show',

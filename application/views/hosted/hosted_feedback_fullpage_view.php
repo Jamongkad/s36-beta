@@ -26,90 +26,33 @@
             
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>
             
+            <?= View::make('hosted/partials/fullpage_company_summary_view', array('company' => $company, 'widget_loader' => $widget_loader, 'user' => $user)); ?>
+            
             <?php if( $feed_count->published_feed_count == 0 ): ?>
-                <div class="hosted-block">
-                    <div class="company-description clear">
-                        <div class="company-text" style="width:100%">
-                            <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( Helpers::urls_to_links(HTML::entities($company->description)) ); ?></div>
-                        </div>
-                    </div>
-                </div>
                 <div id="blankHostedPage">
                     <h1 class="first-head">Hey! Looks like you're the first one here. </h1>
-                    <h1>Send in some feedback for <?php echo ucfirst(HTML::entities($company->company_name)); ?> by clicking below.</h1>
-                    <p class="send-button" widgetkey="<?=$company->widgetkey?>">
+                    <h1>Send in some feedback for <?php echo ucfirst(HTML::entities($company->company_name)); ?> by clicking on the stars.</h1>
+                    <? /*<p class="send-button" widgetkey="<?=$company->widgetkey?>">
                         <a href="javascript:;">
                             Send in feedback
                         </a>
-                    </p>
+                    </p>*/ ?>
                 </div>
             <?php endif; ?>
             
             
             <?php if( $feed_count->published_feed_count > 0 ): ?>
-                <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
-                    <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
-                    <div class="hosted-block">
-                        <div class="company-description clear">
-                            <div class="company-text">
-                                <? // keep the content of fullpage_desc_text in one line. ?>
-                                <div id="fullpage_desc" class="break-word <?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( Helpers::urls_to_links(HTML::entities($company->description)) ); ?></div>
-                                <?php if( ! is_null($user) ): ?>
-                                    <textarea id="fullpage_desc_textbox" rows="3"></textarea>
-                                <?php endif; ?>
-                            </div>
-                            <div class="send-button" widgetkey="<?=$company->widgetkey?>">
-                                <a href="javascript:;">
-                                    Send in feedback
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="hosted-block">
-                            <div class="company-reviews clear">
-                                <div class="company-recommendation">
-                                    <?php if( $company->total_feedback != 0 ): ?>
-                                        <div class="green-thumb">
-                                            <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
-                                            of our customers recommend us to their friends.
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="company-rating">
-                                    <?php if( $company->total_feedback != 0 ): ?>
-                                        <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
-                                        <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
-                                        <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-
-                <!-- lightbox notification -->
-                <div id="lightboxNotification">
-                    <div class="lightbox-pandora">
-                        <div class="lightbox-header">Oops! Something went wrong..</div>
-                        <div class="lightbox-body">
-                            <div class="lightbox-message error">
-                                <ul>
-                                    <li>Error Message</li><li>Error Message</li>
-                                </ul>
-                            </div>
-                            <div class="lightbox-buttons">
-                                <a href="#" class="lightbox-button">CLOSE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end of lightbox notification -->
                 <div id="feedbackContainer">
                     <div id="threeColumnLayout" class="hosted-layout">
                         <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
                         <div id="feedback-infinitescroll-landing"></div>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    <? // hack to hide the first .feedback-date and show the first .spine-spacer. ?>
+                    $('.feedback-date:first').css('display', 'none');
+                    $('.spine-spacer:first').css({'display' : 'block', 'height' : '20px'});
+                </script>
             <?php endif ?>
         </div>
     </div>

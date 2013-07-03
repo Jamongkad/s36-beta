@@ -59,6 +59,8 @@ return array(
         ));
 
         $feedbackReports = new \Feedback\Repositories\DBFeedbackReports;
+        
+        $widget_loader = new Widget\Services\WidgetLoader($company_info->widgetkey, $load_submission_form=True);
 
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
@@ -73,6 +75,7 @@ return array(
                                                   , 'reportTypes'       => $feedbackReports->get_reportTypes()
                                                   , 'panel'             => $panel 
                                                   , 'feed_advance_count'=> $feed_advance_count
+                                                  , 'widget_loader'     => $widget_loader
                                                 ));
         
         // increment page view count of company.
@@ -213,6 +216,8 @@ return array(
         $feed_data = new FeedbackNode($feedback);
         $fb_id     = Config::get('application.fb_id');
         $panel = $hosted_settings->get_panel_settings($feedback->companyid);
+        
+        $widget_loader = new Widget\Services\WidgetLoader($company->widgetkey, $load_submission_form=True);
 
         return View::make('hosted/hosted_feedback_single_view', Array(
             'company'           => $company
@@ -222,6 +227,7 @@ return array(
           , 'panel'             => $hosted_settings->get_panel_settings($feedback->companyid)
           , 'fullpage_css'      => $fullpage->get_fullpage_css($feedback->companyid)
           , 'reportTypes'       => $feedbackReports->get_reportTypes()
+          , 'widget_loader'     => $widget_loader
         ));
     },
 

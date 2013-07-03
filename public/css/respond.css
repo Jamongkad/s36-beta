@@ -13,7 +13,12 @@ body{
 	max-width:850px;
 }
 .company-text{
-	width:77%;
+	/*width:77%;*/
+	/*margin-left:195px;*/
+	width:auto;
+	float:none;
+	/*top:-15px;*/
+	top: 8px;
 }
 .send-button{
 	width:21%;
@@ -23,10 +28,18 @@ body{
 	font-size:1rem;
 }
 .company-recommendation{
-	width:70%;
+	width:77%;
 }
 .company-rating{
-	width:30%;
+	/*width:30%;*/
+	width:195px;
+	float:left;
+}
+.company-text-content{
+	/*padding:5px;
+	background:#f1f1f1;*/
+	padding:10px 15px;
+	background:#f6f6f6;
 }
 /* Tablet Landscape */
 @media screen and (max-width: 600px) {

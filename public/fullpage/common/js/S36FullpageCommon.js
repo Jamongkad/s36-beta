@@ -4,25 +4,28 @@
 ||
 ||=========================================*/
 var S36FullpageCommon = function(){
-	/* ========================================
-	|| Function needed to run by document ready
-	==========================================*/
-	this.init_fullpage_common = function(){
+    var self = this;
+    
+    /* ========================================
+    || Function needed to run by document ready
+    ==========================================*/
+    this.init_fullpage_common = function(){
 		$('.feedback-icon').hover(function(){
 			$(this).find('.icon-tooltip').fadeIn('fast');
 		},function(){
 			$(this).find('.icon-tooltip').fadeOut('fast');
 		});
-		$('#fullpage_desc.editable').click(function(){
+        //$('#fullpage_desc.editable').click(function(){
+		$('#desc_edit_icon').click(function(){
 			$('#desc_hint').hide();
 			$('#fullpage_desc_textbox').show().focus();
 			
-			text = $(this).html().replace(/\n/g,'');
+			text = $('#fullpage_desc').html().replace(/\n/g,'');
 			text = Helpers.br2nl( text );
 			text = Helpers.entities2html( text );
 			text = Helpers.links_to_urls( text );
 			$('#fullpage_desc_textbox').val( text );
-			$(this).hide();
+			$('#fullpage_desc').hide();
 		});
 		$('#fullpage_desc_textbox').blur(function(){
 			$('#fullpage_desc_textbox').attr('disabled', 'disabled');
@@ -56,8 +59,51 @@ var S36FullpageCommon = function(){
 				}
 				desc_textbox.removeAttr('disabled');
 				desc_textbox.hide();
-		    }, 800);
+		    }, 500);
 		});
+		
+		/* ========================
+                            
+           Below is Rating Function found on the form page.
+           
+           -Pass a variable to the hidden input when a star is clicked.
+           -Check console.log for details.
+           
+        ========================*/
+        
+        $('.dynamic-stars .star-container .star').hover(function(){
+            
+            if( $('.current').is('#step4') ) return;
+            
+            var rating = $(this).parent().find('.star').index( this ) + 1;
+            $('.star-text span').text( self.convert_rating_to_text(rating) );
+            self.highlight_stars(rating);
+            
+            
+        },function(){
+            
+            if( $('.current').is('#step4') ) return;
+            
+            var current_rating = $('#rating').val();
+            $('.star-text span').text( $('.rate-title .rating_text').text() );
+            self.highlight_stars(current_rating);
+            
+            
+        }).click(function(){
+            
+            if( $('.current').is('#step4') ) return;
+            
+            var rating = $(this).parent().find('.star').index( this ) + 1;
+            $('#rating').val(rating);
+            $('.rate-title .rating_num').text( rating );
+            $('.rate-title .rating_text').text( self.convert_rating_to_text(rating) );
+            $('#theHostedFormContainer').slideDown();
+            
+            $('.star-text span').text( self.convert_rating_to_text(rating) );
+            self.highlight_stars(rating);
+            
+        });
+		
 		
 		if( window.innerHeight < 700 ) $('#s36_modalbox').css({'margin-top': '30px', 'top' : '0px'});
 		
@@ -72,7 +118,37 @@ var S36FullpageCommon = function(){
 		$('.share-box').hover(function(){},function(){
 			//$(this).fadeOut('fast');
 		});
+        
 	}
+    
+    this.highlight_stars = function(rating){
+        $('.star-container .star').removeClass('full');
+        $('.star-container').each(function(){
+            for(a = 0; a < rating; a++){
+                $(this).find('.star').eq(a).addClass('full');
+            }
+        });
+    }
+	
+	this.convert_rating_to_text = function(val){
+        var rating;
+        switch(val){
+            case 5: rating = "Excellent";
+            break;
+            case 4: rating = "Good";
+            break;
+            case 3: rating = "Average";
+            break;
+            case 2: rating = "Poor";
+            break;
+            case 1: rating = "Bad";
+            break;
+            default: rating = "";
+            break;
+        }
+        return rating;
+    }
+	
 	/* ========================================
 	|| This function will initialize the masonry for every layout
 	==========================================*/
@@ -89,6 +165,7 @@ var S36FullpageCommon = function(){
 			  }
 		});
 	}
+	
 	/* ========================================
 	|| Function needed to close the lightbox
 	==========================================*/

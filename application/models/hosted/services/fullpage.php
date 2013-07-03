@@ -55,8 +55,8 @@ class Fullpage {
         $css .= ( ! $hs->show_recommendation ? '.green-thumb{display:none}' : '' );
         $css .= ( ! $hs->show_metadata ? '.custom-meta-data{display:none}' : '' );
         $css .= ( ! $hs->show_admin_comment ? '.admin-comment-block{display:none}' : '' );
-        $css .= ( ! $hs->show_sharing_option ? '.share-button{display:none}' : '' );
-        $css .= ( ! $hs->show_flag_inapp ? ' .flag_control{ display: none; }' : '' );
+        $css .= ( ! $hs->show_sharing_option ? ' .share-icon{ display: none; } .feedback-icon.share-feedback{ display: none; }' : '' );
+        $css .= ( ! $hs->show_flag_inapp ? ' .flag-as-inapp{ display: none; } .feedback-icon.flag-feedback{ display: none; }' : '' );
         $css .= ( ! $hs->show_avatar ? '.author-avatar{display:none}.author-information{margin-left:0px;}' : '' );
         $css .= ( ! $hs->show_last_name_as_ini ? ' .last_name_ini{ display : none; } .last_name{ display: inline-block; }' : ' .last_name_ini{ display : inline-block; } .last_name{ display: none; } ' );
         $css .= ( ! $hs->show_position ? ' .job{ display : none } ' : '' );
