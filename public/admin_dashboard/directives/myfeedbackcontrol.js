@@ -18,6 +18,8 @@ angular.module('feedbackcontrol', [])
 
                     if(data.status != "fileas" || data.status != "delete") { 
 
+                        console.log("Whoa");
+
                         if(data.status == "feature") {
                             var state = { 
                                 activate: {'background-position': '-64px -31px'}
@@ -41,6 +43,9 @@ angular.module('feedbackcontrol', [])
                         }
 
                     } else { 
+
+                        console.log("Whoa Pwets");
+
                         hide_the_children(me);
                     }
 
