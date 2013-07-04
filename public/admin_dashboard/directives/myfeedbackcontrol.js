@@ -53,7 +53,7 @@ angular.module('feedbackcontrol', [])
 
                     if(data_status == "fileas") {
                         var sibling = $(me).siblings(".feedback-details-rating fild");
-                        console.log(siblings);
+                        console.log(sibling);
                     }
 
                 } else {
