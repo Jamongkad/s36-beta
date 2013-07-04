@@ -114,8 +114,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
         }
 
-        console.log(feed);
-
         if(feed.status != "remove") { 
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;

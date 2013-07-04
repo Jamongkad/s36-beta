@@ -14,6 +14,8 @@ angular.module('feedbackcontrol', [])
                         hide_the_children(me);
                     }
 
+                    console.log("Pwet");
+
                     if(data.status != "fileas") { 
                         if(data.status == "feature") {
                             var state = { 
@@ -42,6 +44,8 @@ angular.module('feedbackcontrol', [])
 
                 } else if(currentUrl.match(/filed/g)) { 
 
+                    console.log("Wewe");
+
                     var data_status = data.status;
 
                     if(data_status == "publish" || data_status == "feature" || data_status == "delete") { 
@@ -49,6 +53,9 @@ angular.module('feedbackcontrol', [])
                     }
 
                 } else {
+                    
+                    console.log("Popo");
+
                     hide_the_children(me);     
                 }
 
