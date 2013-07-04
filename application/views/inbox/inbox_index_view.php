@@ -374,7 +374,7 @@ var backend_vars = {
                                          data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "delete"}'
                                          ></div>
                                     <div class="action-delete-tooltip">
-                                    
+                                        PWET 
                                     </div>
                                 </div>
                                 <div class="action-gap"></div>
