@@ -96,6 +96,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.feedback_status = function($event) {         
 
         var target = $($event.target);
+        console.log(target.attr('data-feed'))
         var feed = $.parseJSON(target.attr('data-feed'));
 
         if(current_url.match(/inbox\/all|deleted/g)) {  
