@@ -117,7 +117,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         FeedbackSignal.current_state(current);
         feed.origin = Template.current_inbox_state;
-        FeedbackControlService.change_status(feed, true);
+        //FeedbackControlService.change_status(feed, true);
     }
 
     $scope.flag_feedback = function($event) {
@@ -186,13 +186,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
                 if(mode == "remove") { 
                     FeedbackSignal.current_state(feed);
-                    //FeedbackControlService.change_status(feed, true);  
-                    $(".checky-box-container").show();  
+                    FeedbackControlService.change_status(feed, true);  
                 } else { 
                     FeedbackSignal.current_state(feed);
-                    //FeedbackControlService.change_status(feed, true); 
-                    $(".checky-box-container").show();  
+                    FeedbackControlService.change_status(feed, true);  
                 }
+
+                $(".checky-box-container").show();  
 
             } else {
                 if(mode != "remove") {

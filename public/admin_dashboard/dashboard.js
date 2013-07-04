@@ -1,8 +1,27 @@
 $(document).ready(function(){
-    $('.action-delete').hover(function(){
-        $(this).next().fadeIn('fast');
-    },function(){
-        $(this).next().fadeOut('fast');
+
+    $(".inbox-fancybox-image").fancybox({
+        openEffect : 'none',
+        closeEffect : 'none'
+    });
+
+    $(".inbox-fancybox-video").click(function(e) {
+        $.fancybox({
+            'padding'       : 0,
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'title'         : this.title,
+            'width'         : 640,
+            'height'        : 385,
+            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+            'type'          : 'swf',
+            'swf'           : {
+            'wmode'             : 'transparent',
+            'allowfullscreen'   : 'true'
+        }
+        });
+        e.preventDefault();
     });
 
 });
