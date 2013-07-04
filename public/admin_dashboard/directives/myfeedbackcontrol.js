@@ -42,7 +42,9 @@ angular.module('feedbackcontrol', [])
                         $(".checky-box-container").show();
                     }
 
-                } else if(currentUrl.match(/filed/g)) { 
+                } 
+                
+                if(currentUrl.match(/filed/g)) { 
 
                     var data_status = data.status;
 
@@ -52,20 +54,19 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(data_status == "fileas") {
-                        var sibling = $(me).parents(".dashboard-feedback")
-                                           .children("div.feedback-contents")
-                                           .children(".responsive-padding")
-                                           .children(".feedback-details")
-                                           .children(".filed")
-                                           .html($(me).text())
-                        console.log(sibling);
+                        $(me).parents(".dashboard-feedback")
+                               .children("div.feedback-contents")
+                               .children(".responsive-padding")
+                               .children(".feedback-details")
+                               .children(".filed")
+                               .html($(me).text())
                     }
 
-                } else {
-                    hide_the_children(me);     
-                    $(".checky-box-container").show();
-                }
-
+                } 
+                 
+                hide_the_children(me);     
+                $(".checky-box-container").show();
+               
                 e.preventDefault();
             });
         } 
