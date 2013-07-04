@@ -11,11 +11,10 @@ angular.module('feedbackcontrol', [])
                 if(currentUrl.match(/published|contacts/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
-                        console.log("Return")
                         hide_the_children(me);
+                        $(".checky-box-container").show();
                     }
 
-                    console.log(data);
                     if(data.status == "feature") {
                         var state = { 
                             activate: {'background-position': '-64px -31px'}
