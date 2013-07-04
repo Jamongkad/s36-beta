@@ -14,11 +14,8 @@ angular.module('feedbackcontrol', [])
                         hide_the_children(me);
                     }
 
-                    console.log("Pwet");
-
                     if(data.status != "fileas" || data.status != "delete") { 
 
-                        console.log("Mr. Pwet");
                         if(data.status == "feature") {
                             var state = { 
                                 activate: {'background-position': '-64px -31px'}
@@ -42,15 +39,10 @@ angular.module('feedbackcontrol', [])
                         }
 
                     } else { 
-
-                        console.log("Mrs. Pwet");
-
                         hide_the_children(me);
                     }
 
                 } else if(currentUrl.match(/filed/g)) { 
-
-                    console.log("Wewe");
 
                     var data_status = data.status;
 
@@ -59,9 +51,6 @@ angular.module('feedbackcontrol', [])
                     }
 
                 } else {
-                    
-                    console.log("Popo");
-
                     hide_the_children(me);     
                 }
 
