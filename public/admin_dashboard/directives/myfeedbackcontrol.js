@@ -29,6 +29,7 @@ angular.module('feedbackcontrol', [])
                           , activation_color: {'background-color': '#ffffe0'} 
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                           , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                          , present_status: "feature"
                         }
                         published_state(me, '.publish', 'publish feedback', state);
                     }
@@ -40,6 +41,7 @@ angular.module('feedbackcontrol', [])
                           , activation_color: {'background-color': '#fff'} 
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
                           , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                          , present_status: "publish"
                         } 
                         published_state(me, '.feature', 'feature feedback', state);
                     }
@@ -274,6 +276,7 @@ function published_state(obj, sibling_id, msg, state) {
 
     var feed = $.parseJSON(origin_cat_data);
     feed.status = "fileas";
+    feed.origin = state.present_status
 
     var repackaged_json = JSON.stringify(feed);
     obj.siblings('.save')
