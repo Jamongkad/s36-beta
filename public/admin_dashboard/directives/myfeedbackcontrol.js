@@ -275,13 +275,13 @@ function published_state(obj, sibling_id, msg, state) {
                                .children('a');
 
     for(var i=0;i<origin_cat_data.length;i++) {
-        console.log(origin_cat_data[i]);
-        /*
-        var feed = $.parseJSON(origin_cat_data[i].attr('data-feed'));
+        var cat = $(origin_cat_data[i]);
+
+        var feed = $.parseJSON(cat.attr('data-feed'));
         feed.status = "fileas";
         feed.origin = state.present_status
         console.log(feed);
-        */
+
 
         //var repackaged_json = JSON.stringify(feed); 
         //console.log(repackaged_json);
