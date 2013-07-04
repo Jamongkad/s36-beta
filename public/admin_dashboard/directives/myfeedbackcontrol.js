@@ -14,6 +14,8 @@ angular.module('feedbackcontrol', [])
                         hide_the_children(me);
                     }
 
+                    console.log(data);
+
                     if(data.status != "fileas" || data.status != "delete") { 
 
                         if(data.status == "feature") {
