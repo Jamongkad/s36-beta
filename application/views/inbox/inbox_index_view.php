@@ -40,29 +40,38 @@ $(document).ready(function() {
             <span ng-switch on="status_selection"> 
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 
+                    <a undo class="undo" href="#" ng-click="undo()">undo</a> 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="publish">
                     Feedback has been published on your page. 
+                    <a undo class="undo" href="#" ng-click="undo()">undo</a> 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="fileas">
                     Feedback has been filed.
+                    <a undo class="undo" href="#" ng-click="undo()">undo</a> 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="delete">
                     Feedback has been deleted. 
+                    <a undo class="undo" href="#" ng-click="undo()">undo</a> 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="restore">
                     Feedback has been restored. 
+                    <a undo class="undo" href="#" ng-click="undo()">undo</a> 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="remove">
                     Feedback has been permanently remove. 
                 </span> 
                 <span ng-switch-when="inbox">
                     Feedback has been returned to the inbox.
+                    <a undo class="undo" href="#" ng-click="undo()">undo</a> 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
             </span>
-
-            <a undo class="undo" href="#" ng-click="undo()">undo</a> 
-            <a close class="close-checky" href="#" ng-click="close()">close</a>
         </div>
     </div>
 </div>
