@@ -364,7 +364,7 @@ var backend_vars = {
                                         <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
                                     </span>
                                     <?if($feed->intname != "default"):?>
-                                        Filed As: <span class="feedback-details-rating filed"><?=$feed->intname?></span>
+                                        <span class="feedback-details-status">Filed As: </span><span class="feedback-details-rating filed"><?=$feed->intname?></span>
                                     <?endif?>
                                 </div>
                             </div>
