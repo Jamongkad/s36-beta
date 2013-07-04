@@ -51,14 +51,14 @@ class FeedbackState {
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode);
                 */
-                //return $this->feedback->_toggle_multiple($feed_obj);
+                return $this->feedback->_toggle_multiple($feed_obj);
             } else { 
                 /* debug
                 Helpers::dump($this->mode);
                 */
                 foreach($this->block_id as $feed_id) {
-                    Helpers::dump($feed_id);
-                    //$this->feedback->permanently_remove_feedback($feed_id);    
+                    //Helpers::dump($feed_id);
+                    $this->feedback->permanently_remove_feedback($feed_id);    
                 } 
             }
         }
