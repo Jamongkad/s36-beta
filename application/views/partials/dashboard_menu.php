@@ -1,5 +1,5 @@
 <div id="theDashboardMenu">
-    <? $regex = Helpers::nav_regex()
+    <? $regex = Helpers::nav_regex();
        print_r($regex); 
     ?>
     <ul>
