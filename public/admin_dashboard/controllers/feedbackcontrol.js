@@ -97,15 +97,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var target = $($event.target);
         var feed = $.parseJSON(target.attr('data-feed'));
-        
-        if(current_url.match(/filed/g)) {
-            var current = {
-                id: feed.id
-              , catid: feed.catid
-              , status: feed.status
-              , origin: Template.current_inbox_state
-            } 
-        } else { 
+
+        if(current_url.match(/inbox\/all|deleted/g)) {  
             var current = {
                 id: feed.id
               , catid: Template.default_category_id
@@ -114,6 +107,24 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
         }
 
+        if(currentUrl.match(/published/g)) {
+            var current = {
+                id: feed.id
+              , catid: Template.default_category_id
+              , status: feed.status
+              , origin: feed.origin
+            } 
+        }
+        
+        if(current_url.match(/filed/g)) {
+            var current = {
+                id: feed.id
+              , catid: feed.catid
+              , status: feed.status
+              , origin: Template.current_inbox_state
+            } 
+        } 
+        
         console.log("From Status Change");
         console.log(current);
 
