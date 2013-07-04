@@ -547,7 +547,7 @@ var backend_vars = {
                                                                                 , "catid": "<?=$cat->id?>"
                                                                                 , "status": "fileas"
                                                                                 <?if($inbox_state == "publish") {
-                                                                                    echo ($feed->isfeatured) ? ', origin: "feature"' : ', origin: "publish"';
+                                                                                    echo ($feed->isfeatured) ? ', "origin": "feature"' : ', "origin": "publish"';
                                                                                 } 
                                                                                 ?>
                                                                                }'>
