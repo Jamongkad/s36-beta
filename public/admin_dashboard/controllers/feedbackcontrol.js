@@ -114,10 +114,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
         }
 
-        FeedbackSignal.current_state(current);
-        feed.origin = Template.current_inbox_state;
-        console.log(current_url.match(/deleted/g));
-        //FeedbackControlService.change_status(feed, true);
+        if(!current_url.match(/deleted/g)) {                 
+            FeedbackSignal.current_state(current);
+            feed.origin = Template.current_inbox_state;
+            //FeedbackControlService.change_status(feed, true);
+        } else {
+            if(confirm("Warning! You are about to permanently delete this feedback. There is no undo.")) {
+                console.log("Delete this mutha fucka");
+                console.log(feed);
+            }
+        }
+
     }
 
     $scope.flag_feedback = function($event) {
