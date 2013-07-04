@@ -1,4 +1,7 @@
 <div id="theDashboardMenu">
+    <? $regex = Helpers::nav_regex()
+       print_r($regex); 
+    ?>
     <ul>
         <li><a href="/">Home</a></li>
         <li class="active-menu"><a href="/inbox/all" inboxclick>Inbox</a> <span feedbackcount></span></li>
