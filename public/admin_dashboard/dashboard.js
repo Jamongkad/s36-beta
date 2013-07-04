@@ -6,7 +6,6 @@ $(document).ready(function(){
         $(this).next().fadeOut('fast');
     });
 
-
     $(".inbox-fancybox-image").fancybox({
         openEffect : 'none',
         closeEffect : 'none'

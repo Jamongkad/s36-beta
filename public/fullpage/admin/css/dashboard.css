@@ -288,6 +288,10 @@
 	right:30px;
 	display:none;
 }
+.action-delete-tooltip.permanent-tooltip{
+     background:url(../img/tooltip-remove-permanent.jpg) no-repeat;
+      width:140px;
+}
 .action-delete:hover{
 	background-position:-224px -32px;
 }
