@@ -271,7 +271,7 @@ function published_state(obj, sibling_id, msg, state) {
            .children(".the-categories")
            .children(".grids")
            .children('li')
-           .children('a').attr('data-feed', state.state_change_inbox);
+           .children('a').attr('data-feed', state.state_change_fileas);
 }
 
 function hide_the_children(obj) { 
