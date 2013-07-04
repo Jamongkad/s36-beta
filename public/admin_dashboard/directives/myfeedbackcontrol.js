@@ -9,8 +9,12 @@ angular.module('feedbackcontrol', [])
                 var data = FeedbackSignal.data;
 
                 if(currentUrl.match(/inbox\/all|deleted/g)) { 
-                    hide_the_children(me);     
-                    $(".checky-box-container").show();
+                    if(data.status != "remove") { 
+                        hide_the_children(me);     
+                        $(".checky-box-container").show();
+                    } else { 
+                        hide_the_children(me);     
+                    }
                 }
 
                 if(currentUrl.match(/published/g)) { 
