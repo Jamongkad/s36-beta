@@ -272,8 +272,17 @@ function published_state(obj, sibling_id, msg, state) {
                                .children(".the-categories")
                                .children(".grids")
                                .children('li')
-                               .children('a').attr('data-feed');
+                               .children('a');
 
+    for(var i=0;i<origin_cat_data.length;i++) {
+        var feed = $.parseJSON(origin_cat_data[i]);
+        feed.status = "fileas";
+        feed.origin = state.present_status
+
+        var repackaged_json = JSON.stringify(feed); 
+        console.log(repackaged_json);
+    }
+    /*
     var feed = $.parseJSON(origin_cat_data);
     feed.status = "fileas";
     feed.origin = state.present_status
@@ -286,9 +295,7 @@ function published_state(obj, sibling_id, msg, state) {
        .children(".grids")
        .children('li')
        .children('a').attr('data-feed', repackaged_json);
-
-
-
+    */
 }
 
 function hide_the_children(obj) { 
