@@ -9,6 +9,7 @@ angular.module('feedbackcontrol', [])
                 var data = FeedbackSignal.data;
 
                 if(currentUrl.match(/inbox\/all|deleted/g)) { 
+                    console.log(data);
                     hide_the_children(me);     
                     $(".checky-box-container").show();
                 }
