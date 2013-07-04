@@ -8,7 +8,12 @@ angular.module('feedbackcontrol', [])
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
-                if(currentUrl.match(/published|contacts/g)) { 
+                if(currentUrl.match(/inbox/\/all|deleted/g)) { 
+                    hide_the_children(me);     
+                    $(".checky-box-container").show();
+                }
+
+                if(currentUrl.match(/published/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
                         hide_the_children(me);
@@ -64,9 +69,6 @@ angular.module('feedbackcontrol', [])
 
                 } 
                  
-                hide_the_children(me);     
-                $(".checky-box-container").show();
-               
                 e.preventDefault();
             });
         } 
