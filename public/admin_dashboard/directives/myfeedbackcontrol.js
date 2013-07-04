@@ -251,6 +251,4 @@ function hide_the_children(obj) {
     if(child_count.length == 0) {
         obj.parents('.feedback-group').hide();
     }      
-
-    $(".checky-box-container").show();
 }
