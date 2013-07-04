@@ -7,7 +7,7 @@
         </div>
         <div class="dashboard-body">
         	<div class="dashboard-content">
-            	<div id="layout-message" class="alert-message" style="display:none"><div class="success">Success! You can view your updated layout display <a href="/">here</a></div></div>
+            	<div id="layout-message" class="alert-message" style="display:none"><div class="success">Success! You can view your updated layout display <a href="/">here</a>.</div></div>
                 <ul class="layout-list clear">
                     <li <?=($panel->theme_name=='Traditional') ? 'class="selected"' : ''?> id="Traditional">
                         <div class="layout">
