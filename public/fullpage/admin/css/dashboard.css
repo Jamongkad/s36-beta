@@ -39,6 +39,13 @@
     padding:15px 23px;
     font-size: 92%;
 }
+#theDashboardMenu ul li.active-menu a{
+    color:#FFF;
+    text-shadow:#0985c7 0px 1px;
+}
+#theDashboardMenu ul li.active-menu{
+ background:#1cb0ff;
+}
 #theDashboardContents{
 	margin-top:20px;
 	border-top:1px solid #EEE;
