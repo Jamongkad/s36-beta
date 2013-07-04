@@ -57,7 +57,7 @@ angular.module('feedbackcontrol', [])
                                            .children(".responsive-padding")
                                            .children(".feedback-details")
                                            .children(".filed")
-                                           .html("ryan is a pwet")
+                                           .html($(me).text())
                         console.log(sibling);
                     }
 
