@@ -11,11 +11,41 @@ angular.module('feedbackcontrol', [])
                 if(currentUrl.match(/published|contacts/g)) { 
 
                     if(me.attr('return-policy') == 1) { 
+                        console.log("Return")
                         hide_the_children(me);
                     }
 
                     console.log(data);
+                    if(data.status == "feature") {
+                        var state = { 
+                            activate: {'background-position': '-64px -31px'}
+                          , deactivate_sibling: {'background-position': '-32px 0px'}
+                          , activation_color: {'background-color': '#ffffe0'} 
+                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                          , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                        }
+                        published_state(me, '.publish', 'publish feedback', state);
+                    }
 
+                    if(data.status == "publish") {
+                        var state = {
+                            activate: {'background-position': '-32px -31px'}
+                          , deactivate_sibling: {'background-position': '-64px 0px'}
+                          , activation_color: {'background-color': '#fff'} 
+                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
+                          , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                        } 
+                        published_state(me, '.feature', 'feature feedback', state);
+                    }
+
+                    if(data.status == "delete") {
+                        hide_the_children(me);
+                    }
+
+                    if(data.status == "fileas") {
+                        hide_the_children(me);
+                    }
+                    /*
                     if(data.status != "fileas" || data.status != "delete") { 
 
                         console.log("Whoa");
@@ -24,22 +54,22 @@ angular.module('feedbackcontrol', [])
                             var state = { 
                                 activate: {'background-position': '-64px -31px'}
                               , deactivate_sibling: {'background-position': '-32px 0px'}
-                              , activation_color: {'background-color': '#FFFFE0'} 
+                              , activation_color: {'background-color': '#ffffe0'} 
                               , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                               , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                             }
-                            published_state(me, '.publish', 'Publish Feedback', state);
+                            published_state(me, '.publish', 'publish feedback', state);
                         }
 
                         if(data.status == "publish") {
                             var state = {
                                 activate: {'background-position': '-32px -31px'}
                               , deactivate_sibling: {'background-position': '-64px 0px'}
-                              , activation_color: {'background-color': '#FFF'} 
+                              , activation_color: {'background-color': '#fff'} 
                               , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
                               , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                             } 
-                            published_state(me, '.feature', 'Feature Feedback', state);
+                            published_state(me, '.feature', 'feature feedback', state);
                         }
 
                     } else { 
@@ -48,6 +78,7 @@ angular.module('feedbackcontrol', [])
 
                         hide_the_children(me);
                     }
+                    */
 
                 } else if(currentUrl.match(/filed/g)) { 
 
