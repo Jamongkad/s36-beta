@@ -101,10 +101,10 @@
                                             
                                             <!-- start of feedback form -->
                                             <div class="form-feedback-title">
-                                                <input id="feedbackTitle" type="text" class="regular-custom-field" value="" placeholder="<?=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35" />
+                                                <input id="feedbackTitle" type="text" class="regular-custom-field" value="" placeholder="Describe us in 1 sentence<? //=($form_text) ? $form_text : 'Please Enter Your Feedback'?>" name="title" maxlength="35" />
                                             </div>
                                             <div class="form-feedback-textbox">
-                                                <textarea id="feedbackText" class="feedback-textarea" placeholder="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
+                                                <textarea id="feedbackText" class="feedback-textarea" placeholder="What are your thoughts about us?<? //=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
                                             </div>
                                             
                                             <div class="form-recommendation-text clear">
