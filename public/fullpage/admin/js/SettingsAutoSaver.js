@@ -45,19 +45,6 @@ var SettingsAutoSaver = new function(){
         $('.btnFontColor').on('change', function(){
             SettingsAutoSaver.set_data('button_font_color', $(this).val());
         });
-
-        // layout section events
-        $('.layout-list li').click(function(){
-            $('.layout-list li').each(function(){
-                $(this).removeClass('selected');
-            });
-            $(this).addClass('selected');
-            $('#selectedLayout').val(this.id);
-        });
-        $('#chooseLayout').click(function(){
-            $('#maskDisabler').fadeIn();
-            SettingsAutoSaver.set_data('theme_name', $('#selectedLayout').val());
-        });
         
         // social media section events.
         $('.social_url').blur(function(){
