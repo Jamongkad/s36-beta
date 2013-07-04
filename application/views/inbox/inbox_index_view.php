@@ -546,7 +546,8 @@ var backend_vars = {
                                                                        data-feed='{"id": "<?=$feed->id?>"
                                                                                 , "catid": "<?=$cat->id?>"
                                                                                 , "status": "fileas"
-                                                                                , "origin": <?=($feed->isfeatured) ? '"feature"' : '"publish"'?>
+                                                                                , "origin": <?=($inbox_state == "published") ? 
+                                                                                               (($feed->isfeatured) ? '"feature"' : '"publish"') : null?>
                                                                                }'>
                                                                         <?=$cat->name?>
                                                                     </a>
