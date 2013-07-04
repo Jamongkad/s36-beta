@@ -211,24 +211,24 @@ var Settings = new function(){
      /* ========================================
     || Layout Settings
     ==========================================*/
+    //self.fancybox_layout();
     $('.layout-list li').click(function(){
         $('.layout-list li').each(function(){
             $(this).removeClass('selected');
         });
         $(this).addClass('selected');
         $('#selectedLayout').val(this.id);
+        $('#layout-message').fadeOut();
     });
     $('#chooseLayout').click(function(){
-        SettingsAutoSaver.set_data('theme_name', $('#selectedLayout').val());
+        self.change_fullpage_layout($('#selectedLayout').val());
+        //SettingsAutoSaver.set_data('theme_name', $('#selectedLayout').val());
     });
 
     $('.layout-item').click(function(){
         $('#previewLayout').attr('href',$(this).parent().find('.preview-layout-img').val());
         $('#previewLayout').attr('title',$(this).parent().find('.preview-layout-name').val()+' Layout Preview');
-    });
-    $('#previewLayout').fancybox({
-         autoScale:true
-        ,title: $('#previewLayout').attr('title')
+        //self.fancybox_layout();
     });
 
     /* ========================================
@@ -337,10 +337,39 @@ var Settings = new function(){
         $('#notification-message').empty().html(mes);
         $('#notification').animate({ height: '50', opacity: '100' }, 'fast','',function(){
             if(delay){
-                setTimeout(this.hide_notification,delay);       
+                setTimeout(self.hide_notification,delay);       
             }
         });
     }
+    /* ========================================
+    || Change Fullpage Layout
+    ==========================================*/
+    this.change_fullpage_layout = function(selected_layout){
+        //self.show_notification('Updating layout settings', 3000);
+        $.ajax({
+            async: false,
+            url: '/update_panel_settings',
+            type: 'post',
+            data: {theme_name:selected_layout},
+            success: function(result){
+                result = $.parseJSON(result);
+                $('#layout-message').fadeIn();
+            }
+        });
+    }
+    /* ========================================
+    || FancyBox for layout preview
+    ==========================================*/
+    this.fancybox_layout = function(){
+        $('#previewLayout').fancybox({
+             autoScale:true
+            ,title: $('#previewLayout').attr('title')
+            ,showCloseButton: true
+            ,height:100
+            ,width:100
+        });
+    }
+
     /* ========================================
     || Hide the Notification
     ==========================================*/
