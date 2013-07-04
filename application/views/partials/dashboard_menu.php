@@ -1,7 +1,7 @@
 <div id="theDashboardMenu">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/inbox/all" inboxclick>Inbox</a> <span feedbackcount></span></li>
+        <li class="active-menu"><a href="/inbox/all" inboxclick>Inbox</a> <span feedbackcount></span></li>
         <li><a href="/inbox/published/all">Published</a></li>
         <li><a href="/inbox/filed/all">Filed Feedback</a></li>
         <li><a href="/inbox/deleted/all">Deleted</a></li>
