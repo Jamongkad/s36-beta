@@ -365,7 +365,7 @@ var backend_vars = {
                                     </span>
                                 </div>
                                 <?if($feed->intname != "default"):?>
-                                    <div>Filed As: <span style="filed"><?=$feed->intname?></span></div>
+                                    <div>Filed As: <span class="feedback-details-rating filed"><?=$feed->intname?></span></div>
                                 <?endif?>
                             </div>
                         </div>
