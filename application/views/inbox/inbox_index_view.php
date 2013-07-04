@@ -373,7 +373,7 @@ var backend_vars = {
                                          ng-click="feedback_status($event)"
                                          data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "delete"}'
                                          ></div>
-                                    <div class="action-delete-tooltip">
+                                    <div class="action-tooltip">
                                         PWET 
                                     </div>
                                 </div>

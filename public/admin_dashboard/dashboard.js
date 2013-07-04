@@ -1,10 +1,11 @@
 $(document).ready(function(){
-
+    /*
     $('.action-delete').hover(function(){
         $(this).next().fadeIn('fast');
     },function(){
         $(this).next().fadeOut('fast');
     });
+    */
 
     $(".inbox-fancybox-image").fancybox({
         openEffect : 'none',
