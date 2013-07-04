@@ -114,6 +114,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
         }
 
+        console.log("From Status Change");
         console.log(current);
 
         if(feed.status != "remove") { 
@@ -289,6 +290,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     var checkboxes = $(".feed-checkbox:not(:hidden)");
 
     $scope.undo = function() { 
+        console.log("From Undo");
         console.log(FeedbackSignal.data);
         FeedbackControlService.change_status(FeedbackSignal.data, false);
     }
