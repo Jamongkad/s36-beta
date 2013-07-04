@@ -125,11 +125,20 @@
 .responsive-padding{
 	padding:5px 3%;
 }
+
 .feedback-details-rating{
     -webkit-border-radius:15px;
     -moz-border-radius:15px;
     border-radius:15px;     
     margin-right:6px;
+}
+.feedback-details-rating.filed { 
+    background:#cd5555;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#0c747a  0px -1px;
 }
 .feedback-details-rating.excellent{
     background:#109ca5;

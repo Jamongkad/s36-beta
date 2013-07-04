@@ -364,7 +364,9 @@ var backend_vars = {
                                         <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
                                     </span>
                                 </div>
-                                <div><?=$feed->intname?></div>
+                                <?if($feed->intname != "default"):?>
+                                    <div>Filed As: <span style="filed"><?=$feed->intname?></span></div>
+                                <?endif?>
                             </div>
                         </div>
                         <div class="dashboard-feedback-actions grids">
