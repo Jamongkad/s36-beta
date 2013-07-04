@@ -37,7 +37,7 @@ var backend_vars = {
                     <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="remove">
-                    Feedback has been permanently remove. 
+                    Feedback has been permanently removed. 
                     <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="inbox">
@@ -364,6 +364,7 @@ var backend_vars = {
                                         <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
                                     </span>
                                 </div>
+                                <div><?=$feed->intname?></div>
                             </div>
                         </div>
                         <div class="dashboard-feedback-actions grids">
