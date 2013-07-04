@@ -107,7 +107,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
         }
 
-        if(currentUrl.match(/published/g)) {
+        if(current_url.match(/published/g)) {
             var current = {
                 id: feed.id
               , catid: Template.default_category_id
