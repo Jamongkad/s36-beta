@@ -48,6 +48,7 @@ angular.module('feedbackcontrol', [])
 
                     if(data_status == "publish" || data_status == "feature" || data_status == "delete") { 
                         hide_the_children(me);     
+                        $(".checky-box-container").show();
                     }
 
                 } else {
