@@ -253,6 +253,7 @@ angular.module('feedbackcontrol', [])
 })
 
 function published_state(obj, sibling_id, msg, state) { 
+    //kill me....
     obj.parents('.dashboard-feedback').css(state.activation_color);
     obj.css(state.activate);
     obj.children('.action-tooltip').children('span').html("Return to Inbox");
@@ -262,6 +263,14 @@ function published_state(obj, sibling_id, msg, state) {
     obj.siblings(sibling_id).attr('data-feed', state.state_change);
     obj.attr('return-policy', 1);
     obj.attr('data-feed', state.state_change_inbox);
+
+    console.log(obj.siblings('.save')
+       .children('div.the-categories-menu')
+       .children('.the-categories-menu-content')
+       .children(".the-categories")
+       .children(".grids")
+       .children('li')
+       .children('a'));
 }
 
 function hide_the_children(obj) { 
