@@ -52,7 +52,12 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(data_status == "fileas") {
-                        var sibling = $(me).siblings(".feedback-details-rating fild");
+                        var sibling = $(me).parents(".dashboard-feedback")
+                                           .children("div.feedback-contents")
+                                           .children(".responsive-padding")
+                                           .children(".feedback-details")
+                                           .children(".filed")
+                                           .html("ryan is a pwet")
                         console.log(sibling);
                     }
 
