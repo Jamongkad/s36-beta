@@ -372,7 +372,7 @@ var backend_vars = {
                                     <div class="action-sprite action-delete" transform 
                                          ng-click="feedback_status($event)"
                                          data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>"
-                                                   , "status": <?=($feed->isdeleted == 1) ? "remove" : "delete"?>}'
+                                                   , "status": <?=($feed->isdeleted == 1) ? '"remove"' : '"delete"'?>}'
                                          ></div>
                                     <div class="action-delete-tooltip <?=($feed->isdeleted == 1) ? "permanent-tooltip" : null?>"></div>
                                 </div>
