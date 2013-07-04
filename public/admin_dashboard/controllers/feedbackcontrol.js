@@ -187,6 +187,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 if(mode == "remove") { 
                     FeedbackSignal.current_state(feed);
                     //FeedbackControlService.change_status(feed, true);  
+                    $(".checky-box-container").show();  
                 } else { 
                     FeedbackSignal.current_state(feed);
                     //FeedbackControlService.change_status(feed, true); 
