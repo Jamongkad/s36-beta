@@ -17,6 +17,8 @@ angular.module('feedbackcontrol', [])
                     console.log("Pwet");
 
                     if(data.status != "fileas") { 
+
+                        console.log("Mr. Pwet");
                         if(data.status == "feature") {
                             var state = { 
                                 activate: {'background-position': '-64px -31px'}
@@ -39,6 +41,9 @@ angular.module('feedbackcontrol', [])
                             published_state(me, '.feature', 'Feature Feedback', state);
                         }
                     } else { 
+
+                        console.log("Mrs. Pwet");
+
                         hide_the_children(me);
                     }
 
