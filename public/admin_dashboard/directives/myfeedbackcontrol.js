@@ -51,6 +51,11 @@ angular.module('feedbackcontrol', [])
                         $(".checky-box-container").show();
                     }
 
+                    if(data_status == "fileas") {
+                        var sibling = $(me).siblings(".feedback-details-rating fild");
+                        console.log(siblings);
+                    }
+
                 } else {
                     hide_the_children(me);     
                     $(".checky-box-container").show();
