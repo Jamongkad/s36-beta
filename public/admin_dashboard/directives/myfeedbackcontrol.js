@@ -280,26 +280,10 @@ function published_state(obj, sibling_id, msg, state) {
         var feed = $.parseJSON(cat.attr('data-feed'));
         feed.status = "fileas";
         feed.origin = state.present_status
-        console.log(feed);
 
-
-        //var repackaged_json = JSON.stringify(feed); 
-        //console.log(repackaged_json);
+        var repackaged_json = JSON.stringify(feed); 
+        cat.attr('data-feed', repackaged_json);
     }
-    /*
-    var feed = $.parseJSON(origin_cat_data);
-    feed.status = "fileas";
-    feed.origin = state.present_status
-
-    var repackaged_json = JSON.stringify(feed);
-    obj.siblings('.save')
-       .children('div.the-categories-menu')
-       .children('.the-categories-menu-content')
-       .children(".the-categories")
-       .children(".grids")
-       .children('li')
-       .children('a').attr('data-feed', repackaged_json);
-    */
 }
 
 function hide_the_children(obj) { 
