@@ -263,14 +263,13 @@ function published_state(obj, sibling_id, msg, state) {
     obj.siblings(sibling_id).attr('data-feed', state.state_change);
     obj.attr('return-policy', 1);
     obj.attr('data-feed', state.state_change_inbox);
-
-    console.log(obj.siblings('.save')
-       .children('div.the-categories-menu')
-       .children('.the-categories-menu-content')
-       .children(".the-categories")
-       .children(".grids")
-       .children('li')
-       .children('a'));
+    obj.siblings('.save')
+           .children('div.the-categories-menu')
+           .children('.the-categories-menu-content')
+           .children(".the-categories")
+           .children(".grids")
+           .children('li')
+           .children('a').attr('data-feed', state.state_change_inbox);
 }
 
 function hide_the_children(obj) { 
