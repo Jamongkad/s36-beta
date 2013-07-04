@@ -360,12 +360,12 @@ var backend_vars = {
                                     <span class="feedback-details-status">
                                         Priority : <small><?=ucfirst($feed->priority)?></small>
                                     </span>
-                                    <span class="feedback-details-modify">
-                                        <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
-                                    </span>
                                     <?if($feed->intname != "default"):?>
                                         <span class="feedback-details-status">Filed As: </span><span class="feedback-details-rating filed"><?=$feed->intname?></span>
                                     <?endif?>
+                                    <span class="feedback-details-modify">
+                                        <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
