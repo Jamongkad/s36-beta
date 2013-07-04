@@ -16,7 +16,7 @@ angular.module('feedbackcontrol', [])
 
                     console.log("Pwet");
 
-                    if(data.status != "fileas") { 
+                    if(data.status != "fileas" || data.status != "delete") { 
 
                         console.log("Mr. Pwet");
                         if(data.status == "feature") {
@@ -40,6 +40,7 @@ angular.module('feedbackcontrol', [])
                             } 
                             published_state(me, '.feature', 'Feature Feedback', state);
                         }
+
                     } else { 
 
                         console.log("Mrs. Pwet");
