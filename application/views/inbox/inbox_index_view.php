@@ -65,6 +65,7 @@ $(document).ready(function() {
                 </span> 
                 <span ng-switch-when="remove">
                     Feedback has been permanently remove. 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
                 <span ng-switch-when="inbox">
                     Feedback has been returned to the inbox.
