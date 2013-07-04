@@ -289,6 +289,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     var checkboxes = $(".feed-checkbox:not(:hidden)");
 
     $scope.undo = function() { 
+        console.log(FeedbackSignal.data);
         FeedbackControlService.change_status(FeedbackSignal.data, false);
     }
 
