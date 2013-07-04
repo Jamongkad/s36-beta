@@ -38,47 +38,10 @@ angular.module('feedbackcontrol', [])
                         published_state(me, '.feature', 'feature feedback', state);
                     }
 
-                    if(data.status == "delete") {
+                    if(data.status == "delete" || data.status == "fileas") {
                         hide_the_children(me);
+                        $(".checky-box-container").show();
                     }
-
-                    if(data.status == "fileas") {
-                        hide_the_children(me);
-                    }
-                    /*
-                    if(data.status != "fileas" || data.status != "delete") { 
-
-                        console.log("Whoa");
-
-                        if(data.status == "feature") {
-                            var state = { 
-                                activate: {'background-position': '-64px -31px'}
-                              , deactivate_sibling: {'background-position': '-32px 0px'}
-                              , activation_color: {'background-color': '#ffffe0'} 
-                              , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                              , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                            }
-                            published_state(me, '.publish', 'publish feedback', state);
-                        }
-
-                        if(data.status == "publish") {
-                            var state = {
-                                activate: {'background-position': '-32px -31px'}
-                              , deactivate_sibling: {'background-position': '-64px 0px'}
-                              , activation_color: {'background-color': '#fff'} 
-                              , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
-                              , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                            } 
-                            published_state(me, '.feature', 'feature feedback', state);
-                        }
-
-                    } else { 
-
-                        console.log("Whoa Pwets");
-
-                        hide_the_children(me);
-                    }
-                    */
 
                 } else if(currentUrl.match(/filed/g)) { 
 

@@ -118,7 +118,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
             FeedbackControlService.change_status(feed, true);
-            $(".checky-box-container").show();
         }else {
             if(confirm("Warning! You are about to permanently delete this feedback. There is no undo.")) {
                 feed.origin = Template.current_inbox_state;
