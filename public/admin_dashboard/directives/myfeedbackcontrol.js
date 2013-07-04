@@ -27,7 +27,7 @@ angular.module('feedbackcontrol', [])
                             activate: {'background-position': '-64px -31px'}
                           , deactivate_sibling: {'background-position': '-32px 0px'}
                           , activation_color: {'background-color': '#ffffe0'} 
-                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                           , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                         }
                         published_state(me, '.publish', 'publish feedback', state);
@@ -39,7 +39,7 @@ angular.module('feedbackcontrol', [])
                           , deactivate_sibling: {'background-position': '-64px 0px'}
                           , activation_color: {'background-color': '#fff'} 
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
-                          , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                          , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                         } 
                         published_state(me, '.feature', 'feature feedback', state);
                     }
