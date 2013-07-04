@@ -144,6 +144,7 @@ class Helpers {
             'feedsetup' => preg_match_all('/(feedsetup|displaysetup|displaypreview)/', self::$request, $matches),
             'contacts'  => preg_match_all('/contacts|contacts\/(important|request)/', self::$request, $matches),
             'admin'     => preg_match_all('/admin/', self::$request, $matches),
+            'settings'  => preg_match_all('/settings\/(display|[0-9]+)/', self::$request, $matches),
         );
     }
 
