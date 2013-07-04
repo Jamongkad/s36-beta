@@ -117,12 +117,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         if(!current_url.match(/deleted/g)) {                 
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
-            //FeedbackControlService.change_status(feed, true);
+            FeedbackControlService.change_status(feed, true);
             $(".checky-box-container").show();
         } else {
             if(confirm("Warning! You are about to permanently delete this feedback. There is no undo.")) {
-                console.log("Delete this mutha fucka");
-                console.log(feed);
+                feed.origin = Template.current_inbox_state;
+                feed.status = "remove";
+                FeedbackControlService.change_status(feed, true);
             }
         }
 
