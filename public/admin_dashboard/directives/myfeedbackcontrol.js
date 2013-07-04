@@ -52,6 +52,7 @@ angular.module('feedbackcontrol', [])
 
                 } else {
                     hide_the_children(me);     
+                    $(".checky-box-container").show();
                 }
 
                 e.preventDefault();
