@@ -543,7 +543,12 @@ var backend_vars = {
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
                                                                        transform
                                                                        ng-click="feedback_status($event)"                                                                       
-                                                                       data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$cat->id?>", "status": "fileas"}'>
+                                                                       data-feed='{"id": "<?=$feed->id?>"
+                                                                                , "catid": "<?=$cat->id?>"
+                                                                                , "status": "fileas"
+                                                                                , "origin": <?=($feed->isfeatured) ? '"feature"' : '"inbox"'?>
+                                                                                            <?=($feed->ispublished) ? '"publish"' : '"inbox"'?>
+                                                                               }'>
                                                                         <?=$cat->name?>
                                                                     </a>
                                                                 </li>
