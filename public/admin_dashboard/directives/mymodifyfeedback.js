@@ -88,7 +88,7 @@ angular.module('modifyfeedback', [])
                 });
 
                 if(!deselect_this) {
-                    $(this).attr('style', "background: #97adb8");
+                    $(this).attr('style', "background: #cd5555");
                 }
 
                 $(".blue-bar-feature").removeAttr('style');

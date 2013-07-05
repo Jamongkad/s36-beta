@@ -540,7 +540,7 @@ var backend_vars = {
                                                             <?foreach($categories as $cat):?>
                                                                 <li>
                                                                     <a href="#" 
-                                                                       class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
+                                                                       class="cat-picks <?=(($feed->category === $cat->name) ? ' style="#cd5555"' : Null)?>"
                                                                        category-pick
                                                                        transform
                                                                        ng-click="feedback_status($event)"                                                                       
