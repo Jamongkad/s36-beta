@@ -191,22 +191,35 @@ $(document).keypress(function(event){
             }
             
             /*submit all data for server side scripting*/
+            var submit_feedback_status = true;
             $.ajax({
+                async: false,
                 type: "POST",
                 url: "/submit_feedback",
                 dataType: "json",
                 data: form_data, 
-                success: function(q) {
-                    // here we should return error msg from server-side validation.
+                success: function(result) {
                     
-                    $('.facebook-share-bar').html(q.share_button);
-                    $('.twitter-share-bar').html(q.tweet_button);
-                    FB.XFBML.parse();
-                    twttr.widgets.load();
+                    //  if there's no error_msg in result, alright, everything's fine.
+                    if( typeof(result.error_msg) == 'undefined' ){
+                        
+                        $('.facebook-share-bar').html(result.share_button);
+                        $('.twitter-share-bar').html(result.tweet_button);
+                        FB.XFBML.parse();
+                        twttr.widgets.load();
+                        
+                    // if there's error_msg in result, puke it out.
+                    }else{
+                        
+                        submit_feedback_status = false;
+                        Helpers.display_error_mes( result.error_msg );
+                        
+                    }
+                    
                 }
             });
             
-            // here we should return boolean if submission is successful or has error.
+            return submit_feedback_status;
         }
 
         function fb_connect_success(obj){
@@ -418,12 +431,15 @@ $(document).keypress(function(event){
                 }
             }else if(cur_page == 'step3'){
                 if(push_to_last_window()){
-                    submit_feedback();
-                    // you shall not pass if submit_feedback() returned false;
-                    $('.current').removeClass('current');
-                    $('#step3').fadeOut('fast');
-                    $('#step4').fadeIn('fast').addClass('current');
-                    adjust_form_body_container();
+                    // you shall not pass if submit_feedback() returned false.
+                    if( submit_feedback() ){
+                        $('#back').fadeOut('fast');
+                        $('#next').fadeOut('fast');
+                        $('.current').removeClass('current');
+                        $('#step3').fadeOut('fast');
+                        $('#step4').fadeIn('fast').addClass('current');
+                        adjust_form_body_container();
+                    }
                 }
             }
         });
@@ -723,8 +739,6 @@ $(document).keypress(function(event){
         if(review_feedback_text.length > 0){
             $('#all-done-feedback-title').text( $('#review-feedback-title').text() );
             $('#all-done-textbox p').html($('#review-feedback-text').html());
-            $('#back').fadeOut('fast');
-            $('#next').fadeOut('fast');
             return true;
         }else{
             error_mes = ['Please provide your feedback.'];

@@ -158,4 +158,67 @@ class SubmissionService {
         $metric->company_id = $this->company_id; 
         $metric->increment_response();
     }
+    
+    
+    // validate the submitted feedback data.
+    public function validate_feedback_data(){
+        
+        // validate step 1 data.
+        
+        // rating should be 1-5.
+        if( ! in_array($this->post_data->get('rating'), range(1, 5)) )  $this->error_msg[] = 'Rating should be 1 to 5';
+        
+        // title should not be blank.
+        if( trim($this->post_data->get('title')) == '' )  $this->error_msg[] = 'Title should not be blank';
+        
+        // feedback should not be blank.
+        if( trim($this->post_data->get('feedback')) == '' )  $this->error_msg[] = 'Feedback should not be blank';
+        
+        // recommendation should be 1 or 0.
+        if( ! in_array($this->post_data->get('recommend'), range(0, 1)) )  $this->error_msg[] = 'Invalid recommendation option';
+        
+        
+        
+        // validate step 2 data.
+        
+        // first name should not be blank.
+        if( trim($this->post_data->get('first_name')) == '' )  $this->error_msg[] = 'First name should not be blank';
+        
+        // last name should not be blank.
+        if( trim($this->post_data->get('last_name')) == '' )  $this->error_msg[] = 'Last name should not be blank';
+        
+        // email should not be blank.
+        if( trim($this->post_data->get('email')) == '' )  $this->error_msg[] = 'Email should not be blank';
+        
+        // email should be valid.
+        if( ! preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $this->post_data->get('email')) )  $this->error_msg[] = 'Email should not be valid';
+        
+        // city should not be blank.
+        if( trim($this->post_data->get('city')) == '' )  $this->error_msg[] = 'City should not be blank';
+        
+        // country should be somewhere from earth.
+        $country = DB::table('Country')->where('code', '=', $this->post_data->get('country'))->get();
+        if( empty( $country ) )  $this->error_msg[] = 'Invalid country';
+        
+        // permission shoulbe be 1 or 0.
+        if( ! in_array($this->post_data->get('permission'), range(0, 1)) )  $this->error_msg[] = 'Invalid permission option';
+        
+        
+        
+        // validate hidden data.
+        
+        $company = new \Company\Repositories\DBCompany;
+        $company = $company->get_company_info( Config::get('application.subdomain') );
+        
+        // company id should be valid.
+        if( $company->companyid != $this->post_data->get('company_id') )  $this->error_msg[] = 'Invalid company id';
+        
+        // site id should be valid.
+        if( $company->siteid != $this->post_data->get('site_id') )  $this->error_msg[] = 'Invalid site id';
+        
+        
+        
+        // return true if thre's no error, false otherwise.
+        return ( empty($this->error_msg) ? true : false );
+    }
 }

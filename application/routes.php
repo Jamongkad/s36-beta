@@ -170,7 +170,12 @@ return array(
     },
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
-
+        
+        // validate the submitted feedback data.
+        $submission_service = new Feedback\Services\SubmissionService(Input::get());
+        if( ! $submission_service->validate_feedback_data() ) return json_encode( array('error_msg' => $submission_service->error_msg) );
+        
+        
         /* stash this in a service somewhere...too much shit happening */
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();                
@@ -192,9 +197,7 @@ return array(
         ));
 
         $obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
-        $fb_iframe = '
-       <iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($obj->feedback_url).'&amp;send=false&amp;layout=standard&amp;width=390&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35&amp;appId='.Config::get('application.fb_id').'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:390px; height:35px;" allowTransparency="true"></iframe>
-        ';
+        $fb_iframe = '<iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($obj->feedback_url).'&amp;send=false&amp;layout=standard&amp;width=390&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35&amp;appId='.Config::get('application.fb_id').'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:390px; height:35px;" allowTransparency="true"></iframe>';
         $obj->share_button = $fb_iframe;
         echo json_encode($obj);
 
