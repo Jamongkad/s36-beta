@@ -70,7 +70,7 @@ angular.module('modifyfeedback', [])
                     $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style');
                     var str = construct_query_string();
                     //alert("This feedback has been deleted.");
-                    var inbox_location, page;
+                    var inbox_location, page = '';
                     if(str.b == "inbox") { 
                         inbox_location = "/inbox/all";
                     }
