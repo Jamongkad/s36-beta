@@ -160,6 +160,7 @@ angular.module('feedbackcontrol', [])
                 var myvalue = $(this).val();
                 if(scope.statustype == "status") {
                    status_class = ".status-line"; 
+                   console.log(myvalue);
                    if(myvalue == "new") { value = "New"; }
                    if(myvalue == "inprogress") { value = "In Progress"; }
                    if(myvalue == "new") { value = "Closed"; }
