@@ -78,15 +78,15 @@ angular.module('modifyfeedback', [])
                     }
 
                     if(str.b == "publish") { 
-                        inbox_location = "/published/all";
+                        inbox_location = "/inbox/published/all";
                     }
 
                     if(str.b == "fileas") { 
-                        inbox_location = "/filed/all";
+                        inbox_location = "/inbox/filed/all";
                     }
 
                     if(str.b == "delete") {
-                        inbox_location = "/deleted/all";
+                        inbox_location = "/inbox/deleted/all";
                     }
 
                     if('p' in str) {
