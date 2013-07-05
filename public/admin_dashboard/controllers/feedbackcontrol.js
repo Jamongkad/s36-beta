@@ -65,11 +65,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } else { 
             var i=kvp.length; 
             var x; 
-            console.log(kvp);
-            console.log(key);
-            console.log(value);
-            kvp.push(key + '=' + value);
-            console.log(kvp);
+            $scope.uri_params.push(key + '=' + value);
+            console.log($scope.uri_params);
             /*             
             while(i--) {
                 x = kvp[i].split('=');
@@ -95,6 +92,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.selected = [];
+    $scope.uri_params = [];
     var checkboxes = $(".feed-checkbox");
 
     $scope.status_select_value = 'none';
