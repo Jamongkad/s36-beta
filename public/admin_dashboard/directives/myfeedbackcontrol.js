@@ -152,7 +152,7 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , scope: {
             feedid: "=feedid"   
-          , status_type: "=type"
+          , status_type: "=statustype"
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {

@@ -565,7 +565,7 @@ var backend_vars = {
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Status </span>
                                                             <span>
-                                                                <select statuschange feedid="<?=$feed->id?>" type="status">
+                                                                <select statuschange feedid="<?=$feed->id?>" statustype="status">
                                                                     <?foreach($status as $option):?>
                                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>
                                                                         <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>">
@@ -578,7 +578,7 @@ var backend_vars = {
                                                         <div class="categories-combo">
                                                             <span class="category-combo-name">Priority </span>
                                                             <span>
-                                                                <select statuschange feedid="<?=$feed->id?>" type="priority">
+                                                                <select statuschange feedid="<?=$feed->id?>" statustype="priority">
                                                                     <?foreach($priority_obj as $key => $val):?>
                                                                         <option <?=($feed->priority == $val) ? 'selected' : null?>  value="<?=$key?>">
                                                                             <?=ucfirst($val)?>
