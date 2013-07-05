@@ -152,13 +152,13 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , scope: {
             feedid: "=feedid"   
-          , status_type: "=statustype"
+          , statustype: "=statustype"
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {
-                console.log($(this).val())
-                console.log(scope.feedid)
-                console.log(scope.status_type)
+                console.log($(this).val());
+                console.log(scope.feedid);
+                console.log(scope.statustype);
                 //FeedbackService.inline_change($(this).val(), scope.feedid, 'status');
             })
         }
