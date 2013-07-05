@@ -65,19 +65,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } else { 
             var i=kvp.length; 
             var x; 
-            while(i--) {
-                x = kvp[i].split('=');
-
-                console.log(value == 'none');
-                console.log(value);
-                
-                if(value != 'none') { 
+            if(value != "none") {
+                while(i--) {
+                    x = kvp[i].split('=');
+     
                     if (x[0]==key) {
                         x[1] = value;
                         kvp[i] = x.join('=');
                         break;
-                    }
-                }
+                    }   
+                } 
             }
 
             if (i<0) {
