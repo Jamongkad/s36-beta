@@ -61,7 +61,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var kvp = document.location.search.substr(1).split('&');
         if (kvp == '') {
             var str = '?' + key + '=' + value;
-            document.location.search = str;
+            //document.location.search = str;
         } else { 
             var i=kvp.length; 
             var x; 
@@ -73,16 +73,18 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     kvp[i] = x.join('=');
                     break;
                 }
+
+                console.log(kvp);
             }
 
             if (i<0) {
-                if(value != 'none') {
-                    kvp[kvp.length] = [key,value].join('=');     
-                } 
+                kvp[kvp.length] = [key,value].join('=');
             }
+            console.log(kvp);
             var str = kvp.join('&');
+            console.log(str);
             //this will reload the page, it's likely better to store this until finished
-            document.location.search = str;
+            //document.location.search = str;
         }
     }
 
