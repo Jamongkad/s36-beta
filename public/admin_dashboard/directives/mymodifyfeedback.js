@@ -69,7 +69,9 @@ angular.module('modifyfeedback', [])
                 if(class_name == "blue-bar-delete") { 
                     $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style');
                     var str = construct_query_string();
-                    //alert("This feedback has been deleted.");
+
+                    alert("This feedback has been deleted.");
+
                     var inbox_location, page = '';
                     if(str.b == "inbox") { 
                         inbox_location = "/inbox/all";
@@ -90,10 +92,7 @@ angular.module('modifyfeedback', [])
                     if('p' in str) {
                         page = "?page=" + str.p;
                     }
-
-                    console.log(inbox_location + page);
-
-                    //window.location = inbox_location + page; 
+                    window.location = inbox_location + page; 
                 }
                 e.preventDefault();
             });
