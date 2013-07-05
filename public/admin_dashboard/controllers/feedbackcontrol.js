@@ -76,7 +76,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             if (i<0) {
-                kvp[kvp.length] = [key,value].join('=');
+                if(value != 'none') {
+                    kvp[kvp.length] = [key,value].join('=');     
+                } 
             }
             console.log(kvp);
             var str = kvp.join('&');
