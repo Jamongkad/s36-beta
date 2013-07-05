@@ -65,6 +65,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } else { 
             var i=kvp.length; 
             var x; 
+            $scope.uri_params = kvp;
             $scope.uri_params.push(key + '=' + value);
             console.log($scope.uri_params);
             /*             
