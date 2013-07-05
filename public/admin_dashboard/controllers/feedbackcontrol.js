@@ -67,6 +67,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var x; 
             while(i--) {
                 x = kvp[i].split('=');
+
+                console.log(value);
                 
                 if(value != 'none') { 
                     if (x[0]==key) {
