@@ -60,7 +60,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var key = escape(key); value = escape(value);
         var kvp = document.location.search.substr(1).split('&');
         if (kvp == '') {
-            document.location.search = '?' + key + '=' + value;
+            var str = '?' + key + '=' + value;
+            console.log(str);
+            //document.location.search = str;
         } else { 
             var i=kvp.length; 
             var x; 
