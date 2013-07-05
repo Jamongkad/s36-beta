@@ -166,6 +166,7 @@ angular.module('feedbackcontrol', [])
                    if(myvalue == "new") { value = "Closed"; }
                 } else { 
                    status_class = ".priority-line";
+                   console.log(myvalue);
                    if(myvalue == 0) { value = "Low"; }
                    if(myvalue == 60) { value = "Medium"; }
                    if(myvalue == 100) { value = "High"; }
