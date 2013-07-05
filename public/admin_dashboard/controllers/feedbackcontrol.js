@@ -74,7 +74,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $scope.uri_params.splice($scope.uri_params.indexOf(key + "=" + value), 1);     
             }
 
-
             console.log($scope.uri_params);
             /*             
             while(i--) {
