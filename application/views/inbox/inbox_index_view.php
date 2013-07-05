@@ -364,7 +364,7 @@ var backend_vars = {
                                         <span class="feedback-details-status">Filed As: </span><span class="feedback-details-rating filed"><?=$feed->intname?></span>
                                     <?endif?>
                                     <span class="feedback-details-modify">
-                                        <?=HTML::link('/feedback/modifyfeedback/'.$feed->id, 'Modify Additional Info')?>
+                                        <?=HTML::link('/feedback/modifyfeedback/'.$feed->id."?b=$inbox_state"., 'Modify Additional Info')?>
                                     </span>
                                 </div>
                             </div>
