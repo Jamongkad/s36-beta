@@ -66,7 +66,15 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var i=kvp.length; 
             var x; 
             $scope.uri_params = kvp;
-            $scope.uri_params.push(key + '=' + value);
+            if(value != "none") {
+                console.log("add");
+                $scope.uri_params.push(key + '=' + value);
+            } else { 
+                console.log("remove");
+                $scope.uri_params.splice($scope.uri_params.indexOf(key + "=" + value), 1);     
+            }
+
+
             console.log($scope.uri_params);
             /*             
             while(i--) {
