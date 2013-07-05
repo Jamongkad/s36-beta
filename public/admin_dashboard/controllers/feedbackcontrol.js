@@ -61,13 +61,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var kvp = document.location.search.substr(1).split('&');
         if (kvp == '') {
             var str = '?' + key + '=' + value;
-            //document.location.search = str;
+            document.location.search = str;
         } else { 
             var i=kvp.length; 
             var x; 
             while(i--) {
                 x = kvp[i].split('=');
 
+                console.log(value == 'none');
                 console.log(value);
                 
                 if(value != 'none') { 
@@ -80,6 +81,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             if (i<0) {
+                console.log("DAH");
                 kvp[kvp.length] = [key,value].join('=');
             }
             console.log(kvp);
