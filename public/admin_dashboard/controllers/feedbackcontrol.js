@@ -68,6 +68,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             console.log(kvp);
             console.log(key);
             console.log(value);
+            kvp.push(key + '=' + value);
+            console.log(kvp);
             /*             
             while(i--) {
                 x = kvp[i].split('=');
