@@ -161,7 +161,7 @@ angular.module('feedbackcontrol', [])
                        .children(".responsive-padding")
                        .children(".feedback-details")
                        .children(".feedback-details-status")
-                       .children("small")
+                       .children(".status-line")
                        .html("Mathew")
 
                 FeedbackService.inline_change($(this).val(), scope.feedid, scope.statustype);

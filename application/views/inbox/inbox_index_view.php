@@ -355,10 +355,10 @@ var backend_vars = {
                                     </span>
                                     <span class="feedback-details-privacy"><?=$feed->permission?></span>
                                     <span class="feedback-details-status">
-                                        Status : <small><?=$feed->status?></small>
+                                        Status : <small class="status-line"><?=$feed->status?></small>
                                     </span>
                                     <span class="feedback-details-status">
-                                        Priority : <small><?=ucfirst($feed->priority)?></small>
+                                        Priority : <small class="priority-line"><?=ucfirst($feed->priority)?></small>
                                     </span>
                                     <?if($feed->intname != "default"):?>
                                         <span class="feedback-details-status">Filed As: </span><span class="feedback-details-rating filed"><?=$feed->intname?></span>
