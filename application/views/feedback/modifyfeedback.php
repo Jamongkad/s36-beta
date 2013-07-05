@@ -89,7 +89,7 @@ $(function() {
                          <li>
                           <a href="#" 
                                class="cat-picks"
-                               style="<?=(($feedback->category === $cat->name) ? ' background:#97adb8;' : Null)?>"
+                               style="<?=(($feedback->category === $cat->name) ? ' background:#cd5555;' : Null)?>"
                                category-pick  
                                ng-click="feedback_status($event)"                                                                       
                                state=0
