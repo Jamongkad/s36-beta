@@ -541,6 +541,7 @@ var backend_vars = {
                                                                 <li>
                                                                     <a href="#" 
                                                                        class="cat-picks <?=(($feed->category === $cat->name) ? ' Matched' : Null)?>"
+                                                                       category-pick
                                                                        transform
                                                                        ng-click="feedback_status($event)"                                                                       
                                                                        data-feed='{"id": "<?=$feed->id?>"
