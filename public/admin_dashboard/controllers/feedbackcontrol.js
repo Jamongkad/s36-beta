@@ -67,14 +67,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var x; 
             while(i--) {
                 x = kvp[i].split('=');
-
-                if (x[0]==key) {
-                    x[1] = value;
-                    kvp[i] = x.join('=');
-                    break;
+                
+                if(value != 'none') { 
+                    if (x[0]==key) {
+                        x[1] = value;
+                        kvp[i] = x.join('=');
+                        break;
+                    }
                 }
-
-                console.log(kvp);
             }
 
             if (i<0) {
