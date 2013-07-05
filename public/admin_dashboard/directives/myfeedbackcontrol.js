@@ -156,29 +156,11 @@ angular.module('feedbackcontrol', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {
-                console.log($(this).val());
-                console.log(scope.feedid);
-                console.log(scope.statustype);
-                //FeedbackService.inline_change($(this).val(), scope.feedid, 'status');
+                FeedbackService.inline_change($(this).val(), scope.feedid, scope.statustype);
             })
         }
     }    
 })
-/*
-.directive('prioritychange', function(FeedbackService) {
-    return {
-        restrict: 'A'     
-      , scope: {
-            feedid: "=feedid"   
-        }
-      , link: function(scope, element, attrs) {
-            $(element).bind('change', function() {
-                FeedbackService.inline_change($(this).val(), scope.feedid, 'priority');
-            })
-        }
-    }    
-})
-*/
 .directive('deleteBlock', function() {
     return {
         restrict: 'A'     
