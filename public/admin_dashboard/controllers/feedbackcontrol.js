@@ -58,12 +58,12 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     var insert_param = function(key, value) {
         var key = escape(key); value = escape(value);
-        $scope.uri_params = document.location.search.substr(1).split('&');
-        if ($scope.uri_params == '') {
+        var kvp = document.location.search.substr(1).split('&');
+        if (kvp == '') {
             var str = '?' + key + '=' + value;
             document.location.search = str;
         } else { 
-            var i=$scope.uri_params.length; 
+            var i=kvp.length; 
             var x; 
             $scope.uri_params.push(key + '=' + value);
             console.log($scope.uri_params);
