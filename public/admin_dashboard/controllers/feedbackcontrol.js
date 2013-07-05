@@ -65,17 +65,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } else { 
             var i=kvp.length; 
             var x; 
-            if(value != "none") {
-                while(i--) {
-                    x = kvp[i].split('=');
-     
-                    if (x[0]==key) {
-                        x[1] = value;
-                        kvp[i] = x.join('=');
-                        break;
-                    }   
-                } 
-            }
+            console.log(kvp);
+            /*             
+            while(i--) {
+                x = kvp[i].split('=');
+ 
+                if (x[0]==key) {
+                    x[1] = value;
+                    kvp[i] = x.join('=');
+                    break;
+                }   
+            } 
 
             if (i<0) {
                 console.log("DAH");
@@ -86,6 +86,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             console.log(str);
             //this will reload the page, it's likely better to store this until finished
             //document.location.search = str;
+            */
         }
     }
 
