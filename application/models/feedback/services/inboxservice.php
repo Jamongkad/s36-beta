@@ -12,7 +12,7 @@ use Halcyonic;
 class InboxService {
 
     public $ignore_cache = False; 
-    public $selectable_pages = 4;
+    public $selectable_pages = 11;
 
     private $limit = 10;
     private $filters = Array();
