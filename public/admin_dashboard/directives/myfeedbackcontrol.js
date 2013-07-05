@@ -156,7 +156,16 @@ angular.module('feedbackcontrol', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {
+                $(this).parents(".dashboard-feedback")
+                       .children("div.feedback-contents")
+                       .children(".responsive-padding")
+                       .children(".feedback-details")
+                       .children(".feedback-details-status")
+                       .children("small")
+                       .html("Mathew")
+
                 FeedbackService.inline_change($(this).val(), scope.feedid, scope.statustype);
+
             })
         }
     }    
