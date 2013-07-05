@@ -87,7 +87,7 @@ angular.module('modifyfeedback', [])
                         inbox_location = "/deleted/all";
                     }
 
-                    if(p in str) {
+                    if('p' in str) {
                         page = "?page=" + str.p;
                     }
 
