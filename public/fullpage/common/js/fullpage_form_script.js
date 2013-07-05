@@ -436,7 +436,6 @@ $(document).keypress(function(event){
                 $('#back').fadeOut('fast');
                 adjust_form_body_container();
             }else if(cur_page == 'step3'){
-                // you shall not pass if submit_feedback() returned false;
                 $('.current').removeClass('current');
                 $('#step3').fadeOut('fast');
                 $('#step2').fadeIn('fast').addClass('current');
