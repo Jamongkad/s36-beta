@@ -9,7 +9,7 @@ return array(
         $redis = new redisent\Redis;
         $dbcompany_social = new Company\Repositories\DBCompanySocialAccount;
 
-        $limit = 3;
+        $limit = 5;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
