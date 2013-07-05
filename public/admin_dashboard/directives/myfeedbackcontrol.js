@@ -156,13 +156,33 @@ angular.module('feedbackcontrol', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {
+                var status_class, value;
+                var myvalue = $(this).val();
+                if(scope.statustype == "status") {
+                   status_class = ".status-line";
+                   value = myvalue
+                } else { 
+                   status_class = ".priority-line";
+                   if(myvalue == 0) {
+                       value = "Low";
+                   }
+
+                   if(myvalue == 60) {
+                       value = "Medium"; 
+                   }
+
+                   if(myvalue == 100) { 
+                       value = "High"; 
+                   }
+                }
+
                 $(this).parents(".dashboard-feedback")
                        .children("div.feedback-contents")
                        .children(".responsive-padding")
                        .children(".feedback-details")
                        .children(".feedback-details-status")
-                       .children(".status-line")
-                       .html("Mathew")
+                       .children(status_class)
+                       .html(value)
 
                 FeedbackService.inline_change($(this).val(), scope.feedid, scope.statustype);
 
