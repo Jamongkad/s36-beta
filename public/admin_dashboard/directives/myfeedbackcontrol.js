@@ -152,14 +152,19 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , scope: {
             feedid: "=feedid"   
+          , status_type: "=type"
         }
       , link: function(scope, element, attrs) {
             $(element).bind('change', function() {
-                FeedbackService.inline_change($(this).val(), scope.feedid, 'status');
+                console.log($(this).val())
+                console.log(scope.feedid)
+                console.log(scope.status_type)
+                //FeedbackService.inline_change($(this).val(), scope.feedid, 'status');
             })
         }
     }    
 })
+/*
 .directive('prioritychange', function(FeedbackService) {
     return {
         restrict: 'A'     
@@ -173,6 +178,7 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
+*/
 .directive('deleteBlock', function() {
     return {
         restrict: 'A'     
