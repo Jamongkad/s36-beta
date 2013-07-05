@@ -159,21 +159,15 @@ angular.module('feedbackcontrol', [])
                 var status_class, value;
                 var myvalue = $(this).val();
                 if(scope.statustype == "status") {
-                   status_class = ".status-line";
-                   value = myvalue
+                   status_class = ".status-line"; 
+                   if(myvalue == "new") { value = "New"; }
+                   if(myvalue == "inprogress") { value = "In Progress"; }
+                   if(myvalue == "new") { value = "Closed"; }
                 } else { 
                    status_class = ".priority-line";
-                   if(myvalue == 0) {
-                       value = "Low";
-                   }
-
-                   if(myvalue == 60) {
-                       value = "Medium"; 
-                   }
-
-                   if(myvalue == 100) { 
-                       value = "High"; 
-                   }
+                   if(myvalue == 0) { value = "Low"; }
+                   if(myvalue == 60) { value = "Medium"; }
+                   if(myvalue == 100) { value = "High"; }
                 }
 
                 $(this).parents(".dashboard-feedback")
