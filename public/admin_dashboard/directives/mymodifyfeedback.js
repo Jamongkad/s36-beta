@@ -68,7 +68,9 @@ angular.module('modifyfeedback', [])
 
                 if(class_name == "blue-bar-delete") { 
                     $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style');
-                    alert("This feedback has been deleted.");
+                    var str = construct_query_string();
+                    console.log(str);
+                    //alert("This feedback has been deleted.");
                 }
                 e.preventDefault();
             });
@@ -98,3 +100,16 @@ angular.module('modifyfeedback', [])
         }
     }    
 })
+
+function construct_query_string() {
+    var prmstr = window.location.search.substr(1);
+    var prmarr = prmstr.split ("&");
+    var params = {};
+
+    for(var i = 0;i<prmarr.length;i++) {
+        var tmparr = prmarr[i].split("=");
+        params[tmparr[0]] = tmparr[1];
+    }
+
+    return params;
+}
