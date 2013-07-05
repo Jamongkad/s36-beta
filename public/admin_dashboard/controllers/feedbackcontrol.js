@@ -57,7 +57,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     var current_url = window.location.pathname;
 
     var insert_param = function(key, value) {
-
         var key = escape(key); value = escape(value);
         var kvp = document.location.search.substr(1).split('&');
         if (kvp == '') {
