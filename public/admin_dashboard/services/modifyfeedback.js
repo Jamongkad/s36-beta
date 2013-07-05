@@ -10,7 +10,7 @@ angular.module('ModifyFeedback', [])
           , data: data 
           , success: function(msg) { 
                 if(msg.saved == 1) {
-                    alert("Feedback text successfully edited!");     
+                    alert("Feedback text successfully edited.");     
                 } 
             }
         }); 
