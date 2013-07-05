@@ -163,7 +163,7 @@ angular.module('feedbackcontrol', [])
                    console.log(myvalue);
                    if(myvalue == "new") { value = "New"; }
                    if(myvalue == "inprogress") { value = "In Progress"; }
-                   if(myvalue == "new") { value = "Closed"; }
+                   if(myvalue == "closed") { value = "Closed"; }
                 } else { 
                    status_class = ".priority-line";
                    console.log(myvalue);
