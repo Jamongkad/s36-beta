@@ -365,7 +365,7 @@ var backend_vars = {
                                     <?endif?>
                                     <span class="feedback-details-modify">
                                         <?=HTML::link(
-                                            '/feedback/modifyfeedback/'.$feed->id."?b=$inbox_state".(Input::get('page')) ? "&p=".Input::get('page') : null
+                                            '/feedback/modifyfeedback/'.$feed->id."?b=$inbox_state".( (Input::get('page')) ? "&p=".Input::get('page') : null ) 
                                         , 'Modify Additional Info')?>
                                     </span>
                                 </div>
