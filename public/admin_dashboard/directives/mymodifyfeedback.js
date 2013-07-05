@@ -69,8 +69,31 @@ angular.module('modifyfeedback', [])
                 if(class_name == "blue-bar-delete") { 
                     $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style');
                     var str = construct_query_string();
-                    console.log(str);
                     //alert("This feedback has been deleted.");
+                    var inbox_location, page;
+                    if(str.b == "inbox") { 
+                        inbox_location = "/inbox/all";
+                    }
+
+                    if(str.b == "publish") { 
+                        inbox_location = "/published/all";
+                    }
+
+                    if(str.b == "fileas") { 
+                        inbox_location = "/filed/all";
+                    }
+
+                    if(str.b == "delete") {
+                        inbox_location = "/deleted/all";
+                    }
+
+                    if(p in str) {
+                        page = "?page=" + str.p;
+                    }
+
+                    console.log(inbox_location + page);
+
+                    //window.location = inbox_location + page; 
                 }
                 e.preventDefault();
             });
