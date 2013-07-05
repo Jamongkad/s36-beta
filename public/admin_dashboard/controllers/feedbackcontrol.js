@@ -78,8 +78,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 kvp[kvp.length] = [key,value].join('=');
             }
 
+            console.log(kvp.join('&'));
+
             //this will reload the page, it's likely better to store this until finished
-            document.location.search = kvp.join('&'); 
+            //document.location.search = kvp.join('&'); 
         }
     }
 

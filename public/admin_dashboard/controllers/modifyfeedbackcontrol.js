@@ -15,7 +15,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , status: status_change
           , catid: current_cat_id
         }
-        //FeedbackControlService.change_status(status_change, true);
+        FeedbackControlService.change_status(status_change, true);
     }
 
     $scope.save_feedback = function() { 
