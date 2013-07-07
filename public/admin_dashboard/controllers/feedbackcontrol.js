@@ -111,7 +111,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
 
         var process = function() { 
-            console.log(current);
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
             FeedbackControlService.change_status(feed, true);
@@ -280,8 +279,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.id; 
     $scope.data; 
 
-    $scope.undo = function() { 
-        console.log($scope.data);
+    $scope.undo = function() {  
         FeedbackControlService.change_status($scope.data);
     }
 
