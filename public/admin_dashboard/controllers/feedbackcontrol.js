@@ -295,8 +295,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var result = $.param(data);
         if(result) { 
             var params = url_params();
-            console.log('page' in params);
-            var str = '?' + result;
+            var page = '';
+            if('page' in params) { page = '&page=' + params.page; }
+            var str = '?' + result + page;
+            console.log(str);
             //document.location.search = '?' + result;
         }
     }
