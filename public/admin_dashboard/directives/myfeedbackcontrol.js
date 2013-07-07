@@ -90,6 +90,11 @@ angular.module('feedbackcontrol', [])
                 if (FeedbackSignal.data.id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
+
+                        if(!feedback.hasClass('featured')) {
+                            feedback.css({'background-color': '#FFF'});
+                        }
+
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
                         
@@ -97,16 +102,12 @@ angular.module('feedbackcontrol', [])
                             var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "] li .cat-picks");      
                             catpicks.css({'background': '#598499'});
                         }
-
-
                     }
                 } else {  
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                    
-                    if(feedback.hasClass('featured')) {
-                        feedback.removeClass('featured');
-                        console.log("From the hiphop");
-                        feedback.addClass('featured'); 
+                    if(!feedback.hasClass('featured')) {
+                        feedback.css({'background-color': '#FFF'});
                     }
 
                     feedback.show();
@@ -132,7 +133,7 @@ angular.module('feedbackcontrol', [])
                     $('.feed-checkbox').prop("checked", false);
                 }
 
-                $(".dashboard-feedback").css({'background-color': '#FFF'});
+                //$(".dashboard-feedback").css({'background-color': '#FFF'});
                
                 FeedbackControlService.expunge();
                 e.preventDefault();
