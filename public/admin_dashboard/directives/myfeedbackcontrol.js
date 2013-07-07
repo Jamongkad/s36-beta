@@ -104,8 +104,9 @@ angular.module('feedbackcontrol', [])
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                    
                     if(feedback.hasClass('featured')) {
+                        feedback.removeClass('featured');
                         console.log("From the hiphop");
-                        feedback.css({'background': '#FFFFE0'});
+                        feedback.addClass('featured'); 
                     }
 
                     feedback.show();
