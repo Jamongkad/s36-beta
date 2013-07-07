@@ -108,8 +108,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.priority_filter = (!is_empty(qs) && qs['priority']) ? qs['priority'] : 'none';
     $scope.status_filter   = (!is_empty(qs) && qs['status']) ? qs['status'] : 'none';
     $scope.rating_filter   = (!is_empty(qs) && qs['rating']) ? qs['rating'] : 'none';
-
-    console.log($scope.date_filter);
     
     $scope.feedback_status = function($event) {         
         var target = $($event.target);
@@ -294,7 +292,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
 
         if($scope.status_filter != 'none') { 
-            data.status_filter = $scope.status_filter;
+            data.status = $scope.status_filter;
         }
        
         if($scope.priority_filter != 'none') {
@@ -302,13 +300,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
 
         if($scope.date_filter != 'none') {
-            data.status_date = $scope.date_filter;
+            data.date = $scope.date_filter;
         } 
 
         var result = $.param(data);
         if(result) { 
             var str = '?' + result;
-            document.location.search = str;
+            //document.location.search = '?' + result;
         }
     }
 
