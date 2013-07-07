@@ -147,7 +147,7 @@ var backend_vars = {
                     <div class="dialog-form" feedid="<?=$feed->id?>">
                         <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message))?>
                     </div>
-                    <div class="dashboard-feedback grids <?=($feed->isfeatured) ? 'featured' : null?>" 
+                    <div class="dashboard-feedback grids <?=($feed->isfeatured) ? 'featured' : 'published'?>" 
                          feedback="<?=$feed->id?>" 
                          score="<?=$feed->int_rating?>"
                          permission="<?=$feed->int_perm?>"

@@ -26,7 +26,7 @@ angular.module('feedbackcontrol', [])
                         var state = { 
                             activate: {'background-position': '-64px -31px'}
                           , deactivate_sibling: {'background-position': '-32px 0px'}
-                          , activation_color: {'background-color': '#ffffe0'} 
+                          , activation_color: 'featured'//{'background-color': '#ffffe0'} 
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                           , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                           , present_status: "feature"
@@ -38,7 +38,7 @@ angular.module('feedbackcontrol', [])
                         var state = {
                             activate: {'background-position': '-32px -31px'}
                           , deactivate_sibling: {'background-position': '-64px 0px'}
-                          , activation_color: {'background-color': '#fff'} 
+                          , activation_color: 'published'//{'background-color': '#fff'} 
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
                           , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                           , present_status: "publish"
@@ -292,7 +292,8 @@ angular.module('feedbackcontrol', [])
 
 function published_state(obj, sibling_id, msg, state) { 
     //kill me....
-    obj.parents('.dashboard-feedback').css(state.activation_color);
+    //obj.parents('.dashboard-feedback').css(state.activation_color);
+    obj.parents('.dashboard-feedback').addClass(state.activation_color);
     obj.css(state.activate);
     obj.children('.action-tooltip').children('span').html("Return to Inbox");
     obj.siblings(sibling_id).css(state.deactivate_sibling);
