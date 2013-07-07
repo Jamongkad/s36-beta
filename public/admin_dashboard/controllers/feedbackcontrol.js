@@ -264,26 +264,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
     
-    /*
-    $scope.filter = function(filter_type) {
-        if(filter_type == 'date') {
-            insert_param('date', $scope.date_filter);     
-        }
-        
-        if(filter_type == 'priority') {
-            insert_param('priority', $scope.priority_filter);     
-        }
-
-        if(filter_type == 'status') {
-            insert_param('status', $scope.status_filter);     
-        }
-
-        if(filter_type == 'rating') {
-            insert_param('rating', $scope.rating_filter);      
-        }
-    }
-    */
-
     $scope.process_filter = function() {
 
         var data = {}
@@ -305,8 +285,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var result = $.param(data);
         if(result) { 
+            var prmstr = window.location.search.substr(1);
+            var prmarr = prmstr.split ("&");
+            var params = {};
+            
+            for ( var i = 0; i < prmarr.length; i++) {
+                var tmparr = prmarr[i].split("=");
+                    params[tmparr[0]] = tmparr[1];
+            }
+            console.log(params);
             var str = '?' + result;
-            document.location.search = '?' + result;
+            //document.location.search = '?' + result;
         }
     }
 
