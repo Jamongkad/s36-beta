@@ -130,6 +130,9 @@ var backend_vars = {
                     </select>
                 </span>
             </div>
+            <div class="sorter-block">
+                <input type="button" value="filter" />
+            </div>
         </div>
     </div>
     
