@@ -1898,4 +1898,5 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     -webkit-transition-duration: 0.2s;
     -moz-transition-duration: 0.2s;
     transition-duration: 0.2s;
+    cursor:pointer;
 }
