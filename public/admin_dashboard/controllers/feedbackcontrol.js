@@ -306,8 +306,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var result = $.param(data);
         if(result) { 
             var str = '?' + result;
-            console.log(str);
-            //document.location.search = '?' + result;
+            document.location.search = str;
         }
     }
 
