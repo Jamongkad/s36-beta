@@ -100,9 +100,9 @@ angular.module('feedbackcontrol', [])
 
 
                     }
-                } else { 
-                    console.log(FeedbackSignal.data);
+                } else {  
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
+                    console.log(feedback.attr('style'));
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
                     
