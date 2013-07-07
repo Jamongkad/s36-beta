@@ -102,7 +102,11 @@ angular.module('feedbackcontrol', [])
                     }
                 } else {  
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
-                    console.log(feedback.hasClass('featured'))
+                   
+                    if(feedback.hasClass('featured')) {
+                        feedback.removeAttr('style');
+                    }
+
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
                     
