@@ -74,8 +74,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $scope.uri_params.splice($scope.uri_params.indexOf(key + "=" + value), 1);     
             }
 
-            console.log($scope.uri_params);
-            /*             
             while(i--) {
                 x = kvp[i].split('=');
  
@@ -90,13 +88,24 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 console.log("DAH");
                 kvp[kvp.length] = [key,value].join('=');
             }
-            console.log(kvp);
+
             var str = kvp.join('&');
-            console.log(str);
             //this will reload the page, it's likely better to store this until finished
-            //document.location.search = str;
-            */
+            document.location.search = str;
         }
+    }
+
+    var url_params = function() { 
+        var prmstr = window.location.search.substr(1);
+        var prmarr = prmstr.split ("&");
+        var params = {};
+        
+        for ( var i = 0; i < prmarr.length; i++) {
+            var tmparr = prmarr[i].split("=");
+                params[tmparr[0]] = tmparr[1];
+        }
+
+        return params;
     }
 
     $scope.selected = [];
@@ -285,15 +294,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var result = $.param(data);
         if(result) { 
-            var prmstr = window.location.search.substr(1);
-            var prmarr = prmstr.split ("&");
-            var params = {};
-            
-            for ( var i = 0; i < prmarr.length; i++) {
-                var tmparr = prmarr[i].split("=");
-                    params[tmparr[0]] = tmparr[1];
-            }
-            console.log(params);
+            var params = url_params();
+            console.log('page' in params);
             var str = '?' + result;
             //document.location.search = '?' + result;
         }
