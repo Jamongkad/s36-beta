@@ -56,45 +56,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
     var current_url = window.location.pathname;
 
-    var insert_param = function(key, value) {
-        var key = escape(key); value = escape(value);
-        var kvp = document.location.search.substr(1).split('&');
-        if (kvp == '') {
-            var str = '?' + key + '=' + value;
-            document.location.search = str;
-        } else { 
-            var i=kvp.length; 
-            var x; 
-            $scope.uri_params = kvp;
-            if(value != "none") {
-                console.log("add");
-                $scope.uri_params.push(key + '=' + value);
-            } else { 
-                console.log("remove");
-                $scope.uri_params.splice($scope.uri_params.indexOf(key + "=" + value), 1);     
-            }
-
-            while(i--) {
-                x = kvp[i].split('=');
- 
-                if (x[0]==key) {
-                    x[1] = value;
-                    kvp[i] = x.join('=');
-                    break;
-                }   
-            } 
-
-            if (i<0) {
-                console.log("DAH");
-                kvp[kvp.length] = [key,value].join('=');
-            }
-
-            var str = kvp.join('&');
-            //this will reload the page, it's likely better to store this until finished
-            document.location.search = str;
-        }
-    }
-
     var url_params = function() { 
         var prmstr = window.location.search.substr(1);
         var prmarr = prmstr.split ("&");
@@ -108,7 +69,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         return params;
     }
 
-    $scope.selected = [];
+    $scope.selected   = [];
     $scope.uri_params = [];
     var checkboxes = $(".feed-checkbox");
 
@@ -147,18 +108,33 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
               , status: feed.status
               , origin: Template.current_inbox_state
             } 
-            console.log(current);
         } 
-        
-        if(feed.status != "remove") { 
+
+        var process = function() { 
+            console.log(current)
+            console.log(feed)
+            /*
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
             FeedbackControlService.change_status(feed, true);
+            */
+        }
+        
+        if(feed.status != "remove") { 
+            process();
+            /*
+            FeedbackSignal.current_state(current);
+            feed.origin = Template.current_inbox_state;
+            FeedbackControlService.change_status(feed, true);
+            */
         }else {
             if(confirm("Warning! You are about to permanently delete this feedback. There is no undo.")) {
+                process();
+                /*
                 FeedbackSignal.current_state(current);
                 feed.origin = Template.current_inbox_state;
                 FeedbackControlService.change_status(feed, true);
+                */
             }
         }
     }
