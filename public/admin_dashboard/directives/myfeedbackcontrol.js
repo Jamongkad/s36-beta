@@ -104,7 +104,7 @@ angular.module('feedbackcontrol', [])
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                    
                     if(feedback.hasClass('featured')) {
-                        feedback.removeAttr('style');
+                        feedback.css({'background': '#FFFFE0'});
                     }
 
                     feedback.show();
