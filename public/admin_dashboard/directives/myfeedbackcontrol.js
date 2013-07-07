@@ -317,8 +317,6 @@ function published_state(obj, sibling_id, msg, state) {
 function hide_the_children(obj) { 
     obj.parents('.dashboard-feedback').hide();
 
-    console.log(obj.parents('.dashboard-feedback'));
-
     var child_count = obj.parents('.feedback-group').children('.dashboard-feedback:visible');
     if(child_count.length == 0) {
         obj.parents('.feedback-group').hide();
