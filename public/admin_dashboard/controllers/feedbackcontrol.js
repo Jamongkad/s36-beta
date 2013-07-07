@@ -263,9 +263,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             update_selected(action, parseInt(entity.val(), 10));      
         }
     }
-
+    
+    /*
     $scope.filter = function(filter_type) {
-        /*
         if(filter_type == 'date') {
             insert_param('date', $scope.date_filter);     
         }
@@ -281,25 +281,33 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         if(filter_type == 'rating') {
             insert_param('rating', $scope.rating_filter);      
         }
-        */
     }
+    */
 
     $scope.process_filter = function() {
+
+        var data = {}
         if($scope.rating_filter != 'none') {
-            console.log($scope.rating_filter)  
+            //console.log($scope.rating_filter)  
+            data.rating = $scope.rating_filter;
         }
 
         if($scope.status_filter != 'none') { 
-            console.log($scope.status_filter) 
+            //console.log($scope.status_filter) 
+            data.status_filter = $scope.status_filter;
         }
        
         if($scope.priority_filter != 'none') {
-            console.log($scope.priority_filter) 
+            //console.log($scope.priority_filter) 
+            data.priority = $scope.priority_filter;
         }
 
         if($scope.date_filter != 'none') {
-            console.log($scope.date_filter)      
+            //console.log($scope.date_filter)      
+            data.status_date = $scope.date_filter;
         } 
+
+        console.log(data);
     }
 
     $scope.fast_forward = function(email, feedid) {
