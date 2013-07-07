@@ -91,10 +91,6 @@ angular.module('feedbackcontrol', [])
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
 
-                        if(!feedback.hasClass('featured')) {
-                            feedback.css({'background-color': '#FFF'});
-                        }
-
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
                         
@@ -128,9 +124,7 @@ angular.module('feedbackcontrol', [])
                 if($('.feed-checkbox').is(":checked")) {
                     $('.feed-checkbox').prop("checked", false);
                 }
-
-                //$(".dashboard-feedback").css({'background-color': '#FFF'});
-               
+ 
                 FeedbackControlService.expunge();
                 e.preventDefault();
             });
