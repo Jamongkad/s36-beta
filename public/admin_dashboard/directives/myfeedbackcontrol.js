@@ -26,7 +26,7 @@ angular.module('feedbackcontrol', [])
                         var state = { 
                             activate: {'background-position': '-64px -31px'}
                           , deactivate_sibling: {'background-position': '-32px 0px'}
-                          , activation_color: 'featured'//{'background-color': '#ffffe0'} 
+                          , activation_color: 'featured'
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                           , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                           , present_status: "feature"
@@ -38,7 +38,7 @@ angular.module('feedbackcontrol', [])
                         var state = {
                             activate: {'background-position': '-32px -31px'}
                           , deactivate_sibling: {'background-position': '-64px 0px'}
-                          , activation_color: 'published'//{'background-color': '#fff'} 
+                          , activation_color: 'published'
                           , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
                           , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                           , present_status: "publish"
@@ -106,10 +106,6 @@ angular.module('feedbackcontrol', [])
                 } else {  
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                    
-                    if(!feedback.hasClass('featured')) {
-                        feedback.css({'background-color': '#FFF'});
-                    }
-
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
                     
@@ -292,7 +288,6 @@ angular.module('feedbackcontrol', [])
 
 function published_state(obj, sibling_id, msg, state) { 
     //kill me....
-    //obj.parents('.dashboard-feedback').css(state.activation_color);
     if(state.activation_color == 'featured') {
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('published');     
