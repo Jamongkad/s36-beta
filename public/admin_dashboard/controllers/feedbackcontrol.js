@@ -285,13 +285,31 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.process_filter = function() {
-        console.log($scope.rating_filter) 
-        console.log($scope.status_filter) 
-        console.log($scope.priority_filter) 
-        console.log($scope.date_filter) 
+        console.log($scope.rating_filter); 
+        console.log($scope.status_filter);
+        console.log($scope.priority_filter);
+        console.log($scope.date_filter);
     }
 
-    $scope.fast_forward = function(email, feedid) {
+No syntax errors detected in public/admin_dashboard/controllers/feedbackcontrol.js
+# On branch mathew-clean
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	.DS_Store
+#	.swp
+#	application/.DS_Store
+#	application/views/inbox/.inbox_index_view.php.swp
+#	packages/HTMLPurifier/HTMLPurifier/DefinitionCache/Serializer/URI/
+#	public/.DS_Store
+#	public/admin_dashboard/controllers/.feedbackcontrol.js.swp
+#	public/fullpage/.DS_Store
+#	public/fullpage/admin/css/.dashboard.css.swp
+#	public/fullpage/common/.DS_Store
+#	public/fullpage/common/css/.DS_Store
+#	public/img/.DS_Store
+#	public/js/.DS_Store
+nothing added to commit but untracked files present (use "git add" to track)
         FeedbackService.send_fastforward(email, feedid);
     }
 
