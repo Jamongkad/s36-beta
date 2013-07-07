@@ -131,7 +131,7 @@ var backend_vars = {
                 </span>
             </div>
             <div class="sorter-block">
-                <input type="button" value="filter" />
+                <input type="button" value="filter" class="mybutton"/>
             </div>
         </div>
     </div>
