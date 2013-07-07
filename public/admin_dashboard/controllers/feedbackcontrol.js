@@ -288,27 +288,27 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var data = {}
         if($scope.rating_filter != 'none') {
-            //console.log($scope.rating_filter)  
             data.rating = $scope.rating_filter;
         }
 
         if($scope.status_filter != 'none') { 
-            //console.log($scope.status_filter) 
             data.status_filter = $scope.status_filter;
         }
        
         if($scope.priority_filter != 'none') {
-            //console.log($scope.priority_filter) 
             data.priority = $scope.priority_filter;
         }
 
         if($scope.date_filter != 'none') {
-            //console.log($scope.date_filter)      
             data.status_date = $scope.date_filter;
         } 
 
         var result = $.param(data);
-        console.log(result);
+        if(result) { 
+            var str = '?' + result;
+            console.log(str);
+            //document.location.search = '?' + result;
+        }
     }
 
     $scope.fast_forward = function(email, feedid) {
