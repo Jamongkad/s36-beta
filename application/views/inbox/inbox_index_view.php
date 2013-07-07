@@ -131,7 +131,7 @@ var backend_vars = {
                 </span>
             </div>
             <div class="sorter-block">
-                <input type="button" value="filter" class="mybutton"/>
+                <input type="button" value="filter" class="mybutton" ng-click="process_filter()"/>
             </div>
         </div>
     </div>
