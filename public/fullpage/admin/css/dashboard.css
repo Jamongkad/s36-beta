@@ -1900,6 +1900,6 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     -moz-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
-.dashboard-feedback .featured {
+.featured {
     background-color: #FFFFE0;
 }
