@@ -118,19 +118,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         
         if(feed.status != "remove") { 
             process();
-            /*
-            FeedbackSignal.current_state(current);
-            feed.origin = Template.current_inbox_state;
-            FeedbackControlService.change_status(feed, true);
-            */
         }else {
             if(confirm("Warning! You are about to permanently delete this feedback. There is no undo.")) {
                 process();
-                /*
-                FeedbackSignal.current_state(current);
-                feed.origin = Template.current_inbox_state;
-                FeedbackControlService.change_status(feed, true);
-                */
             }
         }
     }
@@ -165,7 +155,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
             var feed = {};
-
+            
+            //refactor this you lazy bastard
             if(mode == "remove") {
                 if(confirm("Are you sure you want to permanently remove this feedback? There is no undo.")) { 
                     for(var i=0; i < ids.length; ++i) {

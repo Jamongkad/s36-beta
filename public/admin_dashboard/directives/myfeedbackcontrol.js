@@ -83,17 +83,30 @@ angular.module('feedbackcontrol', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind("click", function(e) {
+                
+                var currentUrl = window.location.pathname;
+
                 $(".checky-box-container").hide();
                 if (FeedbackSignal.data.id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
+                        
+                        currentUrl.match(/inbox\/all|deleted|published/g) {
+                            var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "] li .cat-picks");      
+                            catpicks.css({'background': '#598499'});
+                        }
                     }
                 } else { 
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
+                    
+                    currentUrl.match(/inbox\/all|deleted|published/g) {
+                        var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "] li .cat-picks");      
+                        catpicks.css({'background': '#598499'});
+                    }
 
                     var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]");
 
