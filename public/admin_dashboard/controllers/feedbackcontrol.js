@@ -285,10 +285,21 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.process_filter = function() {
-        console.log($scope.rating_filter) 
-        console.log($scope.status_filter) 
-        console.log($scope.priority_filter) 
-        console.log($scope.date_filter) 
+        if($scope.rating_filter != 'none') {
+            console.log($scope.rating_filter)  
+        }
+
+        if($scope.status_filter != 'none') { 
+            console.log($scope.status_filter) 
+        }
+       
+        if($scope.priority_filter != 'none') {
+            console.log($scope.priority_filter) 
+        }
+
+        if($scope.date_filter != 'none') {
+            console.log($scope.date_filter)      
+        } 
     }
 
     $scope.fast_forward = function(email, feedid) {
