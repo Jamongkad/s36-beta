@@ -93,7 +93,7 @@ angular.module('feedbackcontrol', [])
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
                         
-                        currentUrl.match(/inbox\/all|deleted|published/g) {
+                        if(currentUrl.match(/inbox\/all|deleted|published/g)) {
                             var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "] li .cat-picks");      
                             catpicks.css({'background': '#598499'});
                         }
@@ -103,7 +103,7 @@ angular.module('feedbackcontrol', [])
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
                     
-                    currentUrl.match(/inbox\/all|deleted|published/g) {
+                    if(currentUrl.match(/inbox\/all|deleted|published/g)) {
                         var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "] li .cat-picks");      
                         catpicks.css({'background': '#598499'});
                     }
