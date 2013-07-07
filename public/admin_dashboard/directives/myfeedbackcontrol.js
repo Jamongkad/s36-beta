@@ -101,7 +101,7 @@ angular.module('feedbackcontrol', [])
 
                     }
                 } else { 
-                    console.log("Mathew is awesome")
+                    console.log(FeedbackSignal.data);
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
