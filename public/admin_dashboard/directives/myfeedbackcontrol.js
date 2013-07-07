@@ -293,7 +293,14 @@ angular.module('feedbackcontrol', [])
 function published_state(obj, sibling_id, msg, state) { 
     //kill me....
     //obj.parents('.dashboard-feedback').css(state.activation_color);
-    obj.parents('.dashboard-feedback').addClass(state.activation_color);
+    if(state.activation_color == 'featured') {
+        obj.parents('.dashboard-feedback').addClass(state.activation_color);     
+        obj.parents('.dashboard-feedback').removeClass('published');     
+    } else { 
+        obj.parents('.dashboard-feedback').addClass(state.activation_color);     
+        obj.parents('.dashboard-feedback').removeClass('featured');     
+    }
+   
     obj.css(state.activate);
     obj.children('.action-tooltip').children('span').html("Return to Inbox");
     obj.siblings(sibling_id).css(state.deactivate_sibling);
