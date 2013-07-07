@@ -307,7 +307,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             data.status_date = $scope.date_filter;
         } 
 
-        console.log(data);
+        var result = $.param(data);
+        console.log(result);
     }
 
     $scope.fast_forward = function(email, feedid) {
