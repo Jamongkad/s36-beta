@@ -396,6 +396,6 @@ function forward_or_dash() {
     } else {
         //return Redirect::to('dashboard');
         // redirect to inbox by default.
-        return Redirect::to('inbox');     
+        return Redirect::to('inbox/all');     
     } 
 }

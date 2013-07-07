@@ -97,8 +97,11 @@ angular.module('feedbackcontrol', [])
                             var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "] li .cat-picks");      
                             catpicks.css({'background': '#598499'});
                         }
+
+
                     }
                 } else { 
+                    console.log("Mathew is awesome")
                     var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
                     feedback.show();
                     $(feedback).parents('.feedback-group').show();    
