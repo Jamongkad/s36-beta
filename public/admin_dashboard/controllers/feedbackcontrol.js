@@ -109,7 +109,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.status_filter   = (!is_empty(qs) && qs['status']) ? qs['status'] : 'none';
     $scope.rating_filter   = (!is_empty(qs) && qs['rating']) ? qs['rating'] : 'none';
 
-    console.log(date_filter);
+    console.log($scope.date_filter);
     
     $scope.feedback_status = function($event) {         
         var target = $($event.target);
