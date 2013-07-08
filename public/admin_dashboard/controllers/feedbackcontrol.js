@@ -196,7 +196,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             console.log(selected.length);
             console.log(selected);
-            console.log(selected.length > 0 && selected[0] != 'undefined');
+            console.log(selected.length > 0 && typeof selected[0] == 'undefined''']);
 
             if(selected.length > 0) { 
                 if(current_url.match(/filed/g)) {
