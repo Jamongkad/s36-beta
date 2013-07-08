@@ -195,13 +195,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             var clean_selection = selected.filter(function(n) { return n });
-
-            console.log(selected.length);
-            console.log(selected);
-            console.log(clean_selection);
-        
-
-            if(selected.length > 0) { 
+ 
+            if(clean_selection.length > 0) { 
                 if(current_url.match(/filed/g)) {
                     var feed = {
                         id: selected
