@@ -33,6 +33,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var score = entity.attr('score');
         var permission = entity.attr('permission');
         var catid = entity.attr('catid');
+        var mystatus = entity.hasClass('featured') ? 'featured' : 'published';
+
+        console.log(mystatus);
 
         if(
                (score >= 3 && permission == 1)

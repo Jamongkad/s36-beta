@@ -90,9 +90,7 @@ angular.module('feedbackcontrol', [])
                 if (FeedbackSignal.data.id instanceof Array) {
                     for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
                         var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
-
-                        console.log(feedback.hasClass("featured"));
-
+ 
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();  
                         
