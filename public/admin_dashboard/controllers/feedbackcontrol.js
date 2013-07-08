@@ -80,6 +80,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.rating_filter   = (!is_empty(qs) && qs['rating']) ? qs['rating'] : 'none';
     
     $scope.feedback_status = function($event) {         
+
         var target = $($event.target);
         var feed = $.parseJSON(target.attr('data-feed'));
 
@@ -97,7 +98,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 id: feed.id
               , catid: Template.default_category_id
               , status: feed.status
-              , origin: feed.origin
+              , origin: (feed.status == "delete") ? Template.current_inbox_state : feed.origin
             } 
         }
         
@@ -118,7 +119,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         
         if(feed.status != "remove") { 
             process();
-        }else {
+        } else {
             if(confirm("Warning! You are about to permanently delete this feedback. There is no undo.")) {
                 process();
             }
@@ -208,8 +209,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             selected = [];
             $scope.selected = []; 
-            $scope.status_select_value = 'none';
-        
+            $scope.status_select_value = 'none';        
         }
     }
 
@@ -275,9 +275,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
 function CheckyBox($scope, FeedbackSignal, FeedbackControlService) { 
 
-    $scope.status_selection; 
-    $scope.id; 
-    $scope.data; 
+    $scope.status_selection, $scope.id, $scope.data; 
 
     $scope.undo = function() {  
         FeedbackControlService.change_status($scope.data);
