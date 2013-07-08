@@ -96,7 +96,6 @@ return array(
         $feed = Input::get('feed_data');
         $undo_flag = Input::get('undo');
         
-        /*
         $feed_ids   = (is_array($feed['id'])) ? $feed['id'] : Array($feed['id']);
         $cat_id     = $feed['catid'];
         $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
@@ -104,10 +103,7 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
-        $feedbackstate->write_summary();  
-        */
-        Helpers::dump($feed);
-        Helpers::dump($undo_flag);
+        //$feedbackstate->write_summary();  
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {

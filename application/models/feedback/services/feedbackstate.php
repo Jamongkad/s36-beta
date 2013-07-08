@@ -42,7 +42,22 @@ class FeedbackState {
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++];
-                $this->feedback->_toggle_single($column, $feedid);
+                //$this->feedback->_toggle_single($column, $feedid);
+
+                Helpers::dump($column);
+                Helpers::dump($feedid);
+            }
+        } elseif(is_array($this->mode)) {
+            $counter = 0;
+            foreach($this->mode as $state) {
+                $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
+                                                 ->where('intName', '=', 'default')->first($this->category_vars);
+                $rules = $this->lookup[$state];
+                $column = $rules.$this->_sql_statement_attach($category->categoryid);
+                $feedid = $this->block_id[$counter++]; 
+
+                Helpers::dump($column);
+                Helpers::dump($feedid);
             }
         } else { 
             if($this->mode != 'remove') { 
