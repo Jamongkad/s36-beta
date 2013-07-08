@@ -98,7 +98,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 id: feed.id
               , catid: Template.default_category_id
               , status: feed.status
-              , origin: (feed.status == "delete") ? Template.current_inbox_state : feed.origin
+              , origin: feed.origin
             } 
         }
         
@@ -112,8 +112,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
 
         var process = function() { 
-            console.log(current);
-
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
             FeedbackControlService.change_status(feed, true);
