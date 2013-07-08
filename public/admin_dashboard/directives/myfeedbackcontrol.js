@@ -325,11 +325,12 @@ function published_state(obj, sibling_id, msg, state) {
                            .children(".the-categories-delete")
                            .children('a');
 
-    console.log(action_delete);
-    console.log(delete_button);
+    var delete_feed_attr = $.parseJSON(action_delete.attr('data-feed')):
+    delete_feed_attr.origin = state.present_status;
+    var repackaged_feed_attr = JSON.stringify(delete_feed_attr);
 
-    console.log(action_delete.attr('data-feed'));
-    console.log(delete_button.attr('data-feed'));
+    action_delete.attr('data-feed', repackaged_feed_attr);
+    delete_button.attr('data-feed', repackaged_feed_attr);
 }
 
 function hide_the_children(obj) { 
