@@ -327,6 +327,9 @@ function published_state(obj, sibling_id, msg, state) {
 
     console.log(action_delete);
     console.log(delete_button);
+
+    console.log(action_delete.attr('data-feed'));
+    console.log(delete_button.attr('data-feed'));
 }
 
 function hide_the_children(obj) { 
