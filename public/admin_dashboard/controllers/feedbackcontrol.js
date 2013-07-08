@@ -57,17 +57,17 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }           
             
             if(collect_type == 'feedid') {
-                console.log(me);
+                console.log('feedid');
                 return me;     
             } 
 
             if(collect_type == 'catid') {                
-                console.log(catid);
+                console.log('catid');
                 return catid;     
             } 
 
             if(collect_type == 'current_status') {                
-                console.log(mystatus);
+                console.log('current_status');
                 return mystatus;
             } 
 
