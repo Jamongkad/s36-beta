@@ -601,7 +601,13 @@ var backend_vars = {
                                                     <div class="the-categories-delete">
                                                         <a href="#" class="delete-button" transform 
                                                            ng-click="feedback_status($event)"
-                                                           data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": "delete"}'
+                                                           data-feed='{"id": "<?=$feed->id?>"
+                                                                  , "catid": "<?=$feed->categoryid?>"
+                                                                  , "status": "delete" 
+                                                                  <?if($inbox_state == "publish") {
+                                                                      echo ($feed->isfeatured) ? ', "origin": "feature"' : ', "origin": "publish"';
+                                                                  }?> 
+                                                                  }'
                                                         ></a>
                                                     </div>
                                                 </div>

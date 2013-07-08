@@ -300,12 +300,12 @@ function published_state(obj, sibling_id, msg, state) {
     obj.attr('data-feed', state.state_change_inbox);
 
     var origin_cat_data = obj.siblings('.save')
-                               .children('div.the-categories-menu')
-                               .children('.the-categories-menu-content')
-                               .children(".the-categories")
-                               .children(".grids")
-                               .children('li')
-                               .children('a');
+                             .children('div.the-categories-menu')
+                             .children('.the-categories-menu-content')
+                             .children(".the-categories")
+                             .children(".grids")
+                             .children('li')
+                             .children('a');
 
     for(var i=0;i<origin_cat_data.length;i++) {
         var cat = $(origin_cat_data[i]);
@@ -317,6 +317,16 @@ function published_state(obj, sibling_id, msg, state) {
         var repackaged_json = JSON.stringify(feed); 
         cat.attr('data-feed', repackaged_json);
     }
+
+    var action_delete = obj.parents('.grids').siblings('.grids').children('.action-delete');
+    var delete_button = obj.siblings('.save')
+                           .children('div.the-categories-menu')
+                           .children('.the-categories-menu-content')
+                           .children(".the-categories-delete")
+                           .children('a');
+
+    console.log(action_delete);
+    console.log(delete_button);
 }
 
 function hide_the_children(obj) { 
