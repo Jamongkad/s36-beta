@@ -30,6 +30,7 @@ class FeedbackState {
 
     public function change_state() {        
         if(is_array($this->category_id)) { 
+            //this means we are undoing feedback and want to return their original filed status id. This is under the Filed folder only.
             $counter = 0;
             foreach($this->category_id as $catid) {
                 if($this->mode != "fileas") { 
@@ -48,6 +49,7 @@ class FeedbackState {
                 Helpers::dump($feedid);
             }
         } elseif(is_array($this->mode)) {
+            //this means we are undoing feedback and want to return their original status. This is under the Published folder only.
             $counter = 0;
             foreach($this->mode as $state) {
                 $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
@@ -60,12 +62,14 @@ class FeedbackState {
                 Helpers::dump($feedid);
             }
         } else { 
+            //Normal operations. Only being used in both Inbox and Deleted folders.
             if($this->mode != 'remove') { 
                 $feed_obj = $this->feedback_state_obj();
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode);
                 //return $this->feedback->_toggle_multiple($feed_obj);
             } else { 
+            //Normal operations will permanently delete feedback. Deleted folder only.
                 foreach($this->block_id as $feed_id) {
                     Helpers::dump($feed_id);
                     //$this->feedback->permanently_remove_feedback($feed_id);    
