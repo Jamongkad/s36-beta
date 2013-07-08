@@ -58,7 +58,7 @@ var backend_vars = {
                     <input class="sorter-checkbox" type="checkbox" ng-click="select_all($event)"/>
                 </div>
             </div>
-            <div class="sorter-block">
+            <div class="sorter-block" style="border-right:1px solid #a1a1a1; padding-right:10px;">
                 <span class="sorter-block-name">Selected</span>
                 <span class="sorter-block-box">
                     <?//show this when looking at inbox except when in deleted
