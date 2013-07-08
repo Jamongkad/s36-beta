@@ -325,7 +325,7 @@ function published_state(obj, sibling_id, msg, state) {
                            .children(".the-categories-delete")
                            .children('a');
 
-    var delete_feed_attr = $.parseJSON(action_delete.attr('data-feed')):
+    var delete_feed_attr = $.parseJSON(action_delete.attr('data-feed'));
     delete_feed_attr.origin = state.present_status;
     var repackaged_feed_attr = JSON.stringify(delete_feed_attr);
 
