@@ -226,6 +226,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $(".checky-box-container").show();  
 
             } else {
+                console.log(selected)
+                console.log(clean_selection)
                 if(mode != "remove") {
                     alert("Action is not allowed!");     
                 } 
