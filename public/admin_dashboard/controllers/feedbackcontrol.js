@@ -190,7 +190,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                       , origin: Template.current_inbox_state
                     }
                 }
-
+                
+                FeedbackSignal.current_state(feed);
+                FeedbackControlService.change_status(feed, true);  
+                /*
                 if(mode == "remove") { 
                     FeedbackSignal.current_state(feed);
                     FeedbackControlService.change_status(feed, true);  
@@ -198,6 +201,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     FeedbackSignal.current_state(feed);
                     FeedbackControlService.change_status(feed, true);  
                 }
+                */
 
                 $(".checky-box-container").show();  
 
