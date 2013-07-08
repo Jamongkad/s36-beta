@@ -43,10 +43,11 @@ class FeedbackState {
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++];
-                //$this->feedback->_toggle_single($column, $feedid);
-
+                $this->feedback->_toggle_single($column, $feedid);
+                /*
                 Helpers::dump($column);
                 Helpers::dump($feedid);
+                */
             }
         } elseif(is_array($this->mode)) {
             //this means we are undoing feedback and want to return their original status. This is under the Published folder only.
@@ -58,23 +59,28 @@ class FeedbackState {
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++]; 
 
+                $this->feedback->_toggle_single($column, $feedid);
+                /*
                 Helpers::dump($column);
                 Helpers::dump($feedid);
+                */
             }
         } else { 
             //Normal operations. Only being used in both Inbox and Deleted folders.
             if($this->mode != 'remove') { 
                 $feed_obj = $this->feedback_state_obj();
+                /*
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode);
-                //return $this->feedback->_toggle_multiple($feed_obj);
+                */
+                return $this->feedback->_toggle_multiple($feed_obj);
             } else { 
             //Normal operations will permanently delete feedback. Deleted folder only.
                 foreach($this->block_id as $feed_id) {
-                    Helpers::dump($feed_id);
-                    //$this->feedback->permanently_remove_feedback($feed_id);    
+                    //Helpers::dump($feed_id);
+                    $this->feedback->permanently_remove_feedback($feed_id);    
                 } 
-                Helpers::dump($this->mode);
+                //Helpers::dump($this->mode);
             }
         }
     }
