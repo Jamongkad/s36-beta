@@ -222,15 +222,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true);  
-                /*
-                if(mode == "remove") { 
-                    FeedbackSignal.current_state(feed);
-                    FeedbackControlService.change_status(feed, true);  
-                } else { 
-                    FeedbackSignal.current_state(feed);
-                    FeedbackControlService.change_status(feed, true);  
-                }
-                */
 
                 $(".checky-box-container").show();  
 
@@ -241,6 +232,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }
 
             selected = [];
+            clean_selection = [];
             $scope.selected = []; 
             $scope.status_select_value = 'none';        
         }
