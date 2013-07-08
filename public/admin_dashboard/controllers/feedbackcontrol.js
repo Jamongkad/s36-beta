@@ -57,17 +57,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             }           
             
             if(collect_type == 'feedid') {
-                console.log('feedid');
                 return me;     
             } 
 
             if(collect_type == 'catid') {                
-                console.log('catid');
                 return catid;     
             } 
 
-            if(collect_type == 'current_status') {                
-                console.log('current_status');
+            if(collect_type == 'current_status') {      
                 return mystatus;
             } 
 
@@ -199,6 +196,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             console.log(selected.length);
             console.log(selected);
+            console.log(selected.length > 0 && selected[0] != 'undefined');
 
             if(selected.length > 0) { 
                 if(current_url.match(/filed/g)) {
