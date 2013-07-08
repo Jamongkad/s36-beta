@@ -165,7 +165,6 @@ var backend_vars = {
                              type="checkbox" 
                              value="<?=$feed->id?>" 
                              ng-click="update_selection($event, <?=$feed->id?>)"
-                             feedcheckbox 
                              />
                         </div>
                         <div class="feedback-avatar">
