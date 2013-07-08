@@ -148,7 +148,7 @@ var backend_vars = {
                         <?=View::make('feedback/reply_to_view', array('user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message))?>
                     </div>
                     <div class="dashboard-feedback grids 
-                        <?if($inbox_state == "inbox") {
+                        <?if($inbox_state == "publish") {
                               if($feed->isfeatured) {
                                   echo 'featured'; 
                               } else { 
