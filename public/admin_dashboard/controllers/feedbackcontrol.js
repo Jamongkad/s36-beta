@@ -32,10 +32,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var entity_parent = entity.parents('.feedback-group');
         var score = entity.attr('score');
         var permission = entity.attr('permission');
-        var catid = entity.attr('catid');
-        var mystatus = entity.hasClass('featured') ? 'featured' : 'published';
+        var catid = entity.attr('catid'); 
+        var mystatus;
 
-        console.log(mystatus);
+        if(entity.hasClass('featured')) {
+            mystatus = 'feature';
+        }
+
+        if(entity.hasClass('published')) {
+            mystatus = 'publish';
+        }
 
         if(
                (score >= 3 && permission == 1)
@@ -51,9 +57,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             
             if(collect_type == 'feedid') {
                 return me;     
-            } else {                
+            } 
+
+            if(collect_type == 'catid') {                
                 return catid;     
             } 
+
+            if(collect_type == 'current_status') {                
+                return mystatus;
+            } 
+
         }    
     }
 
@@ -156,6 +169,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             var selected = [];
             var catids = [];
+            var origin = [];
             var ids = $scope.selected;
             var mode = $scope.status_select_value;
             var feed = {};
@@ -165,7 +179,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 if(confirm("Are you sure you want to permanently remove this feedback? There is no undo.")) { 
                     for(var i=0; i < ids.length; ++i) {
                         selected.push(feedback_collect(ids[i], mode, 'feedid'));
-                        catids.push(feedback_collect(ids[i], mode, 'catid'));
+                        catids.push(feedback_collect(ids[i], mode, 'catid')); 
+                        origin.push(feedback_collect(ids[i], mode, 'current_status'));
                     }
                 } else { 
                     $('input[type=checkbox].feed-checkbox:checked, .sorter-checkbox:checked').click();
@@ -174,6 +189,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 for(var i=0; i < ids.length; ++i) {
                     selected.push(feedback_collect(ids[i], mode, 'feedid'));
                     catids.push(feedback_collect(ids[i], mode, 'catid'));
+                    origin.push(feedback_collect(ids[i], mode, 'current_status'));
                 }
             }
 
@@ -184,6 +200,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                       , status: $scope.status_select_value
                       , catid:  catids 
                       , origin: Template.current_inbox_state
+                    }
+                } else if(current_url.match(/published/g)) {
+                    var feed = { 
+                        id: selected
+                      , status: $scope.status_select_value
+                      , catid: Template.default_category_id
+                      , origin: origin
                     }
                 } else { 
                     var feed = {
