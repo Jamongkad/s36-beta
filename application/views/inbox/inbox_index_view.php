@@ -383,7 +383,7 @@ var backend_vars = {
                                                    , "status": <?=($feed->isdeleted == 1) ? '"remove"' : '"delete"'?> 
                                                     <?if($inbox_state == "publish") {
                                                         echo ($feed->isfeatured) ? ', "origin": "feature"' : ', "origin": "publish"';
-                                                    } 
+                                                    }?> 
                                                    }'
                                          ></div>
                                     <div class="action-delete-tooltip <?=($feed->isdeleted == 1) ? "permanent-tooltip" : null?>"></div>
