@@ -199,21 +199,21 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             if(clean_selection.length > 0) { 
                 if(current_url.match(/filed/g)) {
                     var feed = {
-                        id: selected
+                        id: clean_selection
                       , status: $scope.status_select_value
                       , catid:  catids 
                       , origin: Template.current_inbox_state
                     }
                 } else if(current_url.match(/published/g)) {
                     var feed = { 
-                        id: selected
+                        id: clean_selection
                       , status: $scope.status_select_value
                       , catid: Template.default_category_id
                       , origin: origin
                     }
                 } else { 
                     var feed = {
-                        id: selected
+                        id: clean_selection
                       , status: $scope.status_select_value
                       , catid: Template.default_category_id
                       , origin: Template.current_inbox_state
