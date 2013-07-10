@@ -17,8 +17,9 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         }
 
         var json_status = FeedbackControlService.change_status(status_change, true);
-        console.log(FeedbackControlService);
-        if(json_status == "success") { 
+
+        if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
+            console.log("do redirect");
             /*
             var str = construct_query_string();
             var inbox_location, page = '';
