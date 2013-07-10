@@ -15,7 +15,11 @@ angular.module('Services', [])
             type: 'post'    
           , dataType: 'json'
           , data: { feed_data: status_change, undo: undo_flag }
+          , async: false
           , url: '/feedback/change_feedback_state'
+          , success: function(msg) {
+                shared_service.jsonmsg = msg; 
+            }
         }); 
     }
 

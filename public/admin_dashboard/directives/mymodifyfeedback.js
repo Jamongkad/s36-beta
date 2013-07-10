@@ -67,32 +67,8 @@ angular.module('modifyfeedback', [])
                 }
 
                 if(class_name == "blue-bar-delete") { 
-                    $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style');
-                    var str = construct_query_string();
-
+                    $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style'); 
                     alert("This feedback has been deleted.");
-
-                    var inbox_location, page = '';
-                    if(str.b == "inbox") { 
-                        inbox_location = "/inbox/all";
-                    }
-
-                    if(str.b == "publish") { 
-                        inbox_location = "/inbox/published/all";
-                    }
-
-                    if(str.b == "fileas") { 
-                        inbox_location = "/inbox/filed/all";
-                    }
-
-                    if(str.b == "delete") {
-                        inbox_location = "/inbox/deleted/all";
-                    }
-
-                    if('p' in str) {
-                        page = "?page=" + str.p;
-                    }
-                    //window.location = inbox_location + page; 
                 }
                 e.preventDefault();
             });
@@ -122,16 +98,3 @@ angular.module('modifyfeedback', [])
         }
     }    
 })
-
-function construct_query_string() {
-    var prmstr = window.location.search.substr(1);
-    var prmarr = prmstr.split ("&");
-    var params = {};
-
-    for(var i = 0;i<prmarr.length;i++) {
-        var tmparr = prmarr[i].split("=");
-        params[tmparr[0]] = tmparr[1];
-    }
-
-    return params;
-}

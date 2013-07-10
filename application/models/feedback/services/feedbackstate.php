@@ -43,11 +43,17 @@ class FeedbackState {
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++];
-                $this->feedback->_toggle_single($column, $feedid);
+
                 /*
                 Helpers::dump($column);
                 Helpers::dump($feedid);
                 */
+                
+                if($this->feedback->_toggle_single($column, $feedid)) {
+                    echo json_encode(Array("feedback_status_change" => "success"));
+                } else { 
+                    echo json_encode(Array("feedback_status_change" => "failed"));
+                }
             }
         } elseif(is_array($this->mode)) {
             //this means we are undoing feedback and want to return their original status. This is under the Published folder only.
@@ -59,11 +65,16 @@ class FeedbackState {
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++]; 
 
-                $this->feedback->_toggle_single($column, $feedid);
                 /*
                 Helpers::dump($column);
                 Helpers::dump($feedid);
                 */
+
+                if($this->feedback->_toggle_single($column, $feedid)) {
+                    echo json_encode(Array("feedback_status_change" => "success"));
+                } else { 
+                    echo json_encode(Array("feedback_status_change" => "failed"));
+                }
             }
         } else { 
             //Normal operations. Only being used in both Inbox and Deleted folders.
@@ -73,7 +84,11 @@ class FeedbackState {
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode);
                 */
-                return $this->feedback->_toggle_multiple($feed_obj);
+                if($this->feedback->_toggle_multiple($feed_obj)) {
+                    echo json_encode(Array("feedback_status_change" => "success"));
+                } else { 
+                    echo json_encode(Array("feedback_status_change" => "failed"));
+                }
             } else { 
             //Normal operations will permanently delete feedback. Deleted folder only.
                 foreach($this->block_id as $feed_id) {

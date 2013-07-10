@@ -919,11 +919,11 @@ class DBFeedback extends S36DataObject {
             DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
             //Previously I wanted feedback deleted with isDeleted column set to 1. Let's do a hard delete instead...
             DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
-                                 //->where('Feedback.isDeleted', '=', 1)
                                  ->delete();
             
             //let's make sure to add a query for removing tags from the MetadataTags table if need be
             DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete(); 
+
         } else {
             throw new Exception("Feedback does not exist. Cannot carry on with deletion!");
         }
