@@ -19,8 +19,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         var json_status = FeedbackControlService.change_status(status_change, true);
 
         if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
-            console.log("do redirect");
-            /*
+
             var str = construct_query_string();
             var inbox_location, page = '';
             if(str.b == "inbox") { 
@@ -42,8 +41,10 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
             if('p' in str) {
                 page = "?page=" + str.p;
             }
+
+            console.log(page);
             //window.location = inbox_location + page; 
-            */
+
         }
     }
 
