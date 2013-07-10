@@ -68,7 +68,6 @@ angular.module('modifyfeedback', [])
 
                 if(class_name == "blue-bar-delete") { 
                     $(".blue-bar-feature, .blue-bar-publish, .blue-bar-flag, .cat-picks").removeAttr('style'); 
-                    alert("This feedback has been deleted.");
                 }
                 e.preventDefault();
             });

@@ -44,7 +44,9 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
             }
 
             if(status_change.status == 'delete') {
-                window.location = inbox_location + page;     
+                if(confirm("This feedback has been deleted.")) {
+                    window.location = inbox_location + page;      
+                } 
             }
             
         }
