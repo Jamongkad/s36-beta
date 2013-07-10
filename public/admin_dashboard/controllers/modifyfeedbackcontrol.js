@@ -42,7 +42,10 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
                 page = "?page=" + str.p;
             }
 
-            window.location = inbox_location + page; 
+            console.log(inbox_location)
+            console.log(page)
+
+            //window.location = inbox_location + page; 
         }
     }
 
