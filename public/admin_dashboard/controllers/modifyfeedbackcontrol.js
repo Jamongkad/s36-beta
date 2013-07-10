@@ -16,7 +16,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , catid: current_cat_id
         }
 
-        var json_status = FeedbackControlService.change_status(status_change, true);
+        FeedbackControlService.change_status(status_change, true);
 
         if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
 
