@@ -109,7 +109,7 @@ $(function() {
                 <div class="blue-bar-left">
                     <div class="grids">
                         <div class="g1of5 align-center">
-                            <a href="#" class="blue-bar-reply-to-user" feedid="<?=$feedback->id?>" my-reply>REPLY TO USER</a>
+                            <a href="#" class="blue-bar-reply-to-user" feedid="<?=$feedback->id?>" my-reply>CONTACT</a>
                         </div>
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-forward" forward>FORWARD</a>
