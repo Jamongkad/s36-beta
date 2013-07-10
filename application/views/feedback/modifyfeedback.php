@@ -152,6 +152,8 @@ $(function() {
                                 </div>
                             <?endif?>
                         </div>
+                        <?if($feedback->rating != "POOR"):?>
+
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-publish" toggle
                                <?=($feedback->ispublished) ? "style='background-color:#e7edf2;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;'" : null?>
@@ -168,6 +170,8 @@ $(function() {
                                 FEATURE
                             </a>
                         </div>
+
+                        <?endif?>
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-flag" toggle
                             <?=($feedback->isflagged) ? "style='background-color:#e7edf2;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;'" : null?>
