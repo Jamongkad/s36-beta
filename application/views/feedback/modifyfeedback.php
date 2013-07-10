@@ -152,7 +152,7 @@ $(function() {
                                 </div>
                             <?endif?>
                         </div>
-                        <?if($feedback->rating != "POOR" || $feedback->int_perm == 1):?>
+                        <?if($feedback->rating != "POOR" and $feedback->int_perm == 1):?>
 
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-publish" toggle
