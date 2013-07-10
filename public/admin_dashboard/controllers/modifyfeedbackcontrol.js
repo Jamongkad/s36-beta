@@ -17,7 +17,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         }
 
         var json_status = FeedbackControlService.change_status(status_change, true);
-        console.log(json_status);
+        console.log(FeedbackControlService);
         if(json_status == "success") { 
             /*
             var str = construct_query_string();
