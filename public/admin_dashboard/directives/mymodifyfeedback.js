@@ -92,7 +92,7 @@ angular.module('modifyfeedback', [])
                     if('p' in str) {
                         page = "?page=" + str.p;
                     }
-                    window.location = inbox_location + page; 
+                    //window.location = inbox_location + page; 
                 }
                 e.preventDefault();
             });
