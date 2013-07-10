@@ -21,7 +21,8 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
 
             var str = construct_query_string();
-            var inbox_location, page = '';
+            /*
+
             if(str.b == "inbox") { 
                 inbox_location = "/inbox/all";
             }
@@ -34,18 +35,17 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
                 inbox_location = "/inbox/filed/all";
             }
 
-            if(str.b == "delete") {
-                inbox_location = "/inbox/deleted/all";
-            }
+            */
 
+            var inbox_location, page = '';
+            inbox_location = "/inbox/deleted/all";
             if('p' in str) {
                 page = "?page=" + str.p;
             }
-
-            console.log(inbox_location)
-            console.log(page)
-
-            //window.location = inbox_location + page; 
+            if(status_change == 'delete') {
+                window.location = inbox_location + page;     
+            }
+            
         }
     }
 
