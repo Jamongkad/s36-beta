@@ -42,6 +42,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
             if('p' in str) {
                 page = "?page=" + str.p;
             }
+            console.log(status_change);
             if(status_change == 'delete') {
                 window.location = inbox_location + page;     
             }
