@@ -15,21 +15,37 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , status: status_change
           , catid: current_cat_id
         }
- 
+
         if(status_change.status == 'delete') {
             if(confirm("Are you sure you want to delete this feedback?")) {
-
-                FeedbackControlService.change_status(status_change, true);     
-
                 if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
-                    var str = construct_query_string();
+
+                    var str = construct_query_string();         
+
+                    if(str.b == "inbox") { 
+                        inbox_location = "/inbox/all";
+                    }
+
+                    if(str.b == "publish") { 
+                        inbox_location = "/inbox/published/all";
+                    }
+
+                    if(str.b == "fileas") { 
+                        inbox_location = "/inbox/filed/all";
+                    }
+
+                    if(str.b == "delete") { 
+                        inbox_location = "/inbox/deleted/all";
+                    }
+
                     var inbox_location, page = '';
-                    inbox_location = "/inbox/deleted/all";
+                    inbox_location = 
                     if('p' in str) {
                         page = "?page=" + str.p;
-                    } 
-                    window.location = inbox_location + page;       
-                }
+                    }
+
+                    window.location = inbox_location + page;                  
+                } 
             } 
         } else {
             FeedbackControlService.change_status(status_change, true);     
