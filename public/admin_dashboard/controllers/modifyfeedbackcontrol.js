@@ -40,9 +40,9 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
                     var inbox_location, page = '';
                     inbox_location = 
-                    if('p' in str) {
-                        page = "?page=" + str.p;
-                    }
+                    
+                    page = "?page=" + str.p;
+                   
 
                     window.location = inbox_location + page;                  
                 } 
