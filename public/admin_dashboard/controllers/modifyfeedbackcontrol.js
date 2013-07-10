@@ -18,6 +18,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
         if(status_change.status == 'delete') {
             if(confirm("Are you sure you want to delete this feedback?")) {
+                FeedbackControlService.change_status(status_change, true);     
                 if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
 
                     var str = construct_query_string();         
