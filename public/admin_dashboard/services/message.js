@@ -33,6 +33,7 @@ angular.module('MessageService', [])
                 shared_service.message = data;
             }
         });
+        this.register_reply_message();
     }
 
     shared_service.fetch_messages = function(msgtype) {
@@ -104,10 +105,6 @@ angular.module('MessageService', [])
           , data: { email: data }
           , success: success_callback
         });       
-    }
-
-    shared_service.register_request_message = function()  {
-        $rootScope.$broadcast('fetchRequestMessage');
     }
 
     shared_service.register_reply_message = function()  {

@@ -4,6 +4,8 @@ function SettingReplyCtrl($scope, MessageService) {
     $scope.msgs;
     $scope.type;
 
+    MessageService.get_messages('msg');
+
     $scope.get_msgs = function() {
         return $scope.msgs;   
     };
@@ -83,4 +85,9 @@ function SettingReplyCtrl($scope, MessageService) {
         span.show();
         $event.preventDefault();
     };
+
+    $scope.$on('fetchReplyMessage', function() {
+        $scope.msgs = MessageService.message;
+    });
+
 }
