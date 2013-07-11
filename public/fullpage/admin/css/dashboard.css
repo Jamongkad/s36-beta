@@ -1140,14 +1140,14 @@
 		line-height:1.2em;
 		font-style:normal;
 		margin-left:40px;
-		padding-top:7px;
+		/*padding-top:7px;*/
 	}
 	.display-feedback-block .admin-comment-block{
 		margin-left: 0px;
 		margin-right: 0px;
 	}
 	.display-feedback-block .feedback-options{
-		margin-top:0px;
+		margin-top: 5px;
 		margin-left:0px;
 		margin-right:0px;
 		background:none;
@@ -1197,6 +1197,72 @@
 		padding-left:17px;
 		padding-top:2px;
 	}
+    .display-feedback-block .rating-stat{
+        color: #4ea6c6;
+        font-size: 11px;
+        position: absolute;
+        top: -15px;
+        right: 0px;
+    }
+    .display-feedback-block .custom-meta-data .meta-data{float:left;margin-right:10px;}
+    .display-feedback-block .custom-meta-data .meta-name{color:#838383;font-weight:bold;}
+    .display-feedback-block .custom-meta-data .meta-value{color:#d74700;font-weight:bold;}
+    .display-feedback-block .author-location{
+        font-weight: bold;
+        float:left;
+    }
+    .display-feedback-block .flag {
+        width: 16px;
+        height: 11px;
+        background:url(/img/flags.jpg) no-repeat;
+        float: left;
+        /*margin-left:5px;*/
+    }
+    .display-feedback-block .flag-ph {background-position: -160px -110px}
+    .display-feedback-block .additional-contents{
+        margin-top:10px;
+    }
+    .display-feedback-block .uploaded-images{
+        height:65px;
+    }
+    .display-feedback-block .uploaded-image{
+        width:33%;
+        float:left;
+        overflow:hidden;
+        height:60px;
+    }
+    .display-feedback-block .padded-5{
+        padding:5px;
+    }
+    .display-feedback-block .form-video-meta{
+        overflow:hidden;
+    }
+    .display-feedback-block .video-thumb{
+        float:left;
+        width:100px;
+    }
+    .display-feedback-block .video-circle{
+        background:url(/fullpage/common/img/video-play-circle.png) no-repeat;
+        width:25px;
+        height:25px;
+        position:absolute;
+        z-index:100;
+        top:50%;
+        margin-top:-12px;
+        left:50%;
+        margin-left:-12px;
+        cursor:pointer;
+    }
+    .display-feedback-block .video-details{
+        margin-left:110px;
+    }
+    .display-feedback-block .video-details h3{
+        font-weight:bold;
+        margin-bottom:5px;
+    }
+    .display-feedback-block .video-details p{
+        font-size:11px;
+    }
 	/* skin for the custom field plugin */
 	#form-builder{
 		padding-top:10px;
