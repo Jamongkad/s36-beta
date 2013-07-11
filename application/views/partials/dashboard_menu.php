@@ -12,7 +12,7 @@
         <li><a href="javascript:;">Settings</a>
             <ul class="submenu">
                 <li class="first-menu-subchild"><a href="/settings/background">Background</a></li>
-                <li><a href="/settings/others">Feedback</a></li>                                
+                <li><a href="/settings/feedback">Feedback</a></li>                                
                 <li><a href="/settings/layout">Layout</a></li>                                
                 <li class="last-menu-subchild"><a href="/settings/others">Other Settings</a></li>                                
             </ul>
