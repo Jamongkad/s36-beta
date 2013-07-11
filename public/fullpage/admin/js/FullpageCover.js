@@ -13,6 +13,7 @@ var FullpageCover = function(){
         || Apply the fileupload plugin for the cover photo
         ==========================================*/
         $('#cv_image').fileupload({
+            dropZone: null,
             dataType: 'json',
             dropZone: null,
             add: function(e, data){
@@ -115,6 +116,7 @@ var FullpageCover = function(){
         || Apply the fileupload plugin for the company logo.
         ==========================================*/
         $('#company_logo').fileupload({
+            dropZone: null,
             dataType: 'json',
             dropZone: null,
             add: function(e, data){

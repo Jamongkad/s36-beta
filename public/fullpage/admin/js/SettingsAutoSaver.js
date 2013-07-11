@@ -22,32 +22,6 @@ var SettingsAutoSaver = new function(){
         // start the autosave.
         setInterval('SettingsAutoSaver.save()', this.interval);
         
-        
-        // background section events.
-        $('#bg_image').change(function(){
-            // SettingsAutoSaver.set_data() of this element is in fileupload().
-        });
-        
-        $('.bgPos').click(function(){
-            SettingsAutoSaver.set_data('page_bg_position', $(this).attr('val'));
-        });
-        
-        $('.bgRepeat').click(function(){
-            SettingsAutoSaver.set_data('page_bg_repeat', $(this).attr('val'));
-        });
-        
-        $('.patternItem').click(function(){
-            $('#background_pattern').val($(this).attr('id'));
-            SettingsAutoSaver.set_data('background_pattern', $(this).attr('id'));
-            SettingsAutoSaver.set_data('page_bg_position', 'left');
-            SettingsAutoSaver.set_data('page_bg_repeat', 'repeat');
-        });
-        
-        $('.backgroundColorPicker').on('change', function(){
-            SettingsAutoSaver.set_data('page_bg_color', $(this).val());
-            SettingsAutoSaver.set_data('page_bg_color_opacity', $(this).attr('data-opacity'));
-        });
-        
         // display section events.
         $('.tickerbox').click(function(){
             // i'm on the right track, baby i was born this way!
@@ -71,19 +45,6 @@ var SettingsAutoSaver = new function(){
         $('.btnFontColor').on('change', function(){
             SettingsAutoSaver.set_data('button_font_color', $(this).val());
         });
-
-        // layout section events
-        $('.layout-list li').click(function(){
-            $('.layout-list li').each(function(){
-                $(this).removeClass('selected');
-            });
-            $(this).addClass('selected');
-            $('#selectedLayout').val(this.id);
-        });
-        $('#chooseLayout').click(function(){
-            $('#maskDisabler').fadeIn();
-            SettingsAutoSaver.set_data('theme_name', $('#selectedLayout').val());
-        });
         
         // social media section events.
         $('.social_url').blur(function(){
@@ -103,7 +64,7 @@ var SettingsAutoSaver = new function(){
                     SettingsAutoSaver.set_data('facebook_url', url);
                     $('.social-icon.fb a').attr('href', url);
                     $('.social-icon.fb').show();
-                    $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                    //$('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
                 }else if( url.match(fb_regex) == null ){
                     $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
                 }
@@ -118,7 +79,7 @@ var SettingsAutoSaver = new function(){
                     SettingsAutoSaver.set_data('twitter_url', url);
                     $('.social-icon.tw a').attr('href', url);
                     $('.social-icon.tw').show();
-                    $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                    //$('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
                 }else if( url.match(tw_regex) == null ){
                     $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
                 }
@@ -192,9 +153,6 @@ var SettingsAutoSaver = new function(){
                 }
                 
                 result = $.parseJSON(result);
-                if(undefined != result.theme_name){
-                    layoutChanged = true;
-                }
             }
         });
         
@@ -208,10 +166,5 @@ var SettingsAutoSaver = new function(){
         
         // hide notif.
         setTimeout('Helpers.hide_notification()', 1000);
-        if(layoutChanged==true){
-            window.location.hash    = "#3";
-            window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
-        }
-        
     }
 }

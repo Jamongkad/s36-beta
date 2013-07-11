@@ -8,13 +8,41 @@ $company_name = Config::get('application.subdomain');
 $tab_themes  = Helpers::$tab_themes;
 
 return array(
-    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
+    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted, $widget_themes) {
         $widgets = $dbw->fetch_widgets_by_company();
         $hosted->set_hosted_settings(Array('company_id'  =>  S36Auth::user()->companyid));
-            
+        
+        $widgetkey = $widgets->form_widgets->widget->widgets[0]->widgetkey;
+        $wl = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
+        $widget = $wl->widget_obj;
+
+        $widget_themes->build_menu_structure();
+
+        if($widget->widgettype == 'display') {
+            $edit_view = 'feedsetup/feedsetup_editdisplay_view';
+            $theme_type = $widget->theme_type;
+        } else { 
+            $edit_view = 'feedsetup/feedsetup_editform_view';
+            $theme_type = explode("-", $widget->widgetattr->theme_type);
+            $theme_type = $theme_type[1];
+        }
+        
+        return View::of_layout()->partial('contents', $edit_view, Array( 
+            'company_id'      => S36Auth::user()->companyid
+          , 'widget'          => $widget
+          , 'iframe_code'     => $wl->load_iframe_code()
+          , 'js_code'         => $wl->load_widget_init_js_code()
+          , 'themes'          => $widget_themes->perform()->collection
+          , 'themes_parent'   => $widget_themes->get_parent($theme_type)
+          , 'main_themes'     => $widget_themes->main_themes()
+        ));
+
+        /*
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_index_view', Array(
             'widgets' => $widgets, 'hosted_full_page' => null
         ));
+        */
+
     }),
 
     'GET /feedsetup/widget_selection' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) { 
@@ -157,7 +185,8 @@ return array(
         return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  
     }),
     
-    'POST /feedsetup/save_form_widget' => function() {   
+    'POST /feedsetup/save_form_widget' => function() use($dbw, $hosted) {   
+        /*
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
         $form = new Widget\Entities\FormWidget;
@@ -165,7 +194,22 @@ return array(
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
-        ));   
+        ));
+        */
+        $widgets = $dbw->fetch_widgets_by_company();
+        $hosted->set_hosted_settings(Array('company_id'  =>  S36Auth::user()->companyid));
+        
+        $widgetkey = $widgets->form_widgets->widget->widgets[0]->widgetkey;
+        $wl = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
+        $widget = $wl->widget_obj;
+        
+        echo json_encode(Array(
+            'submit' => true
+            ,'widgetkey' => $widget->widgetkey
+            ,'widgetstoreid' => $widget->widgetstoreid
+            ,'company_id' => $widget->companyid
+        ));
+
     },
 
     'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     

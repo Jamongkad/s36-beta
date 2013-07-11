@@ -9,6 +9,10 @@
 <?=Form::hidden('tab_type', $widget->widgetattr->tab_type, Array('id' => 'selected-tab'))?>
 <?=Form::hidden('embed_type', 'form')?>
 
+<?=Form::hidden('theme_name', $widget->widgetattr->theme_name)?>
+<?=Form::hidden('submit_form_text', '')?>
+<?=Form::hidden('submit_form_question', '')?>
+
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
@@ -17,7 +21,8 @@
 
 <div id="theFormSetup" class="dashboard-page">
 <h1>Form Setup</h1>
-
+<?php
+/* --as instructed by ryan, remove step 1 and 2--
 <div class="dashboard-box">
     <div class="dashboard-head">
       <span class="dashboard-title">Step 1 :</span> <span class="dashboard-subtitle">Choose a name for your form</span>
@@ -68,15 +73,14 @@
         </div>
     </div>
 </div>
+*/ ?>
 <div class="dashboard-box">
     <div class="dashboard-head">
-      <span class="dashboard-title">Step 3 :</span> <span class="dashboard-subtitle">Create custom fields for your form (optional)</span>
+      <span class="dashboard-title">Create custom fields for your form (optional)</span> <span class="dashboard-subtitle"></span>
     </div>
     <div class="dashboard-body">
         <div class="dashboard-content">
-            <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer. 
-               Or maybe you might want them to specify their gender. With custom fields, you have the flexibility to 
-               collect information in addition to your customer's feedback.</p>
+            <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer, or maybe you might want them to specify their gender. With custom fields, you have the flexibility to collect information in addition to your customer's feedback.</p>
             <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" id="form-builder" class="grids"></div>
         </div>
     </div>

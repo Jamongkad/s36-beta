@@ -5,9 +5,14 @@
     </div> <!-- end of #fadedContainer -->
 </div> <!-- end of #mainWrapper -->
 
-</body>
-</html>
-
+<?=HTML::script('/fullpage/admin/js/Settings.js')?>
+<?=HTML::script('/fullpage/admin/js/SettingsAutoSaver.js')?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		Settings.init();
+	  SettingsAutoSaver.init();
+	});
+</script>
 <?php
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +54,9 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('js/jquery.serializeform.js')?>
 <?=HTML::script('js/jquery.formbuilder.js')?>
 <?=HTML::script('js/head.min.js')?>
+<script text="text/javascript">
+   head.js('/js/jquery.form.js');
+   head.js('/js/inbox/Status.js');
+</script>
+</body>
+</html>

@@ -12,16 +12,21 @@ $groups = array(
         'files' => array(
              '/js/jquery-ui-1.8.24.custom.min.js'
             ,'/js/helpers.js'
-            ,'/js/jquery.iframe-transport.js'
             ,'/js/jquery.ui.widget.js'
+            ,'/js/jquery.iframe-transport.js'
             ,'/js/jquery.fileupload.js'
             ,'/js/jquery.raty.min.js'
-            ,'/js/angular.compilehtml.js'
             ,'/js/date.js'
             ,'/js/inbox/Status.js'
             ,'/js/jquery-autogrow-textarea.js'
             ,'/js/link.preview.js'
             
+        )
+     ),
+     'Global.css' => array(
+        'type' =>'css',
+        'files'=>array(
+             '/css/zebra_pagination.css'
         )
      ),
      'FullpageCommon.js' => array(
@@ -50,13 +55,14 @@ $groups = array(
      'FullpageAdmin.js' => array(
         'type' =>'js',
         'files'=>array(
-            '/fullpage/admin/js/jcycle.js'
+            //'/fullpage/admin/js/jcycle.js'
+             '/fullpage/admin/js/S36FullpageAdmin.js'
             ,'/fullpage/admin/js/jquery.jcarousel.min.js'
             ,'/fullpage/admin/js/minicolors.js'
             ,'/fullpage/admin/js/colors.min.js'
             ,'/fullpage/admin/js/jquery.mousewheel.min.js'
             ,'/fullpage/admin/js/jquery.scroll.js'
-            ,'/fullpage/admin/js/S36FullpageAdmin.js'
+            ,'/admin_dashboard/dashboard.js'
         )
      ),
      /* Weird Angular JS conflicts arise when minified
@@ -76,6 +82,7 @@ $groups = array(
              '/fullpage/admin/css/S36FullpageAdmin.css'
             ,'/fullpage/admin/css/jcarousel.skin.css'
             ,'/fullpage/admin/css/minicolors.css'
+            ,'/fullpage/admin/css/dashboard.css'
         )
      ),
 );

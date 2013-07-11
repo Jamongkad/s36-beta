@@ -291,7 +291,7 @@
 	color:#FFF;
 }
 .minicolors-swatch{
-	width:53px;
+	/*width:53px;*/
 	height:42px;
 }
 
@@ -580,13 +580,14 @@ ul.patternList li div.active{
 	text-align:center;
 	display:inline;
 	float:left;
-	width:145px;
+	width:228px;
 	cursor:pointer;
 }
 .layout-list li h3{
 	font-weight:bold;
 	margin-bottom:6px;
 	color:#3e3e3e;
+	font-size: 13px;
 }
 .layout-list li:hover,.layout-list li.selected{
 	background:#f4f9fa
@@ -595,7 +596,7 @@ ul.patternList li div.active{
 	color:#fe5100
 }
 .layout-list .layout-thumb{
-	height:137px;
+	/*height:137px;*/
 }
 /* quick inbox widget styles */
 #quickInboxWidget{
