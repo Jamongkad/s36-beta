@@ -1,4 +1,4 @@
-angular.module('Message', [])
+angular.module('MessageService', [])
 .service('MessageService', function($rootScope) {
 
     var shared_service = {};
