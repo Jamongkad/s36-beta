@@ -178,7 +178,7 @@ return array(
         
         /* stash this in a service somewhere...too much shit happening */
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
-        $feedback            = $addfeedback->perform();                
+        $feedback            = $addfeedback->perform();
 
         $company_info         = $company->get_company_info($company_name);
         $hosted_settings_info = $hosted_settings->fetch_hosted_settings($company_info->companyid);

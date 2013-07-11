@@ -1287,7 +1287,7 @@
 	#theDashboardMenu ul.submenu{
 		position:absolute;
 		width:140px;
-		right:0px;
+		/*right:0px;*/
 		z-index:1;
 		top:40px;
 		display:none;

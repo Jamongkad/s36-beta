@@ -321,6 +321,7 @@ select.regular-custom-field{
     max-height:68px;
 }
 .form-video-thumbs .video-thumb{
+    margin-right: 10px;
     float:left;
     width:80px;
     overflow:hidden;
@@ -345,7 +346,8 @@ select.regular-custom-field{
     
 }
 .form-video-thumbs .video-details{
-    margin-left:90px;
+    margin-left: 0px;
+    /*margin-left:90px;*/
     margin-top:4px;
 }
 .form-video-thumbs .video-details h3{

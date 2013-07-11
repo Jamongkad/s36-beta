@@ -8,10 +8,10 @@
         <li<?=($regex->deleted ? ' class="active-menu"' : null)?>><a href="/inbox/deleted/all">Deleted</a></li>
         <li<?=($regex->feedsetup ? ' class="active-menu"' : null)?>><a href="/feedsetup">Feedback Setup</a></li>
         <li<?=($regex->dashboard ? ' class="active-menu"' : null)?>><a href="/dashboard">Reports</a></li>
-        <li<?=($regex->settings ? ' class="active-menu"' : null)?>><a href="/settings/display">Display Setup</a></li>
         <li><a href="javascript:;">Settings</a>
             <ul class="submenu">
-                <li class="first-menu-subchild"><a href="/settings/background">Background</a></li>
+                <li class="first-menu-subchild"><a href="/settings/display">Display Setup</a></li>
+                <li><a href="/settings/background">Background</a></li>
                 <li><a href="/settings/layout">Layout</a></li>                                
                 <li class="last-menu-subchild"><a href="/settings/others">Other Settings</a></li>                                
             </ul>

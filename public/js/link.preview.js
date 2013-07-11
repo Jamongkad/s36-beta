@@ -48,13 +48,17 @@
 					       'desc => ' + answer.description + '\n\n' +
 					       'images => ' + answer.images + '\n\n' + 
 					       'video => ' + answer.video + '\n\n';
-				      var link_image = answer.images.split('|');
-				      $('#link-data #hasLink').val(1);
-				      $('#link-data #link-title').val(answer.title);
-				      $('#link-data #link-description').val(answer.description);
-				      $('#link-data #link-image').val(link_image[0]);
-				      $('#link-data #link-url').val(answer.url);
-				      $('#link-data #link-video').val(answer.video);
+					  	
+						$('#link-data #hasLink').val(1);
+						$('#link-data #link-title').val(answer.title);
+						$('#link-data #link-description').val(answer.description);
+						$('#link-data #link-url').val(answer.url);
+						$('#link-data #link-video').val(answer.video);
+						
+						if( typeof(answer.images) == 'string' ){
+							var link_image = answer.images.split('|');
+							$('#link-data #link-image').val(link_image[0]);
+						}
 
 						$('.form-video-thumbs')
 							.html(
@@ -62,9 +66,11 @@
 								.append($('<div />')
 									.addClass('form-video-meta')
 									.append(
-										$('<div />')
-											.addClass('video-thumb e_vid_check')
-											.append($('<img />').attr({'src':link_image[0],'width':'100%'}))
+										( typeof(answer.images) != 'string' ? '' :
+											$('<div />')
+												.addClass('video-thumb e_vid_check')
+												.append($('<img />').attr({'src':link_image[0],'width':'100%'}))
+										)
 									)
 									.append(
 										$('<div />')

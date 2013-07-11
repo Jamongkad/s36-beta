@@ -196,9 +196,15 @@ $(document).keypress(function(event){
                 async: false,
                 type: "POST",
                 url: "/submit_feedback",
-                dataType: "json",
+                //dataType: "json",
                 data: form_data, 
-                success: function(result) {
+                success: function(result){
+                    // somewhere from /submit_feedback, '{"saved":0}' gets echoed.
+                    // it causes bug in the result. can't find it. just have to remove it here.
+                    result = result.replace('{"saved":0}', '');
+                    
+                    // also we had problem with dataType: "json". just replaced it with this.
+                    result = $.parseJSON(result);
                     
                     //  if there's no error_msg in result, alright, everything's fine.
                     if( typeof(result.error_msg) == 'undefined' ){
@@ -1029,6 +1035,7 @@ $(document).keypress(function(event){
         $('#recommend-checkbox').addClass('checked');
         $('#uploaded_images_preview').html('');
         $('#uploaded_video_preview').html('');
+        $('.loading-box').hide();
         
         // reset metadata.
         $('.form-custom-fields input:text').each(function(){
