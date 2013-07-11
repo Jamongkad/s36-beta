@@ -5,9 +5,9 @@ function SettingReplyCtrl($scope, MessageService) {
     $scope.type;
 
     MessageService.get_messages('msg');
+    MessageService.register_reply_message();
 
     $scope.get_msgs = function() {
-        $scope.msgs = MessageService.message;
         return $scope.msgs;   
     };
 
@@ -30,7 +30,8 @@ function SettingReplyCtrl($scope, MessageService) {
             $scope.form_msg_text = null;
         }
         */
-        alert("Mathew is awesome!");
+        console.log($scope.form_msg_text);
+        console.log('msg');
         $event.preventDefault();
     };
 
