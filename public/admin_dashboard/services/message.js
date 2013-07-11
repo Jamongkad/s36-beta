@@ -31,8 +31,6 @@ angular.module('MessageService', [])
           , data: { "type": type }
           , success: function(data) {
                 shared_service.message = data;
-                console.log(data);
-                shared_service.register_reply_message();
             }
         });
     }
