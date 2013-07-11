@@ -30,6 +30,9 @@ function SettingReplyCtrl($scope, MessageService) {
             $scope.form_msg_text = null;
         }
         */
+        MessageService.get_messages('msg');
+        MessageService.register_reply_message();
+
         console.log($scope.form_msg_text);
         console.log('msg');
         $event.preventDefault();
@@ -91,8 +94,6 @@ function SettingReplyCtrl($scope, MessageService) {
     $scope.$on('fetchReplyMessage', function()  {
         $scope.$apply(function() {
             $scope.msgs = MessageService.message;
-            console.log(MessageService.message);
         })
     });
-
 }
