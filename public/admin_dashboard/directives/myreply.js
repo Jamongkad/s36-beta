@@ -51,7 +51,7 @@ angular.module('reply', [])
             $(".reply_send_button").val("Send");
 
             MessageService.fetch_messages('msg');     
-            MessageService.register_request_message();
+            MessageService.register_reply_message();
  
             e.preventDefault();
         });
