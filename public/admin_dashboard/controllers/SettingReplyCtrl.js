@@ -11,11 +11,11 @@ function ParentCtrl($scope) {
     $scope.add_msg = function($event) {
 
         if(!$scope.form_msg_text) {
-            alert("cannot be blank!");
+            alert("Please provide a reply message.");
         } else { 
             $.ajax({
                 type: 'POST'
-              , url: 'message/save_msg'     
+              , url: '/message/save_msg'     
               , dataType: 'json'
               , data: {"msg": $scope.form_msg_text, "type": $scope.type}
               , success: function(data) {
@@ -31,7 +31,7 @@ function ParentCtrl($scope) {
 
     $scope.delete_msg = function(id, $event) {
         $.ajax({
-            url: 'message/delete_msg'
+            url: '/message/delete_msg'
           , type: 'POST' 
           , data: {"id": id, "type": $scope.type}
           , success: function() { $("div#" + id + ".grids").remove(); }
@@ -46,7 +46,7 @@ function ParentCtrl($scope) {
 
         console.log(id);
 
-        var input = $("input#" + id + ".regular-text");
+        var input = $("input#" + id + ".dashboard-text");
         var span = $("span#" + id + ".replymsg-text");
 
         me.hide();
@@ -62,12 +62,12 @@ function ParentCtrl($scope) {
         var me = $($event.target);
         var sib = me.prev();
  
-        var input = $("input#" + id + ".regular-text");
+        var input = $("input#" + id + ".dashboard-text");
         var span = $("span#" + id + ".replymsg-text");
 
         $.ajax({
             type: 'POST'
-          , url: 'message/update_reply_msg' 
+          , url: '/message/update_reply_msg' 
           , dataType: 'json'
           , data: {"msg": input.val(), "id": id, "type": $scope.type}
           , success: function(data) {

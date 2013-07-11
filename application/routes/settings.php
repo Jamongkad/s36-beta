@@ -28,6 +28,21 @@ return array (
         ));
     }),
 
+    'GET /settings/feedback' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category, $company, $hosted_settings) {
+        $user               = S36Auth::user();
+        $company_name       = Config::get('application.subdomain');
+        $company_info       = $company->get_company_info($company_name);
+
+        //get hosted settings
+        $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
+
+        return View::of_layout()->partial('contents', 'settings/settings_feedback_view', Array(
+            'user'              => $user
+          , 'category'          => $category->pull_site_categories()
+          , 'hosted_settings'   => $hosted_settings->hosted_settings()
+        ));
+    }),
+
     'GET /settings/background' => Array('name' => 'background_settings', 'before' => 's36_auth', 'do' => function() use($company, $hosted_settings, $fullpage){
         
         $company_name	= Config::get('application.subdomain');
@@ -82,7 +97,12 @@ return array (
     },
 
     'GET /settings/delete_ctgy/([0-9]+)' => function($id) use($category) { 
-        return $category->delete_category_name($id);
+        $category->delete_category_name($id);
+        return json_encode(array(
+             'action'=>'deleted'
+            ,'success'=>true
+            ,'deleted_id'=>$id
+        ));
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  
@@ -91,7 +111,7 @@ return array (
         return $category->write_category_name($ctgy_nm, $companyId);
     },
 
-    'POST /settings/savesettings' => function() {
+    'POST /settings/save_feedback_settings' => function() {
         $company = new Company\Repositories\DBCompany;
         $hosted_settings = new Hosted\Repositories\DBHostedSettings;
         $post = (object)Input::get();
@@ -120,7 +140,7 @@ return array (
         if($forward_to = Input::get('forward_to')) {
             return Redirect::to($forward_to);
         } else { 
-            return Redirect::to('settings');
+            return Redirect::to('settings/feedback');
         }         
     },
 

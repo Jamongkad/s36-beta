@@ -1674,6 +1674,12 @@
     display:block;
     width:100%;
 }
+.form-list-style{
+    list-style:none;
+}
+.form-list-style li{
+    padding:5px 2px;
+}
 
 .checky-box-container {
     text-align: center;
@@ -1904,7 +1910,3 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     background-color: #FFFFE0;
 }
 .published {}
-
-.form-setup-fields .form-setup-elem .g2of3, .form-setup-fields .form-setup-elem .g1of3{
-    width:100%;
-}
