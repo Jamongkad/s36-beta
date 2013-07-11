@@ -240,9 +240,13 @@ var FullpageCover = function(){
         if( edit_mode == true ){
             $('#changeCoverButtonIcon').hide();
             $('#coverActionButtons').show();
+            $('.company-rating').hide();
+            $('.cover-shadow').hide();
         }else if( edit_mode == false ){
             $('#changeCoverButtonIcon').show();
             $('#coverActionButtons').hide();
+            $('.company-rating').show();
+            $('.cover-shadow').show();
         }
     }
     

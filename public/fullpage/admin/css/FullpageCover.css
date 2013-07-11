@@ -90,7 +90,7 @@
     position:absolute;
     right:10px;
     bottom:10px;
-    z-index: 300
+    z-index: 400;
     text-align: right;
 }
 #coverActionButtons ul,
