@@ -92,14 +92,4 @@ function SettingReplyCtrl($scope, $injector, MessageService) {
     $scope.type = type;
 }
 
-function SettingRequestCtrl($scope, $injector, MessageService) { 
-    $injector.invoke(ParentCtrl, this, {$scope: $scope});
-    
-    var type = "rqs";
-    MessageService.get_messages(type);
-    $scope.msgs = MessageService.message;
-    $scope.type = type;
-}
-
-SettingReplyCtrl.prototype = Object.create(ParentCtrl.prototype);
-SettingRequestCtrl.prototype = Object.create(ParentCtrl.prototype);
+SettingReplyCtrl.prototype = Object.create(ParentCtrl.prototype); 
