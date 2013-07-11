@@ -17,7 +17,6 @@ $groups = array(
             ,'/js/jquery.fileupload.js'
             ,'/js/jquery.raty.min.js'
             ,'/js/date.js'
-            ,'/js/inbox/Status.js'
             ,'/js/jquery-autogrow-textarea.js'
             ,'/js/link.preview.js'
             
