@@ -91,6 +91,7 @@ function SettingReplyCtrl($scope, MessageService) {
     $scope.$on('fetchReplyMessage', function()  {
         $scope.$apply(function() {
             $scope.msgs = MessageService.message;
+            console.log(MessageService.message);
         })
     });
 
