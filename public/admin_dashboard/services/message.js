@@ -28,7 +28,7 @@ angular.module('MessageService', [])
           , dataType: 'json'
           , async: false
           , url: '/message/get_msgs'
-          , data: {"type": type}
+          , data: { "type": type }
           , success: function(data) {
                 shared_service.message = data;
                 console.log(data);

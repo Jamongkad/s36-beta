@@ -7,6 +7,7 @@ function SettingReplyCtrl($scope, MessageService) {
     MessageService.get_messages('msg');
 
     $scope.get_msgs = function() {
+        $scope.msgs = MessageService.message;
         return $scope.msgs;   
     };
 
