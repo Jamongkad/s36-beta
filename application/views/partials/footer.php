@@ -56,6 +56,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('js/head.min.js')?>
 <script text="text/javascript">
    head.js('/js/jquery.form.js');
+   head.js('/admin_dashboard/Settings.js');
 </script>
 </body>
 </html>

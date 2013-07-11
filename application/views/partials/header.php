@@ -5,8 +5,8 @@
 	<title>FDBack - Get amazing feedback for your brand and business.</title>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/jquery-ui.min.js"></script>
         <?=HTML::script('/js/jquery.tinymce.js')?>
         <?=HTML::script('/js/jquery.cycle.all.min.js')?>
  
