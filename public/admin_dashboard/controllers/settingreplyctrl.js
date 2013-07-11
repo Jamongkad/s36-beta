@@ -12,27 +12,16 @@ function SettingReplyCtrl($scope, MessageService) {
     };
 
     $scope.add_msg = function($event) {
-        /* 
+
         if(!$scope.form_msg_text) {
             alert("Please provide a reply message.");
         } else { 
-            $.ajax({
-                type: 'POST'
-              , url: '/message/save_msg'     
-              , dataType: 'json'
-              , data: {"msg": $scope.form_msg_text, "type": $scope.type}
-              , success: function(data) {
-                    $scope.$apply(function(){
-                        $scope.msgs.push(data);
-                    }) 
-                }
-            })
+            MessageService.save({'text': $scope.form_msg_text, "msgtype": "msg"});
+            MessageService.get_messages('msg')
+            MessageService.register_reply_message();
             $scope.form_msg_text = null;
         }
-        */
-        MessageService.save({'text': $scope.form_msg_text, "msgtype": "msg"});
-        MessageService.get_messages('msg')
-        MessageService.register_reply_message();
+
         $event.preventDefault();
     };
 
