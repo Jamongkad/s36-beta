@@ -19,7 +19,6 @@
                         <li><a href="/dashboard">My Dashboard</a></li>
                         <li><a href="/admin">My Account</a>
                             <ul>
-                                <li><a href="/settings">My Settings</a></li>
                                 <li><a href="http://36stories.freshdesk.com/">Help</a></li>
                                 <li> 
                                      <a href="/logout?forward_to=me">Log Out</a>
