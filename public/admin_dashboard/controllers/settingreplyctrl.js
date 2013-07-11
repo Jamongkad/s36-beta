@@ -1,5 +1,5 @@
 //Move DOM changing elements to Directive bitch
-function SettingReplyCtrl($scope, MessagesService) {
+function SettingReplyCtrl($scope, MessageService) {
 
     $scope.msgs;
     $scope.type;
