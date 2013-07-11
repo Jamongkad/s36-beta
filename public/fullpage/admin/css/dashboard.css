@@ -1904,3 +1904,7 @@ ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
     background-color: #FFFFE0;
 }
 .published {}
+
+.form-setup-fields .form-setup-elem .g2of3, .form-setup-fields .form-setup-elem .g1of3{
+    width:100%;
+}
