@@ -30,7 +30,7 @@ function SettingReplyCtrl($scope, MessageService) {
             $scope.form_msg_text = null;
         }
         */
-        MessageService.save({'msg': $scope.form_msg_text, "type": "msg"});
+        MessageService.save({'text': $scope.form_msg_text, "msgtype": "msg"});
         MessageService.get_messages('msg')
         MessageService.register_reply_message();
         $event.preventDefault();
