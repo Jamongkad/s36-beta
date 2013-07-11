@@ -9,7 +9,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.add_msg = function($event) {
-        
+        /* 
         if(!$scope.form_msg_text) {
             alert("Please provide a reply message.");
         } else { 
@@ -26,6 +26,8 @@ function SettingReplyCtrl($scope) {
             })
             $scope.form_msg_text = null;
         }
+        */
+        alert("Mathew is awesome!");
         $event.preventDefault();
     };
 
