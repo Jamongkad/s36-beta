@@ -34,7 +34,7 @@ function SettingReplyCtrl($scope, MessageService) {
     };
 
     $scope.update_msg = function(id, $event) {
-
+        /*
         var me = $($event.target);
         var sib = me.prev();
  
@@ -56,6 +56,7 @@ function SettingReplyCtrl($scope, MessageService) {
         input.hide();
         span.show();
         $event.preventDefault();
+        */
     };
 
     $scope.$on('fetchReplyMessage', function()  {
