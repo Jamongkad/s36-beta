@@ -65,12 +65,16 @@ class SubmissionService {
                     $redis->hmset("$company_name:feedback_count", "autopost_count", $feedbackcount);
                     $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:autopost_newfeedback") );
                 } else { 
+                    
+                    Helpers::dump("Autopost enabled but this guy didnt make the cut");
+                    
                     $redis->sadd("$company_name:new_feedback", $feedback_id);
                     $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
                     $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
                     $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:newfeedback") );
                 }
             } else { 
+                Helpers::dump("Autopost disabled");
                 $redis->sadd("$company_name:new_feedback", $feedback_id);
                 $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
                 $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
