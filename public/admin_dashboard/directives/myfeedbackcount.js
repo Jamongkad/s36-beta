@@ -31,9 +31,10 @@ angular.module('feedback', [])
       , link: function(scope, element, attrs) {
 
            var process = function(e) {
+               console.log("click");
                e.stopImmediatePropagation();
-               FeedbackService.set_inbox_as_read();
-               return false;
+               //FeedbackService.set_inbox_as_read();
+               e.preventDefault();
            };
 
            $(element).children().click(process);
