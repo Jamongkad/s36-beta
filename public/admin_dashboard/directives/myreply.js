@@ -185,9 +185,6 @@ angular.module('reply', [])
 .directive('editReplySettings', function() {
     return {
         restrict: 'A'     
-      , scope: {
-            msgid: '=id'   
-        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log("Martie is gay!");
