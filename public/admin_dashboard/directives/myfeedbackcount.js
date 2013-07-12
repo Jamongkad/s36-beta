@@ -6,13 +6,19 @@ angular.module('feedback', [])
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
             var type = $(element).attr('show');
-
-            console.log(type);
             
             if(feedback) {
-                if(feedback.msg) {
-                    $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
-                }   
+                if(type == 'msg') { 
+                    if(feedback.msg) {
+                        $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
+                    }   
+                }
+
+                if(type == 'msg_ap') { 
+                    if(feedback.msg_ap) {
+                        $(element).html("<sup class='count'>" + feedback.msg_ap + "</sup>");
+                    }   
+                }
             } else { 
                 $(element).html("");
             }
