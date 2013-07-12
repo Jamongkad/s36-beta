@@ -182,3 +182,14 @@ angular.module('reply', [])
         }
     }    
 })
+.directive('editReplySettings', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                alert("Martie is gay!");
+                e.preventDefault();
+            });
+        }
+    }    
+})
