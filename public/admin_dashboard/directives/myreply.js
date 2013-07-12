@@ -195,21 +195,28 @@ angular.module('reply', [])
                 var id = scope.msgid;   
                 var action = scope.action;
 
-                console.log(id);
-                console.log(action);
-                /*
                 var me = $(this);
-                var sib = me.next();
+                if(action == 'edit') {
+                    var sib = me.next();     
+                } else { 
+                    var sib = me.prev();     
+                }
+               
 
                 var input = $("input#" + id + ".dashboard-text");
                 var span = $("span#" + id + ".replymsg-text");
-
+                
                 me.hide();
                 sib.show();
-                input.show();
-                span.hide();
-                */
-                
+
+                if(action == 'edit') { 
+                    input.show();
+                    span.hide();                
+                } else { 
+                    input.hide();
+                    span.show();                
+                }
+               
                 e.preventDefault();
             });
         }
