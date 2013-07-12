@@ -222,19 +222,16 @@ return array(
         //delete feedback count calculator
         $type = Input::get('type');
         if($type == 'msg') {
-            //$inbox->edit("inbox:notification:newfeedback", "");
+            $redis->hdel("$company_name:feedback_count", "count");
+            $inbox->edit("inbox:notification:newfeedback", "");
             echo json_encode(Array('type' => $type));
         }
 
         if($type == 'msg_ap') { 
-            //$inbox->edit("inbox:notification:autopost_newfeedback", "");
+            $redis->hdel("$company_name:feedback_count", "autopost_count");
+            $inbox->edit("inbox:notification:autopost_newfeedback", "");
             echo json_encode(Array('type' => $type));
         }
-        /*
-        $redis->del("$company_name:feedback_count");
-        $redis->del("$company_name:new_feedback");
-        echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
-        */
     }),
 
     'POST /feedback/redis_feedback_process' => function() use ($inbox, $redis, $company_name) {
