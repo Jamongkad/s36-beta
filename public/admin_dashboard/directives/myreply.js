@@ -190,8 +190,19 @@ angular.module('reply', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log("Martie is gay!");
-                console.log(scope.msgid);
+            
+                var id = scope.msgid;   
+                var me = $(this);
+                var sib = me.next();
+
+                var input = $("input#" + id + ".dashboard-text");
+                var span = $("span#" + id + ".replymsg-text");
+
+                me.hide();
+                sib.show();
+                input.show();
+                span.hide();
+                
                 e.preventDefault();
             });
         }
