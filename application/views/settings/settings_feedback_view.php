@@ -115,7 +115,7 @@
                         </div>
                          <div class="g1of3">
                              <a href="#" class="" edit-reply-settings msgid="msg.id" action="edit">Edit Message</a> 
-                             <a href="#" class="" style="display:none" msgid="msg.id" update-reply-settings action="update" ng-click="update_msg(msg.id)">Update Message</a> | 
+                             <a href="#" class="" style="display:none" ng-click="update_msg(msg.id)" update-reply-settings msgid="msg.id" action="update">Update Message</a> | 
                              <a href="#" class="" ng-click="delete_msg(msg.id, $event)">Delete Message</a>
                         </div>
                     </div>
