@@ -35,6 +35,7 @@ function SettingReplyCtrl($scope, MessageService) {
 
     $scope.update_msg = function(id) {
         console.log("Updating");
+        console.log(id);
         /*
         var me = $($event.target);
         var sib = me.prev();
