@@ -16,7 +16,6 @@ function SettingReplyCtrl($scope, MessageService) {
         if(!$scope.form_msg_text) {
             alert("Please provide a reply message.");
         } else { 
-
             MessageService.save({'text': $scope.form_msg_text, "msgtype": "msg"});
             MessageService.get_messages('msg')
             MessageService.register_reply_message();

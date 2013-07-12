@@ -212,12 +212,18 @@ angular.module('reply', [])
                     input.show();
                     span.hide();                
                 } else { 
-                    input.hide();
-                    span.show();                
 
-                    var data = { 'msgtype': 'msg', 'id': id, 'text': input.val() };
-                    span.html(input.val());
-                    MessageService.save(data);
+                    if(input.val() == "") {
+                        alert("Cannot be blank!");
+                    } else {
+                        input.hide();
+                        span.show();                
+                        
+                        var data = { 'msgtype': 'msg', 'id': id, 'text': input.val() };
+                        span.html(input.val());
+                        MessageService.save(data);
+                    }
+
                 }
                
                 e.preventDefault();
