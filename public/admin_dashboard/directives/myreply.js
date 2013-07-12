@@ -199,25 +199,33 @@ angular.module('reply', [])
                 var input = $("input#" + id + ".dashboard-text");
                 var span = $("span#" + id + ".replymsg-text");
 
-                if(action == 'edit') {
-                    var sib = me.next();     
-                } else { 
-                    var sib = me.prev();     
-                }
+                var sib = me.next();     
                 
                 me.hide();
-                sib.show();
+                sib.show(); 
 
-                if(action == 'edit') { 
-                    input.show();
-                    span.hide();                
-                } else { 
-                    input.hide();
-                    span.show();                
-                }
+                input.show();
+                span.hide();                
                
                 e.preventDefault();
             });
         }
     }    
+})
+.directive('updateReplySettings', function() {
+    
+    return {
+        restrict: 'A'     
+      , scope: {
+            msgid: '=msgid'   
+          , action: '@action'
+        }
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log(scope.msgid);
+                console.log(scope.action);
+                e.preventDefault();
+            })
+        }
+    }
 })
