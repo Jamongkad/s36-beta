@@ -205,10 +205,9 @@ angular.module('reply', [])
                     var sib = me.prev();     
                 }
                 
-                me.hide();
-                sib.show();
-
                 if(action == 'edit') { 
+                    me.hide();
+                    sib.show();
                     input.show();
                     span.hide();                
                 } else { 
@@ -216,6 +215,9 @@ angular.module('reply', [])
                     if(input.val() == "") {
                         alert("Please provide a reply message.");
                     } else {
+
+                        me.hide();
+                        sib.show();
                         input.hide();
                         span.show();                
                         
