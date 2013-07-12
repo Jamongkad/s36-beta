@@ -41,23 +41,30 @@ class SubmissionService {
 
             $company_id = $this->post_data->get('company_id');
             $feedback_id = $feedback_created->feedback_id;
+            $hosted = $this->hosted->fetch_hosted_settings($company_id);
 
             $feedback = $this->dbfeedback->pull_feedback_by_id($feedback_id);
 
             //this creates metadata tag relationship between metadata and feedback 
             $this->_create_metadata($feedback_id);    
-            $this->_send_feedbacksubmission_email(  $feedback
-                                                  , $this->dbuser->pull_user_emails_by_company_id($company_id)
-                                                  , $this->hosted->fetch_hosted_settings($company_id) );
+            $this->_send_feedbacksubmission_email($feedback, $this->dbuser->pull_user_emails_by_company_id($company_id), $hosted);
             $this->_calculate_dashboard_analytics($company_id);
              
             $redis = new Redis;
             $mq    = new MessageList;
             $company_name = Config::get('application.subdomain');
-            $redis->sadd("$company_name:new_feedback", $feedback_id);
-            $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
-            $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
-            $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
+
+            if($hosted->autopost_enable == 1 and ($feedback->int_rating >= $hosted->autopost_rating)) { 
+                $redis->sadd("$company_name:new_autopost_feedback", $feedback_id);
+                $feedbackcount = count($redis->smembers("$company_name:new_autopost_feedback"));
+                $redis->hmset("$company_name:feedback_count", "autopost_count", $feedbackcount);
+                $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:autopost_newfeedback") );
+            } else { 
+                $redis->sadd("$company_name:new_feedback", $feedback_id);
+                $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
+                $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
+                $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
+            }
 
             $director = new MessageDirector;
             $director->distribute_messages($mq); 

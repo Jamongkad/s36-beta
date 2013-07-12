@@ -2,7 +2,7 @@
     <div id="theBarInner" class="clear">
         <div id="barLeftContent">
             <div class="barLinks clear">
-                <div id="barImageLogo"><a href="http://beta.36stories.com/"><img src="/fullpage/common/img/36stories-logo.png" /></a></div>
+                <div id="barImageLogo"><a href="/"><img src="/fullpage/common/img/36stories-logo.png" /></a></div>
                 <?php if( is_null(\S36Auth::user()) ): ?>
                     <ul class="left-links">                 
                         <li><a href="http://beta.36stories.com/">Create Your Own Feedback Page!</a></li>
