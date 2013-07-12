@@ -11,7 +11,7 @@
             <td width="15%"><strong>Reply To : </strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span>{{replybody.user.email}}</td>
             <td class="small">
-                Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)
+                Your user replies will go to this email address (<?=HTML::link('/settings/feedback', 'configure', array('class' => 'linky'))?>)
             </td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@
             </td>
             <td class="small" valign="top">
                 <span class="reply-text">
-                    Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward', array('class' => 'linky'))?>) 
+                    Click on email addresses below to add to the bcc (<?=HTML::link('/settings/feedback', 'configure fastforward', array('class' => 'linky'))?>) 
                 </span>
             </td>
         </tr>
@@ -82,7 +82,7 @@
                     </li>
                 </ul> 
                 <div class="conf-repl" configure-reply ng-click="add_reply()" style="margin-left:0px !important;">
-                    <?=HTML::link('settings', '(add template reply message)')?>
+                    <?=HTML::link('settings/feedback', '(add template reply message)')?>
                 </div>
             </td>
         </tr> 

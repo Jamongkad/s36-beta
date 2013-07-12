@@ -100,7 +100,7 @@ $(function() {
                   <?endforeach?>
                 </ul>
                 <p>
-                    <?=HTML::link('settings', 'Manage categories →') ?>
+                    <?=HTML::link('settings/feedback', 'Manage categories →') ?>
                 </p>
             </div>
         </div>
@@ -146,7 +146,7 @@ $(function() {
                                                     </li>
                                                <?endif?> 
                                            </ul>
-                                            <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
+                                            <p><a class="manage-categories-link" href="/settings/feedback">Configure Fast Forward Settings</a></p>
                                         </div>
                                     </div>
                                 </div>

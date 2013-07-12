@@ -23,7 +23,7 @@
             <h2>Woops. In order to reply to your users, you have to configure your reply to address.</h2>
             <br/><br/>
             <p>
-             Fortunately it's super easy! to add your reply to address <?=HTML::link('/settings?forward_to=/feedback/reply_to/'.$feedback->id, 'click here', Array('class' => 'woops-a'))?> 
+             Fortunately it's super easy! to add your reply to address <?=HTML::link('/settings/feedback?forward_to=/feedback/reply_to/'.$feedback->id, 'click here', Array('class' => 'woops-a'))?> 
             </p>
         </div> 
     </div>

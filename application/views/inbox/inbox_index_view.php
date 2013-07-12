@@ -529,14 +529,14 @@ var backend_vars = {
                                                                     </li>
                                                                <?endif?> 
                                                            </ul>
-                                                            <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
+                                                            <p><a class="manage-categories-link" href="/settings/feedback">Configure Fast Forward Settings</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             <?else:?>
                                                 <div class="the-categories-menu">
                                                     <div class="the-category-arrow"></div>
-                                                    <p><a class="manage-categories-link" href="/settings">Configure Fast Forward Settings</a></p>
+                                                    <p><a class="manage-categories-link" href="/settings/feedback">Configure Fast Forward Settings</a></p>
                                                 </div>
                                             <?endif?>
 
@@ -573,7 +573,7 @@ var backend_vars = {
                                                                 </li>
                                                             <?endforeach?>
                                                         </ul>
-                                                        <a class="manage-categories-link" href="/settings">Manage Categories</a>
+                                                        <a class="manage-categories-link" href="/settings/feedback">Manage Categories</a>
                                                     </div>
                                                     <div class="false-border"></div>
                                                     <div class="the-categories-options">
