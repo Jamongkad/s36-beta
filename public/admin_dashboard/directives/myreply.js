@@ -212,8 +212,10 @@ angular.module('reply', [])
                     input.show();
                     span.hide();                
                 } else { 
+                    /*
                     input.hide();
                     span.show();                
+                    */
                 }
                
                 e.preventDefault();
