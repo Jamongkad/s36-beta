@@ -33,11 +33,6 @@ function SettingReplyCtrl($scope, MessageService) {
         $event.preventDefault();
     };
 
-    $scope.update_msg = function(id) {
-        console.log("Updating");
-        console.log(id);
-    };
-
     $scope.$on('fetchReplyMessage', function()  {
         $scope.msgs = MessageService.message;
     });
