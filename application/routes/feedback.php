@@ -223,12 +223,14 @@ return array(
         $type = Input::get('type');
         if($type == 'msg') {
             $redis->hdel("$company_name:feedback_count", "count");
+            $redis->del("$company_name:new_feedback");
             $inbox->edit("inbox:notification:newfeedback", "");
             echo json_encode(Array('type' => $type));
         }
 
         if($type == 'msg_ap') { 
             $redis->hdel("$company_name:feedback_count", "autopost_count");
+            $redis->del("$company_name:new_autopost_feedback");
             $inbox->edit("inbox:notification:autopost_newfeedback", "");
             echo json_encode(Array('type' => $type));
         }
