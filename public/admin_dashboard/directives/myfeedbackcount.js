@@ -36,8 +36,7 @@ angular.module('feedback', [])
                //FeedbackService.set_inbox_as_read();
                e.preventDefault();
            };
-
-           $(element).children().click(process);
+ 
            $(element).click(process);
         }
     }        
