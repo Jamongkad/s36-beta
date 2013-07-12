@@ -3,7 +3,7 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , scope: {
-            type: "@show"   
+            type: "=show"   
         }
       , link: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
