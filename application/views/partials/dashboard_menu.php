@@ -2,8 +2,12 @@
     <? $regex = Helpers::nav_regex(); ?>
     <ul>
         <li><a href="/">Home</a></li>
-        <li<?=($regex->inbox ? ' class="active-menu"' : null)?>><a href="/inbox/all" inboxclick>Inbox</a> <span feedbackcount></span></li>
-        <li<?=($regex->published ? ' class="active-menu"' : null)?>><a href="/inbox/published/all">Published</a></li>
+        <li<?=($regex->inbox ? ' class="active-menu"' : null)?>>
+            <a href="/inbox/all" inboxclick>Inbox</a> <span feedbackcount show="msg"></span>
+        </li>
+        <li<?=($regex->published ? ' class="active-menu"' : null)?>>
+            <a href="/inbox/published/all" inboxclick>Published</a> <span feedbackcount show="msg_ap"></span>
+        </li>
         <li<?=($regex->filed ? ' class="active-menu"' : null)?>><a href="/inbox/filed/all">Filed Feedback</a></li>
         <li<?=($regex->deleted ? ' class="active-menu"' : null)?>><a href="/inbox/deleted/all">Deleted</a></li>
         <li<?=($regex->feedsetup ? ' class="active-menu"' : null)?>><a href="/feedsetup">Feedback Setup</a></li>
