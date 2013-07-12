@@ -58,12 +58,12 @@ class SubmissionService {
                 $redis->sadd("$company_name:new_autopost_feedback", $feedback_id);
                 $feedbackcount = count($redis->smembers("$company_name:new_autopost_feedback"));
                 $redis->hmset("$company_name:feedback_count", "autopost_count", $feedbackcount);
-                $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:autopost_newfeedback") );
+                $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:autopost_newfeedback") );
             } else { 
                 $redis->sadd("$company_name:new_feedback", $feedback_id);
                 $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
                 $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
-                $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
+                $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:newfeedback") );
             }
             $director = new MessageDirector;
             $director->distribute_messages($mq); 
