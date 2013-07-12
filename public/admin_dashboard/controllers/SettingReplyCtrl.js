@@ -33,24 +33,6 @@ function SettingReplyCtrl($scope, MessageService) {
         $event.preventDefault();
     };
 
-    $scope.edit_msg = function(id, $event) {        
-
-        var me = $($event.target);
-        var sib = me.next();
-
-        console.log(id);
-
-        var input = $("input#" + id + ".dashboard-text");
-        var span = $("span#" + id + ".replymsg-text");
-
-        me.hide();
-        sib.show();
-        input.show();
-        span.hide();
-
-        $event.preventDefault();
-    };
-
     $scope.update_msg = function(id, $event) {
 
         var me = $($event.target);

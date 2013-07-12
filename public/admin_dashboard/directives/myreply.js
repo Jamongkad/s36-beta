@@ -186,12 +186,18 @@ angular.module('reply', [])
     return {
         restrict: 'A'     
       , scope: {
-            msgid: '=id'   
+            msgid: '=msgid'   
+          , action: '=do'
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
             
                 var id = scope.msgid;   
+                var action = scope.action;
+
+                console.log(id);
+                console.log(action);
+
                 var me = $(this);
                 var sib = me.next();
 

@@ -114,8 +114,8 @@
                             <input type="text" style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
                         </div>
                          <div class="g1of3">
-                             <a href="#" class="" edit-reply-settings id="msg.id">Edit Message</a> 
-                             <a href="#" class="" style="display:none" ng-click="update_msg(msg.id, $event)">Update Message</a> | 
+                             <a href="#" class="" edit-reply-settings msg="msg.id" do="edit">Edit Message</a> 
+                             <a href="#" class="" style="display:none" edit-reply-settings msg="msg.id" do="update" ng-click="update_msg(msg.id, $event)">Update Message</a> | 
                              <a href="#" class="" ng-click="delete_msg(msg.id, $event)">Delete Message</a>
                         </div>
                     </div>
