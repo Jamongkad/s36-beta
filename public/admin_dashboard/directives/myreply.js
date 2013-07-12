@@ -214,7 +214,7 @@ angular.module('reply', [])
                 } else { 
 
                     if(input.val() == "") {
-                        alert("Cannot be blank!");
+                        alert("Please provide a reply message.");
                     } else {
                         input.hide();
                         span.show();                
