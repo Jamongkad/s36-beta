@@ -86,14 +86,14 @@ angular.module('Services', [])
         });
     }
 
-    shared_service.set_inbox_as_read = function(pathname) {
+    shared_service.set_inbox_as_read = function(type) {
         $.ajax({
-            type: 'GET'    
+            type: 'POST'    
           , dataType: 'json'
-          , async: false
+          , data: { type: type }
           , url: '/feedback/mark_inbox_as_read'
           , success: function(data) {
-                window.location.href = '/inbox/all';
+                //window.location.href = '/inbox/all';
             }
         });
     }

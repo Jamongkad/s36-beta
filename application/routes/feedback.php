@@ -216,11 +216,14 @@ return array(
         } 
     }),
 
-    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
+    'POST /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
         //delete feedback count calculator
+        Helpers::dump(Input::get()); 
+        /*
         $redis->del("$company_name:feedback_count");
         $redis->del("$company_name:new_feedback");
         echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
+        */
     }),
 
     'POST /feedback/redis_feedback_process' => function() use ($inbox, $redis, $company_name) {

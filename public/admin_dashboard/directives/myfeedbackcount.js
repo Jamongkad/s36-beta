@@ -32,9 +32,7 @@ angular.module('feedback', [])
  
            $(element).click(function(e) {
                var type = $(this).attr('show');
-               console.log(type);
-               console.log("click");
-               //FeedbackService.set_inbox_as_read();
+               FeedbackService.set_inbox_as_read(type);
                e.preventDefault();
            });
         }
