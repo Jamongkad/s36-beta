@@ -208,12 +208,12 @@ return array(
     }),
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox, $redis, $company_name) {  
-        if($redis->hget("$company_name:feedback_count", "count") != 0) {
-            echo json_encode(Array( 
-                'msg' => $inbox->read("inbox:notification:newfeedback")
-              , 'msg_ap' =>  $inbox->read("inbox:notification:autopost_newfeedback"))
-            );     
-        } 
+
+        echo json_encode(Array( 
+            'msg' => null//$inbox->read("inbox:notification:newfeedback")
+          , 'msg_ap' =>  2//$inbox->read("inbox:notification:autopost_newfeedback"))
+        ));     
+
     }),
 
     'POST /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
