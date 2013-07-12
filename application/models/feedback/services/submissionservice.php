@@ -54,11 +54,18 @@ class SubmissionService {
             $mq    = new MessageList;
             $company_name = Config::get('application.subdomain');
 
-            if($hosted->autopost_enable == 1 and ($feedback->int_rating >= $hosted->autopost_rating)) { 
-                $redis->sadd("$company_name:new_autopost_feedback", $feedback_id);
-                $feedbackcount = count($redis->smembers("$company_name:new_autopost_feedback"));
-                $redis->hmset("$company_name:feedback_count", "autopost_count", $feedbackcount);
-                $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:autopost_newfeedback") );
+            if($hosted->autopost_enable == 1) { 
+                if($feedback->int_rating >= $hosted->autopost_rating) { 
+                    $redis->sadd("$company_name:new_autopost_feedback", $feedback_id);
+                    $feedbackcount = count($redis->smembers("$company_name:new_autopost_feedback"));
+                    $redis->hmset("$company_name:feedback_count", "autopost_count", $feedbackcount);
+                    $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:autopost_newfeedback") );
+                } else { 
+                    $redis->sadd("$company_name:new_feedback", $feedback_id);
+                    $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
+                    $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
+                    $mq->add_message( new Notification("{$feedbackcount}", "inbox:notification:newfeedback") );
+                }
             } else { 
                 $redis->sadd("$company_name:new_feedback", $feedback_id);
                 $feedbackcount = count($redis->smembers("$company_name:new_feedback"));
