@@ -56,6 +56,10 @@ class SubmissionService {
 
             if($hosted->autopost_enable == 1) { 
                 if($feedback->int_rating >= $hosted->autopost_rating) { 
+
+                    Helpers::dump($feedback->int_rating);
+                    Helpers::dump($hosted->autopost_rating);
+
                     $redis->sadd("$company_name:new_autopost_feedback", $feedback_id);
                     $feedbackcount = count($redis->smembers("$company_name:new_autopost_feedback"));
                     $redis->hmset("$company_name:feedback_count", "autopost_count", $feedbackcount);
