@@ -49,7 +49,8 @@ class FeedbackDetails extends FeedbackDataTypes {
             }
             $metadata = json_encode($collection);
         }
-
+        
+        //data representation to be inserted into db
         return Array(
             'siteId'        => $this->post_data->get('site_id')
           , 'companyId'     => $this->post_data->get('company_id')
