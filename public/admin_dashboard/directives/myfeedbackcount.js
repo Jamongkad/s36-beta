@@ -1,5 +1,5 @@
 angular.module('feedback', [])
-.directive('feedbackcountMsg', function(FeedbackService) {
+.directive('feedbackcount', function(FeedbackService) {
     return {
         restrict: 'A'     
       , scope: {
