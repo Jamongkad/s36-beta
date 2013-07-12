@@ -182,7 +182,7 @@ angular.module('reply', [])
         }
     }    
 })
-.directive('editReplySettings', function() {
+.directive('editReplySettings', function(MessageService) {
     return {
         restrict: 'A'     
       , scope: {
