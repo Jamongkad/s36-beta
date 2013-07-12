@@ -214,6 +214,9 @@ angular.module('reply', [])
                 } else { 
                     input.hide();
                     span.show();                
+
+                    console.log("Updating");
+                    console.log(id);
                 }
                
                 e.preventDefault();
