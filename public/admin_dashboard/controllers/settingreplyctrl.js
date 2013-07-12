@@ -33,7 +33,8 @@ function SettingReplyCtrl($scope, MessageService) {
         $event.preventDefault();
     };
 
-    $scope.update_msg = function(id, $event) {
+    $scope.update_msg = function(id) {
+        console.log("Updating");
         /*
         var me = $($event.target);
         var sib = me.prev();
