@@ -3,13 +3,13 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , scope: {
-            type: "=show"   
+            msgtype: "@type"   
         }
       , link: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
 
-            console.log(scope.type);
+            console.log(scope.msgtype);
             
             if(feedback) {
                 if(feedback.msg) {
