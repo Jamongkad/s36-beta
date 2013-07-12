@@ -1987,4 +1987,7 @@ sup.count{
     -webkit-border-radius:8px;
     -moz-border-radius:8px;
     border-radius:8px;
-    top:-2px;}
+    top:-2px;
+    position: relative;
+    right: 18px;
+}
