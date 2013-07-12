@@ -218,7 +218,16 @@ return array(
 
     'POST /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
         //delete feedback count calculator
-        Helpers::dump(Input::get()); 
+        $type = Input::get('type');
+        if($type == 'msg') {
+            //$inbox->edit("inbox:notification:newfeedback", "");
+            echo json_encode(Array('type' => $type));
+        }
+
+        if($type == 'msg_ap') { 
+            //$inbox->edit("inbox:notification:autopost_newfeedback", "");
+            echo json_encode(Array('type' => $type));
+        }
         /*
         $redis->del("$company_name:feedback_count");
         $redis->del("$company_name:new_feedback");
