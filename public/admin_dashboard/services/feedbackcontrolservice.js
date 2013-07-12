@@ -93,8 +93,13 @@ angular.module('Services', [])
           , data: { type: type }
           , url: '/feedback/mark_inbox_as_read'
           , success: function(data) {
-                console.log(data);
-                //window.location.href = '/inbox/all';
+                if(data.type == "msg") {
+                    window.location.href = '/inbox/all';     
+                }
+
+                if(data.type == "msg_ap") {
+                    window.location.href = '/inbox/published/all';     
+                } 
             }
         });
     }
