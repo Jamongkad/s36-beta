@@ -215,8 +215,8 @@ angular.module('reply', [])
                     input.hide();
                     span.show();                
 
-                    console.log("Updating");
-                    console.log(id);
+                    var data = { 'msgtype': 'msg', 'id': id, 'text': input.val() };
+                    console.log(data);
                 }
                
                 e.preventDefault();
