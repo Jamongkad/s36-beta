@@ -186,7 +186,7 @@ angular.module('reply', [])
     return {
         restrict: 'A'     
       , scope: {
-            msgid: '=msgid'   
+            msgid: '=id'   
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
