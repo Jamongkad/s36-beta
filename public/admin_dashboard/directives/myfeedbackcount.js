@@ -29,15 +29,14 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-
-           var process = function(e) {
+ 
+           $(element).click(function(e) {
+               var type = $(this).attr('show');
+               console.log(type);
                console.log("click");
-               e.stopImmediatePropagation();
                //FeedbackService.set_inbox_as_read();
                e.preventDefault();
-           };
- 
-           $(element).click(process);
+           });
         }
     }        
 })
