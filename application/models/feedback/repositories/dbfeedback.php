@@ -129,8 +129,6 @@ class DBFeedback extends S36DataObject {
                     AND Feedback.isFeatured = :is_featured
                 ';
         }
-
-        Helpers::dump($inbox_statements);
     
         $date_sql = '
             SELECT   
