@@ -185,9 +185,13 @@ angular.module('reply', [])
 .directive('editReplySettings', function() {
     return {
         restrict: 'A'     
+      , scope: {
+            msgid: '=msgid'   
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                alert("Martie is gay!");
+                console.log("Martie is gay!");
+                console.log(scope.msgid);
                 e.preventDefault();
             });
         }
