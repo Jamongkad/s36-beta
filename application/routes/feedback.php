@@ -209,11 +209,13 @@ return array(
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox, $redis, $company_name) {  
 
-        echo json_encode(Array( 
-            'msg' => null//$inbox->read("inbox:notification:newfeedback")
-          , 'msg_ap' =>  2//$inbox->read("inbox:notification:autopost_newfeedback"))
-        ));     
+        $msg_check = $redis->hget("$company_name:feedback_count", "count") != 0;
+        $msg_ap_check = $redis->hget("$company_name:feedback_count", "autopost_count") != 0;
 
+        echo json_encode(Array( 
+            'msg' => ($msg_check) ? $inbox->read("inbox:notification:newfeedback") : null
+          , 'msg_ap' => ($msg_ap_check) ? $inbox->read("inbox:notification:autopost_newfeedback") : null
+        ));     
     }),
 
     'POST /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox, $redis, $company_name) {  
