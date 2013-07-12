@@ -36,29 +36,6 @@ function SettingReplyCtrl($scope, MessageService) {
     $scope.update_msg = function(id) {
         console.log("Updating");
         console.log(id);
-        /*
-        var me = $($event.target);
-        var sib = me.prev();
- 
-        var input = $("input#" + id + ".dashboard-text");
-        var span = $("span#" + id + ".replymsg-text");
-
-        $.ajax({
-            type: 'POST'
-          , url: '/message/update_reply_msg' 
-          , dataType: 'json'
-          , data: {"msg": input.val(), "id": id, "type": $scope.type}
-          , success: function(data) {
-                span.html(data.short_text);
-            }
-        }); 
-        
-        me.hide();
-        sib.show();
-        input.hide();
-        span.show();
-        $event.preventDefault();
-        */
     };
 
     $scope.$on('fetchReplyMessage', function()  {
