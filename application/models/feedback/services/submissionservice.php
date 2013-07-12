@@ -65,7 +65,6 @@ class SubmissionService {
                 $redis->hmset("$company_name:feedback_count", "count", $feedbackcount);
                 $mq->add_message( new Notification("{$feedbackcount} New Feedback", "inbox:notification:newfeedback") );
             }
-
             $director = new MessageDirector;
             $director->distribute_messages($mq); 
 
