@@ -196,15 +196,14 @@ angular.module('reply', [])
                 var action = scope.action;
 
                 var me = $(this);
+                var input = $("input#" + id + ".dashboard-text");
+                var span = $("span#" + id + ".replymsg-text");
+
                 if(action == 'edit') {
                     var sib = me.next();     
                 } else { 
                     var sib = me.prev();     
                 }
-               
-
-                var input = $("input#" + id + ".dashboard-text");
-                var span = $("span#" + id + ".replymsg-text");
                 
                 me.hide();
                 sib.show();
