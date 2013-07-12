@@ -39,7 +39,7 @@ class DBCategory extends S36DataObject {
         $rename_link = HTML::link('settings/rename_ctgy/'.$result_id, 'Rename', Array('class' => 'rename-ctgy'));
         $delete_link = HTML::link('settings/delete_ctgy/'.$result_id, 'Delete', Array('class' => 'delete-ctgy'));
 
-        return "<div class='grids padded' style='padding-bottom:10px;'>
+        return "<div id='category-$result_id' class='grids padded' style='padding-bottom:10px;'>
                     <div class='g1of3'>
                         <strong class='ctgy-name'>$ctgy_nm</strong>
                     </div>
