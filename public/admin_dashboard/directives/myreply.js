@@ -216,6 +216,7 @@ angular.module('reply', [])
                     span.show();                
 
                     var data = { 'msgtype': 'msg', 'id': id, 'text': input.val() };
+                    span.html(input.val());
                     console.log(data);
                 }
                
