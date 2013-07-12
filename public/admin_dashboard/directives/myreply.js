@@ -197,7 +197,7 @@ angular.module('reply', [])
 
                 console.log(id);
                 console.log(action);
-
+                /*
                 var me = $(this);
                 var sib = me.next();
 
@@ -208,6 +208,7 @@ angular.module('reply', [])
                 sib.show();
                 input.show();
                 span.hide();
+                */
                 
                 e.preventDefault();
             });
