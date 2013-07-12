@@ -214,6 +214,7 @@
         <div class="dashboard-foot"></div>
     </div>
     */?>
+<input type="submit" class="dashboard-button blue large" value="Save Settings" />
 </div>
 <?=Form::close()?>
 <script type="text/javascript">

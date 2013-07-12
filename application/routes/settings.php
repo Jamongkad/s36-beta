@@ -78,7 +78,8 @@ return array (
         
     }),
     
-    'GET /settings/display' => function() use($hosted_settings, $fullpage, $company){
+    'GET /settings/display' => Array('before' => 's36_auth', 'do' => function() use($hosted_settings, $fullpage, $company){
+        
         $company_name	= Config::get('application.subdomain');
         $company_info 	= $company->get_company_info($company_name); 
 
@@ -89,7 +90,7 @@ return array (
             )
         );
         
-    },
+    }),
 
     'POST /settings/rename_ctgy/([0-9]+)' => function($id) use($category) { 
         $ctgy_nm = Input::get('ctgy_nm');
