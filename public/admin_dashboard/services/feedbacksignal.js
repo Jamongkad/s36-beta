@@ -6,7 +6,7 @@ angular.module('FeedbackSignal', [])
     shared_service.data;
 
     shared_service.current_state = function(data) {
-
+        /*
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
@@ -17,11 +17,13 @@ angular.module('FeedbackSignal', [])
                 shared_service.data = data;
             }
         }); 
-
+        */
+        this.data = data;
         this.broadcast_now();
 
     }
-
+    
+    /*
     shared_service.get_data = function() { 
         var result;
         $.ajax({
@@ -35,6 +37,7 @@ angular.module('FeedbackSignal', [])
         }); 
         return result;
     }
+    */
 
     shared_service.broadcast_now = function() {
         $rootScope.$broadcast('checkFeedbackStatus');
