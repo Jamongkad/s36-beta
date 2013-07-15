@@ -198,7 +198,7 @@
 						field += checkboxFieldHtml('');
 					}
 
-					if(values.length >= 3 ) add_style = "display:none";
+					if(values.length >= 5 ) add_style = "display:none";
 					else add_style = "";
 					field += '<div class="add-area"><a href="#" class="add add_ck" style="'+add_style+'">' + opts.messages.add + '</a></div>';
 					field += '</div>';
@@ -243,7 +243,7 @@
 						field += radioFieldHtml('', 'frm-' + last_id + '-fld');
 					}
 
-					if(values.length >= 3 ){add_style = "display:none"; }
+					if(values.length >= 5 ){add_style = "display:none"; }
 					else{ add_style = "display:block"; }
 
 					field += '<div class="add-area"><a href="#" class="add add_rd" style="'+add_style+'">' + opts.messages.add + '</a></div>';
@@ -339,7 +339,7 @@
 			// handle field delete links
             $(document).delegate('.remove_elm', 'click', function(e) {
                 var child = $(this).parents('.fields').children('div').children('input[type=text]').length;                
-                if(child <= 3){
+                if(child <= 5){
                 	$($(this).parent()).parent().find('.add-area .add').show();
                 }
                 if(child == 1) {
@@ -398,7 +398,7 @@
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;                
 				$(this).parent().before(checkboxFieldHtml());
                 checkbox_child_count += 1;
-                if(checkbox_child_count == 3){
+                if(checkbox_child_count == 5){
                 	$(this).hide();
                 }
 				e.preventDefault();
@@ -419,7 +419,7 @@
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
             	$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));        
                 radio_child_count += 1;
-                if(radio_child_count == 3){
+                if(radio_child_count == 5){
                 	$(this).hide();
                 }
 				return false;
