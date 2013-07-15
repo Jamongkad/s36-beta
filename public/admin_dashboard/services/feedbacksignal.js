@@ -31,6 +31,8 @@ angular.module('FeedbackSignal', [])
                 shared_service.data = data;
             }
         }); 
+
+        return shared_service.data;
     }
 
     shared_service.broadcast_now = function() {
