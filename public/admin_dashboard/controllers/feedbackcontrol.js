@@ -127,16 +127,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
               , origin: Template.current_inbox_state
             } 
         } 
-        /*
+
         var process = function() { 
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
             FeedbackControlService.change_status(feed, true);
         }
-        */
 
-        FeedbackSignal.current_state(current);     
-        /*
         if(feed.status != "remove") { 
             process();
         } else {
@@ -144,7 +141,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 process();
             }
         }
-        */
+
     }
 
     $scope.update_selection = function($event, id) {
