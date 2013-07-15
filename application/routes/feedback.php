@@ -59,7 +59,7 @@ return array(
         $key = "user:$userid:inbox:feedback";
         $redis->hset( $key, "state", json_encode(Input::get('data')) );
         $state = $redis->hget( $key, "state");
-        echo json_encode($state);
+        echo json_decode($state);
     },
 
     'POST /feedback/get_current_feedback_state' => function() use($auth, $redis) { 
