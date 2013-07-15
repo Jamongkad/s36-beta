@@ -265,6 +265,9 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
+
+            var current_url = window.location.pathname;
+
             $(element).bind('click', function(e) {
                 var policy = $(this).attr("return-policy");
                 if(policy == 1) {
