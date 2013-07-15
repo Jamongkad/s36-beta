@@ -11,7 +11,7 @@ angular.module('feedbackcontrol', [])
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.data; 
                     var data = $scope.mystatus;
-
+                  
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
                         if(data.id.length > 0) { 
                             hide_the_children(me);     
@@ -73,8 +73,7 @@ angular.module('feedbackcontrol', [])
                                    .html($(me).text())
                         }
                     } 
-                })
-            
+                }); 
                 e.preventDefault();
             });
         } 
