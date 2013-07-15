@@ -208,7 +208,6 @@
 				};
 			// Checkbox field html, since there may be multiple 
 			var checkboxFieldHtml = function (values) {
-
 					var checked = false; 
                     var subject_id = get_random_int(1, 100);
 					var value = '';
@@ -295,7 +294,9 @@
 					else {
 						field += selectFieldHtml('', multiple);
 					}
-					field += '<div class="add-area"><a href="#" class="add add_opt">' + opts.messages.add + '</a></div>';
+					if(values.length >= 5 ) add_style = "display:none";
+					else add_style = "";
+					field += '<div class="add-area"><a href="#" class="add add_opt" style="'+add_style+'">' + opts.messages.add + '</a></div>';
 					field += '</div>';
 					field += '</div>';
 					help = '';
@@ -393,8 +394,7 @@
 				return false;
 			});
 			// Attach a callback to add new checkboxes
-            $(document).delegate('.add_ck', 'click', function(e) {
- 
+            $(document).delegate('.add_ck', 'click', function(e) { 
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;                
 				$(this).parent().before(checkboxFieldHtml());
                 checkbox_child_count += 1;
@@ -406,7 +406,12 @@
 
 			// Attach a callback to add new options for select dropdowns
 			$('.add_opt').live('click', function () {
+				var opt_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
 				$(this).parent().before(selectFieldHtml('', false));
+				opt_child_count += 1;
+                if(opt_child_count == 5){
+                	$(this).hide();
+                }
 				return false;
 			});
 			// Attach a callback to add new radio fields
