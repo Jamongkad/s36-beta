@@ -274,6 +274,7 @@ angular.module('feedbackcontrol', [])
                     $(this).attr("style", "background-position: -194px -31px");
                     $(this).attr("return-policy", 1);
                 }
+                console.log("Awww Snap");
                 console.log($(this).attr('return-policy'));
                 e.preventDefault();
             });
