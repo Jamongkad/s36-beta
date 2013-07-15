@@ -15,7 +15,6 @@ angular.module('FeedbackSignal', [])
           , url: '/feedback/set_current_feedback_state'
         }); 
 
-        this.data = data;
         this.broadcast_now();
 
     }
