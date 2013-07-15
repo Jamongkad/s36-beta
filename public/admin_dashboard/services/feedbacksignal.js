@@ -6,7 +6,18 @@ angular.module('FeedbackSignal', [])
     shared_service.data;
 
     shared_service.current_state = function(data) {
-        this.data = data; 
+
+        $.ajax({
+            type: 'POST'    
+          , dataType: 'json'
+          , data: {'data': data}
+          , async: false
+          , url: '/feedback/set_current_feedback_state'
+          , success: function(data) {
+                shared_service.data = data;
+            }
+        }); 
+
         this.broadcast_now();
     }
 

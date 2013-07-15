@@ -53,19 +53,11 @@ return array(
         $feedbackservice->save_feedback($post);
     },
     
-    //mothafucking route is used in modifyfeedback tab
-    'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
-        if($state == 'flag') { 
-            return $feedback->_change_feedback('isFlagged', $id, Input::get('state'));
-        } else {   
-            $feed_obj = Array('feedid' => $id);
-            $feedbackstate = new Feedback\Services\FeedbackState($state, Array($feed_obj), S36Auth::user()->companyid);
-            $feedbackstate->change_state();
-            $feedbackstate->write_summary();
-        }
+    //Ajax Routes...
+    'POST /feedback/set_current_feedback_state' => function() use($auth) {
+        Helpers::dump($auth);
     },
 
-    //Ajax Routes...
     'GET /feedback/bust_hostfeed_data' => function() use ($company_name) { 
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->bust_hostfeed_data();
@@ -122,15 +114,7 @@ return array(
             $state = 1;
         }
         $feedback->toggle_indlock(Input::get('feedid'), $state);
-    },
-
-    'POST /feedback/fire_multiple' => function() use ($feedback) {
-        $feed_ids = Input::get('feed_ids');
-        $mode     = Input::get('col');  
-
-        $fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
-        return $fire->execute();
-    },
+    },    
 
     'POST /feedback/change_feedback_date' => function() use ($feedback) {
         $date = date("Y-m-d H:i:s", strtotime(Input::get('change_date')));
