@@ -9,7 +9,7 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) {  
                 var me = $(element); 
                 $scope.$on('checkFeedbackStatus', function() {
-                    var $scope.mystatus = FeedbackSignal.data; 
+                    $scope.mystatus = FeedbackSignal.data; 
                 })
                 console.log($scope.mystatus);
             
