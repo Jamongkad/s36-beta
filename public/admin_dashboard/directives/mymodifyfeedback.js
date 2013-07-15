@@ -21,7 +21,7 @@ angular.module('modifyfeedback', [])
         }
     }    
 })
-.directive('toggle', function() {
+.directive('toggle', function(FeedbackControlService, FeedbackSignal) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
@@ -64,6 +64,8 @@ angular.module('modifyfeedback', [])
                         });
                         $(this).attr('state', 1);
                     }
+
+                    console.log(FeedbackSignal.data);
                 }
 
                 if(class_name == "blue-bar-delete") { 

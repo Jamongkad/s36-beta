@@ -49,7 +49,9 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         } else {
             if(data.status != 'flag') {
                 FeedbackControlService.change_status(data, true);         
-            } 
+            } else {
+                FeedbackSignal.set_data(data);
+            }
         }
     }
 

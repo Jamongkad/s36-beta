@@ -62,6 +62,10 @@ angular.module('Services', [])
         this.broadcast_now();
     }
 
+    shared_service.set_data = function(data) {
+        this.data = data; 
+    }
+
     shared_service.broadcast_now = function() {
         $rootScope.$broadcast('checkFeedbackStatus');
     }
