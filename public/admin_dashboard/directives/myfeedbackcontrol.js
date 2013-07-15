@@ -6,8 +6,8 @@ angular.module('feedbackcontrol', [])
 
             var currentUrl = window.location.pathname;
 
-            $(element).bind('click', function(e) {   
                 $scope.$watch('checkFeedbackStatus', function() {
+                $(element).bind('click', function(e) {   
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.data; 
                     var data = $scope.mystatus;
@@ -74,8 +74,8 @@ angular.module('feedbackcontrol', [])
                                    .html($(me).text())
                         }
                     } 
+                    e.preventDefault();
                 }); 
-                e.preventDefault();
             });
         } 
     }    
