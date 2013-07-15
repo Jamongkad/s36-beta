@@ -86,8 +86,10 @@ angular.module('feedbackcontrol', [])
                 $(element).bind("click", function(e) {                 
                     $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
+                    console.log(data);
 
                     $(".checky-box-container").hide();
+                    /*
                     if ($scope.mystatus.id instanceof Array) {
                         for(var i=0; i < $scope.mystatus.id.length ; i++) { 
                             var feedback = $(".dashboard-feedback[feedback=" + $scope.mystatus.id[i] + "]");
@@ -127,6 +129,7 @@ angular.module('feedbackcontrol', [])
                     }
      
                     FeedbackControlService.expunge();
+                    */
                     e.preventDefault();
                 });
             })
