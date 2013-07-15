@@ -52,7 +52,7 @@
                         <div id="lightbox-upload-photo-close" onclick="javascript:close_file_upload()">close X</div>
                         <div id="upload-white-area">
                             <div id="drag-and-drop-area">
-                                <h2>Drag Photos on this area</h2>
+                                <h2>Drag photos on this area</h2>
                                 <p>or</p>
                                 <p><input type="file" multiple id="file_uploader" data-url="/imageprocessing/FormImageUploader/" /></p>
                             </div>

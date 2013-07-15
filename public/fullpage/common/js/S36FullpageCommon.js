@@ -73,7 +73,7 @@ var S36FullpageCommon = function(){
         
         $('.dynamic-stars .star-container .star').hover(function(){
             
-            if( $('.current').is('#step4') ) return;
+            if( $('.current').is('#step4') || $('.current').is('#step3') ) return;
             
             var rating = $(this).parent().find('.star').index( this ) + 1;
             $('.star-text span').text( self.convert_rating_to_text(rating) );
@@ -82,7 +82,7 @@ var S36FullpageCommon = function(){
             
         },function(){
             
-            if( $('.current').is('#step4') ) return;
+            if( $('.current').is('#step4') || $('.current').is('#step3') ) return;
             
             var current_rating = $('#rating').val();
             $('.star-text span').text( $('.rate-title .rating_text').text() );
@@ -91,7 +91,7 @@ var S36FullpageCommon = function(){
             
         }).click(function(){
             
-            if( $('.current').is('#step4') ) return;
+            if( $('.current').is('#step4') || $('.current').is('#step3') ) return;
             
             var rating = $(this).parent().find('.star').index( this ) + 1;
             $('#rating').val(rating);

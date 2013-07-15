@@ -188,7 +188,7 @@
                 <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
                     <div class="admin-comment-block">
                         <div class="admin-comment">
-                            <div class="admin-name break-word"><?=$admin_companyname?> says..</div>
+                            <!-- <div class="admin-name break-word"><?=$admin_companyname?> says..</div> -->
                             <div class="admin-message clear">
                                 <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feed->feed_data->company_logo; ?>" width="32" height="32" /></div>
                                 <div class="message break-word"><?= Helpers::fb_comment_str($feed->feed_data->admin_reply); ?></div>
