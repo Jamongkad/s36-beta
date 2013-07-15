@@ -261,7 +261,7 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
-.directive('flag', function() {
+.directive('flag', function(FeedbackControlService, Template) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
