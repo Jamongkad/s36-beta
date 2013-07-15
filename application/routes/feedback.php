@@ -54,10 +54,19 @@ return array(
     },
     
     //Ajax Routes...
-    'POST /feedback/set_current_feedback_state' => function() use($auth) {
+    'POST /feedback/set_current_feedback_state' => function() use($auth, $redis) {
         $userid = $auth->userid;
-        //Helpers::dump($auth);
-        echo json_encode(Input::get('data'));
+        $key = "user:$userid:inbox:feedback";
+        $redis->hset( $key, "state", json_decode(Input::get('data')) );
+        $state = $redis->hget( $key, "state");
+        echo json_encode($state);
+    },
+
+    'POST /feedback/get_current_feedback_state' => function() use($auth, $redis) { 
+        $userid = $auth->userid;
+        $key = "user:$userid:inbox:feedback";
+        $state = $redis->hget( $key, "state");
+        echo json_encode($state);
     },
 
     'GET /feedback/bust_hostfeed_data' => function() use ($company_name) { 
