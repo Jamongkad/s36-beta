@@ -299,7 +299,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         var data = FeedbackSignal.get_data();
         console.log(data.status)
         console.log(data);
-        $scope.status_selection = data.status;
         $scope.data = data;
+        $scope.status_selection = data.status;
     });
 }
