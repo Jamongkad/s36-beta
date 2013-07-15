@@ -11,6 +11,7 @@ angular.module('feedbackcontrol', [])
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
+                    console.log(data);
                   
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
                         if(data.id.length > 0) { 
@@ -86,7 +87,6 @@ angular.module('feedbackcontrol', [])
                 $(element).bind("click", function(e) {                 
                     $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
-                    console.log(data);
 
                     $(".checky-box-container").hide();
                     if (data.id instanceof Array) {
