@@ -89,31 +89,30 @@ angular.module('feedbackcontrol', [])
                     console.log(data);
 
                     $(".checky-box-container").hide();
-                    /*
-                    if ($scope.mystatus.id instanceof Array) {
-                        for(var i=0; i < $scope.mystatus.id.length ; i++) { 
-                            var feedback = $(".dashboard-feedback[feedback=" + $scope.mystatus.id[i] + "]");
+                    if (data.id instanceof Array) {
+                        for(var i=0; i < data.id.length ; i++) { 
+                            var feedback = $(".dashboard-feedback[feedback=" + data.id[i] + "]");
      
                             feedback.show();
                             $(feedback).parents('.feedback-group').show();  
                             
                             if(currentUrl.match(/inbox\/all|deleted|published/g)) {
-                                var catpicks = $(".dashboard-feedback[feedback=" + $scope.mystatus.id[i] + "] li .cat-picks");      
+                                var catpicks = $(".dashboard-feedback[feedback=" + data.id[i] + "] li .cat-picks");      
                                 catpicks.css({'background': '#598499'});
                             }
                         }
                     } else {  
-                        var feedback = $(".dashboard-feedback[feedback=" + $scope.mystatus.id + "]"); 
+                        var feedback = $(".dashboard-feedback[feedback=" + data.id + "]"); 
                        
                         feedback.show();
                         $(feedback).parents('.feedback-group').show();    
                         
                         if(currentUrl.match(/inbox\/all|deleted|published/g)) {
-                            var catpicks = $(".dashboard-feedback[feedback=" + $scope.mystatus.id + "] li .cat-picks");      
+                            var catpicks = $(".dashboard-feedback[feedback=" + data.id + "] li .cat-picks");      
                             catpicks.css({'background': '#598499'});
                         }
 
-                        var checkbox = $(".feed-checkbox[value=" + $scope.mystatus.id + "]");
+                        var checkbox = $(".feed-checkbox[value=" + data.id + "]");
 
                         if(checkbox.is(":checked")) {
                             checkbox.click();     
@@ -128,8 +127,7 @@ angular.module('feedbackcontrol', [])
                         $('.feed-checkbox').prop("checked", false);
                     }
      
-                    FeedbackControlService.expunge();
-                    */
+                    //FeedbackControlService.expunge();
                     e.preventDefault();
                 });
             })
