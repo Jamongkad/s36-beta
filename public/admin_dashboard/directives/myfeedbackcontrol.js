@@ -6,11 +6,12 @@ angular.module('feedbackcontrol', [])
 
             var currentUrl = window.location.pathname;
 
-            $(element).bind('click', function(e) {  
-                var me = $(element); 
+            $(element).bind('click', function(e) {   
                 $scope.$watch('checkFeedbackStatus', function() {
+                    var me = $(element); 
                     $scope.mystatus = FeedbackSignal.data; 
                     console.log($scope.mystatus);
+                    console.log(me);
                     /*
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
                         if(data.id.length > 0) { 
