@@ -5,10 +5,10 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
 
             var currentUrl = window.location.pathname;
+            var data = FeedbackSignal.get_data();
 
             $(element).bind('click', function(e) {  
                 var me = $(element); 
-                var data = FeedbackSignal.get_data();
                 console.log(data);
                 /*
                 if(currentUrl.match(/inbox\/all|deleted/g)) { 
