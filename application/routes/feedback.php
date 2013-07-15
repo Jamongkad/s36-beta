@@ -55,7 +55,9 @@ return array(
     
     //Ajax Routes...
     'POST /feedback/set_current_feedback_state' => function() use($auth) {
-        Helpers::dump($auth);
+        $userid = $auth->userid;
+        //Helpers::dump($auth);
+        echo json_encode(Input::get('data'));
     },
 
     'GET /feedback/bust_hostfeed_data' => function() use ($company_name) { 
