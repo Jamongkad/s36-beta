@@ -25,7 +25,6 @@ angular.module('FeedbackSignal', [])
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
-          , data: {'data': data}
           , async: false
           , url: '/feedback/get_current_feedback_state'
           , success: function(data) {
