@@ -20,7 +20,6 @@ angular.module('FeedbackSignal', [])
         */
         this.data = data;
         this.broadcast_now();
-
     }
     
     /*
