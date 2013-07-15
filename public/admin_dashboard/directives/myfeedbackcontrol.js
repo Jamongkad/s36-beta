@@ -8,10 +8,9 @@ angular.module('feedbackcontrol', [])
 
             $(element).bind('click', function(e) {  
                 var me = $(element); 
-                $scope.$on('checkFeedbackStatus', function() {
+                $scope.$watch('checkFeedbackStatus', function() {
                     $scope.mystatus = FeedbackSignal.data; 
                     console.log($scope.mystatus);
-                    $scope.mystatus = null;
                 })
             
                 /*
