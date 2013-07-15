@@ -276,6 +276,20 @@ angular.module('feedbackcontrol', [])
                 }
                 console.log("Awww Snap");
                 console.log($(this).attr('return-policy'));
+                
+                var feed = $.parseJSON($(this).attr('data-feed')); 
+                var return_policy = $(this).attr('return-policy') == true;
+
+                var modfeed = {
+                    id: feed.id      
+                  , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
+                  , status: (return_policy) ? feed.status : 'unflag'
+                  , origin: Template.current_inbox_state 
+                }
+
+                console.log(modfeed);
+
+                //FeedbackControlService.flag_feedback(modfeed);
                 e.preventDefault();
             });
         }
