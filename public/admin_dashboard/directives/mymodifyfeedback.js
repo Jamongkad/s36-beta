@@ -21,7 +21,7 @@ angular.module('modifyfeedback', [])
         }
     }    
 })
-.directive('toggle', function(FeedbackControlService, FeedbackSignal) {
+.directive('toggle', function(FeedbackControlService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
@@ -54,6 +54,7 @@ angular.module('modifyfeedback', [])
                     var state = $(this).attr('state');
                     var feedid = $(this).attr('feedid');
                     var feed_status = $(this).attr('status');
+                    var current_cat_id = $(".category-box").attr('id');
 
                     if(state == 1) {
                         $(this).removeAttr('style');
@@ -68,8 +69,16 @@ angular.module('modifyfeedback', [])
                         $(this).attr('state', 1);
                     }
 
-                    console.log(feedid);
-                    console.log(feed_status);
+                    var state = $(this).attr('state') == true;
+                    var data = {
+                        id: feedid     
+                      , status: (state) ? feed_status : 'unflag'
+                      , catid: current_cat_id
+                    }
+
+                    console.log(data);
+
+                    //FeedbackControlService.change_status(data, true);         
                 }
 
                 if(class_name == "blue-bar-delete") { 
