@@ -26,10 +26,7 @@ angular.module('Services', [])
     }
 
     shared_service.bust_hostfeed_data = function() {
-        $.ajax({
-            type: 'get'    
-          , url: '/feedback/bust_hostfeed_data'
-        });  
+        $.ajax({ type: 'get', url: '/feedback/bust_hostfeed_data' });  
     }
 
     shared_service.flag_feedback = function(status_change) {
