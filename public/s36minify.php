@@ -56,8 +56,8 @@ $groups = array(
         'files'=>array(
             //'/fullpage/admin/js/jcycle.js'
             //'/fullpage/admin/js/S36FullpageAdmin.js'  // no longer needed.
-            '/fullpage/admin/js/jquery.jcarousel.min.js'
-            ,'/fullpage/admin/js/minicolors.js'
+            //'/fullpage/admin/js/jquery.jcarousel.min.js'
+            '/fullpage/admin/js/minicolors.js'
             ,'/fullpage/admin/js/colors.min.js'
             ,'/fullpage/admin/js/jquery.mousewheel.min.js'
             ,'/fullpage/admin/js/jquery.scroll.js'
@@ -79,7 +79,7 @@ $groups = array(
         'type' =>'css',
         'files'=>array(
              '/fullpage/admin/css/S36FullpageAdmin.css'
-            ,'/fullpage/admin/css/jcarousel.skin.css'
+            //,'/fullpage/admin/css/jcarousel.skin.css'
             ,'/fullpage/admin/css/minicolors.css'
             ,'/fullpage/admin/css/dashboard.css'
         )
