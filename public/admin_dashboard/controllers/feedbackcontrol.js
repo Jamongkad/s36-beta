@@ -149,6 +149,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var return_policy = flag.attr('return-policy') == true;
 
+        console.log(return_policy);
+
         var modfeed = {
             id: feed.id      
           , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
