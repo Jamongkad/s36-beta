@@ -11,6 +11,7 @@ angular.module('feedbackcontrol', [])
                 $scope.$on('checkFeedbackStatus', function() {
                     $scope.mystatus = FeedbackSignal.data; 
                     console.log($scope.mystatus);
+                    $scope.mystatus = null;
                 })
             
                 /*
