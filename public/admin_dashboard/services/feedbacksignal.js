@@ -15,9 +15,7 @@ angular.module('FeedbackSignal', [])
           , url: '/feedback/set_current_feedback_state'
         }); 
 
-        this.data = data;
         this.broadcast_now();
-
     }
 
     shared_service.get_data = function() { 
@@ -32,6 +30,7 @@ angular.module('FeedbackSignal', [])
                 result = data;
             }
         }); 
+
         return result;
     }
 
