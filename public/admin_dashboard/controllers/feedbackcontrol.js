@@ -144,6 +144,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     $scope.flag_feedback = function($event) {
+        /*
         var flag = $($event.target);
         var feed = $.parseJSON(flag.attr('data-feed')); 
 
@@ -161,6 +162,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         console.log(modfeed);
 
         FeedbackControlService.flag_feedback(modfeed);
+        */
     }
 
     $scope.update_selection = function($event, id) {
