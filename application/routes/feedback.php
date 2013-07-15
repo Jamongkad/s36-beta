@@ -67,7 +67,7 @@ return array(
         $key = "user:$userid:inbox:feedback";
         $state = $redis->hget( $key, "state");
         Helpers::dump($state);
-        echo json_decode($state);
+        //echo json_decode($state);
     },
 
     'GET /feedback/bust_hostfeed_data' => function() use ($company_name) { 
