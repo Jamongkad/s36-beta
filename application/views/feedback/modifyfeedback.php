@@ -184,7 +184,7 @@ $(function() {
                 </div>
                 <div class="blue-bar-right align-right">
                     <?if(!$feedback->isdeleted):?>
-                    <a href="#" class="blue-bar-delete" toggle ng-click="change_status(<?=$id?>, 'delete')">DELETE</a>
+                    <a href="#" class="blue-bar-delete" toggle feedid="<?=$id?>" status="delete">DELETE</a>
                     <?endif?>
                 </div>
             </div>

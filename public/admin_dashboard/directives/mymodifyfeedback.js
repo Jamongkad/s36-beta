@@ -52,6 +52,9 @@ angular.module('modifyfeedback', [])
 
                 if(class_name == "blue-bar-flag") { 
                     var state = $(this).attr('state');
+                    var feedid = $(this).attr('feedid');
+                    var feed_status = $(this).attr('status');
+
                     if(state == 1) {
                         $(this).removeAttr('style');
                         $(this).attr('state', 0);
@@ -65,7 +68,8 @@ angular.module('modifyfeedback', [])
                         $(this).attr('state', 1);
                     }
 
-                    console.log(FeedbackSignal.get_data());
+                    console.log(feedid);
+                    console.log(feed_status);
                 }
 
                 if(class_name == "blue-bar-delete") { 
