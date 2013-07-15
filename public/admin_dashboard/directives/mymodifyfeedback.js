@@ -65,7 +65,7 @@ angular.module('modifyfeedback', [])
                         $(this).attr('state', 1);
                     }
 
-                    console.log(FeedbackSignal.data);
+                    console.log(FeedbackSignal.get_data());
                 }
 
                 if(class_name == "blue-bar-delete") { 
