@@ -3,8 +3,10 @@ angular.module('feedbackcontrol', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) { 
-                var currentUrl = window.location.pathname;
+
+            var currentUrl = window.location.pathname;
+
+            $(element).bind('click', function(e) {  
                 var me = $(element); 
                 var data = FeedbackSignal.data;
 
@@ -277,8 +279,6 @@ angular.module('feedbackcontrol', [])
                     $(this).attr("style", "background-position: -194px -31px");
                     $(this).attr("return-policy", 1);
                 }
-                console.log("Awww Snap");
-                console.log($(this).attr('return-policy'));
                 
                 var feed = $.parseJSON($(this).attr('data-feed')); 
                 var return_policy = $(this).attr('return-policy') == true;
@@ -290,9 +290,7 @@ angular.module('feedbackcontrol', [])
                   , origin: Template.current_inbox_state 
                 }
 
-                console.log(modfeed);
-
-                //FeedbackControlService.flag_feedback(modfeed);
+                FeedbackControlService.flag_feedback(modfeed);
                 e.preventDefault();
             });
         }
