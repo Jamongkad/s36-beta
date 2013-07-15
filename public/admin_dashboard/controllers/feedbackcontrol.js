@@ -154,9 +154,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var modfeed = {
             id: feed.id      
           , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
-          , status: (return_policy == true) ? feed.status : 'unflag'
+          , status: (return_policy) ? feed.status : 'unflag'
           , origin: Template.current_inbox_state 
         }
+
+        console.log(modfeed);
 
         FeedbackControlService.flag_feedback(modfeed);
     }
