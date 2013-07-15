@@ -10,17 +10,16 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
 
     $scope.change_status = function(feedid, status_change) {
 
-        var status_change = {
+        var data = {
             id: feedid     
           , status: status_change
           , catid: current_cat_id
         }
 
-        if(status_change.status == 'delete') {
+        if(data.status == 'delete') {
             if(confirm("Are you sure you want to delete this feedback?")) {
-                FeedbackControlService.change_status(status_change, true);     
+                FeedbackControlService.change_status(data, true);     
                 if(FeedbackControlService.jsonmsg.feedback_status_change == "success") { 
-
                     var str = construct_query_string();         
 
                     if(str.b == "inbox") { 
@@ -48,7 +47,9 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
                 } 
             } 
         } else {
-            FeedbackControlService.change_status(status_change, true);     
+            if(data.status != 'flag') {
+                FeedbackControlService.change_status(data, true);         
+            } 
         }
     }
 

@@ -143,28 +143,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
     }
 
-    $scope.flag_feedback = function($event) {
-        /*
-        var flag = $($event.target);
-        var feed = $.parseJSON(flag.attr('data-feed')); 
-
-        var return_policy = flag.attr('return-policy') == true;
-
-        console.log(return_policy);
-
-        var modfeed = {
-            id: feed.id      
-          , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
-          , status: (return_policy) ? feed.status : 'unflag'
-          , origin: Template.current_inbox_state 
-        }
-
-        console.log(modfeed);
-
-        FeedbackControlService.flag_feedback(modfeed);
-        */
-    }
-
     $scope.update_selection = function($event, id) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
