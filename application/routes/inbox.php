@@ -32,8 +32,6 @@ return array(
         
         $admin_check = S36Auth::user();  
         $company_id = S36Auth::user()->companyid;        
-        //Resets UI code for clicky action function
-        reset_inbox_ui($company_id, $redis);
         $category = new DBCategory;
 
         //Reply messages
