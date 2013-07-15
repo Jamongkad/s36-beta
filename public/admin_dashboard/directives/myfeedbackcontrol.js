@@ -9,7 +9,7 @@ angular.module('feedbackcontrol', [])
             $scope.$watch('checkFeedbackStatus', function() {
                 $(element).bind('click', function(e) {   
                     var me = $(element); 
-                    $scope.mystatus = FeedbackSignal.data; 
+                    $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
                   
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
