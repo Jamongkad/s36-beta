@@ -288,6 +288,8 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.status_selection, $scope.id, $scope.data; 
 
     $scope.undo = function() {  
+        console.log("undo");
+        console.log($scope.data);
         FeedbackControlService.change_status($scope.data);
     }
 
@@ -297,8 +299,6 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
 
     $scope.$on('checkFeedbackStatus', function() {
         var data = FeedbackSignal.get_data();
-        console.log(data.status)
-        console.log(data);
         $scope.data = data;
         $scope.status_selection = data.status;
     });
