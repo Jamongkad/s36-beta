@@ -75,10 +75,7 @@ angular.module('modifyfeedback', [])
                       , status: (state) ? feed_status : 'unflag'
                       , catid: current_cat_id
                     }
-
-                    console.log(data);
-
-                    //FeedbackControlService.change_status(data, true);         
+                    FeedbackControlService.change_status(data, true);         
                 }
 
                 if(class_name == "blue-bar-delete") { 
