@@ -6,7 +6,7 @@ angular.module('feedbackcontrol', [])
 
             var currentUrl = window.location.pathname;
 
-                $scope.$watch('checkFeedbackStatus', function() {
+            $scope.$watch('checkFeedbackStatus', function() {
                 $(element).bind('click', function(e) {   
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.data; 
@@ -21,7 +21,6 @@ angular.module('feedbackcontrol', [])
                     }
 
                     if(currentUrl.match(/published/g)) { 
-
                         if(me.attr('return-policy') == 1) { 
                             hide_the_children(me);
                             $(".checky-box-container").show();
@@ -55,7 +54,6 @@ angular.module('feedbackcontrol', [])
                             hide_the_children(me);
                             $(".checky-box-container").show();
                         }
-
                     } 
                     
                     if(currentUrl.match(/filed/g)) { 
