@@ -2,7 +2,7 @@ angular.module('feedbackcontrol', [])
 .directive('transform', function(FeedbackSignal) {
     return {
         restrict: 'A'     
-      , link: function($scope, element, attrs, FeedbackSignal) {
+      , link: function($scope, element, attrs) {
 
             var currentUrl = window.location.pathname;
 
