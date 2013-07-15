@@ -9,7 +9,8 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) {  
                 var me = $(element); 
                 var data = FeedbackSignal.data;
-
+                console.log(data);
+                /*
                 if(currentUrl.match(/inbox\/all|deleted/g)) { 
                     if(data.id.length > 0) { 
                         hide_the_children(me);     
@@ -74,7 +75,7 @@ angular.module('feedbackcontrol', [])
                     }
 
                 } 
-                 
+                */ 
                 e.preventDefault();
             });
         } 

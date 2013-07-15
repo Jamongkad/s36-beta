@@ -134,7 +134,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             FeedbackControlService.change_status(feed, true);
         }
         */
-
+        FeedbackSignal.current_state(current);
         console.log(current);
      
         /*
