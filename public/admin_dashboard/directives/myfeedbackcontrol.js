@@ -9,7 +9,7 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) {  
                 var me = $(element); 
                 var data = FeedbackSignal.get_data();
-                console.log(data);
+                console.log(data.data);
                 /*
                 if(currentUrl.match(/inbox\/all|deleted/g)) { 
                     if(data.id.length > 0) { 
@@ -197,7 +197,6 @@ angular.module('feedbackcontrol', [])
                        .html(value)
 
                 FeedbackService.inline_change($(this).val(), scope.feedid, scope.statustype);
-
             })
         }
     }    
