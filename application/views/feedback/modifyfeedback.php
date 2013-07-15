@@ -174,9 +174,9 @@ $(function() {
                         <?endif?>
                         <div class="g1of5 align-center">
                             <a href="#" class="blue-bar-flag" toggle
+                            feedid="<?=$id?>" status="flag"
                             <?=($feedback->isflagged) ? "style='background-color:#e7edf2;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;'" : null?>
-                            <?=($feedback->isflagged) ? "state=1" : "state=0"?> 
-                            ng-click="change_status(<?=$id?>, 'flag')">
+                            <?=($feedback->isflagged) ? "state=1" : "state=0"?>>
                                FLAG
                             </a>
                         </div>
@@ -184,7 +184,7 @@ $(function() {
                 </div>
                 <div class="blue-bar-right align-right">
                     <?if(!$feedback->isdeleted):?>
-                    <a href="#" class="blue-bar-delete" toggle feedid="<?=$id?>" status="delete">DELETE</a>
+                    <a href="#" class="blue-bar-delete" toggle ng-click="change_status(<?=$id?>, 'delete')">DELETE</a>
                     <?endif?>
                 </div>
             </div>
