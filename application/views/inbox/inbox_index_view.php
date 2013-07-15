@@ -407,7 +407,7 @@ var backend_vars = {
                                                     </div>
                                                 </li>
                                             <?else:?>
-                                                <li class="action-sprite publish" transform 
+                                                <li class="action-sprite publish" 
                                                     ng-click="feedback_status($event)" publish
                                                     data-feed='{  "id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>"
                                                                 , "status": <?=($feed->ispublished) ? '"inbox"' : '"publish"'?>
