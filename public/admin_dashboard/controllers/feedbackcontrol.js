@@ -134,6 +134,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             FeedbackControlService.change_status(feed, true);
         }
         */
+
         FeedbackSignal.current_state(current);
         console.log(current);
      
@@ -300,8 +301,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     }
 
     $scope.$on('checkFeedbackStatus', function() {
-        $scope.status_selection = FeedbackSignal.data.status;
-        $scope.id = FeedbackSignal.data.id;
-        $scope.data = FeedbackSignal.data;
+        $scope.status_selection = FeedbackSignal.get_data().status;
+        $scope.data = FeedbackSignal.get_data();
     });
 }
