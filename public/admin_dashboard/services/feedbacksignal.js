@@ -22,17 +22,17 @@ angular.module('FeedbackSignal', [])
     }
 
     shared_service.get_data = function() { 
+        var result;
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
           , async: false
           , url: '/feedback/get_current_feedback_state'
           , success: function(data) {
-                shared_service.data = data;
+                result = data;
             }
         }); 
-
-        return shared_service.data;
+        return result;
     }
 
     shared_service.broadcast_now = function() {
