@@ -66,6 +66,7 @@ return array(
         $userid = $auth->userid;
         $key = "user:$userid:inbox:feedback";
         $state = $redis->hget( $key, "state");
+        Helpers::dump($state);
         echo json_decode($state);
     },
 
