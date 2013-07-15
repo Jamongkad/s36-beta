@@ -135,9 +135,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         }
         */
 
-        FeedbackSignal.current_state(current);
-        console.log(current);
-     
+        FeedbackSignal.current_state(current);     
         /*
         if(feed.status != "remove") { 
             process();
