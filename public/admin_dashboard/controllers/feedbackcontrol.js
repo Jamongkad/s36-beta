@@ -131,7 +131,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var process = function() { 
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
-            //FeedbackControlService.change_status(feed, true);
+            FeedbackControlService.change_status(feed, true);
         }
 
         if(feed.status != "remove") { 
@@ -288,8 +288,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.status_selection, $scope.id, $scope.data; 
 
     $scope.undo = function() {  
-        console.log($scope.data);
-        //FeedbackControlService.change_status($scope.data);
+        FeedbackControlService.change_status($scope.data);
     }
 
     $scope.close = function() { 
