@@ -10,7 +10,8 @@ angular.module('feedbackcontrol', [])
                 $scope.$watch('checkFeedbackStatus', function() {
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.data; 
-                    console.log($scope.mystatus);
+                    var data = $scope.mystatus;
+                    console.log(data);
                     console.log(me);
                     /*
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
@@ -59,9 +60,7 @@ angular.module('feedbackcontrol', [])
                     } 
                     
                     if(currentUrl.match(/filed/g)) { 
-
                         var data_status = data.status;
-
                         if(data_status == "publish" || data_status == "feature" || data_status == "delete") { 
                             hide_the_children(me);     
                             $(".checky-box-container").show();
@@ -75,7 +74,6 @@ angular.module('feedbackcontrol', [])
                                    .children(".filed")
                                    .html($(me).text())
                         }
-
                     } 
                     */ 
                 })
