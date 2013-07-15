@@ -128,12 +128,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } 
         } 
 
+        FeedbackSignal.current_state(current);
+
         var process = function() { 
-            FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
             FeedbackControlService.change_status(feed, true);
-        }
-
+        }            
+        
         console.log(current);
      
         /*
