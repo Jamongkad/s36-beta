@@ -320,7 +320,7 @@
 					li += '<li id="frm-' + last_id + '-item" class="' + field_type + '">';
 					li += '<div class="legend grids">';
 					li += '<a id="frm-' + last_id + '" class="toggle-form" href="#">' + opts.messages.hide + '</a> ';
-					li += '<a id="del_' + last_id + '" class="del-button delete-confirm" href="#" title="' + opts.messages.remove_message + '"><span>&nbsp;' + opts.messages.remove + '</span></a>';
+					li += '<a id="del_' + last_id + '" class="del-button delete-confirm" href="javascript:;" title="' + opts.messages.remove_message + '"><span>&nbsp;' + opts.messages.remove + '</span></a>';
 					li += '<strong id="txt-title-' + last_id + '">' + title + '</strong></div>';
 					li += '<div id="frm-' + last_id + '-fld" class="frm-holder">';
 					li += '<div class="frm-elements">';
@@ -359,7 +359,7 @@
             });
 
 			// handle field display/hide
-			$('.toggle-form').live('click', function () {
+			$(document).delegate('.toggle-form', 'click', function(e) {
 				var target = $(this).attr("id");
 				if ($(this).html() === opts.messages.hide) {
 					$(this).removeClass('open').addClass('closed').html(opts.messages.show);
@@ -377,10 +377,10 @@
 					}, 'slow');
 					return false;
 				}
-				return false;
+				e.preventDefault();
 			});
 			// handle delete confirmation
-			$('.delete-confirm').live('click', function () {
+			$(document).delegate('.delete-confirm', 'click', function(e) {
 				var delete_id = $(this).attr("id").replace(/del_/, '');
 				if (confirm($(this).attr('title'))) {
 					$('#frm-' + delete_id + '-item').animate({
@@ -391,7 +391,7 @@
 						$(this).remove();
 					});
 				}
-				return false;
+				e.preventDefault();
 			});
 			// Attach a callback to add new checkboxes
             $(document).delegate('.add_ck', 'click', function(e) { 
@@ -405,24 +405,24 @@
             });
 
 			// Attach a callback to add new options for select dropdowns
-			$('.add_opt').live('click', function () {
+			$(document).delegate('.add_opt', 'click', function(e) {
 				var opt_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
 				$(this).parent().before(selectFieldHtml('', false));
 				opt_child_count += 1;
                 if(opt_child_count == 5){
                 	$(this).hide();
                 }
-				return false;
+				e.preventDefault();
 			});
 			// Attach a callback to add new radio fields
-			$('.add_rd').live('click', function () {
+			$(document).delegate('.add_rd', 'click', function(e) {
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
             	$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));        
                 radio_child_count += 1;
                 if(radio_child_count == 5){
                 	$(this).hide();
                 }
-				return false;
+				e.preventDefault();
 			});
 			// saves the serialized data to the server 
 			var save = function () {
