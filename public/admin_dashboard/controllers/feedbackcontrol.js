@@ -297,7 +297,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         location.reload();
     }
 
-    $scope.$watch('checkFeedbackStatus', function() {
+    $scope.$on('checkFeedbackStatus', function() {
         $scope.status_selection = FeedbackSignal.data.status;
         $scope.data = FeedbackSignal.data;
     });
