@@ -18,7 +18,7 @@ angular.module('FeedbackSignal', [])
             }
         }); 
 
-        this.broadcast_now();
+        //this.broadcast_now();
     }
 
     shared_service.get_data = function() { 
