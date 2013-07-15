@@ -50,7 +50,7 @@ class FeedbackState {
                 */
                 
                 if($this->feedback->_toggle_single($column, $feedid)) {
-                    echo json_encode(Array("feedback_status_change" => "success"));
+                    echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
@@ -71,7 +71,7 @@ class FeedbackState {
                 */
 
                 if($this->feedback->_toggle_single($column, $feedid)) {
-                    echo json_encode(Array("feedback_status_change" => "success"));
+                    echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
@@ -85,7 +85,7 @@ class FeedbackState {
                 Helpers::dump($this->mode);
                 */
                 if($this->feedback->_toggle_multiple($feed_obj)) {
-                    echo json_encode(Array("feedback_status_change" => "success"));
+                    echo json_encode(Array("feedback_status_change" => "success", "column" => $this->mode, "feedobj" => $feed_obj));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }

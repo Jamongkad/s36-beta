@@ -89,7 +89,7 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
-        $feedbackstate->write_summary(); 
+        //$feedbackstate->write_summary(); 
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
