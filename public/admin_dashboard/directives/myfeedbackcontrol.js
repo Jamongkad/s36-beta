@@ -80,53 +80,56 @@ angular.module('feedbackcontrol', [])
 .directive('undo', function(FeedbackSignal, FeedbackControlService) {
     return {
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind("click", function(e) {
-                
-                var currentUrl = window.location.pathname;
-                $(".checky-box-container").hide();
+      , link: function($scope, element, attrs) {
+            var currentUrl = window.location.pathname;
+            $scope.$watch('checkFeedbackStatus', function() {
+                $(element).bind("click", function(e) {                 
+                    $scope.mystatus = FeedbackSignal.get_data(); 
+                    var data = $scope.mystatus;
 
-                if (FeedbackSignal.data.id instanceof Array) {
-                    for(var i=0; i < FeedbackSignal.data.id.length ; i++) { 
-                        var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "]");
- 
+                    $(".checky-box-container").hide();
+                    if ($scope.mystatus.id instanceof Array) {
+                        for(var i=0; i < $scope.mystatus.id.length ; i++) { 
+                            var feedback = $(".dashboard-feedback[feedback=" + $scope.mystatus.id[i] + "]");
+     
+                            feedback.show();
+                            $(feedback).parents('.feedback-group').show();  
+                            
+                            if(currentUrl.match(/inbox\/all|deleted|published/g)) {
+                                var catpicks = $(".dashboard-feedback[feedback=" + $scope.mystatus.id[i] + "] li .cat-picks");      
+                                catpicks.css({'background': '#598499'});
+                            }
+                        }
+                    } else {  
+                        var feedback = $(".dashboard-feedback[feedback=" + $scope.mystatus.id + "]"); 
+                       
                         feedback.show();
-                        $(feedback).parents('.feedback-group').show();  
+                        $(feedback).parents('.feedback-group').show();    
                         
                         if(currentUrl.match(/inbox\/all|deleted|published/g)) {
-                            var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id[i] + "] li .cat-picks");      
+                            var catpicks = $(".dashboard-feedback[feedback=" + $scope.mystatus.id + "] li .cat-picks");      
                             catpicks.css({'background': '#598499'});
                         }
-                    }
-                } else {  
-                    var feedback = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "]"); 
-                   
-                    feedback.show();
-                    $(feedback).parents('.feedback-group').show();    
-                    
-                    if(currentUrl.match(/inbox\/all|deleted|published/g)) {
-                        var catpicks = $(".dashboard-feedback[feedback=" + FeedbackSignal.data.id + "] li .cat-picks");      
-                        catpicks.css({'background': '#598499'});
+
+                        var checkbox = $(".feed-checkbox[value=" + $scope.mystatus.id + "]");
+
+                        if(checkbox.is(":checked")) {
+                            checkbox.click();     
+                        }
                     }
 
-                    var checkbox = $(".feed-checkbox[value=" + FeedbackSignal.data.id + "]");
-
-                    if(checkbox.is(":checked")) {
-                        checkbox.click();     
+                    if($(".sorter-checkbox").is(":checked")) {
+                        $(".sorter-checkbox").click(); 
                     }
-                }
 
-                if($(".sorter-checkbox").is(":checked")) {
-                    $(".sorter-checkbox").click(); 
-                }
-
-                if($('.feed-checkbox').is(":checked")) {
-                    $('.feed-checkbox').prop("checked", false);
-                }
- 
-                FeedbackControlService.expunge();
-                e.preventDefault();
-            });
+                    if($('.feed-checkbox').is(":checked")) {
+                        $('.feed-checkbox').prop("checked", false);
+                    }
+     
+                    FeedbackControlService.expunge();
+                    e.preventDefault();
+                });
+            })
         }
     }    
 })
