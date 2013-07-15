@@ -14,7 +14,6 @@ angular.module('FeedbackSignal', [])
         return this.data;
     }
    
-
     shared_service.broadcast_now = function() {
         $rootScope.$broadcast('checkFeedbackStatus');
     }
