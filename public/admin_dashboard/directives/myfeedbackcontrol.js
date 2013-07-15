@@ -11,74 +11,74 @@ angular.module('feedbackcontrol', [])
                 $scope.$watch('checkFeedbackStatus', function() {
                     $scope.mystatus = FeedbackSignal.data; 
                     console.log($scope.mystatus);
+                    /*
+                    if(currentUrl.match(/inbox\/all|deleted/g)) { 
+                        if(data.id.length > 0) { 
+                            hide_the_children(me);     
+                            $(".checky-box-container").show();
+                        }
+                    }
+
+                    if(currentUrl.match(/published/g)) { 
+
+                        if(me.attr('return-policy') == 1) { 
+                            hide_the_children(me);
+                            $(".checky-box-container").show();
+                        }
+
+                        if(data.status == "feature") {
+                            var state = { 
+                                activate: {'background-position': '-64px -31px'}
+                              , deactivate_sibling: {'background-position': '-32px 0px'}
+                              , activation_color: 'featured'
+                              , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                              , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                              , present_status: "feature"
+                            }
+                            published_state(me, '.publish', 'publish feedback', state);
+                        }
+
+                        if(data.status == "publish") {
+                            var state = {
+                                activate: {'background-position': '-32px -31px'}
+                              , deactivate_sibling: {'background-position': '-64px 0px'}
+                              , activation_color: 'published'
+                              , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
+                              , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                              , present_status: "publish"
+                            } 
+                            published_state(me, '.feature', 'feature feedback', state);
+                        }
+
+                        if(data.status == "delete" || data.status == "fileas") {
+                            hide_the_children(me);
+                            $(".checky-box-container").show();
+                        }
+
+                    } 
+                    
+                    if(currentUrl.match(/filed/g)) { 
+
+                        var data_status = data.status;
+
+                        if(data_status == "publish" || data_status == "feature" || data_status == "delete") { 
+                            hide_the_children(me);     
+                            $(".checky-box-container").show();
+                        }
+
+                        if(data_status == "fileas") {
+                            $(me).parents(".dashboard-feedback")
+                                   .children("div.feedback-contents")
+                                   .children(".responsive-padding")
+                                   .children(".feedback-details")
+                                   .children(".filed")
+                                   .html($(me).text())
+                        }
+
+                    } 
+                    */ 
                 })
             
-                /*
-                if(currentUrl.match(/inbox\/all|deleted/g)) { 
-                    if(data.id.length > 0) { 
-                        hide_the_children(me);     
-                        $(".checky-box-container").show();
-                    }
-                }
-
-                if(currentUrl.match(/published/g)) { 
-
-                    if(me.attr('return-policy') == 1) { 
-                        hide_the_children(me);
-                        $(".checky-box-container").show();
-                    }
-
-                    if(data.status == "feature") {
-                        var state = { 
-                            activate: {'background-position': '-64px -31px'}
-                          , deactivate_sibling: {'background-position': '-32px 0px'}
-                          , activation_color: 'featured'
-                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
-                          , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                          , present_status: "feature"
-                        }
-                        published_state(me, '.publish', 'publish feedback', state);
-                    }
-
-                    if(data.status == "publish") {
-                        var state = {
-                            activate: {'background-position': '-32px -31px'}
-                          , deactivate_sibling: {'background-position': '-64px 0px'}
-                          , activation_color: 'published'
-                          , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
-                          , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
-                          , present_status: "publish"
-                        } 
-                        published_state(me, '.feature', 'feature feedback', state);
-                    }
-
-                    if(data.status == "delete" || data.status == "fileas") {
-                        hide_the_children(me);
-                        $(".checky-box-container").show();
-                    }
-
-                } 
-                
-                if(currentUrl.match(/filed/g)) { 
-
-                    var data_status = data.status;
-
-                    if(data_status == "publish" || data_status == "feature" || data_status == "delete") { 
-                        hide_the_children(me);     
-                        $(".checky-box-container").show();
-                    }
-
-                    if(data_status == "fileas") {
-                        $(me).parents(".dashboard-feedback")
-                               .children("div.feedback-contents")
-                               .children(".responsive-padding")
-                               .children(".feedback-details")
-                               .children(".filed")
-                               .html($(me).text())
-                    }
-
-                } 
-                */ 
                 e.preventDefault();
             });
         } 
