@@ -2,14 +2,18 @@ angular.module('feedbackcontrol', [])
 .directive('transform', function(FeedbackSignal) {
     return {
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
+      , link: function($scope, element, attrs) {
 
             var currentUrl = window.location.pathname;
 
             $(element).bind('click', function(e) {  
                 var me = $(element); 
-                var data = FeedbackSignal.get_data();
-                console.log(data);
+                var mystatus;
+                $scope.$on('checkFeedbackStatus', function() {
+                    mystatus = FeedbackSignal.data; 
+                })
+                
+                console.log(mystatus);
                 /*
                 if(currentUrl.match(/inbox\/all|deleted/g)) { 
                     if(data.id.length > 0) { 
