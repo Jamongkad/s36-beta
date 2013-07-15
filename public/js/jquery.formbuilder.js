@@ -198,7 +198,7 @@
 						field += checkboxFieldHtml('');
 					}
 
-					if(values.length >= 3 ) add_style = "display:none";
+					if(values.length >= 5 ) add_style = "display:none";
 					else add_style = "";
 					field += '<div class="add-area"><a href="#" class="add add_ck" style="'+add_style+'">' + opts.messages.add + '</a></div>';
 					field += '</div>';
@@ -208,7 +208,6 @@
 				};
 			// Checkbox field html, since there may be multiple 
 			var checkboxFieldHtml = function (values) {
-
 					var checked = false; 
                     var subject_id = get_random_int(1, 100);
 					var value = '';
@@ -244,7 +243,7 @@
 						field += radioFieldHtml('', 'frm-' + last_id + '-fld');
 					}
 
-					if(values.length >= 3 ){add_style = "display:none"; }
+					if(values.length >= 5 ){add_style = "display:none"; }
 					else{ add_style = "display:block"; }
 
 					field += '<div class="add-area"><a href="#" class="add add_rd" style="'+add_style+'">' + opts.messages.add + '</a></div>';
@@ -295,7 +294,9 @@
 					else {
 						field += selectFieldHtml('', multiple);
 					}
-					field += '<div class="add-area"><a href="#" class="add add_opt">' + opts.messages.add + '</a></div>';
+					if(values.length >= 5 ) add_style = "display:none";
+					else add_style = "";
+					field += '<div class="add-area"><a href="#" class="add add_opt" style="'+add_style+'">' + opts.messages.add + '</a></div>';
 					field += '</div>';
 					field += '</div>';
 					help = '';
@@ -319,7 +320,7 @@
 					li += '<li id="frm-' + last_id + '-item" class="' + field_type + '">';
 					li += '<div class="legend grids">';
 					li += '<a id="frm-' + last_id + '" class="toggle-form" href="#">' + opts.messages.hide + '</a> ';
-					li += '<a id="del_' + last_id + '" class="del-button delete-confirm" href="#" title="' + opts.messages.remove_message + '"><span>&nbsp;' + opts.messages.remove + '</span></a>';
+					li += '<a id="del_' + last_id + '" class="del-button delete-confirm" href="javascript:;" title="' + opts.messages.remove_message + '"><span>&nbsp;' + opts.messages.remove + '</span></a>';
 					li += '<strong id="txt-title-' + last_id + '">' + title + '</strong></div>';
 					li += '<div id="frm-' + last_id + '-fld" class="frm-holder">';
 					li += '<div class="frm-elements">';
@@ -338,7 +339,7 @@
 			// handle field delete links
             $(document).delegate('.remove_elm', 'click', function(e) {
                 var child = $(this).parents('.fields').children('div').children('input[type=text]').length;                
-                if(child <= 3){
+                if(child <= 5){
                 	$($(this).parent()).parent().find('.add-area .add').show();
                 }
                 if(child == 1) {
@@ -358,7 +359,7 @@
             });
 
 			// handle field display/hide
-			$('.toggle-form').live('click', function () {
+			$(document).delegate('.toggle-form', 'click', function(e) {
 				var target = $(this).attr("id");
 				if ($(this).html() === opts.messages.hide) {
 					$(this).removeClass('open').addClass('closed').html(opts.messages.show);
@@ -376,10 +377,10 @@
 					}, 'slow');
 					return false;
 				}
-				return false;
+				e.preventDefault();
 			});
 			// handle delete confirmation
-			$('.delete-confirm').live('click', function () {
+			$(document).delegate('.delete-confirm', 'click', function(e) {
 				var delete_id = $(this).attr("id").replace(/del_/, '');
 				if (confirm($(this).attr('title'))) {
 					$('#frm-' + delete_id + '-item').animate({
@@ -390,34 +391,38 @@
 						$(this).remove();
 					});
 				}
-				return false;
+				e.preventDefault();
 			});
 			// Attach a callback to add new checkboxes
-            $(document).delegate('.add_ck', 'click', function(e) {
- 
+            $(document).delegate('.add_ck', 'click', function(e) { 
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;                
 				$(this).parent().before(checkboxFieldHtml());
                 checkbox_child_count += 1;
-                if(checkbox_child_count == 3){
+                if(checkbox_child_count == 5){
                 	$(this).hide();
                 }
 				e.preventDefault();
             });
 
 			// Attach a callback to add new options for select dropdowns
-			$('.add_opt').live('click', function () {
+			$(document).delegate('.add_opt', 'click', function(e) {
+				var opt_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
 				$(this).parent().before(selectFieldHtml('', false));
-				return false;
+				opt_child_count += 1;
+                if(opt_child_count == 5){
+                	$(this).hide();
+                }
+				e.preventDefault();
 			});
 			// Attach a callback to add new radio fields
-			$('.add_rd').live('click', function () {
+			$(document).delegate('.add_rd', 'click', function(e) {
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
             	$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));        
                 radio_child_count += 1;
-                if(radio_child_count == 3){
+                if(radio_child_count == 5){
                 	$(this).hide();
                 }
-				return false;
+				e.preventDefault();
 			});
 			// saves the serialized data to the server 
 			var save = function () {

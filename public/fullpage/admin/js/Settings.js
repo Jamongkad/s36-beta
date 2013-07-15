@@ -111,6 +111,7 @@ var Settings = new function(){
         /* ========================================
         || Apply the jcarousel plugin for the patterns
         ==========================================*/        
+        /*
         $('#patterns').jcarousel({
             scroll: 5,
             initCallback: function(){},
@@ -118,6 +119,7 @@ var Settings = new function(){
             buttonPrevHTML: '#patternNext',
             itemFallbackDimension: 300
         });
+        */
         /* ========================================
         || Change this pattern's active state when a pattern is clicked
         ==========================================*/        
