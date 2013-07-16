@@ -13,9 +13,11 @@ var backend_vars = {
             <span ng-switch on="status_selection"> 
                 <span ng-switch-when="flag">
                     Feedback has been flagged.
+                    <a close class="close-checky" href="#" ng-click="hide()">hide</a>
                 </span> 
                 <span ng-switch-when="unflag">
                     Feedback has been unflagged.
+                    <a close class="close-checky" href="#" ng-click="hide()">hide</a>
                 </span> 
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 

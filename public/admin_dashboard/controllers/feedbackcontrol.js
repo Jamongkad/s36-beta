@@ -296,6 +296,10 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         location.reload();
     }
 
+    $scope.hide = function() { 
+        $(".checky-box-container").hide();
+    }
+
     $scope.$on('checkFeedbackStatus', function() {
         console.log("Receiving...");
         var data = FeedbackSignal.get_data();
