@@ -87,11 +87,27 @@ class FeedbackState {
             //Normal operations. Only being used in both Inbox and Deleted folders.        
             if($this->mode != 'remove') { 
                 Helpers::dump("Standard");
-                $feed_obj = $this->feedback_state_obj();
-            
-                Helpers::dump($feed_obj);
-                Helpers::dump($this->mode); 
-                Helpers::dump($this->isflagged); 
+                if(is_array($this->isflagged)) {
+                    $counter = 0;
+                    foreach($this->isflagged as $flag) { 
+                        $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
+                                                         ->where('intName', '=', 'default')->first($this->category_vars);
+
+                        $rules = $this->state_change_rules();
+                        $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
+                        $feedid = $this->block_id[$counter]; 
+
+                        Helpers::dump($column);
+                        Helpers::dump($feedid);
+                        $counter = $counter + 1;
+                    }
+                } else {
+                    
+                    $feed_obj = $this->feedback_state_obj(); 
+                    Helpers::dump($feed_obj);
+                    Helpers::dump($this->mode); 
+                    Helpers::dump($this->isflagged); 
+                }
                 /* 
                 $this->_process_multiple($feed_obj);
                 if($this->feedback->_toggle_multiple($feed_obj)) {
