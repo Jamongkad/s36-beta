@@ -95,7 +95,7 @@ return array(
        
         Helpers::dump($isflagged);
         */
-        Helpers::dump($feed);
+        Helpers::dump(isset($feed['isflag']));
         
         /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
