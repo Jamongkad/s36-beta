@@ -11,7 +11,6 @@ angular.module('feedbackcontrol', [])
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
-                    console.log(data);
 
                     if(data.status == 'flag' || data.status == 'unflag') { 
                         var feed = $.parseJSON($(this).attr('data-feed')); 
@@ -28,7 +27,7 @@ angular.module('feedbackcontrol', [])
                             $(this).attr('data-feed', repackaged_json);
                         } 
                     }
-                    /*  
+
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
                         if(data.id.length > 0) { 
                             hide_the_children(me);     
@@ -88,7 +87,7 @@ angular.module('feedbackcontrol', [])
                                    .html($(me).text())
                         }
                     } 
-                    */
+
                     e.preventDefault();
                 }); 
             });
