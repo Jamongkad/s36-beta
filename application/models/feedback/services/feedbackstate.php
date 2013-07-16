@@ -150,7 +150,9 @@ class FeedbackState {
     }
 
     public function flag_statement() {
-        return ($this->isflagged == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";
+        if(isset($this->isflagged)) {
+            return ($this->isflagged == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";     
+        } 
     }
 
     public function state_change_rules() { 
