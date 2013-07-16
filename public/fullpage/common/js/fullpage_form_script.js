@@ -199,9 +199,11 @@ $(document).keypress(function(event){
                 //dataType: "json",
                 data: form_data, 
                 success: function(result){
-                    // somewhere from /submit_feedback, '{"saved":0}' gets echoed.
-                    // it causes bug in the result. can't find it. just have to remove it here.
-                    result = result.replace('{"saved":0}', '');
+                    
+                    // somewhere from /submit_feedback, from the line of $feedback = $addfeedback->perform();
+                    // '{"saved":0} or {"saved":1}' gets echoed. it mixes in the json output of /submit_feedback.
+                    // it causes error. just have to remove it.
+                    result = result.replace(/{.*?saved.*?}/, '');
                     
                     // also we had problem with dataType: "json". just replaced it with this.
                     result = $.parseJSON(result);
@@ -538,6 +540,10 @@ $(document).keypress(function(event){
                 cur_page_height = cur_page_height + 40;
             }else if($('.e_vid_check').length > 0 && $('.e_img_check').length <= 0){
                 cur_page_height = cur_page_height + 78;    
+            }
+            
+            if( $('.form-right-side').height() > 341 ){
+                cur_page_height = cur_page_height + ($('.form-right-side').height() - cur_page_height);
             }
         }
         $('#formBody').animate({height:cur_page_height});

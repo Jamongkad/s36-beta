@@ -1,4 +1,3 @@
-
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
@@ -16,9 +15,6 @@
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-
-
-
 <div id="theFormSetup" class="dashboard-page">
 <h1>Form Setup</h1>
 <?php
@@ -80,11 +76,14 @@
     </div>
     <div class="dashboard-body">
         <div class="dashboard-content">
+            <div id="feedbacksetup-message" class="alert-message" style="display:none;">
+                <div class="success">Feedback form has been updated.</div>
+            </div>
             <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer, or maybe you might want them to specify their gender. With custom fields, you have the flexibility to collect information in addition to your customer's feedback.</p>
             <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" id="form-builder" class="grids"></div>
         </div>
     </div>
 </div>
-<p><input type="submit" class="dashboard-button blue large" value="Update" my-createform/></p>
+<p><input type="submit" class="dashboard-button blue large" value="Update" style="cursor:pointer" my-createform/></p>
 </div>
 <?=Form::close()?>

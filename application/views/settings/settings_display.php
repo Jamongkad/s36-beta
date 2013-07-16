@@ -25,7 +25,7 @@
                             <p><span class="tickerbox <?= ($settings->show_sharing_option == 0 ? 'off' : ''); ?>" field="show_sharing_option" display-array="share-icon"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
                             
                             <h2>Display 'Flag as inappropriate' Option</h2>
-                            <p><span class="tickerbox <?= ($settings->show_flag_inapp == 0 ? 'off' : ''); ?>" field="show_flag_inapp" display-array="flag-as-inapp"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
+                            <p><span class="tickerbox <?= ($settings->show_flag_inapp == 0 ? 'off' : ''); ?>" field="show_flag_inapp" display-array="flag-as-inapp,feedback-icon.flag-feedback"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
                             
                             <h2>User Display Information</h2>
                             <p><span class="tickerbox <?= ($settings->show_avatar == 0 ? 'off' : ''); ?>" field="show_avatar" display-array="author-avatar"></span> <span class="label">Display Avatar</span> </p>
