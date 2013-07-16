@@ -292,6 +292,7 @@ angular.module('feedbackcontrol', [])
                 $scope.mystatus = FeedbackSignal.get_data(); 
                 FeedbackControlService.flag_feedback(modfeed);
                 FeedbackSignal.current_state(modfeed);
+
                 $(".checky-box-container").show();
                 e.preventDefault();
             });
