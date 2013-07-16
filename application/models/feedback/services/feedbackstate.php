@@ -31,7 +31,6 @@ class FeedbackState {
 
     public function change_state() {        
         if(is_array($this->category_id)) { 
-            Helpers::dump($this->flag_statement());
             //this means we are undoing feedback and want to return their original filed status id. This is under the Filed folder only.
             $counter = 0;
             foreach($this->category_id as $catid) {
@@ -60,7 +59,6 @@ class FeedbackState {
                 */
             }
         } elseif(is_array($this->mode)) {
-            Helpers::dump($this->flag_statement());
             //this means we are undoing feedback and want to return their original status. This is under the Published folder only.
             $counter = 0;
             foreach($this->mode as $state) {
@@ -89,6 +87,7 @@ class FeedbackState {
             
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode); 
+                Helpers::dump($this->isflagged); 
                 /* 
                 $this->_process_multiple($feed_obj);
                 if($this->feedback->_toggle_multiple($feed_obj)) {
