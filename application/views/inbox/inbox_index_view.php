@@ -53,7 +53,6 @@ var backend_vars = {
                 </span> 
                 <span ng-switch-when="unflag">
                     Feedback has been unflagged.
-
                     <a undo class="undo" href="#" ng-click="undo()">undo</a> 
                     <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
