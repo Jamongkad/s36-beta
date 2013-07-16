@@ -84,18 +84,14 @@ return array(
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed = Input::get('feed_data');
         $undo_flag = Input::get('undo');
-        /* 
+
         $feed_ids   = (is_array($feed['id'])) ? $feed['id'] : Array($feed['id']);
         $cat_id     = $feed['catid'];
         $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
-        if(in_array('isflag', $feed)) {
-            $isflagged = $feed['isflag'];     
-        }
-       
+        $isflagged  = isset($feed['isflag']) ? $feed['isflag'] : null;
         Helpers::dump($isflagged);
-        */
-        Helpers::dump(isset($feed['isflag']));
+
         
         /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
