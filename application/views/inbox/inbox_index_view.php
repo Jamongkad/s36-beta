@@ -48,6 +48,9 @@ var backend_vars = {
                 <span ng-switch-when="flag">
                     Feedback has been flagged.
                 </span> 
+                <span ng-switch-when="unflag">
+                    Feedback has been unflagged.
+                </span> 
             </span>
         </div>
     </div>
