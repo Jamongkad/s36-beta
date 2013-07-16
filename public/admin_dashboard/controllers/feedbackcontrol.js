@@ -298,6 +298,8 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         console.log("Receiving...");
         var data = FeedbackSignal.get_data();
         $scope.data = data;
+        $scope.status_selection = 'pwet';
+        /*
         if(data.status == 'flag' || data.status == 'unflag') {
             console.log("the flags");
             $scope.status_selection = 'pwet';
@@ -307,6 +309,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
             $scope.status_selection = data.status;
             console.log(data.status);
         }
+        */
        
     });
 }
