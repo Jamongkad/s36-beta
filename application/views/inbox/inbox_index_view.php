@@ -17,6 +17,9 @@ var backend_vars = {
                 <span ng-switch-when="unflag">
                     Feedback has been unflagged.
                 </span> 
+                <span ng-switch-when="pwet">
+                    Feedback has been pwetted. 
+                </span> 
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 
                     <a undo class="undo" href="#" ng-click="undo()">undo</a> 

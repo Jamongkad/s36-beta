@@ -300,6 +300,6 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         console.log(data.status);
         console.log(data);
         $scope.data = data;
-        $scope.status_selection = data.status;
+        $scope.status_selection = 'pwet';//data.status;
     });
 }
