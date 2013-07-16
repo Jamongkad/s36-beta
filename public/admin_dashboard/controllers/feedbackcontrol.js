@@ -208,8 +208,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 }
             }
 
-            console.log(flag_data);
-
             var clean_selection = selected.filter(function(n) { return n });
  
             if(clean_selection.length > 0) { 
@@ -218,6 +216,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     var feed = {
                         id: clean_selection
                       , status: $scope.status_select_value
+                      , isflag: flag_data
                       , catid:  catids 
                       , origin: Template.current_inbox_state
                     }
@@ -225,6 +224,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     var feed = { 
                         id: clean_selection
                       , status: $scope.status_select_value
+                      , isflag: flag_data
                       , catid: Template.default_category_id
                       , origin: origin
                     }
@@ -232,6 +232,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     var feed = {
                         id: clean_selection
                       , status: $scope.status_select_value
+                      , isflag: flag_data
                       , catid: Template.default_category_id
                       , origin: Template.current_inbox_state
                     }
