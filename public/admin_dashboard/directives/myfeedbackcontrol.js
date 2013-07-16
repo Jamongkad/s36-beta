@@ -265,7 +265,7 @@ angular.module('feedbackcontrol', [])
 .directive('flag', function(FeedbackControlService, Template, FeedbackSignal) {
     return {
         restrict: 'A'     
-      , link: function($scope, element, attrs) {
+      , link: function(scope, element, attrs) {
 
             var current_url = window.location.pathname;
 
@@ -289,10 +289,8 @@ angular.module('feedbackcontrol', [])
                   , origin: Template.current_inbox_state 
                 }
 
-                $scope.mystatus = FeedbackSignal.get_data(); 
-                FeedbackControlService.flag_feedback(modfeed);
                 FeedbackSignal.current_state(modfeed);
-
+                FeedbackControlService.flag_feedback(modfeed);
                 $(".checky-box-container").show();
                 e.preventDefault();
             });
