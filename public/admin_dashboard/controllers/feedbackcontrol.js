@@ -116,7 +116,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             flag_data = $.parseJSON(delflag);
         }
 
-        flagged = (flag_data.status == "flag") ? 1 : 0;
+        flagged = (flag_data.status == "unflag") ? 1 : 0;
 
         //below are the feed states used for undoing.
         if(current_url.match(/inbox\/all|deleted/g)) {  
