@@ -291,8 +291,7 @@ angular.module('feedbackcontrol', [])
                 }
 
                 FeedbackControlService.flag_feedback(modfeed);
-                FeedbackSignal.broadcast_now()
-                //FeedbackSignal.flag_feedback(modfeed);
+                FeedbackSignal.broadcast_now();
                 e.preventDefault();
             });
         }
