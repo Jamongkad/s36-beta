@@ -187,7 +187,7 @@
 					}
 					field += '<div class="chk_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" id="checkBoxGroup' + last_id + '" value="' + title + '" /></div>';
+					field += '<input maxlength="40" type="text" name="title" id="checkBoxGroup' + last_id + '" value="' + title + '" /></div>';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
 					if (typeof (values) === 'object') {
@@ -218,7 +218,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
-					field += '<input type="text" id="checkbox' + subject_id + '" value="' + value + '" />';
+					field += '<input maxlength="45" type="text" id="checkbox' + subject_id + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">&nbsp;' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
@@ -231,7 +231,7 @@
 					}
 					field += '<div class="rd_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" id="radioBoxGroup' + last_id + '" value="' + title + '" /></div>';
+					field += '<input maxlength="40" type="text" name="title" id="radioBoxGroup' + last_id + '" value="' + title + '" /></div>';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
 					if (typeof (values) === 'object') {
@@ -264,7 +264,7 @@
 					field = '';
 					field += '<div>';
 					field += '<input type="radio"' + (checked ? ' checked="checked"' : '') + ' name="radio_' + name + '" />';
-					field += '<input type="text" id="checkbox' + subject_id + '" value="' + value + '" />';
+					field += '<input maxlength="45" type="text" id="checkbox' + subject_id + '" value="' + value + '" />';
 					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">&nbsp;' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
@@ -280,7 +280,7 @@
 
 					field += '<div class="opt_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
-					field += '<input type="text" name="title" id="selectBoxGroup' + last_id + '" value="' + title + '" /></div>';
+					field += '<input maxlength="40" type="text" name="title" id="selectBoxGroup' + last_id + '" value="' + title + '" /></div>';
 					field += '';
 					field += '<div class="false-label">' + opts.messages.select_options + '</div>';
 					field += '<div class="fields">';
