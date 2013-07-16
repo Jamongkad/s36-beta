@@ -297,6 +297,7 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     $scope.$on('checkFeedbackStatus', function() {
         console.log("Receiving...");
         var data = FeedbackSignal.get_data();
+        console.log(data);
         $scope.data = data;
         $scope.status_selection = data.status;
     });
