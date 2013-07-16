@@ -17,13 +17,13 @@ angular.module('feedbackcontrol', [])
                         var feed = $.parseJSON($(this).attr('data-feed')); 
                         var policy = $(this).attr("return-policy");
                         if(policy == 1) {
-                            feed.status = "unflag";
+                            feed.status = "flag";
                             $(this).removeAttr("style");
                             $(this).attr("return-policy", 0);
                             var repackaged_json = JSON.stringify(feed); 
                             $(this).attr('data-feed', repackaged_json);
                         } else { 
-                            feed.status = "flag";
+                            feed.status = "unflag";
                             $(this).attr("style", "background-position: -194px -31px");
                             $(this).attr("return-policy", 1);
                             var repackaged_json = JSON.stringify(feed); 
