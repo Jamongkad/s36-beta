@@ -26,6 +26,7 @@ angular.module('feedbackcontrol', [])
                             var repackaged_json = JSON.stringify(feed); 
                             $(this).attr('data-feed', repackaged_json);
                         } 
+                        $(".checky-box-container").show();
                     } else {
                         if(currentUrl.match(/inbox\/all|deleted/g)) { 
                             if(data.id.length > 0) { 
