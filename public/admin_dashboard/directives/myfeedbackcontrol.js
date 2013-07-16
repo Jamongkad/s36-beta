@@ -11,7 +11,6 @@ angular.module('feedbackcontrol', [])
                     var me = $(element); 
                     $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
-                    console.log(data)
                   
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
                         if(data.id.length > 0) { 

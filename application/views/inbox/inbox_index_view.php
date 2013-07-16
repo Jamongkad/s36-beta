@@ -11,6 +11,12 @@ var backend_vars = {
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
+                <span ng-switch-when="flag">
+                    Feedback has been flagged.
+                </span> 
+                <span ng-switch-when="unflag">
+                    Feedback has been unflagged.
+                </span> 
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 
                     <a undo class="undo" href="#" ng-click="undo()">undo</a> 
@@ -44,12 +50,6 @@ var backend_vars = {
                     Feedback has been returned to the inbox.
                     <a undo class="undo" href="#" ng-click="undo()">undo</a> 
                     <a close class="close-checky" href="#" ng-click="close()">close</a>
-                </span> 
-                <span ng-switch-when="flag">
-                    Feedback has been flagged.
-                </span> 
-                <span ng-switch-when="unflag">
-                    Feedback has been unflagged.
                 </span> 
             </span>
         </div>
