@@ -42,7 +42,7 @@ class FeedbackState {
                                                      ->first($this->category_vars);
                 }
                 $rules = $this->state_change_rules();
-                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement();
+                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter++);
                 $feedid = $this->block_id[$counter++];
 
              
@@ -65,7 +65,7 @@ class FeedbackState {
                 $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                                  ->where('intName', '=', 'default')->first($this->category_vars);
                 $rules = $this->lookup[$state];
-                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement();
+                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter++);
                 $feedid = $this->block_id[$counter++]; 
 
              
@@ -164,9 +164,13 @@ class FeedbackState {
         return $category;
     }
 
-    public function flag_statement() {
+    public function flag_statement($counter=False) {
         if(isset($this->isflagged)) {
-            return ($this->isflagged == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";     
+            if(is_array($this->isflagged)) { 
+                return ($this->isflagged[$counter] == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";          
+            } else {
+                return ($this->isflagged == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";          
+            } 
         } 
     }
 
