@@ -70,6 +70,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } 
 
             if(collect_type == 'flag_data') {
+                flag_data.status = (flag_data.status == "unflag") ? "flag" : "unflag";
                 return flag_data;
             }
 
