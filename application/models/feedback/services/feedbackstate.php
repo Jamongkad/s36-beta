@@ -170,7 +170,7 @@ class FeedbackState {
     public function flag_statement($counter=False) {
         if(isset($this->isflagged)) {
             if(is_array($this->isflagged)) { 
-                return ($this->isflagged[$counter] == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";          
+                return ($this->isflagged[$counter]['status'] == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";          
             } else {
                 return ($this->isflagged == "flag") ? ", isFlagged = 1" : ", isFlagged = 0";          
             } 
