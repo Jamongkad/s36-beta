@@ -11,14 +11,11 @@ var backend_vars = {
     <div class="j-j5-ji">
         <div class="checky-bar">
             <span ng-switch on="status_selection"> 
-                <span ng-switch-when="flagthis">
+                <span ng-switch-when="flag">
                     Feedback has been flagged.
                 </span> 
-                <span ng-switch-when="unflagthis">
+                <span ng-switch-when="unflag">
                     Feedback has been unflagged.
-                </span> 
-                <span ng-switch-when="pwet">
-                    Feedback has been pwetted. 
                 </span> 
                 <span ng-switch-when="feature">
                     Feedback has been featured on your page. 
