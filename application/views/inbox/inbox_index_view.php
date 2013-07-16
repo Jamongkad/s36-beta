@@ -627,7 +627,7 @@ var backend_vars = {
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="action-sprite flag-action" transform  
+                                        <li class="action-sprite flag-action" feedid="<?=$feed->id?>" transform  
                                             ng-click="feedback_status($event)"
                                             data-feed='{"id": "<?=$feed->id?>", "catid": "<?=$feed->categoryid?>", "status": <?=($feed->isflagged) ? '"unflag"' : '"flag"'?>}' 
                                             <?=($feed->isflagged) ? "style='background-position: -194px -31px'" : null?>>
