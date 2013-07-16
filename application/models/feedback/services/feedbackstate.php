@@ -68,11 +68,11 @@ class FeedbackState {
                 $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
                 $feedid = $this->block_id[$counter]; 
 
-                $counter = $counter + 1;
-             
+                Helpers::dump($this->isflagged[$counter]);
                 Helpers::dump($column);
                 Helpers::dump($feedid);
-                Helpers::dump("kewl beans");
+                $counter = $counter + 1;
+            
                 /* 
                 $this->_process_single($column, $feedid);
                 if($this->feedback->_toggle_single($column, $feedid)) {
