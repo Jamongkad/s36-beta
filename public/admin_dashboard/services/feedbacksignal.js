@@ -22,7 +22,7 @@ angular.module('FeedbackSignal', [])
         $.ajax({
             type: 'post'    
           , dataType: 'json'
-          , data: { feed_data: status_change }
+          , data: { 'feed_data': data }
           , url: '/feedback/flagfeedback'
         }); 
 
