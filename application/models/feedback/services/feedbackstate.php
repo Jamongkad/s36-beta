@@ -19,18 +19,21 @@ class FeedbackState {
 
     private $category_vars = Array('categoryId', 'intName', 'name');
 
-    public function __construct($mode, $block_id, $company_id, $category_id=False) {
+    public function __construct($mode, $block_id, $company_id, $category_id=False, $isflagged=False) {
         $this->mode        = $mode;     
         $this->block_id    = $block_id;
         $this->company_id  = $company_id;
         $this->category_id = $category_id;
+        $this->isflagged   = $isflagged;
         $this->feedback    = new DBFeedback;
         $this->dashboard   = new DBDashboard($company_id);
     } 
 
     public function change_state() {        
         if(is_array($this->category_id)) { 
+            Helpers::dump($this->flag_statement());
             //this means we are undoing feedback and want to return their original filed status id. This is under the Filed folder only.
+            /*
             $counter = 0;
             foreach($this->category_id as $catid) {
                 if($this->mode != "fileas") { 
@@ -44,10 +47,10 @@ class FeedbackState {
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++];
 
-                /*
+             
                 Helpers::dump($column);
                 Helpers::dump($feedid);
-                */
+            
                 
                 if($this->feedback->_toggle_single($column, $feedid)) {
                     echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
@@ -55,8 +58,11 @@ class FeedbackState {
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
             }
+            */
         } elseif(is_array($this->mode)) {
+            Helpers::dump($this->flag_statement());
             //this means we are undoing feedback and want to return their original status. This is under the Published folder only.
+            /*
             $counter = 0;
             foreach($this->mode as $state) {
                 $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
@@ -65,25 +71,27 @@ class FeedbackState {
                 $column = $rules.$this->_sql_statement_attach($category->categoryid);
                 $feedid = $this->block_id[$counter++]; 
 
-                /*
+             
                 Helpers::dump($column);
                 Helpers::dump($feedid);
-                */
-
+            
                 if($this->feedback->_toggle_single($column, $feedid)) {
                     echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
             }
+            */
         } else { 
+            Helpers::dump($this->flag_statement());
             //Normal operations. Only being used in both Inbox and Deleted folders.
+            /*
             if($this->mode != 'remove') { 
                 $feed_obj = $this->feedback_state_obj();
-                /*
+            
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode);
-                */
+             
                 if($this->feedback->_toggle_multiple($feed_obj)) {
                     echo json_encode(Array("feedback_status_change" => "success", "column" => $this->mode, "feedobj" => $feed_obj));
                 } else { 
@@ -97,6 +105,7 @@ class FeedbackState {
                 } 
                 //Helpers::dump($this->mode);
             }
+            */
         }
     }
 
@@ -138,6 +147,10 @@ class FeedbackState {
         $category = DB::Table('Category')->where('categoryId', '=', $this->category_id)
                                          ->first($this->category_vars);
         return $category;
+    }
+
+    public function flag_statement() {
+        return $this->isflagged;
     }
 
     public function state_change_rules() { 

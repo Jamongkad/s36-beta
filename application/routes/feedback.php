@@ -91,7 +91,7 @@ return array(
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
         $isflagged  = isset($feed['isflag']) ? $feed['isflag'] : null;        
 
-        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id, $isflagged);
         $feedbackstate->change_state();
         $feedbackstate->write_summary();  
     },
