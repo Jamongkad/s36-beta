@@ -129,9 +129,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         } 
 
         var process = function() { 
-            FeedbackSignal.current_state(current);
-            feed.origin = Template.current_inbox_state;
-            FeedbackControlService.change_status(feed, true);
+            console.log(current);
+            //FeedbackSignal.current_state(current);
+            //feed.origin = Template.current_inbox_state;
+            //FeedbackControlService.change_status(feed, true);
         }
 
         if(feed.status != "remove") { 
@@ -298,18 +299,6 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         console.log("Receiving...");
         var data = FeedbackSignal.get_data();
         $scope.data = data;
-        $scope.status_selection = 'flag';
-        /*
-        if(data.status == 'flag' || data.status == 'unflag') {
-            console.log("the flags");
-            $scope.status_selection = 'pwet';
-            console.log($scope.status_selection);
-        } else { 
-            console.log("the normals");
-            $scope.status_selection = data.status;
-            console.log(data.status);
-        }
-        */
-       
+        $scope.status_selection = data.status;  
     });
 }
