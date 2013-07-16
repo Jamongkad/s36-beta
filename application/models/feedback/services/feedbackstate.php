@@ -65,8 +65,10 @@ class FeedbackState {
                 $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                                  ->where('intName', '=', 'default')->first($this->category_vars);
                 $rules = $this->lookup[$state];
-                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter++);
-                $feedid = $this->block_id[$counter++]; 
+                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
+                $feedid = $this->block_id[$counter]; 
+
+                $counter = $counter + 1;
 
              
                 Helpers::dump($column);
