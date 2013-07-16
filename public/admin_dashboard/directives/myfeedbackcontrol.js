@@ -263,7 +263,7 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
-.directive('flag', function(FeedbackControlService, Template) {
+.directive('flag', function(FeedbackControlService, Template, FeedbackSignal) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
@@ -291,6 +291,7 @@ angular.module('feedbackcontrol', [])
                 }
 
                 FeedbackControlService.flag_feedback(modfeed);
+                FeedbackSignal.broadcast_now();
                 e.preventDefault();
             });
         }
