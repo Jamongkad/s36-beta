@@ -167,7 +167,7 @@
 				};
 			// single line input type="text"
 			var appendTextInput = function (values, required) {
-					field += '<label>' + opts.messages.label + '</label>';
+					field += '<label>' + opts.messages.label + '</label>&nbsp;';
 					field += '<input class="fld-title" id="title-' + last_id + '" type="text" value="' + values + '" maxlength="40"/>';
 					help = '';
 					appendFieldLi(opts.messages.text, field, required, help);
