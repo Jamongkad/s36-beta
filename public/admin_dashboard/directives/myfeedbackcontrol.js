@@ -265,38 +265,36 @@ angular.module('feedbackcontrol', [])
 .directive('flag', function(FeedbackControlService, Template, FeedbackSignal) {
     return {
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
+      , link: function($scope, element, attrs) {
 
             var current_url = window.location.pathname;
 
-            $scope.$watch('checkFeedbackStatus', function() {
-                $(element).bind('click', function(e) {
-                    var policy = $(this).attr("return-policy");
-                    if(policy == 1) {
-                        $(this).removeAttr("style");
-                        $(this).attr("return-policy", 0);
-                    } else { 
-                        $(this).attr("style", "background-position: -194px -31px");
-                        $(this).attr("return-policy", 1);
-                    }
-                    
-                    var feed = $.parseJSON($(this).attr('data-feed')); 
-                    var return_policy = $(this).attr('return-policy') == true;
+            $(element).bind('click', function(e) {
+                var policy = $(this).attr("return-policy");
+                if(policy == 1) {
+                    $(this).removeAttr("style");
+                    $(this).attr("return-policy", 0);
+                } else { 
+                    $(this).attr("style", "background-position: -194px -31px");
+                    $(this).attr("return-policy", 1);
+                }
+                
+                var feed = $.parseJSON($(this).attr('data-feed')); 
+                var return_policy = $(this).attr('return-policy') == true;
 
-                    var modfeed = {
-                        id: feed.id      
-                      , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
-                      , status: (return_policy) ? feed.status : 'unflag'
-                      , origin: Template.current_inbox_state 
-                    }
+                var modfeed = {
+                    id: feed.id      
+                  , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
+                  , status: (return_policy) ? feed.status : 'unflag'
+                  , origin: Template.current_inbox_state 
+                }
 
-                    FeedbackControlService.flag_feedback(modfeed);
-                    FeedbackSignal.current_state(modfeed);
-                    $(".checky-box-container").show();
-                    e.preventDefault();
-                });
+                $scope.mystatus = FeedbackSignal.get_data(); 
+                FeedbackControlService.flag_feedback(modfeed);
+                FeedbackSignal.current_state(modfeed);
+                $(".checky-box-container").show();
+                e.preventDefault();
             });
-
         }
     }    
 })
