@@ -233,6 +233,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             } else {
                 if(mode != "remove") {
+                    if($('.feed-checkbox').is(":checked")) {
+                        $('.feed-checkbox').prop("checked", false);
+                    }
                     alert("Action is not allowed!");     
                 } 
             }

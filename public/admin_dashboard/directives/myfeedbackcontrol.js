@@ -144,7 +144,6 @@ angular.module('feedbackcontrol', [])
                         $('.feed-checkbox').prop("checked", false);
                     }
      
-                    //FeedbackControlService.expunge();
                     e.preventDefault();
                 });
             })
