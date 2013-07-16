@@ -13,7 +13,7 @@ angular.module('feedbackcontrol', [])
                     var data = $scope.mystatus;
                     console.log(data);
 
-                    if(data.status == 'flag') { 
+                    if(data.status == 'flag' || data.status == 'unflag') { 
                         var feed = $.parseJSON($(this).attr('data-feed')); 
                         var policy = $(this).attr("return-policy");
                         if(policy == 1) {
