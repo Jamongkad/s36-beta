@@ -99,8 +99,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.feedback_status = function($event) {         
 
         var target = $($event.target);
+        //this is the intention feed. Feed that will go into the database for updating
         var feed = $.parseJSON(target.attr('data-feed'));
 
+        //below are the feed states used for undoing.
         if(current_url.match(/inbox\/all|deleted/g)) {  
             var current = {
                 id: feed.id
@@ -130,6 +132,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         var process = function() { 
             console.log(current);
+            console.log(feed);
             FeedbackSignal.current_state(current);
             //feed.origin = Template.current_inbox_state;
             //FeedbackControlService.change_status(feed, true);
