@@ -12,6 +12,17 @@ angular.module('feedbackcontrol', [])
                     $scope.mystatus = FeedbackSignal.get_data(); 
                     var data = $scope.mystatus;
                     console.log(data);
+
+                    if(data.status == 'flag') { 
+                        var policy = $(this).attr("return-policy");
+                        if(policy == 1) {
+                            $(this).removeAttr("style");
+                            $(this).attr("return-policy", 0);
+                        } else { 
+                            $(this).attr("style", "background-position: -194px -31px");
+                            $(this).attr("return-policy", 1);
+                        } 
+                    }
                     /*  
                     if(currentUrl.match(/inbox\/all|deleted/g)) { 
                         if(data.id.length > 0) { 
