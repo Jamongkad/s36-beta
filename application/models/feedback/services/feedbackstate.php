@@ -33,7 +33,6 @@ class FeedbackState {
         if(is_array($this->category_id)) { 
             Helpers::dump($this->flag_statement());
             //this means we are undoing feedback and want to return their original filed status id. This is under the Filed folder only.
-            /*
             $counter = 0;
             foreach($this->category_id as $catid) {
                 if($this->mode != "fileas") { 
@@ -44,59 +43,60 @@ class FeedbackState {
                                                      ->first($this->category_vars);
                 }
                 $rules = $this->state_change_rules();
-                $column = $rules.$this->_sql_statement_attach($category->categoryid);
+                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement();
                 $feedid = $this->block_id[$counter++];
 
              
                 Helpers::dump($column);
                 Helpers::dump($feedid);
             
-                
+                /* 
+                $this->_process_single($column, $feedid);
                 if($this->feedback->_toggle_single($column, $feedid)) {
                     echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
+                */
             }
-            */
         } elseif(is_array($this->mode)) {
             Helpers::dump($this->flag_statement());
             //this means we are undoing feedback and want to return their original status. This is under the Published folder only.
-            /*
             $counter = 0;
             foreach($this->mode as $state) {
                 $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                                  ->where('intName', '=', 'default')->first($this->category_vars);
                 $rules = $this->lookup[$state];
-                $column = $rules.$this->_sql_statement_attach($category->categoryid);
+                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement();
                 $feedid = $this->block_id[$counter++]; 
 
              
                 Helpers::dump($column);
                 Helpers::dump($feedid);
-            
+                /* 
+                $this->_process_single($column, $feedid);
                 if($this->feedback->_toggle_single($column, $feedid)) {
                     echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
+                */
             }
-            */
         } else { 
-            Helpers::dump($this->flag_statement());
-            //Normal operations. Only being used in both Inbox and Deleted folders.
-            /*
+            //Normal operations. Only being used in both Inbox and Deleted folders.        
             if($this->mode != 'remove') { 
-                $feed_obj = $this->feedback_state_obj();
+                $feed_obj = $this->feedback_state_obj().$this->flag_statement();
             
                 Helpers::dump($feed_obj);
-                Helpers::dump($this->mode);
-             
+                Helpers::dump($this->mode); 
+                /* 
+                $this->_process_multiple($feed_obj);
                 if($this->feedback->_toggle_multiple($feed_obj)) {
                     echo json_encode(Array("feedback_status_change" => "success", "column" => $this->mode, "feedobj" => $feed_obj));
                 } else { 
                     echo json_encode(Array("feedback_status_change" => "failed"));
                 }
+                */
             } else { 
             //Normal operations will permanently delete feedback. Deleted folder only.
                 foreach($this->block_id as $feed_id) {
@@ -105,7 +105,7 @@ class FeedbackState {
                 } 
                 //Helpers::dump($this->mode);
             }
-            */
+       
         }
     }
 
@@ -131,6 +131,22 @@ class FeedbackState {
         $result->block_id = $this->block_id;
         $result->query = $this->block_id_query();
         return $result;     
+    }
+
+    public function _process_single($column, $feedid) { 
+        if($this->feedback->_toggle_single($column, $feedid)) {
+            echo json_encode(Array("feedback_status_change" => "success", "column" => $column, "feedid" => $feedid));
+        } else { 
+            echo json_encode(Array("feedback_status_change" => "failed"));
+        }
+    }
+
+    public function _process_multiple($feed_obj) { 
+        if($this->feedback->_toggle_multiple($feed_obj)) {
+            echo json_encode(Array("feedback_status_change" => "success", "column" => $this->mode, "feedobj" => $feed_obj));
+        } else { 
+            echo json_encode(Array("feedback_status_change" => "failed"));
+        }
     }
 
     public function _sql_statement_attach($category_id) {
