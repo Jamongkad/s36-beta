@@ -26,13 +26,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
 
     var feedback_collect = function(n, mode, collect_type) { 
-        var me = n;
 
+        var me = n;
         var entity = $(".dashboard-feedback[feedback=" + me + "]");
         var entity_parent = entity.parents('.feedback-group');
         var score = entity.attr('score');
         var permission = entity.attr('permission');
         var catid = entity.attr('catid'); 
+        var flag_data = $.parseJSON($(".flag-action[feedid=" + me + "]").attr("data-feed"));
         var mystatus;
 
         if(entity.hasClass('featured')) {
@@ -67,6 +68,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             if(collect_type == 'current_status') {      
                 return mystatus;
             } 
+
+            if(collect_type == 'flag_data') {
+                return flag_data;
+            }
 
         }    
     }
@@ -174,10 +179,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     $scope.change_value_status = function() {
         if( $('input[type=checkbox].feed-checkbox:checked').length > 0 ) {
 
-            var selected = [];
-            var catids = [];
-            var origin = [];
-            var ids = $scope.selected;
+            var selected  = [];
+            var catids    = [];
+            var origin    = [];
+            var flag_data = [];
+            var ids  = $scope.selected;
             var mode = $scope.status_select_value;
             var feed = {};
             
@@ -188,6 +194,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                         selected.push(feedback_collect(ids[i], mode, 'feedid'));
                         catids.push(feedback_collect(ids[i], mode, 'catid')); 
                         origin.push(feedback_collect(ids[i], mode, 'current_status'));
+                        flag_data.push(feedback_collect(ids[i], mode, 'flag_data'));
                     }
                 } else { 
                     $('input[type=checkbox].feed-checkbox:checked, .sorter-checkbox:checked').click();
@@ -197,8 +204,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     selected.push(feedback_collect(ids[i], mode, 'feedid'));
                     catids.push(feedback_collect(ids[i], mode, 'catid'));
                     origin.push(feedback_collect(ids[i], mode, 'current_status'));
+                    flag_data.push(feedback_collect(ids[i], mode, 'flag_data'));
                 }
             }
+
+            console.log(flag_data);
 
             var clean_selection = selected.filter(function(n) { return n });
  
