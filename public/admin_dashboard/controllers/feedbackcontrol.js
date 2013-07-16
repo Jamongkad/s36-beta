@@ -149,8 +149,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
             } 
         } 
 
-        console.log(current);
-
         var process = function() { 
             FeedbackSignal.current_state(current);
             feed.origin = Template.current_inbox_state;
