@@ -269,31 +269,34 @@ angular.module('feedbackcontrol', [])
 
             var current_url = window.location.pathname;
 
-            $(element).bind('click', function(e) {
-                var policy = $(this).attr("return-policy");
-                if(policy == 1) {
-                    $(this).removeAttr("style");
-                    $(this).attr("return-policy", 0);
-                } else { 
-                    $(this).attr("style", "background-position: -194px -31px");
-                    $(this).attr("return-policy", 1);
-                }
-                
-                var feed = $.parseJSON($(this).attr('data-feed')); 
-                var return_policy = $(this).attr('return-policy') == true;
+            $scope.$watch('checkFeedbackStatus', function() {
+                $(element).bind('click', function(e) {
+                    var policy = $(this).attr("return-policy");
+                    if(policy == 1) {
+                        $(this).removeAttr("style");
+                        $(this).attr("return-policy", 0);
+                    } else { 
+                        $(this).attr("style", "background-position: -194px -31px");
+                        $(this).attr("return-policy", 1);
+                    }
+                    
+                    var feed = $.parseJSON($(this).attr('data-feed')); 
+                    var return_policy = $(this).attr('return-policy') == true;
 
-                var modfeed = {
-                    id: feed.id      
-                  , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
-                  , status: (return_policy) ? feed.status : 'unflag'
-                  , origin: Template.current_inbox_state 
-                }
+                    var modfeed = {
+                        id: feed.id      
+                      , catid: (current_url.match(/filed/g)) ? feed.catid : Template.default_category_id
+                      , status: (return_policy) ? feed.status : 'unflag'
+                      , origin: Template.current_inbox_state 
+                    }
 
-                FeedbackControlService.flag_feedback(modfeed);
-                FeedbackSignal.current_state(modfeed);
-                $(".checky-box-container").show();
-                e.preventDefault();
+                    FeedbackControlService.flag_feedback(modfeed);
+                    FeedbackSignal.current_state(modfeed);
+                    $(".checky-box-container").show();
+                    e.preventDefault();
+                });
             });
+
         }
     }    
 })
