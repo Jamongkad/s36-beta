@@ -85,7 +85,7 @@ class FeedbackState {
         } else { 
             //Normal operations. Only being used in both Inbox and Deleted folders.        
             if($this->mode != 'remove') { 
-                $feed_obj = $this->feedback_state_obj().$this->flag_statement();
+                $feed_obj = $this->feedback_state_obj();
             
                 Helpers::dump($feed_obj);
                 Helpers::dump($this->mode); 
@@ -122,10 +122,10 @@ class FeedbackState {
 
         if($this->mode == 'fileas') { 
             $selected_category = $this->selected_category();
-            $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
+            $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid).$this->flag_statement();
         } else { 
             $default_category = $this->default_category();
-            $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
+            $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid).$this->flag_statement();
         }
 
         $result->block_id = $this->block_id;
