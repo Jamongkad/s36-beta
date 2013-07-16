@@ -245,7 +245,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
             } else {
                 if(mode != "remove") {
-                    alert("Action is not allowed!");     
+                    alert("I am sorry. I am unable to perform this operation. Your feedback is either rated as Poor or is given Private permission by it's sender.");     
                 } 
             }
 

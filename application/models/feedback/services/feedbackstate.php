@@ -101,8 +101,7 @@ class FeedbackState {
                         Helpers::dump($feedid);
                         $counter = $counter + 1;
                     }
-                } else {
-                    
+                } else { 
                     $feed_obj = $this->feedback_state_obj(); 
                     Helpers::dump($feed_obj);
                     Helpers::dump($this->mode); 
