@@ -109,12 +109,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var delflag = target.parents('.grids').siblings('.grids').children('ul').children('.flag-action').attr('data-feed');
          
         //either way we are all fucked
-        var flag_data;
+        var flag_data, flagged;
         if(ulflag) {
             flag_data = $.parseJSON(ulflag);
         } else { 
             flag_data = $.parseJSON(delflag);
         }
+
+        flagged = (flag_data.status == "flag") ? 1 : 0;
 
         console.log(flag_data);
 
@@ -124,6 +126,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 id: feed.id
               , catid: Template.default_category_id
               , status: feed.status
+              , isflag: flagged
               , origin: Template.current_inbox_state
             }
         }
@@ -133,6 +136,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 id: feed.id
               , catid: Template.default_category_id
               , status: feed.status
+              , isflag: flagged
               , origin: feed.origin
             } 
         }
@@ -142,6 +146,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 id: feed.id
               , catid: feed.catid
               , status: feed.status
+              , isflag: flagged
               , origin: Template.current_inbox_state
             } 
         } 

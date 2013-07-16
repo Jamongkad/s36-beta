@@ -80,20 +80,7 @@ return array(
     'POST /feedback/changepriority' => function() use ($feedback) { 
         $feedback->_change_feedback('priority', Input::get('feed_id'), Input::get('select_val'));
     },
-
-    'POST /feedback/flagfeedback' => function() use ($feedback) {  
-        $feed = Input::get('feed_data');
-
-        $feed_ids   = Array($feed['id']);
-        $cat_id     = $feed['catid'];
-        $mode       = $feed['status'];
-        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
-
-        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
-        $feedbackstate->change_state();
-        $feedbackstate->write_summary(); 
-    },
-     
+  
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed = Input::get('feed_data');
         $undo_flag = Input::get('undo');
