@@ -101,6 +101,7 @@ var S36FullpageCommon = function(){
             
             $('.star-text span').text( self.convert_rating_to_text(rating) );
             self.highlight_stars(rating);
+            adjust_form_body_container();  // came from fullpage_form_script.js
             
         });
 		
