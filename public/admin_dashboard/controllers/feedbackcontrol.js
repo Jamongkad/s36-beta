@@ -118,8 +118,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         flagged = (flag_data.status == "flag") ? 1 : 0;
 
-        console.log(flag_data);
-
         //below are the feed states used for undoing.
         if(current_url.match(/inbox\/all|deleted/g)) {  
             var current = {
@@ -150,6 +148,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
               , origin: Template.current_inbox_state
             } 
         } 
+
+        console.log(current);
 
         var process = function() { 
             FeedbackSignal.current_state(current);
