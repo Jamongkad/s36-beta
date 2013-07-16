@@ -107,10 +107,16 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
         //get flag data feed assuming you've clicked on delete button
         var delflag = target.parents('.grids').siblings('.grids').children('ul').children('.flag-action').attr('data-feed');
-        
+         
         //either way we are all fucked
-        console.log(ulflag);
-        console.log(delflag);
+        var flag_data;
+        if(ulflag) {
+            flag_data = $.parseJSON(ulflag);
+        } else { 
+            flag_data = $.parseJSON(delflag);
+        }
+
+        console.log(flag_data);
 
         //below are the feed states used for undoing.
         if(current_url.match(/inbox\/all|deleted/g)) {  
