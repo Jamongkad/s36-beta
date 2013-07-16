@@ -541,6 +541,10 @@ $(document).keypress(function(event){
             }else if($('.e_vid_check').length > 0 && $('.e_img_check').length <= 0){
                 cur_page_height = cur_page_height + 78;    
             }
+            
+            if( $('.form-right-side').height() > 341 ){
+                cur_page_height = cur_page_height + ($('.form-right-side').height() - cur_page_height);
+            }
         }
         $('#formBody').animate({height:cur_page_height});
     }

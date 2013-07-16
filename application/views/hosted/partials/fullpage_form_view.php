@@ -85,7 +85,7 @@
                     <!-- end of lightbox -->
                     <div id="formBody">
                         <!-- form window 1 -->
-                        <div id="step1" class="form-page current" style="display:block;height:341px">
+                        <div id="step1" class="form-page current" style="display:block;height:341px;">
                             <div class="form-page-body">
                                 <!-- star ratings -->
                                 <div class="grids">

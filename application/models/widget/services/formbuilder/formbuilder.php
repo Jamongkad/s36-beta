@@ -552,8 +552,11 @@ class Formbuilder {
 	
 		if(isset($field['title']) && !empty($field['title'])){
             //$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
-            // added ucwords here. becuase title becomes lower case.
-			$html .= sprintf('<div class="title">%s</div><br/>' . "\n", ucwords($this->elemId($field['title'])), $field['title']);
+            // added ucfirst here. becuase title becomes lower case.
+            // and replaced underscore with space.
+            $title = str_replace('_', ' ', $this->elemId($field['title']));
+            $title = ucfirst($title);
+			$html .= sprintf('<div class="title">%s</div><br/>' . "\n", $title, $field['title']);
 		}
 
 		$field['values'] = (array)$field['values'];
