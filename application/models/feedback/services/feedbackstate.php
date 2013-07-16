@@ -41,14 +41,14 @@ class FeedbackState {
                     $category = DB::Table('Category')->where('categoryId', '=', $catid)
                                                      ->first($this->category_vars);
                 }
-                $rules = $this->state_change_rules();
-                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter++);
-                $feedid = $this->block_id[$counter++];
 
-             
+                $rules = $this->state_change_rules();
+                $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
+                $feedid = $this->block_id[$counter];
+ 
                 Helpers::dump($column);
                 Helpers::dump($feedid);
-            
+                $counter = $counter + 1;         
                 /* 
                 $this->_process_single($column, $feedid);
                 if($this->feedback->_toggle_single($column, $feedid)) {
@@ -68,8 +68,6 @@ class FeedbackState {
                 $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
                 $feedid = $this->block_id[$counter]; 
 
-                Helpers::dump($this->isflagged[$counter]);
-                Helpers::dump($counter);
                 Helpers::dump($column);
                 Helpers::dump($feedid);
                 $counter = $counter + 1;
