@@ -69,10 +69,10 @@ class FeedbackState {
                 $feedid = $this->block_id[$counter]; 
 
                 $counter = $counter + 1;
-
              
                 Helpers::dump($column);
                 Helpers::dump($feedid);
+                Helpers::dump("kewl beans");
                 /* 
                 $this->_process_single($column, $feedid);
                 if($this->feedback->_toggle_single($column, $feedid)) {
