@@ -69,6 +69,7 @@ class FeedbackState {
                 $feedid = $this->block_id[$counter]; 
 
                 Helpers::dump($this->isflagged[$counter]);
+                Helpers::dump($counter);
                 Helpers::dump($column);
                 Helpers::dump($feedid);
                 $counter = $counter + 1;
