@@ -101,6 +101,9 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         var target = $($event.target);
         //this is the intention feed. Feed that will go into the database for updating
         var feed = $.parseJSON(target.attr('data-feed'));
+        var flag = target.parents('ul').children('.flag-action').attr('data-feed');
+
+        console.log(flag);
 
         //below are the feed states used for undoing.
         if(current_url.match(/inbox\/all|deleted/g)) {  
