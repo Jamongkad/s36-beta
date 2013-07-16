@@ -89,8 +89,10 @@ return array(
         $cat_id     = $feed['catid'];
         $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
-        $isflagged  = (isset($feed['isflag'])) ? $feed['isflag'] : $feed['isflag'];
-
+        if(in_array('isflag', $feed)) {
+            $isflagged  = $feed['isflag'];     
+        }
+       
         Helpers::dump($isflagged);
         
         /*
