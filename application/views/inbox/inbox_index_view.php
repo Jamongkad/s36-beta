@@ -45,6 +45,9 @@ var backend_vars = {
                     <a undo class="undo" href="#" ng-click="undo()">undo</a> 
                     <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
+                <span ng-switch-when="flag">
+                    Feedback has been flagged.
+                </span> 
             </span>
         </div>
     </div>

@@ -247,7 +247,6 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
     }
     
     $scope.process_filter = function() {
-
         var data = {}
         if($scope.rating_filter != 'none') {
             data.rating = $scope.rating_filter;
