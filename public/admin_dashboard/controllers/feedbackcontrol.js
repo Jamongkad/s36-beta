@@ -301,9 +301,11 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
         if(data.status == 'flag' || data.status == 'unflag') {
             console.log("the flags");
             $scope.status_selection = 'pwet';
+            console.log($scope.status_selection);
         } else { 
             console.log("the normals");
             $scope.status_selection = data.status;
+            console.log(data.status);
         }
        
     });
