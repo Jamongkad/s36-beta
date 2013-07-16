@@ -18,6 +18,17 @@ angular.module('FeedbackSignal', [])
         this.broadcast_now();
     }
 
+    shared_service.flag_feedback = function(data) { 
+        $.ajax({
+            type: 'post'    
+          , dataType: 'json'
+          , data: { feed_data: status_change }
+          , url: '/feedback/flagfeedback'
+        }); 
+
+        this.broadcast_now();
+    }
+
     shared_service.get_data = function() { 
 
         var result;

@@ -290,8 +290,9 @@ angular.module('feedbackcontrol', [])
                   , origin: Template.current_inbox_state 
                 }
 
-                FeedbackControlService.flag_feedback(modfeed);
-                FeedbackSignal.broadcast_now();
+                //FeedbackControlService.flag_feedback(modfeed);
+                //FeedbackSignal.broadcast_now()
+                FeedbackSignal.flag_feedback(modfeed);
                 e.preventDefault();
             });
         }
