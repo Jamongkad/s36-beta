@@ -89,10 +89,15 @@ return array(
         $cat_id     = $feed['catid'];
         $mode       = ($undo_flag == "true") ? $feed['origin'] : $feed['status'];
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
+        $isflagged  = (isset($feed['isflag'])) ? $feed['isflag'] : $feed['isflag'];
 
+        Helpers::dump($isflagged);
+        
+        /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
         $feedbackstate->write_summary();  
+        */
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
