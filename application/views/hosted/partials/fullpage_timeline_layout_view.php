@@ -40,7 +40,11 @@
         <!-- feedback header -->
         <div class="feedback-header clear">
             <div class="author">
-                <div class="author-avatar"><img src="<?=$avatar?>" width="100%" /></div> 
+                <div class="author-avatar">
+                    <?if($feed->feed_data->displayimg == 1):?>
+                        <img src="<?=$avatar?>" width="100%" />
+                    <?endif?>
+                </div> 
                 <div class="author-information">
                     <div class="author-name break-word clear">
                         <span class="first_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
