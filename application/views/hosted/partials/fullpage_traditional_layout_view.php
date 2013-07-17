@@ -41,12 +41,24 @@
                     <?php if( trim($tw_marker) == '' ): ?>
                         <div class="author-company break-word">
 
-                            <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
-                            </span>
-                           <?if($feed->feed_data->displaycompany == 1):?>
+                            <?if($feed->feed_data->displaycompany == 1 && $feed->feed_data->displayPosition == 1):?>                            
+                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
+                                </span>
                                 <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
                                     <?= HTML::entities($company_name); ?> 
+                                </span>
+                            <?endif?>
+
+                            <?if($feed->feed_data->displaycompany == 1 && $feed->feed_data->displayPosition == 0):?>                            
+                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
+                                </span>
+                            <?endif?>
+
+                            <?if($feed->feed_data->displaycompany == 0 && $feed->feed_data->displayPosition == 1):?>                            
+                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
                                 </span>
                             <?endif?>
 
