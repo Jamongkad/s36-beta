@@ -282,8 +282,12 @@ angular.module('feedbackcontrol', [])
 .directive('flag', function() {
     return {
         restrict: 'A'     
+      , scope: {
+            feedid: "@feedid"
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
+                console.log(scope.feedid);
                 console.log("Colombia");
                 e.preventDefault();
             })
