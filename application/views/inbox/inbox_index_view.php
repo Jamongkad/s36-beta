@@ -370,6 +370,7 @@ var backend_vars = {
                                     <span class="feedback-details-rating <?=strtolower($feed->rating)?>">
                                         <?=$feed->rating?>
                                     </span>
+                                    <span>Flagged</span>
                                     <span class="feedback-details-privacy"><?=$feed->permission?></span>
                                     <span class="feedback-details-status">
                                         Status : <small class="status-line"><?=$feed->status?></small>
