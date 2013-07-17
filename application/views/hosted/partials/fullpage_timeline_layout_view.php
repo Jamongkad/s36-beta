@@ -49,23 +49,41 @@
                     </div>
                     <?php if( trim($tw_marker) == '' ): ?>
                         <div class="author-company break-word">
-                            <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
-                            </span>
-                            <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($company_name); ?>
-                            </span>
+
+                            <?if($feed->feed_data->displaycompany == 1 && $feed->feed_data->displayposition == 1):?>                            
+                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
+                                </span>
+                                <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($company_name); ?>
+                                </span>
+                            <?endif?>
+
+                            <?if($feed->feed_data->displaycompany == 1 && $feed->feed_data->displayposition == 0):?>                            
+                                <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($company_name); ?> 
+                                </span>
+                            <?endif?>
+
+                            <?if($feed->feed_data->displaycompany == 0 && $feed->feed_data->displayposition == 1):?>                            
+                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;"></span>
+                                </span>
+                            <?endif?>
+
                         </div>
                         <div class="author-location-info break-word clear">
-                            <div class="author-location">
-                                <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
-                                    <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
-                                </span>
-                                <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
-                                    <?= HTML::entities($country_name); ?>
-                                </span>
-                            </div>
-                            <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                            <?if($feed->feed_data->displaycountry == 1):?>
+                                <div class="author-location">
+                                    <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
+                                        <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
+                                    </span>
+                                    <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
+                                        <?= HTML::entities($country_name); ?>
+                                    </span>
+                                </div>
+                                <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                            <?endif?>
                         </div>
                         <div class="custom-meta-data break-word clear">
                             <?php if( ! is_null($metadata) ): ?>
@@ -83,8 +101,10 @@
                 </div>  
             </div>
             <div class="reviews clear">
-                <div class="ratings clear">
-                    <div class="feedback-timestamp"> &nbsp; <?=$feed->feed_data->daysago?></div>
+                <div class="ratings clear"> 
+                    <?if($feed->feed_data->displaysbmtdate == 1):?>
+                        <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
+                    <?endif?>
                     <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div>
                 </div>
                 <?php if($feed->feed_data->isfeatured == 1): ?>
