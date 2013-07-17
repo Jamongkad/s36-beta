@@ -64,15 +64,17 @@
 
                         </div>
                         <div class="author-location-info break-word clear">
-                            <div class="author-location">
-                                <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
-                                    <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
-                                </span>
-                                <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
-                                    <?= HTML::entities($country_name); ?>
-                                </span>
-                            </div>
-                            <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                            <?if($feed->feed_data->displaycountry == 1):?>
+                                <div class="author-location">
+                                    <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
+                                        <?= HTML::entities($city); ?><span class="location_comma" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">, </span>
+                                    </span>
+                                    <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
+                                        <?= HTML::entities($country_name); ?>
+                                    </span>
+                                </div>
+                                <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                            <?endif?>
                         </div>
                     <?php endif; ?>
                 </div>  
