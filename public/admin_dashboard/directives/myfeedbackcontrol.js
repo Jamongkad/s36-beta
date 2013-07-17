@@ -279,6 +279,17 @@ angular.module('feedbackcontrol', [])
         }
     }    
 })
+.directive('flag', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log("Colombia");
+                e.preventDefault();
+            })
+        }
+    }  
+});
 
 function published_state(obj, sibling_id, msg, state) { 
     //kill me....

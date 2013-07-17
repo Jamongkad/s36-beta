@@ -249,9 +249,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } 
             }
 
-            if($('.feed-checkbox').is(":checked")) {
-                $('.feed-checkbox').prop("checked", false);
-            }
+            if($('.feed-checkbox').is(":checked")) { $('.feed-checkbox').prop("checked", false); }
 
             selected = [];
             clean_selection = [];
