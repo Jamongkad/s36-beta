@@ -286,8 +286,13 @@ angular.module('feedbackcontrol', [])
             $(element).bind('click', function(e) {
                 var feedid = $(this).attr('feedid');
                 var flag = $(".flag-span[feedid=" + feedid + "]");
-                flag.addClass("feedback-details-flag");
-                flag.html("FLAGGED");
+                if(!flag.hasClass("feedback-details-flag")) { 
+                    flag.addClass("feedback-details-flag");
+                    flag.html("FLAGGED");
+                } else { 
+                    flag.removeClass("feedback-details-flag");
+                    flag.html("");
+                }
                 e.preventDefault();
             })
         }
