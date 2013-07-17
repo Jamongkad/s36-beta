@@ -11,7 +11,7 @@
     
     <div class="hosted-block">
         <div class="company-rating">
-            <div class="company-cover-name break-word"><h1><?=ucfirst($company->company_name)?></h1></div>
+            <!--<div class="company-cover-name break-word"><h1><?=ucfirst($company->company_name)?></h1></div>-->
             <div class="dynamic-stars-container">
                 <div class="dynamic-stars">
                     <div class="star-ratings clear">
