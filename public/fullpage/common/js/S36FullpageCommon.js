@@ -52,6 +52,10 @@ var S36FullpageCommon = function(){
 				text = Helpers.html2entities(text);
 				text = Helpers.nl2br(text);
 				text = Helpers.urls_to_links(text);
+                
+                // get the default desc if text is blank.
+                if( text == '' ) text = $('#def_desc').html();
+                
 				$('#fullpage_desc').html( text );
 				
 				if( $('.companyDescription').length ){

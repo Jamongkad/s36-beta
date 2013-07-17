@@ -41,21 +41,21 @@
     <div class="hosted-block">
         <div class="company-description clear">
             <div class="company-text">
-                <?php if( ! is_null($user) || trim($company->description) != '' ): ?>
-                    <div class="company-text-content">
-                        <? // keep the content of #fullpage_desc in one line. ?>
+                <div class="company-text-content">
+                    <? // keep the content of #fullpage_desc and #def_desc in one line. ?>
+                    <div id="def_desc" style="display: none;">Thanks for viewing <?= ucfirst( HTML::entities($company->company_name) ); ?>'s customer reviews and testimonials. Feel free to rate us now by clicking on the Stars on the left to get started!</div>
+                    
+                    <?php if( trim($company->description) != '' ): ?>
                         <div id="fullpage_desc" class="break-word"><?= nl2br( Helpers::urls_to_links(HTML::entities( substr($company->description, 0, 500) )) ); ?></div>
-                        
-                        <div id="desc_hint" style="<?= ( trim($company->description) == '' ? 'display: block;' : '' ); ?>">
-                            Add your company description
-                        </div>
-                        
-                        <?php if( ! is_null($user) ): ?>
-                            <textarea id="fullpage_desc_textbox" rows="3" maxlength="500"></textarea>
-                            <div id="desc_edit_icon"></div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php else: ?>
+                        <div id="fullpage_desc" class="break-word">Thanks for viewing <?=ucfirst($company->company_name)?>'s customer reviews and testimonials. Feel free to rate us now by clicking on the Stars on the left to get started!</div>
+                    <?php endif; ?>
+                    
+                    <?php if( ! is_null($user) ): ?>
+                        <textarea id="fullpage_desc_textbox" rows="3" maxlength="500"></textarea>
+                        <div id="desc_edit_icon"></div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div> <!-- end of .hosted-block (ratings and description) -->
