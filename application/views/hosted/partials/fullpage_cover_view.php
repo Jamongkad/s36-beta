@@ -146,7 +146,7 @@
         </div>
     </div>
     -->
-    <div class="cover-shadow"></div>
+    <!-- <div class="cover-shadow"></div> -->
 </div>
 <?= HTML::style('/fullpage/admin/css/FullpageCover.css'); ?>
 <?= HTML::script('/fullpage/admin/js/FullpageCover.js'); ?>

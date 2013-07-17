@@ -7,7 +7,15 @@ var FullpageCover = function(){
     this.logo_action = '';
     
     
+    
     this.init = function(){
+        
+        //reposition the company name and title
+        self.reposition_company_name_and_rating();
+        
+        // horizontally and vertically align the logo.
+        self.centrally_align_logo();;
+        
         
         /* ========================================
         || Apply the fileupload plugin for the cover photo
@@ -150,6 +158,8 @@ var FullpageCover = function(){
                 Helpers.hide_notification();
                 self.turn_on_logo_edit_mode(true);
                 self.logo_action = 'change';
+                self.centrally_align_logo();
+                
             }, error: function(jqXHR){
                 Helpers.display_error_mes([jqXHR.responseText]);
                 Helpers.hide_notification();
@@ -213,10 +223,6 @@ var FullpageCover = function(){
             }
             
         });
-        
-        
-        //reposition the company name and title
-        self.reposition_company_name_and_rating();
         
     }
     
@@ -339,6 +345,41 @@ var FullpageCover = function(){
         $('#avatarContainer').find('img').load(function(){
             var $wd = $(this).width() + 40;
             $('#coverPhotoContainer').find('.company-rating').css('left',$wd+'px');
+        });
+    }
+    
+    
+    
+    this.centrally_align_logo = function(){
+        $('#avatarContainer img').load(function(){
+                    
+            var img_w = $(this).width();
+            var img_h = $(this).height();
+            $(this).removeAttr('width').removeAttr('height').removeAttr('style');
+            
+            if( img_w > img_h ){
+                
+                $(this).attr('height','150px');
+                $(this).css({
+                    'left' : '50%',
+                    'margin-left' : -( ((img_w / img_h) * 150) / 2) + 'px'
+                });
+                
+            }else if(img_w < img_h){
+                
+                $(this).attr('width','150px');
+                $(this).css({
+                    'top' : '50%',
+                    'margin-top' : -( ((img_h / img_w) * 150) / 2) + 'px'
+                });
+                
+            }else{
+                
+                $(this).attr('width','150px');
+                $(this).attr('height','150px');
+                
+            }
+            
         });
     }
     
