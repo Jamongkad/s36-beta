@@ -64,7 +64,6 @@
 
                         </div>
                         <div class="author-location-info break-word clear">
-                            <?=$feed->feed_data->displaycountry ?>
                             <?if($feed->feed_data->displaycountry == 1):?>
                                 <div class="author-location">
                                     <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
