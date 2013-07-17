@@ -40,14 +40,16 @@
                     </div>
                     <?php if( trim($tw_marker) == '' ): ?>
                         <div class="author-company break-word">
+
                             <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
                                 <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
                             </span>
-                            <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
-                                <?if($feed->feed_data->displaycompany == 1):?>
-                                    <?= HTML::entities($company_name); ?>
-                                <?endif?>
-                            </span>
+                           <?if($feed->feed_data->displaycompany == 1):?>
+                                <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($company_name); ?> 
+                                </span>
+                            <?endif?>
+
                         </div>
                         <div class="author-location-info break-word clear">
                             <div class="author-location">
