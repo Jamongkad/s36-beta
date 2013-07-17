@@ -285,8 +285,9 @@ angular.module('feedbackcontrol', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 var feedid = $(this).attr('feedid');
-                console.log(feedid);
-                console.log("Colombia");
+                var flag = $(".flag-span[feedid=" + feedid + "]");
+                flag.addClass("feedback-details-flag");
+                flag.html("FLAGGED");
                 e.preventDefault();
             })
         }
