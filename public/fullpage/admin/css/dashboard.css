@@ -9,6 +9,7 @@
 }
 #theDashboardMenu{
     z-index: 300;
+    top: 14px;
 }
 #theDashboardMenu ul{
 	display:block;
