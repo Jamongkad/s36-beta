@@ -139,6 +139,14 @@
     border-radius:15px;     
     margin-right:6px;
 }
+.feedback-details-flag { 
+    background:#5F9F9F;
+    display:inline-block;
+    padding:3px 5px;
+    font-size:10px;
+    color:#FFF;
+    text-shadow:#0c747a  0px -1px;
+}
 .feedback-details-rating.filed { 
     background:#cd5555;
     display:inline-block;
