@@ -607,11 +607,13 @@
 }
 .the-categories-menu .the-categories ul li a{
 	color:#FFF;
-	padding:1px 6px 2px;
+	padding:3px 6px 4px;
 	background:#598499;	
-	-webkit-border-radius:15px;
-	-moz-border-radius:15px;
-	border-radius:15px;		
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;		
+    display:inline-block;
+    line-height:1.24em;
 }
 .the-categories-menu .the-categories ul li a:hover{
 	background:#97adb8;
