@@ -11,8 +11,10 @@
             </div>
         </div>
         <div id="barRightContent">
-            <div class="barLinks">
-                <div>Signed in as <?=\S36Auth::user()->username?></div>
+            <div class="barLinks"> 
+                <?if( ! is_null(\S36Auth::user()) ):?> 
+                    <span style="top:14px;left:-160px;position:relative;float:left;color:#656E77;font-weight:bold">Signed in as <?=\S36Auth::user()->username?></span>
+                <?endif?>
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?> 
                         <? //<li><a href="#" id="admin_panel" initquick>Admin Panel</a></li> ?>
