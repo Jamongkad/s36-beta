@@ -15,8 +15,8 @@ body{
 .company-text{
 	/*width:77%;*/
 	/*margin-left:195px;*/
-	width:auto;
-	float:none;
+	width:600px;
+	float:right;
 	/*top:-15px;*/
 	top: 8px;
 }

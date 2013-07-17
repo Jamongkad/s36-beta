@@ -31,7 +31,7 @@
                 <strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong>
                 <?$regex = Helpers::nav_regex();?>
                 <?php if( $regex->home ): ?>
-                    Click the stars to rate us!
+                    Rate us!
                 <?php endif; ?>
             </div>
         </div>

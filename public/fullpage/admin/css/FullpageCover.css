@@ -209,11 +209,11 @@
     float:left;
 }
 .company-rating{
-    left: 250px;
-    bottom: 10px;
-    position: absolute;
+    left: 62px;
+    /*bottom: 10px;*/
+    /*position: absolute;*/
     z-index:200;
-    width: 530px;
+    /*width: 200px;*/
 }
 .company-cover-name{
     color:#FFF;
