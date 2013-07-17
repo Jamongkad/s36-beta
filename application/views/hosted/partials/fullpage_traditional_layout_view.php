@@ -51,14 +51,14 @@
                             <?endif?>
 
                             <?if($feed->feed_data->displaycompany == 1 && $feed->feed_data->displayposition == 0):?>                            
-                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
-                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
+                                <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($company_name); ?> 
                                 </span>
                             <?endif?>
 
                             <?if($feed->feed_data->displaycompany == 0 && $feed->feed_data->displayposition == 1):?>                            
                                 <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
-                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
+                                    <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;"></span>
                                 </span>
                             <?endif?>
 
