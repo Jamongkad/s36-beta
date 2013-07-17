@@ -780,5 +780,15 @@ border: 1px solid #fdd;
 margin-top: 3px;
 padding: 4px;
 }
-
 /*used for other settings end*/
+h1.regular {
+    font-size: 16px;    
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h1.regular-featured {
+    font-size: 20px;  
+    margin-bottom: 5px;
+    font-weight: bold;
+}

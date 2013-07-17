@@ -139,7 +139,8 @@
                          found this useful
                 </div>
             <?php endif; ?>
-            <div class="feedback-text break-word">
+            <div class="feedback-text break-word"> 
+                <?=$feed->feed_data->title?>
                 <?= nl2br($feed->feed_data->text);?>
             </div>
             <!-- are there any additional info uploaded?? -->
