@@ -120,6 +120,7 @@
             </div>
         <?php endif; ?>
     </div>
+    <!--
     <div class="company-rating">
         <div class="company-cover-name break-word"><h1><?=ucfirst($company->company_name)?></h1></div>
         <div class="dynamic-stars-container">
@@ -144,6 +145,7 @@
             <?php endif; ?>
         </div>
     </div>
+    -->
     <div class="cover-shadow"></div>
 </div>
 <?= HTML::style('/fullpage/admin/css/FullpageCover.css'); ?>

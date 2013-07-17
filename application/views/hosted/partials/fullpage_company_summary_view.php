@@ -10,6 +10,35 @@
 <div id="companySummaryContainer">
     
     <div class="hosted-block">
+        <div class="company-rating">
+            <div class="company-cover-name break-word"><h1><?=ucfirst($company->company_name)?></h1></div>
+            <div class="dynamic-stars-container">
+                <div class="dynamic-stars">
+                    <div class="star-ratings clear">
+                        <div class="star-container clear">
+                            <input type="hidden" id="company_rating" value="<?php echo round($company->avg_rating); ?>" /><? // used in reseting rating. ?>
+                            <input type="hidden" id="rating" name="rating" value="<?php echo round($company->avg_rating); ?>" />
+                            <div id="1" class="star <?= (round($company->avg_rating) >= 1 ? 'full' : ''); ?>"></div>
+                            <div id="2" class="star <?= (round($company->avg_rating) >= 2 ? 'full' : ''); ?>"></div>
+                            <div id="3" class="star <?= (round($company->avg_rating) >= 3 ? 'full' : ''); ?>"></div>
+                            <div id="4" class="star <?= (round($company->avg_rating) >= 4 ? 'full' : ''); ?>"></div>
+                            <div id="5" class="star <?= (round($company->avg_rating) >= 5 ? 'full' : ''); ?>"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-count">
+                <strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong>
+                <?$regex = Helpers::nav_regex();?>
+                <?php if( $regex->home ): ?>
+                    Click the stars to rate us!
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="hosted-block">
         <div class="company-description clear">
             <div class="company-text">
                 <?php if( ! is_null($user) || trim($company->description) != '' ): ?>
@@ -34,8 +63,7 @@
     
     <? // here's our new fullpage form. ?>
     <?= $widget_loader->load()->render_hosted(); ?>
-    
-    
+        
     <div class="hosted-block">
         <div class="company-reviews clear">
             <div class="company-recommendation">
