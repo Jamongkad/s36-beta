@@ -12,7 +12,7 @@
         </div>
         <div id="barRightContent">
             <div class="barLinks">
-                Signed in as <span><?=\S36Auth::user()->username?>
+                <div>Signed in as <?=\S36Auth::user()->username?></div>
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?> 
                         <? //<li><a href="#" id="admin_panel" initquick>Admin Panel</a></li> ?>
