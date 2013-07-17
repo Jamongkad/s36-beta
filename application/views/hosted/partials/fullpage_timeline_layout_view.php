@@ -140,7 +140,7 @@
                 </div>
             <?php endif; ?>
             <div class="feedback-text break-word"> 
-                <h1 class="<?=($feed->feed_dat->isfeatured == 1) ? "regular-featured" : "regular"?>"><?=$feed->feed_data->title?></h1>
+                <h1 class="<?=($feed->feed_data->isfeatured == 1) ? "regular-featured" : "regular"?>"><?=$feed->feed_data->title?></h1>
                 <?= nl2br($feed->feed_data->text);?>
             </div>
             <!-- are there any additional info uploaded?? -->
