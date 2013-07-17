@@ -240,11 +240,12 @@ a:hover{
 	color:#333;*/
 	display:block;
 	top:-2px;
+    left:-20px;
 	text-align:left;
 	margin-top:5px;
 	font-size:12px;
-	color:#FFF;
-	text-shadow:#000 0px 0px 4px;
+	color:#000;
+	/*text-shadow:#000 0px 0px 4px;*/
 }
 .review-count strong{
 	/*font-weight:bold;*/
