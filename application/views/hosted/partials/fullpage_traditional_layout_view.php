@@ -44,7 +44,9 @@
                                 <?= HTML::entities($position); ?><span class="company_comma" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">, </span>
                             </span>
                             <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
-                                <?= HTML::entities($company_name); ?>
+                                <?if($feed->feed_data->displaycompany == 1):?>
+                                    <?= HTML::entities($company_name); ?>
+                                <?endif?>
                             </span>
                         </div>
                         <div class="author-location-info break-word clear">
