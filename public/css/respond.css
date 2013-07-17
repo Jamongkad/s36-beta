@@ -38,6 +38,7 @@ body{
 .company-text-content{
 	/*padding:5px;
 	background:#f1f1f1;*/
+    top: -22px;
 	padding:10px 15px;
 	background:#f6f6f6;
 }
