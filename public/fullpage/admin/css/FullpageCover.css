@@ -3,9 +3,6 @@
     position: relative;
     width: 850px;
 }
-#coverPhotoContainer:hover #changeCoverButtonIcon{
-    display: block;
-}
 #coverPhotoContainer .loading_img,
 #avatarContainer .loading_img{
     display: none;
@@ -155,9 +152,7 @@
     z-index:200;
 }
 #avatarContainer img{ position: relative; }
-#avatarContainer:hover #avatarButtonIcon{
-    display: block;
-}
+
 #avatarButtonIcon {
     background:url(/fullpage/admin/img/changeCoverIcon.png) no-repeat;
     width:18px;

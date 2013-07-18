@@ -14,7 +14,35 @@ var FullpageCover = function(){
         self.reposition_company_name_and_rating();
         
         // horizontally and vertically align the logo.
-        self.centrally_align_logo();;
+        self.centrally_align_logo();
+        
+        
+        
+        // doing these two hovers in css has bug.
+        $('#coverPhotoContainer').hover(
+            function(){
+                if( $('#changeCoverButtonIcon').is('.hidden') ) return;
+                $('#changeCoverButtonIcon').show();
+            },
+            function(){
+                $('#changeCoverButtonIcon').hide();
+            }
+        );
+        
+        // i'm on the right track baby i was born this way.
+        $('#avatarContainer').hover(
+            function(){
+                $('#avatarButtonIcon').show();
+                $('#changeCoverButtonIcon').addClass('hidden');
+                $('#changeCoverButtonIcon').hide();
+            },
+            function(){
+                $('#avatarButtonIcon').hide();
+                $('#changeCoverButtonIcon').removeClass('hidden');
+                $('#changeCoverButtonIcon').show();
+            }
+        );
+        
         
         
         /* ========================================
