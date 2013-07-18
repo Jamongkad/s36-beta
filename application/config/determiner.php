@@ -45,7 +45,7 @@ class Determiner {
                'host' => 'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
-             , 'db' => 's36_mathew'
+             , 'db' => 's36'
            );
 
            $obj->env_name = 'development';
