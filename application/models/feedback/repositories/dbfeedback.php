@@ -218,9 +218,6 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
 
-        Helpers::dump($opts);
-        Helpers::dump($result_obj);
-
         return $result_obj; 
     }
 
@@ -329,9 +326,7 @@ class DBFeedback extends S36DataObject {
         }
        
         $in_query = implode(',', array_fill(0, count($ids), '?'));
-
-        Helpers::dump(count($ids));
-
+ 
         $sth = $this->dbh->prepare('
             SELECT
                 '.$this->select_vars.' 
