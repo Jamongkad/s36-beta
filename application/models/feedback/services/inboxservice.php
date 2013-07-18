@@ -64,6 +64,7 @@ class InboxService {
             $this->cache->generate_keys();
 
             if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
+                Helpers::dump($this->filters);
                 //echo "no cache";
                 //main logic
                 $offset = ($this->page_number - 1) * $this->filters['limit'];
