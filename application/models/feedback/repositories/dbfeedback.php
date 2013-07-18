@@ -329,6 +329,8 @@ class DBFeedback extends S36DataObject {
        
         $in_query = implode(',', array_fill(0, count($ids), '?'));
 
+        Helpers::dump(count($ids));
+
         $sth = $this->dbh->prepare('
             SELECT
                 '.$this->select_vars.' 
