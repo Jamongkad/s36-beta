@@ -127,7 +127,6 @@ class DBFeedback extends S36DataObject {
                     AND Feedback.isDeleted = :is_deleted
                     AND Feedback.isPublished = :is_published
                     AND Feedback.isFeatured = :is_featured
-                    AND Feedback.isNew = 1
                 ';
         }
     
