@@ -192,6 +192,8 @@ class DBFeedback extends S36DataObject {
             LIMIT :offset, :limit
         ';
 
+        Helpers::dump($opts);
+
         $company_id = $this->company_id;
 
         if (!$this->company_id) {
