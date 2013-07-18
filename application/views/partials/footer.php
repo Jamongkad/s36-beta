@@ -53,7 +53,6 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 
 <?=HTML::script('/js/jquery.form.js'); ?>
 <?=HTML::script('/js/jquery.tmpl.js'); ?>
-<?=HTML::script('js/jquery.validate.js')?>
 <?=HTML::script('js/jquery.serializeform.js')?>
 <?=HTML::script('js/jquery.formbuilder.js')?>
 <?=HTML::script('js/head.min.js')?>
