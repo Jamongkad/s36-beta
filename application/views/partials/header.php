@@ -40,14 +40,6 @@
 </head>
 <body>
 
-<div id="notification">
-    <div id="notification-design">
-        <div id="notification-message">
-            Loading... Please Wait...
-        </div>
-    </div>
-</div>
-
 <?= View::make('hosted/partials/fullpage_bar_view'); ?>
 <?= View::make('hosted/partials/fullpage_background_view'); ?>
 

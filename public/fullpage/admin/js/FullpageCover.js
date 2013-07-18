@@ -39,7 +39,7 @@ var FullpageCover = function(){
                 data.submit();
             },progress: function(e, data){
                 Helpers.show_notification('Changing Cover Photo',0);
-                $('#coverPhotoContainer .loading_img').show();
+                $('#coverPhotoContainer .cp_loading_img').show();
                 $('#coverPhoto img').css('opacity', '0.2');
             },done: function(e, data){
                 self.change_cover_image(data.result[0]);
@@ -47,7 +47,7 @@ var FullpageCover = function(){
                 self.make_cover_undraggable(false);
                 self.cover_photo_action = 'change';
                 Helpers.hide_notification();
-                $('#coverPhotoContainer .loading_img').hide();
+                $('#coverPhotoContainer .cp_loading_img').hide();
                 $('#coverPhoto img').animate({'opacity': '1'});
                 
             }, error: function(jqXHR){
