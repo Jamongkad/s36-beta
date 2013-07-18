@@ -191,11 +191,7 @@ class DBFeedback extends S36DataObject {
                 '.$opts['date_statement'].' 
             LIMIT :offset, :limit
         ';
-
-        
-        Helpers::dump("ehllow");
-        Helpers::dump($opts);
-
+ 
         $company_id = $this->company_id;
 
         if (!$this->company_id) {
@@ -220,6 +216,11 @@ class DBFeedback extends S36DataObject {
         $result_obj  = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
+
+        Helpers::dump("hellow");
+        Helpers::dump($opts);
+        Helpers::dump($result_obj);
+
         return $result_obj; 
     }
 

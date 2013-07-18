@@ -26,8 +26,6 @@ return array(
             , 'company_id' => S36Auth::user()->companyid
         );
 
-        Helpers::dump($filters);
-
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
