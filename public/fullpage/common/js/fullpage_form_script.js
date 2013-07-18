@@ -14,14 +14,25 @@ $(document).keypress(function(event){
         
         
         $('#fb-login').click(function(){
-            FB.login(function(response) {
-               if (response.authResponse) {
-                FB.api('/me', function(response) {
-                   fb_connect_success(response);
-                   $('#loginType').val('fb');
-                 });
-               }
+            var fb_login_stat = false;
+            
+            FB.login(function(response){
+                fb_login_stat = true;
+                
+                if(response.authResponse){
+                    FB.api('/me', function(response){
+                        fb_connect_success(response);
+                        $('#loginType').val('fb');
+                    });
+                }
             },{scope:"email,user_location,user_website,user_work_history,user_photos"});
+            
+            setTimeout(function(){
+                if( ! fb_login_stat ){
+                    Helpers.display_error_mes(['Failed to sign in using facebook.', 'Please fill out your profile manually']);
+                    $('#fb-login').hide();
+                }
+            }, 1000);
         });
 
         $('#in-login').click(function(){
@@ -1066,6 +1077,7 @@ $(document).keypress(function(event){
         $('.registration-avatar img').attr('src', '/img/facebook-blank-avatar.jpg');
         $('.registration-avatar img').removeAttr('data-url');
         $('#permission-checkbox').addClass('checked');
+        $('#fb-login').show();
         
         
         // reset the step 3 data.

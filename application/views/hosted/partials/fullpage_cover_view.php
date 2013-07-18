@@ -26,6 +26,7 @@
 <!-- end of lightbox notification -->
 <div id="coverPhotoContainer">
     <?php if( ! is_null($fullpage_cover->user) ): ?>
+        <img class="loading_img" src="img/loading2.gif" />
         <div id="changeCoverButtonIcon">
             <div id="coverMenuList">
                 <ul>
@@ -42,7 +43,7 @@
                 </ul>
             </div>
         </div>
-        <div id="dragPhoto">Drag Image to Reposition Cover</div>
+        <div id="dragPhoto">Drag to Reposition Cover</div>
         <div id="coverActionButtons">
             <ul>
                 <li><a id="save_cover_photo" href="javascript:;">Save</a></li>
@@ -86,6 +87,7 @@
     
     <!-- profile pic -->
     <div id="avatarContainer">
+        <img class="loading_img" src="img/loading2.gif" />
         <?php if( ! is_null($fullpage_cover->user) ): ?>
             <?php $src = ( empty($fullpage_cover->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $fullpage_cover->logo . '?' . str_shuffle('GetRidOfCache') ); ?>
             <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
@@ -93,9 +95,9 @@
         <?php endif; ?>
         
         <?php if( ! empty($fullpage_cover->logo) ): ?>
-            <img basename="" src="/uploaded_images/company_logos/main/<?php echo $fullpage_cover->logo . '?' . str_shuffle('GetRidOfCache'); ?>" />
+            <img id="logo" basename="" src="/uploaded_images/company_logos/main/<?php echo $fullpage_cover->logo . '?' . str_shuffle('GetRidOfCache'); ?>" />
         <?php else: ?>
-            <img basename="" src="/img/public-profile-pic.jpg" width="100%" />
+            <img id="logo" basename="" src="/img/public-profile-pic.jpg" width="100%" />
         <?php endif; ?>
         
         <?php if( ! is_null($fullpage_cover->user) ): ?>
