@@ -6,6 +6,16 @@
 #coverPhotoContainer:hover #changeCoverButtonIcon{
     display: block;
 }
+#coverPhotoContainer .loading_img,
+#avatarContainer .loading_img{
+    display: none;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    margin-left: -8px;
+    top: 50%;
+    margin-top: -8px;
+}
 #coverPhoto{
     width:850px;
     height:240px;
@@ -69,18 +79,21 @@
 #dragPhoto{
     background: url(/fullpage/common/img/drag-bg.png);
     font-family:Verdana, Geneva, sans-serif;
-    font-size:10px;
-    position:absolute;
+    font-size: 12px;
     font-weight:bold;
     color:#FFF;
     z-index:1000;
-    top:10px;
-    left:10px;
-    padding:2px 6px;
+    padding: 5px 6px;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px;
     display:none;
+    text-align: center;
+    width: 160px;
+    position: absolute;
+    left: 50%;
+    top: 47%;
+    margin-left: -80px;
 }
 
 /* the cover buttons baby! */

@@ -39,6 +39,7 @@ var FullpageCover = function(){
                 data.submit();
             },progress: function(e, data){
                 Helpers.show_notification('Changing Cover Photo',0);
+                $('#coverPhotoContainer .loading_img').show();
                 $('#coverPhoto img').css('opacity', '0.2');
             },done: function(e, data){
                 self.change_cover_image(data.result[0]);
@@ -46,6 +47,7 @@ var FullpageCover = function(){
                 self.make_cover_undraggable(false);
                 self.cover_photo_action = 'change';
                 Helpers.hide_notification();
+                $('#coverPhotoContainer .loading_img').hide();
                 $('#coverPhoto img').animate({'opacity': '1'});
                 
             }, error: function(jqXHR){
@@ -142,7 +144,8 @@ var FullpageCover = function(){
                 data.submit();
             },progress: function(e, data){
                 Helpers.show_notification('Changing Profile Picture', 0);
-                $('#avatarContainer img').css('opacity', '0.2');
+                $('#avatarContainer #logo').css('opacity', '0.2');
+                $('#avatarContainer .loading_img').show();
             },done: function(e, data){
                 // set the new src for the image. the additional ? or any get param at the end of the src
                 // refereshes the displayed image. this is it dan, you bits!
@@ -151,7 +154,7 @@ var FullpageCover = function(){
                 var rand_str = '?' + Helpers.get_random_str(5);
                 var basename = 'logo_' + $('#company_id').val() + '.' + ext;
                 var new_src = '/uploaded_images/uploaded_tmp/main/' + basename + rand_str;
-                $('#avatarContainer img').attr({
+                $('#avatarContainer #logo').attr({
                     'src': new_src,
                     'basename': basename
                 }).animate({'opacity': '1'});
@@ -159,11 +162,12 @@ var FullpageCover = function(){
                 self.turn_on_logo_edit_mode(true);
                 self.logo_action = 'change';
                 self.centrally_align_logo();
+                $('#avatarContainer .loading_img').hide();
                 
             }, error: function(jqXHR){
                 Helpers.display_error_mes([jqXHR.responseText]);
                 Helpers.hide_notification();
-                $('#avatarContainer img').css('opacity', '1');
+                $('#avatarContainer #logo').css('opacity', '1');
                 self.turn_on_logo_edit_mode(false);
             }
         });
@@ -172,7 +176,7 @@ var FullpageCover = function(){
         || remove company logo.
         ==========================================*/
         $('#remove_logo').click(function(){
-            $('#avatarContainer img').attr('src', '/img/public-profile-pic.jpg');
+            $('#avatarContainer #logo').attr('src', '/img/public-profile-pic.jpg');
             self.logo_action = 'remove';
             self.turn_on_logo_edit_mode(true);
         });
@@ -182,7 +186,7 @@ var FullpageCover = function(){
         || cancel any company logo action.
         ==========================================*/
         $('#cancel_company_logo').click(function(){
-            $('#avatarContainer img').attr('src', $('#hidden_company_logo').attr('src'));
+            $('#avatarContainer #logo').attr('src', $('#hidden_company_logo').attr('src'));
             
             self.logo_action = '';
             self.turn_on_logo_edit_mode(false);
@@ -200,7 +204,7 @@ var FullpageCover = function(){
                 type: 'post',
                 data: {
                     'action' : self.logo_action,
-                    'basename': $('#avatarContainer img').attr('basename')
+                    'basename': $('#avatarContainer #logo').attr('basename')
                 },
                 success: function(result){
                     error = result;
@@ -213,7 +217,7 @@ var FullpageCover = function(){
                 return false;
             }
             
-            $('#hidden_company_logo').attr('src', $('#avatarContainer img').attr('src'));
+            $('#hidden_company_logo').attr('src', $('#avatarContainer #logo').attr('src'));
             self.turn_on_logo_edit_mode(false);
             
             if( self.logo_action == 'change' ){
@@ -270,7 +274,7 @@ var FullpageCover = function(){
             // is what being retrieved that causes problem in length of drag area.
             // and also the load() doesn't work in repostion.
             setTimeout( function(){
-                $('#dragPhoto').fadeIn();
+                $('#dragPhoto').fadeIn('fast');
                 var offset = $("#coverPhoto img").parent().offset();
                 var offsetX = offset.left;
                 $("#coverPhoto img").each(function(){
@@ -351,7 +355,7 @@ var FullpageCover = function(){
     
     
     this.centrally_align_logo = function(){
-        $('#avatarContainer img').load(function(){
+        $('#avatarContainer #logo').load(function(){
                     
             var img_w = $(this).width();
             var img_h = $(this).height();

@@ -254,7 +254,8 @@ a:hover{
 }
 .regular-featured .feedback-timestamp{
 	float:right;
-	margin-top:3px;
+	margin-top: 3px;
+	margin-left: 10px;
 }
 .star-ratings .star{
 	width:16px;
