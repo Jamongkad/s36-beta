@@ -73,6 +73,7 @@ class DBFeedback extends S36DataObject {
                 , Feedback.isArchived
                 , Feedback.isSticked
                 , Feedback.isDeleted
+                , Feedback.isNew
                 , Feedback.displayName
                 , Feedback.displayImg
                 , Feedback.displayCompany
@@ -191,7 +192,7 @@ class DBFeedback extends S36DataObject {
                 '.$opts['date_statement'].' 
             LIMIT :offset, :limit
         ';
-
+ 
         $company_id = $this->company_id;
 
         if (!$this->company_id) {
@@ -216,6 +217,7 @@ class DBFeedback extends S36DataObject {
         $result_obj  = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
+
         return $result_obj; 
     }
 
@@ -324,7 +326,7 @@ class DBFeedback extends S36DataObject {
         }
        
         $in_query = implode(',', array_fill(0, count($ids), '?'));
-
+ 
         $sth = $this->dbh->prepare('
             SELECT
                 '.$this->select_vars.' 

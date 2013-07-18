@@ -45,6 +45,7 @@ class FeedbackNode {
         $node->isarchived = $this->data->isarchived;
         $node->issticked = $this->data->issticked;
         $node->isdeleted = $this->data->isdeleted;
+        $node->isnew = $this->data->isnew;
         $node->displayname = $this->data->displayname;
         $node->displayimg = $this->data->displayimg;
         $node->displaycompany = $this->data->displaycompany;

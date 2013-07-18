@@ -370,6 +370,9 @@ var backend_vars = {
                                     <span class="feedback-details-rating <?=strtolower($feed->rating)?>">
                                         <?=$feed->rating?>
                                     </span>
+                                    <span class="newfeedback-span <?=($feed->isnew) ? "feedback-details-new" : null?>" feedid="<?=$feed->id?>">
+                                        <?=($feed->isnew) ? "NEW" : null?>
+                                    </span>
                                     <span class="flag-span <?=($feed->isflagged) ? "feedback-details-flag" : null?>" feedid="<?=$feed->id?>">
                                         <?=($feed->isflagged) ? "FLAGGED" : null?>
                                     </span>

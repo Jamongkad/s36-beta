@@ -157,10 +157,10 @@ return array(
         $tf->test("Inbox Testing", function($tf)  {
             
             $filters = array(
-                  'limit'   => 3
+                  'limit'   => 5
                 , 'site_id' => false 
-                , 'filter' => 'published' //(new arrivals) all (show only) featured published
-                , 'choice' => 'all' //positive negative neutral profanity flagged mostcontent
+                , 'filter' => 'all' //(new arrivals) all (show only) featured published
+                , 'choice' => false //positive negative neutral profanity flagged mostcontent
                 , 'date'   => false //date_new date_old
                 , 'rating' => false //5 4 3 2 1
                 , 'category' => false 
