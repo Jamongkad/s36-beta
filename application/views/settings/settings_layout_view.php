@@ -8,7 +8,7 @@
         <div class="dashboard-body">
         	<div class="dashboard-content">
             	<div id="layout-message" class="alert-message" style="display:none"><div class="success">Success! You can view your updated layout display <a href="/">here</a>.</div></div>
-                <ul class="layout-list clear">
+                <ul class="layout-list clear" style="width: 500px;text-align: center;margin: 0 auto;">
                     <li <?=($panel->theme_name=='Traditional') ? 'class="selected"' : ''?> id="Traditional">
                         <div class="layout">
                             <h3 class="layout-name">Traditional</h3>
@@ -29,6 +29,8 @@
                             </div>
                         </div>
                     </li>
+                    <?php 
+                    /*
                     <li <?=($panel->theme_name=='Treble') ? 'class="selected"' : ''?> id="Treble">
                         <div class="layout">
                             <h3 class="layout-name">Treble</h3>
@@ -39,6 +41,8 @@
                             </div>
                         </div>
                     </li>
+                    */
+                    ?>
                 </ul>
                 <div class="layout-chooser-buttons">
                     <!--
