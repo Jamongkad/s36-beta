@@ -929,6 +929,7 @@ class DBFeedback extends S36DataObject {
               , 'feedback_activity_delete' => $feedback_activity
               , 'feedback_delete' => $actual_feedback
               , 'metadata_delete' => $metadata
+              , 'feedback_id' => $id
             );
         } else {
             throw new Exception("Feedback does not exist. Cannot carry on with deletion!");
