@@ -100,12 +100,13 @@ class FeedbackState {
                 }
             } else { 
                 //Normal operations will permanently delete feedback. Deleted folder only.
-                Helpers::dump("Remove");
+                //Helpers::dump("Remove");
                 foreach($this->block_id as $feed_id) {
-                    Helpers::dump($feed_id);
-                    //$this->feedback->permanently_remove_feedback($feed_id);    
+                    //Helpers::dump($feed_id);
+                    $result = $this->feedback->permanently_remove_feedback($feed_id);    
+                    Helpers::dump($result);
                 } 
-                Helpers::dump($this->mode);
+                //Helpers::dump($this->mode);
             }
        
         }
