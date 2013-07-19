@@ -25,8 +25,16 @@
 </div>
 <!-- end of lightbox notification -->
 <div id="coverPhotoContainer">
+    <div id="notification">
+        <div id="notification-design">
+            <div id="notification-message">
+                Loading... Please Wait... you bits.
+            </div>
+        </div>
+    </div>
+    
+    <img class="loading_img cp_loading_img" src="img/loading2.gif" />
     <?php if( ! is_null($fullpage_cover->user) ): ?>
-        <img class="loading_img" src="img/loading2.gif" />
         <div id="changeCoverButtonIcon">
             <div id="coverMenuList">
                 <ul>

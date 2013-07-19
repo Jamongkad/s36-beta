@@ -289,7 +289,7 @@
 	margin-right: 95px;
 	overflow: hidden;
 }
-.regular .custom-meta-data .meta-data{float:left;margin-right:10px;}
+.regular .custom-meta-data .meta-data{ float: left; margin-right: 10px; width: 185px; }
 .regular .custom-meta-data .meta-name{color:#838383;font-weight:bold;}
 .regular .custom-meta-data .meta-value{color:#d74700;font-weight:bold;}
 .regular .reviews .ratings{
