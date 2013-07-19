@@ -16,6 +16,8 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , catid: current_cat_id
         }
 
+        console.log(status_change);
+
         var wdata = { 
             id: feedid     
           , status: 'modify_publish'
