@@ -7,7 +7,7 @@ var backend_vars = {
 }
 </script>
 
-<?=View::make('feedback/partials/inbox_modal.php')?>
+<?=View::make('feedback/partials/inbox_modal')?>
 
 <div id="theInbox" ng-controller="FeedbackControl" >
     <div id="theInboxSorter">
