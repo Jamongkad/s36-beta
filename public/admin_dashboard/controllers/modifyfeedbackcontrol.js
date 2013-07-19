@@ -33,7 +33,6 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         FeedbackSignal.current_state(wdata);
         $(".checky-box-container").show();
 
-        /* 
         if(data.status == 'delete') {
             if(confirm("Are you sure you want to delete this feedback?")) {
                 FeedbackControlService.change_status(data, true);     
@@ -67,7 +66,6 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
         } else {
             FeedbackControlService.change_status(data, true);         
         }
-        */
     }
 
     $scope.save_feedback = function() { 
