@@ -16,11 +16,18 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , catid: current_cat_id
         }
 
-        console.log(status_change);
+        var modify_flag;
+        if(status_change == 'publish') {
+            modify_flag = 'modify_publish';
+        }
+
+        if(status_change == 'feature') { 
+            modify_flag = 'modify_feature';
+        }
 
         var wdata = { 
             id: feedid     
-          , status: 'modify_publish'
+          , status: modify_flag
         }
 
         FeedbackSignal.current_state(wdata);

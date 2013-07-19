@@ -24,6 +24,10 @@
                     Feedback has been published on your page. 
                     <a close class="close-checky" href="#" ng-click="close()">close</a>
                 </span> 
+                <span ng-switch-when="modify_feature">
+                    Feedback has been featured on your page. 
+                    <a close class="close-checky" href="#" ng-click="close()">close</a>
+                </span> 
                 <span ng-switch-when="fileas">
                     Feedback has been filed.
                     <a undo class="undo" href="#" ng-click="undo()">undo</a> 
