@@ -239,9 +239,8 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                     }
                 }
                 
-                console.log(feed);
-                //FeedbackSignal.current_state(feed);
-                //FeedbackControlService.change_status(feed, true);  
+                FeedbackSignal.current_state(feed);
+                FeedbackControlService.change_status(feed, true);  
                 $(".checky-box-container").show();  
 
             } else {
