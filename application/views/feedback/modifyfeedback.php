@@ -24,7 +24,7 @@ $(function() {
 </script>
 <? $id = $feedback->id ?>
 
-<?=View::make('feedback/partials/inbox_modal.php')?>
+<?=View::make('feedback/partials/inbox_modal')?>
 
 <span ng-controller="ModifyFeedbackControl">
 <div class="dialog-form" feedid="<?=$id?>"> 
