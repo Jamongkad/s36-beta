@@ -124,6 +124,7 @@ $(document).ready(function(){
                             $('#feedbacksetup-message').hide();
                         } else {
                             $('#feedbacksetup-message').fadeIn();
+                            $('body').scrollTop(0);
                             //window.location = formcode_url;                             
                             //console.log("All good to go");
                         }                             
