@@ -244,8 +244,10 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 $(".checky-box-container").show();  
 
                 if(mode == "remove") {
-                    var remove_success = FeedbackControlService.jsonmsg.feedback_status_change;
-                    console.log(remove_success);
+                    var status_message = FeedbackControlService.jsonmsg.feedback_status_change;
+                    if(status_message.feedback_status_change == "success") { 
+                        window.location = "/inbox/deleted/all";
+                    }
                 }
 
             } else {
