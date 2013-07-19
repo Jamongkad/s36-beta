@@ -16,7 +16,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , catid: current_cat_id
         }
         console.log(feedid);
-        FeedbackSignal.current_state(feed);
+        FeedbackSignal.current_state(data);
         $(".checky-box-container").show();
         /* 
         if(data.status == 'delete') {
