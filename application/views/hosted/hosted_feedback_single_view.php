@@ -253,6 +253,7 @@
                                         <span class="vote_count"><?= $vote_count; ?></span> people found this useful
                                     </div>
                                     <div class="feedback-text break-word">
+                                        <h1 class="<?=($feedback->isfeatured == 1) ? "reg-featured" : "reg"?>"><?=$feedback->title?></h1>
                                         <p><?= nl2br(HTML::entities($feedback->text)); ?></p>
                                     </div>
                                     <!-- are there any additional info uploaded?? -->

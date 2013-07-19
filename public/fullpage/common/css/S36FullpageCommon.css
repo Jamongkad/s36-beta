@@ -794,3 +794,24 @@ h1.reg-featured {
     margin-bottom: 5px;
     font-weight: bold;
 }
+
+.regular h1{
+	font-size:20px;
+	margin-bottom:5px;
+	font-weight:bold;
+	background:url(/img/quote.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+	padding-left:28px;
+	padding-top:5px;
+}
+.regular-featured h1{
+	font-size:20px;
+	margin-bottom:5px;
+	font-weight:bold;
+	background:url(/img/quote.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+	padding-left:28px;
+	padding-top:5px;
+}
