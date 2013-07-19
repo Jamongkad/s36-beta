@@ -15,8 +15,13 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , status: status_change
           , catid: current_cat_id
         }
-        console.log(feedid);
-        FeedbackSignal.current_state(data);
+
+        var wdata = { 
+            id: feedid     
+          , status: 'modify_publish'
+        }
+
+        FeedbackSignal.current_state(wdata);
         $(".checky-box-container").show();
         /* 
         if(data.status == 'delete') {
