@@ -25,12 +25,7 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
             modify_flag = 'modify_feature';
         }
 
-        var wdata = { 
-            id: feedid     
-          , status: modify_flag
-        }
-
-        FeedbackSignal.current_state(wdata);
+        FeedbackSignal.current_state({ id: feedid, status: modify_flag });
         $(".checky-box-container").show();
 
         if(data.status == 'delete') {
