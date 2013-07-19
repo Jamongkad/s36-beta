@@ -107,8 +107,9 @@ class FeedbackState {
                     $result = $this->feedback->permanently_remove_feedback($feed_id);    
                     $compound_result[] = $result;
                 } 
-                Helpers::dump($this->mode);
-                Helpers::dump($compound_result);
+                //Helpers::dump($this->mode);
+                //Helpers::dump($compound_result);
+                echo json_encode(Array('feedback_status_change' => 'success', 'column' => $this->mode));
             }
        
         }

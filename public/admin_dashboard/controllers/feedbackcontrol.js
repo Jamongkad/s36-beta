@@ -216,7 +216,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 if(current_url.match(/filed/g)) {
                     var feed = {
                         id: clean_selection
-                      , status: $scope.status_select_value
+                      , status: mode
                       , isflag: flag_data
                       , catid:  catids 
                       , origin: Template.current_inbox_state
@@ -224,7 +224,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } else if(current_url.match(/published/g)) {
                     var feed = { 
                         id: clean_selection
-                      , status: $scope.status_select_value
+                      , status: mode
                       , isflag: flag_data
                       , catid: Template.default_category_id
                       , origin: origin
@@ -232,7 +232,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 } else { 
                     var feed = {
                         id: clean_selection
-                      , status: $scope.status_select_value
+                      , status: mode
                       , isflag: flag_data
                       , catid: Template.default_category_id
                       , origin: Template.current_inbox_state
@@ -242,6 +242,11 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true);  
                 $(".checky-box-container").show();  
+
+                if(mode == "remove") {
+                    var remove_success = FeedbackControlService.jsonmsg.feedback_status_change;
+                    console.log(remove_success);
+                }
 
             } else {
                 if(mode != "remove") {
