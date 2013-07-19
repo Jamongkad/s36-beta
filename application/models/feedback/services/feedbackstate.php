@@ -105,8 +105,7 @@ class FeedbackState {
                 //Helpers::dump($this->mode);
                 //Helpers::dump($compound_result);
                 echo json_encode(Array('feedback_status_change' => 'success', 'column' => $this->mode));
-            }
-       
+            } 
         }
     }
 
