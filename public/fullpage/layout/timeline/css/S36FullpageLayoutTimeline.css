@@ -266,6 +266,7 @@
 }
 .regular .feedback-header .reviews .feedback-timestamp{
 	color:#999999;
+	margin-bottom: 3px;
 }
 .regular .author-location{
 	font-weight: bold;
