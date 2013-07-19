@@ -139,14 +139,14 @@
           <span class="dashboard-title">Categories</span> 
         </div>
         <div class="dashboard-body">
-        	<div class="dashboard-content">
-            <div class="form-setup-block">
+            <div class="dashboard-content" ng-controller="SettingCtgyCtrl">
+                <div class="form-setup-block">
                     <div class="form-setup-fields grids">
                       <div class="form-setup-label">New Category:</div>
                       <div class="form-setup-elem">
                             <input type="text" class="dashboard-text" name="category_nm">
                             <div style="height:5px;"></div>
-                            <a href="#" class="dashboard-button blue large add-new-ctgy">Add</a>
+                            <a href="#" class="dashboard-button blue large" ng-click="add()">Add</a>
                           </br></br>
                           <div id="ctgy-list" hrefaction="<?=URL::to('settings/write_ctgy')?>">
                               <?foreach($category as $rows):?>
@@ -165,9 +165,9 @@
                           </div>
                       </div>
                     </div>
-             </div>
+                </div>
             </div>
-          </div>
+        </div>
           <div class="dashboard-foot"></div>
     </div>
     <?php

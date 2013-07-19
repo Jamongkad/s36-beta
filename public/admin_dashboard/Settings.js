@@ -5,7 +5,7 @@ jQuery(function($) {
         var ctgy_list = $("#ctgy-list");
         
         if(ctgy_nm.val() == false) 
-            alert("Please provide a category name. Pwet.");           
+            alert("Please provide a category name.");           
         else 
             $.ajax({
                 url: ctgy_list.attr('hrefaction')

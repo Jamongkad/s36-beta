@@ -45,6 +45,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('/admin_dashboard/controllers/mainreplyctrl.js')?>
 <?=HTML::script('/admin_dashboard/controllers/settingreplyctrl.js')?>
 <?=HTML::script('/admin_dashboard/controllers/modifyfeedbackcontrol.js')?>
+<?=HTML::script('/admin_dashboard/controllers/settingctgyctrl.js')?>
 
 <?=HTML::script('/admin_dashboard/S36InboxModule.js')?>
 
