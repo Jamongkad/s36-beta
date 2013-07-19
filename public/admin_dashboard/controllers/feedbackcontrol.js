@@ -245,6 +245,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
 
                 if(mode == "remove") {
                     var status_message = FeedbackControlService.jsonmsg.feedback_status_change;
+                    console.log(status_message.feedback_status_change);
                     if(status_message.feedback_status_change == "success") { 
                         window.location = "/inbox/deleted/all";
                     }
