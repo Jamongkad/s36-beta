@@ -28,6 +28,7 @@ class DBCategory extends S36DataObject {
 
     public function write_category_name($ctgy_nm) {
         $category_count = $this->_category_count();
+        $status = '';
 
         if($category_count->category_count != 6) { 
             $opts = Array(
@@ -37,7 +38,15 @@ class DBCategory extends S36DataObject {
               , 'changeable' => 1
             );
 
-            DB::table('Category', 'master')->insert_get_id($opts);
+            $result = DB::table('Category', 'master')->insert_get_id($opts);
+            if($result) {
+                $status = "success";
+            } else {
+                $status = "failed"; 
+            }
+            echo json_encode(Array('status' => $status, 'count' => $category_count));
+        } else { 
+            echo json_encode(Array('status' => 'success', 'count' => $category_count));
         }
     }
 

@@ -10,6 +10,9 @@ angular.module('Category', [])
           , dataType: 'json'
           , data: { ctgy_nm: ctgy_nm }
           , url: '/settings/write_ctgy'
+          , success: function(msg) {
+                console.log(msg);
+            }
         });
 
         this.broadcast_now();
