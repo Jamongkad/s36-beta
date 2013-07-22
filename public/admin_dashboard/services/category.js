@@ -28,7 +28,6 @@ angular.module('Category', [])
                 shared_service.cat_data = msg;
             }
         });
-        this.broadcast_now();
     }
 
     shared_service.modify = function(data) { 
