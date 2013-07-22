@@ -10,7 +10,6 @@ function SettingCtgyCtrl($scope, Category) {
         if($scope.category_name == 'undefined' || $scope.category_name == null)  {
             alert("Please provide a category name.");
         } else { 
-            console.log($scope.category_name); 
             Category.write($scope.category_name);
             $scope.category_name = null;
         }

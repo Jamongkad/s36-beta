@@ -159,25 +159,7 @@
                                      |  <a href="#" delete-ctgy catid="{{category.id}}">Delete</a>
                                   </div>
                               </div>
-                          </div>
-        
-                          <!--
-                          <div id="ctgy-list" hrefaction="<?=URL::to('settings/write_ctgy')?>">
-                              <?foreach($category as $rows):?>
-                                  <div id="category-<?=$rows->id?>" class="grids padded" style="padding-bottom:10px;">
-                                      <div class="g1of3" >
-                                          <strong class='ctgy-name'><?=$rows->name?></strong>
-                                      </div>
-                                      <div class="g1of3 align-center">
-                                          <?if($rows->changeable != 0):?>
-                                              <?=HTML::link('settings/rename_ctgy/'.$rows->id, 'Rename', Array('class' => 'rename-ctgy'))?> 
-                                            | <?=HTML::link('settings/delete_ctgy/'.$rows->id, 'Delete', Array('class' => 'delete-ctgy'))?> 
-                                          <?endif?>
-                                      </div>
-                                  </div>
-                              <?endforeach?>
-                          </div>
-                          -->
+                          </div>  
                       </div>
                     </div>
                 </div>

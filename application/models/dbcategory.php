@@ -36,19 +36,14 @@ class DBCategory extends S36DataObject {
         );
 
         DB::table('Category', 'master')->insert_get_id($opts);
-        /*
-        $rename_link = HTML::link('settings/rename_ctgy/'.$result_id, 'Rename', Array('class' => 'rename-ctgy'));
-        $delete_link = HTML::link('settings/delete_ctgy/'.$result_id, 'Delete', Array('class' => 'delete-ctgy'));
+    }
 
-        return "<div id='category-$result_id' class='grids padded' style='padding-bottom:10px;'>
-                    <div class='g1of3'>
-                        <strong class='ctgy-name'>$ctgy_nm</strong>
-                    </div>
-                    <div class='g1of3 align-center'> 
-                        $rename_link | $delete_link
-                    </div>                    
-                </div>"; 
-        */
+    public function _category_count() {
+        $sql = "SELECT COUNT(categoryId) FROM Category WHERE 1=1 AND companyId = :company_id AND changeable = 1";
+        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
     }
 
     public function update_category_name($ctgy_nm, $ctgy_id) {

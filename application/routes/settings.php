@@ -107,6 +107,10 @@ return array (
         return $category->write_category_name(Input::get('ctgy_nm'));
     },
 
+    'GET /settings/category_count' => function() use($category) {
+        Helpers::dump($category->_category_count());
+    },
+
     'POST /settings/save_feedback_settings' => function() {
         $company = new Company\Repositories\DBCompany;
         $hosted_settings = new Hosted\Repositories\DBHostedSettings;

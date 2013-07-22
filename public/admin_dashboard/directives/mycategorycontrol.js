@@ -4,7 +4,6 @@ angular.module('categorycontrol', [])
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log("It has past time you were wed.");
                 e.preventDefault();
             });
         }
