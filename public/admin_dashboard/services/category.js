@@ -14,8 +14,6 @@ angular.module('Category', [])
                 console.log(msg);
             }
         });
-
-        this.broadcast_now();
     }
 
     shared_service.fetch = function() {
@@ -46,8 +44,6 @@ angular.module('Category', [])
           , data: {ctgy_id: id}
           , url: '/settings/delete_ctgy'
         });  
-
-        this.broadcast_now();
     }
 
     shared_service.broadcast_now = function() { 
