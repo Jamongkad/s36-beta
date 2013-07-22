@@ -12,6 +12,9 @@ angular.module('categorycontrol', [])
 .directive('renameCtgy', function() {
     return {
         restrict: 'A'       
+      , scope: {
+          catid: "=catid"    
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 var that = $(this);
@@ -22,7 +25,10 @@ angular.module('categorycontrol', [])
 
                 if(that.text() == "Update") {
                     var ctgy_nm_val = $('input[name="ctgy_nm"]').val()
+
+                    console.log(scope.catid);
                     console.log(ctgy_nm_val);
+
                     that.text("Rename") 
                         .parents('div')
                         .siblings('div')
