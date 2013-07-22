@@ -27,15 +27,18 @@ class DBCategory extends S36DataObject {
     }
 
     public function write_category_name($ctgy_nm) {
+        $category_count = $this->_category_count();
 
-        $opts = Array(
-            'companyId' => $this->company_id
-          , 'intName' => strtolower($ctgy_nm)
-          , 'name' => ucfirst($ctgy_nm)
-          , 'changeable' => 1
-        );
+        if($category_count->category_count != 6) { 
+            $opts = Array(
+                'companyId' => $this->company_id
+              , 'intName' => strtolower($ctgy_nm)
+              , 'name' => ucfirst($ctgy_nm)
+              , 'changeable' => 1
+            );
 
-        DB::table('Category', 'master')->insert_get_id($opts);
+            DB::table('Category', 'master')->insert_get_id($opts);
+        }
     }
 
     public function _category_count() {
