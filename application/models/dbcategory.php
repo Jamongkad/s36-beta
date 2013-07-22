@@ -26,7 +26,7 @@ class DBCategory extends S36DataObject {
         return $result;
     }
 
-    public function write_category_name($ctgy_nm, $companyId) {
+    public function write_category_name($ctgy_nm) {
 
         $opts = Array(
             'companyId' => $this->company_id
