@@ -96,6 +96,7 @@ return array (
         $ctgy_nm = Input::get('ctgy_nm');
         $ctgy_id = Input::get('ctgy_id');
         return $category->update_category_name($ctgy_nm, $ctgy_id);
+
     },
 
     'GET /settings/delete_ctgy/([0-9]+)' => function($id) use($category) { 
