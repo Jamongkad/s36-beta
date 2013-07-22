@@ -16,7 +16,6 @@ function SettingCtgyCtrl($scope, Category) {
     }
 
     $scope.delete = function(id) { 
-        console.log("delete") 
-        console.log(id) 
+        Category.delete(id);
     }
 }

@@ -26,5 +26,14 @@ angular.module('Category', [])
           , url: '/settings/rename_ctgy'
         });
     }
+
+    shared_service.delete = function(id) {
+        $.ajax({ 
+            type: 'POST'    
+          , dataType: 'json'
+          , data: {ctgy_id: id}
+          , url: '/settings/delete_ctgy'
+        });  
+    }
     return shared_service;
 });

@@ -99,13 +99,10 @@ return array (
 
     },
 
-    'GET /settings/delete_ctgy/([0-9]+)' => function($id) use($category) { 
-        $category->delete_category_name($id);
-        return json_encode(array(
-             'action'=>'deleted'
-            ,'success'=>true
-            ,'deleted_id'=>$id
-        ));
+    'POST /settings/delete_ctgy' => function() use($category) { 
+        $id = Input::get('ctgy_id');
+        Helpers::dump(Input::get());
+        //$category->delete_category_name($id);
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  
