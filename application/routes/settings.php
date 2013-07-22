@@ -104,9 +104,7 @@ return array (
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  
-        $ctgy_nm = Input::get('ctgy_nm');
-        $companyId = Input::get('companyId');
-        return $category->write_category_name($ctgy_nm, $companyId);
+        return $category->write_category_name(Input::get('ctgy_nm'));
     },
 
     'POST /settings/save_feedback_settings' => function() {

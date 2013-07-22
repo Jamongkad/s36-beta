@@ -3,6 +3,15 @@ angular.module('Category', [])
 
     var shared_service = {};
 
+    shared_service.write = function(ctgy_nm) { 
+        $.ajax({ 
+            type: 'POST'    
+          , dataType: 'json'
+          , data: { ctgy_nm: ctgy_nm }
+          , url: '/settings/write_ctgy'
+        });
+    }
+
     shared_service.fetch = function() {
         var data; 
         $.ajax({ 
@@ -14,7 +23,6 @@ angular.module('Category', [])
                 data = msg;
             }
         });
-
         return data;
     }
 
