@@ -15,6 +15,7 @@ angular.module('Category', [])
                 console.log(msg);
             }
         });
+        this.broadcast_now();
     }
 
     shared_service.fetch = function() {
@@ -27,6 +28,7 @@ angular.module('Category', [])
                 shared_service.cat_data = msg;
             }
         });
+        this.broadcast_now();
     }
 
     shared_service.modify = function(data) { 
@@ -42,9 +44,11 @@ angular.module('Category', [])
         $.ajax({ 
             type: 'POST'    
           , dataType: 'json'
+          , async: false
           , data: {ctgy_id: id}
           , url: '/settings/delete_ctgy'
         });  
+        this.broadcast_now();
     }
 
     shared_service.broadcast_now = function() { 
