@@ -47,6 +47,19 @@ angular.module('categorycontrol', [])
                 e.preventDefault();
             });
         }
+    } 
+})
+.directive('deleteCtgy', function() { 
+    return {
+        restrict: 'A'
+      , scope: {
+            catid: "@catid"
+        }
+      , link: function(scope, element, attrs) {
+           $(element).bind("click", function(e) {
+                console.log(scope.catid);
+                e.preventDefault();
+            });
+        }
     }
-    
 })
