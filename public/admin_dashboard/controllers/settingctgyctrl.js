@@ -16,6 +16,7 @@ function SettingCtgyCtrl($scope, Category) {
     }
 
     $scope.$on('fetchCategory', function()  {
+        console.log("Fetching Category");
         $scope.cat = Category.fetch().data;
     });
 }
