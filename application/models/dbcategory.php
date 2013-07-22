@@ -16,7 +16,7 @@ class DBCategory extends S36DataObject {
                 AND Category.companyId = :company_id
                 AND Category.intName != 'default'
             ORDER BY 
-                Category.name 
+                Category.categoryId
         ");
 
         $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
