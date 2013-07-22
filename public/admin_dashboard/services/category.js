@@ -2,6 +2,7 @@ angular.module('Category', [])
 .service('Category', function($rootScope) {
 
     var shared_service = {};
+    shared_service.cat_data;
 
     shared_service.write = function(ctgy_nm) { 
         $.ajax({ 
@@ -15,17 +16,15 @@ angular.module('Category', [])
     }
 
     shared_service.fetch = function() {
-        var data; 
         $.ajax({ 
             type: 'GET'    
           , dataType: 'json'
           , async: false
           , url: '/rest/category'
           , success: function(msg) {
-                data = msg;
+                shared_service.cat_data = msg;
             }
         });
-        return data;
     }
 
     shared_service.modify = function(data) { 
