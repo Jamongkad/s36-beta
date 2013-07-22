@@ -13,7 +13,7 @@ angular.module('categorycontrol', [])
     return {
         restrict: 'A'       
       , scope: {
-          catid: "=catid"    
+          catid: "@catid"    
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
