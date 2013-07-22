@@ -148,6 +148,18 @@
                             <div style="height:5px;"></div>
                             <a href="#" class="dashboard-button blue large" ng-click="add($event)" add>Add</a>
                           </br></br>
+
+                          <div id="ctgy-list" ng-repeat="category in get_category()">
+                              <div id="category-" class="grids padded" style="padding-bottom:10px;">
+                                  <div class="g1of3" >
+                                      <strong class='ctgy-name'>{{category.name}}</strong>
+                                  </div>
+                                  <div class="g1of3 align-center">
+                                  </div>
+                              </div>
+                          </div>
+        
+                          <!--
                           <div id="ctgy-list" hrefaction="<?=URL::to('settings/write_ctgy')?>">
                               <?foreach($category as $rows):?>
                                   <div id="category-<?=$rows->id?>" class="grids padded" style="padding-bottom:10px;">
@@ -163,6 +175,7 @@
                                   </div>
                               <?endforeach?>
                           </div>
+                          -->
                       </div>
                     </div>
                 </div>

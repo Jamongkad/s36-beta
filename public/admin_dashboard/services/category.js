@@ -4,16 +4,18 @@ angular.module('Category', [])
     var shared_service = {};
 
     shared_service.fetch = function() {
-        console.log('Ok');
+        var data; 
         $.ajax({ 
             type: 'GET'    
           , dataType: 'json'
           , async: false
           , url: '/rest/category'
           , success: function(msg) {
-                console.log(msg);
+                data = msg;
             }
         });
+
+        return msg;
     }
 
     return shared_service;

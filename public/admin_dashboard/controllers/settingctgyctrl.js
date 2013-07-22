@@ -1,6 +1,10 @@
 function SettingCtgyCtrl($scope, Category) {
 
-    Category.fetch();
+    $scope.get_category = function() {
+        var cat = Category.fetch();
+        console.log(cat);     
+        return cat;
+    }
 
     $scope.add = function() {
         if($scope.category_name == 'undefined' || $scope.category_name == null)  {
