@@ -35,9 +35,7 @@ class DBCategory extends S36DataObject {
           , 'changeable' => 1
         );
 
-        Helpers::dump($opts);
-
-        //$result_id = DB::table('Category', 'master')->insert_get_id($opts);
+        DB::table('Category', 'master')->insert_get_id($opts);
         /*
         $rename_link = HTML::link('settings/rename_ctgy/'.$result_id, 'Rename', Array('class' => 'rename-ctgy'));
         $delete_link = HTML::link('settings/delete_ctgy/'.$result_id, 'Delete', Array('class' => 'delete-ctgy'));
