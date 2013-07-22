@@ -13,12 +13,14 @@ function SettingCtgyCtrl($scope, Category) {
         } else { 
             Category.write($scope.category_name);
             $scope.category_name = null;
+            Category.fetch();
+            $scope.cat = Category.cat_data.data; 
         }
     }
-
+    /*
     $scope.$on('fetchCategory', function()  {
         Category.fetch();
         $scope.cat = Category.cat_data.data; 
-        console.log($scope.cat);
     });
+    */
 }
