@@ -49,7 +49,7 @@ angular.module('categorycontrol', [])
         }
     } 
 })
-.directive('deleteCtgy', function() { 
+.directive('deleteCtgy', function(Category) { 
     return {
         restrict: 'A'
       , scope: {
@@ -58,6 +58,7 @@ angular.module('categorycontrol', [])
       , link: function(scope, element, attrs) {
            $(element).bind("click", function(e) {
                 console.log(scope.catid);
+                Category.delete(scope.catid);
                 e.preventDefault();
             });
         }

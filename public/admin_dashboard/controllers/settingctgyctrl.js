@@ -14,8 +14,4 @@ function SettingCtgyCtrl($scope, Category) {
             $scope.category_name = null;
         }
     }
-
-    $scope.delete = function(id) { 
-        Category.delete(id);
-    }
 }

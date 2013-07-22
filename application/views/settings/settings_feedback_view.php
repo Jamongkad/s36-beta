@@ -156,7 +156,7 @@
                                   </div>
                                   <div class="g1of3 align-center">
                                         <a href="#" rename-ctgy catid="{{category.id}}">Rename</a>
-                                     |  <a href="#" delete-ctgy catid="{{category.id}}" ng-click="delete(category.id)">Delete</a>
+                                     |  <a href="#" delete-ctgy catid="{{category.id}}">Delete</a>
                                   </div>
                               </div>
                           </div>
