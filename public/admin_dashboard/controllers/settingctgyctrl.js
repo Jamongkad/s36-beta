@@ -17,6 +17,7 @@ function SettingCtgyCtrl($scope, Category) {
                 alert("Maximum categories have been reached!");
             }
         }
+
     }
 
     $scope.$on('fetchCategory', function()  {
