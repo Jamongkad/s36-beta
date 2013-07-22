@@ -101,8 +101,7 @@ return array (
 
     'POST /settings/delete_ctgy' => function() use($category) { 
         $id = Input::get('ctgy_id');
-        Helpers::dump(Input::get());
-        //$category->delete_category_name($id);
+        $category->delete_category_name($id);
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  
