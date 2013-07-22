@@ -22,6 +22,7 @@ angular.module('categorycontrol', [])
 
                 if(that.text() == "Update") {
                     var ctgy_nm_val = $('input[name="ctgy_nm"]').val()
+                    console.log(ctgy_nm_val);
                     that.text("Rename") 
                         .parents('div')
                         .siblings('div')
