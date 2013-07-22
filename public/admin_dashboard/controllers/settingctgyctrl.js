@@ -15,11 +15,6 @@ function SettingCtgyCtrl($scope, Category) {
         }
     }
 
-    $scope.rename = function(id) {
-        console.log("rename") 
-        console.log(id) 
-    }
-
     $scope.delete = function(id) { 
         console.log("delete") 
         console.log(id) 
