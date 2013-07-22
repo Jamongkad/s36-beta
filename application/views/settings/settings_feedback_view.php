@@ -149,7 +149,7 @@
                             <a href="#" class="dashboard-button blue large" ng-click="add($event)" add>Add</a>
                           </br></br>
 
-                          <div id="ctgy-list" ng-repeat="category in get_category()">
+                          <div id="ctgy-list" ng-repeat="category.data in get_category()">
                               <div id="category-" class="grids padded" style="padding-bottom:10px;">
                                   <div class="g1of3" >
                                       <strong class='ctgy-name'>{{category.name}}</strong>
