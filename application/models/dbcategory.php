@@ -39,7 +39,7 @@ class DBCategory extends S36DataObject {
     }
 
     public function _category_count() {
-        $sql = "SELECT COUNT(categoryId) FROM Category WHERE 1=1 AND companyId = :company_id AND changeable = 1";
+        $sql = "SELECT COUNT(categoryId) AS category_count FROM Category WHERE 1=1 AND companyId = :company_id AND changeable = 1";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
         $sth->execute();
