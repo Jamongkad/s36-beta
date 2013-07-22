@@ -15,7 +15,7 @@ angular.module('Category', [])
             }
         });
 
-        return msg;
+        return data;
     }
 
     return shared_service;
