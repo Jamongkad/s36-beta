@@ -8,6 +8,7 @@ angular.module('Category', [])
         $.ajax({ 
             type: 'POST'    
           , dataType: 'json'
+          , async: false
           , data: { ctgy_nm: ctgy_nm }
           , url: '/settings/write_ctgy'
           , success: function(msg) {
