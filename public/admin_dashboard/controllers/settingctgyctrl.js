@@ -15,12 +15,9 @@ function SettingCtgyCtrl($scope, Category) {
             $scope.category_name = null;
             Category.fetch();
             $scope.cat = Category.cat_data.data; 
+            if($scope.cat.length == 6) {
+                alert("Maximum category limit reached!");
+            }
         }
     }
-    /*
-    $scope.$on('fetchCategory', function()  {
-        Category.fetch();
-        $scope.cat = Category.cat_data.data; 
-    });
-    */
 }
