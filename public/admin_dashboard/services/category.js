@@ -18,5 +18,13 @@ angular.module('Category', [])
         return data;
     }
 
+    shared_service.modify = function(data) { 
+        $.ajax({ 
+            type: 'POST'    
+          , dataType: 'json'
+          , data: data
+          , url: '/settings/rename_ctgy'
+        });
+    }
     return shared_service;
 });

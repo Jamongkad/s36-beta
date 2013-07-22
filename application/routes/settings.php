@@ -92,9 +92,11 @@ return array (
         
     }),
 
-    'POST /settings/rename_ctgy/([0-9]+)' => function($id) use($category) { 
+    'POST /settings/rename_ctgy/' => function() use($category) { 
         $ctgy_nm = Input::get('ctgy_nm');
-        return $category->update_category_name($ctgy_nm, $id);
+        $ctgy_id = Input::get('ctgy_id');
+        Helpers::dump(Input::get());
+        //return $category->update_category_name($ctgy_nm, $id);
     },
 
     'GET /settings/delete_ctgy/([0-9]+)' => function($id) use($category) { 
