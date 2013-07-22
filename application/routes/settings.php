@@ -92,7 +92,7 @@ return array (
         
     }),
 
-    'POST /settings/rename_ctgy/' => function() use($category) { 
+    'POST /settings/rename_ctgy' => function() use($category) { 
         $ctgy_nm = Input::get('ctgy_nm');
         $ctgy_id = Input::get('ctgy_id');
         Helpers::dump(Input::get());
