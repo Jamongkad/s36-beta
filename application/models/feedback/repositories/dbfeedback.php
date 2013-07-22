@@ -192,6 +192,8 @@ class DBFeedback extends S36DataObject {
                 '.$opts['date_statement'].' 
             LIMIT :offset, :limit
         ';
+
+        Helpers::dump($opts['category_statement']);
  
         $company_id = $this->company_id;
 
