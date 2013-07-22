@@ -33,6 +33,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('/admin_dashboard/services/modifyfeedback.js')?>
 <?=HTML::script('/admin_dashboard/services/message.js')?>
 <?=HTML::script('/admin_dashboard/services/feedbacksignal.js')?>
+<?=HTML::script('/admin_dashboard/services/category.js')?>
 
 <?=HTML::script('/admin_dashboard/directives/Components.js')?>
 <?=HTML::script('/admin_dashboard/directives/myreply.js')?>
