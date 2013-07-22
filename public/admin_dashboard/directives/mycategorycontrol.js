@@ -58,8 +58,10 @@ angular.module('categorycontrol', [])
       , link: function(scope, element, attrs) {
            $(element).bind("click", function(e) {
                 var myparent = $(this).parents('div#category-' + scope.catid);
-                myparent.remove();
-                Category.delete(scope.catid);
+                if(confirm("Are you sure you want to delete this category?")) {
+                    myparent.remove();
+                    Category.delete(scope.catid);
+                }
                 e.preventDefault();
             });
         }
