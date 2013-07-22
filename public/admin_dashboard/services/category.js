@@ -10,6 +10,8 @@ angular.module('Category', [])
           , data: { ctgy_nm: ctgy_nm }
           , url: '/settings/write_ctgy'
         });
+
+        this.broadcast_now();
     }
 
     shared_service.fetch = function() {
@@ -43,5 +45,10 @@ angular.module('Category', [])
           , url: '/settings/delete_ctgy'
         });  
     }
+
+    shared_service.broadcast_now = function() { 
+        $rootScope.$broadcast('fetchCategory');
+    }
+
     return shared_service;
 });

@@ -1,9 +1,9 @@
 function SettingCtgyCtrl($scope, Category) {
 
-    var cat = Category.fetch().data;
+    $scope.cat = Category.fetch().data;
 
     $scope.get_category = function() {
-        return cat;
+        return $scope.cat;
     }
 
     $scope.add = function() {
@@ -15,4 +15,8 @@ function SettingCtgyCtrl($scope, Category) {
             $scope.category_name = null;
         }
     }
+
+    $scope.$on('fetchCategory', function()  {
+        $scope.cat = Category.fetch().data;
+    });
 }
