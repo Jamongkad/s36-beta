@@ -1,7 +1,8 @@
 function SettingCtgyCtrl($scope, Category) {
 
+    var cat = Category.fetch();
+
     $scope.get_category = function() {
-        var cat = Category.fetch();
         console.log(cat);     
         return cat;
     }
