@@ -15,4 +15,14 @@ function SettingCtgyCtrl($scope, Category) {
             $scope.category_name = null;
         }
     }
+
+    $scope.rename = function(id) {
+        console.log("rename") 
+        console.log(id) 
+    }
+
+    $scope.delete = function(id) { 
+        console.log("delete") 
+        console.log(id) 
+    }
 }

@@ -155,6 +155,8 @@
                                       <strong class='ctgy-name'>{{category.name}}</strong>
                                   </div>
                                   <div class="g1of3 align-center">
+                                        <a href="#" class="rename-ctgy" catid="{{category.id}}" ng-click="rename(category.id)">Rename</a>
+                                     |  <a href="#" class="delete-ctgy" catid="{{category.id}}" ng-click="delete(category.id)">Delete</a>
                                   </div>
                               </div>
                           </div>
