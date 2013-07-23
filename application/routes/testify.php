@@ -548,7 +548,7 @@ return array(
         });
 
         $tf->test('CleanupCategory', function($tf) {  
-            $tf->data->dbf->cleanup_errant_categories();
+            $tf->dump($tf->data->dbf->cleanup_errant_categories());
         });
         $tf->run();  
     }
