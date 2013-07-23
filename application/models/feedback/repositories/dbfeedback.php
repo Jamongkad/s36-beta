@@ -932,7 +932,20 @@ class DBFeedback extends S36DataObject {
                 $attachments = json_decode($feedback->attachments);
                 if(property_exists($attachments, 'uploaded_images')) {
                     foreach($attachments->uploaded_images as $image) {
-                        Helpers::dump($image->name);
+
+                        $name = $image->name;
+                        $small = '/var/www/s36-upload-images/uploaded_images/form_upload/small/'.$name;
+                        $medium = "/var/www/s36-upload-images/uploaded_images/form_upload/medium/".$name;
+                        $large = "/var/www/s36-upload-images/uploaded_images/form_upload/large/".$name;
+
+                        $check_small = is_file($small);
+                        $check_medium  = is_file($medium);
+                        $check_large = is_file($large);
+
+                        Helpers::dump($name);
+                        Helpers::dump($check_small);
+                        Helpers::dump($check_medium);
+                        Helpers::dump($check_large);
                     }
                 } 
             }
