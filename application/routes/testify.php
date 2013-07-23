@@ -564,5 +564,6 @@ return array(
             $cat = $tf->data->dbc->pull_site_categories();
             $tf->dump($cat);
         });
+        $tf->run();  
     }
 );
