@@ -543,7 +543,7 @@ return array(
 
     'GET /testify/perm_delete/(:any)' => function($id) { 
         $tf = new Testify("perm_delete");  
-        $tf->beforeEach(function($tf) { 
+        $tf->beforeEach(function($tf) use($id) { 
             $tf->data->id = $id;
             $tf->data->dbf = new Feedback\Repositories\DBFeedback;
         });
