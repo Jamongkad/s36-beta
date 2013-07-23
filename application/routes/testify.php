@@ -541,14 +541,14 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/cleanup_category' => function() { 
-        $tf = new Testify("Cleanup");  
+    'GET /testify/perm_delete' => function() { 
+        $tf = new Testify("perm_delete");  
         $tf->beforeEach(function($tf) { 
             $tf->data->dbf = new Feedback\Repositories\DBFeedback;
         });
 
-        $tf->test('CleanupCategory', function($tf) {  
-            $tf->dump($tf->data->dbf->cleanup_errant_categories());
+        $tf->test('Delete', function($tf) {  
+            $tf->data->dbf->permanently_remove_feedback(10000);
         });
         $tf->run();  
     }
