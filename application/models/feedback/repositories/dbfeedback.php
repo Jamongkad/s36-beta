@@ -192,8 +192,6 @@ class DBFeedback extends S36DataObject {
                 '.$opts['date_statement'].' 
             LIMIT :offset, :limit
         ';
-
-        Helpers::dump($opts['category_statement']);
  
         $company_id = $this->company_id;
 
@@ -863,6 +861,26 @@ class DBFeedback extends S36DataObject {
                 , 'hasProfanity' => ($is_profane) ? 1 : 0
             ));
         return $affected;
+    }
+
+    public function cleanup_errant_categories() {
+        $sql = "
+            UPDATE Feedback
+                SET categoryId = (
+                    SELECT categoryId FROM Category 
+                    WHERE 1=1 AND Category.companyId = :company_id_one AND Category.intName = 'default'
+                )
+            WHERE 1=1
+                AND Feedback.companyId = :company_id_two
+                AND NOT EXISTS (
+                    SELECT Null FROM Category WHERE Category.categoryId = Feedback.categoryId
+            )  
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id_one', $this->company_id, PDO::PARAM_INT);       
+        $sth->bindParam(':company_id_two', $this->company_id, PDO::PARAM_INT);       
+        $sth->execute();
     }
     
     //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number

@@ -474,7 +474,6 @@ return array(
 
     'GET /testify/twitteroauth' => function() { 
         $tf = new Testify("Twitter OAuth");  
-
         $tf->beforeEach(function($tf) { 
             $tf->data->redis = new redisent\Redis;
             $tf->data->social_account = new Company\Repositories\DBCompanySocialAccount;
@@ -484,9 +483,7 @@ return array(
         });
         
         $tf->test("Test", function($tf) {
-
             $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
-
             if($tf->data->redis->hgetall($tf->data->redis_oauth_key) == false) {    
                 $callback_url = Config::get('application.url').'/testify/twitteroauth';
                 $token = $twitoauth->getRequestToken($callback_url);
@@ -527,7 +524,6 @@ return array(
                 }
                 $tf->data->redis->del($tf->data->redis_oauth_key);
             }
-
         });
 
         $tf->test("Long Lasting Credentials", function($tf) { 
@@ -543,6 +539,18 @@ return array(
         });
 
         $tf->run();
+    },
+
+    'GET /testify/cleanup_category' => function() { 
+        $tf = new Testify("Cleanup");  
+        $tf->beforeEach(function($tf) { 
+            $tf->data->dbf = new Feedback\Repositories\DBFeedback;
+        });
+
+        $tf->test('CleanupCategory', function($tf) {  
+            $tf->data->dbf->cleanup_errant_categories();
+        });
+        $tf->run();  
     }
 
 );
