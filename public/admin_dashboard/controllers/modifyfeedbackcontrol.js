@@ -16,6 +16,18 @@ function ModifyFeedbackControl($scope, FeedbackControlService, FeedbackService, 
           , catid: current_cat_id
         }
 
+        var modify_flag;
+        if(status_change == 'publish') {
+            modify_flag = 'modify_publish';
+        }
+
+        if(status_change == 'feature') { 
+            modify_flag = 'modify_feature';
+        }
+
+        FeedbackSignal.current_state({ id: feedid, status: modify_flag });
+        $(".checky-box-container").show();
+
         if(data.status == 'delete') {
             if(confirm("Are you sure you want to delete this feedback?")) {
                 FeedbackControlService.change_status(data, true);     

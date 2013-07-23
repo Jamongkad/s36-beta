@@ -113,7 +113,7 @@ return array(
         echo return_json(array('data'=>$feedbackService->update_feedback($id,Input::all()))); 
     }),
 
-    'GET /rest/category'=>array('name'=>'feedback','before' => 's36_auth_rest','do'=>function(){
+    'GET /rest/category'=>array('name'=>'feedback','do'=>function(){
         $categories = new DBCategory;
         echo return_json(array('data' => $categories->pull_site_categories())); 
     }),
