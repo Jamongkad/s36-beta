@@ -1548,6 +1548,7 @@
 		-webkit-border-radius:10px;
 		-moz-border-radius:10px;
 		border-radius:10px;				
+		display:inline-block;
 		background:#598499;
 		color:#FFF;
 		padding:1px 8px 3px;
