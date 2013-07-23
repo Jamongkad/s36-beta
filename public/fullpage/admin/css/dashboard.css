@@ -170,8 +170,14 @@
     display:inline-block;
     padding:3px 5px;
     font-size:10px;
+    text-align: center;
     color:#FFF;
     text-shadow:#0c747a  0px -1px;
+    white-space: nowrap;
+    width: 10%;                   
+    overflow: hidden;         
+    -o-text-overflow: ellipsis;    
+    text-overflow:    ellipsis;
 }
 .feedback-details-rating.excellent{
     background:#109ca5;
@@ -628,6 +634,7 @@
 	border-radius:5px;		
     display:inline-block;
     line-height:1.24em;
+    margin-right: 5px;
 }
 .the-categories-menu .the-categories ul li a:hover{
 	background:#97adb8;
@@ -2019,3 +2026,5 @@ sup.count{
     position: relative;
     right: 18px;
 }
+
+

@@ -111,7 +111,12 @@
                     <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
                         <div class="g1of3">
                             <span class="replymsg-text" id="{{msg.id}}"> {{msg.short_text}} </span>
+                            <!--
                             <input type="text" style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
+                            -->
+                            <textarea style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}">
+{{msg.text}} 
+                            </textarea>
                         </div>
                          <div class="g1of3">
                              <a href="#" edit-reply-settings msgid="msg.id" action="edit">Edit Message</a> 
@@ -139,35 +144,31 @@
           <span class="dashboard-title">Categories</span> 
         </div>
         <div class="dashboard-body">
-        	<div class="dashboard-content">
-            <div class="form-setup-block">
+            <div class="dashboard-content" ng-controller="SettingCtgyCtrl">
+                <div class="form-setup-block">
                     <div class="form-setup-fields grids">
                       <div class="form-setup-label">New Category:</div>
                       <div class="form-setup-elem">
-                            <input type="text" class="dashboard-text" name="category_nm">
-                            <div style="height:5px;"></div>
-                            <a href="#" class="dashboard-button blue large add-new-ctgy">Add</a>
+                            <input type="text" class="dashboard-text" ng-model="category_name" style="width:50%">
+                            <a href="#" class="dashboard-button blue large" ng-click="add($event)" add>Add</a>
                           </br></br>
-                          <div id="ctgy-list" hrefaction="<?=URL::to('settings/write_ctgy')?>">
-                              <?foreach($category as $rows):?>
-                                  <div id="category-<?=$rows->id?>" class="grids padded" style="padding-bottom:10px;">
-                                      <div class="g1of3" >
-                                          <strong class='ctgy-name'><?=$rows->name?></strong>
-                                      </div>
-                                      <div class="g1of3 align-center">
-                                          <?if($rows->changeable != 0):?>
-                                              <?=HTML::link('settings/rename_ctgy/'.$rows->id, 'Rename', Array('class' => 'rename-ctgy'))?> 
-                                            | <?=HTML::link('settings/delete_ctgy/'.$rows->id, 'Delete', Array('class' => 'delete-ctgy'))?> 
-                                          <?endif?>
-                                      </div>
+
+                          <div id="ctgy-list" ng-repeat="category in get_category()">
+                              <div id="category-{{category.id}}" class="grids padded" style="padding-bottom:10px;">
+                                  <div class="g1of3" >
+                                      <strong class='ctgy-name'>{{category.name}}</strong>
                                   </div>
-                              <?endforeach?>
-                          </div>
+                                  <div class="g1of3 align-center">
+                                        <a href="#" rename-ctgy catid="{{category.id}}">Rename</a>
+                                     |  <a href="#" delete-ctgy catid="{{category.id}}">Delete</a>
+                                  </div>
+                              </div>
+                          </div>  
                       </div>
                     </div>
-             </div>
+                </div>
             </div>
-          </div>
+        </div>
           <div class="dashboard-foot"></div>
     </div>
     <?php

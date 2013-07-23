@@ -16,7 +16,7 @@ class DBCategory extends S36DataObject {
                 AND Category.companyId = :company_id
                 AND Category.intName != 'default'
             ORDER BY 
-                Category.name 
+                Category.categoryId
         ");
 
         $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
@@ -26,27 +26,37 @@ class DBCategory extends S36DataObject {
         return $result;
     }
 
-    public function write_category_name($ctgy_nm, $companyId) {
+    public function write_category_name($ctgy_nm) {
+        $category_count = $this->_category_count();
+        $status = '';
 
-        $opts = Array(
-            'companyId' => $companyId
-          , 'intName' => strtolower($ctgy_nm)
-          , 'name' => ucfirst($ctgy_nm)
-          , 'changeable' => 1
-        );
+        if($category_count->category_count != 6) { 
+            $opts = Array(
+                'companyId' => $this->company_id
+              , 'intName' => strtolower($ctgy_nm)
+              , 'name' => ucfirst($ctgy_nm)
+              , 'changeable' => 1
+            );
 
-        $result_id = DB::table('Category', 'master')->insert_get_id($opts);
-        $rename_link = HTML::link('settings/rename_ctgy/'.$result_id, 'Rename', Array('class' => 'rename-ctgy'));
-        $delete_link = HTML::link('settings/delete_ctgy/'.$result_id, 'Delete', Array('class' => 'delete-ctgy'));
+            $result = DB::table('Category', 'master')->insert_get_id($opts);
+            if($result) {
+                $status = "success";
+            } else {
+                $status = "failed"; 
+            }
+            echo json_encode(Array('status' => $status, 'count' => $category_count));
+        } else { 
+            echo json_encode(Array('status' => 'success', 'count' => $category_count));
+        }
+    }
 
-        return "<div id='category-$result_id' class='grids padded' style='padding-bottom:10px;'>
-                    <div class='g1of3'>
-                        <strong class='ctgy-name'>$ctgy_nm</strong>
-                    </div>
-                    <div class='g1of3 align-center'> 
-                        $rename_link | $delete_link
-                    </div>                    
-                </div>"; 
+    public function _category_count() {
+        $sql = "SELECT COUNT(categoryId) AS category_count FROM Category WHERE 1=1 AND companyId = :company_id AND changeable = 1";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 
     public function update_category_name($ctgy_nm, $ctgy_id) {

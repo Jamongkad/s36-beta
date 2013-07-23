@@ -135,7 +135,6 @@ $(document).ready(function(){
             <br/>
             <span style="margin-left:6px;">Write a custom request message you can send to a person with a single click.</span>
         </div> 
-
         <div ng-controller="SettingRequestCtrl" id="replymsg-list">      
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids" id="{{msg.id}}" style="padding-top: 10px">

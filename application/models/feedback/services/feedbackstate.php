@@ -45,8 +45,7 @@ class FeedbackState {
 
                 $rules = $this->state_change_rules();
                 $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
-                $feedid = $this->block_id[$counter];
- 
+                $feedid = $this->block_id[$counter]; 
                 //Helpers::dump($column);
                 //Helpers::dump($feedid);
                 $counter = $counter + 1;         
@@ -62,7 +61,6 @@ class FeedbackState {
                 $rules = $this->lookup[$state];
                 $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
                 $feedid = $this->block_id[$counter]; 
-
                 //Helpers::dump($column);
                 //Helpers::dump($feedid);
                 $counter = $counter + 1; 
@@ -77,11 +75,9 @@ class FeedbackState {
                     foreach($this->isflagged as $flag) { 
                         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                                          ->where('intName', '=', 'default')->first($this->category_vars);
-
                         $rules = $this->state_change_rules();
                         $column = $rules.$this->_sql_statement_attach($category->categoryid).$this->flag_statement($counter);
                         $feedid = $this->block_id[$counter]; 
-
                         //Helpers::dump($column);
                         //Helpers::dump($feedid);
                         $counter = $counter + 1;
@@ -89,21 +85,26 @@ class FeedbackState {
                     }
                 } else { 
                     $feed_obj = $this->feedback_state_obj(); 
-                    //Helpers::dump($feed_obj);
-                    //Helpers::dump($this->mode); 
-                    //Helpers::dump($this->isflagged); 
+                    /*
+                    Helpers::dump($feed_obj);
+                    Helpers::dump($this->mode); 
+                    Helpers::dump($this->isflagged); 
+                    */
                     $this->_process_multiple($feed_obj);
                 }
             } else { 
                 //Normal operations will permanently delete feedback. Deleted folder only.
                 //Helpers::dump("Remove");
+                $compound_result = Array();
                 foreach($this->block_id as $feed_id) {
                     //Helpers::dump($feed_id);
-                    $this->feedback->permanently_remove_feedback($feed_id);    
+                    $result = $this->feedback->permanently_remove_feedback($feed_id);    
+                    $compound_result[] = $result;
                 } 
                 //Helpers::dump($this->mode);
-            }
-       
+                //Helpers::dump($compound_result);
+                echo json_encode(Array('feedback_status_change' => 'success', 'column' => $this->mode));
+            } 
         }
     }
 

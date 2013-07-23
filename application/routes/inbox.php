@@ -33,6 +33,8 @@ return array(
         $admin_check = S36Auth::user();  
         $company_id = S36Auth::user()->companyid;        
         $category = new DBCategory;
+ 
+        $dbfeedback->cleanup_errant_categories();
 
         //Reply messages
         $sm = new Message\Services\SettingMessage(new Message\Repositories\DBMessage('msg'));

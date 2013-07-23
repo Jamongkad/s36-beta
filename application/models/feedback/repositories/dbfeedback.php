@@ -862,6 +862,25 @@ class DBFeedback extends S36DataObject {
             ));
         return $affected;
     }
+
+    public function cleanup_errant_categories() {
+        $sql = "
+            UPDATE Feedback
+                SET categoryId = (
+                    SELECT categoryId FROM Category 
+                    WHERE 1=1 AND Category.companyId = :company_id_one AND Category.intName = 'default'
+                )
+            WHERE 1=1
+                AND Feedback.companyId = :company_id_two
+                AND NOT EXISTS (
+                    SELECT Null FROM Category WHERE Category.categoryId = Feedback.categoryId
+            )  
+        ";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id_one', $this->company_id, PDO::PARAM_INT);       
+        $sth->bindParam(':company_id_two', $this->company_id, PDO::PARAM_INT);       
+        return $sth->execute();
+    }
     
     //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
     //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
@@ -915,16 +934,22 @@ class DBFeedback extends S36DataObject {
                 $profile_img->remove_profile_photo($feedback->avatar);
             }
 
-            DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
-            DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
-            DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
+            $feedback_origin = DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
+            $contact = DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
+            $feedback_activity = DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
             //Previously I wanted feedback deleted with isDeleted column set to 1. Let's do a hard delete instead...
-            DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
-                                 ->delete();
-            
+            $actual_feedback = DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)->delete(); 
             //let's make sure to add a query for removing tags from the MetadataTags table if need be
-            DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete(); 
+            $metadata = DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete(); 
 
+            return Array(
+                'feedback_origin_delete' => $feedback_origin
+              , 'contact_delete' => $contact
+              , 'feedback_activity_delete' => $feedback_activity
+              , 'feedback_delete' => $actual_feedback
+              , 'metadata_delete' => $metadata
+              , 'feedback_id' => $id
+            );
         } else {
             throw new Exception("Feedback does not exist. Cannot carry on with deletion!");
         }

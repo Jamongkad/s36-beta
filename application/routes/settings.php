@@ -92,24 +92,23 @@ return array (
         
     }),
 
-    'POST /settings/rename_ctgy/([0-9]+)' => function($id) use($category) { 
+    'POST /settings/rename_ctgy' => function() use($category) { 
         $ctgy_nm = Input::get('ctgy_nm');
-        return $category->update_category_name($ctgy_nm, $id);
+        $ctgy_id = Input::get('ctgy_id');
+        return $category->update_category_name($ctgy_nm, $ctgy_id);
+
     },
 
-    'GET /settings/delete_ctgy/([0-9]+)' => function($id) use($category) { 
-        $category->delete_category_name($id);
-        return json_encode(array(
-             'action'=>'deleted'
-            ,'success'=>true
-            ,'deleted_id'=>$id
-        ));
+    'POST /settings/delete_ctgy' => function() use($category) { 
+        $category->delete_category_name(Input::get('ctgy_id'));
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  
-        $ctgy_nm = Input::get('ctgy_nm');
-        $companyId = Input::get('companyId');
-        return $category->write_category_name($ctgy_nm, $companyId);
+        return $category->write_category_name(Input::get('ctgy_nm'));
+    },
+
+    'GET /settings/category_count' => function() use($category) {
+        Helpers::dump($category->_category_count());
     },
 
     'POST /settings/save_feedback_settings' => function() {
