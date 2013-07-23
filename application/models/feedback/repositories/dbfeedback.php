@@ -926,8 +926,10 @@ class DBFeedback extends S36DataObject {
                         ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
                         ->where('Feedback.feedbackId', '=', $id)
                         ->first();
-
+        
         if($feedback) {
+            Helpers::dump($feedback);
+            /*
             if($feedback->avatar) { 
                 //delete profile photos...
                 $profile_img = new ProfileImage();
@@ -937,6 +939,7 @@ class DBFeedback extends S36DataObject {
             //delete attachment data as well....
 
             $feedback_origin = DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
+            $feedback_action = DB::table('FeedbackActions')->where('FeedbackActions.feedbackId', '=', $id)->delete();
             $contact = DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
             $feedback_activity = DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
             //Previously I wanted feedback deleted with isDeleted column set to 1. Let's do a hard delete instead...
@@ -948,10 +951,12 @@ class DBFeedback extends S36DataObject {
                 'feedback_origin_delete' => $feedback_origin
               , 'contact_delete' => $contact
               , 'feedback_activity_delete' => $feedback_activity
+              , 'feedback_action_delete' => $feedback_action
               , 'feedback_delete' => $actual_feedback
               , 'metadata_delete' => $metadata
               , 'feedback_id' => $id
             );
+            */
         } else {
             throw new Exception("Feedback does not exist. Cannot carry on with deletion!");
         }
