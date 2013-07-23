@@ -172,6 +172,11 @@
     font-size:10px;
     color:#FFF;
     text-shadow:#0c747a  0px -1px;
+    white-space: nowrap;
+    width: 100%;                   
+    overflow: hidden;         
+    -o-text-overflow: ellipsis;    
+    text-overflow:    ellipsis;
 }
 .feedback-details-rating.excellent{
     background:#109ca5;
@@ -2019,3 +2024,5 @@ sup.count{
     position: relative;
     right: 18px;
 }
+
+
