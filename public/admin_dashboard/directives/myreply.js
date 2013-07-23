@@ -196,7 +196,7 @@ angular.module('reply', [])
                 var action = scope.action;
 
                 var me = $(this);
-                var input = $("input#" + id + ".dashboard-text");
+                var input = $("textarea#" + id + ".dashboard-text");
                 var span = $("span#" + id + ".replymsg-text");
 
                 if(action == 'edit') {

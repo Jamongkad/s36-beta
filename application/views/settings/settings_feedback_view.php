@@ -111,7 +111,12 @@
                     <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
                         <div class="g1of3">
                             <span class="replymsg-text" id="{{msg.id}}"> {{msg.short_text}} </span>
+                            <!--
                             <input type="text" style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
+                            -->
+                            <textarea style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}">
+{{msg.text}} 
+                            </textarea>
                         </div>
                          <div class="g1of3">
                              <a href="#" edit-reply-settings msgid="msg.id" action="edit">Edit Message</a> 
