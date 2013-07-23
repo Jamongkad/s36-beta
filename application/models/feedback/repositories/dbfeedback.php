@@ -876,7 +876,6 @@ class DBFeedback extends S36DataObject {
                     SELECT Null FROM Category WHERE Category.categoryId = Feedback.categoryId
             )  
         ";
-
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id_one', $this->company_id, PDO::PARAM_INT);       
         $sth->bindParam(':company_id_two', $this->company_id, PDO::PARAM_INT);       
