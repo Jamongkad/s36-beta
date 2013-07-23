@@ -144,8 +144,7 @@
                     <div class="form-setup-fields grids">
                       <div class="form-setup-label">New Category:</div>
                       <div class="form-setup-elem">
-                            <input type="text" class="dashboard-text" ng-model="category_name">
-                            <div style="height:5px;"></div>
+                            <input type="text" class="dashboard-text" ng-model="category_name" style="width:50%">
                             <a href="#" class="dashboard-button blue large" ng-click="add($event)" add>Add</a>
                           </br></br>
 
