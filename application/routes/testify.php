@@ -552,6 +552,17 @@ return array(
             $tf->data->dbf->permanently_remove_feedback($tf->data->id);
         });
         $tf->run();  
-    }
+    },
 
+    'GET /testify/dbcategory' => function() { 
+        $tf = new Testify("perm_delete");  
+        $tf->beforeEach(function($tf) { 
+            $tf->data->dbc = new DBCategory;
+        });
+
+        $tf->test("Category", function($tf) {
+            $cat = $tf->data->dbc->pull_site_categories();
+            $tf->dump($cat);
+        });
+    }
 );
