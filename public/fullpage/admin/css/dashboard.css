@@ -634,6 +634,7 @@
 	border-radius:5px;		
     display:inline-block;
     line-height:1.24em;
+    margin-right: 5px;
 }
 .the-categories-menu .the-categories ul li a:hover{
 	background:#97adb8;
