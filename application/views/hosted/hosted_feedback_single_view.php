@@ -2,7 +2,7 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <?php
