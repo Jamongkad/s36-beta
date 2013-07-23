@@ -224,6 +224,7 @@ angular.module('reply', [])
                         var data = { 'msgtype': 'msg', 'id': id, 'text': input.val() };
                         span.html(input.val());
                         MessageService.save(data);
+                        console.log(MessageService.pushdata);
                     }
 
                 }
