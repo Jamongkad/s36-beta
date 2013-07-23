@@ -541,14 +541,15 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/perm_delete' => function() { 
+    'GET /testify/perm_delete/(:any)' => function($id) { 
         $tf = new Testify("perm_delete");  
         $tf->beforeEach(function($tf) { 
+            $tf->data->id = $id;
             $tf->data->dbf = new Feedback\Repositories\DBFeedback;
         });
 
         $tf->test('Delete', function($tf) {  
-            $tf->data->dbf->permanently_remove_feedback(571);
+            $tf->data->dbf->permanently_remove_feedback($tf->data->id);
         });
         $tf->run();  
     }

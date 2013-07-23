@@ -928,7 +928,10 @@ class DBFeedback extends S36DataObject {
                         ->first();
         
         if($feedback) {
-            Helpers::dump($feedback);
+            if($feedback->attachments) {
+                Helpers::dump(json_decode($feedback->attachments));     
+            }
+           
             /*
             if($feedback->avatar) { 
                 //delete profile photos...
