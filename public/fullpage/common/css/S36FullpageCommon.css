@@ -817,3 +817,14 @@ h1.reg-featured {
 	padding-top:5px;
 	line-height: 1.2em;
 }
+
+.single_page_link{
+	text-align: right;
+	font-size: 30px;
+	margin-top: -38px;
+}
+.single_page_link a{
+	color: #555;
+	position: absolute;
+	right: 0px;
+}

@@ -300,6 +300,7 @@
                     </div>
                 </div>
             </div>
+            <div class="single_page_link"><a href="/single/<?=$feedback_id;?>">...</a></div>
         </div>
         <!-- end of feedback user actions -->
     </div>
