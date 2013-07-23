@@ -932,7 +932,6 @@ class DBFeedback extends S36DataObject {
                 $attachments = json_decode($feedback->attachments);
                 if(property_exists($attachments, 'uploaded_images')) {
                     foreach($attachments->uploaded_images as $image) {
-
                         $name = $image->name;
                         $small = '/var/www/s36-upload-images/uploaded_images/form_upload/small/'.$name;
                         $medium = "/var/www/s36-upload-images/uploaded_images/form_upload/medium/".$name;
@@ -942,22 +941,21 @@ class DBFeedback extends S36DataObject {
                         $check_medium  = is_file($medium);
                         $check_large = is_file($large);
 
-                        Helpers::dump($name);
-                        Helpers::dump($check_small);
-                        Helpers::dump($check_medium);
-                        Helpers::dump($check_large);
+                        if($check_small && $check_medium && $check_large) { 
+                            @unlink($small);
+                            @unlink($medium);	
+                            @unlink($large);	
+                        }
                     }
                 } 
             }
            
-            /*
+
             if($feedback->avatar) { 
                 //delete profile photos...
                 $profile_img = new ProfileImage();
                 $profile_img->remove_profile_photo($feedback->avatar);
             }
-
-            //delete attachment data as well....
 
             $feedback_origin = DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
             $feedback_action = DB::table('FeedbackActions')->where('FeedbackActions.feedbackId', '=', $id)->delete();
@@ -977,7 +975,7 @@ class DBFeedback extends S36DataObject {
               , 'metadata_delete' => $metadata
               , 'feedback_id' => $id
             );
-            */
+
         } else {
             throw new Exception("Feedback does not exist. Cannot carry on with deletion!");
         }
