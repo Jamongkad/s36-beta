@@ -880,7 +880,7 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id_one', $this->company_id, PDO::PARAM_INT);       
         $sth->bindParam(':company_id_two', $this->company_id, PDO::PARAM_INT);       
-        $sth->execute();
+        return $sth->execute();
     }
     
     //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
