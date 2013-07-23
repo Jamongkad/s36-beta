@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/grid.css')?>
         <?=HTML::style('css/flags.css')?>
