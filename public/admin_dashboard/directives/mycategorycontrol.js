@@ -9,6 +9,17 @@ angular.module('categorycontrol', [])
         }
     }
 })
+.directive('categoryAdd', function() {
+    return {
+        restrict: 'A'       
+      , link: function(scope, element, attrs) {
+            $(element).bind('keyup', function(e) {
+                console.log($(this).val());
+                e.preventDefault();
+            });
+        } 
+    }    
+})
 .directive('renameCtgy', function(Category) {
     return {
         restrict: 'A'       

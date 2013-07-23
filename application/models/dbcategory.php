@@ -74,17 +74,3 @@ class DBCategory extends S36DataObject {
             ->delete();
     }
 }
-
-class CtgyValueObject {
-
-    private $text_limit = 3;
-
-    public function __construct($data) {
-        $text = ucfirst(strtolower($data->msgtext));
-        $this->text = $text; 
-        $this->short_text = Helpers::limit_text($text, $this->text_limit);
-        $this->msgtype = $data->msgtype;
-        $this->id = $data->msgid;
-    }
-
-}
