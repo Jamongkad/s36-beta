@@ -695,6 +695,11 @@
 	background:#50709a;
 	border:#3a679f 1px solid;
 }
+.dashboard-button.blue-invalid{
+	background:#50709a;
+	border:#3a679f 1px solid;
+    opacity: 0.5;
+}
 .dashboard-button.large{
 	font-size:15px;
 	width:auto;
