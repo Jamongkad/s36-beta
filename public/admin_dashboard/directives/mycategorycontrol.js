@@ -17,7 +17,6 @@ angular.module('categorycontrol', [])
                 if($(this).val().length >= 45) {
                     $(".blue-invalid").show();
                     $("#add-ctgy").hide();
-                    alert("Category names cannot exceed 45 characters!");
                 } else { 
                     $(".blue-invalid").hide();
                     $("#add-ctgy").show();
