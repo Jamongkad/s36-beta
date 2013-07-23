@@ -146,8 +146,8 @@
                     <div class="form-setup-fields grids">
                       <div class="form-setup-label">New Category:</div>
                       <div class="form-setup-elem">
-                            <input type="text" class="dashboard-text" ng-model="category_name" category-add style="width:50%">
-                            <a href="#" class="dashboard-button blue-invalid large" style="display:none" onClick="return false">Category names cannot exceed 45 characters</a>
+                            <input type="text" class="dashboard-text" ng-model="category_name" category-add style="width:46%">
+                            <a href="#" class="dashboard-button blue-invalid large" style="display:none" onClick="return false">Cannot exceed 45 characters</a>
                             <a href="#" class="dashboard-button blue large" id="add-ctgy" ng-click="add()" add>Add</a>
                           </br></br>
 
