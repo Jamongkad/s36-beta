@@ -14,7 +14,11 @@ angular.module('categorycontrol', [])
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('keyup', function(e) {
-                console.log($(this).val().length);
+                if($(this).val().length == 45) {
+                          
+                } else {
+                    
+                }
                 e.preventDefault();
             });
         } 
