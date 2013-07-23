@@ -6,6 +6,7 @@
     <meta http-equiv="expires" content="wed, 09 aug 2000 08:21:57 gmt" />
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" />
+    <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
     <script type="text/javascript">
         window.location.href = window.location.pathname+window.location.hash;
     </script>
