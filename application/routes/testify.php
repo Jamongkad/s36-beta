@@ -548,7 +548,7 @@ return array(
         });
 
         $tf->test('Delete', function($tf) {  
-            $tf->data->dbf->permanently_remove_feedback(10000);
+            $tf->data->dbf->permanently_remove_feedback(572);
         });
         $tf->run();  
     }
