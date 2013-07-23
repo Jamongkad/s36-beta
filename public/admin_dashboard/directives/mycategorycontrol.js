@@ -14,7 +14,7 @@ angular.module('categorycontrol', [])
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('keyup', function(e) {
-                if($(this).val().length == 45) {
+                if($(this).val().length >= 45) {
                     $(".blue-invalid").show();
                     $("#add-ctgy").hide();
                     alert("Category names cannot exceed 45 characters!");
