@@ -929,7 +929,8 @@ class DBFeedback extends S36DataObject {
         
         if($feedback) {
             if($feedback->attachments) {
-                Helpers::dump(json_decode($feedback->attachments));     
+                $attachments = json_decode($feedback->attachments);
+                Helpers::dump($attachments->attached_link);     
             }
            
             /*
