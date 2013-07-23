@@ -105,8 +105,8 @@ return array(
             , 'file_name'  => $filename
             , 'image_versions' => array(
                 'main' => array(
-                    'max_width'     => 250,
-                    'max_height'    => 250,
+                    'max_width'     => 300,
+                    'max_height'    => 300,
                 ),
                 'comment' => array(
                     'max_width'     => 32,
