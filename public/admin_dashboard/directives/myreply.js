@@ -191,12 +191,13 @@ angular.module('reply', [])
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-            
+                          
                 var id = scope.msgid;   
                 var action = scope.action;
 
                 var me = $(this);
                 var input = $("textarea#" + id + ".dashboard-text");
+                input.autoGrow();
                 var span = $("span#" + id + ".replymsg-text");
 
                 if(action == 'edit') {
