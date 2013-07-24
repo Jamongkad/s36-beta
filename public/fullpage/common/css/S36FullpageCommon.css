@@ -819,12 +819,15 @@ h1.reg-featured {
 }
 
 .single_page_link{
+	clear: both;
 	text-align: right;
 	font-size: 30px;
-	margin-top: -38px;
+	height: 20px;
+	overflow: hidden;
+	top: 6px;
 }
 .single_page_link a{
 	color: #555;
-	position: absolute;
-	right: 0px;
+	position: relative;
+	top: -14px;
 }

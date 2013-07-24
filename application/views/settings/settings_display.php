@@ -151,7 +151,7 @@
                                         <div class="green-thumb">Recommended by John to friends</div>
                                         <div class="vote-block">
                                             <span class="vote-action ">
-                                                Was this useful? <a href="#" class="small-btn-pin">Yes</a>
+                                                Was this useful? <a href="javascript:;" class="small-btn-pin">Yes</a>
                                             </span>
                                         </div>
                                     </div>
@@ -181,6 +181,7 @@
                                                 </div> -->
                                             </div>
                                         </div>
+                                        <div class="single_page_link"><a href="javascript:;">...</a></div>
                                     </div>
                                 </div>
                             </div>
