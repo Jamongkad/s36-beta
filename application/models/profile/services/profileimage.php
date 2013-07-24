@@ -10,7 +10,7 @@ class ProfileImage {
 
     public function __construct() { 
 
-        $this->date   = date("mdyhis");
+        $this->date   = md5(uniqid());//date("mdyhis");
         $this->dir48  = '/var/www/s36-upload-images/uploaded_images/avatar/small/'.$this->date.".jpg";
         $this->dir150 = '/var/www/s36-upload-images/uploaded_images/avatar/medium/'.$this->date.".jpg";
  
