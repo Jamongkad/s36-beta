@@ -4,7 +4,6 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"></meta>
 	<title>FDBack - Get amazing feedback for your brand and business.</title>
 
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
         <?=HTML::script('/js/jquery.tinymce.js')?>

@@ -9,6 +9,23 @@ angular.module('categorycontrol', [])
         }
     }
 })
+.directive('categoryAdd', function() {
+    return {
+        restrict: 'A'       
+      , link: function(scope, element, attrs) {
+            $(element).bind('keyup', function(e) {
+                if($(this).val().length >= 45) {
+                    $(".blue-invalid").show();
+                    $("#add-ctgy").hide();
+                } else { 
+                    $(".blue-invalid").hide();
+                    $("#add-ctgy").show();
+                }
+                e.preventDefault();
+            });
+        } 
+    }    
+})
 .directive('renameCtgy', function(Category) {
     return {
         restrict: 'A'       

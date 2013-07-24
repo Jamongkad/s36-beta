@@ -2,6 +2,7 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 <?php if(isset($_GET['nocache'])): ?>
     <meta http-equiv="expires" content="wed, 09 aug 2000 08:21:57 gmt" />
     <meta http-equiv="cache-control" content="no-cache" />

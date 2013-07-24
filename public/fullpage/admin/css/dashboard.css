@@ -695,6 +695,11 @@
 	background:#50709a;
 	border:#3a679f 1px solid;
 }
+.dashboard-button.blue-invalid{
+	background:#50709a;
+	border:#3a679f 1px solid;
+    opacity: 0.5;
+}
 .dashboard-button.large{
 	font-size:15px;
 	width:auto;
@@ -1548,9 +1553,10 @@
 		-webkit-border-radius:10px;
 		-moz-border-radius:10px;
 		border-radius:10px;				
+		display:inline-block;
 		background:#598499;
 		color:#FFF;
-		padding:1px 8px 3px;
+		padding:7px 8px 3px;
 	}
 	.modify-box-right ul li a:hover{
 		background:#97adb8;

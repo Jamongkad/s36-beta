@@ -59,6 +59,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
 <?=HTML::script('js/jquery.serializeform.js')?>
 <?=HTML::script('js/jquery.formbuilder.js')?>
 <?=HTML::script('js/head.min.js')?>
+<?=HTML::script('js/jquery-autogrow-textarea.js')?>
 <script text="text/javascript">
    head.js('/js/jquery.form.js');
    head.js('/admin_dashboard/Settings.js');

@@ -541,16 +541,29 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/cleanup_category' => function() { 
-        $tf = new Testify("Cleanup");  
-        $tf->beforeEach(function($tf) { 
+    'GET /testify/perm_delete/(:any)' => function($id) { 
+        $tf = new Testify("perm_delete");  
+        $tf->beforeEach(function($tf) use($id) { 
+            $tf->data->id = $id;
             $tf->data->dbf = new Feedback\Repositories\DBFeedback;
         });
 
-        $tf->test('CleanupCategory', function($tf) {  
-            $tf->dump($tf->data->dbf->cleanup_errant_categories());
+        $tf->test('Delete', function($tf) {  
+            $tf->data->dbf->permanently_remove_feedback($tf->data->id);
+        });
+        $tf->run();  
+    },
+
+    'GET /testify/dbcategory' => function() { 
+        $tf = new Testify("perm_delete");  
+        $tf->beforeEach(function($tf) { 
+            $tf->data->dbc = new DBCategory;
+        });
+
+        $tf->test("Category", function($tf) {
+            $cat = $tf->data->dbc->pull_site_categories();
+            $tf->dump($cat);
         });
         $tf->run();  
     }
-
 );
