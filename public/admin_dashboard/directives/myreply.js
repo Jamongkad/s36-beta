@@ -192,12 +192,20 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                           
+                var deselect_this = false;
+
                 var id = scope.msgid;   
                 var action = scope.action;
 
                 var me = $(this);
 
-                console.log(me.parents('div.g1of3').siblings('div.g1of3').children('textarea'));
+                me.parents("div.g1of3").siblings().children("textarea").each(function() { $(this).hide() });
+                
+                /*
+                if(!deselect_this) {
+                    me.attr('style', "background: #cd5555");
+                }
+                */
 
                 var input = $("textarea#" + id + ".dashboard-text");
                 //input.autoGrow();
