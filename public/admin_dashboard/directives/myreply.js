@@ -199,7 +199,7 @@ angular.module('reply', [])
 
                 var me = $(this);
 
-                me.parents("div.g1of3").siblings().children("textarea").each(function() { $(this).hide(); console.log($(this)); });
+                console.log(me.parents("div.g1of3").siblings().children("textarea").each());
                 
                 /*
                 if(!deselect_this) {
