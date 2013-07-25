@@ -199,7 +199,7 @@ angular.module('reply', [])
 
                 var me = $(this);
 
-                console.log(me.parents("div.g1of3").siblings("div.g1of3"));
+                console.log(me.parents("div.g1of3"));
                 
                 /*
                 if(!deselect_this) {
