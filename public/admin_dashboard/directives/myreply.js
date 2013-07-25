@@ -196,6 +196,9 @@ angular.module('reply', [])
                 var action = scope.action;
 
                 var me = $(this);
+
+                console.log(me.parents('div').siblings());
+
                 var input = $("textarea#" + id + ".dashboard-text");
                 //input.autoGrow();
                 var span = $("span#" + id + ".replymsg-text");
