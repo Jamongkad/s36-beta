@@ -197,7 +197,7 @@ angular.module('reply', [])
 
                 var me = $(this);
                 var input = $("textarea#" + id + ".dashboard-text");
-                input.autoGrow();
+                //input.autoGrow();
                 var span = $("span#" + id + ".replymsg-text");
 
                 if(action == 'edit') {
@@ -216,7 +216,6 @@ angular.module('reply', [])
                     if(input.val() == "") {
                         alert("Please provide a reply message.");
                     } else {
-
                         me.hide();
                         sib.show();
                         input.hide();
@@ -228,7 +227,6 @@ angular.module('reply', [])
                     }
 
                 }
-               
                 e.preventDefault();
             });
         }
