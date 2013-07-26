@@ -15,6 +15,10 @@
     <div id="fadedContainer">
         <div id="mainContainer">
             
+            <!-- the arrow pointer -->
+            <div id="thePointer"></div>
+            <!-- end of pointer -->
+            
             <?= View::make('hosted/partials/fullpage_cover_view'); ?>            
             <?= View::make('hosted/partials/fullpage_company_summary_view', array('company' => $company, 'widget_loader' => $widget_loader, 'user' => $user)); ?>
             

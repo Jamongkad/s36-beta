@@ -19,7 +19,7 @@ $groups = array(
             ,'/js/date.js'
             ,'/js/jquery-autogrow-textarea.js'
             ,'/js/link.preview.js'
-            
+            ,'/js/jquery.ease.js'
         )
      ),
      'Global.css' => array(

@@ -831,3 +831,15 @@ h1.reg-featured {
 	position: relative;
 	top: -14px;
 }
+
+#thePointer{
+	background:url(/fullpage/common/img/arrow-pointer.png);
+	background-repeat:no-repeat;
+	position:absolute;
+	top:-100px;
+	left:-160px;
+	width:183px;
+	height:121px;
+	z-index:1000;
+	opacity:0;
+}

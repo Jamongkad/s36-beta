@@ -10,6 +10,10 @@ var S36FullpageCommon = function(){
     || Function needed to run by document ready
     ==========================================*/
     this.init_fullpage_common = function(){
+        
+        self.run_arrow_pointer();
+        
+        
 		$('.feedback-icon').hover(function(){
 			$(this).find('.icon-tooltip').fadeIn('fast');
 		},function(){
@@ -235,5 +239,34 @@ var S36FullpageCommon = function(){
         setTimeout(function() {
             $('.widget-list').jScrollPane();
         }, 200); 
+    }
+    
+    
+    this.run_arrow_pointer = function(){
+        var $pointer = $('#thePointer');
+        var arrow_animation = 0;
+        $pointer.animate({top:'+225px',opacity:'1'},{ duration:300, easing: "easeOutCubic", 
+            complete: function(){
+                $(this).animate({left: -160,top:225}, 1000)
+                arrow_animation = setInterval(self.juggle_arrow_pointer,1300);
+            }
+        });
+        $('#thePointer').hover(
+            function(){
+                clearInterval(arrow_animation);
+                $(this).stop();
+                $(this).fadeOut(function(){
+                $(this).css({'top':'-100px','opacity':'0'}).fadeIn();
+            });
+        });
+    }
+    
+    this.juggle_arrow_pointer = function(){
+        var $pointer = $('#thePointer');
+        $pointer.stop(true,true).animate({left: -150}, 650, 
+            function(){
+                $(this).stop(true,true).animate({left: -160}, 650)
+            }
+        );
     }
 }
