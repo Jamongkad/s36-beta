@@ -218,14 +218,14 @@ angular.module('reply', [])
                 })
  
                 if(action == 'edit') { 
-                    me.hide();
-                    sib.show();
 
                     if(!deselect_this) {
                         input.show(); 
+                        me.hide();
+                        sib.show();
+                        span.hide();                
                     }
-                
-                    span.hide();                
+            
                 } else { 
 
                     if(input.val() == "") {
