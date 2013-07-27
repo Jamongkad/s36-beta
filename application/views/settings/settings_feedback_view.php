@@ -111,7 +111,7 @@
                     <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
                         <div class="g1of3">
                             <span class="replymsg-text" id="{{msg.id}}"> {{msg.short_text}} </span>
-                            <textarea style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}" rows=10 cols=30>
+                            <textarea style="display:none" class="dashboard-text" name="reply_message" id="{{msg.id}}" rows=20>
 {{msg.text}} 
                             </textarea>
                         </div>
