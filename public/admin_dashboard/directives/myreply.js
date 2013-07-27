@@ -201,6 +201,7 @@ angular.module('reply', [])
 
                 me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() {
                     console.log($(this));
+                    $(this).sibling('span').show();
                     $(this).hide();
                 })
          
