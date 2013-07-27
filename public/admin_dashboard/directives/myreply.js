@@ -212,9 +212,12 @@ angular.module('reply', [])
                 me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() { 
                     $(this).siblings('span').show();
                     $(this).hide();
-                    var links = $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]');
-                    console.log(links);
+                    var edit_links = $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]:hidden');
+                    var update_links = $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=update]:hidden');
 
+                    $(edit_links).show();
+                    $(update_links).show();
+                
                 })
  
                 if(action == 'edit') { 
