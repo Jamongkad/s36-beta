@@ -214,6 +214,7 @@ angular.module('reply', [])
                     $(this).hide();
                     var links = $(this).parents('div.g1of3').siblings('div.g1of3').children();
                     console.log(links[0]);
+                    console.log(links[1]);
 
                 })
  
