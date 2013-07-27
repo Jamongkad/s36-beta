@@ -213,8 +213,8 @@ angular.module('reply', [])
                     $(this).siblings('span').show();
                     $(this).hide();
                     var links = $(this).parents('div.g1of3').siblings('div.g1of3').children();
-                    $(links[0]).hide();
-                    $(links[1]).show();
+                    console.log(links[0]);
+
                 })
  
                 if(action == 'edit') { 
