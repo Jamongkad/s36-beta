@@ -213,12 +213,13 @@ angular.module('reply', [])
                     $(this).siblings('span').show();
                     $(this).hide();
                     var edit_links = $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]:hidden');
-                    var update_links = $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=update]:hidden');
- 
+  
                     if(edit_links) { 
                       $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=update]').hide();
+                      $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]').show();
                     } else { 
                       $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=update]').show();
+                      $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]').hide();
                     }
                 
                 })
