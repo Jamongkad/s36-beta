@@ -199,7 +199,9 @@ angular.module('reply', [])
 
                 var me = $(this);
 
-                console.log(me.parents("div#replymsg-list").children('div').children().children().children('textarea'));
+                me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() {
+                    console.log($(this));
+                })
                 
                 /*
                 if(!deselect_this) {
