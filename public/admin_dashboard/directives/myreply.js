@@ -201,14 +201,9 @@ angular.module('reply', [])
 
                 me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() {
                     console.log($(this));
+                    $(this).hide();
                 })
-                
-                /*
-                if(!deselect_this) {
-                    me.attr('style', "background: #cd5555");
-                }
-                */
-
+         
                 var input = $("textarea#" + id + ".dashboard-text");
                 //input.autoGrow();
                 var span = $("span#" + id + ".replymsg-text");
@@ -222,7 +217,11 @@ angular.module('reply', [])
                 if(action == 'edit') { 
                     me.hide();
                     sib.show();
-                    input.show();
+
+                    if(!deselect_this) {
+                        input.show(); 
+                    }
+                
                     span.hide();                
                 } else { 
 
