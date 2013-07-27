@@ -198,13 +198,7 @@ angular.module('reply', [])
                 var action = scope.action;
 
                 var me = $(this);
-
-                me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() {
-                    console.log($(this));
-                    $(this).siblings('span').show();
-                    $(this).hide();
-                })
-         
+ 
                 var input = $("textarea#" + id + ".dashboard-text");
                 //input.autoGrow();
                 var span = $("span#" + id + ".replymsg-text");
@@ -214,7 +208,13 @@ angular.module('reply', [])
                 } else { 
                     var sib = me.prev();     
                 }
-                
+
+                me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() { 
+                    $(this).siblings('span').show();
+                    $(this).hide();
+                    console.log($(this).parents('div').siblings('div').children());
+                })
+ 
                 if(action == 'edit') { 
                     me.hide();
                     sib.show();
