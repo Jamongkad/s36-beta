@@ -11,9 +11,9 @@ function SettingCtgyCtrl($scope, Category) {
         if($scope.category_name == 'undefined' || $scope.category_name == null)  {
             alert("Please provide a category name.");
         } else { 
+            console.log(Category.fetch());
             Category.write($scope.category_name);
             $scope.category_name = null;
-            console.log($scope.cat);
             /*
             Category.write($scope.category_name);
             $scope.category_name = null;
@@ -27,6 +27,5 @@ function SettingCtgyCtrl($scope, Category) {
     $scope.$on('fetchCategory', function()  {
         Category.fetch();
         $scope.cat = Category.cat_data.data; 
-        //console.log($(".form-setup-elem > div#ctgy-list"));
     });
 }
