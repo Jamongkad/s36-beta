@@ -13,9 +13,7 @@ function SettingCtgyCtrl($scope, Category) {
         } else { 
             Category.write($scope.category_name);
             $scope.category_name = null;
-            if($scope.cat.length == 6) {
-                console.log("Max");
-            }
+            console.log($scope.cat);
         }
     }
 
