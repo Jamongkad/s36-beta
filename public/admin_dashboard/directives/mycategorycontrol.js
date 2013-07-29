@@ -78,6 +78,7 @@ angular.module('categorycontrol', [])
                     var myparent = $(this).parents('div#category-' + scope.catid);
                     myparent.remove();
                     Category.delete(scope.catid);
+                    $("#add-ctgy").show();
                 }
                 e.preventDefault();
             });
