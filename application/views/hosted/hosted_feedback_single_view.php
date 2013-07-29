@@ -413,6 +413,7 @@ $logo           = ( empty($comp->logo) ? $app_url.'/img/public-profile-pic.jpg' 
             </div>
             <p align="center"><a href="http://beta.36stories.com/"><img src="/img/36stories-logo.png" /></a></p>
         </div>
+        <div id="magicalSpacer"></div>
     </div>
 </div>
 
@@ -482,7 +483,25 @@ $logo           = ( empty($comp->logo) ? $app_url.'/img/public-profile-pic.jpg' 
             $(this).find('.icon-tooltip').fadeOut('fast');
         });
         
+
+        
     });
+    /* adjust height when the whole html is loaded */
+    $(window).load(function(){
+        adjust_height_space()
+    });
+    /* adjust height when the whole html resized */
+    $(window).resize(function(){
+        adjust_height_space()
+    });
+    function adjust_height_space(){
+        var browser_ht = $(window).height();
+        var html_ht = $('#mainContainer').height();
+        var spacer = $('#magicalSpacer');
+        if(html_ht < browser_ht){
+            spacer.height(browser_ht - html_ht);
+        }
+    }
 </script>
 <div id="fullpage_css"><?php echo $fullpage_css; ?></div>
 
