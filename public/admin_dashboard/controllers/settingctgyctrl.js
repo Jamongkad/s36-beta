@@ -12,6 +12,7 @@ function SettingCtgyCtrl($scope, Category) {
             alert("Please provide a category name.");
         } else { 
             Category.write($scope.category_name);
+            console.log($(".form-setup-elem > div#ctgy-list"));
             $scope.category_name = null;
             /*
             Category.write($scope.category_name);
