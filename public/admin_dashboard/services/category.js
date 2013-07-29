@@ -13,6 +13,7 @@ angular.module('Category', [])
           , data: { ctgy_nm: ctgy_nm }
           , url: '/settings/write_ctgy'
           , success: function(msg) {
+                console.log(msg);
                 shared_service.write_result = msg;
             }
         });
