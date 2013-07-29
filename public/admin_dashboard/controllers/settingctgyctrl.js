@@ -14,6 +14,7 @@ function SettingCtgyCtrl($scope, Category) {
             Category.write($scope.category_name);
             $scope.category_name = null;
             console.log($scope.cat.length);
+            console.log($scope.cat.length == 5);
             /*
             Category.write($scope.category_name);
             $scope.category_name = null;
