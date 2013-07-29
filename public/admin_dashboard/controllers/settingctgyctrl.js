@@ -25,7 +25,8 @@ function SettingCtgyCtrl($scope, Category) {
         }
     }
 
-    $scope.$on('fetchCategory', function()  { 
+    $scope.$on('fetchCategory', function()  {
+        Category.fetch();
         $scope.cat = Category.cat_data.data; 
     });
 }
