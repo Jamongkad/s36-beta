@@ -15,7 +15,7 @@ angular.module('Category', [])
                 console.log(msg);
             }
         });
-        this.broadcast_now();
+        //this.broadcast_now();
     }
 
     shared_service.fetch = function() {
