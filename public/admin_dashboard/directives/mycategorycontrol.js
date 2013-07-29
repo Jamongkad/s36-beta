@@ -17,6 +17,7 @@ angular.module('categorycontrol', [])
                 if($(this).val().length >= 45) {
                     $(".blue-invalid").show();
                     $("#add-ctgy").hide();
+                          
                 } else { 
                     $(".blue-invalid").hide();
                     $("#add-ctgy").show();
@@ -78,8 +79,6 @@ angular.module('categorycontrol', [])
                     var myparent = $(this).parents('div#category-' + scope.catid);
                     myparent.remove();
                     Category.delete(scope.catid);
-                    $("#add-ctgy").show();
-                    $(".blue-invalid-max").hide();
                 }
                 e.preventDefault();
             });
