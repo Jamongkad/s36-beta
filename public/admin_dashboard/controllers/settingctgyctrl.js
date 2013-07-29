@@ -26,6 +26,6 @@ function SettingCtgyCtrl($scope, Category) {
     $scope.$on('fetchCategory', function()  {
         Category.fetch();
         $scope.cat = Category.cat_data.data; 
-        console.log($(".form-setup-elem > div#ctgy-list"));
+        //console.log($(".form-setup-elem > div#ctgy-list"));
     });
 }
