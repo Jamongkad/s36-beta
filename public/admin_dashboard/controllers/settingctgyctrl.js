@@ -13,6 +13,7 @@ function SettingCtgyCtrl($scope, Category) {
         } else { 
             Category.write($scope.category_name);
             $scope.category_name = null;
+            console.log($scope.cat);
             /*
             Category.write($scope.category_name);
             $scope.category_name = null;

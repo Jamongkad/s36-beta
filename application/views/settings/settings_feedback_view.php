@@ -154,7 +154,7 @@
                           <div id="ctgy-list" ng-repeat="category in get_category()">
                               <div id="category-{{category.id}}" class="grids padded" style="padding-bottom:10px;">
                                   <div class="g1of3" >
-                                      <strong class='ctgy-name'>{{category.name}} {{$index}}</strong>
+                                      <strong class='ctgy-name'>{{category.name}}</strong>
                                   </div>
                                   <div class="g1of3 align-center">
                                         <a href="#" rename-ctgy catid="{{category.id}}">Rename</a>
