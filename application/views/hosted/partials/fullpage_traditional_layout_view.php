@@ -76,6 +76,18 @@
                                 <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
                             <?endif?>
                         </div>
+                        <div class="custom-meta-data break-word clear">
+                            <?php if( ! is_null($metadata) ): ?>
+                                <?php foreach( $metadata as $group ): ?>
+                                    <?php foreach( $group as $item ): ?>
+                                        <div class="meta-data">
+                                            <span class="meta-name"><?= HTML::entities( ucwords(str_replace('_', ' ', $item[0]->name)) ); ?> : </span>
+                                            <span class="meta-value"><?= HTML::entities($item[0]->value); ?></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                 </div>  
             </div>
@@ -101,20 +113,7 @@
                 <? endif; ?>
                      found this useful
             </div>
-            <?php if( trim($tw_marker) == '' ): ?>
-                <div class="custom-meta-data clear break-word">
-                    <?php if( ! is_null($metadata) ): ?>
-                        <?php foreach( $metadata as $group ): ?>
-                            <?php foreach( $group as $item ): ?>
-                                <div class="meta-data">
-                                    <span class="meta-name"><?= HTML::entities( ucwords(str_replace('_', ' ', $item[0]->name)) ); ?> : </span>
-                                    <span class="meta-value"><?= HTML::entities($item[0]->value); ?></span>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
+            
             <div class="feedback-text break-word">
                 <h1 class="<?=($feed->feed_data->isfeatured == 1) ? "reg-featured" : "reg"?>"><?=$feed->feed_data->title?></h1>
                 <p><?= nl2br($feed->feed_data->text);?></p>

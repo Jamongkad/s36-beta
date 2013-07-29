@@ -233,7 +233,7 @@
                         </div>
                     </div>
                 </div>
-            <?php else:?>
+            <?php else: ?>
                 <? // posted admin comment. ?>
                 <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
                     <div class="admin-comment-block">
@@ -247,8 +247,8 @@
                     </div>
                 <?endif?>
             <?php endif; ?>
-        </div>
-        <!-- end of feedback text bubble -->
+        </div><!-- end of feedback text bubble -->
+        
         <!-- feedback user actions -->
         <div class="feedback-options clear">
             <div class="feedback-icon-list clear">

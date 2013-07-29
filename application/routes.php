@@ -231,6 +231,7 @@ return array(
           , 'fullpage_css'      => $fullpage->get_fullpage_css($feedback->companyid)
           , 'reportTypes'       => $feedbackReports->get_reportTypes()
           , 'widget_loader'     => $widget_loader
+          , 'panel'             => $panel
         ));
     },
 

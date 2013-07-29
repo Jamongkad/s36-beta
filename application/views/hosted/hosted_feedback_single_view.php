@@ -1,147 +1,103 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns:fb="http://ogp.me/ns/fb#" style="height: auto;">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <?php
-        $comp = DB::table('Company')
-        ->left_join('HostedSettings', 'Company.companyId', '=', 'HostedSettings.companyId')
-        ->where('Company.name', '=', Config::get('application.subdomain'))
-        ->first(array(
-            'Company.name',
-            'HostedSettings.description AS description',
-            'Company.coverphoto_src AS image',
-            'Company.logo AS logo'
-        ));
-
-        $title          = ucfirst($comp->name) . '\'s Customer Feedback & Reviews page';
-        $description    = (trim($comp->description) != '' ? $comp->description : 'Welcome to ' . ucfirst($comp->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
-        $app_url        = Config::get('application.url');
-        $url            = Config::get('application.url').$_SERVER['REQUEST_URI'];
-        $logo           = ( empty($comp->logo) ? $app_url.'/img/public-profile-pic.jpg' : $app_url.'/uploaded_images/company_logos/main/' . $comp->logo );
-    ?>
-    <title><?php echo $title; ?></title>
-    <meta property="og:title" content="<?php echo $title; ?>">
-    <meta property="og:description" content="<?php echo $description; ?>">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="<?php echo $logo; ?>">
-    <meta property="og:url" content="<?php echo $url; ?>">
-    <meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>">
-    
-    <?php
-    /*
-    |--------------------------------------------------------------------------
-    | Third-Party
-    |--------------------------------------------------------------------------
-    */
-    echo HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
-    echo HTML::script('https://platform.twitter.com/widgets.js');
-    echo HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js');
-    echo HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js');
-    /*
-    |--------------------------------------------------------------------------
-    | Global
-    |--------------------------------------------------------------------------
-    */    
-    echo HTML::script('/minified/Global.js');
-    /*
-    |--------------------------------------------------------------------------
-    | Fullpage Common
-    |--------------------------------------------------------------------------
-    */
-    echo HTML::script('/minified/FullpageCommon.js');
-    echo HTML::script('/fullpage/common/js/feedbackactions.js');
-    /*
-    |--------------------------------------------------------------------------
-    | Single Page
-    |--------------------------------------------------------------------------
-    */
-    echo HTML::style('/fullpage/common/css/S36FullpageCommon.css');
-    echo HTML::style('/fullpage/common/css/s36_client_style.css'); 
-    echo HTML::style('/fullpage/common/css/S36SinglePage.css'); 
-    echo HTML::style('/fullpage/common/css/S36SingleCommon.css'); 
-    echo HTML::style('/fullpage/common/css/override.css');
-    echo HTML::style('/fullpage/common/css/fullpage_form.css');
-    echo HTML::style('/css/respond.css');
-    /*
-    |--------------------------------------------------------------------------
-    | FancyBox
-    |--------------------------------------------------------------------------
-    */
-    echo HTML::script('/fancybox/jquery.fancybox.js');
-    echo HTML::script('/fancybox/jquery.fancybox.pack.js');
-    echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
-    echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
-    echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
-    echo HTML::style('/fancybox/jquery.fancybox.css');
-    echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
-    echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
-    ?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
+<?php if(isset($_GET['nocache'])): ?>
+    <meta http-equiv="expires" content="wed, 09 aug 2000 08:21:57 gmt" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
     <script type="text/javascript">
-    $(document).ready(function(){
-        $(".fancybox").fancybox({
-          openEffect : 'none',
-          closeEffect : 'none'
-         });
-
-        $(".fancybox-video").click(function() {
-        $.fancybox({
-            'padding'       : 0,
-            'autoScale'     : false,
-            'transitionIn'  : 'none',
-            'transitionOut' : 'none',
-            'title'         : this.title,
-            'width'         : 640,
-            'height'        : 385,
-            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
-            'type'          : 'swf',
-            'swf'           : {
-            'wmode'             : 'transparent',
-            'allowfullscreen'   : 'true'
-            }
-        });
-        return false;
-        });
-        
-        $('.star_rating').raty({
-            hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
-            score: function(){
-                return $(this).attr('rating');
-            },
-            path: '/img/',
-            starOn: 'star-fill.png',
-            starOff: 'star-empty.png',
-            readOnly: true
-        });
-        
-        $('.feedback-icon').hover(function(){
-            $(this).find('.icon-tooltip').fadeIn('fast');
-        },function(){
-            $(this).find('.icon-tooltip').fadeOut('fast');
-        });
-        
-        S36FeedbackActions.vote();
-        S36FeedbackActions.share();
-        S36FeedbackActions.feedback_report_fancy();
-        //S36FeedbackActions.open_submission_form();
-        
-        
-        var fullpageCommon = new S36FullpageCommon;
-        fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
-        
-    });
+        window.location.href = window.location.pathname+window.location.hash;
     </script>
+<?php endif; ?>
+<?php
+/*
+|--------------------------------------------------------------------------
+| Third-Party
+|--------------------------------------------------------------------------
+*/
+?>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
+<?= HTML::script('https://platform.twitter.com/widgets.js'); ?>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
+<?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
+<!--[if lt IE 9]>
+<script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+
+<?php
+/*
+|--------------------------------------------------------------------------
+| Global
+|--------------------------------------------------------------------------
+*/
+echo HTML::script('/minified/Global.js');
+
+/*
+|--------------------------------------------------------------------------
+| Fullpage Common
+|--------------------------------------------------------------------------
+*/
+echo HTML::script('/minified/FullpageCommon.js');
+echo HTML::style('/minified/FullpageCommon.css');
+echo HTML::style('/css/respond.css');  // has a bug when minified.
+
+/*
+|--------------------------------------------------------------------------
+| Fullpage Admin
+|--------------------------------------------------------------------------
+*/
+if( ! is_null(\S36Auth::user()) ):
+echo HTML::style('/minified/FullpageAdmin.css');
+echo HTML::script('/minified/FullpageAdmin.js');
+endif;
+/*
+|--------------------------------------------------------------------------
+| FancyBox
+|--------------------------------------------------------------------------
+*/
+echo HTML::script('/fancybox/jquery.fancybox.js');
+echo HTML::script('/fancybox/jquery.fancybox.pack.js');
+echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
+echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
+echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
+echo HTML::style('/fancybox/jquery.fancybox.css');
+echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
+echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
+
+$comp = DB::table('Company')
+    ->left_join('HostedSettings', 'Company.companyId', '=', 'HostedSettings.companyId')
+    ->where('Company.name', '=', Config::get('application.subdomain'))
+    ->first(array(
+        'Company.name',
+        'HostedSettings.description AS description',
+        'Company.coverphoto_src AS image',
+        'Company.logo AS logo'
+    ));
+
+$title          = ucfirst($comp->name) . '\'s Customer Feedback & Reviews page';
+$description    = (trim($comp->description) != '' ? $comp->description : 'Welcome to ' . ucfirst($comp->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
+$app_url        = Config::get('application.url');
+$url            = Config::get('application.url').$_SERVER['REQUEST_URI'];
+$logo           = ( empty($comp->logo) ? $app_url.'/img/public-profile-pic.jpg' : $app_url.'/uploaded_images/company_logos/main/' . $comp->logo );
+?>
+<title><?php echo $title; ?></title>
+<meta property="og:title" content="<?php echo $title; ?>">
+<meta property="og:description" content="<?php echo $description; ?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?php echo $logo; ?>">
+<meta property="og:url" content="<?php echo $url; ?>">
+<meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>">
 </head>
-<body>
+<body style="height: 100%;">
 <script src="https://connect.facebook.net/en_US/all.js"></script>
 <div id="fb-root"></div>
 <script type="text/javascript">
     window.fbAsyncInit = function() {
             // init the FB JS SDK
         FB.init({
-            appId      : '<?=$fb_id;?>', // App ID from the App Dashboard
+            appId      : '<?=Config::get('application.fb_id');?>', // App ID from the App Dashboard
             status     : true, // check the login status upon init?
             cookie     : true, // set sessions cookies to allow your server to access the session?
             xfbml      : true  // parse XFBML tags on this page?
@@ -160,12 +116,15 @@
 <?= View::make('hosted/partials/fullpage_bar_view'); ?>
 <?= View::make('hosted/partials/fullpage_background_view'); ?>
 
-<div id="mainWrapper">
-    <div id="fadedContainer">
+<div id="mainWrapper" style="height: 100%;">
+    <div id="fadedContainer" style="height: 100%;">
         <div id="mainContainer">
             
-            <?= View::make('hosted/partials/fullpage_cover_view'); ?>
+            <!-- the arrow pointer -->
+            <div id="thePointer"></div>
+            <!-- end of pointer -->
             
+            <?= View::make('hosted/partials/fullpage_cover_view'); ?>
             <?= View::make('hosted/partials/fullpage_company_summary_view', array('company' => $company, 'widget_loader' => $widget_loader, 'user' => $user)); ?>
             
             
@@ -190,6 +149,15 @@
             <div id="feedbackContainer">
                 <!-- this is where the magic begins -->
                 <div id="threeColumnLayout"> 
+                    <div class="feedback-spine"></div>                
+                    <div class="spine-spacer"></div>
+                    <div class="feedback-date"></div>
+                    <div class="spine-spacer"></div>
+                    <script type="text/javascript">
+                        <? // hack to hide the first .feedback-date and show the first .spine-spacer. ?>
+                        $('.feedback-date:first').css('display', 'none');
+                        $('.spine-spacer:first').css({'display' : 'block', 'height' : '20px'});
+                    </script>
                     <div class="feedback-list">
                         <div class="feedback regular-featured" fid="<?=$feedback_id;?>">
                             <?=$tw_marker?>
@@ -241,7 +209,7 @@
                                     <div class="reviews clear">
                                         <div class="ratings clear">
                                             <div class="feedback-timestamp"><?=$feedback->daysago?></div>
-                                            <div class="star_rating" rating="<?=$feedback->int_rating;?>"></div>
+                                            <div class="stars blue clear"><div class="star_rating" rating="<?=$feedback->int_rating;?>"></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -313,21 +281,53 @@
                                             <br/>
                                             <br/>
                                         </div>
-                                    <?php endif; ?>              
-                                </div>
-
-                                <? if($feedback->admin_reply && $feedback->admin_username): ?>
-                                    <div class="admin-comment-block">
-                                        <div class="admin-comment">
-                                            <div class="admin-name break-word"><!-- <?=$admin_companyname?> says.. --></div>
-                                            <div class="admin-message clear">
-                                                <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
-                                                <div class="message break-word"><?= Helpers::fb_comment_str($feedback->admin_reply); ?></div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if(isset($user) && !empty($user)): ?>
+                                        <div class="admin-comment-block">
+                                            <div class="admin-comment" <?=(!$feedback->admin_reply) ? 'style="display:none"' : null?>>
+                                                <div class="admin-name break-word">
+                                                    <!-- <?=$admin_companyname?> says.. -->
+                                                    <a href="#" feedid="<?=$feedback->id?>" class="admin-delete-reply" style="float:right">[x]</a>
+                                                </div>
+                                                <div class="admin-message clear">
+                                                    <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
+                                                    <div class="message break-word"><?= Helpers::fb_comment_str($feedback->admin_reply); ?></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <? // admin comment box. ?>
+                                            <div class="admin-comment-box" feedid="<?=$feedback->id?>" <?=($feedback->admin_reply) ? 'style="display:none"' : null?>>
+                                                <input type="hidden" class="admin-comment-id" value="<?=$feedback->id?>">
+                                                <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
+                                                <div class="admin-comment-textbox-container">
+                                                    <div class="admin-avatar">
+                                                        <img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" />
+                                                    </div>
+                                                    <textarea class="admin-comment-textbox" placeholder="Leave a comment as <?=$admin_companyname;?>..."></textarea>
+                                                </div>
+                                                <div class="admin-comment-leave-a-reply" STYLE="DISPLAY: NONE;">
+                                                    <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
+                                                    <input type="button" class="adminReply regular-button" value="Post Comment" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <? endif; ?>
-                                <!-- end of feedback text bubble -->
+                                    <?php else: ?>
+                                        <? // posted admin comment. ?>
+                                        <? if($feedback->admin_reply && $feedback->admin_username): ?>
+                                            <div class="admin-comment-block">
+                                                <div class="admin-comment">
+                                                    <div class="admin-name break-word"><!-- <?=$admin_companyname?> says.. --></div>
+                                                    <div class="admin-message clear">
+                                                        <div class="admin-avatar"><img src="<?= '/uploaded_images/company_logos/comment/' . $feedback->company_logo; ?>" width="32" height="32" /></div>
+                                                        <div class="message break-word"><?= Helpers::fb_comment_str($feedback->admin_reply); ?></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <? endif; ?>
+                                    <? endif; ?>
+                                </div><!-- end of feedback text bubble -->
+                                
                                 <!-- feedback user actions -->
                                 <div class="feedback-options clear">
                                     <div class="feedback-icon-list clear">
@@ -407,8 +407,6 @@
                                 <!-- end of feedback user actions -->
                             </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
                 <!-- end of magic -->
@@ -417,6 +415,75 @@
         </div>
     </div>
 </div>
+
+<?php
+/*
+|--------------------------------------------------------------------------
+| Start adding JS and CSS Initialization and Override
+|--------------------------------------------------------------------------
+*/
+?>
+<?= HTML::style('/fullpage/layout/'.strtolower($panel->theme_name).'/css/S36FullpageLayout'.ucfirst($panel->theme_name).'.css'); ?>
+<?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var fullpageCommon = new S36FullpageCommon;
+        var fullpageLayout = fullpageCommon.create_layout('<?php echo $panel->theme_name; ?>'); 
+        fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
+        fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
+        
+        // S36FeedbackActions.vote();
+        // S36FeedbackActions.share();
+        // S36FeedbackActions.feedback_report_fancy();
+        // //S36FeedbackActions.open_submission_form();
+        
+        S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
+        
+        
+        $(".fancybox").fancybox({
+          openEffect : 'none',
+          closeEffect : 'none'
+         });
+
+        $(".fancybox-video").click(function() {
+        $.fancybox({
+            'padding'       : 0,
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'title'         : this.title,
+            'width'         : 640,
+            'height'        : 385,
+            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+            'type'          : 'swf',
+            'swf'           : {
+            'wmode'             : 'transparent',
+            'allowfullscreen'   : 'true'
+            }
+        });
+        return false;
+        });
+        
+        $('.star_rating').raty({
+            hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+            score: function(){
+                return $(this).attr('rating');
+            },
+            path: '/img/',
+            starOn: 'star-fill.png',
+            starOff: 'star-empty.png',
+            readOnly: true
+        });
+        
+        $('.feedback-icon').hover(function(){
+            $(this).find('.icon-tooltip').fadeIn('fast');
+        },function(){
+            $(this).find('.icon-tooltip').fadeOut('fast');
+        });
+        
+    });
+</script>
 <div id="fullpage_css"><?php echo $fullpage_css; ?></div>
 
 <div id="flagBoxDiv" style="display:none">

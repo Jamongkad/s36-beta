@@ -30,7 +30,7 @@
             <div class="review-count">
                 <strong>Based on <?php echo $company->total_feedback; ?> reviews.</strong>
                 <?$regex = Helpers::nav_regex();?>
-                <?php if( $regex->home ): ?>
+                <?php if( $regex->home || $regex->single ): ?>
                     Rate us!
                 <?php endif; ?>
             </div>
