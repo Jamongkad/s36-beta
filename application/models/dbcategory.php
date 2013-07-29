@@ -46,7 +46,7 @@ class DBCategory extends S36DataObject {
             }
             echo json_encode(Array('status' => $status, 'count' => $category_count));
         } else { 
-            echo json_encode(Array('status' => 'success', 'count' => $category_count));
+            echo json_encode(Array('status' => 'max', 'count' => $category_count));
         }
     }
 
