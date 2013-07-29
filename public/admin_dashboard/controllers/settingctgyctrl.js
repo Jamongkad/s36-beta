@@ -15,6 +15,8 @@ function SettingCtgyCtrl($scope, Category) {
             $scope.category_name = null;
             if($scope.cat.length == 6) {
                 $("#add-ctgy").hide();
+                console.log($(".blue-invalid-max"));
+                $(".blue-invalid-max").show();
             }
         }
     }
