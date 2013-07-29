@@ -13,15 +13,10 @@ function SettingCtgyCtrl($scope, Category) {
         } else { 
             Category.write($scope.category_name);
             $scope.category_name = null;
-            console.log($scope.cat.length);
-            console.log($scope.cat.length == 5);
-            /*
-            Category.write($scope.category_name);
-            $scope.category_name = null;
             if($scope.cat.length == 6) {
-                alert("Maximum categories have been reached!");
+                $("#add-ctgy").hide();
+                //alert("Maximum categories have been reached!");
             }
-            */
         }
     }
 
