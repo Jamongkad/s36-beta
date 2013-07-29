@@ -79,6 +79,7 @@ angular.module('categorycontrol', [])
                     myparent.remove();
                     Category.delete(scope.catid);
                     $("#add-ctgy").show();
+                    $(".blue-invalid-max").hide();
                 }
                 e.preventDefault();
             });

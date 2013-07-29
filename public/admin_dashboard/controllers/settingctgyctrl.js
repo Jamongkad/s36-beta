@@ -15,7 +15,6 @@ function SettingCtgyCtrl($scope, Category) {
             $scope.category_name = null;
             if($scope.cat.length == 6) {
                 $("#add-ctgy").hide();
-                //alert("Maximum categories have been reached!");
             }
         }
     }
