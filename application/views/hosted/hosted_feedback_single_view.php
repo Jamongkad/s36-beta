@@ -149,7 +149,7 @@ $logo           = ( empty($comp->logo) ? $app_url.'/img/public-profile-pic.jpg' 
             <div id="feedbackContainer">
                 <!-- this is where the magic begins -->
                 <div id="threeColumnLayout"> 
-                    <div class="feedback-spine"></div>                
+                    <div class="feedback-spine" style="height: auto; bottom: 35px;"></div>
                     <div class="spine-spacer"></div>
                     <div class="feedback-date"></div>
                     <div class="spine-spacer"></div>
