@@ -192,12 +192,15 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                           
+                var deselect_this = false;
+
                 var id = scope.msgid;   
                 var action = scope.action;
 
                 var me = $(this);
+ 
                 var input = $("textarea#" + id + ".dashboard-text");
-                input.autoGrow();
+                //input.autoGrow();
                 var span = $("span#" + id + ".replymsg-text");
 
                 if(action == 'edit') {
@@ -205,18 +208,36 @@ angular.module('reply', [])
                 } else { 
                     var sib = me.prev();     
                 }
+
+                me.parents("div#replymsg-list").children('div').children().children().children('textarea').each(function() { 
+                    $(this).siblings('span').show();
+                    $(this).hide();
+                    var edit_links = $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]:hidden');
+  
+                    if(edit_links) { 
+                      $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=update]').hide();
+                      $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]').show();
+                    } else { 
+                      $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=update]').show();
+                      $(this).parents('div.g1of3').siblings('div.g1of3').children('a[action=edit]').hide();
+                    }
                 
+                })
+ 
                 if(action == 'edit') { 
-                    me.hide();
-                    sib.show();
-                    input.show();
-                    span.hide();                
+
+                    if(!deselect_this) {
+                        input.show(); 
+                        me.hide();
+                        sib.show();
+                        span.hide();                
+                    }
+            
                 } else { 
 
                     if(input.val() == "") {
                         alert("Please provide a reply message.");
                     } else {
-
                         me.hide();
                         sib.show();
                         input.hide();
@@ -228,7 +249,6 @@ angular.module('reply', [])
                     }
 
                 }
-               
                 e.preventDefault();
             });
         }

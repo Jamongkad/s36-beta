@@ -12,12 +12,12 @@ function SettingCtgyCtrl($scope, Category) {
             alert("Please provide a category name.");
         } else { 
             Category.write($scope.category_name);
+            var result = Category.write_result;
             $scope.category_name = null;
-            if($scope.cat.length == 6) {
-                alert("Maximum categories have been reached!");
-            }
+            if(result.status == "max") {
+                alert("Max categories reached!");    
+            }             
         }
-
     }
 
     $scope.$on('fetchCategory', function()  {
