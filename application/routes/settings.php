@@ -104,7 +104,7 @@ return array (
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  
-        return $category->write_category_name(Input::get('ctgy_nm'));
+        echo $category->write_category_name(Input::get('ctgy_nm'));
     },
 
     'GET /settings/category_count' => function() use($category) {
