@@ -172,7 +172,6 @@
     <?php
     /* Temporarily comment for privacy settings 
     |*
-
     /*
     <h1>Privacy Policy</h1>
     <div class="dashboard-box">
