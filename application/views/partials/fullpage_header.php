@@ -78,8 +78,9 @@ $company = DB::table('Company')
 
 $title          = ucfirst($company->name) . '\'s Customer Feedback & Reviews page';
 $description    = (trim($company->description) != '' ? $company->description : 'Welcome to ' . ucfirst($company->name) . '\'s customer feedback and reviews page. Feel free to leave a rating for us!');
-$url            = Config::get('application.url');
-$logo           = ( empty($company->logo) ? $url.'/img/public-profile-pic.jpg' : $url.'/uploaded_images/company_logos/main/' . $company->logo );
+$app_url        = Config::get('application.url');
+$url            = Config::get('application.url').$_SERVER['REQUEST_URI'];
+$logo           = ( empty($company->logo) ? $app_url.'/img/public-profile-pic.jpg' : $app_url.'/uploaded_images/company_logos/main/' . $company->logo );
 ?>
 <title><?php echo $title; ?></title>
 <meta property="og:title" content="<?php echo $title; ?>">
