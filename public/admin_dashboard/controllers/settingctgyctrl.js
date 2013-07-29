@@ -11,9 +11,9 @@ function SettingCtgyCtrl($scope, Category) {
         if($scope.category_name == 'undefined' || $scope.category_name == null)  {
             alert("Please provide a category name.");
         } else { 
-            Category.write($scope.category_name);
+            var result = Category.write($scope.category_name);
             $scope.category_name = null;
-            console.log($scope.cat);
+            console.log(result);
         }
     }
 
