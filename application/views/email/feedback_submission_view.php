@@ -68,7 +68,16 @@
                         <?=$feedback_data->countryname?>
                     <?endif?>
                 </span>
-                <span> <?=$feedback_data->logintype?> </span>
+
+                <?if($feedback_data->logintype == 'fb'):?>
+                    <span style="color:#386C99;font-size:11px;margin-right:5px">
+                        <a <?=(($feedback_data->profilelink) ? "href='{$feedback_data->profilelink}' target=_" : "href='#'")?>>
+                            <?=HTML::image('img/small-fb-icon.png')?>
+                            Facebook Verified
+                        </a>
+                    </span>
+                <?endif?>
+
                 </td><td></td></tr>
                 <tr bgcolor="#f3f3f3" height="13"><td colspan="5"></td></tr>
                 <tr bgcolor="#f3f3f3" ><td width="50"></td><td width="20"></td>
