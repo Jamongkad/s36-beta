@@ -27,8 +27,8 @@ class NewFeedbackSubmission extends EmailFixture {
                 , 'hosted_data' => $this->hosted_data
             ))->get();
  
-            Helpers::dump($email_html);
-            //$this->_send_email($address->email, $this->get_subject(), $email_html);
+            //Helpers::dump($email_html);
+            $this->_send_email($address->email, $this->get_subject(), $email_html);
         }    
     }
 

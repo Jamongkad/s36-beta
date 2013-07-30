@@ -50,7 +50,7 @@ angular.module('feedbackcontrol', [])
                                   , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                                   , present_status: "feature"
                                 }
-                                published_state(me, '.publish', 'publish feedback', state);
+                                published_state(me, '.publish', 'Publish Feedback', state);
                             }
 
                             if(data.status == "publish") {
@@ -62,7 +62,7 @@ angular.module('feedbackcontrol', [])
                                   , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                                   , present_status: "publish"
                                 } 
-                                published_state(me, '.feature', 'feature feedback', state);
+                                published_state(me, '.feature', 'Feature Feedback', state);
                             }
 
                             if(data.status == "delete" || data.status == "fileas") {
