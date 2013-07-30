@@ -103,6 +103,7 @@ var Settings = new function(){
                 SettingsAutoSaver.set_data('background_image', data.result[0].name);
                 $('.patternItem').removeClass('active');  // so we can distinguish the type of our bg.
                 $('#currentBgImage').attr('src',data.result[0].url);
+                $('#background_image').val(data.result[0].url);
                 $('#blankBgImage').hide();
                 $('#currentBg').show();
             }
