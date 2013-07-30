@@ -108,7 +108,7 @@
                                             </div>
                                             
                                             <div class="form-recommendation-text clear">
-                                                <div class="form-green-thumbs">Would you recommend this to your friends? </div>
+                                                <div class="form-green-thumbs">Would you recommend <?= HTML::entities( ucfirst($company_name) ); ?> to your friends? </div>
                                                 <div id="recommend-checkbox" class="form-recommend-checkbox checked"><span>Yes</span></div>
                                             </div>
                                             
