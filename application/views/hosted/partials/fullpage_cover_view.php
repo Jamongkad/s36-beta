@@ -33,7 +33,7 @@
         </div>
     </div>
     
-    <img class="loading_img cp_loading_img" src="img/loading2.gif" />
+    <img class="loading_img cp_loading_img" src="/img/loading2.gif" />
     <?php if( ! is_null($fullpage_cover->user) ): ?>
         <div id="changeCoverButtonIcon">
             <div id="coverMenuList">
@@ -95,7 +95,7 @@
     
     <!-- profile pic -->
     <div id="avatarContainer">
-        <img class="loading_img" src="img/loading2.gif" />
+        <img class="loading_img" src="/img/loading2.gif" />
         <?php if( ! is_null($fullpage_cover->user) ): ?>
             <?php $src = ( empty($fullpage_cover->logo) ? '/img/public-profile-pic.jpg' : '/uploaded_images/company_logos/main/' . $fullpage_cover->logo . '?' . str_shuffle('GetRidOfCache') ); ?>
             <input type="hidden" id="hidden_company_logo" src="<?php echo $src; ?>" />
