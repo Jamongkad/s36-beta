@@ -53,7 +53,7 @@
                 <td width="20"></td>
                 <td>
                 <span style="color:#0077ac;font-weight:bold;font-size:18px;margin:0;padding:0;">
-                    <?=$feedback_data->firstname?> <?=$feedback_data->lastname?> <?=$feedback_data->logintype?>
+                    <?=$feedback_data->firstname?> <?=$feedback_data->lastname?> 
                 </span> &nbsp; 
                 <span style="font-size:12px;"> 
                     <?if($feedback_data->city && $feedback_data->countryname):?>
@@ -68,6 +68,7 @@
                         <?=$feedback_data->countryname?>
                     <?endif?>
                 </span>
+                <span> <?=$feedback_data->logintype?> </span>
                 </td><td></td></tr>
                 <tr bgcolor="#f3f3f3" height="13"><td colspan="5"></td></tr>
                 <tr bgcolor="#f3f3f3" ><td width="50"></td><td width="20"></td>
