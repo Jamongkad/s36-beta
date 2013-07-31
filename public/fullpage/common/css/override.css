@@ -47,3 +47,8 @@
 #desc_hint{ position: absolute; z-index: 10; top: 5px; left: 7px; font-size: 14px; color: #bbb; font-style: italic; display: none; }
 .companyDescription{ margin: 2px 6px; min-height: 100px; }
 #panel_desc_textbox{ display: none; width: 99%; height: 94px; }
+
+
+.form-custom-fields .checkbox .checkbox-container .inputs label,
+.form-custom-fields .radio .radio-container .inputs label
+{margin-top: 3px;}
