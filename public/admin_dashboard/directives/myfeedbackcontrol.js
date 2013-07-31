@@ -43,16 +43,15 @@ angular.module('feedbackcontrol', [])
                                     $(".checky-box-container").show();
                                 } else { 
                                     console.log("feature");
-
-                                    var state = { 
-                                        activate: {'background-position': '-64px -31px'}
-                                      , deactivate_sibling: {'background-position': '-32px 0px'}
-                                      , activation_color: 'featured'
-                                      , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
-                                      , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
-                                      , present_status: "feature"
-                                    }
-                                    published_state(me, '.publish', 'Publish Feedback', state);
+                                    var state = {
+                                        activate: {'background-position': '-32px -31px'}
+                                      , deactivate_sibling: {'background-position': '-64px 0px'}
+                                      , activation_color: 'published'
+                                      , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}' 
+                                      , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                                      , present_status: "publish"
+                                    } 
+                                    published_state(me, '.feature', 'Feature Feedback', state);
                                 }
                             }
 
