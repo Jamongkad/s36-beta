@@ -47,7 +47,7 @@ angular.module('feedbackcontrol', [])
                                         activate: {'background-position': '-64px -31px'}
                                       , deactivate_sibling: {'background-position': '-32px 0px'}
                                       , activation_color: 'featured'
-                                      , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                                      , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                                       , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                                       , present_status: "feature"
                                     }
