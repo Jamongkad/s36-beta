@@ -19,7 +19,7 @@
                     <?php if( ! is_null(\S36Auth::user()) ): ?> 
                         <? //<li><a href="#" id="admin_panel" initquick>Admin Panel</a></li> ?>
                         <li><a href="/dashboard">My Dashboard</a></li>
-                        <li><a href="/admin">My Account</a>
+                        <li><a href="javascript:;">My Account</a>
                             <ul>
                                 <li><a href="http://36stories.freshdesk.com/">Help</a></li>
                                 <li> 
