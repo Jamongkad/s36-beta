@@ -1,6 +1,12 @@
                    <div class="ultra-awesome-spacer"></div>
                </div> <!-- end of #theDashboardContents -->
             </div> <!-- end of #theDashboard -->
+            
+            <p align="center">
+                <a href="http://beta.36stories.com/"><img src="/img/fdback-logo-gray.png" /></a>
+                <div class="copyright_text">Copyright - 36Stories Inc 2011-2013</div><br/>
+            </p>
+            
         </div> <!-- end of #mainContainer -->
     </div> <!-- end of #fadedContainer -->
 </div> <!-- end of #mainWrapper -->
