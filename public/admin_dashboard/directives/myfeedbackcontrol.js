@@ -51,7 +51,7 @@ angular.module('feedbackcontrol', [])
                                       , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                                       , present_status: "publish"
                                     } 
-                                    published_state(me, '.feature', 'Feature Feedback', state);
+                                    published_state(me, '.publish', 'Feature Feedback', state);
                                 }
                             }
 
