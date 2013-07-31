@@ -39,7 +39,7 @@ angular.module('feedbackcontrol', [])
 
                             if(me.attr('return-policy') == 1) { 
                                 console.log("return!");
-                                console.log(data.status);
+                                console.log(data.origin);
                                 hide_the_children(me);
                                 $(".checky-box-container").show();
                             }
