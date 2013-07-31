@@ -42,6 +42,7 @@ angular.module('feedbackcontrol', [])
                                     hide_the_children(me);
                                     $(".checky-box-container").show();
                                 } else { 
+                                    console.log("feature");
                                     var state = { 
                                         activate: {'background-position': '-64px -31px'}
                                       , deactivate_sibling: {'background-position': '-32px 0px'}
