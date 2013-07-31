@@ -38,6 +38,7 @@ angular.module('feedbackcontrol', [])
                         if(currentUrl.match(/published/g)) { 
 
                             if(me.attr('return-policy') == 1) { 
+                                console.log("return!");
                                 hide_the_children(me);
                                 $(".checky-box-container").show();
                             }
