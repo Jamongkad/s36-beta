@@ -304,11 +304,11 @@ function published_state(obj, sibling_id, msg, state) {
     if(state.activation_color == 'featured') {
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('published');     
-        obj.children('.action-tooltip').children('span').html("Return to Inbox");
+        obj.children('.action-tooltip').children('span').html("Unfeature");
     } else { 
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('featured');     
-        obj.children('.action-tooltip').children('span').html("Unfeature");
+        obj.children('.action-tooltip').children('span').html("Return to Inbox");
     }
    
     obj.css(state.activate);
