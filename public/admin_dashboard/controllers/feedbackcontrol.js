@@ -114,7 +114,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         //get flag data feed assuming you've clicked on delete button
         var delflag = target.parents('.grids').siblings('.grids').children('ul').children('.flag-action').attr('data-feed');
          
-        //either way we are all fucked
+        //either way, we are all fucked
         var flag_data, flagged;
         if(ulflag) {
             flag_data = $.parseJSON(ulflag);
