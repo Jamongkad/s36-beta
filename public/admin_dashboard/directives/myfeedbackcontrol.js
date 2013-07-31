@@ -36,12 +36,10 @@ angular.module('feedbackcontrol', [])
                         }
 
                         if(currentUrl.match(/published/g)) { 
-                            if(me.attr('return-policy') == 1) { 
+                            if(me.attr('return-policy') == 1 && data.status == "publish") { 
                                 hide_the_children(me);
                                 $(".checky-box-container").show();
                             }
-
-                            console.log(data.status);
 
                             if(data.status == "feature") {
                                 var state = { 
