@@ -421,7 +421,7 @@ var backend_vars = {
                                                     <div class="action-tooltip">
                                                         <span>
                                                             <?if($feed->isfeatured):?>
-                                                                Return to Inbox
+                                                                Unfeature
                                                             <?else:?>
                                                                 Feature Feedback
                                                             <?endif?>
