@@ -45,7 +45,7 @@ angular.module('feedbackcontrol', [])
                                     console.log("feature");
                                     var state = {
                                         activate: {'background-position': '-64px -0px'}
-                                      , deactivate_sibling: {'background-position': '-64px 0px'}
+                                      , deactivate_sibling: {'background-position': '-32px -31px'}
                                       , activation_color: 'published'
                                       , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}' 
                                       , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
