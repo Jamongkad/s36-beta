@@ -38,10 +38,11 @@ angular.module('feedbackcontrol', [])
                         if(currentUrl.match(/published/g)) { 
 
                             if(me.attr('return-policy') == 1) { 
-                                console.log("return!");
                                 console.log(data.origin);
-                                hide_the_children(me);
-                                $(".checky-box-container").show();
+                                if(data.origin == "publish") { 
+                                    hide_the_children(me);
+                                    $(".checky-box-container").show();
+                                }
                             }
 
                             if(data.status == "feature") {
