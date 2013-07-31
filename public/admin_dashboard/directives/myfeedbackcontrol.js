@@ -41,6 +41,8 @@ angular.module('feedbackcontrol', [])
                                 $(".checky-box-container").show();
                             }
 
+                            console.log(data.status);
+
                             if(data.status == "feature") {
                                 var state = { 
                                     activate: {'background-position': '-64px -31px'}
