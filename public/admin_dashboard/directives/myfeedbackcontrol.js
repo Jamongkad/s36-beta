@@ -57,6 +57,16 @@ angular.module('feedbackcontrol', [])
                             //unfeaturing feedback and switching UI controls to published state.
                             if(me.attr("return") == "unfeature") {
                                 console.log('unfeature and switch UI to published state');
+
+                                var state = {
+                                    activate: {'background-position': '-32px -31px'}
+                                  , deactivate_sibling: {'background-position': '-64px 0px'}
+                                  , activation_color: 'published'
+                                  , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}' 
+                                  , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                                  , present_status: "publish"
+                                } 
+                                published_state(me, '.feature', 'Feature Feedback', state);
                             }
 
                             if(data.status == "feature") {
