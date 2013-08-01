@@ -38,21 +38,20 @@ angular.module('feedbackcontrol', [])
                         if(currentUrl.match(/published/g)) { 
 
                             if(me.attr('return-policy') == 1) { 
-                                if(data.origin == "publish") { 
-                                    hide_the_children(me);
-                                    $(".checky-box-container").show();
-                                } else { 
-                                    console.log("feature");
-                                    var state = {
-                                        activate: {'background-position': '-64px -0px'}
-                                      , deactivate_sibling: {'background-position': '-32px -31px'}
-                                      , activation_color: 'published'
-                                      , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}' 
-                                      , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
-                                      , present_status: "publish"
-                                    } 
-                                    published_state(me, '.publish', 'Feature Feedback', state);
-                                }
+                              
+                                hide_the_children(me);
+                                $(".checky-box-container").show();
+                                /*
+                                var state = {
+                                    activate: {'background-position': '-64px -0px'}
+                                  , deactivate_sibling: {'background-position': '-32px -31px'}
+                                  , activation_color: 'published'
+                                  , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}' 
+                                  , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                                  , present_status: "publish"
+                                } 
+                                published_state(me, '.publish', 'Feature Feedback', state);
+                                */
                             }
 
                             if(data.status == "feature") {

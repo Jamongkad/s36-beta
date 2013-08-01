@@ -416,7 +416,8 @@ var backend_vars = {
                                                                 , "status": <?=($feed->isfeatured) ? '"unfeature"' : '"feature"'?>
                                                                 , "origin": <?=($feed->isfeatured) ? '"feature"' : '"inbox"'?>}'
                                                     <?=($feed->isfeatured) ? "style='background-position: -64px -31px'" : null?>
-                                                    <?=($feed->isfeatured) ? "return-policy=1" : "return-policy=0"?> 
+                                                    <?=($feed->isfeatured) ? "return='unfeature'" : "return='feature'"?> 
+
                                                     >
                                                     <div class="action-tooltip">
                                                         <span>
