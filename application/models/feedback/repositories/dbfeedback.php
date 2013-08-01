@@ -928,6 +928,7 @@ class DBFeedback extends S36DataObject {
                         ->first();
         
         if($feedback) {
+            Helpers::dump($feedback->attachments);
             if($feedback->attachments) {
                 $attachments = json_decode($feedback->attachments);
                 if(property_exists($attachments, 'uploaded_images')) {
