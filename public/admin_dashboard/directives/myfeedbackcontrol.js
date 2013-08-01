@@ -36,7 +36,7 @@ angular.module('feedbackcontrol', [])
                         }
 
                         if(currentUrl.match(/published/g)) { 
-
+                            //returning published feedback to the inbox
                             if(me.attr('return-policy') == 1) { 
                               
                                 hide_the_children(me);
@@ -53,8 +53,11 @@ angular.module('feedbackcontrol', [])
                                 published_state(me, '.publish', 'Feature Feedback', state);
                                 */
                             }
-
-                            console.log(me.attr("return"));
+                            
+                            //unfeaturing feedback and switching UI controls to published state.
+                            if(me.attr("return") == "unfeature") {
+                                console.log('unfeature and switch UI to published state');
+                            }
 
                             if(data.status == "feature") {
                                 var state = { 
