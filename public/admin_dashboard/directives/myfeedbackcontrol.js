@@ -329,6 +329,9 @@ function published_state(obj, sibling_id, msg, state) {
     obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg);
     obj.siblings(sibling_id).attr('return-policy', 0);
     obj.siblings(sibling_id).attr('data-feed', state.state_change);
+
+    console.log(state.activation_color);
+
     obj.attr('return-policy', 1);
     obj.attr('data-feed', state.state_change_inbox);
 
