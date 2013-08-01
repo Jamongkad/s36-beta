@@ -49,6 +49,11 @@ class FeedbackDetails extends FeedbackDataTypes {
             }
             $metadata = json_encode($collection);
         }
+
+        $attachments = Null;
+        if($this->post_data->get('attachments')) {
+            $attachments = json_encode($this->post_data->get('attachments'));
+        }
         
         //data representation to be inserted into db
         return Array(
@@ -66,7 +71,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'text'          => $feedback_text
           , 'permission'    => $this->post_data->get('permission')
           , 'dtAdded'       => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
-          , 'attachments'   => json_encode($this->post_data->get('attachments'))
+          , 'attachments'   => $attachments
           , 'metadata'      => $metadata
           , 'title'         => $this->post_data->get('title')
         );
