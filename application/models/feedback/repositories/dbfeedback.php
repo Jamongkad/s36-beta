@@ -928,7 +928,8 @@ class DBFeedback extends S36DataObject {
                         ->first();
         
         if($feedback) {
-            if($feedback->attachments) {
+            //fuck null is a literal string...
+            if($feedback->attachments != 'null') {
                 $attachments = json_decode($feedback->attachments);
                 if(property_exists($attachments, 'uploaded_images')) {
                     foreach($attachments->uploaded_images as $image) {
@@ -950,13 +951,12 @@ class DBFeedback extends S36DataObject {
                 } 
             }
            
-
             if($feedback->avatar) { 
                 //delete profile photos...
                 $profile_img = new ProfileImage();
                 $profile_img->remove_profile_photo($feedback->avatar);
             }
-
+            
             $feedback_origin = DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
             $feedback_action = DB::table('FeedbackActions')->where('FeedbackActions.feedbackId', '=', $id)->delete();
             $contact = DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();

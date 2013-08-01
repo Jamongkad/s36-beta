@@ -36,9 +36,24 @@ angular.module('feedbackcontrol', [])
                         }
 
                         if(currentUrl.match(/published/g)) { 
-                            if(me.attr('return-policy') == 1) { 
+                            //returning published feedback to the inbox
+                            if(me.attr('return-policy') == 1) {   
                                 hide_the_children(me);
                                 $(".checky-box-container").show();
+                            }
+                            
+                            //unfeaturing feedback and switching UI controls to published state.
+                            if(me.attr("return") == "unfeature") {
+                                console.log('unfeature and switch UI to published state'); 
+                                var state = {
+                                    activate: {'background-position': '-64px -0px'}
+                                  , deactivate_sibling: {'background-position': '-32px -31px'}
+                                  , activation_color: 'unfeature'
+                                  , state_change_inbox: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}' 
+                                  , state_change: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
+                                  , present_status: "publish"
+                                } 
+                                published_state(me, '.publish', 'Return to Inbox', state);
                             }
 
                             if(data.status == "feature") {
@@ -46,7 +61,7 @@ angular.module('feedbackcontrol', [])
                                     activate: {'background-position': '-64px -31px'}
                                   , deactivate_sibling: {'background-position': '-32px 0px'}
                                   , activation_color: 'featured'
-                                  , state_change_inbox: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
+                                  , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                                   , state_change: '{"status": "publish", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                                   , present_status: "feature"
                                 }
@@ -304,18 +319,31 @@ function published_state(obj, sibling_id, msg, state) {
     if(state.activation_color == 'featured') {
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('published');     
-    } else { 
+        obj.children('.action-tooltip').children('span').html("Unfeature");
+        obj.attr('return', 'unfeature');     
+        obj.siblings(sibling_id).attr('return-policy', 0);
+    } 
+
+    if(state.activation_color == 'published') {
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('featured');     
+        obj.children('.action-tooltip').children('span').html("Return to Inbox");
+        obj.attr('return-policy', 1);     
+        obj.siblings(sibling_id).attr('return', 'feature');
+    }
+
+    if(state.activation_color == 'unfeature') {
+        obj.parents('.dashboard-feedback').addClass('published');     
+        obj.parents('.dashboard-feedback').removeClass('featured');     
+        obj.children('.action-tooltip').children('span').html("Feature Feedback");
+        obj.attr('return', 'feature');     
+        obj.siblings(sibling_id).attr('return-policy', 1);
     }
    
     obj.css(state.activate);
-    obj.children('.action-tooltip').children('span').html("Return to Inbox");
     obj.siblings(sibling_id).css(state.deactivate_sibling);
-    obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg);
-    obj.siblings(sibling_id).attr('return-policy', 0);
-    obj.siblings(sibling_id).attr('data-feed', state.state_change);
-    obj.attr('return-policy', 1);
+    obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg); 
+    obj.siblings(sibling_id).attr('data-feed', state.state_change); 
     obj.attr('data-feed', state.state_change_inbox);
 
     var origin_cat_data = obj.siblings('.save')

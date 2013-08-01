@@ -114,7 +114,7 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
         //get flag data feed assuming you've clicked on delete button
         var delflag = target.parents('.grids').siblings('.grids').children('ul').children('.flag-action').attr('data-feed');
          
-        //either way we are all fucked
+        //either way, we are all fucked
         var flag_data, flagged;
         if(ulflag) {
             flag_data = $.parseJSON(ulflag);
@@ -241,12 +241,14 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 
                 FeedbackSignal.current_state(feed);
                 FeedbackControlService.change_status(feed, true);  
+
                 $(".checky-box-container").show();  
 
                 if(mode == "remove") {
                     var status_message = FeedbackControlService.jsonmsg.feedback_status_change;
                     if(status_message == "success") { 
                         window.location = "/inbox/deleted/all";
+                        $(".sorter-checkbox:checked").attr('checked', false);
                     }
                 }
 
