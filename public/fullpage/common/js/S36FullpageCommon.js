@@ -15,9 +15,9 @@ var S36FullpageCommon = function(){
         
         
 		$('.feedback-icon').hover(function(){
-			$(this).find('.icon-tooltip').fadeIn('fast');
+			$(this).find('.icon-tooltip').show();
 		},function(){
-			$(this).find('.icon-tooltip').fadeOut('fast');
+            $(this).find('.icon-tooltip').hide();
 		});
         //$('#fullpage_desc.editable').click(function(){
 		$('#desc_edit_icon').click(function(){
