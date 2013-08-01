@@ -933,7 +933,7 @@ class DBFeedback extends S36DataObject {
             Helpers::dump($feedback->attachments);
             if($feedback->attachments != 'null' or !is_null($feedback->attachments)) {
                 $attachments = json_decode($feedback->attachments);
-                Helpers::dump($feedback->attachments);
+                Helpers::dump("attachmentes");
                 if(property_exists($attachments, 'uploaded_images')) {
                     foreach($attachments->uploaded_images as $image) {
                         $name = $image->name;
