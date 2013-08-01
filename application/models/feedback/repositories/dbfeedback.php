@@ -930,7 +930,7 @@ class DBFeedback extends S36DataObject {
         if($feedback) {
             //fuck null is a literal string...
             Helpers::dump($feedback->attachments);
-            Helpers::dump(!is_null($feedback->attachments));
+            Helpers::dump(!empty($feedback->attachments));
             if($feedback->attachments != 'null' or !is_null($feedback->attachments)) {
                 $attachments = json_decode($feedback->attachments);
                 Helpers::dump("attachmentes");
