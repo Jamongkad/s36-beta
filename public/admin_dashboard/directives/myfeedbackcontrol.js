@@ -337,8 +337,9 @@ function published_state(obj, sibling_id, msg, state) {
         obj.parents('.dashboard-feedback').removeClass('featured');     
 
         console.log(obj.children('.action-tooltip').children('span'));
+        console.log(obj.siblings('.publish').children('.action-tooltip').children('span'));
 
-        obj.children('.action-tooltip').children('span').html("Feature Feedback");
+        obj.children('.action-tooltip').children('span').html("Feature Pwet Feedback");
         obj.siblings('.publish').children('.action-tooltip').children('span').html("Return to Pwet");
 
         obj.attr('return', 'feature');     
