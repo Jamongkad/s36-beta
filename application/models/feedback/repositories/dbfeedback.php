@@ -928,9 +928,8 @@ class DBFeedback extends S36DataObject {
                         ->first();
         
         if($feedback) {
-            Helpers::dump($feedback->attachments == 'null');
-            Helpers::dump($feedback->attachments);
-            if($feedback->attachments) {
+            //fuck null is a literal string...
+            if($feedback->attachments != 'null') {
                 $attachments = json_decode($feedback->attachments);
                 if(property_exists($attachments, 'uploaded_images')) {
                     foreach($attachments->uploaded_images as $image) {
@@ -944,22 +943,20 @@ class DBFeedback extends S36DataObject {
                         $check_large = is_file($large);
 
                         if($check_small && $check_medium && $check_large) { 
-                            //@unlink($small);
-                            //@unlink($medium);	
-                            //@unlink($large);	
+                            @unlink($small);
+                            @unlink($medium);	
+                            @unlink($large);	
                         }
                     }
                 } 
             }
            
-
             if($feedback->avatar) { 
                 //delete profile photos...
                 $profile_img = new ProfileImage();
                 $profile_img->remove_profile_photo($feedback->avatar);
             }
             
-            /*
             $feedback_origin = DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
             $feedback_action = DB::table('FeedbackActions')->where('FeedbackActions.feedbackId', '=', $id)->delete();
             $contact = DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
@@ -968,7 +965,6 @@ class DBFeedback extends S36DataObject {
             $actual_feedback = DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)->delete(); 
             //let's make sure to add a query for removing tags from the MetadataTags table if need be
             $metadata = DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete(); 
-            */
 
             return Array(
                 'feedback_origin_delete' => $feedback_origin
