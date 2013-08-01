@@ -54,6 +54,8 @@ angular.module('feedbackcontrol', [])
                                 */
                             }
 
+                            console.log(me.attr("return"));
+
                             if(data.status == "feature") {
                                 var state = { 
                                     activate: {'background-position': '-64px -31px'}
