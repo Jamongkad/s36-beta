@@ -6,6 +6,7 @@
     z-index:100000;
     position:fixed;
     top: 0px;
+    opacity: 0.8;
 }
 #theBarTab{
     width:26px;
