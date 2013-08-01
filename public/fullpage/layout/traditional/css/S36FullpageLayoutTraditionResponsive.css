@@ -1,0 +1,59 @@
+/* Tablet Landscape */
+@media screen and (max-width: 768px) {
+	.regular-featured .rating-stat{
+		position:absolute;
+		top:10px;
+		right:140px;
+		white-space:nowrap;
+	}
+	.regular-featured .feedback-text-bubble{
+		margin-top:40px;
+	}
+}
+/* Tabled Portrait */
+@media screen and (max-width: 480px) {
+	.regular-featured .regular-featured-contents{
+		padding: 5px 20px 0px 20px;
+	}
+	.regular-featured .feedback-header{
+		display:block;
+		float:none;
+		width:100%;
+	}
+	.regular-featured .custom-meta-data{
+		display:block;
+		float:none;
+		clear:both;
+	}
+	.regular-featured .author-information{
+		text-align:left;
+	}
+	.regular-featured .rating-stat{
+		position:absolute;
+		top:0px;
+		right:0px;
+		white-space:nowrap;
+	}
+	.regular-featured .feedback-text-bubble{
+		margin:15px 0px;
+	}
+	.regular-featured .rating-stat{
+		position:relative;
+		white-space:nowrap;
+	}
+	.regular-featured .uploaded-image{
+		width:100%;
+	}
+	.regular-featured .uploaded-link{
+		width:auto;
+	}
+	.regular-featured .feedback-recommendation{
+	}
+	.regular-featured .feedback-actions{
+		float:left;
+		text-align:left;
+		display:block;
+		padding-top:5px;
+		position:relative;
+	}
+}
