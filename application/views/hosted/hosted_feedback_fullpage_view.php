@@ -32,6 +32,29 @@
                         </a>
                     </p>*/ ?>
                 </div>
+                <p align="center">
+                    <a href="http://beta.36stories.com/"><img src="/img/fdback-logo-gray.png" /></a>
+                    <div class="copyright_text">Copyright - 36Stories Inc 2011-2013</div><br/>
+                </p>
+                <div id="magicalSpacer"></div>
+                <script type="text/javascript">
+                    /* adjust height when the whole html is loaded */
+                    $(window).load(function(){
+                        adjust_height_space()
+                    });
+                    /* adjust height when the whole html resized */
+                    $(window).resize(function(){
+                        adjust_height_space()
+                    });
+                    function adjust_height_space(){
+                        var browser_ht = $(window).height();
+                        var html_ht = $('#mainContainer').height();
+                        var spacer = $('#magicalSpacer');
+                        if(html_ht < browser_ht){
+                            spacer.height(browser_ht - html_ht);
+                        }
+                    }
+                </script>
             <?php endif; ?>
             
             
