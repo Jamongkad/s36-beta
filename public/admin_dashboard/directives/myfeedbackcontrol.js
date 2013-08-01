@@ -331,6 +331,7 @@ function published_state(obj, sibling_id, msg, state) {
     obj.siblings(sibling_id).attr('data-feed', state.state_change);
 
     console.log(state.activation_color);
+    console.log(" for a week");
 
     obj.attr('return-policy', 1);
     obj.attr('data-feed', state.state_change_inbox);
