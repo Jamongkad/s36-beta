@@ -318,22 +318,20 @@ function published_state(obj, sibling_id, msg, state) {
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('published');     
         obj.children('.action-tooltip').children('span').html("Unfeature");
+        obj.attr('return', 'unfeature');     
+        obj.siblings(sibling_id).attr('return-policy', 0);
     } else { 
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('featured');     
         obj.children('.action-tooltip').children('span').html("Return to Inbox");
+        obj.attr('return-policy', 1);     
+        obj.siblings(sibling_id).attr('return', 'feature');
     }
    
     obj.css(state.activate);
     obj.siblings(sibling_id).css(state.deactivate_sibling);
-    obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg);
-    obj.siblings(sibling_id).attr('return-policy', 0);
-    obj.siblings(sibling_id).attr('data-feed', state.state_change);
-
-    console.log(state.activation_color);
-    console.log(" for a week");
-
-    obj.attr('return-policy', 1);
+    obj.siblings(sibling_id).children('.action-tooltip').children('span').html(msg); 
+    obj.siblings(sibling_id).attr('data-feed', state.state_change); 
     obj.attr('data-feed', state.state_change_inbox);
 
     var origin_cat_data = obj.siblings('.save')
