@@ -48,7 +48,7 @@ angular.module('feedbackcontrol', [])
                                 var state = {
                                     activate: {'background-position': '-64px -0px'}
                                   , deactivate_sibling: {'background-position': '-32px -31px'}
-                                  , activation_color: 'published'
+                                  , activation_color: 'unfeature'
                                   , state_change_inbox: '{"status": "unfeature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}' 
                                   , state_change: '{"status": "feature", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "feature"}'
                                   , present_status: "publish"
@@ -322,12 +322,22 @@ function published_state(obj, sibling_id, msg, state) {
         obj.children('.action-tooltip').children('span').html("Unfeature");
         obj.attr('return', 'unfeature');     
         obj.siblings(sibling_id).attr('return-policy', 0);
-    } else { 
+    } 
+
+    if(state.activation_color == 'published')
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('featured');     
         obj.children('.action-tooltip').children('span').html("Return to Inbox");
         obj.attr('return-policy', 1);     
         obj.siblings(sibling_id).attr('return', 'feature');
+    }
+
+    if(state.activation_color == 'unfeature')
+        obj.parents('.dashboard-feedback').addClass('published');     
+        obj.parents('.dashboard-feedback').removeClass('featured');     
+        obj.children('.action-tooltip').children('span').html("Unfeature");
+        obj.attr('return', 'feature');     
+        obj.siblings(sibling_id).attr('return-policy', 1);
     }
    
     obj.css(state.activate);
