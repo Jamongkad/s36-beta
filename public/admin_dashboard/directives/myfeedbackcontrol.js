@@ -332,7 +332,7 @@ function published_state(obj, sibling_id, msg, state) {
         obj.siblings(sibling_id).attr('return', 'feature');
     }
 
-    if(state.activation_color == 'unfeature')
+    if(state.activation_color == 'unfeature') {
         obj.parents('.dashboard-feedback').addClass('published');     
         obj.parents('.dashboard-feedback').removeClass('featured');     
         obj.children('.action-tooltip').children('span').html("Unfeature");
