@@ -241,15 +241,20 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 
                 //FeedbackSignal.current_state(feed);
                 //FeedbackControlService.change_status(feed, true);  
-                console.log(feed);
 
                 $(".checky-box-container").show();  
 
                 if(mode == "remove") {
+
+                    window.location = "/inbox/deleted/all";
+                    $(".sorter-checkbox:checked").attr('checked', false);
+                    /*
                     var status_message = FeedbackControlService.jsonmsg.feedback_status_change;
                     if(status_message == "success") { 
                         window.location = "/inbox/deleted/all";
+                        $(".sorter-checkbox:checked").attr('checked', false);
                     }
+                    */
                 }
 
             } else {
