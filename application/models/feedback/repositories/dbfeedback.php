@@ -932,10 +932,8 @@ class DBFeedback extends S36DataObject {
             Helpers::dump($feedback->attachments);
             Helpers::dump("Not NULL");
             Helpers::dump(!empty($feedback->attachments));
-            Helpers::dump("Not null");
-            Helpers::dump($feedback->attachments != 'null');
 
-            if($feedback->attachments != 'null' || !empty($feedback->attachments)) {
+            if(!empty($feedback->attachments)) {
                 $attachments = json_decode($feedback->attachments);
                 Helpers::dump("attachmentes");
                 if(property_exists($attachments, 'uploaded_images')) {
