@@ -931,7 +931,6 @@ class DBFeedback extends S36DataObject {
             //fuck null is a literal string...
             if(!empty($feedback->attachments)) {
                 $attachments = json_decode($feedback->attachments);
-                Helpers::dump("attachmentes");
                 if(property_exists($attachments, 'uploaded_images')) {
                     foreach($attachments->uploaded_images as $image) {
                         $name = $image->name;
@@ -944,11 +943,9 @@ class DBFeedback extends S36DataObject {
                         $check_large = is_file($large);
 
                         if($check_small && $check_medium && $check_large) { 
-                            /*
                             @unlink($small);
                             @unlink($medium);	
                             @unlink($large);	
-                            */
                         }
                     }
                 } 
