@@ -324,7 +324,7 @@ function published_state(obj, sibling_id, msg, state) {
         obj.siblings(sibling_id).attr('return-policy', 0);
     } 
 
-    if(state.activation_color == 'published')
+    if(state.activation_color == 'published') {
         obj.parents('.dashboard-feedback').addClass(state.activation_color);     
         obj.parents('.dashboard-feedback').removeClass('featured');     
         obj.children('.action-tooltip').children('span').html("Return to Inbox");
