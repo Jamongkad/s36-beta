@@ -53,7 +53,7 @@ angular.module('feedbackcontrol', [])
                                   , state_change: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                                   , present_status: "publish"
                                 } 
-                                published_state(me, '.publish', 'Feature Feedback', state);
+                                published_state(me, '.publish', 'Publish Feedback', state);
                             }
 
                             if(data.status == "feature") {
@@ -335,13 +335,7 @@ function published_state(obj, sibling_id, msg, state) {
     if(state.activation_color == 'unfeature') {
         obj.parents('.dashboard-feedback').addClass('published');     
         obj.parents('.dashboard-feedback').removeClass('featured');     
-
-        console.log(obj.children('.action-tooltip').children('span'));
-        console.log(obj.siblings('.publish').children('.action-tooltip').children('span'));
-
-        obj.children('.action-tooltip').children('span').html("Feature Pwet Feedback");
-        obj.siblings('.publish').children('.action-tooltip').children('span').html("Return to Pwet");
-
+        obj.children('.action-tooltip').children('span').html("Feature Feedback");
         obj.attr('return', 'feature');     
         obj.siblings(sibling_id).attr('return-policy', 1);
     }
