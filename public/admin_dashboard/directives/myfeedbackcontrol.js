@@ -53,7 +53,7 @@ angular.module('feedbackcontrol', [])
                                   , state_change: '{"status": "inbox", "id": ' + data.id + ', "catid": ' + data.catid + ', "origin": "publish"}'
                                   , present_status: "publish"
                                 } 
-                                published_state(me, '.publish', 'Publish Feedback', state);
+                                published_state(me, '.publish', 'Return to Inbox', state);
                             }
 
                             if(data.status == "feature") {
