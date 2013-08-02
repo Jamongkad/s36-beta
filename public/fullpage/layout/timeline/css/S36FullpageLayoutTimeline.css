@@ -121,7 +121,7 @@
 }
 .custom-meta-data .meta-data{float:left;margin-right:10px;}
 .custom-meta-data .meta-name{color:#838383;font-weight:bold;}
-.custom-meta-data .meta-value{color:#d74700;font-weight:bold;}
+.custom-meta-data .meta-value{color:#d74700;}
 .reviews .ratings{
 	margin-bottom:5px;
 }
@@ -293,7 +293,7 @@
 }
 .regular .custom-meta-data .meta-data{ float: left; margin-right: 10px; width: 185px; }
 .regular .custom-meta-data .meta-name{color:#838383;font-weight:bold;}
-.regular .custom-meta-data .meta-value{color:#d74700;font-weight:bold;}
+.regular .custom-meta-data .meta-value{color:#d74700;}
 .regular .reviews .ratings{
 	margin-bottom:5px;
 }
