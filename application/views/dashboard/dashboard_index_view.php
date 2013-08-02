@@ -74,7 +74,7 @@
     </script>
     
     <div id="theReports" class="dashboard-page">
-        <h1>Feedback received for the month of June</h1>
+        <h1>Feedback received for the month of June Pwet</h1>
         
         <div class="reports-stats grids">
             <div class="reports-stats-left">
