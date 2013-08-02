@@ -39,10 +39,15 @@ angular.module('feedback', [])
  
            $(element).click(function(e) {
                var type = $(this).attr('show');
-               console.log(type)
+               console.log(type);
                //FeedbackService.set_inbox_as_read(type);
                e.preventDefault();
            });
         }
     }        
+})
+
+$("#click-topbar").bind("click", function(e) {
+    console.log("Mathew");
+    e.preventDefault(); 
 })
