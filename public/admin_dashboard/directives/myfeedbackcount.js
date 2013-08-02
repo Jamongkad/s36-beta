@@ -2,15 +2,11 @@ angular.module('feedback', [])
 .directive('feedbackcount', function(FeedbackService) {
     return {
         restrict: 'A'     
-      , scope: {
-            type: "=show"    
-        }
       , link: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
             var type = scope.type;
-            console.log(type);
-            
+             
             if(feedback) {
                 if(type == 'msg') { 
                     if(feedback.msg) {
@@ -21,6 +17,12 @@ angular.module('feedback', [])
                 if(type == 'msg_ap') { 
                     if(feedback.msg_ap) {
                         $(element).html("<sup class='count'>" + feedback.msg_ap + "</sup>");
+                    }   
+                }
+
+                if(type == 'msg_topbar') { 
+                    if(feedback.msg_ap) {
+                        $(element).html("You have <sup class='count'>" + feedback.msg_ap + "</sup> new feedback!");
                     }   
                 }
             } else { 
