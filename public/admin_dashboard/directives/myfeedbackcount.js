@@ -25,8 +25,8 @@ angular.module('feedback', [])
                         var link = "<a href='/inbox/all' id='click-topbar'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
                         $(element).html(link);
 
-                        $("#click-topbar").bind("click", function(e) {
-                            console.log("Mathew");
+                        $("#click-topbar").bind("click", function(e) { 
+                            FeedbackService.set_inbox_as_read("msg");
                             e.preventDefault(); 
                         })
                     }   
@@ -44,8 +44,7 @@ angular.module('feedback', [])
  
            $(element).click(function(e) {
                var type = $(this).attr('show');
-               console.log(type);
-               //FeedbackService.set_inbox_as_read(type);
+               FeedbackService.set_inbox_as_read(type);
                e.preventDefault();
            });
         }
