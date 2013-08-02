@@ -106,10 +106,17 @@
             </div>
             <div class="reviews clear">
                 <div class="ratings clear"> 
+                    <!-- <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div> -->
                     <?if($feed->feed_data->displaysbmtdate == 1):?>
                         <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
                     <?endif?>
-                    <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div>
+                    <div class="stars blue clear">
+                        <div class="star <?= ($feed->feed_data->int_rating >= 1 ? 'full' : ''); ?>"></div>
+                        <div class="star <?= ($feed->feed_data->int_rating >= 2 ? 'full' : ''); ?>"></div>
+                        <div class="star <?= ($feed->feed_data->int_rating >= 3 ? 'full' : ''); ?>"></div>
+                        <div class="star <?= ($feed->feed_data->int_rating >= 4 ? 'full' : ''); ?>"></div>
+                        <div class="star <?= ($feed->feed_data->int_rating >= 5 ? 'full' : ''); ?>"></div>
+                    </div>
                 </div>
                 <?php if($feed->feed_data->isfeatured == 1): ?>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">

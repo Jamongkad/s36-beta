@@ -136,7 +136,7 @@
 	color: #4ea6c6;
 	font-size: 11px;
 	position: absolute;
-	top: -15px;
+	/*top: -15px;*/
 	right: 0px;
 }
 .feedback-text-bubble{
@@ -267,6 +267,7 @@
 .regular .feedback-header .reviews .feedback-timestamp{
 	color:#999999;
 	margin-bottom: 3px;
+	margin-right: 5px;
 }
 .regular .author-location{
 	font-weight: bold;
@@ -519,4 +520,40 @@
 	position: relative;
 	right: -4px;
 	top: -5px;
+}
+
+.regular .stars .star{
+	width: 16px;
+	margin-right: 2px;
+	background: url(/fullpage/common/img/rating-stars-small.png) bottom center;
+	background-repeat: no-repeat;
+	height: 15px;
+	float: left;
+}
+.regular .stars .star.full{
+	background-position: top;
+}
+.regular-featured .stars{
+	width: 130px;
+	display: block;
+	text-align: left;
+	float: right;
+	margin-bottom: 20px;
+}
+.regular-featured .stars .star{
+	width: 24px;
+	margin-right: 2px;
+	background: url(/fullpage/common/img/rating-stars-big.png) top center;
+	background-repeat: no-repeat;
+	height: 25px;
+	float: left;
+}
+.regular-featured .stars .star.full{
+	background-position: top;
+}
+
+.regular-featured .feedback-timestamp{
+	position: absolute;
+	right: 0px;
+	top: 29px;
 }
