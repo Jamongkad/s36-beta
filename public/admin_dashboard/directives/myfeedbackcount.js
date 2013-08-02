@@ -10,33 +10,26 @@ angular.module('feedback', [])
             if(feedback) {
                 if(type == 'msg') { 
                     if(feedback.msg) {
-                        //$(element).html("<sup class='count'>" + feedback.msg + "</sup>");
-                        scope.template = "<sup class='count'>" + feedback.msg + "</sup>";
+                        $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
                     }   
                 }
 
                 if(type == 'msg_ap') { 
                     if(feedback.msg_ap) {
-                        //$(element).html("<sup class='count'>" + feedback.msg_ap + "</sup>");
-                        scope.template = "<sup class='count'>" + feedback.msg_ap + "</sup>";
+                        $(element).html("<sup class='count'>" + feedback.msg_ap + "</sup>");
                     }   
                 }
 
                 if(type == 'msg_topbar') { 
                     if(feedback.msg) {
-                        /*
-                        var link = "<a href='/inbox/all' inboxclick show='msg'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
+                        var link = "<a href='/inbox/all' id='click-topbar'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
                         $(element).html(link);
-                        */ 
-                        var link = "<a href='/inbox/all' inboxclick show='msg'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
-                        scope.template = link;
                     }   
                 }
             } else { 
                 $(element).html("");
             }
         }
-      , template: '<span compile-html="template"></span>'
     }    
 })
 .directive('inboxclick', function(FeedbackService) {
