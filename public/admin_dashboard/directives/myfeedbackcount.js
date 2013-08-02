@@ -23,7 +23,9 @@ angular.module('feedback', [])
                 if(type == 'msg_topbar') { 
                     if(feedback.msg) {
                         var link = "<a href='/inbox/all' inboxclick show='msg'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
-                        $(element).html(link);
+                        //$(element).html(link);
+                        element.html(link);
+                        $compile(element.contents())(scope);
                     }   
                 }
             } else { 
