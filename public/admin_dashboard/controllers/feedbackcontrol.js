@@ -243,12 +243,13 @@ function FeedbackControl($scope, FeedbackControlService, FeedbackSignal, Templat
                 FeedbackControlService.change_status(feed, true);  
 
                 $(".checky-box-container").show();  
+                $(".sorter-checkbox:checked").attr('checked', false);
 
                 if(mode == "remove") {
                     var status_message = FeedbackControlService.jsonmsg.feedback_status_change;
                     if(status_message == "success") { 
                         window.location = "/inbox/deleted/all";
-                        $(".sorter-checkbox:checked").attr('checked', false);
+         
                     }
                 }
 
