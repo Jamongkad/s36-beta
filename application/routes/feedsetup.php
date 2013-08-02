@@ -37,12 +37,6 @@ return array(
           , 'main_themes'     => $widget_themes->main_themes()
         ));
 
-        /*
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_index_view', Array(
-            'widgets' => $widgets, 'hosted_full_page' => null
-        ));
-        */
-
     }),
 
     'GET /feedsetup/widget_selection' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) { 
