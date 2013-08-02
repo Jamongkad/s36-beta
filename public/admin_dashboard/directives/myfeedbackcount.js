@@ -5,7 +5,7 @@ angular.module('feedback', [])
       , link: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
-            var type = scope.type;
+            var type = $(this).attr("show");
              
             if(feedback) {
                 if(type == 'msg') { 
