@@ -2,10 +2,14 @@ angular.module('feedback', [])
 .directive('feedbackcount', function(FeedbackService) {
     return {
         restrict: 'A'     
+      , scope: {
+            type: "@show"    
+        }
       , link: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
-            var type = $(element).attr('show');
+            var type = scope.type;
+            console.log(type);
             
             if(feedback) {
                 if(type == 'msg') { 

@@ -16,7 +16,9 @@
                 <!--
                     <span style="top:14px;left:-180px;position:relative;float:left;color:#656E77;">Signed in as <?=\S36Auth::user()->username?></span>
                 -->
-                    <span style="top:14px;left:-180px;position:relative;float:left;color:#656E77;">Pwet</span>
+                    <span style="top:14px;left:-180px;position:relative;float:left;color:#656E77;">
+                    
+                    </span>
 
                 <?endif?>
                 <ul>
