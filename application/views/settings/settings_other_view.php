@@ -66,9 +66,6 @@
         </div>
         <div class="dashboard-foot"></div>
     </div>
-    <div style="text-align:center;">
-      <input id="submit_other_settings" type="submit" class="dashboard-button blue large" value="Save Settings" style="cursor:pointer;" />
-    </div>
 </div>
 <?=Form::close()?>
 <?=$fullpage_css?>
