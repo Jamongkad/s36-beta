@@ -12,7 +12,6 @@
         </div>
         <div id="barRightContent">
             <div class="barLinks"> 
-                <?Helpers::dump(\S36Auth::user())?>
                 <?if( ! is_null(\S36Auth::user()) ):?> 
                     <span style="top:14px;left:-180px;position:relative;float:left;color:#656E77;">
                         <span feedbackcount show="msg_topbar"></span>
