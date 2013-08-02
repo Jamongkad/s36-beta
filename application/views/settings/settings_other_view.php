@@ -14,9 +14,9 @@
                       <div class="form-setup-label">Company Display Name : </div>
                       <div class="form-setup-elem">
                         <input name="company_name" type="text" id="company_name" class="dashboard-text" title="" maxlength="45" value="<?=$company_info->billto?>" />
+                        <br/>
                         <small>
                         You can choose to display your preferred display name here, and it will show up on public areas of your feedback page.
-
                         </small>
                         <span id="company_name_error_msg" style="display:none" class="social_url_msg error_msg rounded_corner">Invalid company name</span>
                       </div>
