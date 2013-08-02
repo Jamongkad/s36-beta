@@ -293,11 +293,24 @@
                                 </div>
                                 <div class="custom-meta-data ">
                                     <?php if( ! is_null($metadata) ): ?>
-                                        <?php foreach( $metadata as $group ): ?>
-                                            <?php foreach( $group as $item ): ?>
+                                        <?php foreach( $metadata as $key => $val ): ?>
+                                            <?php foreach( $val as $k => $v ): ?>
                                                 <div class="meta-data">
-                                                    <span class="meta-name"><?= HTML::entities( ucwords(str_replace('_', ' ', $item[0]->name)) ); ?> : </span>
-                                                    <span class="meta-value"><?= HTML::entities($item[0]->value); ?></span>
+                                                    <?if($key == 'select'):?>
+                                                        <span class="meta-name"><?=HTML::entities( ucwords($k) )?>:</span>
+                                                    <?endif?>
+                                                    <?if($key == 'checkbox' || $key == 'radio' || $key == 'text'):?>
+                                                        <span class="meta-name"><?=HTML::entities( ucwords(str_replace("_", " ", $k)) );?>:</span>
+                                                    <?endif?>
+                                                    <?
+                                                    $prefix = "";
+                                                    $value_list = "";
+                                                    foreach($v as $d) {
+                                                        $value_list .= "<span class='meta-value'>" . HTML::entities($prefix . $d->value) . "</span>";
+                                                        $prefix = ", ";
+                                                    }
+                                                    echo $value_list;
+                                                    ?> 
                                                 </div>
                                             <?php endforeach; ?>
                                         <?php endforeach; ?>
