@@ -138,7 +138,7 @@
     
 <?else:?> 
     <div class="woops">
-        <h2>Woops. Since there's no feedback. We are unable to return any meaningful data.</h2><br/><br/>
-        <p>Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> on your website already?</p>
+        <h2>Woops. Since there's no feedback.</h2><br/><br/>
+        <p>Invite some of your customers to send in feedback on <?=Config::get('application.host')?>!</p>
     </div> 
 <?endif?>
