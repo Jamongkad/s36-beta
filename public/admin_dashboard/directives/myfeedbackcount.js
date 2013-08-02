@@ -24,6 +24,11 @@ angular.module('feedback', [])
                     if(feedback.msg) {
                         var link = "<a href='/inbox/all' id='click-topbar'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
                         $(element).html(link);
+
+                        $("#click-topbar").bind("click", function(e) {
+                            console.log("Mathew");
+                            e.preventDefault(); 
+                        })
                     }   
                 }
             } else { 
@@ -45,9 +50,4 @@ angular.module('feedback', [])
            });
         }
     }        
-})
-
-$("#click-topbar").bind("click", function(e) {
-    console.log("Mathew");
-    e.preventDefault(); 
 })
