@@ -83,7 +83,7 @@
                         <span class="report-text new"><strong><?=HTML::link('inbox/all', $dashboard_summary->dashscores->newfeed." new entries")?></strong> are pending for your review</span>
                     </div>
                     <div class="reports-block">
-                        <span class="report-text positive"><strong><?=HTML::link('inbox/positive', $dashboard_summary->dashscores->positivefeed." entries")?></strong> are rated positively</span>
+                        <span class="report-text positive"><strong><?=HTML::link('inbox/published/all', $dashboard_summary->dashscores->positivefeed." entries")?></strong> are rated positively</span>
                     </div>
                     <div class="reports-block">
                         <span class="report-text neutral"><strong><?=HTML::link('inbox/neutral', $dashboard_summary->dashscores->neutralfeed." entries")?></strong> are rated neutral</span>
