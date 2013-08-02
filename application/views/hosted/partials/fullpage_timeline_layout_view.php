@@ -33,6 +33,8 @@
             $company_name               = $feed->feed_data->companyname;
             $city                       = $feed->feed_data->city;
             $country_name               = $feed->feed_data->countryname;
+
+            Helpers::dump($metadata);
         ?>
         <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
         <?=$tw_marker?>
