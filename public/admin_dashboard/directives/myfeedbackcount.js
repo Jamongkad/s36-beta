@@ -8,6 +8,7 @@ angular.module('feedback', [])
             var type = scope.type;
              
             if(feedback) {
+                console.log("feedback")
                 if(type == 'msg') { 
                     if(feedback.msg) {
                         $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
