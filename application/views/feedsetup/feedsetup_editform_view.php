@@ -80,7 +80,7 @@
                 <div class="success">Feedback form has been updated.</div>
             </div>
             <p class="dashboard-your-question">Custom fields are additional information you would want to collect from your customers. Information such as what sort of color they prefer, or maybe you might want them to specify their gender. With custom fields, you have the flexibility to collect information in addition to your customer's feedback.</p>
-            <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" id="form-builder" class="grids"></div>
+            <div my-formbuilderload widget_key="<?=$widget->widgetkey?>" id="form-builder" class="grids"></div>
         </div>
     </div>
 </div>
