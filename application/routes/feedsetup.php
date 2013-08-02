@@ -11,6 +11,8 @@ return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted, $widget_themes) {
         $widgets = $dbw->fetch_widgets_by_company();
         $hosted->set_hosted_settings(Array('company_id'  =>  S36Auth::user()->companyid));
+
+        Helpers::dump($widgets);
         
         $widgetkey = $widgets->form_widgets->widget->widgets[0]->widgetkey;
         $wl = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
@@ -36,12 +38,6 @@ return array(
           , 'themes_parent'   => $widget_themes->get_parent($theme_type)
           , 'main_themes'     => $widget_themes->main_themes()
         ));
-
-        /*
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_index_view', Array(
-            'widgets' => $widgets, 'hosted_full_page' => null
-        ));
-        */
 
     }),
 
