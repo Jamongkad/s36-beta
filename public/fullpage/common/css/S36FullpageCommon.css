@@ -777,6 +777,7 @@ color: #698B22;
 border: 1px solid #B8DC6F;
 margin-top: 3px;
 padding: 4px;
+display: inline-block;
 }
 .social_url_msg.error_msg {
 background-color: #fee;
@@ -784,6 +785,7 @@ color: #800;
 border: 1px solid #fdd;
 margin-top: 3px;
 padding: 4px;
+display: inline-block;
 }
 /*used for other settings end*/
 h1.reg {

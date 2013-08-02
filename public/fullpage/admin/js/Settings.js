@@ -237,7 +237,26 @@ var Settings = new function(){
     /* ========================================
     || Other Settings
     ==========================================*/
-
+    
+    $('#company_name').blur(function(){
+        var company_name = $.trim($(this).val());
+        var regex = new RegExp("^[A-Za-z0-9][A-Za-z0-9-_ ]+$");
+        if(regex.test(company_name)){
+            $('#company_name_error_msg').fadeOut();
+            var data = {
+                companyid: $('#companyid').val(),
+                company_name: $(this).val()
+            }
+            self.update_company_settings(data);
+            //$('#submit_other_settings').removeAttr('disabled');
+            //$('#submit_other_settings').addClass('blue');
+        }else{
+            $('#company_name_error_msg').show();
+            //$('#submit_other_settings').attr('disabled','disabled');
+            //$('#submit_other_settings').removeClass('blue');
+        }
+        $(this).val(company_name);
+    });
     $('#panel_desc_container').jScrollPane();
     $('.companyDescription').click(function(){
         $('#desc_hint').hide();
@@ -252,6 +271,9 @@ var Settings = new function(){
         $('#panel_desc_container').fadeIn();
         $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
         $('#panel_desc_container').jScrollPane();
+        //$('#submit_other_settings').removeAttr('disabled');
+        //$('#submit_other_settings').addClass('blue');
+        SettingsAutoSaver.set_data('description', $(this).val());
     });
 
     $('.social_url').blur(function(){
@@ -262,33 +284,44 @@ var Settings = new function(){
         
         $(this).parent().find('.social_url_msg').hide();
         
-        if( $(this).is('#fb_url') && url != SettingsAutoSaver.def_data.facebook_url ){
+        if( $(this).is('#fb_url') ){
             if( url == '' ){
-                SettingsAutoSaver.set_data('facebook_url', url);
                 $('.social-icon.fb a').attr('href', '');
                 $('.social-icon.fb').hide();
-            }else if( url.match(fb_regex) != null ){
+                //$('#submit_other_settings').removeAttr('disabled');
+                //$('#submit_other_settings').addClass('blue');
                 SettingsAutoSaver.set_data('facebook_url', url);
+            }else if( url.match(fb_regex) != null ){
                 $('.social-icon.fb a').attr('href', url);
                 $('.social-icon.fb').show();
-                //$('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                //$('#submit_other_settings').removeAttr('disabled');
+                //$('#submit_other_settings').addClass('blue');
+                SettingsAutoSaver.set_data('facebook_url', url);
             }else if( url.match(fb_regex) == null ){
-                $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
+                $('#fb_url_error_msg').fadeIn(200);
+                //$('#submit_other_settings').attr('disabled','disabled');
+                //$('#submit_other_settings').removeClass('blue');
             }
         }
         
-        if( $(this).is('#tw_url') && url != SettingsAutoSaver.def_data.twitter_url ){
+        if( $(this).is('#tw_url') ){
             if( url == '' ){
-                SettingsAutoSaver.set_data('twitter_url', url);
+                $('#submit_other_settings').removeAttr('disabled');
                 $('.social-icon.tw a').attr('href', '');
                 $('.social-icon.tw').hide();
-            }else if( url.match(tw_regex) != null ){
+                //$('#submit_other_settings').removeAttr('disabled');
+                //$('#submit_other_settings').addClass('blue');
                 SettingsAutoSaver.set_data('twitter_url', url);
+            }else if( url.match(tw_regex) != null ){
                 $('.social-icon.tw a').attr('href', url);
                 $('.social-icon.tw').show();
-                //$('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                //$('#submit_other_settings').addClass('blue');
+                //$('#submit_other_settings').removeAttr('disabled');
+                SettingsAutoSaver.set_data('twitter_url', url);
             }else if( url.match(tw_regex) == null ){
-                $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
+                $('#tw_url_error_msg').fadeIn(200);
+                //$('#submit_other_settings').attr('disabled','disabled');
+                //$('#submit_other_settings').removeClass('blue');
             }
         }
         
@@ -347,6 +380,24 @@ var Settings = new function(){
     /* ========================================
     || Change Fullpage Layout
     ==========================================*/
+    this.update_company_settings = function(settings){
+        self.show_notification('Saving Page Display Changes', 1000);
+        $.ajax({
+            async: false,
+            url: '/settings/save_company_settings',
+            type: 'post',
+            data: settings,
+            dataType: 'json',
+            success: function(success){
+                if(success){
+                    $('#other-settings-message').fadeIn();
+                }
+            }
+        });
+    }
+    /* ========================================
+    || Change Fullpage Layout
+    ==========================================*/
     this.change_fullpage_layout = function(selected_layout){
         //self.show_notification('Updating layout settings', 3000);
         $.ajax({
@@ -372,7 +423,6 @@ var Settings = new function(){
             ,width:100
         });
     }
-
     /* ========================================
     || Hide the Notification
     ==========================================*/

@@ -24,6 +24,9 @@ class SubmissionWidget extends FormWidgets {
         $company_social = new DBCompanySocialAccount;
         $this->company_social = $company_social;
         
+        $DBCompany = new DBCompany;
+        $company_info = $DBCompany->get_company_info(Config::get('application.subdomain'));
+
         if($formstructure = $options->formstructure) { 
             $data = Array('form_structure' => $formstructure);
             $this->form_render = new Formbuilder($data);    
@@ -36,7 +39,7 @@ class SubmissionWidget extends FormWidgets {
           , 'site_id'        => $this->widget_options->siteid
           , 'site_domain'    => $this->widget_options->domain
           , 'company_id'     => $this->widget_options->companyid
-          , 'company_name'   => $this->widget_options->name
+          , 'company_name'   => $company_info->billto
           , 'company_social' => $this->company_social
           , 'form_text'      => $this->widget_options->widgetattr->submit_form_text
           , 'form_question'  => $this->widget_options->widgetattr->submit_form_question

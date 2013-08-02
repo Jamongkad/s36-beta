@@ -28,7 +28,7 @@ return array (
         ));
     }),
 
-    'GET /settings/feedback' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category, $company, $hosted_settings) {
+    'GET /settings/feedback' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category, $company, $hosted_settings, $fullpage) {
         $user               = S36Auth::user();
         $company_name       = Config::get('application.subdomain');
         $company_info       = $company->get_company_info($company_name);
@@ -40,6 +40,7 @@ return array (
             'user'              => $user
           , 'category'          => $category->pull_site_categories()
           , 'hosted_settings'   => $hosted_settings->hosted_settings()
+          , 'fullpage_css'     => $fullpage->get_fullpage_css($company_info->companyid)
         ));
     }),
 
@@ -68,11 +69,14 @@ return array (
     }),
      'GET /settings/others' => Array('name' => 'other_settings', 'before' => 's36_auth', 'do' =>function() use($company, $hosted_settings, $fullpage){
 
+        $user           = S36Auth::user();
         $company_name   = Config::get('application.subdomain');
         $company_info   = $company->get_company_info($company_name); 
 
         return View::of_layout()->partial('contents', 'settings/settings_other_view', Array(
-             'panel'            =>$hosted_settings->get_panel_settings($company_info->companyid)
+             'user'             =>$user
+            ,'panel'            =>$hosted_settings->get_panel_settings($company_info->companyid)
+            ,'company_info'     =>$company_info
             ,'fullpage_css'     => $fullpage->get_fullpage_css($company_info->companyid)
         ));
         
@@ -110,7 +114,13 @@ return array (
     'GET /settings/category_count' => function() use($category) {
         Helpers::dump($category->_category_count());
     },
-
+    'POST /settings/save_company_settings' => function() {
+        $company = new Company\Repositories\DBCompany;
+        $hosted_settings = new Hosted\Repositories\DBHostedSettings;
+        $data = (object)Input::get();
+        $result = $company->update_companyinfo($data);
+        return json_encode(array('success'=>($result==1) ? true : false));
+    },
     'POST /settings/save_feedback_settings' => function() {
         $company = new Company\Repositories\DBCompany;
         $hosted_settings = new Hosted\Repositories\DBHostedSettings;

@@ -70,7 +70,7 @@ $company = DB::table('Company')
     ->left_join('HostedSettings', 'Company.companyId', '=', 'HostedSettings.companyId')
     ->where('Company.name', '=', Config::get('application.subdomain'))
     ->first(array(
-        'Company.name',
+        'Company.billto as name',
         'HostedSettings.description AS description',
         'Company.coverphoto_src AS image',
         'Company.logo AS logo'

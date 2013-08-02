@@ -212,9 +212,12 @@
         <div class="dashboard-foot"></div>
     </div>
     */?>
-<input type="submit" class="dashboard-button blue large" value="Save Settings" />
+<div style="text-align:center;">
+  <input type="submit" class="dashboard-button blue large" value="Save Settings" />
+</div>
 </div>
 <?=Form::close()?>
+<?=$fullpage_css?>
 <script type="text/javascript">
 $(document).ready(function(){
     $('#autopost_enable').click(function(){

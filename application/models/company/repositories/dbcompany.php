@@ -21,20 +21,24 @@ class DBCompany extends S36DataObject {
     }
 
     public function update_companyinfo($post) {
+        $company_info = $this->get_company_info($post->companyid);
         //do an update 
-        DB::Table('Company', 'master')
+        $update = DB::Table('Company', 'master')
             ->where('companyId', '=', $post->companyid)
             ->update(Array( 
-                //'description'         => $post->company_desc
-                'fullpageCompanyName' => $post->fullpagecompanyname 
-                , 'website_link'        => $post->website_link
-                , 'logo'                => $post->logo
+                  'billto'              => (isset($post->company_name)) ? $post->company_name : $company_info->billto
+                , 'description'         => (isset($post->company_desc)) ? $post->company_desc : $company_info->description
+                , 'fullpageCompanyName' => (isset($post->fullpagecompanyname)) ? $post->fullpagecompanyname  : $company_info->fullpagecompanyname
+                , 'website_link'        => (isset($post->website_link)) ? $post->website_link : $company_info->website_link
+                , 'logo'                => (isset($post->logo)) ? $post->logo : $company_info->logo
             )); 
         
         // description is now on HostedSettings.
         DB::table('HostedSettings')
             ->where('companyId', '=', $post->companyid)
-            ->update(array('description' => $post->company_desc));
+            ->update(array('description' => (isset($post->company_desc)) ? $post->company_desc : $company_info->description));
+
+        return $update;
     }
 
     public function get_company_info($company_id = Null) {
