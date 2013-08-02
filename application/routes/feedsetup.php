@@ -17,6 +17,8 @@ return array(
         $widgetkey = $widgets->form_widgets->widget->widgets[0]->widgetkey;
         $wl = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
         $widget = $wl->widget_obj;
+ 
+        Helpers::dump($widget);
 
         $widget_themes->build_menu_structure();
 
