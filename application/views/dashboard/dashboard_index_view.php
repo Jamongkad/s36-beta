@@ -139,6 +139,6 @@
 <?else:?> 
     <div class="woops">
         <h2>Woops. Since there's no feedback.</h2><br/><br/>
-        <p>Invite some of your customers to send in feedback on <?=$company_info->name?>.fdback.com!</p>
+        <p>Invite some of your customers to send in feedback on https://<?=$company_info->name?>.fdback.com!</p>
     </div> 
 <?endif?>
