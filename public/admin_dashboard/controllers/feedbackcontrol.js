@@ -335,7 +335,8 @@ function CheckyBox($scope, FeedbackSignal, FeedbackControlService) {
     }
 
     $scope.close = function() { 
-        location.reload();
+        //location.reload();
+        window.location = window.location.pathname;
     }
 
     $scope.hide = function() { 
