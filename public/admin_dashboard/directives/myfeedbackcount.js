@@ -38,7 +38,8 @@ angular.module('feedback', [])
  
            $(element).click(function(e) {
                var type = $(this).attr('show');
-               FeedbackService.set_inbox_as_read(type);
+               console.log(type);
+               //FeedbackService.set_inbox_as_read(type);
                e.preventDefault();
            });
         }
