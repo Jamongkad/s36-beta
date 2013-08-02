@@ -23,9 +23,8 @@ angular.module('feedback', [])
                 if(type == 'msg_topbar') { 
                     if(feedback.msg) {
                         var link = "<a href='/inbox/all' inboxclick show='msg'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
-                        //$(element).html(link);
-                        element.html(link);
-                        $compile(element.contents())(scope);
+                        $(element).html(link);
+                        $compile(link)(scope);
                     }   
                 }
             } else { 
@@ -41,7 +40,8 @@ angular.module('feedback', [])
  
            $(element).click(function(e) {
                var type = $(this).attr('show');
-               FeedbackService.set_inbox_as_read(type);
+               console.log(type);
+               //FeedbackService.set_inbox_as_read(type);
                e.preventDefault();
            });
         }
