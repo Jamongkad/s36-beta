@@ -411,12 +411,12 @@ $logo           = ( empty($comp->logo) ? $app_url.'/img/public-profile-pic.jpg' 
                 </div>
                 <!-- end of magic -->
             </div>
+            <div id="magicalSpacer"></div>
             <p align="center">
                 <a href="http://beta.36stories.com/"><img src="/img/fdback-logo-gray.png" /></a>
                 <div class="copyright_text">Copyright - 36Stories Inc 2011-2013</div><br/>
             </p>
         </div>
-        <div id="magicalSpacer"></div>
     </div>
 </div>
 
