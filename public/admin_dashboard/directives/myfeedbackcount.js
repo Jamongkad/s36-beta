@@ -22,7 +22,7 @@ angular.module('feedback', [])
 
                 if(type == 'msg_topbar') { 
                     if(feedback.msg) {
-                        $(element).html("You have <sup class='count'>" + feedback.msg + "</sup> new feedback!");
+                        $(element).html("You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!");
                     }   
                 }
             } else { 
