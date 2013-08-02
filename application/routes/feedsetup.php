@@ -11,15 +11,11 @@ return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted, $widget_themes) {
         $widgets = $dbw->fetch_widgets_by_company();
         $hosted->set_hosted_settings(Array('company_id'  =>  S36Auth::user()->companyid));
-
-        Helpers::dump($widgets);
         
         $widgetkey = $widgets->form_widgets->widget->widgets[0]->widgetkey;
         $wl = new Widget\Services\WidgetLoader($widgetkey, $load_submission_form=True); 
         $widget = $wl->widget_obj;
  
-        Helpers::dump($widget);
-
         $widget_themes->build_menu_structure();
 
         if($widget->widgettype == 'display') {
