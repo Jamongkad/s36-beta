@@ -6,6 +6,7 @@ angular.module('feedback', [])
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
             var type = $(this).attr("show");
+            console.log(type);
              
             if(feedback) {
                 if(type == 'msg') { 
