@@ -2,7 +2,7 @@ angular.module('feedback', [])
 .directive('feedbackcount', function(FeedbackService, $compile) {
     return {
         restrict: 'A'     
-      , link: function(scope, element, attrs) {
+      , compile: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
             var type = $(element).attr("show");
@@ -22,8 +22,7 @@ angular.module('feedback', [])
 
                 if(type == 'msg_topbar') { 
                     if(feedback.msg) {
-                        var link = "<a href='/inbox/all' inboxclick show='msg'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"
-                        
+                        var link = "<a href='/inbox/all' inboxclick show='msg'>You have <sup class='count-topbar'>" + feedback.msg + "</sup> new feedback!</a>"  
                         $(element).html(link);
                     }   
                 }
@@ -40,8 +39,7 @@ angular.module('feedback', [])
  
            $(element).click(function(e) {
                var type = $(this).attr('show');
-               console.log(type);
-               //FeedbackService.set_inbox_as_read(type);
+               FeedbackService.set_inbox_as_read(type);
                e.preventDefault();
            });
         }
