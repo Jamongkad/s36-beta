@@ -8,21 +8,23 @@ angular.module('feedback', [])
             var type = scope.type;
              
             if(feedback) {
-                console.log("feedback")
                 if(type == 'msg') { 
                     if(feedback.msg) {
+                        console.log("Mathew");
                         $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
                     }   
                 }
 
                 if(type == 'msg_ap') { 
                     if(feedback.msg_ap) {
+                        console.log("Wong");
                         $(element).html("<sup class='count'>" + feedback.msg_ap + "</sup>");
                     }   
                 }
 
                 if(type == 'msg_topbar') { 
                     if(feedback.msg) {
+                        console.log("Tall");
                         $(element).html("You have <sup class='count'>" + feedback.msg + "</sup> new feedback!");
                     }   
                 }
