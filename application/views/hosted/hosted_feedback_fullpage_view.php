@@ -91,6 +91,7 @@
         var fullpageLayout = fullpageCommon.create_layout('<?php echo $panel->theme_name; ?>'); 
         fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
         fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
+        fullpageCommon.run_arrow_pointer();
         
         <?php if($user): //then display the admin bar by default ?> 
             //var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);

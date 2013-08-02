@@ -11,9 +11,6 @@ var S36FullpageCommon = function(){
     ==========================================*/
     this.init_fullpage_common = function(){
         
-        self.run_arrow_pointer();
-        
-        
 		$('.feedback-icon').hover(function(){
 			$(this).find('.icon-tooltip').show();
 		},function(){
